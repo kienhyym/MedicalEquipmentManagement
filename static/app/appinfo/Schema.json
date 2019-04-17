@@ -1,0 +1,24 @@
+{
+	"id":{
+		"type":"number",
+		"primary":true
+	},
+	"appkey":{
+		"type":"string",
+		"required": true
+	},
+	"secret":{
+		"type":"string",
+		"required": true
+	},
+	"name":{
+		"type":"string",
+		"required": true
+	},
+	"description":{
+		"type":"string"
+	},
+	"status":{
+		"type":"number"
+	}
+}

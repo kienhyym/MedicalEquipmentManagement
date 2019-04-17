@@ -1,0 +1,162 @@
+<div block-bind="content">
+	<!-- Page Header -->
+	<div class="page-header row no-gutters py-4">
+	  <div class="col-12 col-md-10 col-sm-4 text-center text-sm-left mb-0">
+	    <span class="text-uppercase page-subtitle"> </span>
+	    <h3 class="page-title text-uppercase">Cơ sở khám chữa bệnh</h3>
+	  </div>
+	</div>
+	<!-- End Page Header -->
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+        	<div class="card  card-small mb-4">
+				<div class="card-header  border-bottom">
+					<div class="row">
+						<div class="col-md-7">
+							<h6 class="m-0">Thông tin chi tiết</h6>
+						</div>
+						<div class="col-md-5 text-right">
+							<div block-bind="toolbar"></div>
+						</div>
+					</div>
+					
+					
+				</div>
+				<div class="card-body">
+		          <form class="needs-validation" novalidate="">
+		            <div class="row">
+		              <div class="col-md-6 mb-3">
+		                <label>Mã cơ sở KCB</label>
+		                <input type="text" class="form-control" data-bind="value:ma_coso" placeholder="..." value="" required="">
+		                <div class="invalid-feedback">
+		                  Vui lòng nhập mã Cơ sở khám chữa bệnh.
+		                </div>
+		              </div>
+		              <div class="col-md-6 mb-3">
+		                <label>Tên cơ sở khám</label>
+		                <input type="text" class="form-control" data-bind="value:ten_coso" placeholder="..." value="" required="">
+		                <div class="invalid-feedback">
+		                  Vui lòng nhập Tên cơ sở khám chữa bệnh.
+		                </div>
+		              </div>
+		            </div>
+		
+		            <div class="row" id="appinfo">
+		            	<div class="col-md-6 mb-3" >
+			              <label>Ứng dụng kết nối</label>
+			              <div>
+			                <input type="text" class="form-control" data-bind="dict:appinfo"  required="">
+			                <div class="invalid-feedback" style="width: 100%;">
+			                  Vui lòng chọn ứng dụng kết nối API.
+			                </div>
+			              </div>
+			            </div>
+		            </div>
+		            
+		            <div class="mb-3">
+		              <label>Tuyến đơn vị</label>
+		              <div>
+		                <input type="text" class="form-control" data-bind="value:loai_coso"  required="">
+		                <div class="invalid-feedback" style="width: 100%;">
+		                  Vui lòng chọn tuyến đơn vị của cơ sở khám.
+		                </div>
+		              </div>
+		            </div>
+						
+		            <div class="mb-3">
+		            	<div class="row">
+		            		<div class="col-md-6 mb-3">
+				                <label for="email">Email <span class="text-muted"></span></label>
+					              <input type="email" class="form-control" id="email" data-bind="value:email" placeholder="...">
+					              <div class="invalid-feedback">
+					                Vui lòng nhập email để nhận thông báo.
+					              </div>
+				              </div>
+				              <div class="col-md-6 mb-3">
+				                <label for="cc-number">Điện thoại liên hệ</label>
+				                <input type="text" class="form-control" id="dienthoai" data-bind="value:dienthoai" placeholder="..." required="">
+				              </div>
+		            	</div>
+		              
+		            </div>
+		            
+		            <div class="mb-3">
+		                <label>Dữ liệu yêu cầu khi đặt khám</label>
+		              	<select  class="selectpicker form-control" id="multiselect_required" multiple data-live-search="true" title="chọn dữ liệu">
+						  <option value="chuyenkhoa">Chuyên khoa khám</option>
+						  <option value="ngaykham">Ngày khám</option>
+						  <option value="khunggiokham">Giờ khám</option>
+						</select>
+		              
+		            </div>
+		            <div class="mb-3">
+		                <label>Danh sách dịch vụ chuyên khoa</label>
+		              	<div class="custom-file">
+						    <input type="file" class="custom-file-input" id="upload_chuyenkhoa" lang="vi">
+						    <label class="custom-file-label" for="upload_chuyenkhoa">Chọn file tải lên</label>
+						    <div class="invalid-feedback">Vui lòng chọn file cấu hình theo định dạng json</div>
+						</div>
+						<div class="highlight d-none border" id="preview_json_chuyenkhoa" style="height:130px;overflow-y: auto; background-color: aliceblue;">
+							<pre ></pre>
+						</div>
+		              
+		            </div>
+		            
+		            <div class="row">
+		              <div class="col-md-6 mb-3">
+		                <label for="cc-name">Tỉnh/Thành phố</label>
+		                <input type="text" class="form-control" id="tinhthanh" data-bind="dict:tinhthanh" placeholder="..." required="">
+		              </div>
+		              <div class="col-md-6 mb-3">
+		                <label for="cc-number">Quận/Huyện</label>
+		                <input type="text" class="form-control" id="quanhuyen" data-bind="dict:quanhuyen" placeholder="..." required="">
+		              </div>
+		              <div class="col-md-6 mb-3">
+		                <label for="cc-expiration">Xã/Phường</label>
+		                <input type="text" class="form-control" id="xaphuong" placeholder="..." data-bind="dict:xaphuong" required="">
+		              </div>
+		            </div>
+		            <div class="mb-3">
+		              <label for="cc-expiration">Địa chỉ</label>
+		              <textarea rows="3" class="form-control" data-bind="value:diachi"  placeholder="..." required=""></textarea>
+		            </div>
+		            <!-- <hr class="mb-4"> -->
+		            <button id="cosokcb_info" class="btn btn-info btn-lg btn-block" type="submit">Lưu cơ sở khám</button>
+		          </form>
+		      </div>
+			</div>
+		</div>
+        <div class="col-lg-4 col-md-12">
+        	<div class="card card-small mb-3">
+        		<div class="card-header border-bottom">
+                    <h6 class="m-0">Tài khoản đăng nhập</h6>
+                </div>
+        		<div class="card-body p-0">
+	        		<ul class="list-group list-group-flush">
+			            <li class="list-group-item lh-condensed">
+			                <div class="mb-3">
+				                <label>Tài khoản</label>
+				                <input type="text" class="form-control" id="username" placeholder="số điện thoại hoặc email" value="" required="" autocomplete="off" autocorrect="off" autocapitalize="off"   spellcheck="false">
+				            </div>
+				            <div class="mb-3">
+				                <label>mật khẩu</label>
+				                <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" value="" required="" autocomplete="off" autocorrect="off" autocapitalize="off"   spellcheck="false">
+				            </div>
+				            <div class="mb-3">
+				                <label>Nhập lại mật khẩu</label>
+				                <input type="password" class="form-control" id="confirm_password" placeholder="Nhập lại mật khẩu" value="" required="" autocomplete="off" autocorrect="off" autocapitalize="off"   spellcheck="false">
+				            </div>
+			            </li>
+			            <li class="list-group-item d-flex px-3">
+			            	<button id="cosokcb_user" class="btn btn-info btn-lg btn-block" id="create_account">Cập nhật tài khoản</button>
+			            </li>
+			          </ul>
+	        	</div>
+        	</div>
+        	
+          
+          
+        </div>
+	        
+    </div>
+ </div>

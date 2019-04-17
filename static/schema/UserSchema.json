@@ -1,0 +1,92 @@
+{
+    "created_at": {
+        "type": ""
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": ""
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": ""
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "phone_number": {
+        "type": "string",
+        "length": 50
+    },
+    "phone_country_prefix": {
+        "type": "string",
+        "length": 50
+    },
+    "phone_national_number": {
+        "type": "string",
+        "length": 50
+    },
+    "email": {
+        "type": "string",
+        "length": 50
+    },
+    "first_name": {
+        "type": "string",
+        "length": 50
+    },
+    "last_name": {
+        "type": "string",
+        "length": 50
+    },
+    "password": {
+        "type": "string"
+    },
+    "salt": {
+        "type": "string"
+    },
+    "tinhthanh_id": {
+        "type": "string"
+    },
+    "tinhthanh": {
+        "type": "json"
+    },
+    "quanhuyen_id": {
+        "type": "string"
+    },
+    "quanhuyen": {
+        "type": "json"
+    },
+    "xaphuong_id": {
+        "type": "string"
+    },
+    "xaphuong": {
+        "type": "json"
+    },
+    "type": {
+        "type": "string"
+    },
+    "description": {
+        "type": "string"
+    },
+    "active": {
+        "type": "boolean",
+        "default": true
+    },
+    "id_cosokcb": {
+        "type": "string"
+    },
+    "roles": {
+        "type": "list"
+    }
+}

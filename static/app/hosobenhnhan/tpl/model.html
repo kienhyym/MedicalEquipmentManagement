@@ -1,0 +1,130 @@
+<div block-bind="toolbar"></div>
+<div block-bind="content">
+<div class="py-5 text-center" >
+        <img class=" d-none d-block mx-auto mb-4" src="static/img/icon-yte.jpg" alt="" width="96" height="96">
+        <h2 class="text-uppercase">Tạo hồ sơ bệnh nhân</h2>
+        <hr>
+        <div class="sep clearfix"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-10 order-md-1">
+          <h3 class="mb-3">Nhập thông tin bệnh nhân</h3>
+          <form class="needs-validation" novalidate>
+            <div class="form-row mt-3">
+              	<div class="col-md-6" id="chon_sochamsoc">
+              		<label>Nhập sổ chăm sóc</label>
+                	<input type="text" class="form-control" data-hoso-bind="value:sochamsoc_id" placeholder="..." >
+              	</div>
+              	<div class="col-md-6">
+              		<label>Chứng minh nhân dân / hộ chiếu</label>
+                	<input type="text" class="form-control" data-hoso-bind="value:macongdan" placeholder="..." >
+              	
+              	</div>
+            </div>
+            <div class="form-row mt-3">
+            	<div class="col-md-6">
+              		<label>Họ và chữ lót (có dấu)</label>
+                	<input type="text" class="form-control" data-hoso-bind="value:hodem" placeholder="..." required>
+              		<div class="invalid-feedback">
+		                Vui lòng nhập Họ và tên đệm!
+		            </div>
+              	</div>
+              	<div class="col-md-6">
+              		<label>Số điện thoại</label>
+                	<input type="text" class="form-control" data-hoso-bind="value:dienthoai" placeholder="..." required>
+              		<div class="invalid-feedback">
+		                Vui lòng nhập Số điện thoại
+		            </div>
+              	</div>
+            </div>
+            <div class="form-row mt-3">
+            	<div class="col-md-6">
+              		<label>Tên</label>
+                	<input type="text" class="form-control" data-hoso-bind="value:ten" placeholder="..." required>
+              		<div class="invalid-feedback">
+		                Vui lòng nhập tên!
+		            </div>
+              	</div>
+              	<div class="col-md-6">
+              		<label>Email</label>
+              		<input type="email" class="form-control" id="email" data-hoso-bind="value:email" placeholder="...">
+              	</div>
+            </div>
+            <div class="form-row mt-3">
+            	<div class="col-6">
+              		<label>Ngày sinh</label>
+                	<input type="text" class="form-control" data-hoso-bind="value:ngaysinh" placeholder="..." required>
+              		<div class="invalid-feedback">
+		                Vui lòng nhập ngày sinh theo định dạng DD/MM/YYYY
+		            </div>
+              	</div>
+              	<div class="col-6">
+					<label>Giới tính:</label>
+					<input data-hoso-bind="value:gioitinh" class="form-control" required/>
+					<div class="invalid-feedback">
+		                Vui lòng chọn giới tính
+		            </div>
+				</div>
+            </div>
+
+            <div class="form-row mt-3">
+              <div class="col-md-4">
+              		<label for="cc-name">Tỉnh/Thành phố</label>
+                	<input type="text" class="form-control" id="tinhthanh" data-hoso-bind="dict:tinhthanh" placeholder="..." required>
+              		<div class="invalid-feedback">
+		                Vui lòng chọn thông tin Tỉnh/Thành phố
+		            </div>
+              </div>
+              <div class="col-md-4">
+              		<label for="cc-number">Quận/Huyện</label>
+                	<input type="text" class="form-control" id="quanhuyen" data-hoso-bind="dict:quanhuyen" placeholder="..." required>
+              		<div class="invalid-feedback">
+		                Vui lòng chọn thông tin Quận/Huyện/Thị Xã
+		            </div>
+              </div>
+              <div class="col-md-4">
+                	<label for="cc-expiration">Xã/Phường</label>
+                	<input type="text" class="form-control" id="xaphuong" placeholder="..." data-hoso-bind="dict:xaphuong" required>
+              		<div class="invalid-feedback">
+		                Vui lòng chọn thông tin Xã/Phường
+		            </div>
+              </div>
+            </div>
+            
+            <div class="form-row mt-3">
+            	<div class="col-md-12">
+		              <label for="cc-expiration">Nghề nghiệp</label>
+		              <input type="text" class="form-control" id="nghenghiep" data-hoso-bind="value:nghenghiep"  placeholder="" >
+            	</div>
+            </div>
+            <div class="form-row mt-3">
+            	<div class="col-md-12">
+	              <label for="cc-expiration">Địa chỉ</label>
+	              <textarea rows="3" class="form-control" data-hoso-bind="value:diachi"  placeholder="..." ></textarea>
+	            </div>
+            </div>
+            <hr class="mb-4 mt-3">
+            <h3>Thông tin thân nhân</h3>
+            <div class="form-row">
+            	<div class="col-12">
+	              <label>Họ tên người thân</label>
+	              <input type="text" class="form-control" data-hoso-bind="value:thannhan_hoten" placeholder="..." required>
+	            </div>
+            </div>
+            
+            <div class="form-row my-4">
+              <div class="col-md-6">
+                <label for="cc-name">Điện thoại</label>
+                <input type="text" class="form-control"  data-hoso-bind="value:thannhan_dienthoai" placeholder="..." required>
+              </div>
+              <div class="col-md-6 ">
+                <label for="cc-number">Quan hệ với bệnh nhân</label>
+                <input type="text" class="form-control"  data-hoso-bind="value:thannhan_quanhe" placeholder="..." >
+              </div>
+            </div>
+            <button id="taohosobenhnhan" class="btn btn-info btn-lg btn-block" type="submit">Tiếp theo</button>
+          </form>
+        </div>
+      </div>
+ </div>

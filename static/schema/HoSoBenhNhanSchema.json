@@ -1,0 +1,121 @@
+{
+    "created_at": {
+        "type": ""
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": ""
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": ""
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "user_id": {
+        "type": "string",
+        "required": true,
+        "length": 50
+    },
+    "sochamsoc_id": {
+        "type": "string",
+        "length": 50
+    },
+    "hodem": {
+        "type": "string",
+        "length": 255
+    },
+    "ten": {
+        "type": "string",
+        "length": 255
+    },
+    "quocgia_id": {
+        "type": "string"
+    },
+    "quocgia": {
+        "type": "json"
+    },
+    "tinhthanh_id": {
+        "type": "string"
+    },
+    "tinhthanh": {
+        "type": "json"
+    },
+    "quanhuyen_id": {
+        "type": "string"
+    },
+    "quanhuyen": {
+        "type": "json"
+    },
+    "xaphuong_id": {
+        "type": "string"
+    },
+    "xaphuong": {
+        "type": "json"
+    },
+    "dantoc_id": {
+        "type": "string"
+    },
+    "dantoc": {
+        "type": "json"
+    },
+    "dienthoai": {
+        "type": "string",
+        "length": 255
+    },
+    "ngaysinh": {
+        "type": "datetime"
+    },
+    "gioitinh": {
+        "type": "number"
+    },
+    "macongdan": {
+        "type": "string",
+        "length": 255
+    },
+    "email": {
+        "type": "string",
+        "length": 255
+    },
+    "diachi": {
+        "type": "string",
+        "length": 255
+    },
+    "nghenghiep_id": {
+        "type": "string",
+        "length": 255
+    },
+    "nghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "thannhan_hoten": {
+        "type": "string",
+        "length": 255
+    },
+    "thannhan_dienthoai": {
+        "type": "string",
+        "length": 255
+    },
+    "thannhan_quanhe": {
+        "type": "string",
+        "length": 255
+    },
+    "thannhan_email": {
+        "type": "string",
+        "length": 255
+    }
+}

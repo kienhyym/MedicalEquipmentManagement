@@ -1,0 +1,82 @@
+{
+    "created_at": {
+        "type": ""
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": ""
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": ""
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "ma_coso": {
+        "type": "string",
+        "length": 255
+    },
+    "ten_coso": {
+        "type": "string",
+        "length": 255
+    },
+    "loai_coso": {
+        "type": "string",
+        "length": 255
+    },
+    "email": {
+        "type": "string"
+    },
+    "dienthoai": {
+        "type": "string"
+    },
+    "diachi": {
+        "type": "string"
+    },
+    "tinhthanh_id": {
+        "type": "string"
+    },
+    "tinhthanh": {
+        "type": "json"
+    },
+    "quanhuyen_id": {
+        "type": "string"
+    },
+    "quanhuyen": {
+        "type": "json"
+    },
+    "xaphuong_id": {
+        "type": "string"
+    },
+    "xaphuong": {
+        "type": "json"
+    },
+    "username": {
+        "type": "string"
+    },
+    "danhsachchuyenkhoa": {
+        "type": "json"
+    },
+    "required_fields": {
+        "type": "json"
+    },
+    "app_id": {
+        "type": "string"
+    },
+    "appinfo": {
+        "type": "json"
+    }
+}
