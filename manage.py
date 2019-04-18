@@ -2,6 +2,7 @@
 # Libraries
 import sys
 import json
+import ujson
 
 import string
 import random
@@ -95,7 +96,7 @@ def generate_schema(path = None, exclude = None, prettyprint = True):
             
         if prettyprint:
             with open(path + '/' + classname + 'Schema.json', 'w') as outfile:
-                json.dump(schema,  outfile, indent=4,)
+                ujson.dumps(schema,  outfile, indent=4,)
         else:
             with open(path + '/' + classname + 'Schema.json', 'w') as outfile:
                 json.dump(schema,  outfile,)
