@@ -5,14 +5,15 @@ Created on Jan 3, 2019
 '''
 
 KeHoach_ThanhTra_TrangThai = {
-    "new":"new",#0
-    "send_review":"send_review",#1
-    "reviewed":"reviewed",#2
-    "cancel_reviewed":"cancel_reviewed",#4
+    "new":"new",
+    "send_review_truongphong":"send_re view_truongphong",
+    "cancel_reviewed_truongphong":"cancel_reviewed_truongphong",
+    "send_review_pct":"send_review_pct",
+    "cancel_reviewed_pct":"cancel_reviewed_pct",
     "send_approved":"send_approved",
-    "approved":"approved",#3
-    "cancel_approved":"cancel_approved",#4
-    "checked":"checked",#5
-    "result_checked":"result_checked", #6
+    "approved":"approved",
+    "cancel_approved":"cancel_approved",
+    "checked":"checked", 
+    "result_checked":"result_checked",
     "completed":"completed"
     }

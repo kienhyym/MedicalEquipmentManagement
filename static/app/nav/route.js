@@ -5,54 +5,34 @@ define(function (require) {
 		Gonrin = require('gonrin');
 	return [
 		{
-			"collectionName": "appinfo",
-			"route": "appinfo/collection",
-			"$ref": "app/appinfo/view/CollectionView",
+			"collectionName": "danhmucdoanhnghiep",
+			"route": "danhmucdoanhnghiep/collection",
+			"$ref": "app/danhmucdoanhnghiep/view/CollectionView",
 		},
 		{
-			"collectionName": "appinfo",
-			"route": "appinfo/model(/:id)",
-			"$ref": "app/appinfo/view/ModelView",
+			"collectionName": "danhmucdoanhnghiep",
+			"route": "danhmucdoanhnghiep/model(/:id)",
+			"$ref": "app/danhmucdoanhnghiep/view/ModelView",
 		},
 		{
-			"collectionName": "cosokcb",
-			"route": "cosokcb/collection",
-			"$ref": "app/cosokcb/view/CollectionView",
+			"collectionName": "kehoachthanhtra",
+			"route": "kehoachthanhtra/collection",
+			"$ref": "app/kehoachthanhtra/view/CollectionView",
 		},
 		{
-			"collectionName": "cosokcb",
-			"route": "cosokcb/model(/:id)",
-			"$ref": "app/cosokcb/view/ModelView",
+			"collectionName": "kehoachthanhtra",
+			"route": "kehoachthanhtra/model(/:id)",
+			"$ref": "app/kehoachthanhtra/view/ModelView",
 		},
 		{
-			"collectionName": "dangkykham",
-			"route": "dangkykham/collection",
-			"$ref": "app/dangkykham/view/CollectionView",
+			"collectionName": "user",
+			"route": "user/collection",
+			"$ref": "app/hethong/user/view/CollectionView",
 		},
 		{
-			"collectionName": "dangkykham",
-			"route": "dangkykham/model(/:id)",
-			"$ref": "app/dangkykham/view/ModelView",
-		},
-		{
-			"collectionName": "hosobenhnhan",
-			"route": "hosobenhnhan/collection",
-			"$ref": "app/hosobenhnhan/view/CollectionView",
-		},
-		{
-			"collectionName": "hosobenhnhan",
-			"route": "hosobenhnhan/model(/:id)",
-			"$ref": "app/hosobenhnhan/view/ModelView",
-		},
-		{
-			"collectionName": "bookingpartner",
-			"route": "bookingpartner/collection",
-			"$ref": "app/bookingpartner/view/CollectionView",
-		},
-		{
-			"collectionName": "bookingpartner",
-			"route": "bookingpartner/model(/:id)",
-			"$ref": "app/bookingpartner/view/ModelView",
+			"collectionName": "user",
+			"route": "user/model(/:id)",
+			"$ref": "app/hethong/user/view/ModelView",
 		}
 		
 	];

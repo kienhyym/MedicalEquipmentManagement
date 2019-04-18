@@ -1,0 +1,273 @@
+<style>
+.timeline {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.li {
+  transition: all 200ms ease-in;
+}
+
+.timestamp {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status {
+  padding: 10px 25px;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid #D6DCE0;
+  position: relative;
+  transition: all 200ms ease-in;
+}
+.status:before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  position: absolute;
+  top: -15px;
+  left: 42%;
+  transition: all 200ms ease-in;
+}
+
+.li.complete .status {
+  border-top: 2px solid #66DC71;
+}
+.status label.desc{
+	font-weight:600;
+}
+.li.complete .status:before {
+  background-color: #66DC71;
+  border: none;
+  transition: all 200ms ease-in;
+}
+.li.complete .status h4 {
+  color: #66DC71;
+}
+
+@media (min-device-width: 320px) and (max-device-width: 700px) {
+  .timeline {
+    list-style-type: none;
+    display: block;
+  }
+
+  .li {
+    transition: all 200ms ease-in;
+    display: flex;
+    width: inherit;
+  }
+
+  .timestamp {
+    width: 100px;
+  }
+
+  .status:before {
+    left: -8%;
+    top: 30%;
+    transition: all 200ms ease-in;
+  }
+}
+  
+</style>
+<div block-bind="content">
+	<!-- Page Header -->
+	<div class="page-header row no-gutters py-4">
+	  <div class="col-12 col-md-10 col-sm-12 text-center text-sm-left mb-0">
+	    <span class="text-uppercase page-subtitle"> </span>
+	    <h3 class="page-title text-uppercase">Thông tin kế hoạch</h3>
+	  </div>
+	</div>
+	<!-- End Page Header -->
+	<div class="row">
+		<div class="col-lg-12 ">
+			<div class="card  card-small mb-4">
+				<div class="card-header  border-bottom">
+					<div block-bind="toolbar"></div>
+				</div>
+				<div class="card-body">
+					<div class="row" id="timeline">
+						<ul class="timeline" >
+						  <li class="li kehoach_new">
+						    <div class="timestamp">
+						      	<span class="author">Chuyên Viên tạo</span>
+						      	<span class="date">11/10/2019</span>
+						    </div>
+						    <div class="status">
+						      <label class="desc"> Tạo kế hoạch </label>
+						    </div>
+						  </li>
+						  <li class="li kehoach_send_review_pct">
+						    <div class="timestamp">
+						      <span class="author">Trưởng phòng</span>
+						      <span class="date">11/10/2019</span>
+						    </div>
+						    <div class="status">
+						      <label class="desc"> Đã xét duyệt </label>
+						    </div>
+						  </li>
+						  <li class="li kechoach_send_approved">
+						    <div class="timestamp">
+						      <span class="author">Cục phó </span>
+						      <span class="date">11/10/2019</span>
+						    </div>
+						    <div class="status">
+						      <label class="desc"> Đã xét duyệt </label>
+						    </div>
+						  </li>
+						  <li class="li kechoach_approved">
+						    <div class="timestamp">
+						      <span class="author">Cục Trưởng</span>
+						      <span class="date">11/10/2019</span>
+						    </div>
+						    <div class="status">
+						      <label class="desc"> Đã ra quyết định </label>
+						    </div>
+						  </li>
+						  <li class="li kechoach_checked">
+						    <div class="timestamp">
+						     <span class="author">&nbsp;</span>
+						      <span class="date">11/10/2019</span>
+						    </div>
+						    <div class="status">
+						      <label class="desc"> Đã thanh tra </label>
+						    </div>
+						  </li>
+						  <li class="li kechoach_completed">
+						    <div class="timestamp">
+						     <span class="author">&nbsp;</span>
+						      <span class="date">11/10/2019</span>
+						    </div>
+						    <div class="status">
+						      <label class="desc"> Kết thúc </label>
+						    </div>
+						  </li>
+						 </ul>  
+					</div>
+			      	<div class=" pb-3">
+			        
+				        <form class="needs-validation" novalidate="">
+				       	   
+				       	   <div class="row nguoisoanthao">
+				       	   	   <div class="form-group col-6 required">
+					             <label>Mã kế hoạch</label>
+					             <input required type="text" data-bind="value:makehoach" placeholder="Nhập mã kế hoạch" class="form-control">
+					           </div>
+					           <div class="form-group col-6 required">
+					             <label>Tên kế hoạch</label>
+					             <input required type="text" data-bind="value:tenkehoach" placeholder="Nhập tên kế hoạch" class="form-control">
+					           </div>
+				       	   
+				       	   </div>
+				       	   
+				           <div class="mb-3">
+				                <label>Chọn Đơn vị/Doanh nghiệp</label>
+				              	<select  class="selectpicker form-control" id="multiselect_donvidoanhnghiep" data-live-search="true" data-noneSelectedText="Chọn đơn vị" title="Chọn đơn vị">
+								</select>
+				              
+				            </div>
+				            <div class="row nguoisoanthao d-none">
+				            	  <div class="form-group required col-6">
+						             <label>Người soạn thảo</label>
+						             <span  data-bind="text:username_nguoisoanthao"></span>
+						           </div>
+						           <div class="form-group required col-6">
+						             <label>Ngày soạn thảo</label>
+						             <input disabled type="text" data-bind="value:ngaysoanthao" class="form-control">
+						           </div>
+				            </div>
+				            <div class="row nguoixemxet-capphong d-none">
+				            	  <div class="form-group required col-6">
+						             <label>Người duyệt cấp phòng</label>
+						             <span  data-bind="text:username_phongduyet"></span>
+						           </div>
+						           <div class="form-group required col-6">
+						             <label>Ngày duyệt cấp phòng</label>
+						             <input disabled type="text" data-bind="value:ngaypheduyet_phong" class="form-control">
+						           </div>
+				            </div>
+				            <div class="row nguoixemxet-pct d-none">
+				            	  <div class="form-group required col-6">
+						             <label>Phó Cục Trưởng Duyệt</label>
+						             <span  data-bind="text:username_pctduyet"></span>
+						           </div>
+						           <div class="form-group required col-6">
+						             <label>Ngày Phó Cục Trưởng Duyệt </label>
+						             <input disabled type="text" data-bind="value:ngaypheduyet_pct" class="form-control">
+						           </div>
+				            </div>
+				            
+				            <div class="row nguoipheduyet d-none">
+				            	  <div class="form-group required col-6">
+						             <label>Cục Trưởng Duyệt</label>
+						             <span  data-bind="text:username_quyetdinh"></span>
+						           </div>
+						           <div class="form-group required col-6">
+						             <label>Ngày Cục Trưởng Duyệt</label>
+						             <span  data-bind="text:ngaypheduyet_quyetdinh"></span>
+						           </div>
+				            </div>
+				           
+					        <div class="row">
+					        	<div class="col-6">
+							       	<div class="form-group">
+							           <label>Loại hình thanh tra</label>
+							           <input type="text" data-bind="value:loaithanhtra"  class="form-control">
+							        </div>
+						       	</div>
+						       	<div class="col-6">
+							       	<div class="form-group">
+							           <label>Ngày thanh tra</label>
+							           <input type="text" data-bind="value:ngaythanhtra"  class="form-control">
+							         </div>
+						       	</div>
+						       	
+					        </div>
+					        
+					        <div class="row">
+					        	<div class="col-6">
+							       	<div class="form-group">
+							           <label>Trưởng đoàn thanh tra</label>
+							           <input type="text" data-bind="value:truongdoanthanhhtra"  class="form-control">
+							        </div>
+						       	</div>
+						       	
+					        </div>
+					        <div class="form-group required">
+					              <label>Thành phần đoàn thanh tra</label>
+					              <textarea required rows="2"  data-bind="value:doanthanhhtra"  class="form-control" placeholder="Nhập danh sách đoàn thanh tra"></textarea>
+					        </div>
+					        <div class="form-group ketquathanhtra d-none">
+					              <label>Kết quả thanh tra</label>
+					              <textarea  rows="2"  data-bind="value:ketquathanhtra"  class="form-control" placeholder="Nhập kết quả thanh tra"></textarea>
+					        </div>
+					        <div class="form-group d-none ketluanthanhtra">
+					              <label>Kết luận thanh tra</label>
+					              <textarea rows="2"  data-bind="value:ketluanthanhhtra"  class="form-control" placeholder="Nhập kết luận thanh tra"></textarea>
+					        </div>
+					       	<div class="form-group" id="trangthai">
+					             <label>Trạng thái</label>
+					             <input type="text" disabled data-bind="value:trangthai" class="form-control">
+					        </div>
+					        <div class="col-12">
+					        	<button id="btn_save" class="btn btn-primary" >Lưu Thông Tin</button>
+								<button id="btn_review" class="btn btn-info" >Gửi Xét Duyệt</button>
+								<button id="btn_approve" class="btn btn-info" >Ra Quyết Định</button>
+								<button id="btn_cancel" class="btn btn-default" >Từ Chối Duyệt</button>
+					        </div>
+					       	
+					    </form>   	
+			        </div>
+			      </div>
+		   </div>
+		</div>
+	</div>
+	
+ </div>

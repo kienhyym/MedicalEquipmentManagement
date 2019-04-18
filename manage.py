@@ -20,6 +20,7 @@ from application.database import db
 from application.extensions import auth
 import os
 from application.models import Role, User, QuocGia, TinhThanh, QuanHuyen, XaPhuong, DanToc
+from application.controllers.helper import *
 
 # Instance
 manager = Manager()
@@ -106,14 +107,15 @@ def create_default_models():
     db.session.add(role1)
     role3 = Role(name='CucPho')
     db.session.add(role3)
-    role4 = Role(name='TRuongPhong')
+    role4 = Role(name='TruongPhong')
     db.session.add(role4)
     role5 = Role(name='ChuyenVien')
     db.session.add(role5)
     db.session.flush()
 
-    #add user test     
-    user1 = User(email='cuctruong@gmail.com', last_name='Cục Trưởng',  password=auth.encrypt_password('123456'),active=True)
+    #add user test   
+    salt1 = generator_salt()  
+    user1 = User(email='cuctruong@gmail.com', last_name='Cục Trưởng',  password=auth.encrypt_password('123456', salt1), salt=salt1 ,active=True)
     user1.roles.append(role1)
     db.session.add(user1)
     
@@ -182,7 +184,7 @@ def add_danhsach_xaphuong():
 
 @manager.command
 def run():
-    role = db.session.query(Role).filter(Role.name == 'User').first()
+    role = db.session.query(Role).filter(Role.name == 'CucTruong').first()
     if role is None:
         create_default_models()
         add_danhsach_quocgia_tinhthanh()

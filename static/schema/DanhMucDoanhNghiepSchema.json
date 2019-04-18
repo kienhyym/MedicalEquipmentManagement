@@ -3,21 +3,23 @@
         "type": "string",
         "primary": true
     },
-    "phone_number": {
-        "type": "string",
-        "length": 50
-    },
-    "email": {
-        "type": "string",
-        "length": 50
+    "code": {
+        "type": "string"
     },
     "name": {
+        "type": "string",
+        "required": true
+    },
+    "description": {
         "type": "string"
     },
-    "password": {
+    "email": {
         "type": "string"
     },
-    "salt": {
+    "dienthoai": {
+        "type": "string"
+    },
+    "diachi": {
         "type": "string"
     },
     "tinhthanh_id": {
@@ -38,17 +40,8 @@
     "xaphuong": {
         "type": "json"
     },
-    "type": {
-        "type": "string"
-    },
-    "description": {
-        "type": "string"
-    },
-    "active": {
-        "type": "boolean",
-        "default": true
-    },
-    "roles": {
-        "type": "list"
+    "status": {
+        "type": "number",
+        "default": 0
     }
 }

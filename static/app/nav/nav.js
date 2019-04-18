@@ -4,90 +4,68 @@ define(function (require) {
         _                   = require('underscore'),
         Gonrin				= require('gonrin');
     return [
-	    	{
-	    		"text":"Ứng dụng kết nối",
-	    		"icon":"fa fa-adn",
-	    		"type":"view",
-	    		"collectionName":"appinfo",
-			    "route":"appinfo/collection",
-			    "$ref": "app/appinfo/js/CollectionView",
-			    "visible": function(){
-			     	return  this.userHasRole("Admin");
-			     }
-	        },
-	        {
-	    		"text":"Ứng dụng kết nối",
-	    		"icon":"fa fa-adn",
-	    		"type":"view",
-	    		"collectionName":"appinfo",
-			    "route":"appinfo/model",
-			    "$ref": "app/appinfo/js/ModelView",
-			    "visible": function(){
-			     	return false;
-			     }
-	        },
 			{
-        		"text":"Danh sách Cơ sở KCB",
+        		"text":"Danh sách đơn vị",
         		"icon":"fa fa-home",
         		"type":"view",
-        		"collectionName":"cosokcb",
-			    "route":"cosokcb/collection",
-			    "$ref": "app/cosokcb/js/CollectionView",
+        		"collectionName":"danhmucdoanhnghiep",
+			    "route":"danhmucdoanhnghiep/collection",
+			    "$ref": "app/danhmucdoanhnghiep/js/CollectionView",
 			    "visible": function(){
-			     	return  this.userHasRole("Admin");
+			     	return  true;
 			     }
             },
             {
-        		"text":"Cơ sở KCB",
+        		"text":"Chi tiết đơn vị",
         		"icon":"fa fa-home",
         		"type":"view",
-        		"collectionName":"cosokcb",
-			    "route":"cosokcb/model",
-			    "$ref": "app/cosokcb/js/ModelView",
+        		"collectionName":"danhmucdoanhnghiep",
+			    "route":"danhmucdoanhnghiep/model",
+			    "$ref": "app/danhmucdoanhnghiep/js/ModelView",
 			    "visible": function(){
-			    	return  this.userHasRole("CoSoKCB");
+			    	return false;
 			     }
             },
             {
-			    "text":"Danh sách đặt khám",
+			    "text":"Danh sách kế hoạch ",
 			    "icon":"fa fa-book",
 			    "type":"view",
-			    "collectionName":"dangkykham",
-			    "route":"dangkykham/collection",
-			    "$ref": "app/dangkykham/view/CollectionView",
+			    "collectionName":"kehoachthanhtra",
+			    "route":"kehoachthanhtra/collection",
+			    "$ref": "app/kehoachthanhtra/view/CollectionView",
 			     "visible": function(){
-			     	return  this.userHasRole("CoSoKCB") || this.userHasRole("BookingPartner");
+			     	return true;
 			     }
 			},
             {
-			    "text":"Thông tin đặt khám",
+			    "text":"Thông tin kế hoạch",
 			    "icon":"fa fa-book",
 			    "type":"view",
-			    "collectionName":"dangkykham",
-			    "route":"dangkykham/model",
-			    "$ref": "app/dangkykham/view/ModelView",
+			    "collectionName":"kehoachthanhtra",
+			    "route":"kehoachthanhtra/model",
+			    "$ref": "app/kehoachthanhtra/view/ModelView",
 			     "visible": function(){
 			    	 return false;
 			     }
 			},
 			{
-			    "text":"Danh sách bệnh nhân",
+			    "text":"Danh sách người dùng",
 			    "icon":"fa fa-book",
 			    "type":"view",
-			    "collectionName":"hosobenhnhan",
-			    "route":"hosobenhnhan/collection",
-			    "$ref": "app/hosobenhnhan/view/CollectionView",
+			    "collectionName":"user",
+			    "route":"user/collection",
+			    "$ref": "app/user/view/CollectionView",
 			     "visible": function(){
-			     	return  this.userHasRole("Admin");
+			     	return  this.userHasRole("CucTruong");
 			     }
 			},
             {
-			    "text":"Danh sách bệnh nhân",
+			    "text":"Thông tin người dùng",
 			    "icon":"fa fa-book",
 			    "type":"view",
-			    "collectionName":"hosobenhnhan",
-			    "route":"hosobenhnhan/model",
-			    "$ref": "app/hosobenhnhan/view/ModelView",
+			    "collectionName":"user",
+			    "route":"user/model",
+			    "$ref": "app/user/view/ModelView",
 			     "visible": function(){
 			     	return  false;
 			     }

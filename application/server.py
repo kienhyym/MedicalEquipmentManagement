@@ -1,11 +1,12 @@
 """ App entry point. """
 
-from gatco import Gatco
+from gatco import Gatco,CookieSessionInterface
 from .config import Config
 
 app = Gatco(name=__name__)
 app.config.from_object(Config)
 # app.session_interface = None
+app.session_interface = CookieSessionInterface()
 
 
 from application.database import init_database

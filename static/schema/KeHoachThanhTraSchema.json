@@ -1,0 +1,73 @@
+{
+    
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "makehoach": {
+        "type": "string",
+        "length": 255
+    },
+    "tenkehoach": {
+        "type": "string",
+        "length": 255
+    },
+    "madoanhnghiep": {
+        "type": "string",
+        "required": true,
+        "length": 50
+    },
+    "tendoanhnghiep": {
+        "type": "string",
+        "required": true,
+        "length": 50
+    },
+    "doanhnghiep": {
+        "type": "json"
+    },
+    "tailieulienquan": {
+        "type": "json"
+    },
+    "userid_nguoisoanthao": {
+        "type": "string"
+    },
+    "username_nguoisoanthao": {
+        "type": "string"
+    },
+    "ngaysoanthao": {
+        "type": "datetime"
+    },
+    "nguoixemxet": {
+        "type": "json"
+    },
+    "userid_nguoipheduyet": {
+        "type": "string"
+    },
+    "username_nguoipheduyet": {
+        "type": "string"
+    },
+    "ngaypheduyet": {
+        "type": "datetime"
+    },
+    "loaithanhtra": {
+        "type": "string"
+    },
+    "doanthanhtra": {
+        "type": "string"
+    },
+    "truongdoanthanhhtra": {
+        "type": "string"
+    },
+    "ngaythanhtra": {
+        "type": "datetime"
+    },
+    "ketquathanhtra": {
+        "type": "string"
+    },
+    "ketluanthanhtra": {
+        "type": "string"
+    },
+    "trangthai": {
+        "type": "string"
+    }
+}

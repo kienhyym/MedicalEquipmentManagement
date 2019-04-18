@@ -8,32 +8,31 @@ from application.extensions import auth
 from application.database import db, redisdb
 from application.models.models import *
 import random, string
-from application.common.constants import DangKyKham_Trangthai
 
 
 
-def get_madatkham_new():
-    madatkham = redisdb.spop("madatkham")
-    if madatkham is None:
-        generate_madatkham(1000)
-        madatkham = redisdb.spop("madatkham")
-    return madatkham
+def get_makehoach_new():
+    makehoach = redisdb.spop("makehoach")
+    if makehoach is None:
+        generate_key(1000)
+        makehoach = redisdb.spop("makehoach")
+    return makehoach
     
     
-def generate_madatkham(size):
+def generate_key(size):
     arr_prekey = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'] 
     for key in arr_prekey:
-        data_key = 'prekey_madatkham_'+str(key)
+        data_key = 'prekey_makehoach_'+str(key)
         data_value = redisdb.get(data_key)
             
         if(data_value is not None):
-            print(redisdb.smembers("prekey_madatkham_*"))
+            print(redisdb.smembers("prekey_makehoach_*"))
             print('generate key is exited!, please send other key')
-            print(redisdb.keys("prekey_madatkham_*"))
+            print(redisdb.keys("prekey_makehoach_*"))
             continue
         else:
             key_check = str(key)+'00000001'
-            check_existed = db.session.query(DangKyKham).filter(DangKyKham.id == key_check).count()
+            check_existed = db.session.query(KeHoachThanhTra).filter(KeHoachThanhTra.id == key_check).count()
             if(check_existed is not None and check_existed >0):
                 continue
             redisdb.setnx(data_key, key)
@@ -46,10 +45,10 @@ def generate_madatkham(size):
             elif length>8:
                 return False
             value += str(x)
-            redisdb.sadd('madatkham', value)
+            redisdb.sadd('makehoach', value)
         
 #         print(redisdb.smembers("user_key"))
-        total = redisdb.scard("madatkham")
+        total = redisdb.scard("makehoach")
         print('total_'+str(total))
 #         print(redisdb.spop( "user_key"))
         return False
@@ -61,6 +60,7 @@ async def get_user_with_permission(user):
     user_info = to_dict(user)
     roles = [{"id":str(role.id),"description":role.description,"role_name":role.name} for role in user.roles]
     roleids = [role.id for role in user.roles]
+    print("roles====",roles)
     user_info["roles"] = roles
      
     #permission:
@@ -80,7 +80,8 @@ async def get_user_with_permission(user):
                         "deleted_by", "deleted_at", "deleted","salt","active","phone_country_prefix","phone_national_number"]
         
     for attr in exclude_attr:
-        del(user_info[attr])
+        if attr in user_info:
+            del(user_info[attr])
     return user_info
 
 def check_content_json(request):
@@ -103,14 +104,14 @@ def valid_phone_number(phone_number):
 async def current_user(request):
     uid = auth.current_user(request)
     if uid is not None:
-        print(uid)
-        user = db.session.query(User).filter(User.id == uid).first()
-        return user
-    return None;
+        user_info = db.session.query(User).filter(User.id == uid).first()
+        return user_info
+    else:
+        return None
 
 def auth_func(request=None, **kw):
-    uid = auth.current_user(request)
-    if uid is None:
+    user = auth.current_user(request)
+    if user is None:
         return json({"error_code":"SESSION_EXPIRED","error_message":"auth_func can not found uid"},status=520)
     
 def deny_func(request=None, **kw):

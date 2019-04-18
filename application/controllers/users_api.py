@@ -22,6 +22,7 @@ from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
 
 
+
 @app.route('api/v1/current_user')
 async def get_current_user(request):
     error_msg = None
@@ -46,6 +47,20 @@ async def logout(request):
     return json({})
  
  
+# @auth.user_loader
+# def user_loader(token):
+#     if token is not None:
+#         if 'exprire' in token:
+#             if token['exprire'] < time.time():
+#                 return None
+#             del(token["exprire"])
+#         return token
+#     return None
+# 
+# @auth.serializer
+# def serializer(userobj):
+#     userobj['exprire'] = time.time() + auth.expire
+#     return userobj 
 
 @app.route('api/v1/login', methods=['POST'])
 async def login(request):
@@ -59,3 +74,71 @@ async def login(request):
     return json({"error_code":"LOGIN_FAILED","error_message":"Tài khoản hoặc mật khẩu không đúng"}, status=520)
  
 
+async def prepost_user(request=None, data=None, Model=None, **kw):
+    currentUser = await current_user(request)
+    if (currentUser is None):
+        return json({"error_code":"SESSION_EXPIRED","error_message":"Hết phiên làm việc, vui lòng đăng nhập lại!"}, status=520)
+
+    if "name" not in data or data['name'] is None or "password" not in data or data['password'] is None:
+        return json({"error_code":"PARAMS_ERROR","error_message":"Tham số không hợp lệ"}, status=520)
+    if ('phone_number' in data) and ('email' in data) :
+        user = db.session.query(User).filter((User.phone_number == data['phone_number']) | (User.email == data['email'])).first()
+        if user is not None:
+            if user.phone_number == data['phone_number']:
+                return json({"error_code":"USER_EXISTED","error_message":'Số điện thoại đã được sử dụng, vui lòng chọn lại'},status=520)
+            else:
+                return json({"error_code":"USER_EXISTED","error_message":'Email đã được sử dụng trong tài khoản khác'},status=520)
+
+    
+    salt = generator_salt()
+    data['salt'] = salt
+    password = data['password']
+    data['password'] = auth.encrypt_password(password, salt)
+    data['active']= True
+    
+async def preput_user(request=None, data=None, Model=None, **kw):
+    currentUser = await current_user(request)
+    if (currentUser is None):
+        return json({"error_code":"SESSION_EXPIRED","error_message":"Hết phiên làm việc, vui lòng đăng nhập lại!"}, status=520)
+    
+    if "name" not in data or data['name'] is None or "id" not in data or data['id'] is None:
+        return json({"error_code":"PARAMS_ERROR","error_message":"Tham số không hợp lệ"}, status=520)
+    if ('phone_number' in data) and ('email' in data) :
+        check_user = db.session.query(User).filter((User.phone_number == data['phone_number']) | (User.email == data['email'])).filter(User.id != data['id']).first()
+        if check_user is not None:
+            if check_user.phone_number == data['phone_number']:
+                return json({"error_code":"USER_EXISTED","error_message":'Số điện thoại đã được sử dụng, vui lòng chọn lại'},status=520)
+            else:
+                return json({"error_code":"USER_EXISTED","error_message":'Email đã được sử dụng trong tài khoản khác'},status=520)
+    
+    user = db.session.query(User).filter(User.id == data['id']).first()
+    if user is None:
+        return json({"error_code":"NOT_FOUND","error_message":"Không tìm thấy tài khoản người dùng"}, status=520)
+
+    if currentUser.has_role("CucTruong") or str(currentUser.id) == data['id']:
+        password = data['password']
+        data['password'] = auth.encrypt_password(password, user.salt)
+    else:
+        return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
+
+async def predelete_user(request=None, data=None, Model=None, **kw):
+    currentUser = await current_user(request)
+    if (currentUser is None):
+        return json({"error_code":"SESSION_EXPIRED","error_message":"Hết phiên làm việc, vui lòng đăng nhập lại!"}, status=520)
+    if currentUser.has_role("CucTruong") == False:
+        return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
+
+
+sqlapimanager.create_api(User, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func, prepost_user], PUT_SINGLE=[auth_func, preput_user], DELETE=[predelete_user]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    exclude_columns= ["password","salt","active"],
+    collection_name='user')
+
+sqlapimanager.create_api(Role, max_results_per_page=1000000,
+    methods=['GET'],
+    url_prefix='/api/v1',
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    collection_name='role')

@@ -10,7 +10,7 @@ from application.extensions import sqlapimanager
 from application.extensions import auth
 from application.database import db, redisdb, mdb
 from application.models.models import *
-from application.common.constants import kehoachthanhtra_Trangthai
+from application.common.constants import KeHoach_ThanhTra_TrangThai
 
 
 from application.server import app
@@ -49,7 +49,7 @@ async def kehoach_review(request):
                 "cosokcb_id" : kehoach.id_cosokcb,
                 "cosokcb_name" : kehoach.cosokcb.ten_coso if kehoach.cosokcb.ten_coso is not None else "",
                 "description" : "confirm booking",
-                "action" : kehoachthanhtra_Trangthai["confirm_booking"],
+                "action" : KeHoach_ThanhTra_TrangThai["confirm_booking"],
                 "created_at": datetime.utcnow()
             }
             await mdb.db['DatKhamMonitor'].insert_one(log_datkham)
@@ -91,28 +91,6 @@ async def response_getmany_kehoachthanhtra(request=None, Model=None, result=None
         
 async def pregetmany_kehoachthanhtra(search_params, Model, **kw):
     request = kw.get("request", None)
-    sochamsoc_id = request.args.get("sochamsoc_id",None)
-    check_token_mevabe = request.headers.get("X-Auth-Token", None)
-    currentUser = await current_user(request)
-    if check_token_mevabe is not None and check_token_mevabe == "somevabe":
-        pass
-    elif currentUser is None:
-        return json({"error_code":"PERMISSION_DENY","error_message":"Hết phiên làm việc!"}, status=520)
-            
-    
-    else:
-        if currentUser.has_role('Admin'):
-            pass
-        elif currentUser.has_role('CoSoKCB'):
-            search_params["filters"] = {"$and": [search_params["filters"], {"cosokcb_id":{"$eq": currentUser.id_cosokcb}}]} if ("filters" in search_params) \
-                else {"cosokcb_id":{"$eq": currentUser.id_cosokcb}}
-        else:
-            if sochamsoc_id is not None:
-                search_params["filters"] = ("filters" in search_params) and {"$and": [search_params["filters"], {"$or":[{"user_id":{"$eq": str(currentUser.id)}},{"sochamsoc_id":{"$eq": sochamsoc_id}}]}]} \
-                                       or {"$or":[{"user_id":{"$eq": str(currentUser.id)}},{"sochamsoc_id":{"$eq": sochamsoc_id}}]}
-            else:
-                search_params["filters"] = ("filters" in search_params) and {"$and": [search_params["filters"], {"user_id":{"$eq": str(currentUser.id)}}]} \
-                                       or {"user_id":{"$eq": str(currentUser.id)}}
 
 
 async def post_process_kehoachthanhtra(request=None, Model=None, result=None, **kw):
@@ -127,7 +105,7 @@ async def post_process_kehoachthanhtra(request=None, Model=None, result=None, **
         "cosokcb_id" : result["cosokcb_id"],
         "cosokcb_name" : result["cosokcb"]["ten_coso"] if result["cosokcb"]["ten_coso"] is not None else "",
         "description" : "create new",
-        "action" : kehoachthanhtra_Trangthai["new"],
+        "action" : KeHoach_ThanhTra_TrangThai["new"],
         "created_at": datetime.utcnow()
     }
     await mdb.db['DatKhamMonitor'].insert_one(log_datkham)

@@ -28,7 +28,7 @@ async def preput_danhmuc(request=None, data=None, Model=None, **kw):
 async def prepost_put_danhmuc(request=None, data=None, Model=None, **kw):
     if "stt" in data:
         del data['stt']
-    objects_danhmuc = ['xaphuong', 'quocgia', 'tinhthanh', 'quanhuyen']
+    objects_danhmuc = [ 'xaphuong', 'quocgia', 'tinhthanh', 'quanhuyen', 'nganh']
     for obj in objects_danhmuc:
         if obj in data and "stt" in data[obj]:
             del data[obj]['stt']
