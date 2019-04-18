@@ -49,8 +49,6 @@ define(function (require) {
 							self.model.save(null, {
 								success: function (model, respose, options) {
 									self.getApp().notify("Lưu thông tin thành công");
-//									self.getApp().getRouter().navigate(self.collectionName + "/collection");
-
 								},
 								error: function (xhr, status, error) {
 									try {
@@ -144,24 +142,6 @@ define(function (require) {
 			var self = this;
 			var id = this.getApp().getRouter().getParam("id");
 			
-			self.$el.find("#upload_chuyenkhoa").on("change",function(){
-				var reader = new FileReader();
-				reader.onload = function(event) {
-					var jsonObj = JSON.parse(event.target.result);
-					console.log("jsonObj==",jsonObj);
-					if(jsonObj!==null && jsonObj.objects!==null && jsonObj.objects.length>0){
-						self.model.set("danhsachchuyenkhoa",jsonObj.objects);
-						self.$el.find("#preview_json_chuyenkhoa").removeClass("d-none");
-						self.$el.find("#preview_json_chuyenkhoa pre").html(JSON.stringify(jsonObj.objects, undefined, 2));
-					}else{
-					    self.getApp().notify({ message: "File không đúng định dạng JSON"}, { type: "danger", delay: 1000 });
-					    return;
-					}
-				}
-				reader.readAsText(event.target.files[0]);
-				$(this).next('.custom-file-label').html(event.target.files[0].name);
-				
-			});
 			$.fn.selectpicker.Constructor.DEFAULTS.multipleSeparator = ' | ';
 			self.$el.find("#multiselect_required").selectpicker();
 			

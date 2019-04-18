@@ -150,6 +150,7 @@ class KeHoachThanhTra(CommonModel):
     ngaythanhtra = db.Column(DateTime)
     ketquathanhtra = db.Column(String)
     ketluanthanhtra = db.Column(String)
+    ngayketthuc = db.Column(DateTime)
     trangthai = db.Column(String)
 # Index('hosobenhnhan_uq_sochamsoc_id', HoSoBenhNhan.sochamsoc_id, unique=True, postgresql_where=(and_(HoSoBenhNhan.sochamsoc_id.isnot(None),HoSoBenhNhan.sochamsoc_id !='')))
 

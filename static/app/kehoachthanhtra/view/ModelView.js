@@ -103,14 +103,31 @@ define(function (require) {
     		self.getDoanhNghiep();
     		self.bindEventSelect();
 			var currentUser = self.getApp().currentUser;
-    		if (currentUser.hasRole('ChuyenVien') || currentUser.hasRole("TruongPhong")){
+    		if (currentUser.hasRole('ChuyenVien')){
     			self.$el.find('.card-header').show();
-    		}else{
+    			self.$el.find("#btn_review").hide();
+    			self.$el.find("#btn_approve").show();
+    			self.$el.find("#btn_cancel").hide();
+    		}else if (currentUser.hasRole('TruongPhong')){
     			self.$el.find('.card-header').hide();
+    			self.$el.find("#btn_approve").hide();
+    			self.$el.find("#btn_review").show();
+    			self.$el.find("#btn_cancel").show();
+    			
+    		}else if (currentUser.hasRole('CucPho')){
+    			self.$el.find('.card-header').hide();
+    			self.$el.find("#btn_approve").hide();
+    			self.$el.find("#btn_review").show();
+    			self.$el.find("#btn_cancel").show();
+    			
+    		}else if (currentUser.hasRole('CucTruong')){
+    			self.$el.find('.card-header').hide();
+    			self.$el.find("#btn_approve").show();
+    			self.$el.find("#btn_review").hide();
+    			self.$el.find("#btn_cancel").show();
+    			
     		}
     		
-    		self.$el.find("#btndatkham").unbind("click").bind("click", function(){
-    		});
     		
     		var id = this.getApp().getRouter().getParam("id");
     		if(id){
@@ -119,17 +136,10 @@ define(function (require) {
         			success: function(data){
         				self.$el.find("#form-content").find("input").prop("disabled", true );
         				self.$el.find("#trangthai").removeClass("hidden");
-        				var currentUser = self.getApp().currentUser;
         				
-
-        				if(self.model.get("trangthai") > 0){
-        					self.$el.find("#btndatkham").hide();
-        				} else {
-        					self.$el.find("#btndatkham").html("Lưu thông tin");
-        				}
         				self.applyBindings();
     	    			self.$el.find("#multiselect_donvidoanhnghiep").selectpicker('val',self.model.get("madoanhnghiep"));
-
+    	    			self.updateUI_Timeline(data);
         			},
         			error: function (xhr, status, error) {
 						try {
@@ -148,6 +158,7 @@ define(function (require) {
     		}else{
     			self.model.set("trangthai","new");
     			self.$el.find("#trangthai").hide();
+    			self.$el.find("#timeline").hide();
     			self.applyBindings();
     		}
     		
@@ -200,6 +211,200 @@ define(function (require) {
     			}
     			
     		});
+    		
+    		self.$el.find("#btn_save").unbind("click").bind("click", function(){
+				self.model.save(null, {
+					success: function (model, response, options) {
+						self.updateUI_Timeline(response);
+						self.getApp().notify("Lưu thông tin thành công");
+					},
+					error: function (xhr, status, error) {
+						try {
+							if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED"){
+								self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+								self.getApp().getRouter().navigate("login");
+							} else {
+							  self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+							}
+						}
+						catch (err) {
+						  self.getApp().notify({ message: "Lưu thông tin không thành công"}, { type: "danger", delay: 1000 });
+						}
+					}
+				});
+    			
+    		});
+    		self.$el.find("#btn_review").unbind("click").bind("click", function(){
+    			self.confirm_kehoach();
+    		});
+    		self.$el.find("#btn_approve").unbind("click").bind("click", function(){
+    			self.confirm_kehoach();
+    		});
+    		self.$el.find("#btn_cancel").unbind("click").bind("click", function(){
+    			self.cancel_kehoach();
+    		});
+    		self.$el.find("#upload_files").on("change",function(){
+    			var http = new XMLHttpRequest();
+                var fd       = new FormData();
+           
+                fd.append('file', self.$el.find("#upload_files").files[0]);
+                http.open('POST', '/api/v1/upload/file');
+                http.upload.addEventListener('progress', function(evt){
+                  if(evt.lengthComputable){
+                    var percent = evt.loaded/evt.total;
+                    percent = parseInt(percent*100);
+                    console.log(percent);
+//                    progess.attr('value',percent);
+//                    if(percent == 100)
+//                    {
+//                        plink.html("Upload 100%");
+//                    }
+                  }
+                },false);
+                http.addEventListener('error',function(){
+                    console.log("Upload error!");
+                },false);
+
+                http.onreadystatechange = function () {
+                    if (http.status === 200){
+                        if( http.readyState === 4) {
+	                       var res = JSON.parse(http.responseText), link, p, t;
+	                       console.log("upload success===",res);
+	                        link = res.data.link;
+//	                        plink.html('');
+//	                        plink.html(link);
+//	                        status.show();
+//	                        progess.hide();
+//	                        totalupload=totalupload+1;
+//	                        txt_uploaded.val(totalupload+" file uploaded");
+	
+	                    }
+                    } else {
+//                            status.addClass('glyphicon glyphicon-exclamation-sign');
+//                            status.show();
+//                            plink.html("Upload Error!");
+//                            progess.val(50);
+                        }
+                };
+                http.send(fd);
+			});
+    	},
+    	confirm_kehoach: function(type){
+    		var self = this;
+    		var id = self.model.get("id");
+    		$.ajax({
+    			url: self.getApp().serviceURL + "/api/v1/kehoachthanhtra/confirm",
+    			method: "POST",
+    			data:JSON.stringify({"id":id}),
+    			contentType: "application/json",
+    			success: function (data) {
+    				if (data !== null){
+    					self.model.set(data);
+    					self.updateUI_Timeline(data);
+    					self.getApp().notify("Xác nhận thành công!");
+    					return;
+    				}
+    			},
+    			error: function (xhr, status, error) {
+    				try {
+    					if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED"){
+    						self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+    						self.getApp().getRouter().navigate("login");
+    					} else {
+    					    self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+    					}
+    				}catch (err) {
+    				    self.getApp().notify({ message: "Lỗi không lấy được dữ liệu"}, { type: "danger", delay: 1000 });
+    				}
+    			}
+    		});
+    	},
+    	cancel_kehoach: function(id, element,lydo){
+    		var self = this;
+    		
+    			    $.ajax({
+    					url: self.getApp().serviceURL + "/api/v1/kehoachthanhtra/cancel",
+    					method: "POST",
+    					data:JSON.stringify({"id":id,"lydo":lydo}),
+    					contentType: "application/json",
+    					success: function (data) {
+    						if (data !== null){
+    							self.model.set(data);
+    							self.updateUI_Timeline(data);
+    							self.getApp().notify("Từ chối xét duyệt thành công!");
+    							return;
+    						}
+    					},
+    					error: function (xhr, status, error) {
+    						try {
+    							if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED"){
+    								self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+    								self.getApp().getRouter().navigate("login");
+    							} else {
+    							    self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+    							}
+    						}catch (err) {
+    						    self.getApp().notify({ message: "Có lỗi xảy ra, vui lòng thử lại sau"}, { type: "danger", delay: 1000 });
+    						}
+    					}
+    				});
+    			  
+    		
+    	},
+    	updateUI_Timeline:function(data){
+    		var self = this;
+    		var el_status_new = self.$el.find("#timeline .kehoach_new");
+			el_status_new.addClass("complete");
+			el_status_new.find('.author').html(data.username_nguoisoanthao);
+			var template_helper = new TemplateHelper();
+			var ngaysoanthao = template_helper.datetimeFormat(data.ngaysoanthao, "DD/MM/YYYY");
+			el_status_new.find('.date').html(ngaysoanthao);
+			var arr_timeline_capphong = ["send_review_pct","cancel_reviewed_pct","send_approved","approved","cancel_approved",checked]
+			if(data.trangthai != "new" && data.trangthai != "send_review_truongphong" && 
+					data.trangthai != "cancel_reviewed_truongphong"){
+				var el_status_capphong = self.$el.find("#timeline .kehoach_send_review_capphong");
+				el_status_capphong.addClass("complete");
+				el_status_capphong.find('.author').html(data.username_phongduyet);
+				var template_helper = new TemplateHelper();
+				var ngaypheduyet_phong = template_helper.datetimeFormat(data.ngaypheduyet_phong, "DD/MM/YYYY");
+				el_status_capphong.find('.date').html(ngaypheduyet_phong);
+			}
+			var arr_timeline_cucpho = ["completed","result_checked","checked","cancel_approved","approved","send_approved"]
+			if(arr_timeline_cucpho.indexOf(data.trangthai)>=0){
+				var el_status_cucpho = self.$el.find("#timeline .kehoach_send_review_pct");
+				el_status_cucpho.addClass("complete");
+				el_status_cucpho.find('.author').html(data.username_pctduyet);
+				var template_helper = new TemplateHelper();
+				var ngaypheduyet_cucpho = template_helper.datetimeFormat(data.ngaypheduyet_pct, "DD/MM/YYYY");
+				ngaypheduyet_cucpho.find('.date').html(ngaypheduyet_cucpho);
+			
+			var arr_timeline_cuctruong = ["completed","result_checked","checked","approved"]
+			if(arr_timeline_cuctruong.indexOf(data.trangthai)>=0){
+				var el_status_cuctruong = self.$el.find("#timeline .kechoach_approved");
+				el_status_cuctruong.addClass("complete");
+				el_status_cuctruong.find('.author').html(data.username_quyetdinh);
+				var template_helper = new TemplateHelper();
+				var ngaypheduyet_quyetdinh = template_helper.datetimeFormat(data.ngaypheduyet_quyetdinh, "DD/MM/YYYY");
+				el_status_cuctruong.find('.date').html(ngaypheduyet_quyetdinh);
+				
+			var arr_timeline_checked = ["completed","result_checked","checked"]
+			if(arr_timeline_checked.indexOf(data.trangthai)>=0){
+				var el_status_checked = self.$el.find("#timeline .kechoach_checked");
+				el_status_checked.addClass("complete");
+				el_status_checked.find('.author').html('&nbsp;');
+				var template_helper = new TemplateHelper();
+				var ngaythanhtra = template_helper.datetimeFormat(data.ngaythanhtra, "DD/MM/YYYY");
+				el_status_checked.find('.date').html(ngaythanhtra);
+				
+			var arr_timeline_completed = ["completed","result_checked"]
+			if(arr_timeline_completed.indexOf(data.trangthai)>=0){
+				var el_status_completed = self.$el.find("#timeline .kechoach_completed");
+				el_status_completed.addClass("complete");
+				el_status_completed.find('.author').html('&nbsp;');
+				var template_helper = new TemplateHelper();
+				var ngayketthuc = template_helper.datetimeFormat(data.ngayketthuc, "DD/MM/YYYY");
+				el_status_completed.find('.date').html(ngayketthuc);
+    				
     	},
     	validatePhone: function(inputPhone) {
 			if (inputPhone == null || inputPhone == undefined) {

@@ -8,7 +8,7 @@ import copy
 from gatco.response import json, text, html
 from application.extensions import sqlapimanager
 from application.extensions import auth
-from application.database import db, redisdb, mdb
+from application.database import db, redisdb
 from application.models.models import *
 from application.common.constants import KeHoach_ThanhTra_TrangThai
 
@@ -24,7 +24,7 @@ from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
 
 
-@app.route('/api/v1/kehoachthanhtra/review', methods=['POST'])
+@app.route('/api/v1/kehoachthanhtra/confirm', methods=['POST'])
 async def kehoach_review(request):
     makehoach = request.json.get("id", None)
     currentUser = await current_user(request)
@@ -34,37 +34,77 @@ async def kehoach_review(request):
     if (makehoach is None or makehoach == ""):
         return json({"error_code":"ERROR_PARAMS","error_message":"Tham số không hợp lệ!"}, status=520)
     
+    
+    
     kehoach = db.session.query(KeHoachThanhTra).filter(KeHoachThanhTra.id == makehoach).first()
     if kehoach is not None:
-        if kehoach.cosokcb_id == currentUser.id_cosokcb and kehoach.trangthai ==0:
-            kehoach.trangthai = 1
-            db.session.commit()
-            
-            log_datkham = {
-                "user_id" : currentUser.id,
-                "appkey" : None,
-                "makehoach":kehoach.id,
-                "user_name" : (currentUser.first_name if currentUser.first_name is not None else "")+ (currentUser.last_name if currentUser.last_name is not None else ""),
-                "sochamsoc_id" :  kehoach.sochamsoc_id,
-                "cosokcb_id" : kehoach.id_cosokcb,
-                "cosokcb_name" : kehoach.cosokcb.ten_coso if kehoach.cosokcb.ten_coso is not None else "",
-                "description" : "confirm booking",
-                "action" : KeHoach_ThanhTra_TrangThai["confirm_booking"],
-                "created_at": datetime.utcnow()
-            }
-            await mdb.db['DatKhamMonitor'].insert_one(log_datkham)
-            
+        if currentUser.has_role("CucTruong"):
+            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["approved"]
+            kehoach.userid_quyetdinh = currentUser.id
+            kehoach.username_quyetdinh = currentUser.name
+            kehoach.ngaypheduyet_quyetdinh = datetime.now()
+        elif currentUser.has_role("CucPho"):
+            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["send_approved"]
+            kehoach.userid_pctduyet = currentUser.id
+            kehoach.username_pctduyet = currentUser.name
+            kehoach.ngaypheduyet_pct = datetime.now()
+        elif currentUser.has_role("TruongPhong"):
+            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["send_review_pct"]
+            kehoach.userid_phongduyet = currentUser.id
+            kehoach.username_phongduyet = currentUser.name
+            kehoach.ngaypheduyet_phong = datetime.now()
+        else:
+            return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
+
+        db.session.commit()
         return json(to_dict(kehoach))
     else:
         return json({"error_code":"NOT_FOUND","error_message":"Tham số không hợp lệ!"}, status=520)
             
+@app.route('/api/v1/kehoachthanhtra/cancel', methods=['POST'])
+async def cancel_kehoach(request):
+    makehoach = request.json.get("id", None)
+    currentUser = await current_user(request)
+    if (currentUser is None):
+        return json({"error_code":"SESSION_EXPIRED","error_message":"Hết phiên làm việc, vui lòng đăng nhập lại!"}, status=520)
+
+    if (makehoach is None or makehoach == ""):
+        return json({"error_code":"ERROR_PARAMS","error_message":"Tham số không hợp lệ!"}, status=520)
+    
+    
+    
+    kehoach = db.session.query(KeHoachThanhTra).filter(KeHoachThanhTra.id == makehoach).first()
+    if kehoach is not None:
+        if currentUser.has_role("CucTruong"):
+            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["cancel_approved"]
+        elif currentUser.has_role("CucPho"):
+            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["cancel_reviewed_pct"]
+        elif currentUser.has_role("TruongPhong"):
+            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["cancel_reviewed_truongphong"]
+        else:
+            return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
+
+        db.session.commit()
+        return json(to_dict(kehoach))
+    else:
+        return json({"error_code":"NOT_FOUND","error_message":"Tham số không hợp lệ!"}, status=520)
+            
+ 
         
 async def pre_post_kehoachthanhtra(request=None, data=None, Model=None, **kw):
-    madatkham = get_madatkham_new()
-    if madatkham is None:
+    currentUser = await current_user(request)
+    if (currentUser is None):
+        return json({"error_code":"SESSION_EXPIRED","error_message":"Hết phiên làm việc, vui lòng đăng nhập lại!"}, status=520)
+
+    makehoach = get_makehoach_new()
+    if makehoach is None:
         return json({"error_code":"ERROR_SYSTEM","error_message":"Không lấy được mã đợt thanh tra!"}, status=520)
     else:
-        data['id'] = madatkham.decode('utf-8')
+        data['id'] = makehoach.decode('utf-8')
+        data["userid_nguoisoanthao"] = currentUser.id
+        data["username_nguoisoanthao"] = currentUser.name
+        data["ngaysoanthao"] = datetime.now()
+        
         
         
 
@@ -93,22 +133,6 @@ async def pregetmany_kehoachthanhtra(search_params, Model, **kw):
     request = kw.get("request", None)
 
 
-async def post_process_kehoachthanhtra(request=None, Model=None, result=None, **kw):
-    obj = to_dict(result)
-    currentUser = await current_user(request)
-    log_datkham = {
-        "user_id" : result["user_id"],
-        "appkey" : result["appkey"],
-        "makehoach":result["id"],
-        "user_name" : (currentUser.first_name if currentUser is not None and  currentUser.first_name is not None else "")+ (currentUser.last_name if  currentUser is not None and currentUser.last_name is not None else ""),
-        "sochamsoc_id" :  result["sochamsoc_id"],
-        "cosokcb_id" : result["cosokcb_id"],
-        "cosokcb_name" : result["cosokcb"]["ten_coso"] if result["cosokcb"]["ten_coso"] is not None else "",
-        "description" : "create new",
-        "action" : KeHoach_ThanhTra_TrangThai["new"],
-        "created_at": datetime.utcnow()
-    }
-    await mdb.db['DatKhamMonitor'].insert_one(log_datkham)
 
 sqlapimanager.create_api(DanhMucDoanhNghiep, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
@@ -122,7 +146,7 @@ sqlapimanager.create_api(KeHoachThanhTra, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     preprocess=dict(GET_SINGLE=[], GET_MANY=[pregetmany_kehoachthanhtra], POST=[pre_post_kehoachthanhtra], PUT_SINGLE=[]),
-    postprocess=dict(POST=[post_process_kehoachthanhtra], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[response_getmany_kehoachthanhtra]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[response_getmany_kehoachthanhtra]),
     collection_name='kehoachthanhtra')
 
 

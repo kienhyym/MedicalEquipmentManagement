@@ -97,26 +97,26 @@
 						<ul class="timeline" >
 						  <li class="li kehoach_new">
 						    <div class="timestamp">
-						      	<span class="author">Chuyên Viên tạo</span>
-						      	<span class="date">11/10/2019</span>
+						      	<span class="author">&nbsp;</span>
+						      	<span class="date">&nbsp;</span>
 						    </div>
 						    <div class="status">
 						      <label class="desc"> Tạo kế hoạch </label>
 						    </div>
 						  </li>
-						  <li class="li kehoach_send_review_pct">
+						  <li class="li kehoach_send_review_capphong">
 						    <div class="timestamp">
-						      <span class="author">Trưởng phòng</span>
-						      <span class="date">11/10/2019</span>
+						      <span class="author">&nbsp;</span>
+						      <span class="date">&nbsp;</span>
 						    </div>
 						    <div class="status">
 						      <label class="desc"> Đã xét duyệt </label>
 						    </div>
 						  </li>
-						  <li class="li kechoach_send_approved">
+						  <li class="li kehoach_send_review_pct">
 						    <div class="timestamp">
-						      <span class="author">Cục phó </span>
-						      <span class="date">11/10/2019</span>
+						      <span class="author">&nbsp;</span>
+						      <span class="date">&nbsp;</span>
 						    </div>
 						    <div class="status">
 						      <label class="desc"> Đã xét duyệt </label>
@@ -124,8 +124,8 @@
 						  </li>
 						  <li class="li kechoach_approved">
 						    <div class="timestamp">
-						      <span class="author">Cục Trưởng</span>
-						      <span class="date">11/10/2019</span>
+						      <span class="author">&nbsp;</span>
+						      <span class="date">&nbsp;</span>
 						    </div>
 						    <div class="status">
 						      <label class="desc"> Đã ra quyết định </label>
@@ -134,7 +134,7 @@
 						  <li class="li kechoach_checked">
 						    <div class="timestamp">
 						     <span class="author">&nbsp;</span>
-						      <span class="date">11/10/2019</span>
+						      <span class="date">&nbsp;</span>
 						    </div>
 						    <div class="status">
 						      <label class="desc"> Đã thanh tra </label>
@@ -143,13 +143,14 @@
 						  <li class="li kechoach_completed">
 						    <div class="timestamp">
 						     <span class="author">&nbsp;</span>
-						      <span class="date">11/10/2019</span>
+						      <span class="date">&nbsp;</span>
 						    </div>
 						    <div class="status">
 						      <label class="desc"> Kết thúc </label>
 						    </div>
 						  </li>
 						 </ul>  
+						 <hr>
 					</div>
 			      	<div class=" pb-3">
 			        
@@ -167,13 +168,53 @@
 				       	   
 				       	   </div>
 				       	   
-				           <div class="mb-3">
-				                <label>Chọn Đơn vị/Doanh nghiệp</label>
-				              	<select  class="selectpicker form-control" id="multiselect_donvidoanhnghiep" data-live-search="true" data-noneSelectedText="Chọn đơn vị" title="Chọn đơn vị">
-								</select>
-				              
-				            </div>
-				            <div class="row nguoisoanthao d-none">
+				           
+					        <div class="row">
+					        	<div class="col-6">
+						        	<div class="form-group">
+						                <label>Chọn Đơn vị/Doanh nghiệp</label>
+						              	<select  class="selectpicker form-control" id="multiselect_donvidoanhnghiep" data-live-search="true" data-noneSelectedText="Chọn đơn vị" title="Chọn đơn vị">
+										</select>
+						            </div>
+					            </div>
+					        	<div class="col-6">
+							       	<div class="form-group">
+							           <label>Loại hình thanh tra</label>
+							           <input type="text" data-bind="value:loaithanhtra"  class="form-control">
+							        </div>
+						       	</div>
+						       	<div class="col-6">
+							       	<div class="form-group">
+							           <label>Ngày thanh tra</label>
+							           <input type="text" data-bind="value:ngaythanhtra"  class="form-control">
+							         </div>
+						       	</div>
+						       	
+					        </div>
+					        
+					        <div class="row">
+					        	<div class="col-6">
+							       	<div class="form-group">
+							           <label>Trưởng đoàn thanh tra</label>
+							           <input type="text" data-bind="value:truongdoanthanhtra"  class="form-control">
+							        </div>
+						       	</div>
+						       	
+					        </div>
+					        <div class="form-group required">
+					              <label>Thành phần đoàn thanh tra</label>
+					              <textarea required rows="2"  data-bind="value:doanthanhtra"  class="form-control" placeholder="Nhập danh sách đoàn thanh tra"></textarea>
+					        </div>
+					        
+					        <div class="form-group">
+					              <label>Tài liệu đính kèm</label>
+					              <div class="custom-file">
+									    <input type="file" class="custom-file-input" id="upload_files" lang="vi">
+									    <label class="custom-file-label" for="upload_files">Chọn file tải lên</label>
+									</div>
+					        </div>
+					        
+					        <div class="row nguoisoanthao d-none">
 				            	  <div class="form-group required col-6">
 						             <label>Người soạn thảo</label>
 						             <span  data-bind="text:username_nguoisoanthao"></span>
@@ -214,48 +255,26 @@
 						             <span  data-bind="text:ngaypheduyet_quyetdinh"></span>
 						           </div>
 				            </div>
-				           
-					        <div class="row">
-					        	<div class="col-6">
-							       	<div class="form-group">
-							           <label>Loại hình thanh tra</label>
-							           <input type="text" data-bind="value:loaithanhtra"  class="form-control">
-							        </div>
-						       	</div>
-						       	<div class="col-6">
-							       	<div class="form-group">
-							           <label>Ngày thanh tra</label>
-							           <input type="text" data-bind="value:ngaythanhtra"  class="form-control">
-							         </div>
-						       	</div>
-						       	
-					        </div>
 					        
-					        <div class="row">
-					        	<div class="col-6">
-							       	<div class="form-group">
-							           <label>Trưởng đoàn thanh tra</label>
-							           <input type="text" data-bind="value:truongdoanthanhhtra"  class="form-control">
-							        </div>
-						       	</div>
-						       	
-					        </div>
-					        <div class="form-group required">
-					              <label>Thành phần đoàn thanh tra</label>
-					              <textarea required rows="2"  data-bind="value:doanthanhhtra"  class="form-control" placeholder="Nhập danh sách đoàn thanh tra"></textarea>
-					        </div>
 					        <div class="form-group ketquathanhtra d-none">
 					              <label>Kết quả thanh tra</label>
 					              <textarea  rows="2"  data-bind="value:ketquathanhtra"  class="form-control" placeholder="Nhập kết quả thanh tra"></textarea>
 					        </div>
 					        <div class="form-group d-none ketluanthanhtra">
 					              <label>Kết luận thanh tra</label>
-					              <textarea rows="2"  data-bind="value:ketluanthanhhtra"  class="form-control" placeholder="Nhập kết luận thanh tra"></textarea>
+					              <textarea rows="2"  data-bind="value:ketluanthanhtra"  class="form-control" placeholder="Nhập kết luận thanh tra"></textarea>
 					        </div>
-					       	<div class="form-group" id="trangthai">
-					             <label>Trạng thái</label>
-					             <input type="text" disabled data-bind="value:trangthai" class="form-control">
-					        </div>
+					        <div class="row">
+						           <div class="form-group col-6">
+						             <label>Ngày kết thúc</label>
+						             <input type="text" data-bind="value:ngayketthuc" class="form-control">
+						           </div>
+						           <div class="form-group" id="trangthai">
+							             <label>Trạng thái</label>
+							             <input type="text" disabled data-bind="value:trangthai" class="form-control">
+							        </div>
+				            </div>
+					       	
 					        <div class="col-12">
 					        	<button id="btn_save" class="btn btn-primary" >Lưu Thông Tin</button>
 								<button id="btn_review" class="btn btn-info" >Gửi Xét Duyệt</button>

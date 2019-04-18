@@ -192,85 +192,85 @@ define(function (require) {
                      { value: "completed", text: "Hoàn thành" }
 	           	 ],
               	 },
-              	{
-        	    	 field: "command", 
-        	    	 label:" ",
-        	    	 command: [
-        	    	     {
-        	    	       "label":"xét duyệt",
-           	    	        "action": function(params, args){
-           	    	        	self.confirm_booking(params.rowData.id, "booking", params.el);
-           	    	        },
-           	    	        "class": function(e){
-           	    	        	var currentUser = self.getApp().currentUser;
-         	    	        	if(e.rowData.trangthai ===0 && currentUser.hasRole('CoSoKCB') && currentUser.id_cosokcb == e.rowData.cosokcb_id){
-         	    	        		return "btn-primary btn-sm px-1 mx-1 booking";	
-         	    	        	}else{
-         	    	        		return "d-none booking";
-         	    	        	}
-         	    	        	
-         	    	        },
-           	    	     },
-           	    	     {
-          	    	       "label":"quyết định",
-             	    	        "action": function(params, args){
-               	    	        	self.confirm_booking(params.rowData.id, "arrived", params.el);
-             	    	        },
-             	    	        "class": function(e){
-             	    	        	var currentUser = self.getApp().currentUser;
-             	    	        	if(e.rowData.trangthai ===1 && currentUser.hasRole('CoSoKCB') && currentUser.id_cosokcb == e.rowData.cosokcb_id){
-             	    	        		return "btn-primary btn-sm px-1 mx-1 arrived";	
-             	    	        	}else{
-             	    	        		return "d-none arrived";
-             	    	        	}
-             	    	        	
-             	    	        },
-             	    	     },
-	           	    	  {
-             	    	    	"label":"từ chối",
-	     	    	        	"action": function(params, args){
-     	    	        			var modalConfirm = function(callback){
-     	    	     			  
-     	    	        			self.$el.find("#confirm-model").modal('show');
-     	    	        			self.$el.find("#confirm-model #lydo_huydon").val("");
-
-     	    	        			$("#modal-btn-yes").on("click", function(){
-     	    	        				$(this).attr({"disabled":true});
-     	    	        				$(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Đang xử lý...')
-	     	    	     				  var lydo = self.$el.find("#confirm-model #lydo_huydon").val();
-	     	    	     				  if(lydo === null || lydo ==="" || lydo === undefined){
-	     	    	     					  self.getApp().notify("Vui lòng nhập lý do hủy đơn khám");
-	     	    	     					  return;
-	     	    	     				  }
-		     	    	     			    callback(true);
-		     	    	     			    $("#confirm-model").modal('hide');
-		     	    	     			    self.cancel_booking(params.rowData.id, params.el, lydo);
-		     	    	     			    return false;
-     	    	        			});
-     	    	   			  
-		     	    	   			$("#modal-btn-no").on("click", function(){
-		     	    	   			    callback(false);
-		     	    	   			    $("#confirm-model").modal('hide');
-		     	    	   			});
-	     	    	   			};
-
-	     	    	   			modalConfirm(function(confirm){
-	     	    	   			});
-
-             	    	        },
-	     	    	        	"class": function(e){
-	     	    	        		var currentUser = self.getApp().currentUser;
-             	    	        	if(e.rowData.trangthai ===0 && ((currentUser.hasRole('CoSoKCB') && currentUser.id_cosokcb == e.rowData.cosokcb_id) ||
-             	    	        			(currentUser.id == e.rowData.user_id))){
-             	    	        		return "btn-danger btn-sm cancel";	
-             	    	        	}else{
-             	    	        		return "d-none cancel";
-             	    	        	}
-             	    	        	
-             	    	        },
-	     	    	     }
-        	    	 ],
-        	   	 },
+//              	{
+//        	    	 field: "command", 
+//        	    	 label:" ",
+//        	    	 command: [
+//        	    	     {
+//        	    	       "label":"xét duyệt",
+//           	    	        "action": function(params, args){
+//           	    	        	self.confirm_booking(params.rowData.id, "booking", params.el);
+//           	    	        },
+//           	    	        "class": function(e){
+//           	    	        	var currentUser = self.getApp().currentUser;
+//         	    	        	if(e.rowData.trangthai ===0 && currentUser.hasRole('CoSoKCB') && currentUser.id_cosokcb == e.rowData.cosokcb_id){
+//         	    	        		return "btn-primary btn-sm px-1 mx-1 booking";	
+//         	    	        	}else{
+//         	    	        		return "d-none booking";
+//         	    	        	}
+//         	    	        	
+//         	    	        },
+//           	    	     },
+//           	    	     {
+//          	    	       "label":"quyết định",
+//             	    	        "action": function(params, args){
+//               	    	        	self.confirm_booking(params.rowData.id, "arrived", params.el);
+//             	    	        },
+//             	    	        "class": function(e){
+//             	    	        	var currentUser = self.getApp().currentUser;
+//             	    	        	if(e.rowData.trangthai ===1 && currentUser.hasRole('CoSoKCB') && currentUser.id_cosokcb == e.rowData.cosokcb_id){
+//             	    	        		return "btn-primary btn-sm px-1 mx-1 arrived";	
+//             	    	        	}else{
+//             	    	        		return "d-none arrived";
+//             	    	        	}
+//             	    	        	
+//             	    	        },
+//             	    	     },
+//	           	    	  {
+//             	    	    	"label":"từ chối",
+//	     	    	        	"action": function(params, args){
+//     	    	        			var modalConfirm = function(callback){
+//     	    	     			  
+//     	    	        			self.$el.find("#confirm-model").modal('show');
+//     	    	        			self.$el.find("#confirm-model #lydo_huydon").val("");
+//
+//     	    	        			$("#modal-btn-yes").on("click", function(){
+//     	    	        				$(this).attr({"disabled":true});
+//     	    	        				$(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Đang xử lý...')
+//	     	    	     				  var lydo = self.$el.find("#confirm-model #lydo_huydon").val();
+//	     	    	     				  if(lydo === null || lydo ==="" || lydo === undefined){
+//	     	    	     					  self.getApp().notify("Vui lòng nhập lý do hủy đơn khám");
+//	     	    	     					  return;
+//	     	    	     				  }
+//		     	    	     			    callback(true);
+//		     	    	     			    $("#confirm-model").modal('hide');
+//		     	    	     			    self.cancel_booking(params.rowData.id, params.el, lydo);
+//		     	    	     			    return false;
+//     	    	        			});
+//     	    	   			  
+//		     	    	   			$("#modal-btn-no").on("click", function(){
+//		     	    	   			    callback(false);
+//		     	    	   			    $("#confirm-model").modal('hide');
+//		     	    	   			});
+//	     	    	   			};
+//
+//	     	    	   			modalConfirm(function(confirm){
+//	     	    	   			});
+//
+//             	    	        },
+//	     	    	        	"class": function(e){
+//	     	    	        		var currentUser = self.getApp().currentUser;
+//             	    	        	if(e.rowData.trangthai ===0 && ((currentUser.hasRole('CoSoKCB') && currentUser.id_cosokcb == e.rowData.cosokcb_id) ||
+//             	    	        			(currentUser.id == e.rowData.user_id))){
+//             	    	        		return "btn-danger btn-sm cancel";	
+//             	    	        	}else{
+//             	    	        		return "d-none cancel";
+//             	    	        	}
+//             	    	        	
+//             	    	        },
+//	     	    	     }
+//        	    	 ],
+//        	   	 },
              ],
              dataSource: dataSource,
              primaryField:"id",
@@ -290,70 +290,7 @@ define(function (require) {
              },
         });
 	},
-	confirm_booking: function(id, type, element){
-		var self = this;
-		$.ajax({
-			url: self.getApp().serviceURL + "/api/v1/kehoachthanhtra/confirm/"+type,
-			method: "POST",
-			data:JSON.stringify({"id":id}),
-			contentType: "application/json",
-			success: function (data) {
-				if (data !== null){
-					$(element).find(".booking").hide();
-					$(element).find(".cancel").hide();
-					$(element).find(".arrived").hide();
-					self.getApp().notify("Xác nhận thành công!");
-					return;
-				}
-			},
-			error: function (xhr, status, error) {
-				try {
-					if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED"){
-						self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
-						self.getApp().getRouter().navigate("login");
-					} else {
-					    self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
-					}
-				}catch (err) {
-				    self.getApp().notify({ message: "Lỗi không lấy được dữ liệu"}, { type: "danger", delay: 1000 });
-				}
-			}
-		});
-	},
-	cancel_booking: function(id, element,lydo){
-		var self = this;
-		
-			    $.ajax({
-					url: self.getApp().serviceURL + "/api/v1/kehoachthanhtra/cancel",
-					method: "POST",
-					data:JSON.stringify({"id":id,"lydo":lydo}),
-					contentType: "application/json",
-					success: function (data) {
-						if (data !== null){
-							$(element).find(".booking").hide();
-							$(element).find(".cancel").hide();
-							$(element).find(".arrived").hide();
-							$("#grid_new").data('gonrin').deleteRow(params.el);
-							self.getApp().notify("Hủy đơn thành công!");
-							return;
-						}
-					},
-					error: function (xhr, status, error) {
-						try {
-							if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED"){
-								self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
-								self.getApp().getRouter().navigate("login");
-							} else {
-							    self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
-							}
-						}catch (err) {
-						    self.getApp().notify({ message: "Có lỗi xảy ra, vui lòng thử lại sau"}, { type: "danger", delay: 1000 });
-						}
-					}
-				});
-			  
-		
-	}
+	
 	
     });
 

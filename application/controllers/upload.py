@@ -94,7 +94,9 @@ async def upload_file(request):
                         "error_code": "OK",
                         "error_message": "successful",
                         "link":url  + "/" + newfilename,
-                        "filename":newfilename
+                        "filename":newfilename,
+                        "filename_organization":file_name,
+                        "extname":extname
                     }, status=200)
         except Exception as e:
             raise e

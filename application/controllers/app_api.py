@@ -7,7 +7,7 @@ import aiohttp
 import copy
 from gatco.response import json, text, html
 from application.extensions import sqlapimanager
-from application.database import db, redisdb, mdb
+from application.database import db, redisdb
 from application.models.models import *
 
 

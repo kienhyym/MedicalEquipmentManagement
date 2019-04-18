@@ -6,7 +6,8 @@ define(function (require) {
     
     var template 			= require('text!app/danhmucdoanhnghiep/tpl/collection.html'),
     	schema 				= require('json!schema/DanhMucDoanhNghiepSchema.json');
-    
+    var TemplateHelper		= require('app/base/view/TemplateHelper');
+
     return Gonrin.CollectionView.extend({
     	template : template,
     	modelSchema	: schema,
