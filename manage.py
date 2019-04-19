@@ -2,8 +2,8 @@
 # Libraries
 import sys
 import json
-import ujson
-
+# import ujson as json
+#import json as json
 import string
 import random
 from datetime import datetime
@@ -21,7 +21,6 @@ from application.database import db
 from application.extensions import auth
 import os
 from application.models import Role, User, QuocGia, TinhThanh, QuanHuyen, XaPhuong, DanToc
-from application.controllers.helper import *
 
 # Instance
 manager = Manager()
@@ -96,7 +95,7 @@ def generate_schema(path = None, exclude = None, prettyprint = True):
             
         if prettyprint:
             with open(path + '/' + classname + 'Schema.json', 'w') as outfile:
-                ujson.dumps(schema,  outfile, indent=4,)
+                json.dump(schema,  outfile, indent=4,)
         else:
             with open(path + '/' + classname + 'Schema.json', 'w') as outfile:
                 json.dump(schema,  outfile,)

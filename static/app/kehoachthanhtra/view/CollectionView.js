@@ -71,15 +71,19 @@ define(function (require) {
 	    	self.$el.find("#kehoach-review-tab").unbind('click').bind('click',function(){
 		    	 var filters_common = "";
 		    	 if (!!currentUser && currentUser.hasRole("CucTruong")){
-		    		 filters_common = {"trangthai":{"$eq": "send_approved"}};
+		    		 filters_common = {"$or":[
+		    			 {"trangthai":{"$eq": "send_approved"}},
+			    		 {"trangthai":{"$eq": "cancel_approved"}}]};
 		    	 } else if (!!currentUser && currentUser.hasRole("CucPho")){
 		    		 filters_common = {"$or":[
 		    			 {"trangthai":{"$eq": "send_review_pct"}},
+		    			 {"trangthai":{"$eq": "cancel_reviewed_pct"}},
 			    		 {"trangthai":{"$eq": "cancel_approved"}}]};
 		    	 } else if (!!currentUser && currentUser.hasRole("TruongPhong")){
 		    		 filters_common = {"$or":[
 		    			 {"trangthai":{"$eq": "send_review_truongphong"}},
-			    		 {"trangthai":{"$eq": "cancel_reviewed_pct"}},
+		    			 {"trangthai":{"$eq": "cancel_reviewed_truongphong"}},
+		    			 {"trangthai":{"$eq": "cancel_reviewed_pct"}},
 			    		 {"trangthai":{"$eq": "cancel_approved"}}]};
 		    	 } else if (!!currentUser && currentUser.hasRole("ChuyenVien")){
 			    	 filters_common = {"$and":[{"$or":[
@@ -95,9 +99,40 @@ define(function (require) {
 	    		self.getDataSource(1, filters_common,1,100);
 	    	});
 	    	self.$el.find("#kehoach-approved-tab").unbind('click').bind('click',function(){
-	    		var filters_common = {"$or":[{"trangthai":{"$eq": "approved"}},
-	    			{"trangthai":{"$eq": "checked"}},
-	    			{"trangthai":{"$eq": "result_checked"}}]};
+	    		var filters_common = "";
+		    	 if (!!currentUser && currentUser.hasRole("CucTruong")){
+		    		 filters_common = {"$or":[{"trangthai":{"$eq": "approved"}},
+			    			{"trangthai":{"$eq": "checked"}},
+			    			{"trangthai":{"$eq": "result_checked"}}]};
+		    	 } else if (!!currentUser && currentUser.hasRole("CucPho")){
+		    		 filters_common = {"$or":[
+		    			{"trangthai":{"$eq": "send_approved"}}, 
+		    			{"trangthai":{"$eq": "cancel_approved"}},
+		    			{"trangthai":{"$eq": "approved"}},
+			    		{"trangthai":{"$eq": "checked"}},
+			    		{"trangthai":{"$eq": "result_checked"}}]};
+		    	 } else if (!!currentUser && currentUser.hasRole("TruongPhong")){
+		    		 filters_common = {"$or":[
+		    			 	{"trangthai":{"$eq": "cancel_reviewed_pct"}}, 
+			    			{"trangthai":{"$eq": "send_review_pct"}},
+			    			{"trangthai":{"$eq": "send_approved"}}, 
+			    			{"trangthai":{"$eq": "cancel_approved"}},
+			    			{"trangthai":{"$eq": "approved"}},
+				    		{"trangthai":{"$eq": "checked"}},
+				    		{"trangthai":{"$eq": "result_checked"}}]};
+		    	 } else if (!!currentUser && currentUser.hasRole("ChuyenVien")){
+			    	 filters_common = {"$and":[{"$or":[
+			    		 {"trangthai":{"$eq": "send_review_truongphong"}},
+			    		 {"trangthai":{"$eq": "cancel_reviewed_truongphong"}},
+			    		 {"trangthai":{"$eq": "cancel_reviewed_pct"}}, 
+		    			 {"trangthai":{"$eq": "send_review_pct"}},
+		    			 {"trangthai":{"$eq": "send_approved"}}, 
+		    			 {"trangthai":{"$eq": "cancel_approved"}},
+		    			 {"trangthai":{"$eq": "approved"}},
+			    		 {"trangthai":{"$eq": "checked"}},
+			    		 {"trangthai":{"$eq": "result_checked"}}]},
+			    		 {"userid_nguoisoanthao":{"$eq": currentUser.id}}]};
+		    	 }
 	    		self.getDataSource(2, filters_common,1,100);
 	    	});
 	    	self.$el.find("#kehoach-finish-tab").unbind('click').bind('click',function(){
@@ -170,7 +205,7 @@ define(function (require) {
 		            	 },
 	    			},
         	   	{
-	            	 field: "truongdoanthanhhtra", 
+	            	 field: "truongdoanthanhtra", 
 	            	 label: "Trưởng đoàn"
 	           	 },
 		     	{
@@ -282,9 +317,8 @@ define(function (require) {
              events:{
            		 "rowclick": function(e){
            			 console.log("rowclick",e);
-           			 if(e.rowData.trangthai >=1){
-               			 self.getApp().getRouter().navigate("kehoachthanhtra/model?id="+e.rowId);
-           			 }
+           			 self.getApp().getRouter().navigate("kehoachthanhtra/model?id="+e.rowId);
+
            			 
            		 },
              },

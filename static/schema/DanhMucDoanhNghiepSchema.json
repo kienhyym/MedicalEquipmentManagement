@@ -1,0 +1,72 @@
+{
+    "created_at": {
+        "type": ""
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": ""
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": ""
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "code": {
+        "type": "string"
+    },
+    "name": {
+        "type": "string",
+        "required": true
+    },
+    "description": {
+        "type": "string"
+    },
+    "email": {
+        "type": "string"
+    },
+    "dienthoai": {
+        "type": "string"
+    },
+    "diachi": {
+        "type": "string"
+    },
+    "tinhthanh_id": {
+        "type": "string"
+    },
+    "tinhthanh": {
+        "type": "json"
+    },
+    "quanhuyen_id": {
+        "type": "string"
+    },
+    "quanhuyen": {
+        "type": "json"
+    },
+    "xaphuong_id": {
+        "type": "string"
+    },
+    "xaphuong": {
+        "type": "json"
+    },
+    "type": {
+        "type": "string"
+    },
+    "status": {
+        "type": "number",
+        "default": 0
+    }
+}

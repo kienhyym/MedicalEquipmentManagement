@@ -6,7 +6,7 @@ Created on Jan 3, 2019
 
 KeHoach_ThanhTra_TrangThai = {
     "new":"new",
-    "send_review_truongphong":"send_re view_truongphong",
+    "send_review_truongphong":"send_review_truongphong",
     "cancel_reviewed_truongphong":"cancel_reviewed_truongphong",
     "send_review_pct":"send_review_pct",
     "cancel_reviewed_pct":"cancel_reviewed_pct",

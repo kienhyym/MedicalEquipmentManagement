@@ -112,11 +112,11 @@ class DanhMucDoanhNghiep(CommonModel):
     email = db.Column(String)
     dienthoai = db.Column(String)
     diachi = db.Column(String)
-    tinhthanh_id = db.Column(String,  nullable=True)
+    tinhthanh_id = db.Column(String, nullable=True)
     tinhthanh = db.Column(JSONB)
-    quanhuyen_id = db.Column(String,  nullable=True)
+    quanhuyen_id = db.Column(String, nullable=True)
     quanhuyen = db.Column(JSONB)
-    xaphuong_id = db.Column(String,  nullable=True)
+    xaphuong_id = db.Column(String, nullable=True)
     xaphuong = db.Column(JSONB)
     type = db.Column(String)
     status = db.Column(Integer, default=0)    
@@ -124,12 +124,10 @@ class DanhMucDoanhNghiep(CommonModel):
 class KeHoachThanhTra(CommonModel):
     __tablename__ = 'kehoachthanhtra'
     id = db.Column(String, primary_key=True)
-    
     makehoach = db.Column(String(255))
     tenkehoach = db.Column(String(255))
-    
-    madoanhnghiep = db.Column(String(50), index=True, nullable=False)
-    tendoanhnghiep = db.Column(String(50), index=True, nullable=False)
+    madoanhnghiep = db.Column(String(50),  nullable=False)
+    tendoanhnghiep = db.Column(String(50), nullable=False)
     doanhnghiep = db.Column(JSONB)
     tailieulienquan = db.Column(JSONB)
     userid_nguoisoanthao = db.Column(String)
@@ -146,7 +144,7 @@ class KeHoachThanhTra(CommonModel):
     ngaypheduyet_quyetdinh = db.Column(DateTime)
     loaithanhtra = db.Column(String)
     doanthanhtra = db.Column(String)
-    truongdoanthanhhtra = db.Column(String)
+    truongdoanthanhtra = db.Column(String)
     ngaythanhtra = db.Column(DateTime)
     ketquathanhtra = db.Column(String)
     ketluanthanhtra = db.Column(String)

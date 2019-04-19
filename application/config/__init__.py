@@ -30,12 +30,12 @@ class Config(object):
     EMAIL_SUBJECT_PASSWORD_RESET = "Thanh Tra - Cục Môi Trường - Bộ Y Tế"
 
 
-    URL_API_SOMEVABE = "https://somevabe.com/api/v1/"
     ACCOUNT_KIT_URL = "https://graph.accountkit.com"
 
 
     FIREBASE_SERVER_KEY = "AIzaSyBj_Mat5FFPMAkXmUPjxjbgYby1Z9tkZgU"
 
-    FS_ROOT= "/Users/namdv/workspace/thanhtramoitruong/repo/static/uploads/"
-    FILE_SERVICE_URL = 'https://somevabe.com/static/uploads'
+#     FS_ROOT= "/Users/namdv/workspace/thanhtra_moitruong/repo/static/uploads/"
+    FS_ROOT= "/opt/deploy/thanhtra-moitruong/repo/static/uploads/"
+    FILE_SERVICE_URL = 'http://103.74.120.65:9080/static/uploads'
 

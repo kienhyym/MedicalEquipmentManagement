@@ -53,6 +53,8 @@ async def kehoach_review(request):
             kehoach.userid_phongduyet = currentUser.id
             kehoach.username_phongduyet = currentUser.name
             kehoach.ngaypheduyet_phong = datetime.now()
+        elif currentUser.has_role("ChuyenVien"):
+            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["send_review_truongphong"]
         else:
             return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
 
@@ -103,7 +105,7 @@ async def pre_post_kehoachthanhtra(request=None, data=None, Model=None, **kw):
         data['id'] = makehoach.decode('utf-8')
         data["userid_nguoisoanthao"] = currentUser.id
         data["username_nguoisoanthao"] = currentUser.name
-        data["ngaysoanthao"] = datetime.now()
+        data["ngaysoanthao"] = str(datetime.now())
         
         
         

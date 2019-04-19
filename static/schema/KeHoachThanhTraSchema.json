@@ -1,0 +1,112 @@
+{
+    "created_at": {
+        "type": ""
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": ""
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": ""
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "makehoach": {
+        "type": "string",
+        "length": 255
+    },
+    "tenkehoach": {
+        "type": "string",
+        "length": 255
+    },
+    "madoanhnghiep": {
+        "type": "string",
+        "required": true,
+        "length": 50
+    },
+    "tendoanhnghiep": {
+        "type": "string",
+        "required": true,
+        "length": 50
+    },
+    "doanhnghiep": {
+        "type": "json"
+    },
+    "tailieulienquan": {
+        "type": "json"
+    },
+    "userid_nguoisoanthao": {
+        "type": "string"
+    },
+    "username_nguoisoanthao": {
+        "type": "string"
+    },
+    "ngaysoanthao": {
+        "type": "datetime"
+    },
+    "userid_phongduyet": {
+        "type": "string"
+    },
+    "username_phongduyet": {
+        "type": "string"
+    },
+    "ngaypheduyet_phong": {
+        "type": "datetime"
+    },
+    "userid_pctduyet": {
+        "type": "string"
+    },
+    "username_pctduyet": {
+        "type": "string"
+    },
+    "ngaypheduyet_pct": {
+        "type": "datetime"
+    },
+    "userid_quyetdinh": {
+        "type": "string"
+    },
+    "username_quyetdinh": {
+        "type": "string"
+    },
+    "ngaypheduyet_quyetdinh": {
+        "type": "datetime"
+    },
+    "loaithanhtra": {
+        "type": "string"
+    },
+    "doanthanhtra": {
+        "type": "string"
+    },
+    "truongdoanthanhtra": {
+        "type": "string"
+    },
+    "ngaythanhtra": {
+        "type": "datetime"
+    },
+    "ketquathanhtra": {
+        "type": "string"
+    },
+    "ketluanthanhtra": {
+        "type": "string"
+    },
+    "ngayketthuc": {
+        "type": "datetime"
+    },
+    "trangthai": {
+        "type": "string"
+    }
+}

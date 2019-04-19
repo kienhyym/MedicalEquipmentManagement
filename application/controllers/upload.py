@@ -8,6 +8,9 @@ from gatco.response import json, text, html
 import io
 from PIL import Image
 import time
+import random, string
+import aiofiles
+
 
 
 # def image_uploading(aws_access_key_id, aws_secret_access_key, image_path, bucket, file_name, host):
@@ -81,7 +84,7 @@ async def upload_file(request):
         try:
             file = request.files.get('file', None)
             if file :
-                rand = ''.join(random.choice(string.digits) for _ in range(10))
+                rand = ''.join(random.choice(string.digits) for _ in range(15))
                 file_name = os.path.splitext(file.name)[0]
                 extname = os.path.splitext(file.name)[1]
     #             newfilename = file_name + "-" + rand + extname
@@ -93,6 +96,7 @@ async def upload_file(request):
                 return json({
                         "error_code": "OK",
                         "error_message": "successful",
+                        "id":rand,
                         "link":url  + "/" + newfilename,
                         "filename":newfilename,
                         "filename_organization":file_name,
