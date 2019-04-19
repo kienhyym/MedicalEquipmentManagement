@@ -115,7 +115,7 @@ def create_default_models():
 
     #add user test   
     salt1 = generator_salt()  
-    user1 = User(email='cuctruong@gmail.com', last_name='Cục Trưởng',  password=auth.encrypt_password('123456', salt1), salt=salt1 ,active=True)
+    user1 = User(email='cuctruong@gmail.com', name='Cục Trưởng',  password=auth.encrypt_password('123456', salt1), salt=salt1 ,active=True)
     user1.roles.append(role1)
     db.session.add(user1)
     
