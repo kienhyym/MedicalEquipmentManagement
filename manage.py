@@ -21,7 +21,7 @@ from application.database import db
 from application.extensions import auth
 import os
 from application.models import Role, User, QuocGia, TinhThanh, QuanHuyen, XaPhuong, DanToc
-
+from application.controllers.helper import generator_salt
 # Instance
 manager = Manager()
 
