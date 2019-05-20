@@ -174,6 +174,8 @@ define(function (require) {
     			
     			self.$el.find("#btn_approve").hide();
     			self.$el.find("#btn_cancel").hide();
+    			
+    			
     		}else if (currentUser.hasRole('TruongPhong')){
     			self.$el.find('.card-header').hide();
     			self.$el.find("#btn_approve").hide();
@@ -196,7 +198,6 @@ define(function (require) {
     				self.$el.find("#btn_cancel").hide();
     				self.$el.find("#btn_review").hide();
     			}
-    			
     		}else if (currentUser.hasRole('CucPho')){
     			self.$el.find('.card-header').hide();
     			self.$el.find("#btn_approve").hide();
@@ -218,7 +219,6 @@ define(function (require) {
     				self.$el.find("#btn_cancel").hide();
     				self.$el.find("#btn_review").hide();
     			}
-    			
     		}else if (currentUser.hasRole('CucTruong')){
     			self.$el.find('.card-header').hide();
     			if(trangthai ==="send_approved"){
@@ -238,7 +238,6 @@ define(function (require) {
     				self.$el.find("#btn_cancel").hide();
     				self.$el.find("#btn_review").hide();
     			}
-    			
     		}
     		
     		if(trangthai !==null){
@@ -248,7 +247,7 @@ define(function (require) {
         			self.$el.find("#btn_approve").hide();
         			self.$el.find("#btn_review").hide();
         			self.$el.find("#btn_cancel").hide();
-        			
+        			self.$el.find("#btn_save").show();
         		}else if(trangthai ==="completed"){
         			self.$el.find("#btn_save").hide();
         			self.$el.find("#btn_approve").hide();
