@@ -92,12 +92,25 @@ define(function (require) {
     		    			success: function (data) {
     		    				console.log(data);
     		    				var events = [];
-//        		    	        $(doc).find('event').each(function() {
-//        		    	          events.push({
-//        		    	            title: $(this).attr('title'),
-//        		    	            start: $(this).attr('start') // will be parsed
-//        		    	          });
-//        		    	        });
+    		    				for(var i=0; i< data.objects.length ; i++){
+    		    					var item = data.objects[i];
+    		    					var start = "";
+    		    					if(item.ngayketthuc!==null){
+    		    						start = item.ngayketthuc;
+    		    					}else if(item.ngaythanhtra!==null){
+    		    						start = item.ngaythanhtra;
+    		    					}else if(item.ngaypheduyet_quyetdinh!==null){
+    		    						start = item.ngaypheduyet_quyetdinh;
+    		    					}else if(item.ngaypheduyet_pct!==null){
+    		    						start = item.ngaypheduyet_pct;
+    		    					}else if(item.ngaypheduyet_phong!==null){
+    		    						start = item.ngaypheduyet_phong;
+    		    					}else if(item.ngaysoanthao!==null){
+    		    						start = item.ngaysoanthao;
+    		    					}
+    		    					var event_item = {"start":start,"end":end,"title":item.tenkehoach+'['+item.trangthai+']', "url":"#kehoachthanhtra/model/"+item.id};
+    		    					events.push(event_item);
+    		    				}
         		    	        callback(events);
     		    			},
     		    			error: function (xhr, status, error) {
