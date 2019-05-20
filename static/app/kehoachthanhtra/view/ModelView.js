@@ -166,39 +166,78 @@ define(function (require) {
     					(trangthai ==="new" || trangthai ==="send_review_truongphong" ||
         				trangthai ==="cancel_reviewed_truongphong")){
     				self.$el.find("#btn_save").show();
-    			}else{
+    				self.$el.find("#btn_review").show();
+    			}else {
     				self.$el.find("#btn_save").hide();
+    				self.$el.find("#btn_review").hide();
     			}
-    			self.$el.find("#btn_review").show();
+    			
     			self.$el.find("#btn_approve").hide();
     			self.$el.find("#btn_cancel").hide();
     		}else if (currentUser.hasRole('TruongPhong')){
     			self.$el.find('.card-header').hide();
     			self.$el.find("#btn_approve").hide();
-    			self.$el.find("#btn_review").show();
-    			self.$el.find("#btn_cancel").show();
-    			if(trangthai !==null && (trangthai ==="send_review_pct" || trangthai ==="cancel_reviewed_pct")){
+    			
+    			if(trangthai ==="send_review_truongphong"){
+    				self.$el.find("#btn_review").show();
+        			self.$el.find("#btn_cancel").show();
+        			self.$el.find("#btn_save").show();
+    				
+    			}else if(trangthai === "cancel_reviewed_pct"){
+    				self.$el.find("#btn_review").show();
+    				self.$el.find("#btn_cancel").show();
     				self.$el.find("#btn_save").show();
+    			}else if(trangthai === "send_review_pct"){
+    				self.$el.find("#btn_save").show();
+    				self.$el.find("#btn_cancel").hide();
+    				self.$el.find("#btn_review").hide();
     			}else{
     				self.$el.find("#btn_save").hide();
+    				self.$el.find("#btn_cancel").hide();
+    				self.$el.find("#btn_review").hide();
     			}
     			
     		}else if (currentUser.hasRole('CucPho')){
     			self.$el.find('.card-header').hide();
     			self.$el.find("#btn_approve").hide();
-    			self.$el.find("#btn_review").show();
-    			self.$el.find("#btn_cancel").show();
-    			if(trangthai !==null && (trangthai ==="send_approved" || trangthai ==="cancel_approved")){
+    			if(trangthai ==="send_review_pct"){
+    				self.$el.find("#btn_review").show();
+        			self.$el.find("#btn_cancel").show();
+        			self.$el.find("#btn_save").show();
+    				
+    			}else if(trangthai === "cancel_approved"){
+    				self.$el.find("#btn_review").show();
+    				self.$el.find("#btn_cancel").show();
     				self.$el.find("#btn_save").show();
+    			}else if(trangthai === "send_approved"){
+    				self.$el.find("#btn_save").show();
+    				self.$el.find("#btn_cancel").hide();
+    				self.$el.find("#btn_review").hide();
     			}else{
     				self.$el.find("#btn_save").hide();
+    				self.$el.find("#btn_cancel").hide();
+    				self.$el.find("#btn_review").hide();
     			}
     			
     		}else if (currentUser.hasRole('CucTruong')){
     			self.$el.find('.card-header').hide();
-    			self.$el.find("#btn_approve").show();
-    			self.$el.find("#btn_review").hide();
-    			self.$el.find("#btn_cancel").show();
+    			if(trangthai ==="send_approved"){
+    				self.$el.find("#btn_approve").show();
+    				self.$el.find("#btn_review").show();
+        			self.$el.find("#btn_cancel").show();
+        			self.$el.find("#btn_save").show();
+    				
+    			}else if(trangthai === "approved"){
+    				self.$el.find("#btn_approve").hide();
+    				self.$el.find("#btn_review").hide();
+    				self.$el.find("#btn_cancel").hide();
+    				self.$el.find("#btn_save").show();
+    			}else{
+    				self.$el.find("#btn_approve").hide();
+    				self.$el.find("#btn_save").hide();
+    				self.$el.find("#btn_cancel").hide();
+    				self.$el.find("#btn_review").hide();
+    			}
     			
     		}
     		
@@ -464,7 +503,7 @@ define(function (require) {
 				el_status_cucpho.find('.author').html(data.username_pctduyet || "&nbsp;");
 				var template_helper = new TemplateHelper();
 				var ngaypheduyet_cucpho = template_helper.datetimeFormat(data.ngaypheduyet_pct, "DD/MM/YYYY");
-				ngaypheduyet_cucpho.find('.date').html(ngaypheduyet_cucpho || "&nbsp;");
+				el_status_cucpho.find('.date').html(ngaypheduyet_cucpho || "&nbsp;");
 				self.$el.find(".ngayketthuc").removeClass("d-none");
 			}
 			var arr_timeline_cuctruong = ["completed","result_checked","checked","approved"]
