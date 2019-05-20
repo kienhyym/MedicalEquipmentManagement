@@ -448,13 +448,13 @@ define(function (require) {
     			}
     		});
     	},
-    	cancel_kehoach: function(id, element,lydo){
+    	cancel_kehoach: function(){
     		var self = this;
-    		
+    		var id = self.model.get("id");
     			    $.ajax({
     					url: self.getApp().serviceURL + "/api/v1/kehoachthanhtra/cancel",
     					method: "POST",
-    					data:JSON.stringify({"id":id,"lydo":lydo}),
+    					data:JSON.stringify({"id":id}),
     					contentType: "application/json",
     					success: function (data) {
     						if (data !== null){
