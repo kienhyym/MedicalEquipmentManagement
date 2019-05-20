@@ -66,6 +66,17 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView','text!app/base/t
 		},
 		postLogin: function(data){
 			var self = this;
+			self.trangthai = {"new": "Tạo mới",
+            "send_review_truongphong": "Chờ cấp phòng duyệt",
+            "cancel_reviewed_truongphong": "Phòng từ chối",
+            "send_review_pct": "Chờ PCT duyệt",
+            "cancel_reviewed_pct": "PCT từ chối",
+            "send_approved": "Chờ CT duyệt",
+            "cancel_approved": "CT từ chối",
+            "approved": "CT đã duyệt quyết định",
+            "checked": "Đã kiểm tra",
+            "result_checked": "Đã có kết luận",
+            "completed": "Hoàn thành"};
 			self.currentUser = new Gonrin.User(data);
 			var tpl = gonrin.template(layout)({});
 			$('.content-contain').html(tpl);

@@ -4,6 +4,17 @@ define(function (require) {
         _                   = require('underscore'),
         Gonrin				= require('gonrin');
     return [
+	    	{
+			    "text":"Lịch thanh tra",
+			    "icon":"fa fa-user",
+			    "type":"view",
+			    "collectionName":"lichthanhtra",
+			    "route":"lichthanhtra/model",
+			    "$ref": "app/lichthanhtra/view/ModelView",
+			     "visible": function(){
+			    	 return true;
+			     }
+			},
 			{
         		"text":"Danh sách đơn vị",
         		"icon":"fa fa-home",
@@ -81,17 +92,7 @@ define(function (require) {
 			     	return  this.userHasRole("Admin");
 			     }
 			},
-            {
-			    "text":"Lịch thanh tra",
-			    "icon":"fa fa-user",
-			    "type":"view",
-			    "collectionName":"lichthanhtra",
-			    "route":"lichthanhtra/model",
-			    "$ref": "app/lichthanhtra/view/ModelView",
-			     "visible": function(){
-			    	 return true;
-			     }
-			},
+            
         ];
 
 });
