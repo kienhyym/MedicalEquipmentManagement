@@ -106,28 +106,28 @@ define(function (require) {
 			    			{"trangthai":{"$eq": "result_checked"}}]};
 		    	 } else if (!!currentUser && currentUser.hasRole("CucPho")){
 		    		 filters_common = {"$or":[
-		    			{"trangthai":{"$eq": "send_approved"}}, 
-		    			{"trangthai":{"$eq": "cancel_approved"}},
+//		    			{"trangthai":{"$eq": "send_approved"}}, 
+//		    			{"trangthai":{"$eq": "cancel_approved"}},
 		    			{"trangthai":{"$eq": "approved"}},
 			    		{"trangthai":{"$eq": "checked"}},
 			    		{"trangthai":{"$eq": "result_checked"}}]};
 		    	 } else if (!!currentUser && currentUser.hasRole("TruongPhong")){
 		    		 filters_common = {"$or":[
-		    			 	{"trangthai":{"$eq": "cancel_reviewed_pct"}}, 
-			    			{"trangthai":{"$eq": "send_review_pct"}},
-			    			{"trangthai":{"$eq": "send_approved"}}, 
-			    			{"trangthai":{"$eq": "cancel_approved"}},
+//		    			 	{"trangthai":{"$eq": "cancel_reviewed_pct"}}, 
+//			    			{"trangthai":{"$eq": "send_review_pct"}},
+//			    			{"trangthai":{"$eq": "send_approved"}}, 
+//			    			{"trangthai":{"$eq": "cancel_approved"}},
 			    			{"trangthai":{"$eq": "approved"}},
 				    		{"trangthai":{"$eq": "checked"}},
 				    		{"trangthai":{"$eq": "result_checked"}}]};
 		    	 } else if (!!currentUser && currentUser.hasRole("ChuyenVien")){
 			    	 filters_common = {"$and":[{"$or":[
-			    		 {"trangthai":{"$eq": "send_review_truongphong"}},
-			    		 {"trangthai":{"$eq": "cancel_reviewed_truongphong"}},
-			    		 {"trangthai":{"$eq": "cancel_reviewed_pct"}}, 
-		    			 {"trangthai":{"$eq": "send_review_pct"}},
-		    			 {"trangthai":{"$eq": "send_approved"}}, 
-		    			 {"trangthai":{"$eq": "cancel_approved"}},
+//			    		 {"trangthai":{"$eq": "send_review_truongphong"}},
+//			    		 {"trangthai":{"$eq": "cancel_reviewed_truongphong"}},
+//			    		 {"trangthai":{"$eq": "cancel_reviewed_pct"}}, 
+//		    			 {"trangthai":{"$eq": "send_review_pct"}},
+//		    			 {"trangthai":{"$eq": "send_approved"}}, 
+//		    			 {"trangthai":{"$eq": "cancel_approved"}},
 		    			 {"trangthai":{"$eq": "approved"}},
 			    		 {"trangthai":{"$eq": "checked"}},
 			    		 {"trangthai":{"$eq": "result_checked"}}]},

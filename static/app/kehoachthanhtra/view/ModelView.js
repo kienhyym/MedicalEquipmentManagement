@@ -158,8 +158,24 @@ define(function (require) {
     	updateUIPermission: function(){
     		var self = this;
     		var currentUser = self.getApp().currentUser;
+    		{ value: "new", text: "Tạo mới" },
+            { value: "send_review_truongphong", text: "Chờ cấp phòng duyệt" },
+            { value: "cancel_reviewed_truongphong", text: "Phòng từ chối" },
+            { value: "send_review_pct", text: "Chờ PCT duyệt" },
+            { value: "cancel_reviewed_pct", text: "PCT từ chối" },
+            { value: "send_approved", text: "Chờ CT duyệt" },
+            { value: "cancel_approved", text: "CT từ chối" },
+    		var trangthai = self.model.get("trangthai");
+    		
     		if (currentUser.hasRole('ChuyenVien')){
     			self.$el.find('.card-header').show();
+    			if(trangthai !==null && 
+    					(trangthai ==="new" ||
+        				trangthai ==="cancel_reviewed_truongphong"))){
+    				self.$el.find("#btn_save").show();
+    			}else{
+    				self.$el.find("#btn_save").hide();
+    			}
     			self.$el.find("#btn_review").show();
     			self.$el.find("#btn_approve").hide();
     			self.$el.find("#btn_cancel").hide();
@@ -168,12 +184,22 @@ define(function (require) {
     			self.$el.find("#btn_approve").hide();
     			self.$el.find("#btn_review").show();
     			self.$el.find("#btn_cancel").show();
+    			if(trangthai !==null && trangthai ==="cancel_reviewed_pct"){
+    				self.$el.find("#btn_save").show();
+    			}else{
+    				self.$el.find("#btn_save").hide();
+    			}
     			
     		}else if (currentUser.hasRole('CucPho')){
     			self.$el.find('.card-header').hide();
     			self.$el.find("#btn_approve").hide();
     			self.$el.find("#btn_review").show();
     			self.$el.find("#btn_cancel").show();
+    			if(trangthai !==null && trangthai ==="cancel_approved"){
+    				self.$el.find("#btn_save").show();
+    			}else{
+    				self.$el.find("#btn_save").hide();
+    			}
     			
     		}else if (currentUser.hasRole('CucTruong')){
     			self.$el.find('.card-header').hide();
@@ -182,6 +208,24 @@ define(function (require) {
     			self.$el.find("#btn_cancel").show();
     			
     		}
+    		
+    		if(trangthai !==null){
+    			if(trangthai ==="result_checked" ||
+        				trangthai ==="checked" ||
+        				trangthai ==="approved"){
+        			self.$el.find("#btn_approve").hide();
+        			self.$el.find("#btn_review").hide();
+        			self.$el.find("#btn_cancel").hide();
+        			
+        		}else if(trangthai ==="completed"){
+        			self.$el.find("#btn_save").hide();
+        			self.$el.find("#btn_approve").hide();
+        			self.$el.find("#btn_review").hide();
+        			self.$el.find("#btn_cancel").hide();
+        			
+        		}
+    		}
+    				
     	},
     	getDoanhNghiep: function(){
     		var self = this;
@@ -325,7 +369,6 @@ define(function (require) {
             li_el.append(span_el);
             span_el.unbind('click').bind('click',{"data":data_file.id},function(e){
             	var id = e.data.data;
-            	console.log("id=======",id)
             	var tailieulienquan = self.model.get("tailieulienquan");
                 if(tailieulienquan === null){
                 	tailieulienquan = [];
