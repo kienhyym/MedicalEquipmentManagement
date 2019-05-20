@@ -88,6 +88,7 @@ define(function (require) {
 		    	 } else if (!!currentUser && currentUser.hasRole("ChuyenVien")){
 			    	 filters_common = {"$and":[{"$or":[
 			    		 {"trangthai":{"$eq": "send_review_truongphong"}},
+			    		 {"trangthai":{"$eq": "cancel_reviewed_truongphong"}},
 			    		 {"trangthai":{"$eq": "send_review_pct"}},
 			    		 {"trangthai":{"$eq": "send_approved"}}]},
 			    		 {"userid_nguoisoanthao":{"$eq": currentUser.id}}]};
