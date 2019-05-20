@@ -158,13 +158,6 @@ define(function (require) {
     	updateUIPermission: function(){
     		var self = this;
     		var currentUser = self.getApp().currentUser;
-    		{ value: "new", text: "Tạo mới" },
-            { value: "send_review_truongphong", text: "Chờ cấp phòng duyệt" },
-            { value: "cancel_reviewed_truongphong", text: "Phòng từ chối" },
-            { value: "send_review_pct", text: "Chờ PCT duyệt" },
-            { value: "cancel_reviewed_pct", text: "PCT từ chối" },
-            { value: "send_approved", text: "Chờ CT duyệt" },
-            { value: "cancel_approved", text: "CT từ chối" },
     		var trangthai = self.model.get("trangthai");
     		
     		if (currentUser.hasRole('ChuyenVien')){
