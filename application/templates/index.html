@@ -17,6 +17,7 @@
 <!--   custom style -->
   <link rel="stylesheet" href="{{static_url}}/css/shards-dashboards.1.1.0.css">
   <link rel="stylesheet" href="{{static_url}}/css/style.css">
+  <link rel="stylesheet" href="{{static_url}}/css/calendar.css">
   
   
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -88,7 +89,7 @@
 	<script src="{{static_url}}/vendor/GonrinUIBoostrap4/js/gonrin.grid.js" type="text/javascript"></script>
 	
 	<script src="{{static_url}}/vendor/GonrinUIBoostrap4/js/gonrin.ref.js" type="text/javascript"></script>
-	<script src="{{static_url}}/vendor/GonrinUI/js/moment.js" type="text/javascript"></script>
+	<script src="{{static_url}}/js/moment.min.js" type="text/javascript"></script>
 	
 	<script src="{{static_url}}/vendor/GonrinUIBoostrap4/js/gonrin.datetimepicker.js" type="text/javascript"></script>
 	<script src="{{static_url}}/vendor/GonrinUIBoostrap4/js/gonrin.combobox.js" type="text/javascript"></script>
@@ -104,11 +105,14 @@
 	<script type="text/javascript" src="{{static_url}}/vendor/bootstrap3-typeahead.js"></script>
 	AdminLTE App
 	<script src="{{static_url}}/js/adminlte.js"></script>	 -->
-	<script src="https://sdk.accountkit.com/vi_VN/sdk.js"></script>
+	<!-- <script src="https://sdk.accountkit.com/vi_VN/sdk.js"></script> -->
 	<!-- <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script> -->
 	<!-- Add Firebase products that you want to use -->
-	<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
+	<script src="{{static_url}}/js/calendar.js"></script>
+		<script src="{{static_url}}/js/locale/vi.js"></script>
+	
+	<!-- <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-messaging.js"></script>
-	<link rel="manifest" href="{{static_url}}/app/manifest.json">
+	<link rel="manifest" href="{{static_url}}/app/manifest.json"> -->
 	<script data-main="{{static_url}}/app/app" src="{{static_url}}/app/require.js"></script>
 </html>

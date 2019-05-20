@@ -33,6 +33,11 @@ define(function (require) {
 			"collectionName": "user",
 			"route": "user/model(/:id)",
 			"$ref": "app/hethong/user/view/ModelView",
+		},
+		{
+			"collectionName": "lichthanhtra",
+			"route": "lichthanhtra/model",
+			"$ref": "app/lichthanhtra/view/ModelView",
 		}
 		
 	];

@@ -82,14 +82,14 @@ define(function (require) {
 			     }
 			},
             {
-			    "text":"Thông tin cá nhân",
+			    "text":"Lịch thanh tra",
 			    "icon":"fa fa-user",
 			    "type":"view",
-			    "collectionName":"bookingpartner",
-			    "route":"bookingpartner/model",
-			    "$ref": "app/bookingpartner/view/ModelView",
+			    "collectionName":"lichthanhtra",
+			    "route":"lichthanhtra/model",
+			    "$ref": "app/lichthanhtra/view/ModelView",
 			     "visible": function(){
-			    	 return  this.userHasRole("BookingPartner");
+			    	 return true;
 			     }
 			},
         ];

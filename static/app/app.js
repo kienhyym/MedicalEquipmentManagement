@@ -75,18 +75,6 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView','text!app/base/t
 			
 			this.nav = new Nav({el: this.$navbar});
 			self.nav.render();
-//			var currentRoute = self.getRouter().currentRoute().fragment;
-//			if(self.currentUser.hasRole("Admin") === true){
-//				if(currentRoute.indexOf('login')>=0){
-//					self.router.navigate('cosokcb/collection');
-//				}
-//				
-//			}else if(self.currentUser.hasRole("CoSoKCB") === true){
-//				if(currentRoute.indexOf('login')>=0){
-//					self.router.navigate('dangkykham/model');
-//				}
-//
-//			}
 			
 			$("span#display_name").html(self.get_displayName(data));
 			
