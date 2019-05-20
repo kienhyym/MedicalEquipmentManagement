@@ -163,7 +163,7 @@ define(function (require) {
     		if (currentUser.hasRole('ChuyenVien')){
     			self.$el.find('.card-header').show();
     			if(trangthai !==null && 
-    					(trangthai ==="new" ||
+    					(trangthai ==="new" || trangthai ==="send_review_truongphong" ||
         				trangthai ==="cancel_reviewed_truongphong")){
     				self.$el.find("#btn_save").show();
     			}else{
@@ -177,7 +177,7 @@ define(function (require) {
     			self.$el.find("#btn_approve").hide();
     			self.$el.find("#btn_review").show();
     			self.$el.find("#btn_cancel").show();
-    			if(trangthai !==null && trangthai ==="cancel_reviewed_pct"){
+    			if(trangthai !==null && (trangthai ==="send_review_pct" || trangthai ==="cancel_reviewed_pct")){
     				self.$el.find("#btn_save").show();
     			}else{
     				self.$el.find("#btn_save").hide();
@@ -188,7 +188,7 @@ define(function (require) {
     			self.$el.find("#btn_approve").hide();
     			self.$el.find("#btn_review").show();
     			self.$el.find("#btn_cancel").show();
-    			if(trangthai !==null && trangthai ==="cancel_approved"){
+    			if(trangthai !==null && (trangthai ==="send_approved" || trangthai ==="cancel_approved")){
     				self.$el.find("#btn_save").show();
     			}else{
     				self.$el.find("#btn_save").hide();
