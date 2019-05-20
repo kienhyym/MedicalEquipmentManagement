@@ -108,7 +108,7 @@ define(function (require) {
     		    					}else if(item.ngaysoanthao!==null){
     		    						start = item.ngaysoanthao;
     		    					}
-    		    					var event_item = {"start":start,"title":item.tenkehoach+'['+self.getApp().trangthai[item.trangthai]+']', "url":"#kehoachthanhtra/model/"+item.id};
+    		    					var event_item = {"start":start,"title":item.tenkehoach+'['+self.getApp().trangthai[item.trangthai]+']', "url":"#kehoachthanhtra/model?id="+item.id};
     		    					events.push(event_item);
     		    				}
         		    	        callback(events);
