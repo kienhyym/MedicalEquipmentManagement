@@ -164,7 +164,7 @@ define(function (require) {
     			self.$el.find('.card-header').show();
     			if(trangthai !==null && 
     					(trangthai ==="new" ||
-        				trangthai ==="cancel_reviewed_truongphong"))){
+        				trangthai ==="cancel_reviewed_truongphong")){
     				self.$el.find("#btn_save").show();
     			}else{
     				self.$el.find("#btn_save").hide();
