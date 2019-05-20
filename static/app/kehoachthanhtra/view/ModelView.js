@@ -159,7 +159,11 @@ define(function (require) {
     		var self = this;
     		var currentUser = self.getApp().currentUser;
     		var trangthai = self.model.get("trangthai");
-    		
+    		console.log("trangthai===",trangthai);
+    		console.log('chuyenvien===',currentUser.hasRole('ChuyenVien'));
+    		console.log('TruongPhong===',currentUser.hasRole('TruongPhong'));
+    		console.log('CucPho===',currentUser.hasRole('CucPho'));
+    		console.log('CucTruong===',currentUser.hasRole('CucTruong'));
     		if (currentUser.hasRole('ChuyenVien')){
     			self.$el.find('.card-header').show();
     			if(trangthai !==null && 
