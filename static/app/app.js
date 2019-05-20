@@ -90,12 +90,13 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView','text!app/base/t
 			$("span#display_name").html(self.get_displayName(data));
 			
 			self.bind_event();
+			self.router.navigate('lichthanhtra/model');
 
 		},
 		bind_event:function(){
 			var self= this;
 			$("#logo").bind('click', function(){
-				self.router.navigate('dangkykham/collection');
+				self.router.navigate('lichthanhtra/model');
             });
 			
 			$("#logout").unbind('click').bind('click', function(){
