@@ -227,7 +227,7 @@ define(function (require) {
     			self.$el.find('.card-header').hide();
     			if(trangthai ==="send_approved"){
     				self.$el.find("#btn_approve").show();
-    				self.$el.find("#btn_review").show();
+    				self.$el.find("#btn_review").hide();
         			self.$el.find("#btn_cancel").show();
         			self.$el.find("#btn_save").show();
     				
@@ -418,7 +418,7 @@ define(function (require) {
                 self.model.set("tailieulienquan",tailieulienquan);
             });
     	},
-    	confirm_kehoach: function(type){
+    	confirm_kehoach: function(){
     		var self = this;
     		var id = self.model.get("id");
     		$.ajax({
