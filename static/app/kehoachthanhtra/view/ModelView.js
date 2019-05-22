@@ -320,6 +320,7 @@ define(function (require) {
 				self.model.save(null, {
 					success: function (model, response, options) {
 						self.updateUITimeline(self.model.toJSON());
+						self.updateUIPermission();
 						self.getApp().notify("Lưu thông tin thành công");
 					},
 					error: function (xhr, status, error) {
