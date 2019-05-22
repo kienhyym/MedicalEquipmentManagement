@@ -164,6 +164,7 @@ define(function (require) {
 //    		console.log('TruongPhong===',currentUser.hasRole('TruongPhong'));
 //    		console.log('CucPho===',currentUser.hasRole('CucPho'));
 //    		console.log('CucTruong===',currentUser.hasRole('CucTruong'));
+    		
     		if (currentUser.hasRole('ChuyenVien')){
     			self.$el.find('.card-header').show();
     			if(trangthai !==null && 
@@ -174,6 +175,10 @@ define(function (require) {
     			}else {
     				self.$el.find("#btn_save").hide();
     				self.$el.find("#btn_review").hide();
+    			}
+    			if(trangthai === null){
+    				self.$el.find("#btn_save").show();
+    				self.$el.find("#btn_review").show();
     			}
     			
     			self.$el.find("#btn_approve").hide();
