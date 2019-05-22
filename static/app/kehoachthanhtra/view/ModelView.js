@@ -176,7 +176,7 @@ define(function (require) {
     				self.$el.find("#btn_save").hide();
     				self.$el.find("#btn_review").hide();
     			}
-    			if(trangthai === null){
+    			if(trangthai === null || self.model.get("id") === null){
     				self.$el.find("#btn_save").show();
     				self.$el.find("#btn_review").show();
     			}
