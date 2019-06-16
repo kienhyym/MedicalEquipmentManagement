@@ -858,19 +858,12 @@
                     hide();
                     return;
                 }
-
+                console.log("targetMoment===",targetMoment);
                 targetMoment = targetMoment.clone().locale(options.locale);
-
-                if (hasTimeZone()) {
-                    targetMoment.tz(options.timeZone);
-                }
 
                 if (options.stepping !== 1) {
                     targetMoment.minutes((Math.round(targetMoment.minutes() / options.stepping) * options.stepping) % 60).seconds(0);
 
-                    while (options.minDate && targetMoment.isBefore(options.minDate)) {
-                        targetMoment.add(options.stepping, 'minutes');
-                    }
                 }
 
                 if (isValid(targetMoment)) {
@@ -894,7 +887,7 @@
                         date: date.clone(),
                         oldDate: oldDate
                     });
-                    hide();
+//                    hide();
                 } else {
                     if (!options.keepInvalid) {
                         input.val(unset ? '' : date.format(actualFormat));
@@ -955,25 +948,11 @@
 
                 input.blur();
 
-//                viewDate = date.clone();
-
                 return picker;
             },
 
             clear = function () {
                 setValue(null);
-            },
-
-            parseInputDate = function (inputDate) {
-                if (options.parseInputDate === undefined) {
-                    if (!moment.isMoment(inputDate) || inputDate instanceof Date) {
-                        inputDate = getMoment(inputDate);
-                    }
-                } else {
-                    inputDate = options.parseInputDate(inputDate);
-                }
-                //inputDate.locale(options.locale);
-                return inputDate;
             },
 
             /********************************************************************************
@@ -1481,7 +1460,7 @@
             ///<summary>Destroys the widget and removes all attached event listeners</summary>
             hide();
             detachDatePickerElementEvents();
-            element.removeData('gonrin');
+            element.removeData('DateTimePicker');
             element.removeData('date');
         };
 

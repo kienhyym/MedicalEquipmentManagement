@@ -38,7 +38,17 @@ define(function (require) {
 			"collectionName": "lichthanhtra",
 			"route": "lichthanhtra/model",
 			"$ref": "app/lichthanhtra/view/ModelView",
-		}
+		},
+		{
+			"collectionName": "kehoachthanhtra",
+			"route": "kehoachthanhtra/collection_approved",
+			"$ref": "app/kehoachthanhtra/view/CollectionView_approved",
+		},
+		{
+			"collectionName": "kehoachthanhtra",
+			"route": "kehoachthanhtra/model_step_plan(/:id)",
+			"$ref": "app/kehoachthanhtra/view/ModelView_12step_plan",
+		},
 		
 	];
 

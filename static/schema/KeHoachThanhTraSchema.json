@@ -1,12 +1,12 @@
 {
     "created_at": {
-        "type": ""
+        "type": "number"
     },
     "created_by": {
         "type": "string"
     },
     "updated_at": {
-        "type": ""
+        "type": "number"
     },
     "updated_by": {
         "type": "string"
@@ -19,7 +19,7 @@
         "type": "string"
     },
     "deleted_at": {
-        "type": ""
+        "type": "number"
     },
     "id": {
         "type": "string",
@@ -56,7 +56,10 @@
         "type": "string"
     },
     "ngaysoanthao": {
-        "type": "datetime"
+        "type": "number"
+    },
+    "chucvu_nguoisoanthao": {
+        "type": "string"
     },
     "userid_phongduyet": {
         "type": "string"
@@ -65,7 +68,7 @@
         "type": "string"
     },
     "ngaypheduyet_phong": {
-        "type": "datetime"
+        "type": "number"
     },
     "userid_pctduyet": {
         "type": "string"
@@ -74,7 +77,10 @@
         "type": "string"
     },
     "ngaypheduyet_pct": {
-        "type": "datetime"
+        "type": "number"
+    },
+    "chucvu_nguoixemxet": {
+        "type": "string"
     },
     "userid_quyetdinh": {
         "type": "string"
@@ -83,7 +89,10 @@
         "type": "string"
     },
     "ngaypheduyet_quyetdinh": {
-        "type": "datetime"
+        "type": "number"
+    },
+    "chucvu_duyetquyetdinh": {
+        "type": "string"
     },
     "loaithanhtra": {
         "type": "string"
@@ -95,7 +104,7 @@
         "type": "string"
     },
     "ngaythanhtra": {
-        "type": "datetime"
+        "type": "number"
     },
     "ketquathanhtra": {
         "type": "string"
@@ -104,7 +113,106 @@
         "type": "string"
     },
     "ngayketthuc": {
-        "type": "datetime"
+        "type": "number"
+    },
+    "soquyetdinh": {
+        "type": "string"
+    },
+    "ngayquyetdinh": {
+        "type": "number"
+    },
+    "danhsach_thanhvien": {
+        "type": "json"
+    },
+    "sokehoach": {
+        "type": "string"
+    },
+    "ngaylenkehoach": {
+        "type": "number"
+    },
+    "socongvan_yeucau": {
+        "type": "string"
+    },
+    "ngayguicongvan_yeucau": {
+        "type": "number"
+    },
+    "sovanban_thongbao_doituong_thanhtra": {
+        "type": "string"
+    },
+    "ngay_vanban_thongbao_doituong_thanhtra": {
+        "type": "number"
+    },
+    "thongbao_dienthoai_doituong_thanhtra": {
+        "type": "string"
+    },
+    "sovanban_congbo_quyetdinh": {
+        "type": "string"
+    },
+    "ngay_congbo_quyetdinh": {
+        "type": "number"
+    },
+    "socongvan_ketthuc_thanhtra": {
+        "type": "string"
+    },
+    "ngay_congvan_ketthuc_thanhtra": {
+        "type": "number"
+    },
+    "codauhieu_hinhsu": {
+        "type": "string"
+    },
+    "ghichu_codauhieu_hinhsu": {
+        "type": "string"
+    },
+    "danhsach_congviec_theodoi": {
+        "type": "json"
+    },
+    "danhsach_xetnghiem_thanhtra": {
+        "type": "json"
+    },
+    "ngay_theodoi_thanhtra": {
+        "type": "number"
+    },
+    "duthao_ketthuc_thanhtra": {
+        "type": "json"
+    },
+    "sovanban_giaitrinh": {
+        "type": "string"
+    },
+    "ngaygui_vanban_giaitrinh": {
+        "type": "number"
+    },
+    "baocao_giaitrinh_ketthuc_thanhtra": {
+        "type": "json"
+    },
+    "so_quyetdinh_ketluanthanhtra": {
+        "type": "string"
+    },
+    "tailieu_quyetdinh_ketluanthanhtra": {
+        "type": "json"
+    },
+    "ngay_quyetdinh_ketluanthanhtra": {
+        "type": "number"
+    },
+    "so_quyetdinh_xuphat": {
+        "type": "string"
+    },
+    "tailieu_quyetdinh_xuphat": {
+        "type": "json"
+    },
+    "ngay_congkhai_doituong_ketluanthanhtra": {
+        "type": "number"
+    },
+    "link_congkhai_ketluanthanhtra": {
+        "type": "string"
+    },
+    "ngay_congkhai_link_ketluanthanhtra": {
+        "type": "number"
+    },
+    "danhsach_hoso_bangiao_luutru": {
+        "type": "json"
+    },
+    "ngay_bangiao_luutru": {
+        "type": "number"
     },
     "trangthai": {
         "type": "string"

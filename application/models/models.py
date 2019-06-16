@@ -132,23 +132,75 @@ class KeHoachThanhTra(CommonModel):
     tailieulienquan = db.Column(JSONB)
     userid_nguoisoanthao = db.Column(String)
     username_nguoisoanthao = db.Column(String)
-    ngaysoanthao = db.Column(DateTime)
+    ngaysoanthao = db.Column(BigInteger())
+    chucvu_nguoisoanthao = db.Column(String)
     userid_phongduyet = db.Column(String)
     username_phongduyet = db.Column(String)
-    ngaypheduyet_phong = db.Column(DateTime)
+    ngaypheduyet_phong = db.Column(BigInteger())
     userid_pctduyet = db.Column(String)
     username_pctduyet = db.Column(String)
-    ngaypheduyet_pct = db.Column(DateTime)
+    ngaypheduyet_pct = db.Column(BigInteger())
+    chucvu_nguoixemxet = db.Column(String)
     userid_quyetdinh = db.Column(String)
     username_quyetdinh = db.Column(String)
-    ngaypheduyet_quyetdinh = db.Column(DateTime)
+    ngaypheduyet_quyetdinh = db.Column(BigInteger())
+    chucvu_duyetquyetdinh = db.Column(String)
+    
     loaithanhtra = db.Column(String)
     doanthanhtra = db.Column(String)
     truongdoanthanhtra = db.Column(String)
-    ngaythanhtra = db.Column(DateTime)
+    ngaythanhtra = db.Column(BigInteger())
     ketquathanhtra = db.Column(String)
     ketluanthanhtra = db.Column(String)
-    ngayketthuc = db.Column(DateTime)
+    ngayketthuc = db.Column(BigInteger())
+    
+    soquyetdinh = db.Column(String)
+    ngayquyetdinh = db.Column(BigInteger())
+    danhsach_thanhvien = db.Column(JSONB)
+    
+    sokehoach = db.Column(String)
+    ngaylenkehoach = db.Column(BigInteger())
+#     danhsach_congviec = db.Column(JSONB)
+    
+    socongvan_yeucau = db.Column(String)
+    ngayguicongvan_yeucau = db.Column(BigInteger())
+    
+    sovanban_thongbao_doituong_thanhtra = db.Column(String)
+    ngay_vanban_thongbao_doituong_thanhtra = db.Column(BigInteger())
+    thongbao_dienthoai_doituong_thanhtra = db.Column(String)
+    
+    sovanban_congbo_quyetdinh = db.Column(String)
+    ngay_congbo_quyetdinh = db.Column(BigInteger())
+    
+    socongvan_ketthuc_thanhtra = db.Column(String)
+    ngay_congvan_ketthuc_thanhtra = db.Column(BigInteger())
+    codauhieu_hinhsu = db.Column(String)
+    ghichu_codauhieu_hinhsu = db.Column(String)
+    
+    danhsach_congviec_theodoi = db.Column(JSONB)
+    danhsach_xetnghiem_thanhtra = db.Column(JSONB)
+    ngay_theodoi_thanhtra = db.Column(BigInteger())
+    
+    duthao_ketthuc_thanhtra = db.Column(JSONB)
+    sovanban_giaitrinh = db.Column(String)
+    ngaygui_vanban_giaitrinh = db.Column(BigInteger())
+    baocao_giaitrinh_ketthuc_thanhtra = db.Column(JSONB)
+    
+    so_quyetdinh_ketluanthanhtra = db.Column(String)
+    tailieu_quyetdinh_ketluanthanhtra = db.Column(JSONB)
+    ngay_quyetdinh_ketluanthanhtra = db.Column(BigInteger())
+    so_quyetdinh_xuphat = db.Column(String)
+    tailieu_quyetdinh_xuphat = db.Column(JSONB)
+    
+    ngay_congkhai_doituong_ketluanthanhtra = db.Column(BigInteger())
+    link_congkhai_ketluanthanhtra = db.Column(String)
+    ngay_congkhai_link_ketluanthanhtra = db.Column(BigInteger())
+    
+    danhsach_hoso_bangiao_luutru = db.Column(JSONB)
+    ngay_bangiao_luutru = db.Column(BigInteger())
+    
+    
+
     trangthai = db.Column(String)
 # Index('hosobenhnhan_uq_sochamsoc_id', HoSoBenhNhan.sochamsoc_id, unique=True, postgresql_where=(and_(HoSoBenhNhan.sochamsoc_id.isnot(None),HoSoBenhNhan.sochamsoc_id !='')))
 

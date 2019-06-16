@@ -82,14 +82,25 @@ define(function (require) {
 			     }
 			},
 			{
-			    "text":"Danh sách cộng tác viên",
-			    "icon":"fa fa-user",
+			    "text":"kế hoạch đang thực hiện",
+			    "icon":"fa fa-book",
 			    "type":"view",
-			    "collectionName":"bookingpartner",
-			    "route":"bookingpartner/collection",
-			    "$ref": "app/bookingpartner/view/CollectionView",
+			    "collectionName":"kehoachthanhtra",
+			    "route":"kehoachthanhtra/collection_approved",
+			    "$ref": "app/kehoachthanhtra/view/CollectionView_planning",
 			     "visible": function(){
-			     	return  this.userHasRole("Admin");
+			     	return  true;
+			     }
+			},
+			{
+			    "text":"Thông tin kế hoạch",
+			    "icon":"fa fa-book",
+			    "type":"view",
+			    "collectionName":"kehoachthanhtra",
+			    "route":"kehoachthanhtra/model_approved",
+			    "$ref": "app/kehoachthanhtra/view/ModelView_12step_plan",
+			     "visible": function(){
+			    	 return false;
 			     }
 			},
             

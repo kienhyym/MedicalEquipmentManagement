@@ -4,11 +4,13 @@ define(function (require) {
         _                   = require('underscore'),
         Gonrin				= require('gonrin');
     
-    var template 			= require('text!app/kehoachthanhtra/tpl/model.html'),
+    var template 			= require('text!app/kehoachthanhtra/tpl/model12step.html'),
     	schema 				= require('json!schema/KeHoachThanhTraSchema.json');
 	var TinhThanhSelectView = require('app/DanhMuc/TinhThanh/view/SelectView');
     var TemplateHelper		= require('app/base/view/TemplateHelper');
+    var ThanhVienThanhTraItemView = require('app/kehoachthanhtra/thanhvienthanhtra/ThanhVienThanhTraItem');
 
+    
     return Gonrin.ModelView.extend({
     	template : template,
     	urlPrefix: "/api/v1/",
@@ -31,6 +33,10 @@ define(function (require) {
 							Backbone.history.history.back();
 						},
 						visible:function(){
+							var currentUser = this.getApp().currentUser;
+							if (currentUser===null){
+								return false;
+							}
 							return this.getApp().currentUser.hasRole("Admin") || this.getApp().currentUser.hasRole("CoSoKCB");
 						}
 					},
@@ -40,7 +46,10 @@ define(function (require) {
 		    	    	buttonClass: "btn-danger btn-sm",
 		    	    	label: "TRANSLATE:DELETE",
 		    	    	visible: function(){
-		    	    		
+		    	    		var currentUser = this.getApp().currentUser;
+							if (currentUser===null){
+								return false;
+							}
 		    	    		return this.getApp().currentUser.hasRole("Admin");
 		    	    	},
 		    	    	command: function(){
@@ -61,6 +70,17 @@ define(function (require) {
     	    }],
     	uiControl:{
     		fields:[
+    			{
+					field:"ngayquyetdinh",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
     			{
 					field:"ngaysoanthao",
 					textFormat:"DD/MM/YYYY",
@@ -121,7 +141,7 @@ define(function (require) {
     		var self = this;
     		self.getDoanhNghiep();
     		self.bindEventSelect();
-			self.updateUIPermission();
+			self.updateUI();
     		
     		
     		var id = this.getApp().getRouter().getParam("id");
@@ -143,10 +163,16 @@ define(function (require) {
         				for(var i=0; i< danhsachfile.length; i++){
         					self.render_list_file(danhsachfile[i], self);
         				}
+        				var danhsach_thanhvien = self.model.get("danhsach_thanhvien");
+        				if (danhsach_thanhvien === null){
+        					danhsach_thanhvien = [];
+        				}
+        				$.each(danhsach_thanhvien,function(idx, value){
+        					self.renderMember_GD1(value);
+        				});
         				self.applyBindings();
     	    			self.$el.find("#multiselect_donvidoanhnghiep").selectpicker('val',self.model.get("madoanhnghiep"));
-    	    			self.updateUITimeline(self.model.toJSON());
-    	    			self.updateUIPermission();
+    	    			self.updateUI();
         			},
         			error: function (xhr, status, error) {
 						try {
@@ -161,132 +187,132 @@ define(function (require) {
 						  self.getApp().notify({ message: "Không tìm thấy dữ liệu"}, { type: "danger", delay: 1000 });
 						}
 					},
+					complete:function(){
+						self.bindEventGD1();
+					}
         		});
     		}else{
-    			self.model.set("trangthai","new");
-    			self.$el.find("#trangthai").hide();
-    			self.$el.find("#timeline").hide();
-    			self.$el.find("#btn_review").hide();
-    			self.$el.find("#btn_approve").hide();
-    			self.$el.find("#btn_cancel").hide();
+    			
     			self.applyBindings();
+    			self.bindEventGD1();
     		}
     		
+    		
     	},
-    	updateUIPermission: function(){
+    	bindEventGD1:function(){
+    		var self = this;
+    		self.$el.find(".btn-add-member").unbind('click').bind('click',function(){
+    			var data_default = {"id":gonrin.uuid(),"hoten":"","vaitro":null};
+    			var danhsach_thanhvien = self.model.get("danhsach_thanhvien");
+    			if(danhsach_thanhvien=== null || danhsach_thanhvien.length===0){
+    				danhsach_thanhvien = [];
+    			}
+    			danhsach_thanhvien.push(data_default);
+    			self.model.set("danhsach_thanhvien",danhsach_thanhvien);
+    			self.applyBinding("danhsach_thanhvien");
+    			self.renderMember_GD1(data_default);
+    		});
+    		self.$el.find(".btn-save-gd1").unbind('click').bind('click', function(){
+    			var soquyetdinh = self.model.get("soquyetdinh");
+    			if(soquyetdinh === null || soquyetdinh===""){
+    				self.getApp().notify("Vui lòng nhập số quyết định thanh tra");
+    				return;
+    			}
+    			
+    			var ngayquyetdinh = self.model.get("ngayquyetdinh");
+    			if(ngayquyetdinh === null || ngayquyetdinh===""){
+    				self.getApp().notify("Vui lòng nhập ngày quyết định thanh tra");
+    				return;
+    			}
+    			var danhsach_thanhvien = self.model.get("danhsach_thanhvien");
+    			if(danhsach_thanhvien === null || danhsach_thanhvien==="" || danhsach_thanhvien.length==0){
+    				self.getApp().notify("Vui lòng nhập danh sách đoàn thanh tra");
+    				return;
+    			}
+    			self.saveModel();
+    		});
+    	},
+    	saveModel:function(){
+    		var self = this;
+    		self.model.save(null, {
+				success: function (model, response, options) {
+					self.getApp().notify("Lưu thông tin thành công");
+				},
+				error: function (xhr, status, error) {
+					try {
+						if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED"){
+							self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+							self.getApp().getRouter().navigate("login");
+						} else {
+						  self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+						}
+					}
+					catch (err) {
+					  self.getApp().notify({ message: "Lưu thông tin không thành công"}, { type: "danger", delay: 1000 });
+					}
+				}
+			});
+    	},
+    	renderMember_GD1:function(data){
+    		var self = this;
+    		self.$el.find("#header_del_member").removeClass("d-none");
+//    		gd1-danhsachthanhvien
+    		
+    		var memberView = new ThanhVienThanhTraItemView();
+    		if(!!data){
+    			memberView.model.set(JSON.parse( JSON.stringify( data )));
+    		}
+    		
+    		memberView.render();
+    		console.log("memberView====",memberView.$el);
+    		self.$el.find("#gd1-danhsachthanhvien").append(memberView.$el);
+    		memberView.on("change", function (event) {
+            	var ds_member = self.model.get("danhsach_thanhvien");
+            	if(ds_member === null){
+            		ds_member = [];
+            		ds_member.push(event.data)
+            	}
+            	for(var i=0;i<ds_member.length;i++){
+            		if(ds_member[i].id === event.oldData.id){
+            			ds_member[i] = event.data;
+            			break;
+            		}
+            	}
+    			self.model.set("danhsach_thanhvien",ds_member);
+    			self.applyBinding("danhsach_thanhvien");
+    		});
+    		memberView.$el.find("#del_member").unbind("click").bind("click", function () {
+            	var ds_member = self.model.get("danhsach_thanhvien");
+                for (var i = 0; i < ds_member.length; i++) {
+                    if (ds_member[i].id === memberView.model.get("id")) {
+                    	ds_member.splice(i, 1);
+                    }
+                }
+                self.model.set("danhsach_thanhvien", ds_member);
+                self.applyBinding("danhsach_thanhvien");
+                memberView.destroy();
+                memberView.remove();
+            });
+    		
+    		
+    	},
+    	updateUI: function(){
     		var self = this;
     		var currentUser = self.getApp().currentUser;
     		var trangthai = self.model.get("trangthai");
-//    		console.log("trangthai===",trangthai);
-//    		console.log('chuyenvien===',currentUser.hasRole('ChuyenVien'));
-//    		console.log('TruongPhong===',currentUser.hasRole('TruongPhong'));
-//    		console.log('CucPho===',currentUser.hasRole('CucPho'));
-//    		console.log('CucTruong===',currentUser.hasRole('CucTruong'));
-    		
-    		if (currentUser.hasRole('ChuyenVien')){
-    			self.$el.find('.card-header').show();
-    			if(trangthai !==null && 
-    					(trangthai ==="new" || trangthai ==="send_review_truongphong" ||
-        				trangthai ==="cancel_reviewed_truongphong")){
-    				self.$el.find("#btn_save").show();
-    				self.$el.find("#btn_review").show();
-    			}else {
-    				self.$el.find("#btn_save").hide();
-    				self.$el.find("#btn_review").hide();
-    			}
-    			if(trangthai === null || self.model.get("id") === null){
-    				self.$el.find("#btn_save").show();
-    				self.$el.find("#btn_review").show();
-    			}
-    			
-    			self.$el.find("#btn_approve").hide();
-    			self.$el.find("#btn_cancel").hide();
-    			
-    			
+    		if(self.model.get("danhsach_thanhvien")!==null
+    				&& self.model.get("soquyetdinh")!==null 
+    				&& self.model.get("ngayquyetdinh")!==null){
+    			self.$el.find(".gd1 .card").addClass("border-success shadow");
+    			self.$el.find(".gd1 .card-title").addClass("text-success");
+    			self.$el.find(".gd1 .badge-pill").removeClass("bg-light border");
+    			self.$el.find(".gd1 .badge-pill").addClass("bg-success");
+    		}else{
+    			self.$el.find(".gd1 .card").removeClass("border-success shadow");
+    			self.$el.find(".gd1 .card-title").removeClass("text-success");
+    			self.$el.find(".gd1 .badge-pill").addClass("bg-light border");
+    			self.$el.find(".gd1 .badge-pill").removeClass("bg-success");
     		}
-    		if (currentUser.hasRole('TruongPhong')){
-    			self.$el.find('.card-header').hide();
-    			self.$el.find("#btn_approve").hide();
-    			
-    			if(trangthai ==="send_review_truongphong"){
-    				self.$el.find("#btn_review").show();
-        			self.$el.find("#btn_cancel").show();
-        			self.$el.find("#btn_save").show();
-    				
-    			}else if(trangthai === "cancel_reviewed_pct"){
-    				self.$el.find("#btn_review").show();
-    				self.$el.find("#btn_cancel").show();
-    				self.$el.find("#btn_save").show();
-    			}else if(trangthai === "send_review_pct"){
-    				self.$el.find("#btn_save").show();
-    				self.$el.find("#btn_cancel").hide();
-    				self.$el.find("#btn_review").hide();
-    			}else{
-    				self.$el.find("#btn_save").hide();
-    				self.$el.find("#btn_cancel").hide();
-    				self.$el.find("#btn_review").hide();
-    			}
-    		}
-    		if (currentUser.hasRole('CucPho')){
-    			self.$el.find('.card-header').hide();
-    			self.$el.find("#btn_approve").hide();
-    			if(trangthai ==="send_review_pct"){
-    				self.$el.find("#btn_review").show();
-        			self.$el.find("#btn_cancel").show();
-        			self.$el.find("#btn_save").show();
-    				
-    			}else if(trangthai === "cancel_approved"){
-    				self.$el.find("#btn_review").show();
-    				self.$el.find("#btn_cancel").show();
-    				self.$el.find("#btn_save").show();
-    			}else if(trangthai === "send_approved"){
-    				self.$el.find("#btn_save").show();
-    				self.$el.find("#btn_cancel").hide();
-    				self.$el.find("#btn_review").hide();
-    			}else{
-    				self.$el.find("#btn_save").hide();
-    				self.$el.find("#btn_cancel").hide();
-    				self.$el.find("#btn_review").hide();
-    			}
-    		}
-    		if(currentUser.hasRole('CucTruong')){
-    			self.$el.find('.card-header').hide();
-    			if(trangthai ==="send_approved"){
-    				self.$el.find("#btn_approve").show();
-    				self.$el.find("#btn_review").hide();
-        			self.$el.find("#btn_cancel").show();
-        			self.$el.find("#btn_save").show();
-    				
-    			}else if(trangthai === "approved"){
-    				self.$el.find("#btn_approve").hide();
-    				self.$el.find("#btn_review").hide();
-    				self.$el.find("#btn_cancel").hide();
-    				self.$el.find("#btn_save").show();
-    			}else{
-    				self.$el.find("#btn_approve").hide();
-    				self.$el.find("#btn_save").hide();
-    				self.$el.find("#btn_cancel").hide();
-    				self.$el.find("#btn_review").hide();
-    			}
-    		}
-    		
-    		if(trangthai !==null){
-    			if(trangthai ==="result_checked" ||
-        				trangthai ==="checked" ||
-        				trangthai ==="approved"){
-        			self.$el.find("#btn_approve").hide();
-        			self.$el.find("#btn_review").hide();
-        			self.$el.find("#btn_cancel").hide();
-        			self.$el.find("#btn_save").show();
-        		}else if(trangthai ==="completed"){
-        			self.$el.find("#btn_save").hide();
-        			self.$el.find("#btn_approve").hide();
-        			self.$el.find("#btn_review").hide();
-        			self.$el.find("#btn_cancel").hide();
-        			
-        		}
-    		}
-    				
     	},
     	getDoanhNghiep: function(){
     		var self = this;
@@ -340,8 +366,6 @@ define(function (require) {
     		self.$el.find("#btn_save").unbind("click").bind("click", function(){
 				self.model.save(null, {
 					success: function (model, response, options) {
-						self.updateUITimeline(self.model.toJSON());
-						self.updateUIPermission();
 						self.getApp().notify("Lưu thông tin thành công");
 					},
 					error: function (xhr, status, error) {
@@ -356,6 +380,9 @@ define(function (require) {
 						catch (err) {
 						  self.getApp().notify({ message: "Lưu thông tin không thành công"}, { type: "danger", delay: 1000 });
 						}
+					},
+					complete:function(){
+						self.updateUI();
 					}
 				});
     			

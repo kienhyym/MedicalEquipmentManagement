@@ -46,9 +46,11 @@ def generate_schema(path = None, exclude = None, prettyprint = True):
         for col in cls.__table__.c:
             col_type = str(col.type)
             schema_type = ''
+            if(classname =="KeHoachThanhTra"):
+                print("col_type===",col_type)
             if 'DECIMAL' in col_type:
                 schema_type = 'number'
-            if col_type in ['INTEGER','SMALLINT', 'FLOAT' ]:
+            if col_type in ['INTEGER','SMALLINT', 'FLOAT','BIGINT' ]:
                 schema_type = 'number'
             if col_type == 'DATETIME':
                 schema_type = 'datetime'
@@ -181,6 +183,12 @@ def add_danhsach_xaphuong():
         db.session.commit()
     except Exception as e:
         print("XA PHUONG ERROR", e)
+
+@manager.command
+def reset_pass_cuctruong():
+    user = db.session.query(User).filter(User.email == 'cuctruong@gmail.com').first()
+    user.password = auth.encrypt_password("123", user.salt)
+    db.session.commit()
 
 @manager.command
 def run():
