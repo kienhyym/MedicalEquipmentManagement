@@ -7,3 +7,5 @@ application/**/__pycache__
 alembic/versions/**
 # Pycharm
 .idea/
+.pydevproject
+.project
