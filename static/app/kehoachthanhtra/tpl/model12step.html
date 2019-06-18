@@ -106,10 +106,10 @@
 		       	   		<table class="table table-bordered">
 					      <thead>
 					        <tr>
-					          <th>Trách nhiệm</th>
-					          <th>Soạn thảo</th>
-					          <th>Xem xét</th>
-					          <th>Phê duyệt</th>
+					          <th></th>
+					          <th>Người soạn thảo</th>
+					          <th>Người xem xét</th>
+					          <th>Người phê duyệt</th>
 					        </tr>
 					      </thead>
 					      <tbody>
@@ -184,12 +184,26 @@
         <div class="col py-2">
             <div class="card">
                 <div class="card-body">
-                    <div class="float-right text-muted d-none">Wed, Jan 11th 2019 8:30 AM</div>
+                    <div class="float-right text-muted d-none"></div>
                     <h4 class="card-title">GĐ3: Phổ biến kế hoạch thanh tra</h4>
                     <div class="row gd3-danhsachphancongviec">
+					  <table class="table table-bordered">
+					      <thead>
+					        <tr>
+					          <th>Hạng mục công việc</th>
+					          <th>Người được phân công</th>
+					        </tr>
+					      </thead>
+					      <tbody id="danhsachphancongviec_grid" data-bind="list:danhsach_congviec_theodoi">
+					        
+					     </tbody>
+					     
+					  </table>
 					  
 		       	   </div>
+		       	   
 		       	   <button class="btn btn-success btn-save-gd3">Lưu</button>
+		       	   <button id="btn-add-task-gd3">Thêm hạng mục</button>
                 </div>
             </div>
         </div>

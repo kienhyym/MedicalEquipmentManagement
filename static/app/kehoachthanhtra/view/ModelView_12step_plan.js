@@ -9,6 +9,7 @@ define(function (require) {
 	var TinhThanhSelectView = require('app/DanhMuc/TinhThanh/view/SelectView');
     var TemplateHelper		= require('app/base/view/TemplateHelper');
     var ThanhVienThanhTraItemView = require('app/kehoachthanhtra/thanhvienthanhtra/ThanhVienThanhTraItem');
+    var CongViecThanhTraItemView = require('app/kehoachthanhtra/congviecthanhtra/CongViecThanhTraItemView');
 
     
     return Gonrin.ModelView.extend({
@@ -252,7 +253,21 @@ define(function (require) {
                 		return date.unix()
                 	}
 				},
-				
+				{
+					field: "danhsach_congviec_theodoi",
+					uicontrol: false,
+					itemView: CongViecThanhTraItemView,
+					tools:[
+						{
+							   name: "create",
+							   type: "button",
+							   buttonClass: "btn btn-primary",
+							   label: "Thêm",
+							   command: "create"
+						},
+					],
+					toolEl: "#btn-add-task-gd3"
+				},
     			{
 					field:"trangthai",
 					label:"Trạng thái",
@@ -310,6 +325,17 @@ define(function (require) {
         				$.each(danhsach_thanhvien,function(idx, value){
         					self.renderMember_GD1(value);
         				});
+        				
+        				//danh sach conviec theo doi
+        				
+        				if (self.model.get("danhsach_congviec_theodoi") === null){
+        					self.model.set("danhsach_congviec_theodoi", []);
+        				}
+//        				$.each(self.model.get("danhsach_congviec_theodoi"),function(idx, value){
+//        					self.renderDanhSachCongViec(value);
+//        				});
+        				
+        				
         				self.applyBindings();
     	    			self.$el.find("#multiselect_donvidoanhnghiep").selectpicker('val',self.model.get("madoanhnghiep"));
     	    			self.updateStepStatus();
@@ -390,17 +416,11 @@ define(function (require) {
     		
     		
     		self.$el.find(".btn-save-gd3").unbind('click').bind('click', function(){
-//    			var sokehoach = self.model.get("sokehoach");
-//    			if(sokehoach === null || sokehoach===""){
-//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
-//    				return;
-//    			}
-//    			
-//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
-//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
-//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
-//    				return;
-//    			}
+    			var danhsach_congviec_theodoi = self.model.get("danhsach_congviec_theodoi");
+    			if(danhsach_congviec_theodoi === null || danhsach_congviec_theodoi===""){
+    				self.getApp().notify("Vui lòng nhập danh sách công việc");
+    				return;
+    			}
     			self.saveModel();
     		});
     		
@@ -668,8 +688,9 @@ define(function (require) {
     	
     	check_gd3_sucees: function(){
     		var self = this;
-    		return (self.model.get("sokehoach")!==null
-    				&& self.model.get("ngaylenkehoach")!==null );
+    		return (self.model.get("danhsach_congviec_theodoi")!==null
+    				&& self.model.get("danhsach_congviec_theodoi")!==null 
+    				&& self.model.get("danhsach_congviec_theodoi").length > 0) ;
     	},
     	
     	check_gd4_sucees: function(){
