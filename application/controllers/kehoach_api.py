@@ -5,6 +5,8 @@ import base64, re
 import binascii
 import aiohttp
 import copy
+import time
+from math import floor
 from gatco.response import json, text, html
 from application.extensions import sqlapimanager
 from application.extensions import auth
@@ -42,17 +44,17 @@ async def kehoach_review(request):
             kehoach.trangthai = KeHoach_ThanhTra_TrangThai["approved"]
             kehoach.userid_quyetdinh = currentUser.id
             kehoach.username_quyetdinh = currentUser.name
-            kehoach.ngaypheduyet_quyetdinh = datetime.now()
+            kehoach.ngaypheduyet_quyetdinh = floor(time.time())
         elif currentUser.has_role("CucPho"):
             kehoach.trangthai = KeHoach_ThanhTra_TrangThai["send_approved"]
             kehoach.userid_pctduyet = currentUser.id
             kehoach.username_pctduyet = currentUser.name
-            kehoach.ngaypheduyet_pct = datetime.now()
+            kehoach.ngaypheduyet_pct = floor(time.time())
         elif currentUser.has_role("TruongPhong"):
             kehoach.trangthai = KeHoach_ThanhTra_TrangThai["send_review_pct"]
             kehoach.userid_phongduyet = currentUser.id
             kehoach.username_phongduyet = currentUser.name
-            kehoach.ngaypheduyet_phong = datetime.now()
+            kehoach.ngaypheduyet_phong = floor(time.time())
         elif currentUser.has_role("ChuyenVien"):
             kehoach.trangthai = KeHoach_ThanhTra_TrangThai["send_review_truongphong"]
         else:
@@ -105,7 +107,7 @@ async def pre_post_kehoachthanhtra(request=None, data=None, Model=None, **kw):
         data['id'] = makehoach.decode('utf-8')
         data["userid_nguoisoanthao"] = currentUser.id
         data["username_nguoisoanthao"] = currentUser.name
-        data["ngaysoanthao"] = str(datetime.now())
+        data["ngaysoanthao"] = floor(time.time())
         
         
         

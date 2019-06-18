@@ -72,6 +72,7 @@ define(function (require) {
     		fields:[
     			{
 					field:"ngayquyetdinh",
+					uicontrol:"datetimepicker",
 					textFormat:"DD/MM/YYYY",
 					extraFormats:["DDMMYYYY"],
 					parseInputDate: function(val){
@@ -83,6 +84,7 @@ define(function (require) {
 				},
     			{
 					field:"ngaysoanthao",
+					uicontrol:"datetimepicker",
 					textFormat:"DD/MM/YYYY",
 					extraFormats:["DDMMYYYY"],
 					parseInputDate: function(val){
@@ -94,6 +96,7 @@ define(function (require) {
 				},
 				{
 					field:"ngaypheduyet",
+					uicontrol:"datetimepicker",
 					textFormat:"DD/MM/YYYY",
 					extraFormats:["DDMMYYYY"],
 					parseInputDate: function(val){
@@ -105,6 +108,7 @@ define(function (require) {
 				},
 				{
 					field:"ngaythanhtra",
+					uicontrol:"datetimepicker",
 					textFormat:"DD/MM/YYYY",
 					extraFormats:["DDMMYYYY"],
 					parseInputDate: function(val){
@@ -114,6 +118,141 @@ define(function (require) {
                 		return date.unix()
                 	}
 				},
+				{
+					field:"ngaylenkehoach",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				{
+					field:"ngayguicongvan_yeucau",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				{
+					field:"ngay_congvan_ketthuc_thanhtra",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				{
+					field:"ngaygui_vanban_giaitrinh",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				{
+					field:"ngay_vanban_thongbao_doituong_thanhtra",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				{
+					field:"ngay_vanban_thongbao_doituong_thanhtra",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				{
+					field:"ngay_congbo_quyetdinh",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				{
+					field:"ngay_quyetdinh_ketluanthanhtra",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				{
+					field:"ngay_congkhai_link_ketluanthanhtra",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				{
+					field:"ngay_congkhai_doituong_ketluanthanhtra",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				
+				
+				{
+					field:"ngay_bangiao_luutru",
+					uicontrol:"datetimepicker",
+					textFormat:"DD/MM/YYYY",
+					extraFormats:["DDMMYYYY"],
+					parseInputDate: function(val){
+                		return moment.unix(val)
+                	},
+                	parseOutputDate: function(date){
+                		return date.unix()
+                	}
+				},
+				
     			{
 					field:"trangthai",
 					label:"Trạng thái",
@@ -141,11 +280,12 @@ define(function (require) {
     		var self = this;
     		self.getDoanhNghiep();
     		self.bindEventSelect();
-			self.updateUI();
-    		
+			self.updateStepStatus();
     		
     		var id = this.getApp().getRouter().getParam("id");
+    		
     		if(id){
+    			
     			this.model.set('id',id);
         		this.model.fetch({
         			success: function(data){
@@ -172,7 +312,7 @@ define(function (require) {
         				});
         				self.applyBindings();
     	    			self.$el.find("#multiselect_donvidoanhnghiep").selectpicker('val',self.model.get("madoanhnghiep"));
-    	    			self.updateUI();
+    	    			self.updateStepStatus();
         			},
         			error: function (xhr, status, error) {
 						try {
@@ -231,12 +371,193 @@ define(function (require) {
     			}
     			self.saveModel();
     		});
+    		
+    		
+    		self.$el.find(".btn-save-gd2").unbind('click').bind('click', function(){
+    			var sokehoach = self.model.get("sokehoach");
+    			if(sokehoach === null || sokehoach===""){
+    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+    				return;
+    			}
+    			
+    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+    				return;
+    			}
+    			self.saveModel();
+    		});
+    		
+    		
+    		self.$el.find(".btn-save-gd3").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
+    		
+    		self.$el.find(".btn-save-gd4").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
+    		
+    		
+    		//5
+    		self.$el.find(".btn-save-gd5").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
+    		
+    		
+    		//6
+    		self.$el.find(".btn-save-gd6").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
+    		
+    		//7
+    		self.$el.find(".btn-save-gd7").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
+    		
+    		//8
+    		self.$el.find(".btn-save-gd8").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
+    		
+    		
+    		//9
+    		self.$el.find(".btn-save-gd9").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
+    		
+    		
+    		//10
+    		self.$el.find(".btn-save-gd10").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
+    		
+    		//11
+    		self.$el.find(".btn-save-gd11").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
+    		
+    		
+    		//12
+    		self.$el.find(".btn-save-gd12").unbind('click').bind('click', function(){
+//    			var sokehoach = self.model.get("sokehoach");
+//    			if(sokehoach === null || sokehoach===""){
+//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
+//    				return;
+//    			}
+//    			
+//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
+//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
+//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
+//    				return;
+//    			}
+    			self.saveModel();
+    		});
     	},
     	saveModel:function(){
     		var self = this;
     		self.model.save(null, {
 				success: function (model, response, options) {
 					self.getApp().notify("Lưu thông tin thành công");
+					self.getApp().router.refresh();
 				},
 				error: function (xhr, status, error) {
 					try {
@@ -296,23 +617,104 @@ define(function (require) {
     		
     		
     	},
-    	updateUI: function(){
+    	updateStepStatus: function(step, ){
     		var self = this;
     		var currentUser = self.getApp().currentUser;
     		var trangthai = self.model.get("trangthai");
-    		if(self.model.get("danhsach_thanhvien")!==null
-    				&& self.model.get("soquyetdinh")!==null 
-    				&& self.model.get("ngayquyetdinh")!==null){
-    			self.$el.find(".gd1 .card").addClass("border-success shadow");
-    			self.$el.find(".gd1 .card-title").addClass("text-success");
-    			self.$el.find(".gd1 .badge-pill").removeClass("bg-light border");
-    			self.$el.find(".gd1 .badge-pill").addClass("bg-success");
+    		
+    		self.updateStepUI(1, self.check_gd1_sucees());
+    		self.updateStepUI(2, self.check_gd2_sucees());
+    		
+    		self.updateStepUI(4, self.check_gd4_sucees());
+    		self.updateStepUI(5, self.check_gd5_sucees());
+    		self.updateStepUI(6, self.check_gd6_sucees());
+    		self.updateStepUI(7, self.check_gd7_sucees());
+    		self.updateStepUI(8, self.check_gd8_sucees());
+    		
+    		self.updateStepUI(9, self.check_gd9_sucees());
+    		self.updateStepUI(10, self.check_gd10_sucees());
+    		self.updateStepUI(11, self.check_gd11_sucees());
+    		self.updateStepUI(12, self.check_gd12_sucees());
+    	},
+    	updateStepUI: function(step, status){
+    		var self = this;
+    		if(status){
+    			self.$el.find(".gd" + step +" .card").addClass("border-success shadow");
+    			self.$el.find(".gd" + step +" .card-title").addClass("text-success");
+    			self.$el.find(".gd" + step +" .badge-pill").removeClass("bg-light border");
+    			self.$el.find(".gd" + step +" .badge-pill").addClass("bg-success");
     		}else{
-    			self.$el.find(".gd1 .card").removeClass("border-success shadow");
-    			self.$el.find(".gd1 .card-title").removeClass("text-success");
-    			self.$el.find(".gd1 .badge-pill").addClass("bg-light border");
-    			self.$el.find(".gd1 .badge-pill").removeClass("bg-success");
+    			self.$el.find(".gd" + step +" .card").removeClass("border-success shadow");
+    			self.$el.find(".gd" + step +" .card-title").removeClass("text-success");
+    			self.$el.find(".gd" + step +" .badge-pill").addClass("bg-light border");
+    			self.$el.find(".gd" + step +" .badge-pill").removeClass("bg-success");
     		}
+    	},
+    	
+    	
+    	
+    	//check gd status
+    	check_gd1_sucees: function(){
+    		var self = this;
+    		return (self.model.get("danhsach_thanhvien")!==null
+    				&& self.model.get("soquyetdinh")!==null 
+    				&& self.model.get("ngayquyetdinh")!==null);
+    	},
+    	check_gd2_sucees: function(){
+    		var self = this;
+    		return (self.model.get("sokehoach")!==null
+    				&& self.model.get("ngaylenkehoach")!==null );
+    	},
+    	
+    	check_gd3_sucees: function(){
+    		var self = this;
+    		return (self.model.get("sokehoach")!==null
+    				&& self.model.get("ngaylenkehoach")!==null );
+    	},
+    	
+    	check_gd4_sucees: function(){
+    		var self = this;
+    		return (self.model.get("socongvan_yeucau")!==null
+    				&& self.model.get("ngayguicongvan_yeucau")!==null );
+    	},
+    	check_gd5_sucees: function(){
+    		var self = this;
+    		return (self.model.get("sovanban_thongbao_doituong_thanhtra")!==null
+    				&& self.model.get("ngay_vanban_thongbao_doituong_thanhtra")!==null );
+    	},
+    	check_gd6_sucees: function(){
+    		var self = this;
+    		return (self.model.get("sovanban_congbo_quyetdinh")!==null
+    				&& self.model.get("ngay_congbo_quyetdinh")!==null );
+    	},
+    	check_gd7_sucees: function(){
+    		var self = this;
+    		return (self.model.get("socongvan_ketthuc_thanhtra")!==null
+    				&& self.model.get("ngay_congvan_ketthuc_thanhtra")!==null );
+    	},
+    	check_gd8_sucees: function(){
+    		var self = this;
+//    		return (self.model.get("sokehoach")!==null
+//    				&& self.model.get("ngaylenkehoach")!==null );
+    		return false;
+    	},
+    	check_gd9_sucees: function(){
+    		var self = this;
+    		return (self.model.get("sovanban_giaitrinh")!==null
+    				&& self.model.get("ngaygui_vanban_giaitrinh")!==null );
+    	},
+    	check_gd10_sucees: function(){
+    		var self = this;
+    		return (self.model.get("so_quyetdinh_ketluanthanhtra")!==null
+    				&& self.model.get("ngay_quyetdinh_ketluanthanhtra")!==null );
+    	},
+    	check_gd11_sucees: function(){
+    		var self = this;
+    		return (self.model.get("ngay_congkhai_doituong_ketluanthanhtra")!==null);
+    	},
+    	check_gd12_sucees: function(){
+    		var self = this;
+    		return (self.model.get("ngay_bangiao_luutru")!==null);
     	},
     	getDoanhNghiep: function(){
     		var self = this;
@@ -382,7 +784,7 @@ define(function (require) {
 						}
 					},
 					complete:function(){
-						self.updateUI();
+						self.updateStepStatus();
 					}
 				});
     			
@@ -483,7 +885,7 @@ define(function (require) {
     			success: function (data) {
     				if (data !== null){
     					self.model.set(data);
-    					self.updateUITimeline(data);
+    					self.updateStepStatusTimeline(data);
     					self.getApp().notify("Xác nhận thành công!");
     					return;
     				}
@@ -513,7 +915,7 @@ define(function (require) {
     					success: function (data) {
     						if (data !== null){
     							self.model.set(data);
-    							self.updateUITimeline(data);
+    							self.updateStepStatusTimeline(data);
     							self.getApp().notify("Từ chối xét duyệt thành công!");
     							return;
     						}
@@ -534,7 +936,7 @@ define(function (require) {
     			  
     		
     	},
-    	updateUITimeline:function(data){
+    	updateStepStatusTimeline:function(data){
     		var self = this;
     		var el_status_new = self.$el.find("#timeline .kehoach_new");
 			el_status_new.addClass("complete");

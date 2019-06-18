@@ -90,7 +90,7 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView','text!app/base/t
 			$("span#display_name").html(self.get_displayName(data));
 			
 			self.bind_event();
-			self.router.navigate('lichthanhtra/model');
+//			self.router.navigate('lichthanhtra/model');
 
 		},
 		bind_event:function(){
