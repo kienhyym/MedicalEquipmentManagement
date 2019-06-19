@@ -178,6 +178,7 @@ class KeHoachThanhTra(CommonModel):
     ghichu_codauhieu_hinhsu = db.Column(String)
     
     danhsach_congviec_theodoi = db.Column(JSONB)
+    danhsach_congviec_thuchien = db.Column(JSONB)
     danhsach_xetnghiem_thanhtra = db.Column(JSONB)
     ngay_theodoi_thanhtra = db.Column(BigInteger())
     
