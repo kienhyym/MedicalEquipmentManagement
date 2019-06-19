@@ -10,6 +10,7 @@ define(function (require) {
     var TemplateHelper		= require('app/base/view/TemplateHelper');
     var ThanhVienThanhTraItemView = require('app/kehoachthanhtra/thanhvienthanhtra/ThanhVienThanhTraItem');
     var CongViecThanhTraItemView = require('app/kehoachthanhtra/congviecthanhtra/CongViecThanhTraItemView');
+    var CongViecThanhTraThucHienItemView = require('app/kehoachthanhtra/congviecthanhtra/CongViecThanhTraThucHienItemView');
 
     
     return Gonrin.ModelView.extend({
@@ -268,6 +269,14 @@ define(function (require) {
 					],
 					toolEl: "#btn-add-task-gd3"
 				},
+				{
+					field: "danhsach_congviec_thuchien",
+					uicontrol: false,
+					itemView: CongViecThanhTraThucHienItemView,
+					
+					
+				},
+				
     			{
 					field:"trangthai",
 					label:"Trạng thái",
@@ -328,12 +337,36 @@ define(function (require) {
         				
         				//danh sach conviec theo doi
         				
+        				if (self.model.get("danhsach_congviec_thuchien") === null){
+        					self.model.set("danhsach_congviec_thuchien", []);
+        				}
+        				
         				if (self.model.get("danhsach_congviec_theodoi") === null){
         					self.model.set("danhsach_congviec_theodoi", []);
         				}
-//        				$.each(self.model.get("danhsach_congviec_theodoi"),function(idx, value){
-//        					self.renderDanhSachCongViec(value);
-//        				});
+        				var danhsach_congviec_theodoi = self.model.get("danhsach_congviec_theodoi");
+        				var danhsach_congviec_thuchien = self.model.get("danhsach_congviec_thuchien");
+        				
+        				//$.each(danhsach_congviec_theodoi,function(idx, value){
+        					//self.renderDanhSachCongViec(value);
+        					for(var i = 0; i < danhsach_congviec_theodoi.length; i++){
+        						var found = false;
+        						for (var j = 0; j < danhsach_congviec_thuchien.length; j++){
+        							found = true;
+        							if (danhsach_congviec_theodoi[i].id === danhsach_congviec_thuchien[j].id){
+        								danhsach_congviec_thuchien[j].hangmuccongviec = danhsach_congviec_theodoi[i].hangmuccongviec;
+        								danhsach_congviec_thuchien[j].nguoiduocphancong = danhsach_congviec_theodoi[i].nguoiduocphancong;
+        								break;
+        							}
+        						};
+        						if (!found){
+        							danhsach_congviec_thuchien.push($.parseJSON(JSON.stringify(danhsach_congviec_theodoi[i])));
+        						}
+        					};
+        					
+        					self.model.set("danhsach_congviec_thuchien", danhsach_congviec_theodoi);
+        					
+        				//});
         				
         				
         				self.applyBindings();
@@ -442,34 +475,24 @@ define(function (require) {
     		
     		//5
     		self.$el.find(".btn-save-gd5").unbind('click').bind('click', function(){
-//    			var sokehoach = self.model.get("sokehoach");
-//    			if(sokehoach === null || sokehoach===""){
-//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
-//    				return;
-//    			}
-//    			
-//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
-//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
-//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
-//    				return;
-//    			}
+    			var sovanban_thongbao_doituong_thanhtra = self.model.get("sovanban_thongbao_doituong_thanhtra");
+    			if(sovanban_thongbao_doituong_thanhtra === null || sovanban_thongbao_doituong_thanhtra ===""){
+    				self.getApp().notify("Vui lòng nhập số văn bản thông báo");
+    				return;
+    			}
+    			
+    			var ngay_vanban_thongbao_doituong_thanhtra = self.model.get("ngay_vanban_thongbao_doituong_thanhtra");
+    			if(ngay_vanban_thongbao_doituong_thanhtra === null || ngay_vanban_thongbao_doituong_thanhtra===""){
+    				self.getApp().notify("Vui lòng nhập ngày thông báo");
+    				return;
+    			}
     			self.saveModel();
     		});
     		
     		
     		//6
     		self.$el.find(".btn-save-gd6").unbind('click').bind('click', function(){
-//    			var sokehoach = self.model.get("sokehoach");
-//    			if(sokehoach === null || sokehoach===""){
-//    				self.getApp().notify("Vui lòng nhập số kế hoạch thanh tra");
-//    				return;
-//    			}
-//    			
-//    			var ngaylenkehoach = self.model.get("ngaylenkehoach");
-//    			if(ngaylenkehoach === null || ngaylenkehoach===""){
-//    				self.getApp().notify("Vui lòng nhập ngày lên kế hoạch thanh tra");
-//    				return;
-//    			}
+    			
     			self.saveModel();
     		});
     		
