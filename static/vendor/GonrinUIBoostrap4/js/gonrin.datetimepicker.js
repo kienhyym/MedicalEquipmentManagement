@@ -858,7 +858,6 @@
                     hide();
                     return;
                 }
-                console.log("targetMoment===",targetMoment);
                 targetMoment = targetMoment.clone().locale(options.locale);
 
                 if (options.stepping !== 1) {

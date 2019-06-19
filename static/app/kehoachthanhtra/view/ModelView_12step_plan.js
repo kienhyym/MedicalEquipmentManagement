@@ -263,7 +263,7 @@ define(function (require) {
 							   name: "create",
 							   type: "button",
 							   buttonClass: "btn btn-primary",
-							   label: "Thêm",
+							   label: "Thêm hạng mục",
 							   command: "create"
 						},
 					],
@@ -681,17 +681,37 @@ define(function (require) {
     	},
     	updateStepUI: function(step, status){
     		var self = this;
+    		//self.$el.find(".gd" + step +" .badge-pill").removeClass("bg-light border");
+    		self.$el.find(".gd" + step +" .badge-pill").addClass("bg-light border");
+    		self.$el.find(".gd" + step +" .card-title").removeClass("text-success");
+    		self.$el.find(".gd" + step +" .card-title").removeClass("text-danger");
+    		self.$el.find(".gd" + step +" .card").removeClass("border-success shadow");
+    		self.$el.find(".gd" + step +" .card").removeClass("border-danger shadow");
+    		
     		if(status){
-    			self.$el.find(".gd" + step +" .card").addClass("border-success shadow");
-    			self.$el.find(".gd" + step +" .card-title").addClass("text-success");
+    			self.$el.find(".gd" + step +" .card").addClass("border-" + status + " shadow");
+    			self.$el.find(".gd" + step +" .card-title").addClass("text-" + status);
     			self.$el.find(".gd" + step +" .badge-pill").removeClass("bg-light border");
-    			self.$el.find(".gd" + step +" .badge-pill").addClass("bg-success");
-    		}else{
-    			self.$el.find(".gd" + step +" .card").removeClass("border-success shadow");
-    			self.$el.find(".gd" + step +" .card-title").removeClass("text-success");
-    			self.$el.find(".gd" + step +" .badge-pill").addClass("bg-light border");
-    			self.$el.find(".gd" + step +" .badge-pill").removeClass("bg-success");
+    			self.$el.find(".gd" + step +" .badge-pill").addClass("bg-" + status);
     		}
+    		
+    		
+//    		self.$el.find(".gd" + step +" .card").addClass("border-success shadow");
+//    		self.$el.find(".gd" + step +" .card-title").addClass("text-success");
+//    		//self.$el.find(".gd" + step +" .badge-pill").removeClass("bg-light border");
+//    		self.$el.find(".gd" + step +" .badge-pill").addClass("bg-success");
+    		
+//    		if (status == "default"){
+//    			self.$el.find(".gd" + step +" .badge-pill").addClass("bg-light border");
+//    		}else{
+//    			self.$el.find(".gd" + step +" .badge-pill").removeClass("bg-light border");
+//    		}
+    		
+//    		self.$el.find(".gd" + step +" .card").removeClass("border-success shadow");
+//    		self.$el.find(".gd" + step +" .card-title").removeClass("text-success");
+//    		self.$el.find(".gd" + step +" .badge-pill").addClass("bg-light border");
+//    		self.$el.find(".gd" + step +" .badge-pill").removeClass("bg-success");
+    		
     	},
     	
     	
@@ -699,66 +719,110 @@ define(function (require) {
     	//check gd status
     	check_gd1_sucees: function(){
     		var self = this;
-    		return (self.model.get("danhsach_thanhvien")!==null
+    		
+    		if (self.model.get("danhsach_thanhvien")!==null
     				&& self.model.get("soquyetdinh")!==null 
-    				&& self.model.get("ngayquyetdinh")!==null);
+    				&& self.model.get("ngayquyetdinh")!==null){
+    			return "success"
+    		}
+    		return "default";
     	},
     	check_gd2_sucees: function(){
     		var self = this;
-    		return (self.model.get("sokehoach")!==null
-    				&& self.model.get("ngaylenkehoach")!==null );
+    		if (self.model.get("sokehoach")!==null
+    				&& self.model.get("ngaylenkehoach")!==null ){
+    			return "success"
+    		}
+    		return "default";
     	},
     	
     	check_gd3_sucees: function(){
     		var self = this;
-    		return (self.model.get("danhsach_congviec_theodoi")!==null
+    		if (self.model.get("danhsach_congviec_theodoi")!==null
     				&& self.model.get("danhsach_congviec_theodoi")!==null 
-    				&& self.model.get("danhsach_congviec_theodoi").length > 0) ;
+    				&& self.model.get("danhsach_congviec_theodoi").length > 0) {
+    			return "success"
+    		}
+    		return "default";
     	},
     	
     	check_gd4_sucees: function(){
     		var self = this;
-    		return (self.model.get("socongvan_yeucau")!==null
-    				&& self.model.get("ngayguicongvan_yeucau")!==null );
+    		if (self.model.get("socongvan_yeucau")!==null
+    				&& self.model.get("ngayguicongvan_yeucau")!==null ){
+    			return "success"
+    		}
+    		return "default";
     	},
     	check_gd5_sucees: function(){
     		var self = this;
-    		return (self.model.get("sovanban_thongbao_doituong_thanhtra")!==null
-    				&& self.model.get("ngay_vanban_thongbao_doituong_thanhtra")!==null );
+    		if (self.model.get("sovanban_thongbao_doituong_thanhtra")!==null
+    				&& self.model.get("ngay_vanban_thongbao_doituong_thanhtra")!==null ){
+    			return "success"
+    		}
+    		return "default";
     	},
     	check_gd6_sucees: function(){
     		var self = this;
-    		return (self.model.get("sovanban_congbo_quyetdinh")!==null
-    				&& self.model.get("ngay_congbo_quyetdinh")!==null );
+    		self.$el.find(".gd6 .danger-reason").html("");
+    		var ngay_congbo_quyetdinh = self.model.get("ngay_congbo_quyetdinh");
+    		var ngayguicongvan_yeucau = self.model.get("ngayguicongvan_yeucau");
+    		
+    		if(!!ngayguicongvan_yeucau && !!ngay_congbo_quyetdinh && ( (ngay_congbo_quyetdinh - ngayguicongvan_yeucau) < 5*24*60*60)){
+    			self.$el.find(".gd6 .danger-reason").html("Công bố quyết định thanh tra quá sớm");
+    			return "danger"
+    		}
+    		
+    		if (self.model.get("sovanban_congbo_quyetdinh")!==null
+    				&& self.model.get("ngay_congbo_quyetdinh")!==null ){
+    			return "success"
+    		}
+    		
+    		return "default";
     	},
     	check_gd7_sucees: function(){
     		var self = this;
-    		return (self.model.get("socongvan_ketthuc_thanhtra")!==null
-    				&& self.model.get("ngay_congvan_ketthuc_thanhtra")!==null );
+    		if (self.model.get("socongvan_ketthuc_thanhtra")!==null
+    				&& self.model.get("ngay_congvan_ketthuc_thanhtra")!==null ){
+    			return "success"
+    		}
+    		return "default";
     	},
     	check_gd8_sucees: function(){
     		var self = this;
-//    		return (self.model.get("sokehoach")!==null
-//    				&& self.model.get("ngaylenkehoach")!==null );
-    		return false;
+    		var ngay_congbo_quyetdinh = self.model.get("ngay_congbo_quyetdinh");
+    		var ngaygui_vanban_giaitrinh = self.model.get("ngaygui_vanban_giaitrinh");
+    		
+    		if(!!ngay_congbo_quyetdinh){
+    			var checkngay = moment().unix();
+    			if (!!ngaygui_vanban_giaitrinh){
+    				checkngay = ngaygui_vanban_giaitrinh;
+    			}
+    			
+    			if ((checkngay - ngay_congbo_quyetdinh) > 45*24*60*60){
+    				self.$el.find(".gd8 .danger-reason").html("Quá 45 ngày kể từ ngày gửi quyết định thanh tra");
+					return "danger"
+				}
+    		}
+    		return "default";
     	},
     	check_gd9_sucees: function(){
     		var self = this;
-    		return (self.model.get("sovanban_giaitrinh")!==null
+    		if (self.model.get("sovanban_giaitrinh")!==null
     				&& self.model.get("ngaygui_vanban_giaitrinh")!==null );
     	},
     	check_gd10_sucees: function(){
     		var self = this;
-    		return (self.model.get("so_quyetdinh_ketluanthanhtra")!==null
+    		if (self.model.get("so_quyetdinh_ketluanthanhtra")!==null
     				&& self.model.get("ngay_quyetdinh_ketluanthanhtra")!==null );
     	},
     	check_gd11_sucees: function(){
     		var self = this;
-    		return (self.model.get("ngay_congkhai_doituong_ketluanthanhtra")!==null);
+    		if (self.model.get("ngay_congkhai_doituong_ketluanthanhtra")!==null);
     	},
     	check_gd12_sucees: function(){
     		var self = this;
-    		return (self.model.get("ngay_bangiao_luutru")!==null);
+    		if (self.model.get("ngay_bangiao_luutru")!==null);
     	},
     	getDoanhNghiep: function(){
     		var self = this;
