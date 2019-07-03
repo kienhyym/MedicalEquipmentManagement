@@ -9,6 +9,22 @@ import uuid
 def default_uuid():
     return str(uuid.uuid4())
 
+
+class UserDuBaoSotXuatHuyet(CommonModel):
+    __tablename__ = 'userdubaosotxuathuyet'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(255), unique=True)
+    fullname = db.Column(db.String(255), unique=True)
+    password = db.Column(db.String(255), nullable=False)
+    zalo_id = db.Column(db.Integer, unique=True)
+    phone = db.Column(db.String(255), nullable=False)
+
+
+class Zalo(CommonModel):
+    __tablename__ = 'zalo'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), unique=True)
+
     
 class DanToc(CommonModel):
     __tablename__ = 'dantoc'

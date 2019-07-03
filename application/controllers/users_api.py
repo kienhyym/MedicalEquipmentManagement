@@ -20,15 +20,17 @@ from math import floor, ceil
 from application.client import HTTPClient
 from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
-
+from application.models import UserDuBaoSotXuatHuyet
+from application.controllers.helper import current_user
 
 
 @app.route('api/v1/current_user')
 async def get_current_user(request):
     error_msg = None
     currentUser = await current_user(request)
+    print("===============", currentUser)
     if currentUser is not None:
-        user_info = await get_user_with_permission(currentUser)
+        user_info = to_dict(currentUser)
         return json(user_info)
     else:
         error_msg = "Tài khoản không tồn tại"
@@ -46,33 +48,53 @@ async def logout(request):
         pass
     return json({})
  
- 
-# @auth.user_loader
-# def user_loader(token):
-#     if token is not None:
-#         if 'exprire' in token:
-#             if token['exprire'] < time.time():
-#                 return None
-#             del(token["exprire"])
-#         return token
-#     return None
-# 
-# @auth.serializer
-# def serializer(userobj):
-#     userobj['exprire'] = time.time() + auth.expire
-#     return userobj 
 
-@app.route('api/v1/login', methods=['POST'])
+@app.route('/api/v1/login', methods=['POST'])
 async def login(request):
-    username = request.json.get("data", None)
-    password = request.json.get("password", None)
-    user = db.session.query(User).filter(or_(User.email == username, User.phone_number == username)).first()
-    if (user is not None) and auth.verify_password(password, user.password, user.salt):
+    data = request.json
+    username = data['username']
+    password = data['password']
+    print("==================USER NAME", username)
+    print("==================PASSWORD", password)
+    user = db.session.query(UserDuBaoSotXuatHuyet).filter(or_(UserDuBaoSotXuatHuyet.email == username, UserDuBaoSotXuatHuyet.phone == username)).first()
+    print("==================", user)
+    if (user is not None) and auth.verify_password(password, user.password):
         auth.login_user(request, user)
-        result = await get_user_with_permission(user)
+        result = []
+        result = to_dict(user)
+        print("-----------------------", result)
         return json(result)
     return json({"error_code":"LOGIN_FAILED","error_message":"Tài khoản hoặc mật khẩu không đúng"}, status=520)
- 
+
+@app.route('/api/v1/register', methods=["POST"])
+def register(request):
+    data = request.json
+    print("===================", data)
+    user = db.session.query(UserDuBaoSotXuatHuyet).filter(or_(UserDuBaoSotXuatHuyet.email==data["email"], UserDuBaoSotXuatHuyet.phone==data["phone"])).first()
+    if user is not None:
+        return json({
+            "ok": False,
+            "message": "Email hoặc phone đã tồn tại"
+            }, status = 520)
+
+    else:
+        new_user = UserDuBaoSotXuatHuyet()
+
+        new_user.display_name = data["display_name"]
+        new_user.email = data["email"]
+        new_user.phone = data["phone"]
+        # new_user.user_image = data["user_image"]
+        new_user.password = auth.encrypt_password(data["password"])
+
+        db.session.add(new_user)
+        db.session.commit()
+
+        return json({
+            "ok": True,
+            "message": "Đăng ký thành công"
+        })
+
+
 
 async def prepost_user(request=None, data=None, Model=None, **kw):
     currentUser = await current_user(request)
@@ -142,3 +164,5 @@ sqlapimanager.create_api(Role, max_results_per_page=1000000,
     url_prefix='/api/v1',
     preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
     collection_name='role')
+
+

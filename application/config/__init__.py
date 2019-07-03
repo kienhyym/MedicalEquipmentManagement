@@ -2,8 +2,8 @@ class Config(object):
     # DEV MODE
     DEBUG = True
     SYSTEM_MAINTAINANCE = False
-    STATIC_URL = "static2"
-    SQLALCHEMY_DATABASE_URI = 'postgresql://thanhtramoitruongusr:1as2df3qw4ef5gh6@localhost:5432/thanhtramoitruong'
+    STATIC_URL = "static"
+    SQLALCHEMY_DATABASE_URI = 'postgresql://dubaosotxuathuyetuser:1as2df3qw4ef5gh6@localhost:5432/dubaosotxuathuyet'
     
 
     AUTH_LOGIN_ENDPOINT = 'login'

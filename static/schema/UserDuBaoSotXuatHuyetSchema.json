@@ -1,0 +1,49 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "number",
+        "primary": true
+    },
+    "email": {
+        "type": "string",
+        "length": 255
+    },
+    "fullname": {
+        "type": "string",
+        "length": 255
+    },
+    "password": {
+        "type": "string",
+        "required": true,
+        "length": 255
+    },
+    "zalo_id": {
+        "type": "number"
+    },
+    "phone": {
+        "type": "string",
+        "required": true,
+        "length": 255
+    }
+}

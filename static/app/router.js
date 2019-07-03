@@ -4,9 +4,9 @@ define(function (require) {
     
     var $           = require('jquery'),
         Gonrin    	= require('gonrin');
-    var Login		= require('app/login/js/LoginView');
+    var Login		= require('app/logindubaosotxuathuyet/js/LoginView');
     var ForgotPasswordView	= require('app/login/js/ForgotPasswordView');
-
+    var RegisterView	= require('app/logindubaosotxuathuyet/js/RegisterView');
     var navdata = require('app/nav/route');
     
     return Gonrin.Router.extend({
@@ -15,7 +15,7 @@ define(function (require) {
             "login":"login",
             "logout": "logout",
             "forgot":"forgotPassword",
-//            "dangkykham":"dangkykham",
+            "register":"register",
             "error":"error_page",
             "*path":  "defaultRoute"
         },
@@ -56,6 +56,10 @@ define(function (require) {
         forgotPassword: function(){
             var forgotPassView = new ForgotPasswordView({el: $('.content-contain')});
             forgotPassView.render();
+        },
+        register: function(){
+            var registerView = new RegisterView({el: $('.content-contain')});
+            registerView.render();
         },
         registerAppRoute: function(){
             var self = this;

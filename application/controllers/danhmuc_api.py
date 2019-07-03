@@ -54,7 +54,7 @@ async def postprocess_add_stt(request=None, Model=None, result=None, **kw):
 sqlapimanager.create_api(QuocGia, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[], POST=[auth_func, prepost_danhmuc], PUT_SINGLE=[auth_func, preput_danhmuc]),
+    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[ prepost_danhmuc], PUT_SINGLE=[ preput_danhmuc]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[postprocess_add_stt]),
     collection_name='quocgia')
  
@@ -63,7 +63,7 @@ sqlapimanager.create_api(QuocGia, max_results_per_page=1000000,
 sqlapimanager.create_api(TinhThanh, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[], POST=[auth_func, prepost_danhmuc, prepost_put_danhmuc], PUT_SINGLE=[auth_func, prepost_danhmuc, prepost_put_danhmuc]),
+    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[ prepost_danhmuc, prepost_put_danhmuc], PUT_SINGLE=[ prepost_danhmuc, prepost_put_danhmuc]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[postprocess_add_stt]),
     collection_name='tinhthanh')
  
@@ -72,7 +72,7 @@ sqlapimanager.create_api(TinhThanh, max_results_per_page=1000000,
 sqlapimanager.create_api(QuanHuyen, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[], POST=[auth_func, prepost_danhmuc, prepost_put_danhmuc], PUT_SINGLE=[auth_func, prepost_danhmuc, prepost_put_danhmuc]),
+    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[ prepost_danhmuc, prepost_put_danhmuc], PUT_SINGLE=[ prepost_danhmuc, prepost_put_danhmuc]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[postprocess_add_stt]),
     collection_name='quanhuyen')
  
@@ -80,7 +80,7 @@ sqlapimanager.create_api(QuanHuyen, max_results_per_page=1000000,
 sqlapimanager.create_api(XaPhuong, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[], POST=[auth_func, prepost_danhmuc, prepost_put_danhmuc], PUT_SINGLE=[auth_func, prepost_danhmuc, prepost_put_danhmuc]),
+    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[ prepost_danhmuc, prepost_put_danhmuc], PUT_SINGLE=[ prepost_danhmuc, prepost_put_danhmuc]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[postprocess_add_stt]),
     collection_name='xaphuong')
  

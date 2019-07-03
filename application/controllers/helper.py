@@ -8,52 +8,7 @@ from application.extensions import auth
 from application.database import db, redisdb
 from application.models.models import *
 import random, string
-
-
-
-def get_makehoach_new():
-    makehoach = redisdb.spop("makehoach")
-    if makehoach is None:
-        generate_key(1000)
-        makehoach = redisdb.spop("makehoach")
-    return makehoach
-    
-    
-def generate_key(size):
-    arr_prekey = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'] 
-    for key in arr_prekey:
-        data_key = 'prekey_makehoach_'+str(key)
-        data_value = redisdb.get(data_key)
-            
-        if(data_value is not None):
-            print(redisdb.smembers("prekey_makehoach_*"))
-            print('generate key is exited!, please send other key')
-            print(redisdb.keys("prekey_makehoach_*"))
-            continue
-        else:
-            key_check = str(key)+'00000001'
-            check_existed = db.session.query(KeHoachThanhTra).filter(KeHoachThanhTra.id == key_check).count()
-            if(check_existed is not None and check_existed >0):
-                continue
-            redisdb.setnx(data_key, key)
-        for x in range(0,size):
-            value = key
-            length = len(str(x))
-            if length < 8:
-                for i in range(0, (8-length)):
-                    value += str('0')
-            elif length>8:
-                return False
-            value += str(x)
-            redisdb.sadd('makehoach', value)
-        
-#         print(redisdb.smembers("user_key"))
-        total = redisdb.scard("makehoach")
-        print('total_'+str(total))
-#         print(redisdb.spop( "user_key"))
-        return False
-    return False
-
+from application.models import UserDuBaoSotXuatHuyet
 
 
 async def get_user_with_permission(user):
@@ -84,15 +39,6 @@ async def get_user_with_permission(user):
             del(user_info[attr])
     return user_info
 
-def check_content_json(request):
-    ret = False
-    try:
-        content_type = request.headers.get('Content-Type', "")
-        ret = content_type.startswith('application/json')
-    except:
-        pass
-    return ret
-
 def valid_phone_number(phone_number):
     if phone_number is None:
         return False
@@ -104,7 +50,7 @@ def valid_phone_number(phone_number):
 async def current_user(request):
     uid = auth.current_user(request)
     if uid is not None:
-        user_info = db.session.query(User).filter(User.id == uid).first()
+        user_info = db.session.query(UserDuBaoSotXuatHuyet).filter(UserDuBaoSotXuatHuyet.id == uid).first()
         return user_info
     else:
         return None
