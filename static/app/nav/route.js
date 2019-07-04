@@ -49,7 +49,16 @@ define(function (require) {
 			"route": "kehoachthanhtra/model_step_plan(/:id)",
 			"$ref": "app/kehoachthanhtra/view/ModelView_12step_plan",
 		},
-		
+		{
+			"collectionName": "userdubaosotxuathuyet",
+			"route":"userdubaosotxuathuyet/collection",
+			"$ref": "app/userdubaosotxuathuyet/js/CollectionView",
+		},
+		{
+			"collectionName": "userdubaosotxuathuyet",
+			"route":"userdubaosotxuathuyet/model(/:id)",
+			"$ref": "app/userdubaosotxuathuyet/js/ModelView",
+		},
 	];
 
 });

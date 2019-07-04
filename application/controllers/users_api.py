@@ -20,7 +20,7 @@ from math import floor, ceil
 from application.client import HTTPClient
 from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
-from application.models import UserDuBaoSotXuatHuyet
+from application.models.models import UserDuBaoSotXuatHuyet
 from application.controllers.helper import current_user
 
 
@@ -40,7 +40,7 @@ async def get_current_user(request):
     }, status = 520)
     
 @app.route('api/v1/logout')
-@app.route('/logout')
+# @app.route('/logout')
 async def logout(request):
     try:
         auth.logout_user(request)
@@ -154,15 +154,19 @@ async def predelete_user(request=None, data=None, Model=None, **kw):
 sqlapimanager.create_api(User, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func, prepost_user], PUT_SINGLE=[auth_func, preput_user], DELETE=[predelete_user]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func, prepost_user], PUT_SINGLE=[auth_func, preput_user], DELETE=[predelete_user]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     exclude_columns= ["password","salt","active"],
     collection_name='user')
 
 sqlapimanager.create_api(Role, max_results_per_page=1000000,
     methods=['GET'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
     collection_name='role')
 
-
+sqlapimanager.create_api(UserDuBaoSotXuatHuyet,max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    collection_name='userdubaosotxuathuyet')

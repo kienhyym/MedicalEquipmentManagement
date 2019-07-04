@@ -16,7 +16,7 @@ class UserDuBaoSotXuatHuyet(CommonModel):
     email = db.Column(db.String(255), unique=True)
     fullname = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255), nullable=False)
-    zalo_id = db.Column(db.Integer, unique=True)
+    zalo_id = db.Column(db.Integer)
     phone = db.Column(db.String(255), nullable=False)
 
 
