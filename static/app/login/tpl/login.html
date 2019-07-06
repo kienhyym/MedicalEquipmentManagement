@@ -1,44 +1,182 @@
 <!-- 
 <div class="container">
-    <div class="row  justify-content-md-center">
-        <div class="col-md-5 col-sm-12 content-login">
-            
-            <div class="account-wall ">
-            	<h1 class="text-center login-title">Đăng Nhập Hệ Thống Dự Báo Sốt Xuất Huyết</h1>
-                <img class="profile-img" src="{% print(static_url) %}/img/m.png" alt="">
-                <form  id="login-form" class="form-signin needs-validation" novalidate>
-	                <div class="form-row">
-	                	<div class="col-md-12">
-	                		<input class="form-control" placeholder="Tài khoản" name="data_user" required="" autofocus="" type="text">
-			                <div class="invalid-feedback">
-					        	Vui lòng nhập tài khoản đăng nhập!
-					        </div>
-	                	</div>
-	                	<div class="col-md-12">
-	                		<input class="form-control" placeholder="Mật khẩu" name="password" required="" type="password">
-			                <div class="invalid-feedback">
-					        	Vui lòng nhập mật khẩu!
-					        </div>
-	                	</div>
-	                	
-	                </div>
-	                <div>
-	                	<label class="checkbox pull-left">
-		                    <input value="remember-me" type="checkbox">
-		                    Ghi nhớ tôi
-		                </label>
-		                <a id="forgot_password" href="javascript:void(0);" class="pull-right">Quên mật khẩu? </a>
-	                </div>
-	                
-                	<button class="btn btn-lg btn-info btn-block" type="submit">Đăng nhập</button>
-	                <span class="clearfix"></span>
-					<a href="javascript:void(0);" id="login_accountkit" class="text-center new-account d-none">Đăng nhập nhanh qua số điện thoại </a>
-					<a id="forgot_password" href="http://0.0.0.0:9080/#register" style="color: red">Đăng ký tài khoản</a>
-                </form>
+        <div class="row  justify-content-md-center">
+            <div class="col-md-5 col-sm-12 content-login">
+                
+                <div class="account-wall ">
+                    <h1 class="text-center login-title">Đăng Nhập Hệ Thống Dự Báo Sốt Xuất Huyết</h1>
+                    <img class="profile-img" src="{% print(static_url) %}/img/m.png" alt="">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <input class="form-control" placeholder="Tài khoản" name="data_user" required="" autofocus="" type="text">
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập tài khoản đăng nhập!
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" placeholder="Mật khẩu" name="password" required="" type="password">
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập mật khẩu!
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <label class="checkbox pull-left">
+                                <input value="remember-me" type="checkbox">
+                                Ghi nhớ tôi
+                            </label>
+                            <a id="forgot_password" href="javascript:void(0);" class="pull-right">Quên mật khẩu? </a>
+                        </div>
+                        
+                        <button class="btn btn-lg btn-info btn-block " id="btnLogin">Đăng nhập</button>
+                        <span class="clearfix"></span>
+                        <a href="javascript:void(0);" id="login_accountkit" class="text-center new-account d-none">Đăng nhập nhanh qua số điện thoại </a>
+                        <a id="forgot_password" href="http://0.0.0.0:9080/#register" style="color: red">Đăng ký tài khoản</a>
+                    </form>
+                </div>
+                
+                
             </div>
-            
-            
         </div>
     </div>
-</div>
- -->
+     -->
+
+     <style>
+        @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+        .login-block {
+            background: #DE6262;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #FFB88C, #DE6262);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            float: left;
+            width: 100%;
+            padding: 50px 0;
+            height: 100vh;
+        }
+        .banner-sec {
+            /* background: url(static/images/hihi.jpg) no-repeat left bottom; */
+            background-size: cover;
+            min-height: 500px;
+            border-radius: 0 10px 10px 0;
+            padding: 0;
+        }
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+        .carousel-inner {
+            border-radius: 0 10px 10px 0;
+        }
+        .carousel-caption {
+            text-align: left;
+            left: 5%;
+        }
+        .login-sec {
+            padding: 80px 30px;
+            position: relative;
+        }
+        .login-sec .copy-text {
+            position: absolute;
+            width: 80%;
+            bottom: 20px;
+            font-size: 13px;
+            text-align: center;
+        }
+        .login-sec .copy-text i {
+            color: #FEB58A;
+        }
+        .login-sec .copy-text a {
+            color: #E36262;
+        }
+        .login-sec h2 {
+            margin-bottom: 30px;
+            font-weight: 800;
+            font-size: 30px;
+            color: #DE6262;
+        }
+        .login-sec h2:after {
+            content: " ";
+            width: 100px;
+            height: 5px;
+            background: #FEB58A;
+            display: block;
+            margin-top: 20px;
+            border-radius: 3px;
+            margin-left: auto;
+            margin-right: auto
+        }
+        .btn-login {
+            background: #DE6262;
+            color: #fff;
+            font-weight: 600;
+        }
+        .banner-text {
+            width: 70%;
+            position: absolute;
+            bottom: 40px;
+            padding-left: 20px;
+        }
+        .banner-text h2 {
+            color: #fff;
+            font-weight: 600;
+        }
+        .banner-text h2:after {
+            content: " ";
+            width: 100px;
+            height: 5px;
+            background: #FFF;
+            display: block;
+            margin-top: 20px;
+            border-radius: 3px;
+        }
+        .banner-text p {
+            color: #fff;
+        }
+    </style>
+    <section class="login-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-8 col-12 login-sec">
+                    <h2 class="text-center text-uppercase">ĐĂNG NHẬP NGAY</h2>
+                    <form class="login-form" id="login-form">
+                        <div class="form-group" id="user-name">
+                            <label for="exampleInputEmail1" class="text-uppercase">Tài khoản</label>
+                            <input type="text" class="form-control" name="username">
+                        </div>
+                        <div class="form-group" id="password">
+                            <label for="exampleInputPassword1" class="text-uppercase">Mật khẩu</label>
+                            <input type="password" class="form-control" name="password" placeholder="">
+                        </div>
+                        <div class="form-group d-none" id="tenant">
+                            <label for="exampleInputPassword1" class="text-uppercase">chọn thương hiệu</label>
+                            <input class="form-control" id="tenants">
+                            <button id="select-tenant" class="btn btn-info font-weight-bold float-right mt-3"
+                                style="margin-left: 3px">Tiếp tục</button>
+                        </div>
+                        <div class="form-check" id="check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input">
+                                <small>Nhớ mật khẩu</small>
+                            </label>
+                            <button type="submit" class="btn btn-info font-weight-bold float-right"
+                                style="margin-left: 3px">Đăng nhập</button>
+                            <a href="http://0.0.0.0:9080/#register" id="register-btn"
+                                class="btn btn-danger font-weight-bold float-right">Đăng ký</a>
+                        </div>
+                    </form>
+                    <div class="copy-text">Upstart Inventory Designer <i class="fa fa-heart"></i>
+                        by <a href="http://0.0.0.0:9080/#register">Upstart.vn</a></div>
+                </div>
+                <!-- <div class="col-lg-7 col-md-7 col-sm-5 banner-sec">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                        </ol>
+                    </div>
+                </div> -->
+            </div>
+    </section>

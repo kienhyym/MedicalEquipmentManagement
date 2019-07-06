@@ -50,14 +50,14 @@ define(function (require) {
 			"$ref": "app/kehoachthanhtra/view/ModelView_12step_plan",
 		},
 		{
-			"collectionName": "userdubaosotxuathuyet",
-			"route":"userdubaosotxuathuyet/collection",
-			"$ref": "app/userdubaosotxuathuyet/js/CollectionView",
+			"collectionName": "users",
+			"route":"users/collection",
+			"$ref": "app/users/js/CollectionView",
 		},
 		{
-			"collectionName": "userdubaosotxuathuyet",
-			"route":"userdubaosotxuathuyet/model(/:id)",
-			"$ref": "app/userdubaosotxuathuyet/js/ModelView",
+			"collectionName": "users",
+			"route":"users/model(/:id)",
+			"$ref": "app/users/js/ModelView",
 		},
 	];
 

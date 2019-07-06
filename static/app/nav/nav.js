@@ -108,9 +108,9 @@ define(function (require) {
         		"text":"Danh sách người dùng",
         		"icon":"fa fa-home",
         		"type":"view",
-        		"collectionName":"userdubaosotxuathuyet",
-			    "route":"userdubaosotxuathuyet/collection",
-			    "$ref": "app/userdubaosotxuathuyet/js/CollectionView",
+        		"collectionName":"users",
+			    "route":"users/collection",
+			    "$ref": "app/users/js/CollectionView",
 			    "visible": function(){
 			     	return  true;
 			     }
@@ -119,9 +119,9 @@ define(function (require) {
         		"text":"Danh sách người dùng",
         		"icon":"fa fa-home",
         		"type":"view",
-        		"collectionName":"userdubaosotxuathuyet",
-			    "route":"userdubaosotxuathuyet/model",
-			    "$ref": "app/userdubaosotxuathuyet/js/ModelView",
+        		"collectionName":"users",
+			    "route":"users/model",
+			    "$ref": "app/users/js/ModelView",
 			    "visible": function(){
 			     	return  false;
 			     }

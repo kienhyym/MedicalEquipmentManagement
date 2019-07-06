@@ -4,15 +4,15 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
-	var template = require('text!app/userdubaosotxuathuyet/tpl/model.html'),
-		schema = require('json!schema/UserDuBaoSotXuatHuyetSchema.json');
+	var template = require('text!app/users/tpl/model.html'),
+		schema = require('json!schema/UsersSchema.json');
 
 
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "userdubaosotxuathuyet",
+		collectionName: "users",
 		
 		render: function () {
 			var self = this;

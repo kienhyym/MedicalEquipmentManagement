@@ -4,9 +4,9 @@ define(function (require) {
     
     var $           = require('jquery'),
         Gonrin    	= require('gonrin');
-    var Login		= require('app/logindubaosotxuathuyet/js/LoginView');
-    var ForgotPasswordView	= require('app/login/js/ForgotPasswordView');
-    var RegisterView	= require('app/logindubaosotxuathuyet/js/RegisterView');
+    var Login		= require('app/login/js/LoginView');
+    // var ForgotPasswordView	= require('app/login/js/ForgotPasswordView');
+    var RegisterView	= require('app/login/js/RegisterView');
     var navdata = require('app/nav/route');
     
     return Gonrin.Router.extend({

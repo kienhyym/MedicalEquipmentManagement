@@ -40,7 +40,7 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView','text!app/base/t
    	});
 	
 	var app = new Gonrin.Application({
-		serviceURL: "localhost:9080",
+		serviceURL: "http://0.0.0.0:9080",
 		router: new Router(),
 		lang: lang,
 		layout: layout,
@@ -54,7 +54,8 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView','text!app/base/t
 		getCurrentUser : function(){
 			var self = this;
 			$.ajax({
-				url: "http://0.0.0.0:9080/api/v1/current_user",
+				url:self.serviceURL + "/api/v1/current_user",
+				// url: "http://0.0.0.0:9080/api/v1/current_user",
        		    dataType:"json",
        		    success: function (data) {
        		    	self.postLogin(data);

@@ -20,7 +20,7 @@ from math import floor, ceil
 from application.client import HTTPClient
 from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
-from application.models.models import UserDuBaoSotXuatHuyet
+from application.models.models import Users
 from application.controllers.helper import current_user
 
 
@@ -40,14 +40,20 @@ async def get_current_user(request):
     }, status = 520)
     
 @app.route('api/v1/logout')
-# @app.route('/logout')
 async def logout(request):
     try:
         auth.logout_user(request)
     except:
         pass
     return json({})
- 
+
+def user_to_dict(user):
+    obj = to_dict(user)
+    if "password" in obj:
+        del(obj["password"])
+    if "salt" in obj:
+        del(obj["salt"])
+    return obj
 
 @app.route('/api/v1/login', methods=['POST'])
 async def login(request):
@@ -56,30 +62,33 @@ async def login(request):
     password = data['password']
     print("==================USER NAME", username)
     print("==================PASSWORD", password)
-    user = db.session.query(UserDuBaoSotXuatHuyet).filter(or_(UserDuBaoSotXuatHuyet.email == username, UserDuBaoSotXuatHuyet.phone == username)).first()
+    user = db.session.query(Users).filter(or_(Users.email == username, Users.phone == username)).first()
     print("==================", user)
     if (user is not None) and auth.verify_password(password, user.password):
         auth.login_user(request, user)
-        result = []
-        result = to_dict(user)
+        result = user_to_dict(user)
         print("-----------------------", result)
         return json(result)
     return json({"error_code":"LOGIN_FAILED","error_message":"Tài khoản hoặc mật khẩu không đúng"}, status=520)
+
+
+
+
 
 @app.route('/api/v1/register', methods=["POST"])
 def register(request):
     data = request.json
     print("===================", data)
-    user = db.session.query(UserDuBaoSotXuatHuyet).filter(or_(UserDuBaoSotXuatHuyet.email==data["email"], UserDuBaoSotXuatHuyet.phone==data["phone"])).first()
+    user = db.session.query(Users).filter(or_(Users.email==data["email"], Users.phone==data["phone"])).first()
     if user is not None:
         return json({
-            "ok": False,
-            "message": "Email hoặc phone đã tồn tại"
+            "error_code": "USER_EXISTED",
+            "error_message": "Email hoặc phone đã tồn tại"
             }, status = 520)
 
-    else:
-        new_user = UserDuBaoSotXuatHuyet()
 
+    else:
+        new_user = Users()
         new_user.display_name = data["display_name"]
         new_user.email = data["email"]
         new_user.phone = data["phone"]
@@ -88,11 +97,8 @@ def register(request):
 
         db.session.add(new_user)
         db.session.commit()
-
-        return json({
-            "ok": True,
-            "message": "Đăng ký thành công"
-        })
+        result = user_to_dict(new_user)
+        return json(result)
 
 
 
@@ -165,8 +171,8 @@ sqlapimanager.create_api(Role, max_results_per_page=1000000,
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
     collection_name='role')
 
-sqlapimanager.create_api(UserDuBaoSotXuatHuyet,max_results_per_page=1000000,
+sqlapimanager.create_api(Users,max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
-    collection_name='userdubaosotxuathuyet')
+    collection_name='users')

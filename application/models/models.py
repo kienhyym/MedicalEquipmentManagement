@@ -10,8 +10,8 @@ def default_uuid():
     return str(uuid.uuid4())
 
 
-class UserDuBaoSotXuatHuyet(CommonModel):
-    __tablename__ = 'userdubaosotxuathuyet'
+class Users(CommonModel):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
     fullname = db.Column(db.String(255), unique=True)
