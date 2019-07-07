@@ -89,7 +89,7 @@ def register(request):
 
     else:
         new_user = Users()
-        new_user.display_name = data["fullname"]
+        new_user.fullname = data["fullname"]
         new_user.email = data["email"]
         new_user.phone = data["phone"]
         # new_user.user_image = data["user_image"]
