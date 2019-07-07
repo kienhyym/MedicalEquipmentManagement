@@ -1,39 +1,32 @@
+<div class="pt-5 pb-5 " style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);">
+    <div class="d-flex justify-content-center col-lg-12 col-md-12 pt-4 mb-5">
+       
+        <div class="mb-5">
+            <img class="profile-img mb-3" src="{% print(static_url) %}/img/mosquito_graphic2.gif" alt="">
+            <h5 class="text-center text-uppercase"  style="color: white;font-family: serif">Dự báo sốt xuất huyết</h5>
+ 
+ 
+            <form id="register-form" class="mt-5" >
+                <div class="form-group">
+                    <input class="form-control" id="txtemail" placeholder="Nhập Email" required="" autofocus="" type="text"
+                    autocomplete="off" style="border-radius: 30px">
+                 </div>
 
-<div class="container">
-    <div class="row  justify-content-md-center">
-        <div class="col-md-5 col-sm-12 content-login">
-            
-            <div class="account-wall ">
-            	<h1 class="text-center login-title">Đăng ký tài khoản</h1>
-                <img class="profile-img" src="{% print(static_url) %}/img/muoi.jpg" alt="">
-                <form  id="register-form" class="form-signin needs-validation" novalidate>
-	                <div class="form-row py-2">
-	                	<div class="col-md-12">
-	                		<input class="form-control"id="txtemail" placeholder="Nhập Email"  required="" autofocus="" type="text" autocomplete="off">
-			                <div class="invalid-feedback">
-					        	Vui lòng nhập email!
-                            </div>
-                            <br>
-                            <input class="form-control" id="txtname" placeholder="NhậpTên"  required="" autofocus="" type="text" autocomplete="off">
-			                <div class="invalid-feedback">
-					        	Vui lòng nhập tên
-                            </div>
-                            <br>
-                            <input class="form-control" id="txtphone" placeholder="Nhập số điện thoại"  required="" autofocus="" type="text" autocomplete="off" >
-			                <div class="invalid-feedback">
-					        	nhập số điện thoại
-                            </div>
-                            <br>
-                            <input class="form-control" id="txtpass" placeholder="Nhập mật khẩu"  required="" autofocus="" type="password" autocomplete="off" >
-			                <div class="invalid-feedback">
-					        	Vui lòng mật khẩu
-                            </div>
-                            <br>                        
-	                	</div>	                	
-	                </div>              
-                    <button id="btn-register" class="btn btn-info">lưu</button>               
-                </form>
-            </div>
+                 <div class="form-group">
+                <input class="form-control" id="txtname" placeholder="NhậpTên" required="" autofocus="" type="text"
+                    autocomplete="off" style="border-radius: 30px">
+                </div>
+                <div class="form-group">    
+                <input class="form-control" id="txtphone" placeholder="Nhập số điện thoại" required="" autofocus=""
+                    type="text" autocomplete="off" style="border-radius: 30px">
+                </div>
+
+                <div class="form-group">   
+                <input class="form-control" id="txtpass" placeholder="Nhập mật khẩu" required="" autofocus=""
+                    type="password" autocomplete="off" style="border-radius: 30px">
+                </div>    
+                    <button id="btn-register" class="btn btn-info w-100" style="border-radius: 30px">Đăng ký</button>
+            </form>
         </div>
     </div>
 </div>
