@@ -30,7 +30,6 @@ define(function(require) {
             var self = this;
             $.ajax({
                 url:self.getApp().serviceURL + "/api/v1/login",
-                // url: "http://0.0.0.0:9080/api/v1/login",
                 type: 'post',
                 data: data,
                 success: function(response) {

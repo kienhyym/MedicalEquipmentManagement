@@ -6,10 +6,6 @@ define(function (require) {
     
     var template 			= require('text!app/bookingpartner/tpl/model.html'),
     	schema 				= require('json!schema/UserSchema.json');
-    var XaPhuongSelectView = require('app/DanhMuc/XaPhuong/view/SelectView');
-	var QuanHuyenSelectView = require('app/DanhMuc/QuanHuyen/view/SelectView');
-	var TinhThanhSelectView = require('app/DanhMuc/TinhThanh/view/SelectView');
-    var RoleSelectView = require('app/view/HeThong/role/view/SelectView');
 
 
 	var currentDate = new Date();
@@ -60,49 +56,6 @@ define(function (require) {
 		    	    },
     	    	],
     	    }],
-    	uiControl: {
-            fields: [
-        		{
-               	    field: "type", 
-               	    label: "Thuộc nhóm",
-	               	uicontrol: "combobox",
-        			textField: "text",
-        			valueField: "value",
-	               	dataSource: [
-		            	 { value: "viettel", text: "Viettel" },
-	                     { value: "ytecoso", text: "Y Tế Cơ Sở" },
-	                     { value: "benhvien", text: "Bệnh Viện" },
-	                     { value: "phongkham", text: "Phòng khám" },
-	                     { value: "trungtam_tiemchung", text: "Trung tâm tiêm chủng" },
-	                     { value: "khac", text: "Loại khác" }
-		           	 ],
-	            },
-        		{
-					field: "xaphuong",
-					uicontrol: "ref",
-					textField: "ten",
-					foreignRemoteField: "id",
-					foreignField: "xaphuong_id",
-					dataSource: XaPhuongSelectView
-				},
-				{
-					field: "quanhuyen",
-					uicontrol: "ref",
-					textField: "ten",
-					foreignRemoteField: "id",
-					foreignField: "quanhuyen_id",
-					dataSource: QuanHuyenSelectView
-				},
-				{
-					field: "tinhthanh",
-					uicontrol: "ref",
-					textField: "ten",
-					foreignRemoteField: "id",
-					foreignField: "tinhthanh_id",
-					dataSource: TinhThanhSelectView
-				},
-        		]
-    	},
     	render:function(){
     		var self = this;
 			
@@ -125,20 +78,9 @@ define(function (require) {
             	if(check_validate === false){
             		return;
             	}
-            	//end validate
-            	
-				var tinhthanh_id = self.model.get("tinhthanh_id");
-				var quanhuyen_id = self.model.get("quanhuyen_id");
-				var xaphuong_id = self.model.get("xaphuong_id");
-				if (tinhthanh_id === null || tinhthanh_id ===""||
-						quanhuyen_id === null || quanhuyen_id ===""||
-						xaphuong_id === null || xaphuong_id ===""){
-					self.getApp().notify({ message: 'Vui lòng nhập đầy đủ thông tin' }, { type: "danger", delay: 1000 });
-					return;
-				}
 				
 				self.model.save(null,{
-		            success: function (model, respose, options) {
+		            success: function () {
 		                self.getApp().notify("Lưu dữ liệu thành công");
 		                
 		            },
@@ -172,14 +114,8 @@ define(function (require) {
     		if(id){
     			this.model.set('id',id);
         		this.model.fetch({
-        			success: function(data){
+        			success: function(){
         				self.applyBindings();
-        				self.model.on("change:tinhthanh", function(){
-        					self.getFieldElement("quanhuyen").data("gonrin").setFilters({"tinhthanh_id": { "$eq": self.model.get("tinhthanh_id")}});
-        				});
-        	    		self.model.on("change:quanhuyen", function(){
-        	    			self.getFieldElement("xaphuong").data("gonrin").setFilters({"quanhuyen_id": { "$eq": self.model.get("quanhuyen_id")}});
-        				});
         	    		
         			},
         			error: function (xhr, status, error) {
@@ -198,13 +134,6 @@ define(function (require) {
         		});
     		}else{
     			self.applyBindings();
-    			self.model.on("change:tinhthanh", function(){
-    				self.getFieldElement("quanhuyen").data("gonrin").setFilters({"tinhthanh_id": { "$eq": self.model.get("tinhthanh_id")}});
-    			});
-        		self.model.on("change:quanhuyen", function(){
-        			self.getFieldElement("xaphuong").data("gonrin").setFilters({"quanhuyen_id": { "$eq": self.model.get("quanhuyen_id")}});
-
-    			});
     		}
     		
 			

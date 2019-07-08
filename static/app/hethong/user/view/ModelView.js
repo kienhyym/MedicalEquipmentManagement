@@ -6,9 +6,6 @@ define(function (require) {
     
     var template 			= require('text!app/hethong/user/tpl/model.html'),
     	schema 				= require('json!schema/UserSchema.json');
-    var XaPhuongSelectView = require('app/DanhMuc/XaPhuong/view/SelectView');
-	var QuanHuyenSelectView = require('app/DanhMuc/QuanHuyen/view/SelectView');
-	var TinhThanhSelectView = require('app/DanhMuc/TinhThanh/view/SelectView');
 
 
 	var currentDate = new Date();
@@ -59,34 +56,6 @@ define(function (require) {
 		    	    },
     	    	],
     	    }],
-    	uiControl: {
-            fields: [
-        		{
-					field: "xaphuong",
-					uicontrol: "ref",
-					textField: "ten",
-					foreignRemoteField: "id",
-					foreignField: "xaphuong_id",
-					dataSource: XaPhuongSelectView
-				},
-				{
-					field: "quanhuyen",
-					uicontrol: "ref",
-					textField: "ten",
-					foreignRemoteField: "id",
-					foreignField: "quanhuyen_id",
-					dataSource: QuanHuyenSelectView
-				},
-				{
-					field: "tinhthanh",
-					uicontrol: "ref",
-					textField: "ten",
-					foreignRemoteField: "id",
-					foreignField: "tinhthanh_id",
-					dataSource: TinhThanhSelectView
-				},
-        		]
-    	},
     	render:function(){
     		var self = this;
 			self.getRoles();
@@ -109,17 +78,6 @@ define(function (require) {
             	if(check_validate === false){
             		return;
             	}
-            	//end validate
-            	
-//				var tinhthanh_id = self.model.get("tinhthanh_id");
-//				var quanhuyen_id = self.model.get("quanhuyen_id");
-//				var xaphuong_id = self.model.get("xaphuong_id");
-//				if (tinhthanh_id === null || tinhthanh_id ===""||
-//						quanhuyen_id === null || quanhuyen_id ===""||
-//						xaphuong_id === null || xaphuong_id ===""){
-//					self.getApp().notify({ message: 'Vui lòng nhập đầy đủ thông tin' }, { type: "danger", delay: 1000 });
-//					return;
-//				}
             	var roles = [];
     			self.$el.find("#multiselect_roles option:selected").each(function() {
     				var data_ck = $(this).attr('data-ck');
@@ -165,14 +123,6 @@ define(function (require) {
         		this.model.fetch({
         			success: function(data){
         				self.applyBindings();
-//        				self.model.on("change:tinhthanh", function(){
-//        					self.getFieldElement("quanhuyen").data("gonrin").setFilters({"tinhthanh_id": { "$eq": self.model.get("tinhthanh_id")}});
-//        				});
-//        	    		self.model.on("change:quanhuyen", function(){
-//        	    			self.getFieldElement("xaphuong").data("gonrin").setFilters({"quanhuyen_id": { "$eq": self.model.get("quanhuyen_id")}});
-//        				});
-        				
-        	    			
         	    			var roles = self.model.get("roles");
         	    			var val_roles =[];
         	    			if(val_roles !== null){
@@ -200,13 +150,6 @@ define(function (require) {
         		});
     		}else{
     			self.applyBindings();
-//    			self.model.on("change:tinhthanh", function(){
-//    				self.getFieldElement("quanhuyen").data("gonrin").setFilters({"tinhthanh_id": { "$eq": self.model.get("tinhthanh_id")}});
-//    			});
-//        		self.model.on("change:quanhuyen", function(){
-//        			self.getFieldElement("xaphuong").data("gonrin").setFilters({"quanhuyen_id": { "$eq": self.model.get("quanhuyen_id")}});
-//
-//    			});
     		}
     		
 			

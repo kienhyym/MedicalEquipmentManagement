@@ -20,10 +20,16 @@ from math import floor, ceil
 from application.client import HTTPClient
 from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
-from application.models.models import Users
+
 from application.controllers.helper import current_user
 
-
+def user_to_dict(user):
+    obj = to_dict(user)
+    if "password" in obj:
+        del(obj["password"])
+    if "salt" in obj:
+        del(obj["salt"])
+    return obj
 @app.route('api/v1/current_user')
 async def get_current_user(request):
     error_msg = None
@@ -47,13 +53,7 @@ async def logout(request):
         pass
     return json({})
 
-def user_to_dict(user):
-    obj = to_dict(user)
-    if "password" in obj:
-        del(obj["password"])
-    if "salt" in obj:
-        del(obj["salt"])
-    return obj
+
 
 @app.route('/api/v1/login', methods=['POST'])
 async def login(request):
@@ -62,7 +62,7 @@ async def login(request):
     password = data['password']
     print("==================USER NAME", username)
     print("==================PASSWORD", password)
-    user = db.session.query(Users).filter(or_(Users.email == username, Users.phone == username)).first()
+    user = db.session.query(User).filter(or_(User.email == username, User.phone_number == username)).first()
     print("==================", user)
     if (user is not None) and auth.verify_password(password, user.password):
         auth.login_user(request, user)
@@ -79,7 +79,7 @@ async def login(request):
 def register(request):
     data = request.json
     print("===================", data)
-    user = db.session.query(Users).filter(or_(Users.email==data["email"], Users.phone==data["phone"])).first()
+    user = db.session.query(User).filter(or_(User.email==data["email"], User.phone_number==data["phone_number"])).first()
     if user is not None:
         return json({
             "error_code": "USER_EXISTED",
@@ -88,10 +88,10 @@ def register(request):
 
 
     else:
-        new_user = Users()
-        new_user.fullname = data["fullname"]
+        new_user = User()
+        new_user.name = data["name"]
         new_user.email = data["email"]
-        new_user.phone = data["phone"]
+        new_user.phone_number = data["phone_number"]
         # new_user.user_image = data["user_image"]
         new_user.password = auth.encrypt_password(data["password"])
 
@@ -170,9 +170,3 @@ sqlapimanager.create_api(Role, max_results_per_page=1000000,
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
     collection_name='role')
-
-sqlapimanager.create_api(Users,max_results_per_page=1000000,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
-    collection_name='users')

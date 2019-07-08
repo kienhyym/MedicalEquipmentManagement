@@ -37,12 +37,12 @@ async def pre_process_post_put_appinfo(request=None, data=None, Model=None, **kw
             return json({"error_code":"PARAMS_ERROR","error_message":"Vui lòng nhập mật khẩu của ứng dụng!"}, status=520)
  
 
-sqlapimanager.create_api(AppInfo,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func,pre_process_post_put_appinfo], PUT_SINGLE=[auth_func,pre_process_post_put_appinfo]),
-    exclude_columns= ["secret"],
-    collection_name='appinfo')
+# sqlapimanager.create_api(AppInfo,
+#     methods=['GET', 'POST', 'DELETE', 'PUT'],
+#     url_prefix='/api/v1',
+#     preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func,pre_process_post_put_appinfo], PUT_SINGLE=[auth_func,pre_process_post_put_appinfo]),
+#     exclude_columns= ["secret"],
+#     collection_name='appinfo')
 
 
 @app.route('/app_api/v1/token', methods=['POST'])

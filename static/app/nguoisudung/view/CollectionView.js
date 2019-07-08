@@ -41,27 +41,6 @@ define(function (require) {
 	           	{ field: "email", label: "Email"},
 	           	{ field: "phone_number", label: "Điện thoại"},
 	           	{ field: "roles", label: "Vai trò", textField: "name" },
-//	           	{
-//	            	 field: "tinhthanh_id", 
-//	            	 label: "Tỉnh thành",
-//	            	 foreign: "tinhthanh",
-//	            	 foreignValueField: "id",
-//					 foreignTextField: "ten",
-//	           	 },
-//	           	{
-//	            	 field: "quanhuyen_id", 
-//	            	 label: "Quận/Huyện",
-//	            	 foreign: "quanhuyen",
-//	            	 foreignValueField: "id",
-//					 foreignTextField: "ten",
-//	           	 },
-//	           	{
-//	            	 field: "xaphuong_id", 
-//	            	 label: "Xã/Phường/Thị trấn",
-//	            	 foreign: "xaphuong",
-//	            	 foreignValueField: "id",
-//					 foreignTextField: "ten",
-//	           	 },
 	     ],
 	    	onRowClick: function(event){
 	    		if(event.rowId){

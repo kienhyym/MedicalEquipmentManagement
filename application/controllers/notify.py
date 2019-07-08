@@ -9,7 +9,7 @@ from math import floor
 
 from gatco.response import json, text, html
 from application.extensions import sqlapimanager
-from application.models import User, Permission, Role, NotifyUser, Notify
+from application.models.models import *
 from application.extensions import auth
 from application.database import db, redisdb
 from application.server import app
@@ -43,17 +43,17 @@ async def postprocess_send_notify_cosoKCB(request=None, Model=None, result=None,
     if notify_condition is not None:
         notify_user_list = []
         for condition in notify_condition:
-            users = []
+            user = []
             if condition.get("notify_type", "") == "TO_ALL":
-                users = db.session.query(User).has_role("CoSoKCB").all()
+                user = db.session.query(User).has_role("CoSoKCB").all()
 
             if condition.get("notify_type", "") == "TO_PHONE":
                 phone_list = condition.get("notify_phone_number", [])
                 for phone in phone_list:
                     user = db.session.query(User).filter(User.phone_number == phone).first()
-                    users = users.append(user)
+                    user = user.append(user)
 
-            for user in users:
+            for user in user:
                 notify_user = NotifyUser()
                 notify_user['user_id'] = str(user.id)
                 notify_user['notify_id'] = result["id"]
@@ -74,19 +74,19 @@ async def postprocess_send_notify_cosoKCB(request=None, Model=None, result=None,
         await send_firebase_notify(notify_user_list, result["title"], noti_data)
 
 
-sqlapimanager.create_api(Notify, max_results_per_page=1000000,
-                         methods=['GET', 'POST', 'DELETE', 'PUT'],
-                         url_prefix='/api/v1',
-                         preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-                         postprocess=dict(POST=[postprocess_send_notify_cosoKCB]),
-                         collection_name='notify')
+# sqlapimanager.create_api(Notify, max_results_per_page=1000000,
+#                          methods=['GET', 'POST', 'DELETE', 'PUT'],
+#                          url_prefix='/api/v1',
+#                          preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
+#                          postprocess=dict(POST=[postprocess_send_notify_cosoKCB]),
+#                          collection_name='notify')
 
-sqlapimanager.create_api(NotifyUser, max_results_per_page=1000000,
-                         methods=['GET', 'POST', 'DELETE', 'PUT'],
-                         url_prefix='/api/v1',
-                         preprocess=dict(GET_SINGLE=[], GET_MANY=[apply_user_filter], POST=[], PUT_SINGLE=[]),
-                         postprocess=dict(POST=[]),
-                         collection_name='notify_user')
+# sqlapimanager.create_api(NotifyUser, max_results_per_page=1000000,
+#                          methods=['GET', 'POST', 'DELETE', 'PUT'],
+#                          url_prefix='/api/v1',
+#                          preprocess=dict(GET_SINGLE=[], GET_MANY=[apply_user_filter], POST=[], PUT_SINGLE=[]),
+#                          postprocess=dict(POST=[]),
+#                          collection_name='notify_user')
 
 
 @app.route('/api/v1/send_notify', methods=['POST'])

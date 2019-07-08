@@ -71,8 +71,8 @@ define(function (require) {
                     // url: "http://0.0.0.0:9080/api/v1/register",
                     data: JSON.stringify({
                         email: self.$el.find("#txtemail").val(),
-                        fullname: self.$el.find("#txtname").val(),
-                        phone: self.$el.find("#txtphone").val(),
+                        name: self.$el.find("#txtname").val(),
+                        phone_number: self.$el.find("#txtphone").val(),
                         password: self.$el.find("#txtpass").val()
                         
                     }), 

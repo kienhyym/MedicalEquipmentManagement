@@ -38,7 +38,7 @@ define(function (require) {
                 }
                 $.ajax({
                     type: 'PUT',
-					url:self.getApp().serviceURL + "/api/v1/users/"+id,
+					url:self.getApp().serviceURL + "/api/v1/user/"+id,
 					headers: {
 						'content-type': 'application/json'
 					},

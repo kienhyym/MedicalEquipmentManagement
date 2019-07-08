@@ -8,7 +8,6 @@ from application.extensions import auth
 from application.database import db, redisdb
 from application.models.models import *
 import random, string
-from application.models import Users
 
 
 async def get_user_with_permission(user):
@@ -50,7 +49,7 @@ def valid_phone_number(phone_number):
 async def current_user(request):
     uid = auth.current_user(request)
     if uid is not None:
-        user_info = db.session.query(Users).filter(Users.id == uid).first()
+        user_info = db.session.query(User).filter(User.id == uid).first()
         return user_info
     else:
         return None

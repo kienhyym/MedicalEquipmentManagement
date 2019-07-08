@@ -4,31 +4,24 @@ define(function (require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
-    var template = require('text!app/users/tpl/collection.html'),
-		schema = require('json!schema/UsersSchema.json');
+    var template = require('text!app/role/tpl/collection.html'),
+		schema = require('json!schema/RoleSchema.json');
 
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
-        collectionName: "users",
+        collectionName: "role",
         uiControl:{
             fields: [
+
                 {
-                    field: "id", label: "ID", width: 250, readonly: true,
+                    field: "name", label: "Tên", width: 250, readonly: true,
                 },
                 {
-                    field: "fullname", label: "Tên", width: 250, readonly: true,
+                    field: "description", label: "miêu tả", width: 250, readonly: true,
                 },
-                {
-                    field: "email", label: "Email", width: 250, readonly: true,
-                },
-                {
-                    field: "phone", label: "Số điện thoại", width: 250, readonly: true,
-                },
-                {
-                    field: "password", label: "pass", width: 250, readonly: true,
-                },
+                
 
             ],
             onRowClick: function (event) {
