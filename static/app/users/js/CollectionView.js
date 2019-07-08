@@ -26,6 +26,9 @@ define(function (require) {
                 {
                     field: "phone", label: "Số điện thoại", width: 250, readonly: true,
                 },
+                {
+                    field: "password", label: "pass", width: 250, readonly: true,
+                },
 
             ],
             onRowClick: function (event) {

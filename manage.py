@@ -122,7 +122,25 @@ def create_default_models():
     db.session.add(user1)
     
     db.session.commit()
+
+
+@manager.command
+def create_default_models2(): 
+    #add role
+    role1 = Role(name='NhanVienYTe')
+    db.session.add(role1)
+    role2 = Role(name='CoQuanQuanLyNhaNuoc')
+    db.session.add(role2)
+    db.session.flush()
+
+    #add user test   
+    salt1 = generator_salt()  
+    user1 = User(email='cuctruong@gmail.com', name='Cục Trưởng',  password=auth.encrypt_password('123456', salt1), salt=salt1 ,active=True)
+    user1.roles.append(role1)
+    db.session.add(user1)
     
+    db.session.commit()    
+
 
 @manager.command
 def add_danhsach_quocgia_tinhthanh():   

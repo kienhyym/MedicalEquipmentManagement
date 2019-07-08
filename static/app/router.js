@@ -5,7 +5,8 @@ define(function (require) {
     var $           = require('jquery'),
         Gonrin    	= require('gonrin');
     var Login		= require('app/login/js/LoginView');
-    // var ForgotPasswordView	= require('app/login/js/ForgotPasswordView');
+    var ChangePasswordView	= require('app/login/js/ChangePasswordView');
+    var ForgotPasswordView	= require('app/login/js/ForgotPasswordView');
     var RegisterView	= require('app/login/js/RegisterView');
     var navdata = require('app/nav/route');
     
@@ -15,6 +16,7 @@ define(function (require) {
             "login":"login",
             "logout": "logout",
             "forgot":"forgotPassword",
+            "changepassword":"changepassword",
             "register":"register",
             "error":"error_page",
             "*path":  "defaultRoute"
@@ -56,6 +58,11 @@ define(function (require) {
         forgotPassword: function(){
             var forgotPassView = new ForgotPasswordView({el: $('.content-contain')});
             forgotPassView.render();
+        },
+        changepassword: function(){
+            var self = this;
+            var changePasswordView = new ChangePasswordView({el: $('.content-contain'), id: self.getApp().currentUser.id});
+            changePasswordView.render();
         },
         register: function(){
             var registerView = new RegisterView({el: $('.content-contain')});

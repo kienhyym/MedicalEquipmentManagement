@@ -18,6 +18,12 @@ class Users(CommonModel):
     password = db.Column(db.String(255), nullable=False)
     zalo_id = db.Column(db.Integer)
     phone = db.Column(db.String(255), nullable=False)
+    roles = db.relationship('Role', secondary=roles_users, cascade="save-update")
+    def has_role(self, role):
+        if isinstance(role, str):
+            return role in (role.name for role in self.roles)
+        else:
+            return role in self.roles
 
 
 class Zalo(CommonModel):

@@ -92,6 +92,9 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView','text!app/base/t
 			
 			self.bind_event();
 //			self.router.navigate('lichthanhtra/model');
+			$("#changepassword").on("click", function () {
+				self.router.navigate("changepassword");
+			});
 
 		},
 		bind_event:function(){

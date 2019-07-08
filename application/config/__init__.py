@@ -19,7 +19,7 @@ class Config(object):
     
     DOMAIN_URL = 'http://127.0.0.1:9080'
     
-    MAIL_SERVER_HOST = 'smtp.gmail.com'
+    MAIL_SERVER_HOST = 'kienhyym.gmail.com'
     MAIL_SERVER_PORT = 587
     MAIL_SERVER_USER = 'cucvsmtboyte@gmail.com'
     MAIL_SERVER_PASSWORD = '123456abcA'

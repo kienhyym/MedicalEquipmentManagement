@@ -21,7 +21,7 @@ import ujson
 import binascii
 import uuid
 from sqlalchemy import func
-from application.models.models import User
+from application.models.models import Users
 
 async def generate_token(user_id, time_expire):
     token =  binascii.hexlify(uuid.uuid4().bytes).decode()
@@ -29,6 +29,7 @@ async def generate_token(user_id, time_expire):
     p.set("sessions:" + token, user_id)
     p.expire("sessions:" + token, time_expire)
     p.execute()
+    print("==================token", token)
     return token
 
 async def send_mail(subject, recipient, body):
@@ -36,7 +37,7 @@ async def send_mail(subject, recipient, body):
     #Thanks: https://github.com/cole/aiosmtplib/issues/1
     host = app.config.get('MAIL_SERVER_HOST')
     port = app.config.get('MAIL_SERVER_PORT')
-    user = app.config.get('MAIL_SERVER_USER')
+    users = app.config.get('MAIL_SERVER_USER')
     password = app.config.get('MAIL_SERVER_PASSWORD')
 
     loop = asyncio.get_event_loop()
@@ -46,7 +47,7 @@ async def send_mail(subject, recipient, body):
     await server.connect()
 
     await server.starttls()
-    await server.login(user, password)
+    await server.login(users, password)
 
     async def send_a_message():
         message = MIMEText(body)
@@ -58,8 +59,8 @@ async def send_mail(subject, recipient, body):
 
     await send_a_message()
 
-async def send_reset_password_instructions(request, user):
-    token = await generate_token(str(user.id), 86400)
+async def send_reset_password_instructions(request, users):
+    token = await generate_token(str(users.id), 86400)
     #reset_link = url_for_security('reset_password', token=token, _external=True)
     reset_link = app.config.get('DOMAIN_URL') + "/api/resetpw?token=" + token
     subject = app.config.get('EMAIL_SUBJECT_PASSWORD_RESET')
@@ -68,8 +69,8 @@ async def send_reset_password_instructions(request, user):
     #mailbody = reset_link
     mailbody = jinja.render_string('email/reset_instructions.txt',request, reset_link=reset_link) 
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(send_mail,args=[subject, user.email, mailbody])
-    print("email===",user.email,"===mailbody===",mailbody)
+    scheduler.add_job(send_mail,args=[subject, users.email, mailbody])
+    print("email===",users.email,"===mailbody===",mailbody)
     scheduler.start()
     
     
@@ -86,7 +87,7 @@ async def resetpw_email(request):
         if ((email is None) or (email == '')):
             return json({"error_code": "PARRAM_ERROR", "error_message": "tham số không hợp lệ"},status=520) 
             
-        checkuser = db.session.query(User).filter(User.email == email).first()
+        checkuser = db.session.query(Users).filter(Users.email == email).first()
         if(checkuser is not None):
             await send_reset_password_instructions(request, checkuser)
             return json({"error": 0, "error_message": u"Yêu cầu thành công, mời bạn kiểm tra lại email để thiết lập lại mật khẩu!"})
@@ -118,7 +119,7 @@ async def reset_password(request):
          
         
         redisdb.delete("sessions:" + token)         
-        user = User.query.filter(User.id == str(uid_current.decode('ascii'))).first()
+        user = Users.query.filter(Users.id == str(uid_current.decode('ascii'))).first()
         if (user is not None):
             user.password = auth.encrypt_password(password)
             auth.login_user(request, user)
