@@ -51,7 +51,7 @@ define(function (require) {
 			
 			{
         		"text":"Danh mục",
-        		"icon":static_url + "/images/icons/task_120.png",
+        		"icon":"fa fa-home",
 				"type":"category",
 				
         		// "visible": function(){
@@ -129,7 +129,8 @@ define(function (require) {
         			    "visible": false
         			},
         		]
-            },
+			},
+			
         ];
 
 });

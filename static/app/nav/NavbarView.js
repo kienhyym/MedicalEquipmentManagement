@@ -54,13 +54,13 @@ define(function (require) {
 					var entry_viewData = _.result(entry, 'viewData');
 					var _html = '';
 					if(entry_type === "category"  && entry_text !== undefined){
-						_html = _html + '<a href="javascript:void(0);">';
+						_html = _html + '<a class="nav-link"  href="javascript:void(0);">';
 						if(entry_icon){
 							_html = _html + '<i class="' + entry_icon + '" aria-hidden="true"></i>';
 						}
-						_html = _html + '<span >'+ entry_text +'</span>';
-						_html = _html + '<span class="pull-right-container">'+
-			              '<i class="fa fa-angle-left pull-right"></i>'+
+						_html = _html + '<span  >'+ entry_text +'</span>';
+						_html = _html + '<span class="pull-right-container" >'+
+			               '<i class="fa fa-angle-left pull-right"></i>'+
 			            '</span>';		
 						_html = _html + '</a>';
 					}
@@ -68,7 +68,7 @@ define(function (require) {
 					if(entry_type === "view" && entry_text !== undefined){
 						_html = _html + '<a class="nav-link" href="javascript:;">';
 						if(entry_icon){
-							_html = _html + '<i class="' + entry_icon + '"></i>'; //change icon
+							_html = _html + '<i class="' + entry_icon + '" ></i>'; //change icon
 						}
 						_html = _html +  entry_text;
 						_html = _html + '</a>';
