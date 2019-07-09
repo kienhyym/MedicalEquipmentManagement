@@ -42,3 +42,34 @@ class User(CommonModel):
             return role in (role.name for role in self.roles)
         else:
             return role in self.roles
+
+
+class QuocGia(CommonModel):
+    __tablename__ = 'quocgia'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    ma = db.Column(String(255), unique=True)
+    ten = db.Column(String(255))
+class TinhThanh(CommonModel):
+    __tablename__ = 'tinhthanh'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    ma = db.Column(String(255), unique=True)
+    ten = db.Column(String(255))
+    quocgia_id = db.Column(UUID(as_uuid=True), ForeignKey('quocgia.id'), nullable=True)
+    quocgia = relationship('QuocGia')
+    quanhuyen = db.relationship("QuanHuyen", order_by="QuanHuyen.id", cascade="all, delete-orphan")
+class QuanHuyen(CommonModel):
+    __tablename__ = 'quanhuyen'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    ma = db.Column(String(255), unique=True)
+    ten = db.Column(String(255))
+    tinhthanh_id = db.Column(UUID(as_uuid=True), ForeignKey('tinhthanh.id'), nullable=True)
+    tinhthanh = relationship('TinhThanh')
+    xaphuong = db.relationship("XaPhuong", order_by="XaPhuong.id", cascade="all, delete-orphan")
+    
+class XaPhuong(CommonModel):
+    __tablename__ = 'xaphuong'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    ma = db.Column(String(255), unique=True)
+    ten = db.Column(String(255))
+    quanhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('quanhuyen.id'), nullable=True)
+    quanhuyen = relationship('QuanHuyen')  

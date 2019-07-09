@@ -39,7 +39,7 @@ define(function (require) {
 						label: "TRANSLATE:SAVE",
 						command: function () {
 							var self = this;
-							self.getApp().showloading();
+							// self.getApp().showloading();
 							var ten = self.model.get("ten");
 							var quanhuyen = self.model.get("quanhuyen");
 							if (ten == null || ten == "") {
@@ -49,7 +49,7 @@ define(function (require) {
 							} else {
 								self.model.save(null, {
 									success: function (model, respose, options) {
-										self.getApp().hideloading();
+										// self.getApp().hideloading();
 										self.getApp().notify("Lưu thông tin thành công");
 										self.getApp().getRouter().navigate(self.collectionName + "/collection");
 

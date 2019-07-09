@@ -7,12 +7,25 @@ define(function (require) {
 	var template = require('text!app/user/tpl/model.html'),
 		schema = require('json!schema/UserSchema.json');
 
-
+	var RoleSelectView = require('app/role/js/SelectView');
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
 		collectionName: "user",
+		uiControl:{
+			fields:[
+				{
+					field: "roles",
+					uicontrol: "ref",
+					textField: "name",
+					foreignRemoteField: "id",
+					foreignField: "role_id",
+					selectionMode: "multiple",
+					dataSource: RoleSelectView
+				}
+			]
+		},
 		
 		render: function () {
 			var self = this;

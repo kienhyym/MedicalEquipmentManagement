@@ -47,6 +47,88 @@ define(function (require) {
 			    "visible": function(){
 			     	return  false;
 			     }
+			},
+			
+			{
+        		"text":"Danh mục",
+        		"icon":static_url + "/images/icons/task_120.png",
+				"type":"category",
+				
+        		// "visible": function(){
+			    // 	//console.log(this.checkHasRole("Admin"));
+			    // 	return this.checkHasRole("Admin") ;
+			    // },
+        		"entries":[
+        			{
+        			    "text":"Quốc gia",
+        			    "type":"view",
+        			    "collectionName":"quocgia",
+        			    "route":"quocgia/collection",
+        			    "$ref": "app/DanhMuc/QuocGia/view/CollectionView",
+        			    // "visible": function(){
+        			    // 	//console.log(this.checkHasRole("Admin"));
+        			    // 	return this.checkHasRole("Admin") ;
+        			    // }
+        			},
+        			{
+        			    "type":"view",
+        			    "collectionName":"quocgia",
+        			    "route":"quocgia/model(/:id)",
+        			    "$ref": "app/DanhMuc/QuocGia/view/ModelView",
+        			    "visible": false
+        			},
+        			{
+        			    "text":"Tỉnh thành",
+        			    "type":"view",
+        			    "collectionName":"tinhthanh",
+        			    "route":"tinhthanh/collection",
+        			    "$ref": "app/DanhMuc/TinhThanh/view/CollectionView",
+        			    // "visible": function(){
+        			    // 	return this.checkHasRole("Admin") ;
+        			    // }
+        			},
+        			{
+        			    "type":"view",
+        			    "collectionName":"tinhthanh",
+        			    "route":"tinhthanh/model(/:id)",
+        			    "$ref": "app/DanhMuc/TinhThanh/view/ModelView",
+        			    "visible": false
+					},
+					{
+        			    "text":"Quận huyện",
+        			    "type":"view",
+        			    "collectionName":"quanhuyen",
+        			    "route":"quanhuyen/collection",
+        			    "$ref": "app/DanhMuc/QuanHuyen/view/CollectionView",
+        			    // "visible": function(){
+        			    // 	return this.checkHasRole("Admin") ;
+        			    // }
+        			},
+        			{
+        			    "type":"view",
+        			    "collectionName":"quanhuyen",
+        			    "route":"quanhuyen/model(/:id)",
+        			    "$ref": "app/DanhMuc/QuanHuyen/view/ModelView",
+        			    "visible": false
+					},
+					{
+        			    "text":"Xã phường",
+        			    "type":"view",
+        			    "collectionName":"xaphuong",
+        			    "route":"xaphuong/collection",
+        			    "$ref": "app/DanhMuc/XaPhuong/view/CollectionView",
+        			    // "visible": function(){
+        			    // 	return this.checkHasRole("Admin") ;
+        			    // }
+        			},
+        			{
+        			    "type":"view",
+        			    "collectionName":"xaphuong",
+        			    "route":"xaphuong/model(/:id)",
+        			    "$ref": "app/DanhMuc/XaPhuong/view/ModelView",
+        			    "visible": false
+        			},
+        		]
             },
         ];
 
