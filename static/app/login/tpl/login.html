@@ -1,27 +1,29 @@
-<div class="pt-5 pb-5 " style="background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);">
+
     <div class="d-flex justify-content-center col-lg-12 col-md-12 pt-4 mb-5">
-     
-        <div class="mb-5">
-            <img class="profile-img mb-4" src="{% print(static_url) %}/img/mosquito_graphic2.gif" alt="">
-            <h5 class="text-center text-uppercase"  style="color: white;font-family: serif">Dự báo sốt xuất huyết</h5>
 
-            <form class="login-form mt-5" id="login-form">
-                <div class="form-group" id="user-name">
-                    <input type="text" class="form-control" name="username" placeholder="Tài khoản" style="border-radius: 30px">
-                </div>
 
-                <div class="form-group" id="password">
-                    <input type="password" class="form-control" name="password" placeholder="Mật khẩu" style="border-radius: 30px">
-                </div>
+        <div class="card col-lg-4 border m-0 p-0" >
+            <h5 class="card-title text-center border p-5 m-0" style="color: orange"><b>Sổ người lao động</b></h5>
+            <div class="card-body border" id="cardbody">
+                <img id="imgcardbody"  src="{% print(static_url) %}/img/iconl.jpg" alt="" width="16%">
 
-                <button type="submit" class="btn btn-info font-weight-bold w-100" style="border-radius: 30px">Đăngnhập</button>
-                
-                <div style="font-size: 12px"class=" row d-flex justify-content-center mt-1 mb-5" >
-                <a style="color: white" href="http://0.0.0.0:9080/#register" id="register-btn">Đăng ký</a>
-                <p style="color: white">/<p>
-                <a style="color: white" href="http://0.0.0.0:9080/#forgot">Quên mật khẩu</a>
-                </div>
-            </form>
+                <form class="login-form pt-5  pl-3 pr-3 pb-5" id="login-form">
+                        <h6 class="card-title text-center ">Sign In</h6>
+                    <div class="form-group" id="user-name">
+                        <input type="text" class="form-control" name="username" placeholder="Tài khoản">
+                    </div>
+
+                    <div class="form-group" id="password">
+                        <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
+                    </div>
+
+                    <button type="submit" class="btn btn-warning font-weight-bold w-100">Đăngnhập</button>
+
+                    <div class="pt-2 pb-2" >
+                        <a style="color: #9e9e9e;font-size: 13px;font-family: Arial, Helvetica, sans-serif"  href="http://0.0.0.0:9080/#register" id="register-btn">Đăng ký tài khoản mới</a>
+                    </div>
+                </form>
+            </div>
         </div>
+
     </div>
-</div>
