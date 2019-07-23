@@ -8,11 +8,6 @@ body {
   padding-left: 1%;
   outline: 0px;
 }
-.input-phuluc3{
-	border:none;
-	border-bottom:1px dotted black;
-	padding-left: 1%;
-}
 .flexboxer{
 		display: flex;
 }
@@ -36,7 +31,10 @@ font-family: Arial, Helvetica, sans-serif;
   transform: translate(-50%,-90%)
 }
 
-
+.stronger{
+  color: black;
+  font-weight: 500;
+}
 
 
 

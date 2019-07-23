@@ -4,40 +4,41 @@
             <table class="table  table-bordered">
                 <tr class="text-center ">
                     <td>
-                        <div class="flexboxer col-md-12 p-0">
-                            <label>Sở Y tế</label>
-                            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                        <div class="flexboxer col-md-12 p-2">
+                            <label class="stronger">Đơn vị báo cáo: </label>
+                            <input type="text" class="input-phuluc2 stronger" style="flex-grow: 1">
                         </div>
-                        <div class="flexboxer col-md-12 p-0">
-                            <label>Trung tâm y tế</label>
-                            <input type="text" class="input-phuluc2" style="flex-grow: 1">
-                        </div>
-                        <label>..................</label>
+                        <label class="stronger">..................</label>
                     </td>
                     <td>
-                        <label>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
-                        <label>Độc lập - Tự do - Hạnh phúc</label><br>
-                        <label>..................</label>
+                        <label class="stronger">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
+                        <label class="stronger">Độc lập - Tự do - Hạnh phúc</label><br>
+                        <label class="stronger">..................</label>
                     </td>
                 </tr>
 
-                <tr class="text-center ">
-                    <td>
-                        <label>Số</label>
-                        <input type="text" class="input-phuluc2" style="width: 15%;">
-                        <label>/BC</label>
-                        <input type="text" class="input-phuluc2" style="width: 15%;">
-                    </td>
-                    <td class="text-right">
-                        <input type="text" class="input-phuluc2" style="width: 8%;">
-                        <label>,ngày</label>
-                        <input type="text" class="input-phuluc2" style="width: 8%;">
-                        <label>,tháng</label>
-                        <input type="text" class="input-phuluc2" style="width: 8%;">
-                        <label>,năm</label>
-                        <input type="text" class="input-phuluc2" style="width: 8%;">
-                    </td>
-                </tr>
+                <tr>
+                        <td>
+                                <div class="flexboxer  justify-content-center d-flex ">
+    
+                            <label>Số</label>
+                            <input type="text" class="input-phuluc2" style="width: 15%;">
+                            <label>/BC</label>
+                            <input type="text" class="input-phuluc2" style="width: 15%;">
+                            </div>
+                        </td>
+                        <td>
+                                <div class="flexboxer  justify-content-end d-flex ">
+                                <input type="text" class="input-phuluc2" style="width: 8%;">
+                                <label>,ngày</label>
+                                <input type="text" class="input-phuluc2" style="width: 8%;">
+                                <label>,tháng</label>
+                                <input type="text" class="input-phuluc2" style="width: 8%;">
+                                <label>,năm</label>
+                                <input type="text" class="input-phuluc2" style="width: 8%;">
+                                </div>
+                            </td>
+                    </tr>
             </table>
         </div>
 
@@ -47,51 +48,33 @@
             <input type="text" class="input-phuluc2">
         </div>
         <div class="justify-content-center d-flex">
-            <label>BÁO CÁO</label>
+            <label class="stronger pt-3">BÁO CÁO</label>
         </div>
         <div class="justify-content-center d-flex">
-            <label>Y TẾ LAO ĐỘNG CỦA CƠ SỞ LAO ĐỘNG</label>
+            <label class="stronger">Y TẾ LAO ĐỘNG CỦA CƠ SỞ LAO ĐỘNG</label>
         </div>
-        <div class="flexboxer col-md-12 p-0 justify-content-center d-flex">
-            <label>Báo cáo 6 tháng/năm</label>
-            <input type="text" class="input-phuluc2">
+        <div class="flexboxer col-md-12 p-0 justify-content-center d-flex pb-3">
+            <label class="stronger">Báo cáo 6 tháng/năm</label>
+            <input type="text" class="input-phuluc2 stronger">
         </div>
         <label class="text-center"><i>(Cơ sở lao động gửi báo cáo về Trung tâm Y tế (dự phòng) quận/huyện/thành phố
                 thuộc tỉnh. Đối với cơ sở trực thuộc bộ, ngành gửi thêm 01 bản về đơn vị y tế bộ, ngành)</i>></label>
-        <label>I. Thông tin chung</label>
+        <label class="stronger">I. Thông tin chung</label>
         <div class="flexboxer col-md-12 p-0">
             <label>1. Tên cơ sở lao động:</label>
             <input type="text" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="row">
-            <div class="form-group">
-                <div class="form-check">
-                    <label class="form-check-label" for="gridCheck">
-                        2. Trực thuộc:
-                    </label>
+                <label class="col-md-3 m-0">2. Trực thuộc:</label>
 
-                </div>
+            <div class="col-md-2" style="position: relative" >
+                <label class="m-0">tỉnh/thành phố</label>
+                <input  type="checkbox" style="position: absolute;top:0.33333em;left:8em;">
             </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        tỉnh/thành phố
-                    </label>
 
-
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        bộ, ngành
-                    </label>
-
-
-                </div>
-
+            <div class="col-md-2" style="position: relative" >
+                <label class="m-0">bộ, ngành</label>
+                <input type="checkbox" style="position: absolute;top:0.33333em;left:6em;">
             </div>
         </div>
         <div class="flexboxer col-md-12 p-0">
@@ -156,15 +139,19 @@
                 </tr>
             </table>
         </div>
+        <label>7. Tổ chức bộ phận y tế</label>
+        <div class="row">
+                <label class="col-md-3 m-0">7.1. Người làm công tác y tế: </label>
 
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl ">
-            <table class="table ">
-                <tr>
-                    <td>7. Tổ chức bộ phận y tế </td>
-                    <td>Có <input type="checkbox"></td>
-                    <td>Không <input type="checkbox"></td>
-                </tr>
-            </table>
+            <div class="col-md-2" style="position: relative" >
+                <label class="m-0">Có</label>
+                <input  type="checkbox" style="position: absolute;top:0.33333em;left:2.4em;">
+            </div>
+
+            <div class="col-md-2" style="position: relative" >
+                <label class="m-0">Không</label>
+                <input type="checkbox" style="position: absolute;top:0.33333em;left:4.1em;">
+            </div>
         </div>
         <label>Nếu có, ghi rõ thông tin về người làm công tác y tế tại cơ sở lao động:</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
@@ -185,29 +172,37 @@
                 </tr>
             </table>
         </div>
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl ">
-            <table class="table ">
-                <tr>
-                    <td>7.2. Trạm/phòng y tế/phòng khám /bệnh viện: </td>
-                    <td>Có <input type="checkbox"></td>
-                    <td>Không <input type="checkbox"></td>
-                </tr>
-            </table>
+        <div class="row">
+                <label class="col-md-4 m-0">7.2. Trạm/phòng y tế/phòng khám /bệnh viện: </label>
+
+            <div class="col-md-2" style="position: relative" >
+                <label class="m-0">Có</label>
+                <input  type="checkbox" style="position: absolute;top:0.33333em;left:2.4em;">
+            </div>
+
+            <div class="col-md-2" style="position: relative" >
+                <label class="m-0">Không</label>
+                <input type="checkbox" style="position: absolute;top:0.33333em;left:4.1em;">
+            </div>
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Nếu có, ghi cụ thể hình thức tổ chức</label>
             <input type="text" class="input-phuluc2" style="flex-grow: 1">
         </div>
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl ">
-            <table class="table ">
-                <tr>
-                    <td>7.3. Thuê, hợp đồng với đơn vị y tế: </td>
-                    <td>Có <input type="checkbox"></td>
-                    <td>Không <input type="checkbox"></td>
-                </tr>
-            </table>
+        <div class="row">
+                <label class="col-md-4 m-0">7.3. Thuê, hợp đồng với đơn vị y tế:</label>
+
+            <div class="col-md-2" style="position: relative" >
+                <label class="m-0">Có</label>
+                <input  type="checkbox" style="position: absolute;top:0.33333em;left:2.4em;">
+            </div>
+
+            <div class="col-md-2" style="position: relative" >
+                <label class="m-0">Không</label>
+                <input type="checkbox" style="position: absolute;top:0.33333em;left:4.1em;">
+            </div>
         </div>
-        <label>Nếu có, ghi rõ:</label>
+        <label class="m-0">Nếu có, ghi rõ:</label>
         <div class="flexboxer col-md-12 p-0">
             <label>- Tên cơ sở cung cấp dịch vụ: </label>
             <input type="text" class="input-phuluc2" style="flex-grow: 1">
@@ -230,7 +225,7 @@
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <label>8. Lực lượng sơ cứu tại nơi làm việc (đối với cơ sở sản xuất kinh doanh)</label>
+            <label>8. Lực lượng sơ cứu tại nơi làm việc (<i>đối với cơ sở sản xuất kinh doanh</i>)</label>
             <input type="text" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
@@ -262,7 +257,7 @@
                 </tr>
             </table>
         </div>
-        <label>II. Điều kiện lao động và số lao động tiếp xúc với yếu tố có hại</label>
+        <label class="stronger">II. Điều kiện lao động và số lao động tiếp xúc với yếu tố có hại</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
@@ -298,7 +293,7 @@
                 </tr>
             </table>
         </div>
-        <label>III. Nghỉ việc do ốm đau, tai nạn lao động và bệnh nghề nghiệp</label>
+        <label class="stronger">III. Nghỉ việc do ốm đau, tai nạn lao động và bệnh nghề nghiệp</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -371,8 +366,8 @@
 
                 </tr>
                 <tr>
+                    <td class="stronger">Cộng</td>
                     <td></td>
-                    <td>Tổng cộng</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -392,13 +387,13 @@
                 </tr>
             </table>
         </div>
-        <label>Ghi chú:</label><br>
+        <label class="stronger">Ghi chú:</label><br>
         <label><i>- Cột 2, 14: tỷ lệ % so với tổng số người lao động.</i>></label><br>
         <label><i>- Cột 6: tỷ lệ % so với tổng số người lao động trực tiếp sản xuất.</i>></label><br>
         <label><i>- Cột 10: tỷ lệ % so với với tổng số người lao động tiếp xúc với các yếu tố có hại.</i></label><br>
         <label><i>- Cột 4, 8, 12, 16: số ngày nghỉ trung bình (được tính bằng tổng số ngày nghỉ/tổng số người nghỉ do
                 từng nguyên nhân)</i></label><br>
-        <label>IV. Bệnh nghề nghiệp được bảo hiểm</label>
+        <label class="stronger">IV. Bệnh nghề nghiệp được bảo hiểm</label><br>
         <label>1. Tổng hợp tình hình bệnh nghề nghiệp tại cơ sở lao động</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
@@ -450,7 +445,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Tổng số</td>
+                    <td class="stronger">Tổng số</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -501,7 +496,7 @@
                 </tr>
             </table>
         </div>
-        <label>V. Tình hình bệnh tật và tai nạn lao động</label>
+        <label class="stronger">V. Tình hình bệnh tật và tai nạn lao động</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -589,8 +584,8 @@
             </table>
         </div>
         <label><i>Thống kê kết quả khám, chẩn đoán của người lao động tự đi khám hoặc phân loại bệnh thông qua khám sức
-                khỏe định kỳ hoặc khám phát hiện sớm bệnh nghề nghiệp tại cơ sở lao động.</i>></label>
-        <label>VI. Phân loại sức khỏe</label>
+                khỏe định kỳ hoặc khám phát hiện sớm bệnh nghề nghiệp tại cơ sở lao động.</i></label>
+        <label class="stronger">VI. Phân loại sức khỏe</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -660,7 +655,7 @@
                 </tr>
             </table>
         </div>
-        <label>VII. Công tác huấn luyện</label>
+        <label class="stronger">VII. Công tác huấn luyện</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -683,7 +678,7 @@
 
             </table>
         </div>
-        <label>VIII. Kinh phí chi trả cho công tác vệ sinh lao động, chăm sóc sức khỏe người lao động</label>
+        <label class="stronger">VIII. Kinh phí chi trả cho công tác vệ sinh lao động, chăm sóc sức khỏe người lao động</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -709,7 +704,7 @@
 
             </table>
         </div>
-        <label>IX. Các kiến nghị và kế hoạch dự kiến trong kỳ báo cáo tớ</label>
+        <label class="stronger">IX. Các kiến nghị và kế hoạch dự kiến trong kỳ báo cáo tớ</label>
         <div class="flexboxer col-md-12 p-0">
             <input type="text" class="input-phuluc2" style="flex-grow: 1">
         </div>
@@ -722,5 +717,16 @@
         <div class="flexboxer col-md-12 p-0">
             <input type="text" class="input-phuluc2" style="flex-grow: 1">
         </div>
+
+        <div class="row col-md-12 justify-content-center d-flex m-0 p-0 mt-3">
+                <div class="border w-50 text-center ">
+                    <label class=" pl-5 pr-5 pt-3 stronger">Thủ trưởng đơn vị</label><br>
+                    <label class=" pl-5 pr-5r"><i>(ký, ghi rõ họ tên và đóng dấu)</i></label>
+                </div>
+                <div class="border w-50 text-center ">
+                    <label class=" pl-5 pr-5 pt-3 stronger">Người báo cáo</label><br>
+                    <label class=" pl-5 pr-5"><i>(ký, ghi rõ họ tên)</i></label>
+                </div>
+            </div>
     </div>
 </div>

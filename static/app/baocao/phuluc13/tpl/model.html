@@ -1,32 +1,54 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
-        <div class="row col-md-12 justify-content-center d-flex m-0 p-0">
-            <div class="border w-50 text-center">
-                <label class=" pl-5 pr-5 text-center">Đơn vị chủ quản</label><br>
-                <label class=" pl-5 pr-5 text-center">TÊN CƠ SỞ HUẤN LUYỆN, ĐÀO TẠO</label><br>
-                <label class=" pl-5 pr-5 text-center">--------</label>
-            </div>
-            <div class="border w-50 text-center">
-                <label class=" pl-5 pr-5 text-center">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
-                <label class=" pl-5 pr-5 text-center">Độc lập - Tự do - Hạnh phúc</label><br>
-                <label class=" pl-5 pr-5 text-center">-------------------------</label>
-            </div>
+        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
+            <table class="table  table-bordered">
+                <tr class="text-center ">
+                    <td>
+                        <div class="flexboxer col-md-12 justify-content-center d-flex p-0 pl-5 pr-5">
+                            <label>Đơn vị chủ quản</label>
+                        </div>
+                        <div class="flexboxer col-md-12 justify-content-center d-flex p-0  pl-3 pr-3"">
+                            <label class=" stronger">TÊN CƠ SỞ HUẤN LUYỆN, ĐÀO TẠO</label>
+                        </div>
+                        <label class="stronger mt-2">..................</label>
+                    </td>
+                    <td>
+                        <label class="stronger">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
+                        <label class="stronger">Độc lập - Tự do - Hạnh phúc</label><br>
+                        <label class="stronger">..................</label>
+                    </td>
+                </tr>
 
-            <div class="border w-50 text-center">
-                <label class=" pl-5 pr-5 text-center">Số: ……- …(1)…/GCN</label>
-            </div>
-            <div class="border w-50 text-center">
-                <label class=" pl-5 pr-5 text-center">………….., ngày.... tháng... năm....</label>
-            </div>
-
+                <tr>
+                    <td> 
+                        <div class="flexboxer  justify-content-center d-flex ">
+                        <label>Số</label>
+                        <input type="text" class="input-phuluc2" style="width: 15%;">
+                        <label>-</label>
+                        <input type="text" class="input-phuluc2" style="width: 15%;">
+                        <label>/GCN</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="flexboxer  justify-content-end d-flex ">
+                        <input type="text" class="input-phuluc2" style="width: 8%;">
+                        <label>,ngày</label>
+                        <input type="text" class="input-phuluc2" style="width: 8%;">
+                        <label>,tháng</label>
+                        <input type="text" class="input-phuluc2" style="width: 8%;">
+                        <label>,năm</label>
+                        <input type="text" class="input-phuluc2" style="width: 8%;">
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
-
 
 
 
         <!-- Tiều đề -->
         <div class="justify-content-center d-flex">
-            <label>CHỨNG CHỈ ĐÀO TẠO VỀ QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG</label>
+            <label class="stronger">CHỨNG CHỈ ĐÀO TẠO VỀ QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG</label>
         </div>
 
 
@@ -57,8 +79,21 @@
             <label>Thời gian huấn luyện: </label>
             <input type="text" class="input-phuluc2" style="flex-grow: 1">
         </div>
-        <div class="justify-content-center d-flex">
-            <label class="m-0 pt-1">Từ ngày ... tháng ... năm…… đến ngày ... tháng ... năm ………………..</label>
+        <div class="flexboxer pb-3"">
+            <!-- <label class="m-0 pt-1">Từ ngày ... tháng ... năm…… đến ngày ... tháng ... năm ………………..</label> -->
+            <label>Từ ngày</label>
+            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <label>,tháng</label>
+            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <label>,năm</label>
+            <input type="text" class="input-phuluc2" style="width: 8%;">
+            
+            <label>đến ngày</label>
+            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <label>,tháng</label>
+            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <label>,năm</label>
+            <input type="text" class="input-phuluc2" style="width: 8%;">
             <!-- <input type="text" class="input-phuluc2"> -->
         </div>
 
@@ -68,13 +103,19 @@
 
             </div>
             <div class="border w-50 text-center">
-                <label class=" pl-5 pr-5 text-center">……….., ngày …… tháng …… năm ……</label><br>
+                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <label>,ngày</label>
+                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <label>,tháng</label>
+                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <label>,năm</label>
+                <input type="text" class="input-phuluc2" style="width: 8%;">
                 <label class=" pl-5 pr-5 text-center">……….. THỦ TRƯỞNG ĐƠN VỊ ……………</label><br>
                 <label class=" pl-5 pr-5 text-center">(ký, đóng dấu)</label>
             </div>
         </div>
 
-        <label><i>Ghi chú: (1) Tên viết tắt của cơ sở huấn luyện, đào tạo</i>></label>
+        <label><i>Ghi chú: (1) Tên viết tắt của cơ sở huấn luyện, đào tạo</i></label>
         <br>
         <br>
         <br>
