@@ -17,6 +17,9 @@ define(function(require) {
                 self.processLogin();
                 return false;
             });
+            $("#register-btn").unbind('click').bind('click', function(){
+                self.getApp().getRouter().navigate("register");
+            });
             return this;
         },
         processLogin: function() {
