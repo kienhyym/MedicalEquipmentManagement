@@ -144,6 +144,72 @@ define(function (require) {
 			"route": "baocao/phuluc13/model",
 			"$ref": "app/baocao/phuluc13/js/ModelView",
 		},
+		
+		{
+			
+			"route": "baocao2/phuluc21/model",
+			"$ref": "app/baocao2/phuluc21/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc1/model",
+			"$ref": "app/baocao2/phuluc1/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc2/model",
+			"$ref": "app/baocao2/phuluc2/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc3/model",
+			"$ref": "app/baocao2/phuluc3/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc4/model",
+			"$ref": "app/baocao2/phuluc4/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc5/model",
+			"$ref": "app/baocao2/phuluc5/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc6/model",
+			"$ref": "app/baocao2/phuluc6/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc7/model",
+			"$ref": "app/baocao2/phuluc7/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc8/model",
+			"$ref": "app/baocao2/phuluc8/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc9/model",
+			"$ref": "app/baocao2/phuluc9/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc10/model",
+			"$ref": "app/baocao2/phuluc10/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc11/model",
+			"$ref": "app/baocao2/phuluc11/js/ModelView",
+		},
+		{
+			
+			"route": "baocao2/phuluc12/model",
+			"$ref": "app/baocao2/phuluc12/js/ModelView",
+		},
 	
 	];
 
