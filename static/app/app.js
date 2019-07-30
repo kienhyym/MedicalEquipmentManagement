@@ -32,12 +32,14 @@ require.config({
 });
 
 
-require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/tpl/mobilelayout.html', 'i18n!app/nls/app', 'vendor/store'], function ($, Gonrin, Router, Nav, layout, lang, storejs) {
+require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/tpl/mobilelayout.html', 'i18n!app/nls/app', 'vendor/lodash-4.17.10'], function ($, Gonrin, Router, Nav, layout, lang, lodash) {
 	$.ajaxSetup({
 		headers: {
 			'content-type': 'application/json'
 		}
 	});
+
+	window.lodash = lodash;
 
 	var app = new Gonrin.Application({
 		serviceURL: "http://0.0.0.0:9080",

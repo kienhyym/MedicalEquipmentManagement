@@ -162,6 +162,7 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
+						self.registerEvent();
 						// self.sothutu();
 					},
 					error: function () {
@@ -170,20 +171,42 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
+				self.registerEvent();
 			}
+		},
+		registerEvent: function () {
+			this.sothutu();
 		},
 		// sothutu: function () {
 		// 	var self = this;
 		// 	// var id = self.getApp().currentUser.id
 		// 	self.$el.find(" tr td #stt").val('x')
 		// 	var x = self.$el.find("tr td #stt")
-			
+
 		// 	for(var i= 0;i<=x.length;i++){
 		// 		x[i].val('a');
 		// 	console.log(x[i]);
 
 		// 	}
 		// }
+		sothutu: function () {
+			const self = this;
+			var arr = [];
+			var arrr = [];
+
+			arr = lodash.sortBy(self.model.get("banghscctainanlaodongtaicosolaodongfield"), ["created_at"], ["asc"])
+			arr.forEach(function (item, index, array) {
+				console.log(index);
+			
+			});	
+		
+			arrr = lodash(self.$el.find("tr td #stt"));
+			arrr.forEach(function (item, index, array) {
+				console.log(item);
+				item.value=index;
+			});	
+
+		}
 	});
 
 });

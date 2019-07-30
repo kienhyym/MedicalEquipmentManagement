@@ -34,29 +34,14 @@ define(function (require) {
         // },
         render: function () {
             var self = this;
-            this.applyBindings();
-            // self.$el.find("#itemRemove").unbind("click").bind("click", function () {
-            //     self.remove(true);
-            // });
-
-            // self.registerEvent();
-            self.sothutu();
-
+            self.applyBindings();
+            self.registerEvent();
         },
-        // registerEvent: function () {
-
-        //     self.$el.find("#itemRemove").unbind("click").bind("click", function () {
-        //         self.remove(true);
-        //     });
-        // },
-        sothutu:function(){
-			var self = this;
-			// var id = self.getApp().currentUser.id
-			var x;
-			for(var i=0;i<=4;i++){
-
-				self.$el.find("#stt").val(i);
-			}
-		}
+        registerEvent: function () {
+            const self = this;
+            self.$el.find("#itemRemove").unbind("click").bind("click", function () {
+                self.remove(true);
+            });
+        }
     });
 });
