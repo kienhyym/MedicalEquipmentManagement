@@ -163,17 +163,36 @@ define(function (require) {
 						return true;
 					}
 				},
+				// {
+				// 	"text": "phụ lục 3",
+				// 	"icon": "fa fa-home",
+				// 	"type": "view",
+				// 	// "collectionName": "baocao",
+				// 	"route": "baocao/phuluc3/model",
+				// 	// "$ref": "app/baocao/phuluc3/js/ModelView",
+				// 	"visible": function () {
+				// 		return true;
+				// 	}
+				// },
 				{
 					"text": "phụ lục 3",
-					"icon": "fa fa-home",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc3/model",
-					// "$ref": "app/baocao/phuluc3/js/ModelView",
+					"icon": "fa fa-home",
+					"collectionName": "hscctainanlaodongtaicosolaodong",
+					"route": "hscctainanlaodongtaicosolaodong/collection",
+					"$ref": "app/baocao/phuluc3/js/CollectionView",
 					"visible": function () {
 						return true;
 					}
 				},
+				{
+					"type": "view",
+					"collectionName": "hscctainanlaodongtaicosolaodong",
+					"route": "hscctainanlaodongtaicosolaodong/model(/:id)",
+					"$ref": "app/baocao/phuluc3/js/ModelView",
+					"visible": false
+				},
+
 				{
 					"text": "phụ lục 4",
 					"icon": "fa fa-home",

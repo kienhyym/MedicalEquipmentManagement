@@ -1,0 +1,71 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "tencosolaodong": {
+        "type": "string",
+        "length": 255
+    },
+    "nganhchuquan": {
+        "type": "string",
+        "length": 255
+    },
+    "diachi": {
+        "type": "string",
+        "length": 255
+    },
+    "dienthoai": {
+        "type": "string",
+        "length": 255
+    },
+    "sofax": {
+        "type": "string",
+        "length": 255
+    },
+    "email": {
+        "type": "string",
+        "length": 255
+    },
+    "wwebsite": {
+        "type": "string",
+        "length": 255
+    },
+    "nguoilienhe": {
+        "type": "string",
+        "length": 255
+    },
+    "nguoilaphoso": {
+        "type": "string",
+        "length": 255
+    },
+    "nam": {
+        "type": "string",
+        "length": 255
+    },
+    "banghscctainanlaodongtaicosolaodongfield": {
+        "type": "list"
+    }
+}

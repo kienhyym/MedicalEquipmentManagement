@@ -89,11 +89,24 @@ define(function (require) {
 			"route": "baocao/phuluc2/model",
 			"$ref": "app/baocao/phuluc2/js/ModelView",
 		},
-		{
+		// {
 			
-			"route": "baocao/phuluc3/model",
+		// 	"route": "baocao/phuluc3/model",
+		// 	"$ref": "app/baocao/phuluc3/js/ModelView",
+		// },
+
+		{
+			"collectionName": "hscctainanlaodongtaicosolaodong",
+			"route": "hscctainanlaodongtaicosolaodong/collection",
+			"$ref": "app/baocao/phuluc3/js/CollectionView",
+		},
+		{
+			"collectionName": "hscctainanlaodongtaicosolaodong",
+			"route": "hscctainanlaodongtaicosolaodong/model(/:id)",
 			"$ref": "app/baocao/phuluc3/js/ModelView",
 		},
+
+
 		{
 			
 			"route": "baocao/phuluc4/model",

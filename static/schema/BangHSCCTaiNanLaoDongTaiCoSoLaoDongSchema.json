@@ -1,0 +1,74 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "ngaythangnam": {
+        "type": "datetime"
+    },
+    "hotennannhan": {
+        "type": "string",
+        "length": 255
+    },
+    "tuoinam": {
+        "type": "number"
+    },
+    "tuoinu": {
+        "type": "number"
+    },
+    "thoigianbitainanlaodong": {
+        "type": "string",
+        "length": 255
+    },
+    "thoigiancapcuutaicho": {
+        "type": "string",
+        "length": 255
+    },
+    "thoigiannannhanthuongtich": {
+        "type": "string",
+        "length": 255
+    },
+    "yeutogaytainan": {
+        "type": "string",
+        "length": 255
+    },
+    "xutricapcuu": {
+        "type": "string",
+        "length": 255
+    },
+    "thoigiannghiviec": {
+        "type": "datetime"
+    },
+    "ketquagiamdinhtylematsulaodong": {
+        "type": "string",
+        "length": 255
+    },
+    "hscctainanlaodongtaicosolaodong_id": {
+        "type": "string"
+    },
+    "hscctainanlaodongtaicosolaodong": {
+        "type": "dict"
+    }
+}

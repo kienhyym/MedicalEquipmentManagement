@@ -73,3 +73,36 @@ class XaPhuong(CommonModel):
     ten = db.Column(String(255))
     quanhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('quanhuyen.id'), nullable=True)
     quanhuyen = relationship('QuanHuyen')  
+
+
+class HSCCTaiNanLaoDongTaiCoSoLaoDong(CommonModel):
+    __tablename__ = 'hscctainanlaodongtaicosolaodong'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tencosolaodong = db.Column(String(255))
+    nganhchuquan = db.Column(String(255))
+    diachi = db.Column(String(255))
+    dienthoai = db.Column(String(255))
+    sofax = db.Column(String(255))
+    email = db.Column(String(255))
+    wwebsite = db.Column(String(255))
+    nguoilienhe = db.Column(String(255))
+    nguoilaphoso = db.Column(String(255))
+    nam = db.Column(String(255))
+    banghscctainanlaodongtaicosolaodongfield = db.relationship('BangHSCCTaiNanLaoDongTaiCoSoLaoDong', cascade="all, delete-orphan")
+
+class BangHSCCTaiNanLaoDongTaiCoSoLaoDong(CommonModel):
+    __tablename__ = 'banghscctainanlaodongtaicosolaodong'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    ngaythangnam = db.Column(db.DateTime())
+    hotennannhan  = db.Column(String(255))
+    tuoinam = db.Column(db.Integer())
+    tuoinu = db.Column(db.Integer())
+    thoigianbitainanlaodong = db.Column(String(255))
+    thoigiancapcuutaicho = db.Column(String(255))
+    thoigiannannhanthuongtich = db.Column(String(255))
+    yeutogaytainan = db.Column(String(255))
+    xutricapcuu = db.Column(String(255))
+    thoigiannghiviec = db.Column(db.DateTime())
+    ketquagiamdinhtylematsulaodong = db.Column(String(255))
+    hscctainanlaodongtaicosolaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('hscctainanlaodongtaicosolaodong.id'), nullable=True)
+    hscctainanlaodongtaicosolaodong = relationship('HSCCTaiNanLaoDongTaiCoSoLaoDong')  
