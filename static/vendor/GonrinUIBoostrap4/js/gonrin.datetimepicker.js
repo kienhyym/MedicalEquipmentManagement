@@ -2405,7 +2405,7 @@
             var componentButton = element.nextAll('span:first');
 
             if ((componentButton.length == 0) || !($(componentButton[0]).hasClass('input-group-append'))) {
-                componentButton = $('<span class="input-group-append">').html('<span class="btn btn-outline-secondary input-group-addon"></span>');
+                componentButton = $('<span class="input-group-append">').html('<span class="btn btn-outline-secondary input-group-addon"><i class="fa fa-calendar"></i></span>');
                 inputGroupSpan.append(componentButton);
             }
 

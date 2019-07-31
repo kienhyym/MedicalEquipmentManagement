@@ -1,6 +1,14 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
-
+        
+        <div class="row">
+            <div class="col-md-7">
+                <h6 class="m-0">Thông tin chi tiết</h6>
+            </div>
+            <div class="col-md-5 text-right">
+                <div block-bind="toolbar"></div>
+            </div>
+        </div>
 
         <!-- Tiều đề -->
         <div class="justify-content-center d-flex">
@@ -24,43 +32,43 @@
         <!-- Nhập thông tin  cơ sở lao động -->
         <div class="flexboxer col-md-12 p-0">
             <label>Tên cơ sở lao động:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:tencosolaodong">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Ngành chủ quản:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:nganhchuquan">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Địa chỉ:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:diachi">
         </div>
         <div class="row col-md-12 p-0 m-0">
             <div class="flexboxer col-md-6 p-0">
                 <label>Điện thoại:</label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:dienthoai">
             </div>
             <div class="flexboxer col-md-6 p-0">
                 <label>Số_Fax:</label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:sofax">
             </div>
         </div>
         <div class="row col-md-12 p-0 m-0">
             <div class="flexboxer col-md-6 p-0">
                 <label>E-mail:</label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:email">
             </div>
             <div class="flexboxer col-md-6 p-0">
                 <label>Website:</label>
-                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1" data-bind="value:website">
             </div>
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Người liên hệ:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:nguoilienhe">
         </div>
         <div class="justify-content-center d-flex">
             <label class="m-0 pt-1">Năm:</label>
-            <input type="text" class="input-phuluc2">
+            <input type="text" class="input-phuluc2" data-bind="value:nam">
         </div>
         <br>
         <br>
@@ -72,7 +80,9 @@
         <div class="justify-content-center d-flex  m-1">
             <label class="stronger">Biểu mẫu 1: QUẢN LÝ SỨC KHỎE TRƯỚC KHI BỐ TRÍ VIỆC LÀM</label>
         </div>
-
+        <div class="row col-md-12">
+            <div id="add_row" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
@@ -91,7 +101,7 @@
                 </tr>
 
 
-                <tr>
+                <!-- <tr>
                     <td></td>
                     <td>
                         <div class="m-0">Nam:</div>
@@ -117,7 +127,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
+                </tr> -->
+                <tbody data-bind="list:bangqlsuckhoetruockhibotrivieclamfield"></tbody>
             </table>
         </div>
         <br>

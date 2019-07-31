@@ -57,15 +57,38 @@
         "type": "string",
         "length": 255
     },
-    "nguoilaphoso": {
-        "type": "string",
-        "length": 255
-    },
     "nam": {
         "type": "string",
         "length": 255
     },
-    "banghscctainanlaodongtaicosolaodongfield": {
+    "bangqlsuckhoetruockhibotrivieclamfield": {
+        "type": "list"
+    },
+    "bangqlsuckhoelaodongthongquakhamsuckhoedinhkyfield": {
+        "type": "list"
+    },
+    "bangsotruonghopmaccacloaibenhthongthuongfield": {
+        "type": "list"
+    },
+    "bangcactruonghopmacbenhnghenghiepfield": {
+        "type": "list"
+    },
+    "bangcactruonghoptainanlaodongfield": {
+        "type": "list"
+    },
+    "bangtinhhinhnghiviecfield": {
+        "type": "list"
+    },
+    "bangquanlybenhmantinhfield": {
+        "type": "list"
+    },
+    "bangquanlybenhmantinhtheotungbenhfield": {
+        "type": "list"
+    },
+    "BangTheoDoiBenhNgheNghiepfield": {
+        "type": "list"
+    },
+    "bangdanhsachnguoilaodongmacbenhnghenghiepfield": {
         "type": "list"
     }
 }

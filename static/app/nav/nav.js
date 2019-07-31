@@ -154,26 +154,26 @@ define(function (require) {
 				},
 				{
 					"text": "phụ lục 2",
-					"icon": "fa fa-home",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc2/model",
-					// "$ref": "app/baocao/phuluc2/js/ModelView",
+					"icon": "fa fa-home",
+					"collectionName": "hsqlsuckhoevabenhtatnguoilaodong",
+					"route": "hsqlsuckhoevabenhtatnguoilaodong/collection",
+					"$ref": "app/baocao/phuluc2/js/CollectionView",
 					"visible": function () {
 						return true;
 					}
 				},
-				// {
-				// 	"text": "phụ lục 3",
-				// 	"icon": "fa fa-home",
-				// 	"type": "view",
-				// 	// "collectionName": "baocao",
-				// 	"route": "baocao/phuluc3/model",
-				// 	// "$ref": "app/baocao/phuluc3/js/ModelView",
-				// 	"visible": function () {
-				// 		return true;
-				// 	}
-				// },
+				{
+					
+				
+					"type": "view",
+					"collectionName": "hsqlsuckhoevabenhtatnguoilaodong",
+					"route": "hsqlsuckhoevabenhtatnguoilaodong/model(/:id)",
+					"$ref": "app/baocao/phuluc2/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
 				{
 					"text": "phụ lục 3",
 					"type": "view",
@@ -184,13 +184,16 @@ define(function (require) {
 					"visible": function () {
 						return true;
 					}
+				
 				},
 				{
 					"type": "view",
 					"collectionName": "hscctainanlaodongtaicosolaodong",
 					"route": "hscctainanlaodongtaicosolaodong/model(/:id)",
 					"$ref": "app/baocao/phuluc3/js/ModelView",
-					"visible": false
+					"visible": function () {
+						return false;
+					}
 				},
 
 				{

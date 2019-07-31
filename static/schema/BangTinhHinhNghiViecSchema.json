@@ -25,47 +25,66 @@
         "type": "string",
         "primary": true
     },
-    "tencosolaodong": {
+    "soluotnguoinghiom": {
         "type": "string",
         "length": 255
     },
-    "nganhchuquan": {
+    "tongsongaynghiom": {
         "type": "string",
         "length": 255
     },
-    "diachi": {
+    "songuoiom": {
         "type": "string",
         "length": 255
     },
-    "dienthoai": {
+    "phantramom": {
         "type": "string",
         "length": 255
     },
-    "sofax": {
+    "tongsongayom": {
         "type": "string",
         "length": 255
     },
-    "email": {
+    "songaytrungbinhom": {
         "type": "string",
         "length": 255
     },
-    "website": {
+    "songuoitainanlaodong": {
         "type": "string",
         "length": 255
     },
-    "nguoilienhe": {
+    "phantramtainanlaodong": {
         "type": "string",
         "length": 255
     },
-    "nguoilaphoso": {
+    "tongsongaytainanlaodong": {
         "type": "string",
         "length": 255
     },
-    "nam": {
+    "songaytrungbinhtainanlaodong": {
         "type": "string",
         "length": 255
     },
-    "banghscctainanlaodongtaicosolaodongfield": {
-        "type": "list"
+    "songuoibenhnghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "phantrambenhnghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "tongsongaybenhnghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "songaytrungbinhbenhnghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "hsqlsuckhoevabenhtatnguoilaodong_id": {
+        "type": "string"
+    },
+    "hsqlsuckhoevabenhtatnguoilaodong": {
+        "type": "dict"
     }
 }

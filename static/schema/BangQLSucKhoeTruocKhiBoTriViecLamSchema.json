@@ -1,0 +1,60 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "ngaythangnam": {
+        "type": "datetime"
+    },
+    "soduockhamtuyennam": {
+        "type": "string",
+        "length": 255
+    },
+    "soduockhamtuyennu": {
+        "type": "string",
+        "length": 255
+    },
+    "phanloaisuckhoeloai1": {
+        "type": "number"
+    },
+    "phanloaisuckhoeloai2": {
+        "type": "number"
+    },
+    "phanloaisuckhoeloai3": {
+        "type": "number"
+    },
+    "phanloaisuckhoeloai4": {
+        "type": "number"
+    },
+    "phanloaisuckhoeloai5": {
+        "type": "number"
+    },
+    "hsqlsuckhoevabenhtatnguoilaodong_id": {
+        "type": "string"
+    },
+    "hsqlsuckhoevabenhtatnguoilaodong": {
+        "type": "dict"
+    }
+}

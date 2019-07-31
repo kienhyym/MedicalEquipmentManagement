@@ -1,18 +1,19 @@
 body {
   font-size: .875rem;
 }
-.date-group{
+/* .date-group{
   position: relative;
 }
 .input-group-append{
 position: absolute;
 width: 120px;
+<i class="fa fa-calendar"></i>
 }
 .input-group-addon{
   width: 120px;
   height: 38px;
   border: none;
-}
+} */
 .input-phuluc2{
 	border:none;
 	border-bottom:1px dotted black;

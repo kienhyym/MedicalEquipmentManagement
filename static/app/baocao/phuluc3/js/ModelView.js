@@ -135,7 +135,7 @@ define(function (require) {
 					cssClass: false,
 				},
 				{
-					field: "wwebsite",
+					field: "website",
 					cssClass: false,
 				},
 				{

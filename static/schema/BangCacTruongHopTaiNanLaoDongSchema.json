@@ -25,47 +25,46 @@
         "type": "string",
         "primary": true
     },
-    "tencosolaodong": {
+    "nhombenh": {
         "type": "string",
         "length": 255
     },
-    "nganhchuquan": {
+    "sotruonghopquy1mac": {
         "type": "string",
         "length": 255
     },
-    "diachi": {
+    "sotruonghopquy1chet": {
         "type": "string",
         "length": 255
     },
-    "dienthoai": {
+    "sotruonghopquy2mac": {
         "type": "string",
         "length": 255
     },
-    "sofax": {
+    "sotruonghopquy2chet": {
         "type": "string",
         "length": 255
     },
-    "email": {
+    "sotruonghopquy3mac": {
         "type": "string",
         "length": 255
     },
-    "website": {
+    "sotruonghopquy3chet": {
         "type": "string",
         "length": 255
     },
-    "nguoilienhe": {
+    "sotruonghopquy4mac": {
         "type": "string",
         "length": 255
     },
-    "nguoilaphoso": {
+    "sotruonghopquy4chet": {
         "type": "string",
         "length": 255
     },
-    "nam": {
-        "type": "string",
-        "length": 255
+    "hsqlsuckhoevabenhtatnguoilaodong_id": {
+        "type": "string"
     },
-    "banghscctainanlaodongtaicosolaodongfield": {
-        "type": "list"
+    "hsqlsuckhoevabenhtatnguoilaodong": {
+        "type": "dict"
     }
 }
