@@ -36,6 +36,7 @@ define(function (require) {
             var self = this;
             self.applyBindings();
             self.registerEvent();
+        
         },
         registerEvent: function () {
             const self = this;

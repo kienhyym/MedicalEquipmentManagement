@@ -12,7 +12,7 @@ define(function (require) {
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
 		collectionName: "quocgia",
-		bindings:"data-quocgia-bind",
+		bindings: "data-quocgia-bind",
 		tools: [
 			{
 				name: "defaultgr",
@@ -49,15 +49,15 @@ define(function (require) {
 									},
 									error: function (xhr, status, error) {
 										try {
-											if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED"){
+											if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
 												self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
 												self.getApp().getRouter().navigate("login");
 											} else {
-											  self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+												self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
 											}
 										}
 										catch (err) {
-										  self.getApp().notify({ message: "Lưu thông tin không thành công"}, { type: "danger", delay: 1000 });
+											self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
 										}
 									}
 								});
@@ -81,15 +81,15 @@ define(function (require) {
 								},
 								error: function (xhr, status, error) {
 									try {
-										if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED"){
+										if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
 											self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
 											self.getApp().getRouter().navigate("login");
 										} else {
-										  self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+											self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
 										}
 									}
 									catch (err) {
-									  self.getApp().notify({ message: "Xóa dữ liệu không thành công"}, { type: "danger", delay: 1000 });
+										self.getApp().notify({ message: "Xóa dữ liệu không thành công" }, { type: "danger", delay: 1000 });
 									}
 								}
 							});
@@ -109,15 +109,15 @@ define(function (require) {
 					},
 					error: function (xhr, status, error) {
 						try {
-							if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED"){
+							if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
 								self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
 								self.getApp().getRouter().navigate("login");
 							} else {
-							  self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+								self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
 							}
 						}
 						catch (err) {
-						  self.getApp().notify({ message: "Lỗi không lấy được dữ liệu"}, { type: "danger", delay: 1000 });
+							self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
 						}
 					}
 				});

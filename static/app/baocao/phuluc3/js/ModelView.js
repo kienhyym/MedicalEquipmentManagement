@@ -176,6 +176,8 @@ define(function (require) {
 		},
 		registerEvent: function () {
 			this.sothutu();
+			this.ChonNamHoacNu();
+			this.ChonNuHoacNam();
 		},
 		// sothutu: function () {
 		// 	var self = this;
@@ -206,7 +208,50 @@ define(function (require) {
 				item.value=index;
 			});	
 
+		},
+		ChonNamHoacNu: function(){
+			var arrTuoiNam = [];
+			const self = this;
+			arrTuoiNam = lodash(self.$el.find("tr td #tuoinam"));
+			arrTuoiNam.forEach(function (item, index, array) {
+				item.addEventListener("click", function(){
+					var idTuoiNam = index;
+					console.log('idTuoiNam',idTuoiNam)
+					var arrTuoiNu = [];
+					arrTuoiNu = lodash(self.$el.find("tr td #tuoinu"));
+					arrTuoiNu.forEach(function (item, index, array) {
+					if(index == idTuoiNam){
+						item.value="";
+						console.log('idTuoiNu',index)
+					}
+					
+					});
+				});
+				
+			});	
+		},
+		ChonNuHoacNam: function(){
+			var arrTuoiNu = [];
+			const self = this;
+			arrTuoiNu = lodash(self.$el.find("tr td #tuoinu"));
+			arrTuoiNu.forEach(function (item, index, array) {
+				item.addEventListener("click", function(){
+					var idTuoiNu = index;
+					console.log('idTuoiNu',idTuoiNu)
+					var arrTuoiNam = [];
+					arrTuoiNam = lodash(self.$el.find("tr td #tuoinam"));
+					arrTuoiNam.forEach(function (item, index, array) {
+					if(index == idTuoiNu){
+						item.value="";
+						console.log('idTuoiNam',index)
+					}
+					
+					});
+				});
+				
+			});	
 		}
+
 	});
 
 });
