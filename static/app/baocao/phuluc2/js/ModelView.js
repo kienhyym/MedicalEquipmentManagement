@@ -16,7 +16,7 @@ define(function (require) {
 	// var BangTinhHinhNghiViecItemView = require('app/baocao/phuluc2/js/BangTinhHinhNghiViecView');
 	var BangQuanLyBenhManTinhItemView = require('app/baocao/phuluc2/js/BangQuanLyBenhManTinhView');
 	// var BangQuanLyBenhManTinhTheoTungBenhItemView = require('app/baocao/phuluc2/js/BangQuanLyBenhManTinhTheoTungBenhView');
-	// var BangTheoDoiBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangTheoDoiBenhNgheNghiepView');
+	var BangTheoDoiBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangTheoDoiBenhNgheNghiepView');
 	// var BangDanhSachNguoiLaoDongMacBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangDanhSachNguoiLaoDongMacBenhNgheNghiepView');
 
 
