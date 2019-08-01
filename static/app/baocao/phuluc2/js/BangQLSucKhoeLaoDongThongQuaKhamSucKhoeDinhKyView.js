@@ -3,16 +3,16 @@ define(function (require) {
     var $ = require('jquery'),
         _ = require('underscore'),
         Gonrin = require('gonrin');
-    var itemTemplate = require('text!app/baocao/phuluc2/tpl/bangqlsuckhoetruockhibotrivieclam.html'),
-        itemSchema = require('json!schema/BangQLSucKhoeTruocKhiBoTriViecLamSchema.json');
+    var itemTemplate = require('text!app/baocao/phuluc2/tpl/bangqlsuckhoelaodongthongquakhamsuckhoedinhky.html'),
+        itemSchema = require('json!schema/BangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKySchema.json');
 
     return Gonrin.ItemView.extend({
-        bindings: "quanlysuckhoe-bind",
+        bindings: "quanlysuckhoedinhky-bind",
         template: itemTemplate,
         tagName: 'tr',
         modelSchema: itemSchema,
         urlPrefix: "/api/v1/",
-        collectionName: "bangqlsuckhoetruockhibotrivieclam",
+        collectionName: "bangqlsuckhoelaodongthongquakhamsuckhoedinhky",
         foreignRemoteField: "id",
         foreignField: "hsqlsuckhoevabenhtatnguoilaodong_id",
 
@@ -47,9 +47,6 @@ define(function (require) {
             self.applyBindings();
             self.registerEvent();
         
-        },
-        error: function () {
-            self.getApp().notify("Get data Eror");
         },
         registerEvent: function () {
             const self = this;

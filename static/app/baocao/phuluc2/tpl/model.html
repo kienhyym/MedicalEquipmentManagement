@@ -89,45 +89,20 @@
                     <td rowspan="2" style="line-height: 70px">Ngày, tháng, năm</td>
                     <td rowspan="2" style="line-height: 70px">Số được khám tuyển</td>
                     <td rowspan="2" style="line-height: 70px">Tổng cộng</td>
-                    <td colspan="5">Phân loại sức khỏe</td>
+                    <td>Phân loại sức khỏe</td>
                 </tr>
 
                 <tr class="text-center ">
-                    <td>I</td>
-                    <td>II</td>
-                    <td>III</td>
-                    <td>IV</td>
-                    <td>V</td>
-                </tr>
-
-
-                <!-- <tr>
-                    <td></td>
-                    <td>
-                        <div class="m-0">Nam:</div>
-                        <div class="m-0">Nữ:</div>
+                    <td >
+                        <div style="display: flex; justify-content: space-around">
+                        <label>I</label>
+                        <label>II</label>
+                        <label>III</label>
+                        <label>IV</label>
+                        <label>V</label>
+                        </div>
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                 </tr>
-
-                <tr>
-                    <td></td>
-                    <td>
-                        <div class="m-0">Nam:</div>
-                        <div class="m-0">Nữ:</div>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> -->
                 <tbody data-bind="list:bangqlsuckhoetruockhibotrivieclamfield"></tbody>
             </table>
         </div>
@@ -138,54 +113,36 @@
 
 
         <!-- Biểu mẫu 2-->
+        <div class="row col-md-12">
+                <div id="add_row2" class="mb-1"></div>
+            </div>
         <div class="justify-content-center d-flex  m-1">
             <label class="stronger">Biểu mẫu 2: QUẢN LÝ SỨC KHỎE NGƯỜI LAO ĐỘNG THÔNG QUA KHÁM SỨC KHỎE ĐỊNH
                 KỲ</label>
         </div>
 
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
-            <table class="table  table-bordered ">
-                <tr class="text-center ">
-                    <td rowspan="2" style="line-height: 70px">Ngày, tháng, năm</td>
-                    <td rowspan="2" style="line-height: 70px">Số được khám tuyển</td>
-                    <td rowspan="2" style="line-height: 70px">Tổng cộng</td>
-                    <td colspan="5">Phân loại sức khỏe</td>
-                </tr>
-
-                <tr class="text-center ">
-                    <td>I</td>
-                    <td>II</td>
-                    <td>III</td>
-                    <td>IV</td>
-                    <td>V</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <div class="m-0">Nam:</div>
-                        <div class="m-0">Nữ:</div>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <div class="m-0">Nam:</div>
-                        <div class="m-0">Nữ:</div>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+                <table class="table  table-bordered">
+                        <tr class="text-center ">
+                            <td rowspan="2" style="line-height: 70px">Ngày, tháng, năm</td>
+                            <td rowspan="2" style="line-height: 70px">Số được khám tuyển</td>
+                            <td rowspan="2" style="line-height: 70px">Tổng cộng</td>
+                            <td>Phân loại sức khỏe</td>
+                        </tr>
+        
+                        <tr class="text-center ">
+                            <td >
+                                <div style="display: flex; justify-content: space-around">
+                                <label>I</label>
+                                <label>II</label>
+                                <label>III</label>
+                                <label>IV</label>
+                                <label>V</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tbody data-bind="list:bangqlsuckhoelaodongthongquakhamsuckhoedinhkyfield"></tbody>
+                    </table>
         </div>
         <br>
         <br>
@@ -194,6 +151,11 @@
 
 
         <!-- Biểu mẫu 3-->
+        <div class="row col-md-12">
+                <div id="add_row3" class="mb-1"></div>
+            </div>
+        <div class="row col-md-12">
+            </div>
         <div class="justify-content-center d-flex  m-1">
             <label class="stronger">Biểu mẫu 3: TÌNH HÌNH BỆNH TẬT TRONG THỜI GIAN BÁO CÁO</label>
         </div>
@@ -213,30 +175,8 @@
                 <tr>
                     <td colspan="10">I. Số trường hợp mắc các loại bệnh thông thường:</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Lao phổi</td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ung thư phổi</td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>- ...</td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                </tr>
+                <tbody data-bind="list:bangsotruonghopmaccacloaibenhthongthuongfield"></tbody>
+
                 <tr class="text-center ">
                     <td></td>
                     <td>Cộng</td>
@@ -246,7 +186,8 @@
                     <td colspan="2"></td>
                 </tr>
                 <tr>
-                    <td colspan="10">II. Các trường hợp mắc bệnh nghề nghiệp</td>
+                    <td colspan="10"> <div id="add_row4" class="mb-1"></div>II. Các trường hợp mắc bệnh nghề nghiệp</td>
+                    
                 </tr>
                 <tr>
                     <td></td>
@@ -256,8 +197,9 @@
                     <td colspan="2"></td>
                     <td colspan="2"></td>
                 </tr>
+                <tbody data-bind="list:bangcactruonghopmacbenhnghenghiepfield"></tbody>
                 <tr class="text-center ">
-                    <td></td>
+                    <td><div id="add_row5" class="mb-1"></div></td>
                     <td>III. Các trường hợp tai nạn lao động</td>
                     <td>Mắc</td>
                     <td>Chết</td>
@@ -268,18 +210,7 @@
                     <td>Mắc</td>
                     <td>Chết</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>Tai nạn lao động</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <tbody data-bind="list:bangcactruonghoptainanlaodongfield"></tbody>
                 <tr class="text-center ">
                     <td></td>
                     <td>Tổng cộng</td>
@@ -467,52 +398,25 @@
         <div class="justify-content-center d-flex  m-1">
             <label class="stronger">Biểu mẫu 5:QUẢN LÝ BỆNH MẠN TÍNH (*)</label>
         </div>
+        <div id="add_row7" class="mb-1"></div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
-                    <td>Phân xưởng, khu vực</td>
-                    <td>Tên bệnh nhân</td>
-                    <td>Tên bệnh</td>
+                    <td rowspan="2">Phân xưởng, khu vực</td>
+                    <td rowspan="2">Tên bệnh nhân</td>
+                    <td rowspan="2">Tên bệnh</td>
                     <td colspan="2">Tuổi, giới</td>
-                    <td>Tuổi nghề</td>
-                    <td>Phương pháp điều trị</td>
-                    <td>Tình trạng</td>
-                    <td>Lưu ý khi bố trí công việc</td>
+                    <td rowspan="2">Tuổi nghề</td>
+                    <td rowspan="2">Phương pháp điều trị</td>
+                    <td rowspan="2">Tình trạng</td>
+                    <td rowspan="2">Lưu ý khi bố trí công việc</td>
                 </tr>
+                <tr>
+                    <td>Nam</td>
+                    <td>Nữ</td>
+                </tr>
+                <tbody data-bind="list:bangquanlybenhmantinhfield"></tbody>
 
-                <tr class="text-center ">
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr class="text-center ">
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr class="text-center ">
-                    <td>3</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
             </table>
         </div>
         <label><i>(*) Khi cơ sở lao động có nhiều người lao động thì quản lý từng bệnh mạn tính theo quy
@@ -526,6 +430,7 @@
 
 
         <!-- Biểu mẫu 6 -->
+        
         <div class="justify-content-center d-flex  m-1">
             <label class="stronger">Biểu mẫu 6:QUẢN LÝ BỆNH MẠN TÍNH THEO TỪNG BỆNH</label>
         </div>

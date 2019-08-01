@@ -40,19 +40,7 @@
         "type": "string",
         "length": 255
     },
-    "phanloaisuckhoeloai1": {
-        "type": "number"
-    },
-    "phanloaisuckhoeloai2": {
-        "type": "number"
-    },
-    "phanloaisuckhoeloai3": {
-        "type": "number"
-    },
-    "phanloaisuckhoeloai4": {
-        "type": "number"
-    },
-    "phanloaisuckhoeloai5": {
+    "phanloaisuckhoe": {
         "type": "number"
     },
     "hsqlsuckhoevabenhtatnguoilaodong_id": {

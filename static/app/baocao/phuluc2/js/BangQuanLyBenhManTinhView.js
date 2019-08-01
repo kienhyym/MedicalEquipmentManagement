@@ -3,43 +3,57 @@ define(function (require) {
     var $ = require('jquery'),
         _ = require('underscore'),
         Gonrin = require('gonrin');
-    var itemTemplate = require('text!app/baocao/phuluc2/tpl/bangqlsuckhoetruockhibotrivieclam.html'),
-        itemSchema = require('json!schema/BangQLSucKhoeTruocKhiBoTriViecLamSchema.json');
+    var itemTemplate = require('text!app/baocao/phuluc2/tpl/bangquanlybenhmantinh.html'),
+        itemSchema = require('json!schema/BangQuanLyBenhManTinhSchema.json');
 
     return Gonrin.ItemView.extend({
-        bindings: "quanlysuckhoe-bind",
+        bindings: "cacbenhmantinh-bind",
         template: itemTemplate,
         tagName: 'tr',
         modelSchema: itemSchema,
         urlPrefix: "/api/v1/",
-        collectionName: "bangqlsuckhoetruockhibotrivieclam",
+        collectionName: "bangquanlybenhmantinh",
         foreignRemoteField: "id",
         foreignField: "hsqlsuckhoevabenhtatnguoilaodong_id",
 
         uiControl: {
             fields: [
                 {
-					field: "phanloaisuckhoe",
-					uicontrol: "radio",
-					textField: "name",
-					valueField: "id",
-					cssClassField: "cssClass",
-					dataSource: [
-						{ name: "", id: 1 },
-						{ name: "", id: 2},
-						{ name: "", id: 3 },
-						{ name: "", id: 4 },
-						{ name: "", id: 5 },
-					],
-                },
-                {
-					field: "soduockhamtuyennam",
+					field: "phanxuongkhuvuc",
 					cssClass: false,
                 },
                 {
-					field: "soduockhamtuyennu",
+					field: "tenbenhnhan",
 					cssClass: false,
-				},
+                },
+                {
+					field: "tenbenh",
+					cssClass: false,
+                },
+                {
+					field: "tuoinam",
+					cssClass: false,
+                },
+                {
+					field: "tuoinu",
+					cssClass: false,
+                },
+                {
+					field: "tuoinghe",
+					cssClass: false,
+                },
+                {
+					field: "phuongphapdieutri",
+					cssClass: false,
+                },
+                {
+					field: "tinhtrang",
+					cssClass: false,
+                },
+                {
+					field: "luuykhibotricongviec",
+					cssClass: false,
+                },
             ]
         },
         render: function () {
@@ -47,9 +61,6 @@ define(function (require) {
             self.applyBindings();
             self.registerEvent();
         
-        },
-        error: function () {
-            self.getApp().notify("Get data Eror");
         },
         registerEvent: function () {
             const self = this;

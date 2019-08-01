@@ -8,6 +8,17 @@ define(function (require) {
 		schema = require('json!schema/HSQLSucKhoeVaBenhTatNguoiLaoDongSchema.json');
 
 	var BangQLSucKhoeTruocKhiBoTriViecLamItemView = require('app/baocao/phuluc2/js/BangQLSucKhoeTruocKhiBoTriViecLamView');
+	var BangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKyItemView = require('app/baocao/phuluc2/js/BangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKyView');
+	var BangSoTruongHopMacCacLoaiBenhThongThuongItemView = require('app/baocao/phuluc2/js/BangSoTruongHopMacCacLoaiBenhThongThuongVIew');
+	
+	var BangCacTruongHopMacBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangCacTruongHopMacBenhNgheNghiepView');
+	var BangCacTruongHopTaiNanLaoDongItemView = require('app/baocao/phuluc2/js/BangCacTruongHopTaiNanLaoDongView');
+	// var BangTinhHinhNghiViecItemView = require('app/baocao/phuluc2/js/BangTinhHinhNghiViecView');
+	var BangQuanLyBenhManTinhItemView = require('app/baocao/phuluc2/js/BangQuanLyBenhManTinhView');
+	// var BangQuanLyBenhManTinhTheoTungBenhItemView = require('app/baocao/phuluc2/js/BangQuanLyBenhManTinhTheoTungBenhView');
+	// var BangTheoDoiBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangTheoDoiBenhNgheNghiepView');
+	// var BangDanhSachNguoiLaoDongMacBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangDanhSachNguoiLaoDongMacBenhNgheNghiepView');
+
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -112,6 +123,123 @@ define(function (require) {
 					toolEl: "#add_row"
 				},
 				{
+					field: "bangqlsuckhoelaodongthongquakhamsuckhoedinhkyfield",
+					uicontrol: false,
+					itemView: BangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKyItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row2"
+				},
+				{
+					field: "bangsotruonghopmaccacloaibenhthongthuongfield",
+					uicontrol: false,
+					itemView: BangSoTruongHopMacCacLoaiBenhThongThuongItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row3"
+				},
+				{
+					field: "bangcactruonghopmacbenhnghenghiepfield",
+					uicontrol: false,
+					itemView: BangCacTruongHopMacBenhNgheNghiepItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row4"
+				},
+				{
+					field: "bangcactruonghoptainanlaodongfield",
+					uicontrol: false,
+					itemView: BangCacTruongHopTaiNanLaoDongItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row5"
+				},
+				// {
+				// 	field: "bangtinhhinhnghiviecfield",
+				// 	uicontrol: false,
+				// 	itemView: BangTinhHinhNghiViecItemView,
+				// 	tools: [{
+				// 		name: "create",
+				// 		type: "button",
+				// 		buttonClass: "btn btn-outline-success btn-sm",
+				// 		label: "<span class='fa fa-plus'></span>",
+				// 		command: "create"
+				// 	}],
+				// 	toolEl: "#add_row6"
+				// },
+				{
+					field: "bangquanlybenhmantinhfield",
+					uicontrol: false,
+					itemView: BangQuanLyBenhManTinhItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row7"
+				},
+				// {
+				// 	field: "bangquanlybenhmantinhtheotungbenhfield",
+				// 	uicontrol: false,
+				// 	itemView: BangQuanLyBenhManTinhTheoTungBenhItemView,
+				// 	tools: [{
+				// 		name: "create",
+				// 		type: "button",
+				// 		buttonClass: "btn btn-outline-success btn-sm",
+				// 		label: "<span class='fa fa-plus'></span>",
+				// 		command: "create"
+				// 	}],
+				// 	toolEl: "#add_row8"
+				// },
+				{
+					field: "BangTheoDoiBenhNgheNghiepfield",
+					uicontrol: false,
+					itemView: BangTheoDoiBenhNgheNghiepItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row9"
+				},
+				// {
+				// 	field: "bangdanhsachnguoilaodongmacbenhnghenghiepfield",
+				// 	uicontrol: false,
+				// 	itemView: BangDanhSachNguoiLaoDongMacBenhNgheNghiepItemView,
+				// 	tools: [{
+				// 		name: "create",
+				// 		type: "button",
+				// 		buttonClass: "btn btn-outline-success btn-sm",
+				// 		label: "<span class='fa fa-plus'></span>",
+				// 		command: "create"
+				// 	}],
+				// 	toolEl: "#add_row10"
+				// },
+				{
 					field: "tencosolaodong",
 					cssClass: false,
 				},
@@ -151,6 +279,9 @@ define(function (require) {
 					field: "nam",
 					cssClass: false,
 				},
+				
+
+				
 
 			]
 		},
@@ -163,49 +294,21 @@ define(function (require) {
 					success: function (data) {
 						self.applyBindings();
 						self.tinhtong();
-						self.checking();
+						self.sothutu()
+						self.sothutu2();		
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
 					},
 				});
 			} else {
-				self.applyBindings();
-				self.checking();
+				self.applyBindings();	
 				self.tinhtong();
-
+				self.sothutu();	
+				self.sothutu2();	
 			}
 		},
-		checking: function () {
-			const self = this;
-			var phanloaisuckhoe1 = self.getApp().getRouter().getParam("phanloaisuckhoeloai1");
-			console.log(phanloaisuckhoe1);
-			self.$el.find("#phanloaisuckhoe1").unbind("click").bind("click", function () {
-				// console.log('x1');
-				if ($(this).is(":checked")) {
-					console.log('x1');
-					self.$el.find("#phanloaisuckhoe1").val('');
-					// self.model.set("#phanloaisuckhoe1", true);
-				} else {
-					console.log('x2');
-					self.model.set("#phanloaisuckhoe1", false);
-				}
-			})
-			var phanloaisuckhoe2 = self.getApp().getRouter().getParam("phanloaisuckhoeloai2");
-			console.log(phanloaisuckhoe2);
-			self.$el.find("#phanloaisuckhoe2").unbind("click").bind("click", function () {
-				// console.log('x1');
-				if ($(this).is(":checked")) {
-					console.log('x3');
-					self.$el.find("#phanloaisuckhoe2").val('2');
-					// self.model.set("#phanloaisuckhoe1", true);
-				} else {
-					console.log('x4');
-					self.model.set("#phanloaisuckhoe2", false);
-				}
-			})
-
-		},
+		
 		tinhtong: function () {
 			const self = this;
 
@@ -230,7 +333,44 @@ define(function (require) {
 				});
 			});
 
-		}
+		},
+
+		sothutu: function () {
+			const self = this;
+			var arr = [];
+			var arrr = [];
+
+			arr = lodash.sortBy(self.model.get("bangsotruonghopmaccacloaibenhthongthuongfield"), ["created_at"], ["asc"])
+			arr.forEach(function (item, index, array) {
+				console.log(index);
+			
+			});	
+		
+			arrr = lodash(self.$el.find("tr td #stt"));
+			arrr.forEach(function (item, index, array) {
+				console.log(item);
+				item.value=index+1;
+			});	
+
+		},
+		sothutu2: function () {
+			const self = this;
+			var arr = [];
+			var arrr = [];
+
+			arr = lodash.sortBy(self.model.get("bangcactruonghopmacbenhnghenghiepfield"), ["created_at"], ["asc"])
+			arr.forEach(function (item, index, array) {
+				console.log(index);
+			
+			});	
+		
+			arrr = lodash(self.$el.find("tr td #stt"));
+			arrr.forEach(function (item, index, array) {
+				console.log(item);
+				item.value=index+1;
+			});	
+
+		},
 
 	});
 
