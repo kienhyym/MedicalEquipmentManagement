@@ -124,7 +124,14 @@ define(function (require) {
 		},
 		{
 
-			"route": "baocao/phuluc7/model",
+			"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",
+			"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/collection",
+			"$ref": "app/baocao/phuluc7/js/CollectionView",
+		},
+		{
+
+			"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",
+			"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/model(/:id)",
 			"$ref": "app/baocao/phuluc7/js/ModelView",
 		},
 		{

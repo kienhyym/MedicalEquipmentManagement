@@ -231,13 +231,23 @@ define(function (require) {
 				},
 				{
 					"text": "phụ lục 7",
-					"icon": "fa fa-home",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc7/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"icon": "fa fa-home",
+					"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",
+					"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/collection",
+					"$ref": "app/baocao/phuluc7/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+				
+				},
+				{
+					"type": "view",
+					"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",
+					"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/model(/:id)",
+					"$ref": "app/baocao/phuluc7/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 				{
