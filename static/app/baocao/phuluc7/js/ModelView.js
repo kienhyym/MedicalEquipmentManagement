@@ -8,6 +8,7 @@ define(function (require) {
 		schema = require('json!schema/SoTheoDoiCongTacHuanLuyenSoCuuCapCuuTaiNoiLamViecSchema.json');
 
 	var GiangVienThucHienHuanLuyenItemView = require('app/baocao/phuluc7/js/GiangVienThucHienHuanLuyenView');
+	var BangDanhSachThanhVienLucLuongSoCuuDuocHuanLuyenItemView = require('app/baocao/phuluc7/js/BangDanhSachThanhVienLucLuongSoCuuDuocHuanLuyenView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -110,6 +111,19 @@ define(function (require) {
 						command: "create"
 					}],
 					toolEl: "#add_row"
+				},
+				{
+					field: "bangdanhsachthanhvienlucluongsocuuduochuanluyenfield",
+					uicontrol: false,
+					itemView: BangDanhSachThanhVienLucLuongSoCuuDuocHuanLuyenItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row2"
 				},
 				
 				{

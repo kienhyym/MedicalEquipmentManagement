@@ -45,36 +45,24 @@
 
         <!-- Danh sách người lao động được huấn luyện -->
         <label class="stronger">2. Danh sách người lao động được huấn luyện</label>
-
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
+        <div class="row col-md-12">
+            <div id="add_row2" class="mb-1"></div>
+        </div>
+        <div class="table-responsive tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
-                    <td>TT</td>
-                    <td>Họ và tên</td>
+                    <td rowspan="2">TT</td>
+                    <td rowspan="2">Họ và tên</td>
                     <td colspan="2">Năm sinh</td>
-                    <td>Vị trí làm việc</td>
-                    <td>Chữ ký của người được huấn luyện</td>
+                    <td rowspan="2">Vị trí làm việc</td>
+                    <td rowspan="2">Chữ ký của người được huấn luyện</td>
                 </tr>
 
                 <tr class="text-center ">
-
-                    <td>1</td>
-                    <td></td>
                     <td>Nam</td>
                     <td>Nữ</td>
-                    <td></td>
-                    <td></td>
-
                 </tr>
-
-                <tr class="text-center ">
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <tbody data-bind="list:bangdanhsachthanhvienlucluongsocuuduochuanluyenfield"></tbody>
             </table>
         </div>
         <label><i>(*) Đối với các trường hợp đã được huấn luyện an toàn vệ sinh lao động phải lưu giữ sổ theo dõi người
