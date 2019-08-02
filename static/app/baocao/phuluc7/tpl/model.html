@@ -74,45 +74,38 @@
         <!-- Danh sách thành viên lực lượng sơ cứu được huấn luyện -->
         <label class="stronger">3. Danh sách thành viên lực lượng sơ cứu được huấn luyện</label>
 
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
+        <div class="row col-md-12">
+            <div id="add_row3" class="mb-1"></div>
+        </div>
+        <div class="table-responsive tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
-                    <td>TT</td>
-                    <td>Họ và tên</td>
+                    <td rowspan="2">TT</td>
+                    <td rowspan="2">Họ và tên</td>
                     <td colspan="2">Năm sinh</td>
-                    <td>Vị trí làm việc</td>
-                    <td>Chữ ký của người được huấn luyện</td>
+                    <td rowspan="2">Vị trí làm việc</td>
+                    <td rowspan="2">Chữ ký của người được huấn luyện</td>
                 </tr>
 
                 <tr class="text-center ">
-
-                    <td>1</td>
-                    <td></td>
                     <td>Nam</td>
                     <td>Nữ</td>
-                    <td></td>
-                    <td></td>
-
                 </tr>
-
-                <tr class="text-center ">
-                    <td>2</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <tbody data-bind="list:bangdanhsachnguoilaodongduochuanluyenfield"></tbody>
             </table>
         </div>
         <div class="row col-md-12 justify-content-center d-flex">
             <div class="border">
                 <div class=" pl-5 pr-5 text-center">Xác nhận của người sử dụng lao động</div>
                 <div class=" pl-5 pr-5 text-center">(ký, đóng dấu)</div>
+                <div class=" pl-5 pr-5 text-center">&nbsp;</div>
+                <div class=" pl-5 pr-5 text-center">&nbsp;</div>
             </div>
             <div class="border">
                 <div class=" pl-5 pr-5 text-center">Xác nhận của tổ chức huấn luyện sơ cấp cứu</div>
                 <div class=" pl-5 pr-5 text-center">(ký, đóng dấu)</div>
+                <div class=" pl-5 pr-5 text-center">&nbsp;</div>
+                <div class=" pl-5 pr-5 text-center">&nbsp;</div>
             </div>
         </div>
         <!-- Hết Danh sách thành viên lực lượng sơ cứu được huấn luyện -->
