@@ -249,7 +249,7 @@ class BangDanhSachNguoiLaoDongMacBenhNgheNghiep(CommonModel):
     hsqlsuckhoevabenhtatnguoilaodong = relationship('HSQLSucKhoeVaBenhTatNguoiLaoDong')  
 # Hết báo cáo 1 Phụ lục 2
 ##########################################################################################
-# Báo cáo 1 Phụ lục 3
+# Báo cáo 1 Phụ lục 7
 class HSCCTaiNanLaoDongTaiCoSoLaoDong(CommonModel):
     __tablename__ = 'hscctainanlaodongtaicosolaodong'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -282,3 +282,50 @@ class BangHSCCTaiNanLaoDongTaiCoSoLaoDong(CommonModel):
     hscctainanlaodongtaicosolaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('hscctainanlaodongtaicosolaodong.id'), nullable=True)
     hscctainanlaodongtaicosolaodong = relationship('HSCCTaiNanLaoDongTaiCoSoLaoDong')  
 # Hết Báo cáo 1 Phụ lục 3
+
+
+# Báo cáo 1 Phụ lục 7
+
+class SoTheoDoiCongTacHuanLuyenSoCuuCapCuuTaiNoiLamViec(CommonModel):
+    __tablename__ = 'sotheodoicongtachuanluyensocuucapcuutainoilamviec'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    nam = db.Column(db.Integer())
+    tencosohuanluyen = db.Column(String(255))
+    thoigianthuchienhuanluyen = db.Column(String(255))
+    bangdanhsachthanhvienlucluongsocuuduochuanluyenfield = db.relationship('BangDanhSachThanhVienLucLuongSoCuuDuocHuanLuyen', cascade="all, delete-orphan")
+    bangdanhsachnguoilaodongduochuanluyenfield = db.relationship('BangDanhSachNguoiLaoDongDuocHuanLuyen', cascade="all, delete-orphan")
+    giangvienthuchienhuanluyenfield = db.relationship('GiangVienThucHienHuanLuyen', cascade="all, delete-orphan")
+
+class GiangVienThucHienHuanLuyen(CommonModel):
+    __tablename__ = 'giangvienthuchienhuanluyen'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    ten  = db.Column(String(255))
+    sotheodoicongtachuanluyensocuucapcuutainoilamviec_id = db.Column(UUID(as_uuid=True), ForeignKey('sotheodoicongtachuanluyensocuucapcuutainoilamviec.id'), nullable=True)
+    sotheodoicongtachuanluyensocuucapcuutainoilamviec = relationship('SoTheoDoiCongTacHuanLuyenSoCuuCapCuuTaiNoiLamViec')  
+
+class BangDanhSachThanhVienLucLuongSoCuuDuocHuanLuyen(CommonModel):
+    __tablename__ = 'bangdanhsachthanhvienlucluongsocuuduochuanluyen'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    hovaten  = db.Column(String(255))
+    namsinhnam = db.Column(db.Integer())
+    namsinhnu = db.Column(db.Integer())
+    vitrilamviec = db.Column(String(255))
+    sotheodoicongtachuanluyensocuucapcuutainoilamviec_id = db.Column(UUID(as_uuid=True), ForeignKey('sotheodoicongtachuanluyensocuucapcuutainoilamviec.id'), nullable=True)
+    sotheodoicongtachuanluyensocuucapcuutainoilamviec = relationship('SoTheoDoiCongTacHuanLuyenSoCuuCapCuuTaiNoiLamViec')  
+
+class BangDanhSachNguoiLaoDongDuocHuanLuyen(CommonModel):
+    __tablename__ = 'bangdanhsachnguoilaodongduochuanluyen'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    hovaten  = db.Column(String(255))
+    namsinhnam = db.Column(db.Integer())
+    namsinhnu = db.Column(db.Integer())
+    vitrilamviec = db.Column(String(255))
+    sotheodoicongtachuanluyensocuucapcuutainoilamviec_id = db.Column(UUID(as_uuid=True), ForeignKey('sotheodoicongtachuanluyensocuucapcuutainoilamviec.id'), nullable=True)
+    sotheodoicongtachuanluyensocuucapcuutainoilamviec = relationship('SoTheoDoiCongTacHuanLuyenSoCuuCapCuuTaiNoiLamViec')  
+
+# Hết Báo cáo 1 Phụ lục 7
+
+
+
+
+

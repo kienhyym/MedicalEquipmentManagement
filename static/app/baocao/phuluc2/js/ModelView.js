@@ -17,7 +17,7 @@ define(function (require) {
 	var BangQuanLyBenhManTinhItemView = require('app/baocao/phuluc2/js/BangQuanLyBenhManTinhView');
 	// var BangQuanLyBenhManTinhTheoTungBenhItemView = require('app/baocao/phuluc2/js/BangQuanLyBenhManTinhTheoTungBenhView');
 	var BangTheoDoiBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangTheoDoiBenhNgheNghiepView');
-	// var BangDanhSachNguoiLaoDongMacBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangDanhSachNguoiLaoDongMacBenhNgheNghiepView');
+	var BangDanhSachNguoiLaoDongMacBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangDanhSachNguoiLaoDongMacBenhNgheNghiepView');
 
 
 	return Gonrin.ModelView.extend({
@@ -226,19 +226,19 @@ define(function (require) {
 					}],
 					toolEl: "#add_row9"
 				},
-				// {
-				// 	field: "bangdanhsachnguoilaodongmacbenhnghenghiepfield",
-				// 	uicontrol: false,
-				// 	itemView: BangDanhSachNguoiLaoDongMacBenhNgheNghiepItemView,
-				// 	tools: [{
-				// 		name: "create",
-				// 		type: "button",
-				// 		buttonClass: "btn btn-outline-success btn-sm",
-				// 		label: "<span class='fa fa-plus'></span>",
-				// 		command: "create"
-				// 	}],
-				// 	toolEl: "#add_row10"
-				// },
+				{
+					field: "bangdanhsachnguoilaodongmacbenhnghenghiepfield",
+					uicontrol: false,
+					itemView: BangDanhSachNguoiLaoDongMacBenhNgheNghiepItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row10"
+				},
 				{
 					field: "tencosolaodong",
 					cssClass: false,
