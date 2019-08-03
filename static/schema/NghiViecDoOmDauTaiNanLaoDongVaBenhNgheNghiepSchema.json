@@ -1,0 +1,61 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "thang": {
+        "type": "number"
+    },
+    "songuoiom": {
+        "type": "string",
+        "length": 255
+    },
+    "songaynghiom": {
+        "type": "string",
+        "length": 255
+    },
+    "songuoitainanlaodong": {
+        "type": "string",
+        "length": 255
+    },
+    "songaynghitainanlaodong": {
+        "type": "string",
+        "length": 255
+    },
+    "songuoinghibenhnghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "songaynghibenhnghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "baocaoytelaodongcuacosolaodong_id": {
+        "type": "string"
+    },
+    "baocaoytelaodongcuacosolaodong": {
+        "type": "dict"
+    }
+}

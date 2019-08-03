@@ -1,12 +1,20 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
+        <div class="row">
+            <div class="col-md-7">
+                <h6 class="m-0">Thông tin chi tiết</h6>
+            </div>
+            <div class="col-md-5 text-right">
+                <div block-bind="toolbar"></div>
+            </div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
                     <td>
                         <div class="flexboxer col-md-12 p-2">
                             <label class="stronger">Đơn vị báo cáo: </label>
-                            <input type="text" class="input-phuluc2 stronger" style="flex-grow: 1">
+                            <input type="text" class="input-phuluc2 stronger" style="flex-grow: 1" data-bind="value:donvibaocao">
                         </div>
                         <label class="stronger">..................</label>
                     </td>

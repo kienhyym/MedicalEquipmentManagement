@@ -1,0 +1,66 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "Hotenbenhnhan": {
+        "type": "string",
+        "length": 255
+    },
+    "tuoinam": {
+        "type": "number"
+    },
+    "tuoinu": {
+        "type": "number"
+    },
+    "nghekhibibnn": {
+        "type": "string",
+        "length": 255
+    },
+    "tuoinghe": {
+        "type": "number"
+    },
+    "ngayphathienbenh": {
+        "type": "datetime"
+    },
+    "tenbnn": {
+        "type": "string",
+        "length": 255
+    },
+    "tylesuygiamkhananglaodong": {
+        "type": "string",
+        "length": 255
+    },
+    "congviechiennay": {
+        "type": "string",
+        "length": 255
+    },
+    "baocaoytelaodongcuacosolaodong_id": {
+        "type": "string"
+    },
+    "baocaoytelaodongcuacosolaodong": {
+        "type": "dict"
+    }
+}

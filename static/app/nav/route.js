@@ -136,7 +136,14 @@ define(function (require) {
 		},
 		{
 
-			"route": "baocao/phuluc8/model",
+			"collectionName": "baocaoytelaodongcuacosolaodong",
+			"route": "baocaoytelaodongcuacosolaodong/collection",
+			"$ref": "app/baocao/phuluc8/js/CollectionView",
+		},
+		{
+
+			"collectionName": "baocaoytelaodongcuacosolaodong",
+			"route": "baocaoytelaodongcuacosolaodong/model(/:id)",
 			"$ref": "app/baocao/phuluc8/js/ModelView",
 		},
 		{
