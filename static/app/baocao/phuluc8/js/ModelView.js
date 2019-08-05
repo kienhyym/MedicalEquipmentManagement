@@ -7,7 +7,7 @@ define(function (require) {
 	var template = require('text!app/baocao/phuluc8/tpl/model.html'),
 		schema = require('json!schema/BaoCaoYTeLaoDongCuaCoSoLaoDongSchema.json');
 
-	// var GiangVienThucHienHuanLuyenItemView = require('app/baocao/phuluc7/js/GiangVienThucHienHuanLuyenView');
+	var CongTacThanhTraItemView = require('app/baocao/phuluc8/js/CongTacThanhTraView');
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
@@ -110,19 +110,19 @@ define(function (require) {
 				// 	}],
 				// 	toolEl: "#add_row"
 				// },
-				// {
-				// 	field: "bangdanhsachthanhvienlucluongsocuuduochuanluyenfield",
-				// 	uicontrol: false,
-				// 	itemView: BangDanhSachThanhVienLucLuongSoCuuDuocHuanLuyenItemView,
-				// 	tools: [{
-				// 		name: "create",
-				// 		type: "button",
-				// 		buttonClass: "btn btn-outline-success btn-sm",
-				// 		label: "<span class='fa fa-plus'></span>",
-				// 		command: "create"
-				// 	}],
-				// 	toolEl: "#add_row2"
-				// },
+				{
+					field: "congtacthanhtrafield",
+					uicontrol: false,
+					itemView: CongTacThanhTraItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row2"
+				},
 				// {
 				// 	field: "bangdanhsachnguoilaodongduochuanluyenfield",
 				// 	uicontrol: false,

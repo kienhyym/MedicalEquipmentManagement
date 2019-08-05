@@ -30,20 +30,20 @@
                                 <div class="flexboxer  justify-content-center d-flex ">
     
                             <label>Số</label>
-                            <input type="text" class="input-phuluc2" style="width: 15%;">
+                            <input type="text" class="input-phuluc2" style="width: 15%;" data-bind="value:so">
                             <label>/BC</label>
                             <input type="text" class="input-phuluc2" style="width: 15%;">
                             </div>
                         </td>
                         <td>
                                 <div class="flexboxer  justify-content-end d-flex ">
-                                <input type="text" class="input-phuluc2" style="width: 8%;">
+                                <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:noivietbaocao">
                                 <label>,ngày</label>
-                                <input type="text" class="input-phuluc2" style="width: 8%;">
+                                <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:ngay">
                                 <label>,tháng</label>
-                                <input type="text" class="input-phuluc2" style="width: 8%;">
+                                <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:thang">
                                 <label>,năm</label>
-                                <input type="text" class="input-phuluc2" style="width: 8%;">
+                                <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:nam">
                                 </div>
                             </td>
                     </tr>
@@ -53,7 +53,7 @@
 
         <div class="flexboxer col-md-12 p-0 justify-content-center d-flex">
             <label>Kính gửi:</label>
-            <input type="text" class="input-phuluc2">
+            <input type="text" class="input-phuluc2" data-bind="value:kinhgui">
         </div>
         <div class="justify-content-center d-flex">
             <label class="stronger pt-3">BÁO CÁO</label>
@@ -63,79 +63,79 @@
         </div>
         <div class="flexboxer col-md-12 p-0 justify-content-center d-flex pb-3">
             <label class="stronger">Báo cáo 6 tháng/năm</label>
-            <input type="text" class="input-phuluc2 stronger">
+            <input type="text" class="input-phuluc2 stronger" data-bind="value:baocao6thangnam">
         </div>
         <label class="text-center"><i>(Cơ sở lao động gửi báo cáo về Trung tâm Y tế (dự phòng) quận/huyện/thành phố
                 thuộc tỉnh. Đối với cơ sở trực thuộc bộ, ngành gửi thêm 01 bản về đơn vị y tế bộ, ngành)</i>></label>
         <label class="stronger">I. Thông tin chung</label>
         <div class="flexboxer col-md-12 p-0">
             <label>1. Tên cơ sở lao động:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:tencosolaodong">
         </div>
         <div class="row">
                 <label class="col-md-3 m-0">2. Trực thuộc:</label>
 
             <div class="col-md-2" style="position: relative" >
                 <label class="m-0">tỉnh/thành phố</label>
-                <input  type="checkbox" style="position: absolute;top:0.33333em;left:8em;">
+                <input  type="checkbox" style="position: absolute;top:0.33333em;left:8em;" data-bind="value:tructhuoctinhthanhpho">
             </div>
 
             <div class="col-md-2" style="position: relative" >
                 <label class="m-0">bộ, ngành</label>
-                <input type="checkbox" style="position: absolute;top:0.33333em;left:6em;">
+                <input type="checkbox" style="position: absolute;top:0.33333em;left:6em;" data-bind="value:tructhuocbonganh">
             </div>
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Địa chỉ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:diachi">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Số điện thoại liên hệ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:sodienthoai">
         </div>
         <div class="row col-md-12 p-0 m-0">
             <div class="flexboxer col-md-6 p-0">
                 <label>E-mail:</label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:email"> 
             </div>
             <div class="flexboxer col-md-6 p-0">
                 <label>Fax:</label>
-                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1" data-bind="value:fax">
             </div>
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>4. Mặt hàng sản xuất, dịch vụ chính: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:mathangsanxuatdichvuchinh">
         </div>
         <label>5. Số người lao động</label>
         <div class="row col-md-12 p-0 m-0">
             <div class="flexboxer col-md-6 p-0">
                 <label>5.1. Tổng số: </label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:tongsonguoilaodong">
             </div>
             <div class="flexboxer col-md-6 p-0">
                 <label>Trong_đó_nữ: </label>
-                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1" data-bind="value:songuoilaodongnu">
             </div>
         </div>
         <div class="row col-md-12 p-0 m-0">
             <div class="flexboxer col-md-6 p-0">
                 <label>5.2. Số lao động trực tiếp sản xuất: </label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:solaodongtructiepsanxuat">
             </div>
             <div class="flexboxer col-md-6 p-0">
                 <label>Trong_đó_nữ: </label>
-                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1" data-bind="value:solaodongnutructiepsanxuat">
             </div>
         </div>
         <div class="row col-md-12 p-0 m-0">
             <div class="flexboxer col-md-8 p-0">
                 <label>5.3._Số_lao_động_làm_nghề_công_việc_nặng_nhọc_độc_hại_nguy_hiểm: </label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:solaodonglamviecnguyhiem">
             </div>
             <div class="flexboxer col-md-4 p-0">
                 <label>Trong_đó_nữ: </label>
-                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1" data-bind="value:solaodongnulamviecnguyhiem">
             </div>
         </div>
         <label>6. Lập hồ sơ vệ sinh lao động theo Nghị định 39/2016/NĐ-CP:</label>
@@ -153,12 +153,12 @@
 
             <div class="col-md-2" style="position: relative" >
                 <label class="m-0">Có</label>
-                <input  type="checkbox" style="position: absolute;top:0.33333em;left:2.4em;">
+                <input  type="checkbox" style="position: absolute;top:0.33333em;left:2.4em;" data-bind="value:so">
             </div>
 
             <div class="col-md-2" style="position: relative" >
                 <label class="m-0">Không</label>
-                <input type="checkbox" style="position: absolute;top:0.33333em;left:4.1em;">
+                <input type="checkbox" style="position: absolute;top:0.33333em;left:4.1em;" data-bind="value:so">
             </div>
         </div>
         <label>Nếu có, ghi rõ thông tin về người làm công tác y tế tại cơ sở lao động:</label>
@@ -185,68 +185,71 @@
 
             <div class="col-md-2" style="position: relative" >
                 <label class="m-0">Có</label>
-                <input  type="checkbox" style="position: absolute;top:0.33333em;left:2.4em;">
+                <input  type="checkbox" style="position: absolute;top:0.33333em;left:2.4em;" data-bind="value:so">
             </div>
 
             <div class="col-md-2" style="position: relative" >
                 <label class="m-0">Không</label>
-                <input type="checkbox" style="position: absolute;top:0.33333em;left:4.1em;">
+                <input type="checkbox" style="position: absolute;top:0.33333em;left:4.1em;" data-bind="value:so">
             </div>
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Nếu có, ghi cụ thể hình thức tổ chức</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:tramphongkhambenhvienneuco">
         </div>
         <div class="row">
                 <label class="col-md-4 m-0">7.3. Thuê, hợp đồng với đơn vị y tế:</label>
 
             <div class="col-md-2" style="position: relative" >
-                <label class="m-0">Có</label>
-                <input  type="checkbox" style="position: absolute;top:0.33333em;left:2.4em;">
+                <label class="m-0">Có</label> 
+                <input  type="checkbox" style="position: absolute;top:0.33333em;left:2.4em;" data-bind="value:so">
             </div>
 
             <div class="col-md-2" style="position: relative" >
                 <label class="m-0">Không</label>
-                <input type="checkbox" style="position: absolute;top:0.33333em;left:4.1em;">
+                <input type="checkbox" style="position: absolute;top:0.33333em;left:4.1em;" data-bind="value:so">
             </div>
         </div>
         <label class="m-0">Nếu có, ghi rõ:</label>
         <div class="flexboxer col-md-12 p-0">
             <label>- Tên cơ sở cung cấp dịch vụ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:tencosodichvuneuco">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Địa chỉ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:diachidichvuneuco">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Số điện thoại liên hệ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:sodienthoaidichvuneuco">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Nội dung cung cấp dịch vụ:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:noidungcungcapdichvuneuco">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Thời gian cung cấp dịch vụ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:thoigiancuncapdichvu">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>8. Lực lượng sơ cứu tại nơi làm việc (<i>đối với cơ sở sản xuất kinh doanh</i>)</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:lucluongsocuutainoilamviec">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Số lượng người lao động tham gia lực lượng sơ cứu: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:soluongnguoilaodongthamgiasocuu">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Trong đó số nữ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:soluongnguoilaodongnuthamgiasocuu">
         </div>
         <label>9. Công tác thanh tra, kiểm tra việc thực hiện công tác vệ sinh lao động, chăm sóc sức khỏe người lao
             động, phòng chống bệnh nghề nghiệp trong kỳ báo cáo (của các cơ quan chức năng đối với cơ sở lao
             động)</label>
+        <div class="row col-md-12">
+                <div id="add_row2" class="mb-1"></div>
+            </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
@@ -256,13 +259,9 @@
                     <td>Nội dung kiểm tra</td>
                     <td>Ghi chú</td>
                 </tr>
-                <tr class="text-center ">
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+               
+                <tbody data-bind="list:congtacthanhtrafield"></tbody>
+
             </table>
         </div>
         <label class="stronger">II. Điều kiện lao động và số lao động tiếp xúc với yếu tố có hại</label>
