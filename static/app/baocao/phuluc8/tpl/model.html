@@ -402,6 +402,9 @@
                 từng nguyên nhân)</i></label><br>
         <label class="stronger">IV. Bệnh nghề nghiệp được bảo hiểm</label><br>
         <label>1. Tổng hợp tình hình bệnh nghề nghiệp tại cơ sở lao động</label>
+        <div class="row col-md-12">
+            <div id="add_row3" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -467,9 +470,15 @@
                     <td></td>
 
                 </tr>
+
+                <tbody data-bind="list:tinhhinhbenhnghenghieptaicosofield"></tbody>
+
             </table>
         </div>
         <label>2. Danh sách trường hợp bệnh nghề nghiệp</label>
+        <div class="row col-md-12">
+            <div id="add_row4" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
                 <tr>
@@ -501,6 +510,8 @@
                     <td></td>
 
                 </tr>
+                <tbody data-bind="list:danhsachtruonghopbenhnghenghiepfield"></tbody>
+
             </table>
         </div>
         <label class="stronger">V. Tình hình bệnh tật và tai nạn lao động</label>
