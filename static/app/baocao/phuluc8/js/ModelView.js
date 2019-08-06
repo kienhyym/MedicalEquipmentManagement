@@ -12,6 +12,7 @@ define(function (require) {
 	var DanhSachTruongHopBenhNgheNghiepItemView = require('app/baocao/phuluc8/js/DanhSachTruongHopBenhNgheNghiepView');
 	var ThongKeTongSoTruongHopMacCacLoaiBenhThongThuongItemView = require('app/baocao/phuluc8/js/ThongKeTongSoTruongHopMacCacLoaiBenhThongThuongView');
 	var CacTruongHopMacBenhNgheNghiepItemView = require('app/baocao/phuluc8/js/CacTruongHopMacBenhNgheNghiepView');
+	var CacTruongHopTaiNanLaoDongItemView = require('app/baocao/phuluc8/js/CacTruongHopTaiNanLaoDongView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -180,6 +181,19 @@ define(function (require) {
 					}],
 					toolEl: "#add_row6"
 				},
+				{
+					field: "cactruonghoptainanlaodongfield",
+					uicontrol: false,
+					itemView:CacTruongHopTaiNanLaoDongItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row7"
+				},
 				
 				{
 					field: "donvibaocao",
@@ -327,6 +341,50 @@ define(function (require) {
 					field: "soluongnguoilaodongnuthamgiasocuu",
 					cssClass: false,
 				},
+				// {
+				// 	field: "loai1nam",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai1nam",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai2nam",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai3nam",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai4nam",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai5nam",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai1nu",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai2nu",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai3nu",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai4nu",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "loai5nu",
+				// 	cssClass: false,
+				// },
 				
 
 

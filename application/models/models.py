@@ -369,15 +369,28 @@ class BaoCaoYTeLaoDongCuaCoSoLaoDong(CommonModel):
     soluongnguoilaodongthamgiasocuu = db.Column(String(255))
     soluongnguoilaodongnuthamgiasocuu = db.Column(String(255))
 
+    loai1nam = db.Column(String(255))
+    loai2nam = db.Column(String(255))
+    loai3nam = db.Column(String(255))
+    loai4nam = db.Column(String(255))
+    loai5nam = db.Column(String(255))
+    loai1nu = db.Column(String(255))
+    loai2nu = db.Column(String(255))
+    loai3nu = db.Column(String(255))
+    loai4nu = db.Column(String(255))
+    loai5nu = db.Column(String(255))
+
+
     nguoilamcongtacytetaicosolaodongfield = db.relationship('NguoiLamCongTacYTeTaiCoSoLaoDong', cascade="all, delete-orphan")
     congtacthanhtrafield = db.relationship('CongTacThanhTra', cascade="all, delete-orphan")
     dieukienlaodongvasolaodongtiepxucyeutocohaifield = db.relationship('DieuKienLaoDongVaSoLaoDongTiepXucYeuToCoHai', cascade="all, delete-orphan")
     nghiviecdoomdautainanlaodongvabenhnghenghiepfield = db.relationship('NghiViecDoOmDauTaiNanLaoDongVaBenhNgheNghiep', cascade="all, delete-orphan")
     tinhhinhbenhnghenghieptaicosofield = db.relationship('TinhHinhBenhNgheNghiepTaiCoSo', cascade="all, delete-orphan")
     danhsachtruonghopbenhnghenghiepfield = db.relationship('DanhSachTruongHopBenhNgheNghiep', cascade="all, delete-orphan")
+    cactruonghoptainanlaodongfield = db.relationship('CacTruongHopTaiNanLaoDong', cascade="all, delete-orphan")
     thongketongsotruonghopmaccacloaibenhthongthuongfield = db.relationship('ThongKeTongSoTruongHopMacCacLoaiBenhThongThuong', cascade="all, delete-orphan")
     cactruonghopmacbenhnghenghiepfield = db.relationship('CacTruongHopMacBenhNgheNghiep', cascade="all, delete-orphan")
-    phanloaisuckhoefield = db.relationship('PhanLoaiSucKhoe', cascade="all, delete-orphan")
+    # phanloaisuckhoefield = db.relationship('PhanLoaiSucKhoe', cascade="all, delete-orphan")
     congtachuanluyenfield = db.relationship('CongTacHuanLuyen', cascade="all, delete-orphan")
     kinhphivesinhlaodongvachamsocsuckhoenguoilaodongfield = db.relationship('KinhPhiVeSinhLaoDongVaChamSocSucKhoeNguoiLaoDong', cascade="all, delete-orphan")
     cackiennghidukienvakehoachdukientrongkytoifield = db.relationship('CacKienNghiDuKienVaKeHoachDuKienTrongKyToi', cascade="all, delete-orphan")
@@ -489,7 +502,7 @@ class ThongKeTongSoTruongHopMacCacLoaiBenhThongThuong(CommonModel):
     sotruonghopquy4 = db.Column(String(255))
     baocaoytelaodongcuacosolaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaoytelaodongcuacosolaodong.id'), nullable=True)
     baocaoytelaodongcuacosolaodong = relationship('BaoCaoYTeLaoDongCuaCoSoLaoDong') 
-
+# 2. Các trường hợp mắc bệnh nghề nghiệp
 class CacTruongHopMacBenhNgheNghiep(CommonModel):
     __tablename__ = 'cactruonghopmacbenhnghenghiep'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -502,7 +515,7 @@ class CacTruongHopMacBenhNgheNghiep(CommonModel):
     baocaoytelaodongcuacosolaodong = relationship('BaoCaoYTeLaoDongCuaCoSoLaoDong') 
 
 
-# 2. Các trường hợp mắc bệnh nghề nghiệp
+# 3. Các trường hợp tai nạn lao động
 class CacTruongHopTaiNanLaoDong(CommonModel):
     __tablename__ = 'cactruonghoptainanlaodong'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -520,21 +533,21 @@ class CacTruongHopTaiNanLaoDong(CommonModel):
 
 
 # VI. Phân loại sức khỏe
-class PhanLoaiSucKhoe(CommonModel):
-    __tablename__ = 'phanloaisuckhoe'
-    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    loai1nam = db.Column(String(255))
-    loai2nam = db.Column(String(255))
-    loai3nam = db.Column(String(255))
-    loai4nam = db.Column(String(255))
-    loai5nam = db.Column(String(255))
-    loai1nu = db.Column(String(255))
-    loai2nu = db.Column(String(255))
-    loai3nu = db.Column(String(255))
-    loai4nu = db.Column(String(255))
-    loai5nu = db.Column(String(255))
-    baocaoytelaodongcuacosolaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaoytelaodongcuacosolaodong.id'), nullable=True)
-    baocaoytelaodongcuacosolaodong = relationship('BaoCaoYTeLaoDongCuaCoSoLaoDong') 
+# class PhanLoaiSucKhoe(CommonModel):
+#     __tablename__ = 'phanloaisuckhoe'
+#     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+#     loai1nam = db.Column(String(255))
+#     loai2nam = db.Column(String(255))
+#     loai3nam = db.Column(String(255))
+#     loai4nam = db.Column(String(255))
+#     loai5nam = db.Column(String(255))
+#     loai1nu = db.Column(String(255))
+#     loai2nu = db.Column(String(255))
+#     loai3nu = db.Column(String(255))
+#     loai4nu = db.Column(String(255))
+#     loai5nu = db.Column(String(255))
+#     baocaoytelaodongcuacosolaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaoytelaodongcuacosolaodong.id'), nullable=True)
+#     baocaoytelaodongcuacosolaodong = relationship('BaoCaoYTeLaoDongCuaCoSoLaoDong') 
 
 
 
