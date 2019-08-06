@@ -25,83 +25,15 @@
         "type": "string",
         "primary": true
     },
+    "noidunghoatdong": {
+        "type": "string",
+        "length": 255
+    },
     "sotienkhamsuckhoedinhky": {
         "type": "string",
         "length": 255
     },
     "ghichukhamsuckhoedinhky": {
-        "type": "string",
-        "length": 255
-    },
-    "sotienkhamphathienbenhnghenhgiep": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichukhamphathienbenhnghenghiep": {
-        "type": "string",
-        "length": 255
-    },
-    "sotienkhamdinhkybenhnghenghiep": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichukhamdinhkybenhnghenghiep": {
-        "type": "string",
-        "length": 255
-    },
-    "sotienhuanluyenantoanvesinhlaodong": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichuhuanluyenantoanvesinhlaodong": {
-        "type": "string",
-        "length": 255
-    },
-    "sotienhuanluyensocuucapcuu": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichuhuanluyensocuucapcuu": {
-        "type": "string",
-        "length": 255
-    },
-    "sotienquantracmoitruonglaodong": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichuquanmoitractruonglaodong": {
-        "type": "string",
-        "length": 255
-    },
-    "sotienboithuongtainanlaodong": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichuboithuongtainanlaodong": {
-        "type": "string",
-        "length": 255
-    },
-    "sotienboithuongbenhnghenghiep": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichuboithuongbenhnghenghiep": {
-        "type": "string",
-        "length": 255
-    },
-    "sotienchiphidieuchicacbenhthongthuong": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichuchiphidieuchicacbenhthongthuong": {
-        "type": "string",
-        "length": 255
-    },
-    "sotienchiphilienquankhac": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichuchiphilienquankhac": {
         "type": "string",
         "length": 255
     },

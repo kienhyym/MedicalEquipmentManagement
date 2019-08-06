@@ -14,6 +14,7 @@ define(function (require) {
 	var CacTruongHopMacBenhNgheNghiepItemView = require('app/baocao/phuluc8/js/CacTruongHopMacBenhNgheNghiepView');
 	var CacTruongHopTaiNanLaoDongItemView = require('app/baocao/phuluc8/js/CacTruongHopTaiNanLaoDongView');
 	var CongTacHuanLuyenItemView = require('app/baocao/phuluc8/js/CongTacHuanLuyenView');
+	var KinhPhiVeSinhLaoDongVaChamSocSucKhoeNguoiLaoDongItemView = require('app/baocao/phuluc8/js/KinhPhiVeSinhLaoDongVaChamSocSucKhoeNguoiLaoDongView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -207,6 +208,19 @@ define(function (require) {
 						command: "create"
 					}],
 					toolEl: "#add_row8"
+				},
+				{
+					field: "kinhphivesinhlaodongvachamsocsuckhoenguoilaodongfield",
+					uicontrol: false,
+					itemView:KinhPhiVeSinhLaoDongVaChamSocSucKhoeNguoiLaoDongItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row9"
 				},
 				
 				{
