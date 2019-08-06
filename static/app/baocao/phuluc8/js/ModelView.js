@@ -7,6 +7,7 @@ define(function (require) {
 	var template = require('text!app/baocao/phuluc8/tpl/model.html'),
 		schema = require('json!schema/BaoCaoYTeLaoDongCuaCoSoLaoDongSchema.json');
 
+	var NghiViecDoOmDauTaiNanLaoDongVaBenhNgheNghiepItemView = require('app/baocao/phuluc8/js/NghiViecDoOmDauTaiNanLaoDongVaBenhNgheNghiepView');
 	var CongTacThanhTraItemView = require('app/baocao/phuluc8/js/CongTacThanhTraView');
 	var TinhHinhBenhNgheNghiepTaiCoSoItemView = require('app/baocao/phuluc8/js/TinhHinhBenhNgheNghiepTaiCoSoView');
 	var DanhSachTruongHopBenhNgheNghiepItemView = require('app/baocao/phuluc8/js/DanhSachTruongHopBenhNgheNghiepView');
@@ -105,19 +106,19 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-				// {
-				// 	field: "giangvienthuchienhuanluyenfield",
-				// 	uicontrol: false,
-				// 	itemView: GiangVienThucHienHuanLuyenItemView,
-				// 	tools: [{
-				// 		name: "create",
-				// 		type: "button",
-				// 		buttonClass: "btn btn-outline-success btn-sm",
-				// 		label: "<span class='fa fa-plus'></span>",
-				// 		command: "create"
-				// 	}],
-				// 	toolEl: "#add_row"
-				// },
+				{
+					field: "nghiviecdoomdautainanlaodongvabenhnghenghiepfield",
+					uicontrol: false,
+					itemView: NghiViecDoOmDauTaiNanLaoDongVaBenhNgheNghiepItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row"
+				},
 				{
 					field: "congtacthanhtrafield",
 					uicontrol: false,
