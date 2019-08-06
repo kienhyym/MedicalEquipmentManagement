@@ -490,11 +490,23 @@ class ThongKeTongSoTruongHopMacCacLoaiBenhThongThuong(CommonModel):
     baocaoytelaodongcuacosolaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaoytelaodongcuacosolaodong.id'), nullable=True)
     baocaoytelaodongcuacosolaodong = relationship('BaoCaoYTeLaoDongCuaCoSoLaoDong') 
 
-# 2. Các trường hợp mắc bệnh nghề nghiệp
 class CacTruongHopMacBenhNgheNghiep(CommonModel):
     __tablename__ = 'cactruonghopmacbenhnghenghiep'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     benhnghenghiep = db.Column(String(255))
+    sotruonghopquy1 = db.Column(String(255))
+    sotruonghopquy2 = db.Column(String(255))
+    sotruonghopquy3 = db.Column(String(255))
+    sotruonghopquy4 = db.Column(String(255))
+    baocaoytelaodongcuacosolaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaoytelaodongcuacosolaodong.id'), nullable=True)
+    baocaoytelaodongcuacosolaodong = relationship('BaoCaoYTeLaoDongCuaCoSoLaoDong') 
+
+
+# 2. Các trường hợp mắc bệnh nghề nghiệp
+class CacTruongHopTaiNanLaoDong(CommonModel):
+    __tablename__ = 'cactruonghoptainanlaodong'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tainanlaodong = db.Column(String(255))
     sotruonghopquy1mac = db.Column(String(255))
     sotruonghopquy1chet = db.Column(String(255))
     sotruonghopquy2mac = db.Column(String(255))

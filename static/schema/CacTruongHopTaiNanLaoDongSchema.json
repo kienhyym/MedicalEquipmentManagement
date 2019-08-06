@@ -25,23 +25,39 @@
         "type": "string",
         "primary": true
     },
-    "benhnghenghiep": {
+    "tainanlaodong": {
         "type": "string",
         "length": 255
     },
-    "sotruonghopquy1": {
+    "sotruonghopquy1mac": {
         "type": "string",
         "length": 255
     },
-    "sotruonghopquy2": {
+    "sotruonghopquy1chet": {
         "type": "string",
         "length": 255
     },
-    "sotruonghopquy3": {
+    "sotruonghopquy2mac": {
         "type": "string",
         "length": 255
     },
-    "sotruonghopquy4": {
+    "sotruonghopquy2chet": {
+        "type": "string",
+        "length": 255
+    },
+    "sotruonghopquy3mac": {
+        "type": "string",
+        "length": 255
+    },
+    "sotruonghopquy3chet": {
+        "type": "string",
+        "length": 255
+    },
+    "sotruonghopquy4mac": {
+        "type": "string",
+        "length": 255
+    },
+    "sotruonghopquy4chet": {
         "type": "string",
         "length": 255
     },

@@ -504,7 +504,6 @@
         <label class="stronger">V. Tình hình bệnh tật và tai nạn lao động</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
-
                 <tr>
                     <td>TT</td>
                     <td>Nhóm bệnh</td>
@@ -543,8 +542,12 @@
                 <tbody data-bind="list:thongketongsotruonghopmaccacloaibenhthongthuongfield"></tbody>
 
                 <tr>
-                    <td colspan="10" class="text-left">II. Các trường hợp mắc bệnh nghề nghiệp</td>
-
+                    <td colspan="10" class="text-left">II. Các trường hợp mắc bệnh nghề nghiệp 
+                        <div class="row col-md-12">
+                            <div id="add_row6" class="mb-1"></div>
+                        </div>
+                    </td>
+                   
                 </tr>
                 <tr>
                     <td></td>
@@ -556,6 +559,8 @@
 
 
                 </tr>
+                <tbody data-bind="list:cactruonghopmacbenhnghenghiepfield"></tbody>
+
                 <tr>
                     <td colspan="2">III. Các trường hợp tai nạn lao động</td>
                     <td>Mắc</td>
