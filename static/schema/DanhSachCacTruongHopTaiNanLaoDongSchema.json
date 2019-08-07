@@ -1,0 +1,75 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "hovaten": {
+        "type": "string",
+        "length": 255
+    },
+    "tuoi": {
+        "type": "number"
+    },
+    "nam": {
+        "type": "number"
+    },
+    "nu": {
+        "type": "number"
+    },
+    "ngaybitainan": {
+        "type": "datetime"
+    },
+    "nghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "bophanbitonthuong": {
+        "type": "string",
+        "length": 255
+    },
+    "duocsocuutaicho": {
+        "type": "number"
+    },
+    "phuongtienchuyendencosokbcb": {
+        "type": "string",
+        "length": 255
+    },
+    "thoigiandieutri": {
+        "type": "datetime"
+    },
+    "ketquadieutri": {
+        "type": "number"
+    },
+    "ghichu": {
+        "type": "string",
+        "length": 255
+    },
+    "baocaohoatdongytelaodong6thangnamtuyenhuyen_id": {
+        "type": "string"
+    },
+    "baocaohoatdongytelaodong6thangnamtuyenhuyen": {
+        "type": "dict"
+    }
+}

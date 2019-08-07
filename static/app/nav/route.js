@@ -148,7 +148,14 @@ define(function (require) {
 		},
 		{
 
-			"route": "baocao/phuluc9/model",
+			"collectionName": "baocaoytelaodongcbaocaohoatdongytelaodong6thangnamtuyenhuyenuacosolaodong",
+			"route": "baocaohoatdongytelaodong6thangnamtuyenhuyen/collection",
+			"$ref": "app/baocao/phuluc9/js/CollectionView",
+		},
+		{
+
+			"collectionName": "baocaohoatdongytelaodong6thangnamtuyenhuyen",
+			"route": "baocaohoatdongytelaodong6thangnamtuyenhuyen/model(/:id)",
 			"$ref": "app/baocao/phuluc9/js/ModelView",
 		},
 		{

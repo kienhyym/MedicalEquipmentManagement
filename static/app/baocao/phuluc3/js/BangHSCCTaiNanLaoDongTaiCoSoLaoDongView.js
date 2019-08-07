@@ -36,6 +36,7 @@ define(function (require) {
             var self = this;
             self.applyBindings();
             self.registerEvent();
+            // self.model.set("id", gonrin.uuid())
         
         },
         registerEvent: function () {

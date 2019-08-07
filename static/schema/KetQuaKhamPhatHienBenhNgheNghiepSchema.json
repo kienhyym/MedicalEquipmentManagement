@@ -1,0 +1,74 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "tenbenhnghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "tongsonldduockhamsuckhoephathienbnn": {
+        "type": "number"
+    },
+    "tongsonldnuduockhamsuckhoephathienbnn": {
+        "type": "number"
+    },
+    "tongsondlduocchuandoanbnn": {
+        "type": "number"
+    },
+    "tongsondlnuduocchuandoanbnn": {
+        "type": "number"
+    },
+    "tongsonldduocgiamdinhbnn": {
+        "type": "number"
+    },
+    "tongsonldnuduocgiamdinhbnn": {
+        "type": "number"
+    },
+    "tongsogiamdinhnhohon5phantram": {
+        "type": "number"
+    },
+    "tongsogiamdinhnhohon5phantramnu": {
+        "type": "number"
+    },
+    "tongsogiamdinhlonhon31phantram": {
+        "type": "number"
+    },
+    "tongsogiamdinhlonhon31phantramnu": {
+        "type": "number"
+    },
+    "tongsogiamdinhlonhon5nhohon31phantram": {
+        "type": "number"
+    },
+    "tongsogiamdinhlonhon5nhohon31phantramnu": {
+        "type": "number"
+    },
+    "baocaohoatdongytelaodong6thangnamtuyenhuyen_id": {
+        "type": "string"
+    },
+    "baocaohoatdongytelaodong6thangnamtuyenhuyen": {
+        "type": "dict"
+    }
+}

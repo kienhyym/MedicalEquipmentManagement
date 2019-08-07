@@ -1,0 +1,56 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "tencoso": {
+        "type": "string",
+        "length": 255
+    },
+    "songuoiom": {
+        "type": "number"
+    },
+    "songayom": {
+        "type": "number"
+    },
+    "songuoitainanlaodong": {
+        "type": "number"
+    },
+    "songaytainanlaodong": {
+        "type": "number"
+    },
+    "songuoibenhnghenghiep": {
+        "type": "number"
+    },
+    "songaybenhnghenghiep": {
+        "type": "number"
+    },
+    "baocaohoatdongytelaodong6thangnamtuyenhuyen_id": {
+        "type": "string"
+    },
+    "baocaohoatdongytelaodong6thangnamtuyenhuyen": {
+        "type": "dict"
+    }
+}

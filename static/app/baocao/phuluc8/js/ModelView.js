@@ -106,6 +106,19 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
+
+				{
+					
+					field: "nguoilamcongtacytecokhong",
+					uicontrol: "radio",
+					textField: "name",
+					valueField: "id",
+					cssClassField: "cssClass",
+					dataSource: [
+						{ name: "Có", id: 1},
+						{ name: "Không", id: 0},
+					],
+				},
 				{
 					field: "nghiviecdoomdautainanlaodongvabenhnghenghiepfield",
 					uicontrol: false,

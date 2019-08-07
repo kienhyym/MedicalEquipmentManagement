@@ -273,13 +273,23 @@ define(function (require) {
 				},
 				{
 					"text": "phụ lục 9",
-					"icon": "fa fa-home",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc9/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"icon": "fa fa-home",
+					"collectionName": "baocaohoatdongytelaodong6thangnamtuyenhuyen",
+					"route": "baocaohoatdongytelaodong6thangnamtuyenhuyen/collection",
+					"$ref": "app/baocao/phuluc9/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+				
+				},
+				{
+					"type": "view",
+					"collectionName": "baocaohoatdongytelaodong6thangnamtuyenhuyen",
+					"route": "baocaohoatdongytelaodong6thangnamtuyenhuyen/model(/:id)",
+					"$ref": "app/baocao/phuluc9/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 				{

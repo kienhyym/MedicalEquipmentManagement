@@ -583,5 +583,419 @@ class CacKienNghiDuKienVaKeHoachDuKienTrongKyToi(CommonModel):
 
 # Hết Báo cáo 1 Phụ lục 8
 
+###########################################################################################
+
+# Báo cáo 1 Phụ lục 9
+class BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen(CommonModel):
+    __tablename__ = 'baocaohoatdongytelaodong6thangnamtuyenhuyen'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    soyte = db.Column(String(255))
+    trungtamyte = db.Column(String(255))
+    so = db.Column(db.Integer)
+    bc = db.Column(db.Integer)
+    noivietbaocao = db.Column(String(255))
+    ngayvietbaocao = db.Column(db.Integer)
+    thangvietbaocao = db.Column(db.Integer)
+    namvietbaocao= db.Column(db.Integer)
+    baocaonam = db.Column(db.Integer)
+#CƠ SỞ LAO ĐỘNG TRONG PHẠM VI QUẢN LÝ
+    loaicosolaodongtren200nld = db.Column(String(255))
+    tongsocotren200nld = db.Column(db.Integer)
+    sotructhuocbonganhtren200nld = db.Column(db.Integer)
+    socosocoyeutocohainguyhiemtren200nld = db.Column(db.Integer)
+    songuoilaodongtaitatcacosotren200nld = db.Column(db.Integer)
+    songuoilaodongnutaitatcacosotren200nld = db.Column(db.Integer)
+    songuoilaodongtaitatcacosocoyeutocohaitren200nld = db.Column(db.Integer)
+    songuoilaodongnutaitatcacosocoyeutocohaitren200nld = db.Column(db.Integer)
+    songuoilaodongtaitatcacosotiepxuctructieptren200nld = db.Column(db.Integer)
+    songuoilaodongnutaitatcacosotiepxuctructieptren200nld = db.Column(db.Integer)
+    
+    loaicosolaodongtren50duoi200ndl = db.Column(String(255))
+    tongsocotren50duoi200ndl = db.Column(db.Integer)
+    sotructhuocbonganhtren50duoi200ndl = db.Column(db.Integer)
+    socosocoyeutocohainguyhiemtren50duoi200ndl = db.Column(db.Integer)
+    songuoilaodongtaitatcacosotren50duoi200ndl = db.Column(db.Integer)
+    songuoilaodongnutaitatcacosotren50duoi200ndl = db.Column(db.Integer)
+    songuoilaodongtaitatcacosocoyeutocohaitren50duoi200ndl = db.Column(db.Integer)
+    songuoilaodongnutaitatcacosocoyeutocohaitren50duoi200ndl = db.Column(db.Integer)
+    songuoilaodongtaitatcacosotiepxuctructieptren50duoi200ndl = db.Column(db.Integer)
+    songuoilaodongnutaitatcacosotiepxuctructieptren50duoi200ndl = db.Column(db.Integer)
+    
+    loaicosolaodongduoi50nld = db.Column(String(255))
+    tongsocoduoi50nld = db.Column(db.Integer)
+    sotructhuocbonganhduoi50nld = db.Column(db.Integer)
+    socosocoyeutocohainguyhiemduoi50nld = db.Column(db.Integer)
+    songuoilaodongtaitatcacosoduoi50nld = db.Column(db.Integer)
+    songuoilaodongnutaitatcacosoduoi50nld = db.Column(db.Integer)
+    songuoilaodongtaitatcacosocoyeutocohaiduoi50nld = db.Column(db.Integer)
+    songuoilaodongnutaitatcacosocoyeutocohaiduoi50nld = db.Column(db.Integer)
+    songuoilaodongtaitatcacosotiepxuctructiepduoi50nld = db.Column(db.Integer)
+    songuoilaodongnutaitatcacosotiepxuctructiepduoi50nld = db.Column(db.Integer)
+# III LẬP HỒ SƠ VỆ SINH LAO ĐỘNG
+    tongsocosothuocphamviquanly = db.Column(db.Integer)
+    socosolaphosovesinhlaodongthuocphamviquanly = db.Column(db.Integer)
+    tongsocosocoyeutocohai = db.Column(db.Integer)
+    socosolaphosovesinhlaodongcoyeutocohai = db.Column(db.Integer)
+# IV. TỔ CHỨC BỘ PHẬN Y TẾ TẠI CƠ SỞ LAO ĐỘNG
+
+# 1. Phân loại cơ sở lao động theo hình thức tổ chức bộ phận y tế  
+    loaicososanxuattren50duoi200ndl = db.Column(db.Integer)
+    hinhthuccotramytetren50duoi200ndl = db.Column(db.Integer)
+    hinhthuccobenhvientren50duoi200ndl = db.Column(db.Integer)
+    hinhthuccophongkhamtren50duoi200ndl = db.Column(db.Integer)
+    hinhthuckhactren50duoi200ndl = db.Column(db.Integer)
+    hopdongvoicosokhambenhtren50duoi200ndl = db.Column(db.Integer)
+
+    loaicososanxuattren200nld = db.Column(db.Integer)
+    hinhthuccotramytetren200nld = db.Column(db.Integer)
+    hinhthuccobenhvientren200nld = db.Column(db.Integer)
+    hinhthuccophongkhamtren200nld = db.Column(db.Integer)
+    hinhthuckhactren200nld = db.Column(db.Integer)
+    hopdongvoicosokhambenhtren200nld = db.Column(db.Integer)
+    
+    loaicososanxuatduoi50nld = db.Column(db.Integer)
+    hinhthuccotramyteduoi50nld = db.Column(db.Integer)
+    hinhthuccobenhvienduoi50nld = db.Column(db.Integer)
+    hinhthuccophongkhamduoi50nld = db.Column(db.Integer)
+    hinhthuckhacduoi50nld = db.Column(db.Integer)
+    hopdongvoicosokhambenhduoi50nld = db.Column(db.Integer)
+
+# 2. Trình độ người làm công tác Y tế tại các cơ sở lao động    
+    songuoilamcongtacytetren50duoi200ndl = db.Column(db.Integer)
+    trinhdobacsitren50duoi200ndl = db.Column(db.Integer)
+    trinhdobacsiduphongtren50duoi200ndl = db.Column(db.Integer)
+    trinhdocunhantren50duoi200ndl = db.Column(db.Integer)
+    trinhdoysytren50duoi200ndl = db.Column(db.Integer)
+    trinhdodieuduongtren50duoi200ndl = db.Column(db.Integer)
+    trinhdohosinhvientren50duoi200ndl = db.Column(db.Integer)
+
+    songuoilamcongtacytetren200nld = db.Column(db.Integer)
+    trinhdobacsitren200nld = db.Column(db.Integer)
+    trinhdobacsiduphongtren200nld = db.Column(db.Integer)
+    trinhdocunhantren200nld = db.Column(db.Integer)
+    trinhdoysytren200nld = db.Column(db.Integer)
+    trinhdodieuduongtren200nld = db.Column(db.Integer)
+    trinhdohosinhvientren200nld = db.Column(db.Integer)
+
+    songuoilamcongtacyteduoi50nld = db.Column(db.Integer)
+    trinhdobacsiduoi50nld = db.Column(db.Integer)
+    trinhdobacsiduphongduoi50nld = db.Column(db.Integer)
+    trinhdocunhanduoi50nld = db.Column(db.Integer)
+    trinhdoysyduoi50nld = db.Column(db.Integer)
+    trinhdodieuduongduoi50nld = db.Column(db.Integer)
+    trinhdohosinhvienduoi50nld = db.Column(db.Integer)
+
+# 3. Lực lượng sơ cấp cứu tại các cơ sở lao động
+    tongsonguoithamgiasocuutren50duoi200ndl = db.Column(db.Integer)
+    tongsonguoinuthamgiasocuutren50duoi200ndl = db.Column(db.Integer)
+    
+    tongsonguoithamgiasocuutren200nld = db.Column(db.Integer)
+    tongsonguoinuthamgiasocuutren200nld = db.Column(db.Integer)
+    
+
+    tongsonguoithamgiasocuuduoi50nld = db.Column(db.Integer)
+    tongsonguoinuthamgiasocuuduoi50nld = db.Column(db.Integer)
+# VI. TÌNH HÌNH KHÁM ĐỊNH KỲ VÀ KHÁM PHÁT HIỆN, GIÁM ĐỊNH BỆNH NGHỀ NGHIỆP
+# 1. Phân loại sức khỏe:
+    loai1nam = db.Column(String(255))
+    loai2nam = db.Column(String(255))
+    loai3nam = db.Column(String(255))
+    loai4nam = db.Column(String(255))
+    loai5nam = db.Column(String(255))
+    loai1nu = db.Column(String(255))
+    loai2nu = db.Column(String(255))
+    loai3nu = db.Column(String(255))
+    loai4nu = db.Column(String(255))
+    loai5nu = db.Column(String(255))
+# VIII. BÁO CÁO CÁC TRƯỜNG HỢP TAI NẠN LAO ĐỘNG ĐƯỢC KHÁM, ĐIỀU TRỊ TẠI CƠ SỞ KHÁM BỆNH, CHỮA BỆNH (KBCB)    
+# 2. Tổng hợp các trường hợp tai nạn lao động
+    songuoilaodongduocsocuucapcuu = db.Column(db.Integer())
+    songuoilaodongduocdieutrilandautrongnam = db.Column(db.Integer())
+    songuoibitainanlaodongdencosokhambenh = db.Column(db.Integer())
+    # X. CÁC HOẠT ĐỘNG VỀ Y TẾ LAO ĐỘNG CỦA ĐƠN VỊ 
+    # 3. Tổ chức giao ban với tuyến dưới
+    socosolaodongthamgiagiaoban = db.Column(db.Integer())
+    sotramytethamgiagiaoban = db.Column(db.Integer())
+    noidunggiaobancosolaodong = db.Column(String(255))
+    noidunggiaobantramyte = db.Column(String(255))
+    dexuatcosolaodong = db.Column(String(255))
+    dexuattramyte = db.Column(String(255))
+    # 4. Công tác thanh tra, kiểm tra việc thực hiện công tác vệ sinh lao động, chăm sóc sức khỏe người lao động, phòng chống bệnh nghề nghiệp trong kỳ báo cáo 
+    tongsocosolaodongduocthanhtra = db.Column(db.Integer())
+    socosolaodongcoyeutocohaiduocthanhtra = db.Column(db.Integer())
+    ghichu = db.Column(String(255))
+
+    # XI. ĐÁNH GIÁ VÀ KIẾN NGHỊ
+    # 1. Đánh giá về tình hình thực hiện công tác VSLĐ, PCBNN trên địa bàn
+    danhgia = db.Column(String(255))
+    # 2. Kiến nghị
+    kienghi = db.Column(String(255))
+    # Hết Báo cáo 1 Phụ lục 9
+
+    phanloaicosolaodongtheonganhnghevaquymofield = db.relationship('PhanLoaiCoSoLaoDongTheoNganhNgheVaQuyMo', cascade="all, delete-orphan")
+    phanloaicosolaodongcoyeutocohainguyhiemfield = db.relationship('PhanLoaiCoSoLaoDongCoYeuToCoHaiNguyHiem', cascade="all, delete-orphan")
+    ketquaquantraccacyeutovikhihauvavatlyhoahocfield = db.relationship('KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHoc', cascade="all, delete-orphan")
+    ketquaquantraccacyeutobuitrongmoitruonglaodongfield = db.relationship('KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDong', cascade="all, delete-orphan")
+    ketquadanhgiacacyeutotiepxucnghenghiepfield = db.relationship('KetQuaDanhGiaCacYeuToTiepXucNgheNghiep', cascade="all, delete-orphan")
+    tinhhinhnghiomfield = db.relationship('TinhHinhNghiOm', cascade="all, delete-orphan")
+    tongsotruonghopmaccacloaibenhthongthuongfield = db.relationship('TongSoTruongHopMacCacLoaiBenhThongThuong', cascade="all, delete-orphan")
+    cactruonghopmacbenhnghenghiepphuluc9field = db.relationship('CacTruongHopMacBenhNgheNghiepPhuLuc9', cascade="all, delete-orphan")
+    cactruonghoptainanlaodongphuluc9field = db.relationship('CacTruongHopTaiNanLaoDongPhuLuc9', cascade="all, delete-orphan")
+    ketquakhamphathienbenhnghenghiepfield = db.relationship('KetQuaKhamPhatHienBenhNgheNghiep', cascade="all, delete-orphan")
+    danhsachnguoimacbenhnghenghiepfield = db.relationship('DanhSachNguoiMacBenhNgheNghiep', cascade="all, delete-orphan")
+    tonghoptubaocaocuacaccosolaodongfield = db.relationship('TongHopTuBaoCaoCuaCacCoSoLaoDong', cascade="all, delete-orphan")
+    cachoatdongdodonvitrienkhaifield = db.relationship('CacHoatDongDoDonViTrienKhai', cascade="all, delete-orphan")
+    danhsachcactruonghoptainanlaodongfield = db.relationship('DanhSachCacTruongHopTaiNanLaoDong', cascade="all, delete-orphan")
+    phanloaicactruonghoptainanlaodongtheoviecsocuufield = db.relationship('PhanLoaiCacTruongHopTaiNanLaoDongTheoViecSoCuu', cascade="all, delete-orphan")
+    phanloaicactruonghoptainanlaodongtheonganhnghefield = db.relationship('PhanLoaiCacTruongHopTaiNanLaoDongTheoNganhNghe', cascade="all, delete-orphan")
+    kinhphichitrafield = db.relationship('KinhPhiChiTra', cascade="all, delete-orphan")
+
+
+
+#II. PHÂN LOẠI CƠ SỞ LAO ĐỘNG THEO NGÀNH NGHỀ VÀ QUY MÔ
+class PhanLoaiCoSoLaoDongTheoNganhNgheVaQuyMo(CommonModel):
+    __tablename__ = 'phanloaicosolaodongtheonganhnghevaquymo'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    loainganhnghe = db.Column(String(255))
+    socsconho = db.Column(db.Integer)
+    sonldcosoconho = db.Column(db.Integer)
+    socscovua = db.Column(db.Integer)
+    sonldcosocovua = db.Column(db.Integer)
+    socscolon= db.Column(db.Integer)
+    sonldcosocolon = db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+class PhanLoaiCoSoLaoDongCoYeuToCoHaiNguyHiem(CommonModel):
+    __tablename__ = 'phanloaicosolaodongcoyeutocohainguyhiem'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    loainganhnghe = db.Column(String(255))
+    socsconho = db.Column(db.Integer)
+    sonldcosoconho = db.Column(db.Integer)
+    socscovua = db.Column(db.Integer)
+    sonldcosocovua = db.Column(db.Integer)
+    socscolon= db.Column(db.Integer)
+    sonldcosocolon = db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+
+
+
+# V. KẾT QUẢ QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG TRONG KỲ BÁO CÁO
+# 1. Kết quả quan trắc các yếu tố vi khí hậu và vật lý, hóa học trong môi trường lao động
+class KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHoc(CommonModel):
+    __tablename__ = 'ketquaquantraccacyeutovikhihauvavatlyhoahoc'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tencoso = db.Column(String(255))
+    tongsonguoilaodong = db.Column(db.Integer)
+    nhietdo1 = db.Column(db.Integer)
+    nhietdo2 = db.Column(db.Integer)
+    doam1 = db.Column(db.Integer)
+    doam2= db.Column(db.Integer)
+    tocdogio1 = db.Column(db.Integer)
+    tocdogio2= db.Column(db.Integer)
+    anhsang1 = db.Column(db.Integer)
+    anhsang2= db.Column(db.Integer)
+    on1 = db.Column(db.Integer)
+    on2= db.Column(db.Integer)
+    rung1 = db.Column(db.Integer)
+    rung2= db.Column(db.Integer)
+    hkdoc1 = db.Column(db.Integer)
+    hkdoc2= db.Column(db.Integer)
+    phongxa1 = db.Column(db.Integer)
+    phongxa2= db.Column(db.Integer)
+    dientutruong1 = db.Column(db.Integer)
+    dientutruong2= db.Column(db.Integer)
+    yeutokhac1 = db.Column(db.Integer)
+    yeutokhac2= db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+# 2. Kết quả quan trắc yếu tố bụi trong môi trường lao động
+class KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDong(CommonModel):
+    __tablename__ = 'ketquaquantraccacyeutobuitrongmoitruonglaodong'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tencoso = db.Column(String(255))
+    tongsonguoilaodong = db.Column(db.Integer)
+    songuoitiepxucvoicacyeutobui = db.Column(db.Integer)
+    buitoanphan1 = db.Column(db.Integer)
+    buitoanphan2 = db.Column(db.Integer)
+    buihohap1 = db.Column(db.Integer)
+    buihohap2= db.Column(db.Integer)
+    buisilic1 = db.Column(db.Integer)
+    buisilic2= db.Column(db.Integer)
+    buikhac1 = db.Column(db.Integer)
+    buikhac2= db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+# 3. Kết quả đánh giá các yếu tố tiếp xúc nghề nghiệp và yếu tố tâm sinh lý và ec-gô-nô-my
+class KetQuaDanhGiaCacYeuToTiepXucNgheNghiep(CommonModel):
+    __tablename__ = 'ketquadanhgiacacyeutotiepxucnghenghiep'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tencoso = db.Column(String(255))
+    tongsonguoilaodong = db.Column(db.Integer)
+    yeutotiepxuc = db.Column(db.Integer)
+    songuoitiepxuc = db.Column(db.Integer)
+    ketquadanhgia = db.Column(db.Integer)
+    songuoiduocdanhgiaecgonomy = db.Column(db.Integer)
+    ketquadanhgiaecgonomy= db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+#VI. TÌNH HÌNH SỨC KHỎE VÀ BỆNH TẬT 
+# 1. Tình hình nghỉ ốm
+class TinhHinhNghiOm(CommonModel):
+    __tablename__ = 'tinhhinhnghiom'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tencoso = db.Column(String(255))
+    songuoiom = db.Column(db.Integer)
+    songayom = db.Column(db.Integer)
+    songuoitainanlaodong = db.Column(db.Integer)
+    songaytainanlaodong = db.Column(db.Integer)
+    songuoibenhnghenghiep = db.Column(db.Integer)
+    songaybenhnghenghiep= db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+# 2. Tình hình bệnh tật và tai nạn lao động
+# 2.1.  Tổng số trường hợp mắc các loại bệnh thông thường:
+class TongSoTruongHopMacCacLoaiBenhThongThuong(CommonModel):
+    __tablename__ = 'tongsotruonghopmaccacloaibenhthongthuong'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    nhombenh = db.Column(String(255))
+    sotruonghopquy1 = db.Column(String(255))
+    sotruonghopquy2 = db.Column(String(255))
+    sotruonghopquy3 = db.Column(String(255))
+    sotruonghopquy4 = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen')     
+# 2. Các trường hợp mắc bệnh nghề nghiệp
+class CacTruongHopMacBenhNgheNghiepPhuLuc9(CommonModel):
+    __tablename__ = 'cactruonghopmacbenhnghenghiepphuluc9'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    benhnghenghiep = db.Column(String(255))
+    sotruonghopquy1 = db.Column(String(255))
+    sotruonghopquy2 = db.Column(String(255))
+    sotruonghopquy3 = db.Column(String(255))
+    sotruonghopquy4 = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+
+# 3. Các trường hợp tai nạn lao động
+class CacTruongHopTaiNanLaoDongPhuLuc9(CommonModel):
+    __tablename__ = 'cactruonghoptainanlaodongphuluc9'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tainanlaodong = db.Column(String(255))
+    sotruonghopquy1mac = db.Column(String(255))
+    sotruonghopquy1chet = db.Column(String(255))
+    sotruonghopquy2mac = db.Column(String(255))
+    sotruonghopquy2chet = db.Column(String(255))
+    sotruonghopquy3mac = db.Column(String(255))
+    sotruonghopquy3chet = db.Column(String(255))
+    sotruonghopquy4mac = db.Column(String(255))
+    sotruonghopquy4chet = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen')     
+# VI. TÌNH HÌNH KHÁM ĐỊNH KỲ VÀ KHÁM PHÁT HIỆN, GIÁM ĐỊNH BỆNH NGHỀ NGHIỆP
+# 2. Kết quả khám phát hiện bệnh nghề nghiệp
+class KetQuaKhamPhatHienBenhNgheNghiep(CommonModel):
+    __tablename__ = 'ketquakhamphathienbenhnghenghiep'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tenbenhnghenghiep = db.Column(String(255))
+    tongsonldduockhamsuckhoephathienbnn = db.Column(db.Integer())
+    tongsonldnuduockhamsuckhoephathienbnn = db.Column(db.Integer())
+    tongsondlduocchuandoanbnn = db.Column(db.Integer())
+    tongsondlnuduocchuandoanbnn = db.Column(db.Integer())
+    tongsonldduocgiamdinhbnn = db.Column(db.Integer())
+    tongsonldnuduocgiamdinhbnn = db.Column(db.Integer())
+    tongsogiamdinhnhohon5phantram = db.Column(db.Integer())
+    tongsogiamdinhnhohon5phantramnu = db.Column(db.Integer())
+    tongsogiamdinhlonhon31phantram = db.Column(db.Integer())
+    tongsogiamdinhlonhon31phantramnu = db.Column(db.Integer())
+    tongsogiamdinhlonhon5nhohon31phantram= db.Column(db.Integer())
+    tongsogiamdinhlonhon5nhohon31phantramnu = db.Column(db.Integer())
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+# 3. Danh sách người mắc bệnh nghề nghiệp
+class DanhSachNguoiMacBenhNgheNghiep(CommonModel):
+    __tablename__ = 'danhsachnguoimacbenhnghenghiep'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    hotenbenhnhan = db.Column(String(255))
+    tuoinam = db.Column(db.Integer())
+    tuoinu = db.Column(db.Integer())
+    nghekhibibnn = db.Column(String(255))
+    tuoinghe = db.Column(String(255))
+    ngayphathienbenh = db.Column(db.DateTime())
+    tenbnn = db.Column(String(255))
+    tylesuygiamknld = db.Column(String(255))
+    congviechiennay = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+# VII. HUẤN LUYỆN VỀ Y TẾ LAO ĐỘNG VÀ BỆNH NGHỀ NGHIỆP    
+class TongHopTuBaoCaoCuaCacCoSoLaoDong(CommonModel):
+    __tablename__ = 'tonghoptubaocaocuacaccosolaodong'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    noidung = db.Column(String(255))
+    socosolaodongduochuanluyen = db.Column(db.Integer())
+    tongso = db.Column(db.Integer())
+    sonu = db.Column(db.Integer())
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+class CacHoatDongDoDonViTrienKhai(CommonModel):
+    __tablename__ = 'cachoatdongdodonvitrienkhai'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    noidung = db.Column(String(255))
+    socosolaodongduochuanluyen = db.Column(db.Integer())
+    tongso = db.Column(db.Integer())
+    sonu = db.Column(db.Integer())
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+# VIII. BÁO CÁO CÁC TRƯỜNG HỢP TAI NẠN LAO ĐỘNG ĐƯỢC KHÁM, ĐIỀU TRỊ TẠI CƠ SỞ KHÁM BỆNH, CHỮA BỆNH (KBCB)    
+# 1. Danh sách các trường hợp tai nạn lao động
+class DanhSachCacTruongHopTaiNanLaoDong(CommonModel):
+    __tablename__ = 'danhsachcactruonghoptainanlaodong'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    hovaten = db.Column(String(255))
+    tuoi = db.Column(db.Integer())
+    nam = db.Column(db.Integer())
+    nu = db.Column(db.Integer())
+    ngaybitainan = db.Column(db.DateTime())
+    nghenghiep = db.Column(String(255))
+    bophanbitonthuong = db.Column(String(255))
+    duocsocuutaicho = db.Column(db.Integer())
+    phuongtienchuyendencosokbcb = db.Column(String(255))
+    thoigiandieutri = db.Column(db.DateTime())
+    ketquadieutri = db.Column(db.Integer())
+    ghichu = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+
+#3. Phân loại các trường hợp tai nạn lao động theo việc sơ cứu, cấp cứu và điều trị  
+class PhanLoaiCacTruongHopTaiNanLaoDongTheoViecSoCuu(CommonModel):
+    __tablename__ = 'phanloaicactruonghoptainanlaodongtheoviecsocuu'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    cosokbcb = db.Column(String(255))
+    songuoiduocsocuutaicho = db.Column(db.Integer())
+    tongsonguoiduocdieutritaicosokbcb = db.Column(db.Integer())
+    tongsonguoiduocdieutrikhoitaicosokbcb = db.Column(db.Integer())
+    tongsonguoiduocdieutrikhoidelaidichungtaicosokbcb = db.Column(db.Integer())
+    tongsonguoiduocdieutrituvongtaicosokbcb = db.Column(db.Integer())
+    ghichu = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+# 4. Phân loại các trường hợp tai nạn lao động theo ngành nghề
+class PhanLoaiCacTruongHopTaiNanLaoDongTheoNganhNghe(CommonModel):
+    __tablename__ = 'phanloaicactruonghoptainanlaodongtheonganhnghe'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    manganhnghe = db.Column(String(255))
+    nganhnghe = db.Column(String(255))
+    tongso = db.Column(db.Integer())
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
+# IX. KINH PHÍ CHI TRẢ CHO CÔNG TÁC VỆ SINH LAO ĐỘNG, CHĂM SÓC SỨC KHỎE NGƯỜI LAO ĐỘNG     
+class KinhPhiChiTra(CommonModel):
+    __tablename__ = 'kinhphichitra'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    noidung = db.Column(String(255))
+    sotien = db.Column(String(255))
+    ghichu = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnamtuyenhuyen = relationship('BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen') 
 
 
