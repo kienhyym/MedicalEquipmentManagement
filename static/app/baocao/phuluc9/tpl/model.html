@@ -958,27 +958,24 @@
                 </tr>
                 <tr>
                     <td>I</td>
-                    <td colspan="4" class="text-left">Tổng hợp từ báo cáo của các cơ sở lao động</td>
+                    <td colspan="4" class="text-left">Tổng hợp từ báo cáo của các cơ sở lao động
+                            <div class="row col-md-12">
+                                    <div id="add_row12" class="mb-1"></div>
+                                </div>
+                    </td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Huấn luyện về cấp cứu</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <tbody data-bind="list:tonghoptubaocaocuacaccosolaodongfield"></tbody>
+
                 <tr>
                     <td>II</td>
                     <td colspan="4" class="text-left">Các hoạt động do đơn vị y tế tuyến tỉnh và tuyến huyện triển khai
+                            <div class="row col-md-12">
+                                    <div id="add_row13" class="mb-1"></div>
+                                </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Huấn luyện về cấp cứu</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <tbody data-bind="list:cachoatdongdodonvitrienkhaifield"></tbody>
+
                 <tr>
                     <td></td>
                     <td>Tổng Số</td>
@@ -1057,7 +1054,7 @@
                 <tr>
                     <td>1</td>
                     <td>Người lao động được sơ cứu, cấp cứu (không phải điều trị tại cơ sở KBCB)</td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:songuoilaodongduocsocuucapcuu" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                     <td rowspan="3">Số liệu thống kê không tính trùng các trường hợp sơ cứu, cấp cứu, điều trị lại nhiều
                         cơ sở khám bệnh, chữa bệnh</td>
 
@@ -1065,13 +1062,13 @@
                 <tr>
                     <td>2</td>
                     <td>Người lao động được điều trị lần đầu trong năm đối với 1 vụ tai nạn*</td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:songuoilaodongduocdieutrilandautrongnam" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
 
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Số người bị tai nạn lao động đến cơ sở khám bệnh, chữa bệnh</td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:songuoibitainanlaodongdencosokhambenh" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
 
                 </tr>
             </table>
