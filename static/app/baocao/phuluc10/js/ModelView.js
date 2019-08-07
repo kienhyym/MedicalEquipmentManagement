@@ -188,6 +188,58 @@ define(function (require) {
 					toolEl: "#add_row6"
 				},
 				{
+					field: "tinhhinhnghiomphuluc10field",
+					uicontrol: false,
+					itemView: TinhHinhNghiOmPhuLuc10ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row7"
+				},
+				{
+					field: "tongsotruonghopmaccacloaibenhthongthuongphuluc10field",
+					uicontrol: false,
+					itemView: TongSoTruongHopMacCacLoaiBenhThongThuongPhucluc10ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row8"
+				},
+				{
+					field: "cactruonghopmacbenhnghenghiepphuluc10field",
+					uicontrol: false,
+					itemView: CacTruongHopMacBenhNgheNghiepPhuLuc10ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row9"
+				},
+				{
+					field: "cactruonghoptainanlaodongphuluc10field",
+					uicontrol: false,
+					itemView: CacTruongHopTaiNanLaoDongPhuLuc10ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row10"
+				},
+				{
 					field: "donvibaocao",
 					cssClass: false,
 				},
