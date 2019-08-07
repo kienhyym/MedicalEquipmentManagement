@@ -1,6 +1,13 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
-
+        <div class="row">
+            <div class="col-md-7">
+                <h6 class="m-0">Thông tin chi tiết</h6>
+            </div>
+            <div class="col-md-5 text-right">
+                <div block-bind="toolbar"></div>
+            </div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
@@ -10,7 +17,7 @@
                         </div>
                         <div class="flexboxer col-md-12 p-0  pl-3 pr-3"">
                             <label class=" stronger">Đơn vị báo cáo</label>
-                            <input type="text" class="input-phuluc2 stronger" style="flex-grow: 1">
+                            <input type="text" class="input-phuluc2 stronger" style="flex-grow: 1" data-bind="value:donvibaocao">
                         </div>
                         <label class="stronger mt-2">..................</label>
                     </td>
@@ -22,27 +29,27 @@
                 </tr>
 
                 <tr>
-                        <td>
-                                <div class="flexboxer  justify-content-center d-flex ">
-    
+                    <td>
+                        <div class="flexboxer  justify-content-center d-flex ">
+
                             <label>Số</label>
-                            <input type="text" class="input-phuluc2" style="width: 15%;">
+                            <input type="text" class="input-phuluc2" style="width: 15%;" data-bind="value:so" >
                             <label>/BC</label>
-                            <input type="text" class="input-phuluc2" style="width: 15%;">
-                            </div>
-                        </td>
-                        <td>
-                                <div class="flexboxer  justify-content-end d-flex ">
-                                <input type="text" class="input-phuluc2" style="width: 8%;">
-                                <label>,ngày</label>
-                                <input type="text" class="input-phuluc2" style="width: 8%;">
-                                <label>,tháng</label>
-                                <input type="text" class="input-phuluc2" style="width: 8%;">
-                                <label>,năm</label>
-                                <input type="text" class="input-phuluc2" style="width: 8%;">
-                                </div>
-                            </td>
-                    </tr>
+                            <input type="text" class="input-phuluc2" style="width: 15%;" data-bind="value:bc">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="flexboxer  justify-content-end d-flex ">
+                            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:noivietbaocao">
+                            <label>,ngày</label>
+                            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:ngayvietbaocao">
+                            <label>,tháng</label>
+                            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:thangvietbaocao">
+                            <label>,năm</label>
+                            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:namvietbaocao">
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
         <div class="justify-content-center d-flex">
@@ -50,11 +57,12 @@
         </div>
         <div class="flexboxer col-md-12 p-0 justify-content-center d-flex ">
             <label class="stronger">BÁO CÁO HOẠT ĐỘNG Y TẾ LAO ĐỘNG 6 THÁNG/NĂM </label>
-            <input type="text" class="input-phuluc2 stronger">
+            <input type="text" class="input-phuluc2 stronger" data-bind="value:baocaonam">
         </div>
         <div class="justify-content-center d-flex">
-            <label><i>(Sở Y tế tỉnh, thành phố trực thuộc trung ương/ Trung tâm y tế bộ, ngành báo cáo hoạt động y tế lao
-                động về Bộ Y tế)</i>></label>
+            <label><i>(Sở Y tế tỉnh, thành phố trực thuộc trung ương/ Trung tâm y tế bộ, ngành báo cáo hoạt động y tế
+                    lao
+                    động về Bộ Y tế)</i>></label>
         </div>
         <label class="stronger">I. TÌNH HÌNH TỔ CHỨC VÀ THỰC HIỆN CÁC VĂN BẢN PHÁP QUY</label><br>
         <label>1. Công tác tổ chức về y tế lao động</label><br>
@@ -95,24 +103,27 @@
                     <td>Hóa sinh</td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdobacsy" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdoduocsy" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdocunhanytcc" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdocunhanmt" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdocunhanhoasinh" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdoccaodangy" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdocaodangmoitruong" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdocaodanghoasinh" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:khac" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
             </table>
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <label >- Số giám định viên bệnh nghề nghiệp:</label>
-            <input type="text" class="input-phuluc2 stronger">
+            <label>- Số giám định viên bệnh nghề nghiệp:</label>
+            <input type="text" class="input-phuluc2 stronger" data-bind="value:giamdinhnghenghiep">
         </div>
         <label>2. Tình hình thực hiện văn bản pháp quy </label>
+        <div class="row col-md-12">
+            <div id="add_row" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
                 <tr>
@@ -121,42 +132,8 @@
                     <td>Số quận, huyện, thị xã, thành phố được phổ biến/Tổng số</td>
                     <td>Số cơ sở lao động được phổ biến</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Luật an toàn vệ sinh lao động (ATVSLĐ) Bộ Luật lao động</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Các Nghị định của Chính phủ hướng dẫn Luật ATVSLĐ và Bộ Luật lao động</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Các Thông tư của Bộ Y tế hướng dẫn Luật ATVSLĐ</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Các Thông tư của Bộ LĐTBXH hướng dẫn Luật ATVSLĐ</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Các văn bản hướng dẫn công tác ATVSLĐ đối với nhân viên y tế</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Các văn bản khác ….. (nếu có)</td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <tbody data-bind="list:tinhhinhthuchienvanbanphapquyfield"></tbody>
+
                 <tr>
                     <td></td>
                     <td class="stronger">Tổng số</td>
@@ -528,14 +505,14 @@
                     <td>Trên 200 NLĐ</td>
                     <td></td>
                     <td></td>
-                   
+
 
                 </tr>
                 <tr>
                     <td>51-200 NLĐ</td>
                     <td></td>
                     <td></td>
-                  
+
 
                 </tr>
                 <tr>
@@ -548,7 +525,7 @@
                     <td>Tổng cộng</td>
                     <td></td>
                     <td></td>
-      
+
 
                 </tr>
             </table>
@@ -844,7 +821,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    
+
 
                 </tr>
                 <tr>
@@ -866,7 +843,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    
+
                 </tr>
             </table>
         </div>
@@ -1206,8 +1183,9 @@
                 </tr>
             </table>
         </div>
-        <label class="stronger">X. BÁO CÁO CÁC TRƯỜNG HỢP TAI NẠN LAO ĐỘNG ĐƯỢC KHÁM, ĐIỀU TRỊ TẠI CƠ SỞ KHÁM BỆNH, CHỮA BỆNH (KBCB)</label>
-     
+        <label class="stronger">X. BÁO CÁO CÁC TRƯỜNG HỢP TAI NẠN LAO ĐỘNG ĐƯỢC KHÁM, ĐIỀU TRỊ TẠI CƠ SỞ KHÁM BỆNH, CHỮA
+            BỆNH (KBCB)</label>
+
         <div class="flexboxer col-md-12 p-0 ">
             <label>Số cơ sở KBCB báo cáo/Tổng số cơ sở KBCB trên địa bàn</label>
             <input type="text" class="input-phuluc2">/
@@ -1308,17 +1286,18 @@
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td >TT</td>
-                    <td >Nội dung</td>
-                    <td >Số người</td>
-                    <td >Ghi chú</td>
+                    <td>TT</td>
+                    <td>Nội dung</td>
+                    <td>Số người</td>
+                    <td>Ghi chú</td>
 
                 </tr>
                 <tr>
                     <td>1</td>
                     <td>Người lao động được sơ cứu, cấp cứu (không phải điều trị tại cơ sở KBCB)</td>
                     <td></td>
-                    <td rowspan="3">Số liệu thống kê không tính trùng các trường hợp sơ cứu, cấp cứu, điều trị lại nhiều cơ sở khám bệnh, chữa bệnh</td>
+                    <td rowspan="3">Số liệu thống kê không tính trùng các trường hợp sơ cứu, cấp cứu, điều trị lại nhiều
+                        cơ sở khám bệnh, chữa bệnh</td>
 
                 </tr>
                 <tr>
@@ -1335,16 +1314,17 @@
                 </tr>
             </table>
         </div>
-        <label><i>* Với mỗi trường hợp bị tai nạn lao động, chỉ ghi nhận lần khám, điều trị đầu tiên tại cơ sở khám bệnh, chữa bệnh đối với vụ tai nạn lao động đó</i></label>
+        <label><i>* Với mỗi trường hợp bị tai nạn lao động, chỉ ghi nhận lần khám, điều trị đầu tiên tại cơ sở khám
+                bệnh, chữa bệnh đối với vụ tai nạn lao động đó</i></label>
         <label>4. Phân loại các trường hợp tai nạn lao động theo ngành nghề</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td >TT</td>
-                    <td >Mã ngành nghề</td>
-                    <td >Ngành nghề</td>
-                    <td >Tổng số trường hợp tai nạn lao động được khám và điều trị</td>
+                    <td>TT</td>
+                    <td>Mã ngành nghề</td>
+                    <td>Ngành nghề</td>
+                    <td>Tổng số trường hợp tai nạn lao động được khám và điều trị</td>
 
                 </tr>
                 <tr>
@@ -1361,7 +1341,8 @@
                 </tr>
             </table>
         </div>
-        <label class="stronger">XI. KINH PHÍ CHI TRẢ CHO CÔNG TÁC VỆ SINH LAO ĐỘNG, CHĂM SÓC SỨC KHỎE NGƯỜI LAO ĐỘNG </label>
+        <label class="stronger">XI. KINH PHÍ CHI TRẢ CHO CÔNG TÁC VỆ SINH LAO ĐỘNG, CHĂM SÓC SỨC KHỎE NGƯỜI LAO ĐỘNG
+        </label>
         <div class="flexboxer col-md-12 p-0 pb-3">
             <label>Số cơ sở có báo cáo/tổng số cơ sở lao động thuộc phạm vi quản lý:</label>
             <input type="text" class="input-phuluc2">/
@@ -1371,10 +1352,10 @@
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td >TT</td>
-                    <td >Nội dung hoạt động</td>
-                    <td >Số tiền</td>
-                    <td >Ghi chú</td>
+                    <td>TT</td>
+                    <td>Nội dung hoạt động</td>
+                    <td>Số tiền</td>
+                    <td>Ghi chú</td>
                     <td>Số tiền trung bình/cơ sở</td>
                 </tr>
                 <tr>
@@ -1393,16 +1374,17 @@
                 </tr>
             </table>
         </div>
-        <label class="stronger">XII. BÁO CÁO QUẢN LÝ CƠ SỞ QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG, KHÁM BỆNH NGHỀ NGHIỆP, HUẤN LUYỆN Y TẾ LAO ĐỘNG VÀ SƠ CỨU, CẤP CỨU <i>(Chỉ áp dụng đối với Sở Y tế)</i></label>
+        <label class="stronger">XII. BÁO CÁO QUẢN LÝ CƠ SỞ QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG, KHÁM BỆNH NGHỀ NGHIỆP, HUẤN
+            LUYỆN Y TẾ LAO ĐỘNG VÀ SƠ CỨU, CẤP CỨU <i>(Chỉ áp dụng đối với Sở Y tế)</i></label>
         <label>1. Danh sách các tổ chức thực hiện quan trắc môi trường lao động trên địa bàn</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td >TT</td>
-                    <td >Tên cơ sở công bố đủ điều kiện quan trắc môi trường lao động</td>
-                    <td >Địa chỉ liên hệ, Điện thoại, Fax</td>
-                    <td >Số lượng cán bộ</td>
+                    <td>TT</td>
+                    <td>Tên cơ sở công bố đủ điều kiện quan trắc môi trường lao động</td>
+                    <td>Địa chỉ liên hệ, Điện thoại, Fax</td>
+                    <td>Số lượng cán bộ</td>
                     <td>Số cơ sở lao động thực hiện quan trắc MTLĐ trong kỳ báo cáo</td>
                     <td>Nhận xét</td>
                 </tr>
@@ -1429,10 +1411,10 @@
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td >TT</td>
-                    <td >Tên cơ sở đủ điều kiện khám bệnh nghề nghiệp</td>
-                    <td >Địa chỉ liên hệ, Điện thoại, Fax</td>
-                    <td >Số lượng cán bộ</td>
+                    <td>TT</td>
+                    <td>Tên cơ sở đủ điều kiện khám bệnh nghề nghiệp</td>
+                    <td>Địa chỉ liên hệ, Điện thoại, Fax</td>
+                    <td>Số lượng cán bộ</td>
                     <td>Số cơ sở lao động thực hiện khám BNN trong kỳ báo cáo</td>
                     <td>Nhận xét</td>
                 </tr>
@@ -1459,10 +1441,10 @@
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td >TT</td>
-                    <td >Tên tổ chức huấn luyện y tế lao động, sơ cứu, cấp cứu</td>
-                    <td >Địa chỉ liên hệ, Điện thoại, Fax</td>
-                    <td >Số lượng cán bộ</td>
+                    <td>TT</td>
+                    <td>Tên tổ chức huấn luyện y tế lao động, sơ cứu, cấp cứu</td>
+                    <td>Địa chỉ liên hệ, Điện thoại, Fax</td>
+                    <td>Số lượng cán bộ</td>
                     <td>Số cơ sở lao động đã huấn luyện về y tế lao động, sơ cứu, cấp cứu </td>
                     <td>Nhận xét</td>
                 </tr>
@@ -1496,9 +1478,9 @@
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td >Nội dung báo cáo</td>
-                    <td >Cơ sở lao động</td>
-                    <td >Trạm y tế xã/ phường/ thị trấn</td>
+                    <td>Nội dung báo cáo</td>
+                    <td>Cơ sở lao động</td>
+                    <td>Trạm y tế xã/ phường/ thị trấn</td>
                 </tr>
                 <tr>
                     <td>Số cơ sở lao động/ trạm y tế tham dự giao ban</td>
@@ -1522,13 +1504,14 @@
         <label>- Số cơ sở lao động tham gia giao ban</label><br>
         <label>- Nội dung giao ban</label><br>
         <label>- Kết quả, đề xuất, kiến nghị</label><br>
-        <label>4. Công tác thanh tra, kiểm tra việc thực hiện công tác vệ sinh lao động, chăm sóc sức khỏe người lao động, phòng chống bệnh nghề nghiệp trong kỳ báo cáo</label>
+        <label>4. Công tác thanh tra, kiểm tra việc thực hiện công tác vệ sinh lao động, chăm sóc sức khỏe người lao
+            động, phòng chống bệnh nghề nghiệp trong kỳ báo cáo</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td colspan="2" >Tình hình thanh tra/ kiểm tra</td>
-                    <td >Ghi chú</td>
+                    <td colspan="2">Tình hình thanh tra/ kiểm tra</td>
+                    <td>Ghi chú</td>
                 </tr>
                 <tr>
                     <td>Tổng số cơ sở lao động được thanh tra/ kiểm tra</td>
@@ -1543,28 +1526,12 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td></td><div class="row col-md-12 justify-conte<div class="row col-md-12 justify-content-center d-flex m-0 p-0">
-                            <div class="border w-50 text-center">
-                                <label class=" pl-5 pr-5 stronger">THỦ TRƯỞNG</label><br>
-                                <label class=" pl-5 pr-5 "><i>(ký, ghi rõ họ tên và đóng dấu)</i></label>
-                            </div>
-                            <div class="border w-50 text-center">
-                                <label class=" pl-5 pr-5 stronger">Người báo cáo</label><br>
-                                <label class=" pl-5 pr-5 "><i>(ký, ghi rõ họ tên)</i></label>
-                            </div>
-                        </div>nt-center d-flex m-0 p-0">
-                            <div class="border w-50 text-center">
-                                <label class=" pl-5 pr-5 stronger">THỦ TRƯỞNG</label><br>
-                                <label class=" pl-5 pr-5 "><i>(ký, ghi rõ họ tên và đóng dấu)</i></label>
-                            </div>
-                            <div class="border w-50 text-center">
-                                <label class=" pl-5 pr-5 stronger">Người báo cáo</label><br>
-                                <label class=" pl-5 pr-5 "><i>(ký, ghi rõ họ tên)</i></label>
-                            </div>
-                        </div>
+                    <td></td>
                 </tr>
             </table>
         </div>
+
+
         <label>5. Các hoạt động khác</label><br>
         <label class="stronger">XIV. ĐÁNH GIÁ VÀ KIẾN NGHỊ</label><br>
         <label>1. Đánh giá về tình hình thực hiện công tác VSLĐ, PCBNN trên địa bàn</label><br>

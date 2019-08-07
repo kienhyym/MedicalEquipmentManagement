@@ -1140,6 +1140,9 @@
             <input type="text" class="input-phuluc2">/
             <input type="text" class="input-phuluc2">
         </div>
+        <div class="row col-md-12">
+                <div id="add_row16" class="mb-1"></div>
+            </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -1150,13 +1153,8 @@
                     <td>Ghi chú</td>
 
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Khám sức khỏe định kỳ</td>
-                    <td></td>
-                    <td></td>
+                <tbody data-bind="list:kinhphichitrafield"></tbody>
 
-                </tr>
                 <tr>
                     <td></td>
                     <td>Tổng</td>
@@ -1183,19 +1181,24 @@
                 </tr>
                 <tr>
                     <td>Số cơ sở lao động/ trạm y tế tham dự giao ban</td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:socosolaodongthamgiagiaoban" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+
+                    <td><input type="text" data-bind="value:sotramytethamgiagiaoban" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+
 
                 </tr>
                 <tr>
                     <td>Nội dung giao ban</td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:noidunggiaobancosolaodong" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+
+                    <td><input type="text" data-bind="value:noidunggiaobantramyte" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+
                 </tr>
                 <tr>
                     <td>Đề xuất, kiến nghị</td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:dexuatcosolaodong" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:dexuattramyte" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+
                 </tr>
             </table>
         </div>
@@ -1214,15 +1217,11 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td><input type="text" data-bind="value:tongsocosolaodongduocthanhtra" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                        <td><input type="text" data-bind="value:socosolaodongcoyeutocohaiduocthanhtra" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                        <td><input type="text" data-bind="value:ghichu" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            
             </table>
         </div>
         <label>5. Các hoạt động khác</label><br>

@@ -1,0 +1,333 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "donvibaocao": {
+        "type": "string",
+        "length": 255
+    },
+    "so": {
+        "type": "string",
+        "length": 255
+    },
+    "bc": {
+        "type": "string",
+        "length": 255
+    },
+    "noivietbaocao": {
+        "type": "string",
+        "length": 255
+    },
+    "ngayvietbaocao": {
+        "type": "string",
+        "length": 255
+    },
+    "thangvietbaocao": {
+        "type": "string",
+        "length": 255
+    },
+    "namvietbaocao": {
+        "type": "string",
+        "length": 255
+    },
+    "baocaonam": {
+        "type": "string",
+        "length": 255
+    },
+    "trinhdobacsy": {
+        "type": "number"
+    },
+    "trinhdoduocsy": {
+        "type": "number"
+    },
+    "trinhdocunhanytcc": {
+        "type": "number"
+    },
+    "trinhdocunhanmt": {
+        "type": "number"
+    },
+    "trinhdocunhanhoasinh": {
+        "type": "number"
+    },
+    "trinhdoccaodangy": {
+        "type": "number"
+    },
+    "trinhdocaodangmoitruong": {
+        "type": "number"
+    },
+    "trinhdocaodanghoasinh": {
+        "type": "number"
+    },
+    "khac": {
+        "type": "number"
+    },
+    "giamdinhnghenghiep": {
+        "type": "number"
+    },
+    "loaicosolaodongtren200nld": {
+        "type": "string",
+        "length": 255
+    },
+    "tongsocotren200nld": {
+        "type": "number"
+    },
+    "sotructhuocbonganhtren200nld": {
+        "type": "number"
+    },
+    "socosocoyeutocohainguyhiemtren200nld": {
+        "type": "number"
+    },
+    "songuoilaodongtaitatcacosotren200nld": {
+        "type": "number"
+    },
+    "songuoilaodongnutaitatcacosotren200nld": {
+        "type": "number"
+    },
+    "songuoilaodongtaitatcacosocoyeutocohaitren200nld": {
+        "type": "number"
+    },
+    "songuoilaodongnutaitatcacosocoyeutocohaitren200nld": {
+        "type": "number"
+    },
+    "songuoilaodongtaitatcacosotiepxuctructieptren200nld": {
+        "type": "number"
+    },
+    "songuoilaodongnutaitatcacosotiepxuctructieptren200nld": {
+        "type": "number"
+    },
+    "loaicosolaodongtren50duoi200ndl": {
+        "type": "string",
+        "length": 255
+    },
+    "tongsocotren50duoi200ndl": {
+        "type": "number"
+    },
+    "sotructhuocbonganhtren50duoi200ndl": {
+        "type": "number"
+    },
+    "socosocoyeutocohainguyhiemtren50duoi200ndl": {
+        "type": "number"
+    },
+    "songuoilaodongtaitatcacosotren50duoi200ndl": {
+        "type": "number"
+    },
+    "songuoilaodongnutaitatcacosotren50duoi200ndl": {
+        "type": "number"
+    },
+    "songuoilaodongtaitatcacosocoyeutocohaitren50duoi200ndl": {
+        "type": "number"
+    },
+    "songuoilaodongnutaitatcacosocoyeutocohaitren50duoi200ndl": {
+        "type": "number"
+    },
+    "songuoilaodongtaitatcacosotiepxuctructieptren50duoi200ndl": {
+        "type": "number"
+    },
+    "songuoilaodongnutaitatcacosotiepxuctructieptren50duoi200ndl": {
+        "type": "number"
+    },
+    "loaicosolaodongduoi50nld": {
+        "type": "string",
+        "length": 255
+    },
+    "tongsocoduoi50nld": {
+        "type": "number"
+    },
+    "sotructhuocbonganhduoi50nld": {
+        "type": "number"
+    },
+    "socosocoyeutocohainguyhiemduoi50nld": {
+        "type": "number"
+    },
+    "songuoilaodongtaitatcacosoduoi50nld": {
+        "type": "number"
+    },
+    "songuoilaodongnutaitatcacosoduoi50nld": {
+        "type": "number"
+    },
+    "songuoilaodongtaitatcacosocoyeutocohaiduoi50nld": {
+        "type": "number"
+    },
+    "songuoilaodongnutaitatcacosocoyeutocohaiduoi50nld": {
+        "type": "number"
+    },
+    "songuoilaodongtaitatcacosotiepxuctructiepduoi50nld": {
+        "type": "number"
+    },
+    "songuoilaodongnutaitatcacosotiepxuctructiepduoi50nld": {
+        "type": "number"
+    },
+    "tongsocosothuocphamviquanly": {
+        "type": "number"
+    },
+    "tongsocosothuocphamviquanlylaphoso": {
+        "type": "number"
+    },
+    "tongsocosocoyeutocohai": {
+        "type": "number"
+    },
+    "tongsocosocoyeutocohailaphoso": {
+        "type": "number"
+    },
+    "loaicososanxuattren50duoi200ndl": {
+        "type": "number"
+    },
+    "hinhthuccotramytetren50duoi200ndl": {
+        "type": "number"
+    },
+    "hinhthuccobenhvientren50duoi200ndl": {
+        "type": "number"
+    },
+    "hinhthuccophongkhamtren50duoi200ndl": {
+        "type": "number"
+    },
+    "hinhthuckhactren50duoi200ndl": {
+        "type": "number"
+    },
+    "hopdongvoicosokhambenhtren50duoi200ndl": {
+        "type": "number"
+    },
+    "loaicososanxuattren200nld": {
+        "type": "number"
+    },
+    "hinhthuccotramytetren200nld": {
+        "type": "number"
+    },
+    "hinhthuccobenhvientren200nld": {
+        "type": "number"
+    },
+    "hinhthuccophongkhamtren200nld": {
+        "type": "number"
+    },
+    "hinhthuckhactren200nld": {
+        "type": "number"
+    },
+    "hopdongvoicosokhambenhtren200nld": {
+        "type": "number"
+    },
+    "loaicososanxuatduoi50nld": {
+        "type": "number"
+    },
+    "hinhthuccotramyteduoi50nld": {
+        "type": "number"
+    },
+    "hinhthuccobenhvienduoi50nld": {
+        "type": "number"
+    },
+    "hinhthuccophongkhamduoi50nld": {
+        "type": "number"
+    },
+    "hinhthuckhacduoi50nld": {
+        "type": "number"
+    },
+    "hopdongvoicosokhambenhduoi50nld": {
+        "type": "number"
+    },
+    "songuoilamcongtacytetren50duoi200ndl": {
+        "type": "number"
+    },
+    "trinhdobacsitren50duoi200ndl": {
+        "type": "number"
+    },
+    "trinhdobacsiduphongtren50duoi200ndl": {
+        "type": "number"
+    },
+    "trinhdocunhantren50duoi200ndl": {
+        "type": "number"
+    },
+    "trinhdoysytren50duoi200ndl": {
+        "type": "number"
+    },
+    "trinhdodieuduongtren50duoi200ndl": {
+        "type": "number"
+    },
+    "trinhdohosinhvientren50duoi200ndl": {
+        "type": "number"
+    },
+    "songuoilamcongtacytetren200nld": {
+        "type": "number"
+    },
+    "trinhdobacsitren200nld": {
+        "type": "number"
+    },
+    "trinhdobacsiduphongtren200nld": {
+        "type": "number"
+    },
+    "trinhdocunhantren200nld": {
+        "type": "number"
+    },
+    "trinhdoysytren200nld": {
+        "type": "number"
+    },
+    "trinhdodieuduongtren200nld": {
+        "type": "number"
+    },
+    "trinhdohosinhvientren200nld": {
+        "type": "number"
+    },
+    "songuoilamcongtacyteduoi50nld": {
+        "type": "number"
+    },
+    "trinhdobacsiduoi50nld": {
+        "type": "number"
+    },
+    "trinhdobacsiduphongduoi50nld": {
+        "type": "number"
+    },
+    "trinhdocunhanduoi50nld": {
+        "type": "number"
+    },
+    "trinhdoysyduoi50nld": {
+        "type": "number"
+    },
+    "trinhdodieuduongduoi50nld": {
+        "type": "number"
+    },
+    "trinhdohosinhvienduoi50nld": {
+        "type": "number"
+    },
+    "tongsonguoithamgiasocuutren50duoi200ndl": {
+        "type": "number"
+    },
+    "tongsonguoinuthamgiasocuutren50duoi200ndl": {
+        "type": "number"
+    },
+    "tongsonguoithamgiasocuutren200nld": {
+        "type": "number"
+    },
+    "tongsonguoinuthamgiasocuutren200nld": {
+        "type": "number"
+    },
+    "tongsonguoithamgiasocuuduoi50nld": {
+        "type": "number"
+    },
+    "tongsonguoinuthamgiasocuuduoi50nld": {
+        "type": "number"
+    },
+    "tinhhinhthuchienvanbanphapquyfield": {
+        "type": "list"
+    }
+}

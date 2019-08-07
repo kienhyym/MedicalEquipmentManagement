@@ -1,5 +1,13 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
+        <div class="row">
+            <div class="col-md-7">
+                <h6 class="m-0">Thông tin chi tiết</h6>
+            </div>
+            <div class="col-md-5 text-right">
+                <div block-bind="toolbar"></div>
+            </div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
@@ -23,21 +31,21 @@
                     <td> 
                         <div class="flexboxer  justify-content-center d-flex ">
                         <label>Số</label>
-                        <input type="text" class="input-phuluc2" style="width: 15%;">
+                        <input type="text" class="input-phuluc2" style="width: 15%;" data-bind="value:so">
                         <label>-</label>
-                        <input type="text" class="input-phuluc2" style="width: 15%;">
+                        <input type="text" class="input-phuluc2" style="width: 15%;" data-bind="value:gcn">
                         <label>/GCN</label>
                         </div>
                     </td>
                     <td>
                         <div class="flexboxer  justify-content-end d-flex ">
-                        <input type="text" class="input-phuluc2" style="width: 8%;">
+                        <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:noivietchungchi">
                         <label>,ngày</label>
-                        <input type="text" class="input-phuluc2" style="width: 8%;">
+                        <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:ngayvietchungchi">
                         <label>,tháng</label>
-                        <input type="text" class="input-phuluc2" style="width: 8%;">
+                        <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:thangvietchungchi">
                         <label>,năm</label>
-                        <input type="text" class="input-phuluc2" style="width: 8%;">
+                        <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:namvietchungchi">
                         </div>
                     </td>
                 </tr>
@@ -55,19 +63,19 @@
         <!-- Nhập thông tin  cơ sở lao động -->
         <div class="flexboxer col-md-12 p-0">
             <label>Chứng nhận: Ông/bà</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:chungnhanongba">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Sinh ngày:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:sinhngay">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Số Chứng minh Nhân dân/Căn cước công dân/Hộ chiếu/số định danh cá nhân:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:chungminhthu">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Địa chỉ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:diachi">
         </div>
         <div class="justify-content-center d-flex ">
             <label class="m-0 mt-3">Đã hoàn thành khóa huấn luyện chuyên môn về</label>
@@ -77,23 +85,23 @@
             </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Thời gian huấn luyện: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:thoigianhuanluyen">
         </div>
         <div class="flexboxer pb-3"">
             <!-- <label class="m-0 pt-1">Từ ngày ... tháng ... năm…… đến ngày ... tháng ... năm ………………..</label> -->
             <label>Từ ngày</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:tungay">
             <label>,tháng</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:tuthang">
             <label>,năm</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:tunam">
             
             <label>đến ngày</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:denngay">
             <label>,tháng</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:denthang">
             <label>,năm</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:dennam">
             <!-- <input type="text" class="input-phuluc2"> -->
         </div>
 
@@ -103,13 +111,13 @@
 
             </div>
             <div class="border w-50 text-center">
-                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:noiky">
                 <label>,ngày</label>
-                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:ngayky">
                 <label>,tháng</label>
-                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:thangky">
                 <label>,năm</label>
-                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:namky">
                 <label class=" pl-5 pr-5 text-center">……….. THỦ TRƯỞNG ĐƠN VỊ ……………</label><br>
                 <label class=" pl-5 pr-5 text-center">(ký, đóng dấu)</label>
             </div>

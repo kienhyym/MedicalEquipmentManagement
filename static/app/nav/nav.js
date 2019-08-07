@@ -294,13 +294,23 @@ define(function (require) {
 				},
 				{
 					"text": "phụ lục 10",
-					"icon": "fa fa-home",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc10/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"icon": "fa fa-home",
+					"collectionName": "baocaohoatdongytelaodong6thangnam",
+					"route": "baocaohoatdongytelaodong6thangnam/collection",
+					"$ref": "app/baocao/phuluc10/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+				
+				},
+				{
+					"type": "view",
+					"collectionName": "baocaohoatdongytelaodong6thangnam",
+					"route": "baocaohoatdongytelaodong6thangnam/model(/:id)",
+					"$ref": "app/baocao/phuluc10/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 				{
@@ -327,13 +337,23 @@ define(function (require) {
 				},
 				{
 					"text": "phụ lục 13",
-					"icon": "fa fa-home",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc13/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"icon": "fa fa-home",
+					"collectionName": "chungchidaotaovequantracmoitruonglaodong",
+					"route": "chungchidaotaovequantracmoitruonglaodong/collection",
+					"$ref": "app/baocao/phuluc13/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+				
+				},
+				{
+					"type": "view",
+					"collectionName": "chungchidaotaovequantracmoitruonglaodong",
+					"route": "chungchidaotaovequantracmoitruonglaodong/model(/:id)",
+					"$ref": "app/baocao/phuluc13/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 			]

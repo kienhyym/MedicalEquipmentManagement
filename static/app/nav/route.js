@@ -148,7 +148,7 @@ define(function (require) {
 		},
 		{
 
-			"collectionName": "baocaoytelaodongcbaocaohoatdongytelaodong6thangnamtuyenhuyenuacosolaodong",
+			"collectionName": "baocaohoatdongytelaodong6thangnamtuyenhuyen",
 			"route": "baocaohoatdongytelaodong6thangnamtuyenhuyen/collection",
 			"$ref": "app/baocao/phuluc9/js/CollectionView",
 		},
@@ -160,7 +160,14 @@ define(function (require) {
 		},
 		{
 
-			"route": "baocao/phuluc10/model",
+			"collectionName": "baocaohoatdongytelaodong6thangnam",
+			"route": "baocaohoatdongytelaodong6thangnam/collection",
+			"$ref": "app/baocao/phuluc10/js/CollectionView",
+		},
+		{
+
+			"collectionName": "baocaohoatdongytelaodong6thangnam",
+			"route": "baocaohoatdongytelaodong6thangnam/model(/:id)",
 			"$ref": "app/baocao/phuluc10/js/ModelView",
 		},
 		{
@@ -175,7 +182,14 @@ define(function (require) {
 		},
 		{
 
-			"route": "baocao/phuluc13/model",
+			"collectionName": "chungchidaotaovequantracmoitruonglaodong",
+			"route": "chungchidaotaovequantracmoitruonglaodong/collection",
+			"$ref": "app/baocao/phuluc13/js/CollectionView",
+		},
+		{
+
+			"collectionName": "chungchidaotaovequantracmoitruonglaodong",
+			"route": "chungchidaotaovequantracmoitruonglaodong/model(/:id)",
 			"$ref": "app/baocao/phuluc13/js/ModelView",
 		},
 

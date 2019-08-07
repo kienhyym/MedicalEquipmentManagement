@@ -1,0 +1,95 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "tencoso": {
+        "type": "string",
+        "length": 255
+    },
+    "tongsonguoilaodong": {
+        "type": "number"
+    },
+    "nhietdo1": {
+        "type": "number"
+    },
+    "nhietdo2": {
+        "type": "number"
+    },
+    "doam1": {
+        "type": "number"
+    },
+    "doam2": {
+        "type": "number"
+    },
+    "tocdogio1": {
+        "type": "number"
+    },
+    "tocdogio2": {
+        "type": "number"
+    },
+    "anhsang1": {
+        "type": "number"
+    },
+    "anhsang2": {
+        "type": "number"
+    },
+    "on1": {
+        "type": "number"
+    },
+    "on2": {
+        "type": "number"
+    },
+    "rung1": {
+        "type": "number"
+    },
+    "rung2": {
+        "type": "number"
+    },
+    "hkdoc1": {
+        "type": "number"
+    },
+    "hkdoc2": {
+        "type": "number"
+    },
+    "phongxa1": {
+        "type": "number"
+    },
+    "phongxa2": {
+        "type": "number"
+    },
+    "dientutruong1": {
+        "type": "number"
+    },
+    "dientutruong2": {
+        "type": "number"
+    },
+    "yeutokhac1": {
+        "type": "number"
+    },
+    "yeutokhac2": {
+        "type": "number"
+    }
+}
