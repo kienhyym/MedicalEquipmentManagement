@@ -769,6 +769,7 @@ class KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHoc(CommonModel):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     tencoso = db.Column(String(255))
     tongsonguoilaodong = db.Column(db.Integer)
+    songuoitiepxuc = db.Column(db.Integer)
     nhietdo1 = db.Column(db.Integer)
     nhietdo2 = db.Column(db.Integer)
     doam1 = db.Column(db.Integer)
@@ -1010,8 +1011,6 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     giamdinhnghenghiep= db.Column(db.Integer())
 
 # II. CƠ SỞ LAO ĐỘNG TRONG PHẠM VI QUẢN LÝ
-    loaicosolaodongtren200nld = db.Column(String(255))
-    tongsocotren200nld = db.Column(db.Integer)
     sotructhuocbonganhtren200nld = db.Column(db.Integer)
     socosocoyeutocohainguyhiemtren200nld = db.Column(db.Integer)
     songuoilaodongtaitatcacosotren200nld = db.Column(db.Integer)
@@ -1021,8 +1020,6 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     songuoilaodongtaitatcacosotiepxuctructieptren200nld = db.Column(db.Integer)
     songuoilaodongnutaitatcacosotiepxuctructieptren200nld = db.Column(db.Integer)
     
-    loaicosolaodongtren50duoi200ndl = db.Column(String(255))
-    tongsocotren50duoi200ndl = db.Column(db.Integer)
     sotructhuocbonganhtren50duoi200ndl = db.Column(db.Integer)
     socosocoyeutocohainguyhiemtren50duoi200ndl = db.Column(db.Integer)
     songuoilaodongtaitatcacosotren50duoi200ndl = db.Column(db.Integer)
@@ -1032,8 +1029,6 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     songuoilaodongtaitatcacosotiepxuctructieptren50duoi200ndl = db.Column(db.Integer)
     songuoilaodongnutaitatcacosotiepxuctructieptren50duoi200ndl = db.Column(db.Integer)
     
-    loaicosolaodongduoi50nld = db.Column(String(255))
-    tongsocoduoi50nld = db.Column(db.Integer)
     sotructhuocbonganhduoi50nld = db.Column(db.Integer)
     socosocoyeutocohainguyhiemduoi50nld = db.Column(db.Integer)
     songuoilaodongtaitatcacosoduoi50nld = db.Column(db.Integer)
@@ -1050,21 +1045,21 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     tongsocosocoyeutocohailaphoso = db.Column(db.Integer)
 # V. TỔ CHỨC BỘ PHẬN Y TẾ TẠI CƠ SỞ LAO ĐỘNG
 # 1. Hình thức tổ chức bộ phận y tế theo loại cơ sở lao động 
-    loaicososanxuattren50duoi200ndl = db.Column(db.Integer)
+    
     hinhthuccotramytetren50duoi200ndl = db.Column(db.Integer)
     hinhthuccobenhvientren50duoi200ndl = db.Column(db.Integer)
     hinhthuccophongkhamtren50duoi200ndl = db.Column(db.Integer)
     hinhthuckhactren50duoi200ndl = db.Column(db.Integer)
     hopdongvoicosokhambenhtren50duoi200ndl = db.Column(db.Integer)
 
-    loaicososanxuattren200nld = db.Column(db.Integer)
+    
     hinhthuccotramytetren200nld = db.Column(db.Integer)
     hinhthuccobenhvientren200nld = db.Column(db.Integer)
     hinhthuccophongkhamtren200nld = db.Column(db.Integer)
     hinhthuckhactren200nld = db.Column(db.Integer)
     hopdongvoicosokhambenhtren200nld = db.Column(db.Integer)
     
-    loaicososanxuatduoi50nld = db.Column(db.Integer)
+
     hinhthuccotramyteduoi50nld = db.Column(db.Integer)
     hinhthuccobenhvienduoi50nld = db.Column(db.Integer)
     hinhthuccophongkhamduoi50nld = db.Column(db.Integer)
@@ -1072,7 +1067,6 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     hopdongvoicosokhambenhduoi50nld = db.Column(db.Integer)
 
 # 2. Trình độ người làm công tác y tế tại các cơ sở lao động   
-    songuoilamcongtacytetren50duoi200ndl = db.Column(db.Integer)
     trinhdobacsitren50duoi200ndl = db.Column(db.Integer)
     trinhdobacsiduphongtren50duoi200ndl = db.Column(db.Integer)
     trinhdocunhantren50duoi200ndl = db.Column(db.Integer)
@@ -1080,7 +1074,6 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     trinhdodieuduongtren50duoi200ndl = db.Column(db.Integer)
     trinhdohosinhvientren50duoi200ndl = db.Column(db.Integer)
 
-    songuoilamcongtacytetren200nld = db.Column(db.Integer)
     trinhdobacsitren200nld = db.Column(db.Integer)
     trinhdobacsiduphongtren200nld = db.Column(db.Integer)
     trinhdocunhantren200nld = db.Column(db.Integer)
@@ -1088,7 +1081,6 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     trinhdodieuduongtren200nld = db.Column(db.Integer)
     trinhdohosinhvientren200nld = db.Column(db.Integer)
 
-    songuoilamcongtacyteduoi50nld = db.Column(db.Integer)
     trinhdobacsiduoi50nld = db.Column(db.Integer)
     trinhdobacsiduphongduoi50nld = db.Column(db.Integer)
     trinhdocunhanduoi50nld = db.Column(db.Integer)
@@ -1106,8 +1098,18 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
 
     tongsonguoithamgiasocuuduoi50nld = db.Column(db.Integer)
     tongsonguoinuthamgiasocuuduoi50nld = db.Column(db.Integer)
+
+# Số cơ sở được quan trắc môi trường lao động/tổng số cơ sở báo cáo:
+    socosoduocquantracmoitruonglaodong = db.Column(db.Integer)
+    tongsocosobaocao = db.Column(db.Integer)
+
     tinhhinhthuchienvanbanphapquyfield = db.relationship('TinhHinhThucHienVanBanPhapQuy', cascade="all, delete-orphan")
     phanloaicaccosolaodongtheonganhnghevaquymofield = db.relationship('PhanLoaiCacCoSoLaoDongTheoNganhNgheVaQuyMo', cascade="all, delete-orphan")
+    phanloaicosolaodongytchnhfield = db.relationship('PhanLoaiCoSoLaoDongYTCHNH', cascade="all, delete-orphan")
+    ketquaquantraccacyeutovikhihauvavatlyhoahoctrongmtfield = db.relationship('KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocTrongMT', cascade="all, delete-orphan")
+    ketquaquantraccacyeutobuitrongmoitruonglaodongphuluc10field = db.relationship('KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10', cascade="all, delete-orphan")
+    ketquadanhgiacacyeutotiepxucnghenghiepvayeutotamlyfield = db.relationship('KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLy', cascade="all, delete-orphan")
+
 
 
 
@@ -1150,6 +1152,8 @@ class PhanLoaiCoSoLaoDongYTCHNH(CommonModel):
     sonldcosocovua = db.Column(db.Integer)
     socscolon= db.Column(db.Integer)
     sonldcosocolon = db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
 
 # V. KẾT QUẢ QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG TRONG KỲ BÁO CÁO
 # 1. Kết quả quan trắc các yếu tố vi khí hậu và vật lý, hóa học trong môi trường lao động
@@ -1158,6 +1162,7 @@ class KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocTrongMT(CommonModel):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     tencoso = db.Column(String(255))
     tongsonguoilaodong = db.Column(db.Integer)
+    songuoitiepxuc = db.Column(db.Integer)
     nhietdo1 = db.Column(db.Integer)
     nhietdo2 = db.Column(db.Integer)
     doam1 = db.Column(db.Integer)
@@ -1178,6 +1183,9 @@ class KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocTrongMT(CommonModel):
     dientutruong2= db.Column(db.Integer)
     yeutokhac1 = db.Column(db.Integer)
     yeutokhac2= db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
+
 # 2. Kết quả quan trắc yếu tố bụi trong môi trường lao động
 class KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10(CommonModel):
     __tablename__ = 'ketquaquantraccacyeutobuitrongmoitruonglaodongphuluc10'
@@ -1193,6 +1201,9 @@ class KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10(CommonModel):
     buisilic2= db.Column(db.Integer)
     buikhac1 = db.Column(db.Integer)
     buikhac2= db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
+
 # 3. Kết quả đánh giá các yếu tố tiếp xúc nghề nghiệp và yếu tố tâm sinh lý và ec-gô-nô-my
 class KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLy(CommonModel):
     __tablename__ = 'ketquadanhgiacacyeutotiepxucnghenghiepvayeutotamly'
@@ -1204,6 +1215,8 @@ class KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLy(CommonModel):
     ketquadanhgia = db.Column(db.Integer)
     songuoiduocdanhgiaecgonomy = db.Column(db.Integer)
     ketquadanhgiaecgonomy= db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
 
 
 

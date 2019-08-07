@@ -9,6 +9,10 @@ define(function (require) {
 
 	var TinhHinhThucHienVanBanPhapQuyItemView = require('app/baocao/phuluc10/js/TinhHinhThucHienVanBanPhapQuyView');
 	var PhanLoaiCacCoSoLaoDongTheoNganhNgheVaQuyMoItemView = require('app/baocao/phuluc10/js/PhanLoaiCoSoLaoDongTheoNganhNgheVaQuyMoView');
+	var PhanLoaiCoSoLaoDongYTCHNHItemView = require('app/baocao/phuluc10/js/PhanLoaiCoSoLaoDongYTCHNHView');
+	var KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocTrongMTItemView = require('app/baocao/phuluc10/js/KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocTrongMTView');
+	// var KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10ItemView = require('app/baocao/phuluc10/js/KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10View');
+	// var KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLyItemView = require('app/baocao/phuluc10/js/KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLyView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -126,6 +130,32 @@ define(function (require) {
 					toolEl: "#add_row2"
 				},
 				{
+					field: "phanloaicosolaodongytchnhfield",
+					uicontrol: false,
+					itemView: PhanLoaiCoSoLaoDongYTCHNHItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row3"
+				},
+				{
+					field: "ketquaquantraccacyeutovikhihauvavatlyhoahoctrongmtfield",
+					uicontrol: false,
+					itemView: KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocTrongMTItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row4"
+				},
+				{
 					field: "donvibaocao",
 					cssClass: false,
 				},
@@ -159,6 +189,14 @@ define(function (require) {
 				},
 				{
 					field: "giamdinhnghenghiep",
+					cssClass: false,
+				},
+				{
+					field: "socosoduocquantracmoitruonglaodong",
+					cssClass: false,
+				},
+				{
+					field: "tongsocosobaocao",
 					cssClass: false,
 				},
 			]

@@ -32,6 +32,9 @@
     "tongsonguoilaodong": {
         "type": "number"
     },
+    "songuoitiepxuc": {
+        "type": "number"
+    },
     "nhietdo1": {
         "type": "number"
     },
@@ -91,5 +94,11 @@
     },
     "yeutokhac2": {
         "type": "number"
+    },
+    "baocaohoatdongytelaodong6thangnam_id": {
+        "type": "string"
+    },
+    "baocaohoatdongytelaodong6thangnam": {
+        "type": "dict"
     }
 }

@@ -264,6 +264,9 @@
         <label><i>* Nếu có nhiều nghề trong một cơ sở sản xuất, lấy tên nghề chính (sản xuất sản phẩm chủ yếu hoặc chiếm
                 trên 50% số người lao động) </i></label>
         <label>2. Phân loại cơ sở lao động YTCHNH theo ngành nghề, quy mô</label>
+        <div class="row col-md-12">
+            <div id="add_row3" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -285,30 +288,8 @@
                     <td>Số CS</td>
                     <td>Số NLĐ</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Nông nghiệp</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Lâm nghiệp</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <tbody data-bind="list:phanloaicosolaodongytchnhfield"></tbody>
+
                 <tr>
 
                     <td></td>
@@ -340,10 +321,14 @@
                     <td>Số cơ sở lập hồ sơ vệ sinh lao động</td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsocosothuocphamviquanly" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsocosothuocphamviquanlylaphoso" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsocosocoyeutocohai" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsocosocoyeutocohailaphoso" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+
                 </tr>
             </table>
         </div>
@@ -353,7 +338,7 @@
         <label class="stronger">V. TỔ CHỨC BỘ PHẬN Y TẾ TẠI CƠ SỞ LAO ĐỘNG</label>
         <br>
         <label>1. Hình thức tổ chức bộ phận y tế theo loại cơ sở lao động </label>
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
+        <div class="table-responsive-msocosoduocquantracmoitruonglaodongd table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
                 <tr>
@@ -371,43 +356,43 @@
                 </tr>
                 <tr>
                     <td>Trên 200 NLĐ</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuccotramytetren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuccobenhvientren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuccophongkhamtren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuckhactren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hopdongvoicosokhambenhtren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>51-200 NLĐ</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuccotramytetren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuccobenhvientren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuccophongkhamtren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuckhactren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hopdongvoicosokhambenhtren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Dưới 50 NLĐ</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuccotramyteduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuccobenhvienduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuccophongkhamduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hinhthuckhacduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:hopdongvoicosokhambenhduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Tổng cộng</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
             </table>
         </div>
@@ -430,43 +415,43 @@
                 </tr>
                 <tr>
                     <td>Trên 200 NLĐ</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdobacsitren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdobacsiduphongtren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdocunhantren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdoysytren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdodieuduongtren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdohosinhvientren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>51-200 NLĐ</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdobacsitren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdobacsiduphongtren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdocunhantren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdoysytren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdodieuduongtren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdohosinhvientren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Dưới 50 NLĐ</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdobacsiduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdobacsiduphongduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdocunhanduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdoysyduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdodieuduongduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:trinhdohosinhvienduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Tổng cộng</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
             </table>
         </div>
@@ -484,30 +469,23 @@
                 </tr>
                 <tr>
                     <td>Trên 200 NLĐ</td>
-                    <td></td>
-                    <td></td>
-
-
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsonguoithamgiasocuutren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsonguoinuthamgiasocuutren200nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>51-200 NLĐ</td>
-                    <td></td>
-                    <td></td>
-
-
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsonguoithamgiasocuutren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsonguoinuthamgiasocuutren50duoi200ndl" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Dưới 50 NLĐ</td>
-                    <td></td>
-                    <td></td>
-
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsonguoithamgiasocuuduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text" data-bind="value:tongsonguoinuthamgiasocuuduoi50nld" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Tổng cộng</td>
-                    <td></td>
-                    <td></td>
-
-
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td style="padding: 0px;"><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
             </table>
         </div>
@@ -515,10 +493,13 @@
         <label class="stronger">VI. KẾT QUẢ QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG TRONG KỲ BÁO CÁO</label><br>
         <div class="flexboxer col-md-12 p-0 ">
             <label>Số cơ sở được quan trắc môi trường lao động/tổng số cơ sở báo cáo:</label>
-            <input type="text" class="input-phuluc2">/
-            <input type="text" class="input-phuluc2">
+            <input type="text" class="input-phuluc2" data-bind="value:socosoduocquantracmoitruonglaodong">/
+            <input type="text" class="input-phuluc2" data-bind="value:tongsocosobaocao">
         </div>
         <label>1. Kết quả quan trắc các yếu tố vi khí hậu và vật lý, hóa học trong môi trường lao động</label>
+        <div class="row col-md-12">
+            <div id="add_row4" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -560,33 +541,8 @@
                     <td>(1)</td>
                     <td>(2)</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tbody data-bind="list:ketquaquantraccacyeutovikhihauvavatlyhoahoctrongmtfield"></tbody>
 
-                </tr>
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>

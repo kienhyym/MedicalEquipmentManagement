@@ -87,13 +87,6 @@
     "giamdinhnghenghiep": {
         "type": "number"
     },
-    "loaicosolaodongtren200nld": {
-        "type": "string",
-        "length": 255
-    },
-    "tongsocotren200nld": {
-        "type": "number"
-    },
     "sotructhuocbonganhtren200nld": {
         "type": "number"
     },
@@ -118,13 +111,6 @@
     "songuoilaodongnutaitatcacosotiepxuctructieptren200nld": {
         "type": "number"
     },
-    "loaicosolaodongtren50duoi200ndl": {
-        "type": "string",
-        "length": 255
-    },
-    "tongsocotren50duoi200ndl": {
-        "type": "number"
-    },
     "sotructhuocbonganhtren50duoi200ndl": {
         "type": "number"
     },
@@ -147,13 +133,6 @@
         "type": "number"
     },
     "songuoilaodongnutaitatcacosotiepxuctructieptren50duoi200ndl": {
-        "type": "number"
-    },
-    "loaicosolaodongduoi50nld": {
-        "type": "string",
-        "length": 255
-    },
-    "tongsocoduoi50nld": {
         "type": "number"
     },
     "sotructhuocbonganhduoi50nld": {
@@ -192,9 +171,6 @@
     "tongsocosocoyeutocohailaphoso": {
         "type": "number"
     },
-    "loaicososanxuattren50duoi200ndl": {
-        "type": "number"
-    },
     "hinhthuccotramytetren50duoi200ndl": {
         "type": "number"
     },
@@ -208,9 +184,6 @@
         "type": "number"
     },
     "hopdongvoicosokhambenhtren50duoi200ndl": {
-        "type": "number"
-    },
-    "loaicososanxuattren200nld": {
         "type": "number"
     },
     "hinhthuccotramytetren200nld": {
@@ -228,9 +201,6 @@
     "hopdongvoicosokhambenhtren200nld": {
         "type": "number"
     },
-    "loaicososanxuatduoi50nld": {
-        "type": "number"
-    },
     "hinhthuccotramyteduoi50nld": {
         "type": "number"
     },
@@ -244,9 +214,6 @@
         "type": "number"
     },
     "hopdongvoicosokhambenhduoi50nld": {
-        "type": "number"
-    },
-    "songuoilamcongtacytetren50duoi200ndl": {
         "type": "number"
     },
     "trinhdobacsitren50duoi200ndl": {
@@ -267,9 +234,6 @@
     "trinhdohosinhvientren50duoi200ndl": {
         "type": "number"
     },
-    "songuoilamcongtacytetren200nld": {
-        "type": "number"
-    },
     "trinhdobacsitren200nld": {
         "type": "number"
     },
@@ -286,9 +250,6 @@
         "type": "number"
     },
     "trinhdohosinhvientren200nld": {
-        "type": "number"
-    },
-    "songuoilamcongtacyteduoi50nld": {
         "type": "number"
     },
     "trinhdobacsiduoi50nld": {
@@ -327,10 +288,28 @@
     "tongsonguoinuthamgiasocuuduoi50nld": {
         "type": "number"
     },
+    "socosoduocquantracmoitruonglaodong": {
+        "type": "number"
+    },
+    "tongsocosobaocao": {
+        "type": "number"
+    },
     "tinhhinhthuchienvanbanphapquyfield": {
         "type": "list"
     },
     "phanloaicaccosolaodongtheonganhnghevaquymofield": {
+        "type": "list"
+    },
+    "phanloaicosolaodongytchnhfield": {
+        "type": "list"
+    },
+    "ketquaquantraccacyeutovikhihauvavatlyhoahoctrongmtfield": {
+        "type": "list"
+    },
+    "ketquaquantraccacyeutobuitrongmoitruonglaodongphuluc10field": {
+        "type": "list"
+    },
+    "ketquadanhgiacacyeutotiepxucnghenghiepvayeutotamlyfield": {
         "type": "list"
     }
 }

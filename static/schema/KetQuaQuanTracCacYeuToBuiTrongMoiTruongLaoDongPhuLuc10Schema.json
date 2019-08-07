@@ -58,5 +58,11 @@
     },
     "buikhac2": {
         "type": "number"
+    },
+    "baocaohoatdongytelaodong6thangnam_id": {
+        "type": "string"
+    },
+    "baocaohoatdongytelaodong6thangnam": {
+        "type": "dict"
     }
 }

@@ -32,6 +32,9 @@
     "tongsonguoilaodong": {
         "type": "number"
     },
+    "songuoitiepxuc": {
+        "type": "number"
+    },
     "nhietdo1": {
         "type": "number"
     },
