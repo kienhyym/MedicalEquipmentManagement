@@ -1149,8 +1149,6 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     tongsotruonghopmaccacloaibenhthongthuongphuluc10field = db.relationship('TongSoTruongHopMacCacLoaiBenhThongThuongPhucluc10', cascade="all, delete-orphan")
     cactruonghopmacbenhnghenghiepphuluc10field = db.relationship('CacTruongHopMacBenhNgheNghiepPhuLuc10', cascade="all, delete-orphan")
     cactruonghoptainanlaodongphuluc10field = db.relationship('CacTruongHopTaiNanLaoDongPhuLuc10', cascade="all, delete-orphan")
-    
-
     ketquakhamphathienbenhnghenghiepphuluc10field = db.relationship('KetQuaKhamPhatHienBenhNgheNghiepPhuLuc10', cascade="all, delete-orphan")
     danhsachnguoimacbenhnghenghiepphuluc10field = db.relationship('DanhSachNguoiMacBenhNgheNghiepPhuLuc10', cascade="all, delete-orphan")
     tonghoptubaocaocuacaccosolaodongphuluc10field = db.relationship('TongHopTuBaoCaoCuaCacCoSoLaoDongPhuLuc10', cascade="all, delete-orphan")
@@ -1159,6 +1157,9 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     phanloaicactruonghoptainanlaodongtheoviecsocuuphuluc10field = db.relationship('PhanLoaiCacTruongHopTaiNanLaoDongTheoViecSoCuuPhuLuc10', cascade="all, delete-orphan")
     phanloaicactruonghoptainanlaodongtheonganhnghephuluc10field = db.relationship('PhanLoaiCacTruongHopTaiNanLaoDongTheoNganhNghePhuLuc10', cascade="all, delete-orphan")
     kinhphichitraphuluc10field = db.relationship('KinhPhiChiTraPhuLuc10', cascade="all, delete-orphan")
+    danhsachcactochucquantractrendiabanfield = db.relationship('DanhSachCacToChucQuanTracTrenDiaBan', cascade="all, delete-orphan")
+    danhsachcosokhambenhtrendiabanfield = db.relationship('DanhSachCosoKhamBenhTrenDiaBan', cascade="all, delete-orphan")
+    danhsachtochuchuanluyentrendiabanfield = db.relationship('DanhSachToChucHuanLuyenTrenDiaBan', cascade="all, delete-orphan")
 
 
 # 2. Tình hình thực hiện văn bản pháp quy 
@@ -1425,9 +1426,40 @@ class KinhPhiChiTraPhuLuc10(CommonModel):
     baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
 
 
-
-
-
+# XII. BÁO CÁO QUẢN LÝ CƠ SỞ QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG, KHÁM BỆNH NGHỀ NGHIỆP, HUẤN LUYỆN Y TẾ LAO ĐỘNG VÀ SƠ CỨU, CẤP CỨU (Chỉ áp dụng đối với Sở Y tế) 
+# 1. Danh sách các tổ chức thực hiện quan trắc môi trường lao động trên địa bàn
+class DanhSachCacToChucQuanTracTrenDiaBan(CommonModel):
+    __tablename__ = 'danhsachcactochucquantractrendiaban'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tencoso = db.Column(String(255))
+    diachi = db.Column(String(255))
+    soluongcanbo = db.Column(db.Integer())
+    socosolaodongthuchien = db.Column(db.Integer())
+    nhanxet = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
+# 2. Danh sách cơ sở khám bệnh nghề nghiệp trên địa bàn
+class DanhSachCosoKhamBenhTrenDiaBan(CommonModel):
+    __tablename__ = 'danhsachcosokhambenhtrendiaban'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tencoso = db.Column(String(255))
+    diachi = db.Column(String(255))
+    soluongcanbo = db.Column(db.Integer())
+    socosolaodongthuchien = db.Column(db.Integer())
+    nhanxet = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
+# 3. Danh sách tổ chức huấn luyện y tế lao động, sơ cứu, cấp cứu trên địa bàn
+class DanhSachToChucHuanLuyenTrenDiaBan(CommonModel):
+    __tablename__ = 'danhsachtochuchuanluyentrendiaban'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tencoso = db.Column(String(255))
+    diachi = db.Column(String(255))
+    soluongcanbo = db.Column(db.Integer())
+    socosolaodongthuchien = db.Column(db.Integer())
+    nhanxet = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
 
 
 

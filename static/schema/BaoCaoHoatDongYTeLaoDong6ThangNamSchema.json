@@ -399,5 +399,14 @@
     },
     "kinhphichitraphuluc10field": {
         "type": "list"
+    },
+    "danhsachcactochucquantractrendiabanfield": {
+        "type": "list"
+    },
+    "danhsachcosokhambenhtrendiabanfield": {
+        "type": "list"
+    },
+    "danhsachtochuchuanluyentrendiabanfield": {
+        "type": "list"
     }
 }

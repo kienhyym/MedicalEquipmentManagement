@@ -918,7 +918,10 @@
             <input type="text" class="input-phuluc2">/
             <input type="text" class="input-phuluc2">
         </div>
-
+        <div class="row col-md-12">
+            <div id="add_row11" class="mb-1"></div>
+        </div>
+                
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -950,23 +953,8 @@
                     <td>TS</td>
                     <td>Nữ</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Bệnh bụi phổi silic nghề nghiệp</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tbody data-bind="list:ketquakhamphathienbenhnghenghiepphuluc10field"></tbody>
 
-                </tr>
                 <tr>
                     <td></td>
                     <td>Tổng số</td>
@@ -987,6 +975,9 @@
             </table>
         </div>
         <label>3. Danh sách người mắc bệnh nghề nghiệp</label>
+        <div class="row col-md-12">
+            <div id="add_row12" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -1005,32 +996,8 @@
                     <td>Nam</td>
                     <td>Nữ</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
+                <tbody data-bind="list:danhsachnguoimacbenhnghenghiepphuluc10field"></tbody>
 
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-
-                </tr>
             </table>
         </div>
         <label class="stronger">IX. HUẤN LUYỆN VỀ Y TẾ LAO ĐỘNG VÀ BỆNH NGHỀ NGHIỆP</label>
@@ -1049,7 +1016,11 @@
                 </tr>
                 <tr>
                     <td>I</td>
-                    <td colspan="4">Tổng hợp từ báo cáo của các cơ sở lao động</td>
+                    <td colspan="4">Tổng hợp từ báo cáo của các cơ sở lao động
+                        <div class="row col-md-12">
+                            <div id="add_row13" class="mb-1"></div>
+                        </div> 
+                    </td>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -1058,9 +1029,15 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tbody data-bind="list:tonghoptubaocaocuacaccosolaodongphuluc10field"></tbody>
+
                 <tr>
                     <td>II</td>
-                    <td colspan="4">Các hoạt động do đơn vị y tế tuyến tỉnh và tuyến huyện triển khai</td>
+                    <td colspan="4">Các hoạt động do đơn vị y tế tuyến tỉnh và tuyến huyện triển khai
+                        <div class="row col-md-12">
+                            <div id="add_row14" class="mb-1"></div>
+                        </div> 
+                    </td>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -1069,6 +1046,8 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tbody data-bind="list:cachoatdongdodonvitrienkhaiphuluc10field"></tbody>
+
                 <tr>
                     <td></td>
                     <td>Tổng Số</td>
@@ -1135,6 +1114,10 @@
             </table>
         </div>
         <label>2. Phân loại các trường hợp tai nạn lao động theo việc sơ cứu, cấp cứu và điều trị</label>
+        <div class="row col-md-12">
+            <div id="add_row16" class="mb-1"></div>
+        </div>
+                
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -1163,6 +1146,8 @@
                     <td></td>
 
                 </tr>
+                <tbody data-bind="list:phanloaicactruonghoptainanlaodongtheoviecsocuuphuluc10field"></tbody>
+
                 <tr>
                     <td></td>
                     <td>Tổng</td>
@@ -1212,6 +1197,9 @@
         <label><i>* Với mỗi trường hợp bị tai nạn lao động, chỉ ghi nhận lần khám, điều trị đầu tiên tại cơ sở khám
                 bệnh, chữa bệnh đối với vụ tai nạn lao động đó</i></label>
         <label>4. Phân loại các trường hợp tai nạn lao động theo ngành nghề</label>
+        <div class="row col-md-12">
+            <div id="add_row17" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -1228,6 +1216,8 @@
                     <td>Nông nghiệp</td>
                     <td></td>
                 </tr>
+                <tbody data-bind="list:phanloaicactruonghoptainanlaodongtheonganhnghephuluc10field"></tbody>
+
                 <tr>
                     <td></td>
                     <td>Tổng</td>
@@ -1242,6 +1232,9 @@
             <label>Số cơ sở có báo cáo/tổng số cơ sở lao động thuộc phạm vi quản lý:</label>
             <input type="text" class="input-phuluc2">/
             <input type="text" class="input-phuluc2">
+        </div>
+        <div class="row col-md-12">
+            <div id="add_row18" class="mb-1"></div>
         </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
@@ -1260,6 +1253,8 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tbody data-bind="list:kinhphichitraphuluc10field"></tbody>
+
                 <tr>
                     <td></td>
                     <td>Tổng</td>
