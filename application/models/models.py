@@ -712,7 +712,7 @@ class BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen(CommonModel):
     danhgia = db.Column(String(255))
     # 2. Kiến nghị
     kienghi = db.Column(String(255))
-    # Hết Báo cáo 1 Phụ lục 9
+    
 
     phanloaicosolaodongtheonganhnghevaquymofield = db.relationship('PhanLoaiCoSoLaoDongTheoNganhNgheVaQuyMo', cascade="all, delete-orphan")
     phanloaicosolaodongcoyeutocohainguyhiemfield = db.relationship('PhanLoaiCoSoLaoDongCoYeuToCoHaiNguyHiem', cascade="all, delete-orphan")
@@ -1110,7 +1110,19 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     ketquaquantraccacyeutobuitrongmoitruonglaodongphuluc10field = db.relationship('KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10', cascade="all, delete-orphan")
     ketquadanhgiacacyeutotiepxucnghenghiepvayeutotamlyfield = db.relationship('KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLy', cascade="all, delete-orphan")
 
-
+    tinhhinhnghiomphuluc10field = db.relationship('TinhHinhNghiOmPhuLuc10', cascade="all, delete-orphan")
+    tongsotruonghopmaccacloaibenhthongthuongphuluc10field = db.relationship('TongSoTruongHopMacCacLoaiBenhThongThuongPhucluc10', cascade="all, delete-orphan")
+    cactruonghopmacbenhnghenghiepphuluc10field = db.relationship('CacTruongHopMacBenhNgheNghiepPhuLuc10', cascade="all, delete-orphan")
+    cactruonghoptainanlaodongphuluc10field = db.relationship('CacTruongHopTaiNanLaoDongPhuLuc10', cascade="all, delete-orphan")
+    
+    
+    ########
+    ##   
+    ##	
+    ########
+    ##
+    ##
+    ##
 
 
 
@@ -1218,10 +1230,61 @@ class KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLy(CommonModel):
     baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
     baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
 
+# VII. TÌNH HÌNH SỨC KHỎE VÀ BỆNH TẬT
+# 1. Tình hình nghỉ ốm
+# Số cơ sở có báo cáo/tổng số cơ sở lao động trong phạm vi quản lý:
+class TinhHinhNghiOmPhuLuc10(CommonModel):
+    __tablename__ = 'tinhhinhnghiomphuluc10'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tencoso = db.Column(String(255))
+    songuoiom = db.Column(db.Integer)
+    songayom = db.Column(db.Integer)
+    songuoitainanlaodong = db.Column(db.Integer)
+    songaytainanlaodong = db.Column(db.Integer)
+    songuoibenhnghenghiep = db.Column(db.Integer)
+    songaybenhnghenghiep= db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
 
+# 2. Tình hình bệnh tật và tai nạn lao động
+# Số cơ sở có báo cáo/tổng số cơ sở lao động trong phạm vi quản lý: _____ / ______
+class TongSoTruongHopMacCacLoaiBenhThongThuongPhucluc10(CommonModel):
+    __tablename__ = 'tongsotruonghopmaccacloaibenhthongthuongphuluc10'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    nhombenh = db.Column(String(255))
+    sotruonghopquy1 = db.Column(String(255))
+    sotruonghopquy2 = db.Column(String(255))
+    sotruonghopquy3 = db.Column(String(255))
+    sotruonghopquy4 = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
+# 2. Các trường hợp mắc bệnh nghề nghiệp
+class CacTruongHopMacBenhNgheNghiepPhuLuc10(CommonModel):
+    __tablename__ = 'cactruonghopmacbenhnghenghiepphuluc10'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    benhnghenghiep = db.Column(String(255))
+    sotruonghopquy1 = db.Column(String(255))
+    sotruonghopquy2 = db.Column(String(255))
+    sotruonghopquy3 = db.Column(String(255))
+    sotruonghopquy4 = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
 
-
-
+# 3. Các trường hợp tai nạn lao động
+class CacTruongHopTaiNanLaoDongPhuLuc10(CommonModel):
+    __tablename__ = 'cactruonghoptainanlaodongphuluc10'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tainanlaodong = db.Column(String(255))
+    sotruonghopquy1mac = db.Column(String(255))
+    sotruonghopquy1chet = db.Column(String(255))
+    sotruonghopquy2mac = db.Column(String(255))
+    sotruonghopquy2chet = db.Column(String(255))
+    sotruonghopquy3mac = db.Column(String(255))
+    sotruonghopquy3chet = db.Column(String(255))
+    sotruonghopquy4mac = db.Column(String(255))
+    sotruonghopquy4chet = db.Column(String(255))
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
 
 
 

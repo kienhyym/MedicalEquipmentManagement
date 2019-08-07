@@ -311,5 +311,17 @@
     },
     "ketquadanhgiacacyeutotiepxucnghenghiepvayeutotamlyfield": {
         "type": "list"
+    },
+    "tinhhinhnghiomphuluc10field": {
+        "type": "list"
+    },
+    "tongsotruonghopmaccacloaibenhthongthuongphuluc10field": {
+        "type": "list"
+    },
+    "cactruonghopmacbenhnghenghiepphuluc10field": {
+        "type": "list"
+    },
+    "cactruonghoptainanlaodongphuluc10field": {
+        "type": "list"
     }
 }

@@ -11,8 +11,14 @@ define(function (require) {
 	var PhanLoaiCacCoSoLaoDongTheoNganhNgheVaQuyMoItemView = require('app/baocao/phuluc10/js/PhanLoaiCoSoLaoDongTheoNganhNgheVaQuyMoView');
 	var PhanLoaiCoSoLaoDongYTCHNHItemView = require('app/baocao/phuluc10/js/PhanLoaiCoSoLaoDongYTCHNHView');
 	var KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocTrongMTItemView = require('app/baocao/phuluc10/js/KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocTrongMTView');
-	// var KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10ItemView = require('app/baocao/phuluc10/js/KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10View');
-	// var KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLyItemView = require('app/baocao/phuluc10/js/KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLyView');
+	var KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10ItemView = require('app/baocao/phuluc10/js/KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10View');
+	var KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLyItemView = require('app/baocao/phuluc10/js/KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLyView');
+
+	var TinhHinhNghiOmPhuLuc10ItemView = require('app/baocao/phuluc10/js/TinhHinhNghiOmPhuLuc10View');
+	var TongSoTruongHopMacCacLoaiBenhThongThuongPhucluc10ItemView = require('app/baocao/phuluc10/js/TongSoTruongHopMacCacLoaiBenhThongThuongPhucluc10View');
+	var CacTruongHopMacBenhNgheNghiepPhuLuc10ItemView = require('app/baocao/phuluc10/js/CacTruongHopMacBenhNgheNghiepPhuLuc10View');
+	var CacTruongHopTaiNanLaoDongPhuLuc10ItemView = require('app/baocao/phuluc10/js/CacTruongHopTaiNanLaoDongPhuLuc10View');
+
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -154,6 +160,32 @@ define(function (require) {
 						command: "create"
 					}],
 					toolEl: "#add_row4"
+				},
+				{
+					field: "ketquaquantraccacyeutobuitrongmoitruonglaodongphuluc10field",
+					uicontrol: false,
+					itemView: KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongPhuLuc10ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row5"
+				},
+				{
+					field: "ketquadanhgiacacyeutotiepxucnghenghiepvayeutotamlyfield",
+					uicontrol: false,
+					itemView: KetQuaDanhGiaCacYeuToTiepXucNgheNghiepVaYeuToTamLyItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row6"
 				},
 				{
 					field: "donvibaocao",
