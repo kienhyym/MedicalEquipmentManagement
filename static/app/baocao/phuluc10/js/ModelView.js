@@ -283,6 +283,14 @@ define(function (require) {
 					field: "tongsocosobaocao",
 					cssClass: false,
 				},
+				{
+					field: "socosolaodongcokhamsuckhoedinhky",
+					cssClass: false,
+				},
+				{
+					field: "socosolaodongcokhamsuckhoedinhkytongso",
+					cssClass: false,
+				},
 			]
 		},
 

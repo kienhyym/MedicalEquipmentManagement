@@ -637,7 +637,62 @@ sqlapimanager.create_api(CacTruongHopTaiNanLaoDongPhuLuc10, max_results_per_page
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
     # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='cactruonghoptainanlaodongphuluc10')                  
+    collection_name='cactruonghoptainanlaodongphuluc10')     
+
+
+
+sqlapimanager.create_api(KetQuaKhamPhatHienBenhNgheNghiepPhuLuc10, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='ketquakhamphathienbenhnghenghiepphuluc10') 
+
+sqlapimanager.create_api(DanhSachNguoiMacBenhNgheNghiepPhuLuc10, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='danhsachnguoimacbenhnghenghiepphuluc10')    
+
+sqlapimanager.create_api(TongHopTuBaoCaoCuaCacCoSoLaoDongPhuLuc10, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='tonghoptubaocaocuacaccosolaodongphuluc10') 
+sqlapimanager.create_api(CacHoatDongDoDonViTrienKhaiPhuLuc10, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='cachoatdongdodonvitrienkhaiphuluc10') 
+sqlapimanager.create_api(DanhSachCacTruongHopTaiNanLaoDongDuocKhamTaiCS, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='danhsachcactruonghoptainanlaodongduockhamtaics') 
+sqlapimanager.create_api(PhanLoaiCacTruongHopTaiNanLaoDongTheoViecSoCuuPhuLuc10, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='phanloaicactruonghoptainanlaodongtheoviecsocuuphuluc10') 
+sqlapimanager.create_api(PhanLoaiCacTruongHopTaiNanLaoDongTheoNganhNghePhuLuc10, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='phanloaicactruonghoptainanlaodongtheonganhnghephuluc10') 
+
+sqlapimanager.create_api(KinhPhiChiTraPhuLuc10, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='kinhphichitraphuluc10') 
+
 # Hết báo cáo 1 Phụ lục 10
 
 ###############################################################

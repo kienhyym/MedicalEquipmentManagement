@@ -294,6 +294,58 @@
     "tongsocosobaocao": {
         "type": "number"
     },
+    "socosolaodongcokhamsuckhoedinhky": {
+        "type": "number"
+    },
+    "socosolaodongcokhamsuckhoedinhkytongso": {
+        "type": "number"
+    },
+    "loai1nam": {
+        "type": "string",
+        "length": 255
+    },
+    "loai2nam": {
+        "type": "string",
+        "length": 255
+    },
+    "loai3nam": {
+        "type": "string",
+        "length": 255
+    },
+    "loai4nam": {
+        "type": "string",
+        "length": 255
+    },
+    "loai5nam": {
+        "type": "string",
+        "length": 255
+    },
+    "loai1nu": {
+        "type": "string",
+        "length": 255
+    },
+    "loai2nu": {
+        "type": "string",
+        "length": 255
+    },
+    "loai3nu": {
+        "type": "string",
+        "length": 255
+    },
+    "loai4nu": {
+        "type": "string",
+        "length": 255
+    },
+    "loai5nu": {
+        "type": "string",
+        "length": 255
+    },
+    "socosolaodongcokhambnn": {
+        "type": "number"
+    },
+    "tongsocosoconguyco": {
+        "type": "number"
+    },
     "tinhhinhthuchienvanbanphapquyfield": {
         "type": "list"
     },
@@ -322,6 +374,30 @@
         "type": "list"
     },
     "cactruonghoptainanlaodongphuluc10field": {
+        "type": "list"
+    },
+    "ketquakhamphathienbenhnghenghiepphuluc10field": {
+        "type": "list"
+    },
+    "danhsachnguoimacbenhnghenghiepphuluc10field": {
+        "type": "list"
+    },
+    "tonghoptubaocaocuacaccosolaodongphuluc10field": {
+        "type": "list"
+    },
+    "cachoatdongdodonvitrienkhaiphuluc10field": {
+        "type": "list"
+    },
+    "danhsachcactruonghoptainanlaodongduockhamtaicsfield": {
+        "type": "list"
+    },
+    "phanloaicactruonghoptainanlaodongtheoviecsocuuphuluc10field": {
+        "type": "list"
+    },
+    "phanloaicactruonghoptainanlaodongtheonganhnghephuluc10field": {
+        "type": "list"
+    },
+    "kinhphichitraphuluc10field": {
         "type": "list"
     }
 }
