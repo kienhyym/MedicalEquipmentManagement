@@ -1107,6 +1107,7 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     tongsonguoithamgiasocuuduoi50nld = db.Column(db.Integer)
     tongsonguoinuthamgiasocuuduoi50nld = db.Column(db.Integer)
     tinhhinhthuchienvanbanphapquyfield = db.relationship('TinhHinhThucHienVanBanPhapQuy', cascade="all, delete-orphan")
+    phanloaicaccosolaodongtheonganhnghevaquymofield = db.relationship('PhanLoaiCacCoSoLaoDongTheoNganhNgheVaQuyMo', cascade="all, delete-orphan")
 
 
 
@@ -1135,6 +1136,9 @@ class PhanLoaiCacCoSoLaoDongTheoNganhNgheVaQuyMo(CommonModel):
     sonldcosocovua = db.Column(db.Integer)
     socscolon= db.Column(db.Integer)
     sonldcosocolon = db.Column(db.Integer)
+    baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
+    baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
+
 # 2. Phân loại cơ sở lao động YTCHNH theo ngành nghề, quy mô
 class PhanLoaiCoSoLaoDongYTCHNH(CommonModel):
     __tablename__ = 'phanloaicosolaodongytchnh'

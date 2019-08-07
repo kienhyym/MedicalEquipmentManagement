@@ -329,5 +329,8 @@
     },
     "tinhhinhthuchienvanbanphapquyfield": {
         "type": "list"
+    },
+    "phanloaicaccosolaodongtheonganhnghevaquymofield": {
+        "type": "list"
     }
 }
