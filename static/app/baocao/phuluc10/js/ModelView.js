@@ -28,6 +28,10 @@ define(function (require) {
 	var PhanLoaiCacTruongHopTaiNanLaoDongTheoViecSoCuuPhuLuc10ItemView = require('app/baocao/phuluc10/js/PhanLoaiCacTruongHopTaiNanLaoDongTheoViecSoCuuPhuLuc10View');
 	var TongHopTuBaoCaoCuaCacCoSoLaoDongPhuLuc10ItemView = require('app/baocao/phuluc10/js/TongHopTuBaoCaoCuaCacCoSoLaoDongPhuLuc10View');
 	
+	var DanhSachCacToChucQuanTracTrenDiaBanItemView = require('app/baocao/phuluc10/js/DanhSachCacToChucQuanTracTrenDiaBanView');
+	var DanhSachCosoKhamBenhTrenDiaBanItemView = require('app/baocao/phuluc10/js/DanhSachCosoKhamBenhTrenDiaBanView');
+	var DanhSachToChucHuanLuyenTrenDiaBanItemView = require('app/baocao/phuluc10/js/DanhSachToChucHuanLuyenTrenDiaBanView');
+
 
 
 	return Gonrin.ModelView.extend({
@@ -356,6 +360,45 @@ define(function (require) {
 					toolEl: "#add_row18"
 				},
 				{
+					field: "danhsachcactochucquantractrendiabanfield",
+					uicontrol: false,
+					itemView: DanhSachCacToChucQuanTracTrenDiaBanItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row19"
+				},
+				{
+					field: "danhsachcosokhambenhtrendiabanfield",
+					uicontrol: false,
+					itemView: DanhSachCosoKhamBenhTrenDiaBanItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row20"
+				},
+				{
+					field: "danhsachtochuchuanluyentrendiabanfield",
+					uicontrol: false,
+					itemView: DanhSachToChucHuanLuyenTrenDiaBanItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row21"
+				},
+				{
 					field: "donvibaocao",
 					cssClass: false,
 				},
@@ -405,6 +448,32 @@ define(function (require) {
 				},
 				{
 					field: "socosolaodongcokhamsuckhoedinhkytongso",
+					cssClass: false,
+				},
+				{
+					field: "socosocobaocaokinhphi",
+					cssClass: false,
+				},
+				{
+					field: "tongsocosokinhphi",
+					cssClass: false,
+				},
+
+				{
+					field: "socosolaodongcokhambnn",
+					cssClass: false,
+				},
+				{
+					field: "tongsocosoconguyco",
+					cssClass: false,
+				},
+
+				{
+					field: "tongsocosotruonghoptainan",
+					cssClass: false,
+				},
+				{
+					field: "socosocobaocaotruonghoptainan",
 					cssClass: false,
 				},
 			]

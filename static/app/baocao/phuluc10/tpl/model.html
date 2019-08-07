@@ -915,8 +915,8 @@
         <label>2. Kết quả khám phát hiện bệnh nghề nghiệp</label><br>
         <div class="flexboxer col-md-12 p-0 pb-3 ">
             <label>Số cơ sở lao động có khám BNN/tổng số cơ sở có nguy cơ:</label>
-            <input type="text" class="input-phuluc2">/
-            <input type="text" class="input-phuluc2">
+            <input type="text" class="input-phuluc2" data-bind="value:socosolaodongcokhambnn">/
+            <input type="text" class="input-phuluc2" data-bind="value:tongsocosoconguyco">
         </div>
         <div class="row col-md-12">
             <div id="add_row11" class="mb-1"></div>
@@ -1062,8 +1062,8 @@
 
         <div class="flexboxer col-md-12 p-0 ">
             <label>Số cơ sở KBCB báo cáo/Tổng số cơ sở KBCB trên địa bàn</label>
-            <input type="text" class="input-phuluc2">/
-            <input type="text" class="input-phuluc2">
+            <input type="text" class="input-phuluc2" data-bind="value:socosocobaocaotruonghoptainan">/
+            <input type="text" class="input-phuluc2" data-bind="value:tongsocosotruonghoptainan">
         </div>
         <label>1. Danh sách các trường hợp tai nạn lao động được khám, điều trị tại cơ sở KBCB</label>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
@@ -1175,7 +1175,7 @@
                 <tr>
                     <td>1</td>
                     <td>Người lao động được sơ cứu, cấp cứu (không phải điều trị tại cơ sở KBCB)</td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:songuoilaodongduocsocuu" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                     <td rowspan="3">Số liệu thống kê không tính trùng các trường hợp sơ cứu, cấp cứu, điều trị lại nhiều
                         cơ sở khám bệnh, chữa bệnh</td>
 
@@ -1183,13 +1183,13 @@
                 <tr>
                     <td>2</td>
                     <td>Người lao động được điều trị lần đầu trong năm đối với 1 vụ tai nạn*</td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:nguoilaodongduocdieutrimotlantrongnam" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
 
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Số người bị tai nạn lao động đến cơ sở khám bệnh, chữa bệnh</td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:songuoilaodongtainanlaodongdikham" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
 
                 </tr>
             </table>
@@ -1230,8 +1230,8 @@
         </label>
         <div class="flexboxer col-md-12 p-0 pb-3">
             <label>Số cơ sở có báo cáo/tổng số cơ sở lao động thuộc phạm vi quản lý:</label>
-            <input type="text" class="input-phuluc2">/
-            <input type="text" class="input-phuluc2">
+            <input type="text" class="input-phuluc2" data-bind="value:socosocobaocaokinhphi">/
+            <input type="text" class="input-phuluc2" data-bind="value:tongsocosokinhphi">
         </div>
         <div class="row col-md-12">
             <div id="add_row18" class="mb-1"></div>
@@ -1267,6 +1267,9 @@
         <label class="stronger">XII. BÁO CÁO QUẢN LÝ CƠ SỞ QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG, KHÁM BỆNH NGHỀ NGHIỆP, HUẤN
             LUYỆN Y TẾ LAO ĐỘNG VÀ SƠ CỨU, CẤP CỨU <i>(Chỉ áp dụng đối với Sở Y tế)</i></label>
         <label>1. Danh sách các tổ chức thực hiện quan trắc môi trường lao động trên địa bàn</label>
+        <div class="row col-md-12">
+            <div id="add_row19" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -1286,6 +1289,8 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tbody data-bind="list:danhsachcactochucquantractrendiabanfield"></tbody>
+
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>
@@ -1297,6 +1302,9 @@
             </table>
         </div>
         <label>2. Danh sách cơ sở khám bệnh nghề nghiệp trên địa bàn</label>
+        <div class="row col-md-12">
+            <div id="add_row20" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -1316,6 +1324,8 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tbody data-bind="list:danhsachcosokhambenhtrendiabanfield"></tbody>
+
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>
@@ -1327,6 +1337,9 @@
             </table>
         </div>
         <label>3. Danh sách tổ chức huấn luyện y tế lao động, sơ cứu, cấp cứu trên địa bàn</label>
+        <div class="row col-md-12">
+            <div id="add_row21" class="mb-1"></div>
+        </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -1346,6 +1359,8 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tbody data-bind="list:danhsachtochuchuanluyentrendiabanfield"></tbody>
+
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>
@@ -1374,19 +1389,19 @@
                 </tr>
                 <tr>
                     <td>Số cơ sở lao động/ trạm y tế tham dự giao ban</td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:socosolaodongduocgiaoban" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:sotramyteduocgiaoban" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
 
                 </tr>
                 <tr>
                     <td>Nội dung giao ban</td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:noidunggiaobancosoyte" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:noidunggiaobantramyte" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Đề xuất, kiến nghị</td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:dexuatkiennghicosoyte" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:dexuatkiennghitramyte" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
             </table>
         </div>
@@ -1409,15 +1424,11 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" data-bind="value:tongsocosolaodongduocthanhtraphuluc10" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:tongsocosocoyeutocohaiduocthanhtraphuluc10" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:ghichuthanhtra" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            
             </table>
         </div>
 

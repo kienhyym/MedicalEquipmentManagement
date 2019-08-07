@@ -346,6 +346,59 @@
     "tongsocosoconguyco": {
         "type": "number"
     },
+    "songuoilaodongduocsocuu": {
+        "type": "number"
+    },
+    "nguoilaodongduocdieutrimotlantrongnam": {
+        "type": "number"
+    },
+    "songuoilaodongtainanlaodongdikham": {
+        "type": "number"
+    },
+    "socosocobaocaotruonghoptainan": {
+        "type": "number"
+    },
+    "tongsocosotruonghoptainan": {
+        "type": "number"
+    },
+    "socosocobaocaokinhphi": {
+        "type": "number"
+    },
+    "tongsocosokinhphi": {
+        "type": "number"
+    },
+    "socosolaodongduocgiaoban": {
+        "type": "number"
+    },
+    "sotramyteduocgiaoban": {
+        "type": "number"
+    },
+    "noidunggiaobancosoyte": {
+        "type": "string",
+        "length": 255
+    },
+    "noidunggiaobantramyte": {
+        "type": "string",
+        "length": 255
+    },
+    "dexuatkiennghicosoyte": {
+        "type": "string",
+        "length": 255
+    },
+    "dexuatkiennghitramyte": {
+        "type": "string",
+        "length": 255
+    },
+    "tongsocosolaodongduocthanhtraphuluc10": {
+        "type": "number"
+    },
+    "tongsocosocoyeutocohaiduocthanhtraphuluc10": {
+        "type": "number"
+    },
+    "ghichuthanhtra": {
+        "type": "string",
+        "length": 255
+    },
     "tinhhinhthuchienvanbanphapquyfield": {
         "type": "list"
     },

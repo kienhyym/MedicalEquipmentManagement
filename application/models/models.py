@@ -1131,6 +1131,35 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
 # 2. Kết quả khám phát hiện bệnh nghề nghiệp
     socosolaodongcokhambnn = db.Column(db.Integer)
     tongsocosoconguyco = db.Column(db.Integer)
+
+# 3. Tổng hợp các trường hợp tai nạn lao động 
+    songuoilaodongduocsocuu = db.Column(db.Integer)
+    nguoilaodongduocdieutrimotlantrongnam = db.Column(db.Integer)
+    songuoilaodongtainanlaodongdikham = db.Column(db.Integer)
+
+
+# X. BÁO CÁO CÁC TRƯỜNG HỢP TAI NẠN LAO ĐỘNG ĐƯỢC KHÁM, ĐIỀU TRỊ TẠI CƠ SỞ KHÁM BỆNH, CHỮA BỆNH (KBCB)
+# Số cơ sở KBCB báo cáo/Tổng số cơ sở KBCB trên địa bàn
+    socosocobaocaotruonghoptainan = db.Column(db.Integer)
+    tongsocosotruonghoptainan = db.Column(db.Integer)
+
+# XI. KINH PHÍ CHI TRẢ CHO CÔNG TÁC VỆ SINH LAO ĐỘNG, CHĂM SÓC SỨC KHỎE NGƯỜI LAO ĐỘNG
+# Số cơ sở có báo cáo/tổng số cơ sở lao động thuộc phạm vi quản lý:
+    socosocobaocaokinhphi = db.Column(db.Integer)
+    tongsocosokinhphi = db.Column(db.Integer)
+
+
+# 3.1. Tổng hợp kết quả thực hiện của tuyến huyện
+    socosolaodongduocgiaoban = db.Column(db.Integer)
+    sotramyteduocgiaoban = db.Column(db.Integer)
+    noidunggiaobancosoyte = db.Column(String(255))
+    noidunggiaobantramyte = db.Column(String(255))
+    dexuatkiennghicosoyte = db.Column(String(255))
+    dexuatkiennghitramyte = db.Column(String(255))
+# 4. Công tác thanh tra, kiểm tra việc thực hiện công tác vệ sinh lao động, chăm sóc sức khỏe người lao động, phòng chống bệnh nghề nghiệp trong kỳ báo cáo
+    tongsocosolaodongduocthanhtraphuluc10  = db.Column(db.Integer)
+    tongsocosocoyeutocohaiduocthanhtraphuluc10  = db.Column(db.Integer)
+    ghichuthanhtra = db.Column(String(255))
     ########
     ##   
     ##	
