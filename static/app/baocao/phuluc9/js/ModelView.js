@@ -11,6 +11,11 @@ define(function (require) {
 	var KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocItemView = require('app/baocao/phuluc9/js/KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocView');
 	var KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongItemView = require('app/baocao/phuluc9/js/KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongView');
 	var KetQuaDanhGiaCacYeuToTiepXucNgheNghiepItemView = require('app/baocao/phuluc9/js/KetQuaDanhGiaCacYeuToTiepXucNgheNghiepView');
+	var TinhHinhNghiOmItemView = require('app/baocao/phuluc9/js/TinhHinhNghiOmView');
+	var TongSoTruongHopMacCacLoaiBenhThongThuongItemView = require('app/baocao/phuluc9/js/TongSoTruongHopMacCacLoaiBenhThongThuongView');
+	var CacTruongHopMacBenhNgheNghiepPhuLuc9ItemView = require('app/baocao/phuluc9/js/CacTruongHopMacBenhNgheNghiepPhuLuc9View');
+	var CacTruongHopTaiNanLaoDongPhuLuc9ItemView = require('app/baocao/phuluc9/js/CacTruongHopTaiNanLaoDongPhuLuc9View');
+	var KetQuaKhamPhatHienBenhNgheNghiepItemView = require('app/baocao/phuluc9/js/KetQuaKhamPhatHienBenhNgheNghiepView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -165,6 +170,71 @@ define(function (require) {
 						command: "create"
 					}],
 					toolEl: "#add_row5"
+				},
+				{
+					field: "tinhhinhnghiomfield",
+					uicontrol: false,
+					itemView: TinhHinhNghiOmItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row6"
+				},
+				{
+					field: "tongsotruonghopmaccacloaibenhthongthuongfield",
+					uicontrol: false,
+					itemView: TongSoTruongHopMacCacLoaiBenhThongThuongItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row7"
+				},
+				{
+					field: "cactruonghopmacbenhnghenghiepphuluc9field",
+					uicontrol: false,
+					itemView: CacTruongHopMacBenhNgheNghiepPhuLuc9ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row8"
+				},
+				{
+					field: "cactruonghoptainanlaodongphuluc9field",
+					uicontrol: false,
+					itemView: CacTruongHopTaiNanLaoDongPhuLuc9ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row9"
+				},
+				{
+					field: "ketquakhamphathienbenhnghenghiepfield",
+					uicontrol: false,
+					itemView: KetQuaKhamPhatHienBenhNgheNghiepItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row10"
 				},
 				{
 					field: "soyte",

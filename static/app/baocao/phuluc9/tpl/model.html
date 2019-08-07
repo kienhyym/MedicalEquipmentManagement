@@ -607,6 +607,9 @@
             <input type="text" class="input-phuluc2">/
             <input type="text" class="input-phuluc2">
         </div>
+        <div class="row col-md-12">
+                <div id="add_row6" class="mb-1"></div>
+            </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -656,27 +659,7 @@
                     <td>(16)</td>
 
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-
-                </tr>
+                <tbody data-bind="list:tinhhinhnghiomfield"></tbody>
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>
@@ -711,6 +694,7 @@
             <input type="text" class="input-phuluc2">/
             <input type="text" class="input-phuluc2">
         </div>
+        
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -723,30 +707,21 @@
                     <td colspan="2">Quý IV</td>
                 </tr>
                 <tr>
-                    <td colspan="10">I. Tổng số trường hợp mắc các loại bệnh thông thường:</td>
+                    <td colspan="10">I. Tổng số trường hợp mắc các loại bệnh thông thường:
+                            <div class="row col-md-12">
+                                    <div id="add_row7" class="mb-1"></div>
+                                </div>
+                    </td>
 
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Lao phổi</td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
+                <tbody data-bind="list:tongsotruonghopmaccacloaibenhthongthuongfield"></tbody>
 
-
-                </tr>
                 <tr>
-                    <td>2</td>
-                    <td></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
-
-                </tr>
-                <tr>
-                    <td colspan="10">II. Các trường hợp mắc bệnh nghề nghiệp</td>
+                    <td colspan="10">II. Các trường hợp mắc bệnh nghề nghiệp 
+                        <div class="row col-md-12">
+                            <div id="add_row8" class="mb-1"></div>
+                        </div>
+                    </td>
 
                 </tr>
                 <tr>
@@ -759,8 +734,14 @@
 
 
                 </tr>
+                <tbody data-bind="list:cactruonghopmacbenhnghenghiepphuluc9field"></tbody>
+
                 <tr>
-                    <td colspan="2">III. Các trường hợp tai nạn lao động</td>
+                    <td colspan="2">III. Các trường hợp tai nạn lao động
+                            <div class="row col-md-12">
+                                    <div id="add_row9" class="mb-1"></div>
+                                </div>
+                    </td>
                     <td>Mắc</td>
                     <td>Chết</td>
                     <td>Mắc</td>
@@ -782,6 +763,8 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tbody data-bind="list:cactruonghoptainanlaodongphuluc9field"></tbody>
+
                 <tr>
                     <td></td>
                     <td>Tổng Cộng</td>
@@ -817,58 +800,58 @@
                 </tr>
                 <tr>
                     <td>Nam</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai1nam" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai2nam" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai3nam" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai4nam" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai5nam" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
 
                 <tr>
                     <td>Tỷ lệ %</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Nữ</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai1nu" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai2nu" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai3nu" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai4nu" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text" data-bind="value:loai5nu" style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Tỷ lệ %</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Tổng cộng</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
                 <tr>
                     <td>Tỷ lệ %</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
+                    <td><input type="text"  style="border: none;margin: 0px; padding: 0px;outline: 0px"></td>
                 </tr>
             </table>
         </div>
@@ -878,7 +861,9 @@
             <input type="text" class="input-phuluc2">/
             <input type="text" class="input-phuluc2">
         </div>
-
+        <div class="row col-md-12">
+                <div id="add_row10" class="mb-1"></div>
+            </div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee ">
             <table class="table table-bordered text-center">
 
@@ -910,23 +895,8 @@
                     <td>TS</td>
                     <td>Nữ</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Bệnh bụi phổi silic nghề nghiệp</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tbody data-bind="list:ketquakhamphathienbenhnghenghiepfield"></tbody>
 
-                </tr>
                 <tr>
                     <td></td>
                     <td>Tổng số</td>
