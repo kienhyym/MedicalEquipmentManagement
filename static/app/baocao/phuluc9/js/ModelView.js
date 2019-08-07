@@ -9,6 +9,7 @@ define(function (require) {
 	var PhanLoaiCoSoLaoDongTheoNganhNgheVaQuyMoItemView = require('app/baocao/phuluc9/js/PhanLoaiCoSoLaoDongTheoNganhNgheVaQuyMoView');
 	var PhanLoaiCoSoLaoDongCoYeuToCoHaiNguyHiemItemView = require('app/baocao/phuluc9/js/PhanLoaiCoSoLaoDongCoYeuToCoHaiNguyHiemView');
 	var KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocItemView = require('app/baocao/phuluc9/js/KetQuaQuanTracCacYeuToViKhiHauVaVatLyHoaHocView');
+	var KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongItemView = require('app/baocao/phuluc9/js/KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -137,6 +138,19 @@ define(function (require) {
 						command: "create"
 					}],
 					toolEl: "#add_row3"
+				},
+				{
+					field: "ketquaquantraccacyeutobuitrongmoitruonglaodongfield",
+					uicontrol: false,
+					itemView: KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDongItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row4"
 				},
 				{
 					field: "soyte",
