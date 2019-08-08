@@ -40,19 +40,13 @@
     "password": {
         "type": "string"
     },
-    "zalo_id": {
-        "type": "number"
-    },
     "salt": {
         "type": "string"
     },
     "type": {
         "type": "string"
     },
-    "captren_id": {
-        "type": "string"
-    },
-    "captren_name": {
+    "donvi_id": {
         "type": "string"
     },
     "description": {
@@ -62,7 +56,13 @@
         "type": "boolean",
         "default": true
     },
+    "donvi": {
+        "type": "dict"
+    },
     "roles": {
+        "type": "list"
+    },
+    "userconnectionchannels": {
         "type": "list"
     }
 }

@@ -4,15 +4,15 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
-	var template = require('text!app/baocao/phuluc3/tpl/model.html'),
-		schema = require('json!schema/HSCCTaiNanLaoDongTaiCoSoLaoDongSchema.json');
+	var template = require('text!app/baocao/phuluc11/tpl/model.html'),
+		schema = require('json!schema/BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBoSchema.json');
 
-	var ConnectionBangHoSoCapCuuItemView = require('app/baocao/phuluc3/js/BangHSCCTaiNanLaoDongTaiCoSoLaoDongView');
+	// var ConnectionBangHoSoCapCuuItemView = require('app/baocao/phuluc11/js/BangHSCCTaiNanLaoDongTaiCoSoLaoDongView');
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "hscctainanlaodongtaicosolaodong",
+		collectionName: "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo",
 		bindings: "data-bind",
 		state: null,
 		tools: [
@@ -97,59 +97,36 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
+				// {
+				// 	field: "banghscctainanlaodongtaicosolaodongfield",
+				// 	uicontrol: false,
+				// 	itemView: ConnectionBangHoSoCapCuuItemView,
+				// 	tools: [{
+				// 		name: "create",
+				// 		type: "button",
+				// 		buttonClass: "btn btn-outline-success btn-sm",
+				// 		label: "<span class='fa fa-plus'></span>",
+				// 		command: "create"
+				// 	}],
+				// 	toolEl: "#add_row"
+				// },
 				{
-					field: "banghscctainanlaodongtaicosolaodongfield",
-					uicontrol: false,
-					itemView: ConnectionBangHoSoCapCuuItemView,
-					tools: [{
-						name: "create",
-						type: "button",
-						buttonClass: "btn btn-outline-success btn-sm",
-						label: "<span class='fa fa-plus'></span>",
-						command: "create"
-					}],
-					toolEl: "#add_row"
-				},
-				{
-					field: "tencosolaodong",
+					field: "donvibaocao",
 					cssClass: false,
 				},
 				{
-					field: "nganhchuquan",
+					field: "so",
 					cssClass: false,
 				},
 				{
-					field: "diachi",
+					field: "bc",
 					cssClass: false,
 				},
 				{
-					field: "dienthoai",
+					field: "noivietbaocao",
 					cssClass: false,
 				},
-				{
-					field: "sofax",
-					cssClass: false,
-				},
-				{
-					field: "email",
-					cssClass: false,
-				},
-				{
-					field: "website",
-					cssClass: false,
-				},
-				{
-					field: "nguoilienhe",
-					cssClass: false,
-				},
-				{
-					field: "nguoilaphoso",
-					cssClass: false,
-				},
-				{
-					field: "nam",
-					cssClass: false,
-				},
+				
 
 			]
 		},

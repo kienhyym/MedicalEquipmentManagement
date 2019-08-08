@@ -4,20 +4,18 @@ define(function (require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
     var template = require('text!app/baocao/phuluc11/tpl/collection.html'),
-		schema = require('json!schema/HSCCTaiNanLaoDongTaiCoSoLaoDongSchema.json');
+		schema = require('json!schema/BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBoSchema.json');
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
-        collectionName: "hscctainanlaodongtaicosolaodong",
+        collectionName: "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo",
         uiControl:{
             fields: [
                 {
-                    field: "tencosolaodong", label: "Tên cơ sở lao động", width: 250, readonly: true,
+                    field: "donvibaocao", label: "đơn vị báo cáo", width: 250, readonly: true,
                 },
-                {
-                    field: "nganhchuquan", label: "Ngành chủ quản", width: 250, readonly: true,
-                },
+            
             ],
             onRowClick: function (event) {
                 if (event.rowId) {

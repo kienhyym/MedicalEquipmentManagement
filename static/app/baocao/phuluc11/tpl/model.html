@@ -1,6 +1,13 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
-
+            <div class="row">
+                    <div class="col-md-7">
+                        <h6 class="m-0">Thông tin chi tiết</h6>
+                    </div>
+                    <div class="col-md-5 text-right">
+                        <div block-bind="toolbar"></div>
+                    </div>
+                </div>
         <!-- Tiêu đê -->
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
@@ -11,7 +18,7 @@
                         </div>
                         <div class="flexboxer col-md-12 p-0  pl-3 pr-3"">
                             <label class=" stronger">Đơn vị báo cáo</label>
-                            <input type="text" class="input-phuluc2 stronger" style="flex-grow: 1">
+                            <input type="text" class="input-phuluc2 stronger" style="flex-grow: 1" data-bind="value:donvibaocao">
                         </div>
                         <label class="stronger mt-2">..................</label>
                     </td>
@@ -27,20 +34,20 @@
                             <div class="flexboxer  justify-content-center d-flex ">
 
                         <label>Số</label>
-                        <input type="text" class="input-phuluc2" style="width: 15%;">
+                        <input type="text" class="input-phuluc2" style="width: 15%;" data-bind="value:so">
                         <label>/BC</label>
-                        <input type="text" class="input-phuluc2" style="width: 15%;">
+                        <input type="text" class="input-phuluc2" style="width: 15%;" data-bind="value:bc">
                         </div>
                     </td>
                     <td>
                             <div class="flexboxer  justify-content-end d-flex ">
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:noivietbaocao">
                             <label>,ngày</label>
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:ngayvietbaocao">
                             <label>,tháng</label>
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:thangvietbaocao">
                             <label>,năm</label>
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" class="input-phuluc2" style="width: 8%;" data-bind="value:namvietbaocao">
                             </div>
                         </td>
                 </tr>
@@ -61,60 +68,60 @@
         <label>năm</label><input type="text" class="input-phuluc2" style="width: 5%">
         <label>Sở Y tế đã tiến hành công bố đủ điều kiện quan trắc môi trường lao động cho:</label> -->
         <label>ngày</label>
-        <input type="text" class="input-phuluc2" style="width: 5%;">
+        <input type="text" class="input-phuluc2" style="width: 5%;" data-bind="value:ngaytienhanh">
         <label>,tháng</label>
-        <input type="text" class="input-phuluc2" style="width: 5%;">
+        <input type="text" class="input-phuluc2" style="width: 5%;" data-bind="value:thangtienhanh">
         <label>,năm</label>
-        <input type="text" class="input-phuluc2" style="width: 5%;">
+        <input type="text" class="input-phuluc2" style="width: 5%;" data-bind="value:namtienhanh">
         <label>Sở Y tế đã tiến hành công bố đủ điều kiện quan trắc môi trường lao động cho:</label> 
         <div class="flexboxer col-md-12 p-0">
             <label>1. Tên tổ chức:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1" placeholder="                                   GHI CHỮ IN ĐẬM">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" placeholder="                                   GHI CHỮ IN ĐẬM" data-bind="value:tentochuc">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>2. Người đại diện:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:nguoidaidien">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>3. Địa chỉ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:diachi">
         </div>
 
         <div class="row col-md-12 p-0 m-0">
             <div class="flexboxer col-md-6 p-0">
                 <label>4.Số điện thoại: </label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:sodienthoai">
             </div>
             <div class="flexboxer col-md-6 p-0">
                 <label>Số_Fax: </label>
-                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1" data-bind="value:sofax">
             </div>
         </div>
         <div class="row col-md-12 p-0 m-0">
             <div class="flexboxer col-md-6 p-0">
                 <label>Địa chỉ E_mail: </label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:email">
             </div>
             <div class="flexboxer col-md-6 p-0">
                 <label>Web_site: </label>
-                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1" data-bind="value:website">
             </div>
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>5. Người chịu trách nhiệm về chuyên môn: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:nguoichiutrachnhiemchuyenmon">
         </div>
         <div class="row col-md-12 p-0 m-0">
             <div class="flexboxer col-md-6 p-0">
                 <label>Chức vụ: </label>
-                <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2" style="flex-grow: 1" data-bind="value:chucvunguoichiutrachnhiem">
             </div>
             <div class="flexboxer col-md-6 p-0">
                 <label>Số_điện_thoại: </label>
-                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1">
+                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1" data-bind="value:sodienthoainguoichiutrachnhiem">
             </div>
         </div>
         <!-- Hết nhập thông tin tổ chức -->

@@ -26,10 +26,16 @@ define(function (require) {
 			"$ref": "app/role/js/ModelView",
 		},
 		{
-			"collectionName": "role",
-			"route": "role/model(/:id)",
-			"$ref": "app/role/js/ModelView",
+			"collectionName": "donvi",
+			"route": "donvi/collection",
+			"$ref": "app/donvi/js/CollectionView",
 		},
+		{
+			"collectionName": "donvi",
+			"route": "donvi/model(/:id)",
+			"$ref": "app/donvi/js/ModelView",
+		},
+		
 
 
 		{
@@ -172,7 +178,14 @@ define(function (require) {
 		},
 		{
 
-			"route": "baocao/phuluc11/model",
+			"collectionName": "chungchidaotaovebaocaotochucdudieukienquantracmoitruonglaodongduoccongboquantracmoitruonglaodong",
+			"route": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo/collection",
+			"$ref": "app/baocao/phuluc11/js/CollectionView",
+		},
+		{
+
+			"collectionName": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo",
+			"route": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo/model(/:id)",
 			"$ref": "app/baocao/phuluc11/js/ModelView",
 		},
 		{

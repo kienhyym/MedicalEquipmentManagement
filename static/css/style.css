@@ -52,6 +52,9 @@ body {
 .table-bordered tr td input{
   text-align: center;
 }
+.table-bordered tr td{
+  padding: 5px;
+}
 
 
 

@@ -42,13 +42,34 @@ define(function (require) {
 			"icon": "fa fa-home",
 			"type": "view",
 			"collectionName": "role",
-			"route": "role/model",
+			"route": "role/model(/:id)",
 			"$ref": "app/role/js/ModelView",
 			"visible": function () {
 				return false;
 			}
 		},
-
+		{
+			"text": "Đơn vị",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "donvi",
+			"route": "donvi/collection",
+			"$ref": "app/donvi/js/CollectionView",
+			"visible": function () {
+				return true;
+			}
+		},
+		{
+			"text": "Đơn vị",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "donvi",
+			"route": "donvi/model(/:id)",
+			"$ref": "app/donvi/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
 		{
 			"text": "Danh mục",
 			"icon": "fa fa-home",
@@ -322,17 +343,31 @@ define(function (require) {
 						return false;
 					}
 				},
+				
+
 				{
 					"text": "Báo cáo tổ chức đủ điều kiện quan trắc môi trường lao động được công bố",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc11/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "chungchidaotaovebaocaotochucdudieukienquantracmoitruonglaodongduoccongboquantracmoitruonglaodong",
+					"route": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo/collection",
+					"$ref": "app/baocao/phuluc11/js/CollectionView",
 					"visible": function () {
 						return true;
 					}
+
 				},
+				{
+					"type": "view",
+					"collectionName": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo",
+					"route": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo/model(/:id)",
+					"$ref": "app/baocao/phuluc11/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+
+
 				{
 					"text": "Khung chương trình đào tạo quan trắc môi trường lao động, bênh nghề nghiệp",
 					"icon": "far fa-clipboard",
