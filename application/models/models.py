@@ -1491,11 +1491,121 @@ class DanhSachToChucHuanLuyenTrenDiaBan(CommonModel):
     baocaohoatdongytelaodong6thangnam = relationship('BaoCaoHoatDongYTeLaoDong6ThangNam') 
 
 
+#Hết Báo Cáo 1 Phụ Lục 10 
+##############################################################################
+##############################################################################
+##############################################################################
+#Báo Cáo 1 phụ lục 11
+# MẪU BÁO CÁO TỔ CHỨC ĐỦ ĐIỀU KIỆN QUAN TRẮC MÔI TRƯỜNG LAO ĐỘNG ĐÃ ĐƯỢC CÔNG BỐ
+class BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBo(CommonModel):
+    __tablename__ = 'baocaotochucdudieukienquantracmoitruonglaodongduoccongbo'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    donvibaocao = db.Column(String(255))
+    so = db.Column(String(255))
+    bc = db.Column(String(255))
+    noivietbaocao = db.Column(String(255))
+    ngayvietbaocao = db.Column(String(255))
+    thangvietbaocao = db.Column(String(255))
+    namvietbaocao = db.Column(String(255))
+    ngaytienhanh = db.Column(String(255))
+    thangtienhanh = db.Column(String(255))
+    namtienhanh = db.Column(String(255))
+    tentochuc = db.Column(String(255))
+    nguoidaidien = db.Column(String(255))
+    chucvu = db.Column(String(255))
+    diachi = db.Column(String(255))
+    sodienthoai = db.Column(String(255))
+    sofax = db.Column(String(255))
+    email = db.Column(String(255))
+    website = db.Column(String(255))
+    nguoichiutrachnhiemchuyenmon = db.Column(String(255))
+    chucvunguoichiutrachnhiem = db.Column(String(255))
+    sodienthoainguoichiutrachnhiem = db.Column(String(255))
+
+    yeutonhietdo = db.Column(db.Integer())
+    yeutodoam = db.Column(db.Integer())
+    yeutotocdogio = db.Column(db.Integer())
+    yeutobucxanhiet = db.Column(db.Integer())
+
+    yeutoanhsang = db.Column(db.Integer())
+    yeutotiengontheodaitan = db.Column(db.Integer())
+    yeutorungchuyentheodaitan = db.Column(db.Integer())
+    yeutovantocrungdunghoacngang = db.Column(db.Integer())
+    yeutophongxa = db.Column(db.Integer())
+    yeutodientutruongtansocongnghiep = db.Column(db.Integer())
+    yeutodientutruongtansocao = db.Column(db.Integer())
+    yeutobucxatungoai = db.Column(db.Integer())
+
+    yeutobuitoanphan = db.Column(db.Integer())
+    yeutobuihohap = db.Column(db.Integer())
+    yeutobuithongthuong = db.Column(db.Integer())
+    yeutobuisilic = db.Column(db.Integer())
+    yeutobuiamiang = db.Column(db.Integer())
+    yeutobuikimloai = db.Column(db.Integer())
+    yeutobuithan = db.Column(db.Integer())
+    yeutobuitalc = db.Column(db.Integer())
+    yeutobuibong = db.Column(db.Integer())
+ 
+    yeutothuyngan = db.Column(db.Integer())
+    yeutoasen = db.Column(db.Integer())
+    yeutooxitcacbon = db.Column(db.Integer())
+    yeutobenzen = db.Column(db.Integer())
+    yeutotnt = db.Column(db.Integer())
+    yeutonicotin = db.Column(db.Integer())
+    yeutohoachattrusau = db.Column(db.Integer())
+
+    danhgiaganhnangthankinhtamly = db.Column(db.Integer())
+    danhgiaecgonomy = db.Column(db.Integer())
+
+    yeutovisinhvat = db.Column(db.Integer())
+    yeutogaydiung = db.Column(db.Integer())
+    yeutodungmoi = db.Column(db.Integer())
+    yeutogayungthu = db.Column(db.Integer())
+
+
+    cacyeutovatlykhac_field = db.relationship('CacYeuToVatLyKhac', cascade="all, delete-orphan")
+    cacloaibuikhac_field = db.relationship('CacLoaiBuiKhac', cascade="all, delete-orphan")
+    cachoachatkhac_field = db.relationship('CacHoaChatKhac', cascade="all, delete-orphan")
+    cacyeutokhac_field = db.relationship('CacYeuToKhac', cascade="all, delete-orphan")
+
+
+
+class CacYeuToVatLyKhac(CommonModel):
+    __tablename__ = 'cacyeutovatlykhac'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    yeuto = db.Column(String(255))
+    baocaotochucdudieukienquantracmoitruonglaodongduoccongbo_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaotochucdudieukienquantracmoitruonglaodongduoccongbo.id'), nullable=True)
+    baocaotochucdudieukienquantracmoitruonglaodongduoccongbo = relationship('BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBo') 
+
+class CacLoaiBuiKhac(CommonModel):
+    __tablename__ = 'cacloaibuikhac'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    yeuto = db.Column(String(255))
+    baocaotochucdudieukienquantracmoitruonglaodongduoccongbo_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaotochucdudieukienquantracmoitruonglaodongduoccongbo.id'), nullable=True)
+    baocaotochucdudieukienquantracmoitruonglaodongduoccongbo = relationship('BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBo') 
+
+class CacHoaChatKhac(CommonModel):
+    __tablename__ = 'cachoachatkhac'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    yeuto = db.Column(String(255))
+    baocaotochucdudieukienquantracmoitruonglaodongduoccongbo_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaotochucdudieukienquantracmoitruonglaodongduoccongbo.id'), nullable=True)
+    baocaotochucdudieukienquantracmoitruonglaodongduoccongbo = relationship('BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBo') 
+class CacYeuToKhac(CommonModel):
+    __tablename__ = 'cacyeutokhac'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    yeuto = db.Column(String(255))
+    baocaotochucdudieukienquantracmoitruonglaodongduoccongbo_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaotochucdudieukienquantracmoitruonglaodongduoccongbo.id'), nullable=True)
+    baocaotochucdudieukienquantracmoitruonglaodongduoccongbo = relationship('BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBo') 
+#Hết Báo Cáo 1 Phụ Lục 11
+
+
+
+
 
 ##############################################################################
 ##############################################################################
 ##############################################################################
-# phụ lục 13
+#Báo Cáo 1 phụ lục 13
 class ChungChiDaoTaoVeQuanTracMoiTruongLaoDong(CommonModel):
     __tablename__ = 'chungchidaotaovequantracmoitruonglaodong'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -1520,3 +1630,4 @@ class ChungChiDaoTaoVeQuanTracMoiTruongLaoDong(CommonModel):
     ngayky = db.Column(String(255))
     thangky = db.Column(String(255))
     namky = db.Column(String(255))
+#Hết Báo Cáo 1 Phụ Lục 13

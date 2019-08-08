@@ -16,20 +16,27 @@ define(function (require) {
         foreignRemoteField: "id",
         foreignField: "hscctainanlaodongtaicosolaodong_id",
 
-        uiControl: {
-            fields: [
-                
-		            {field:"ngaythangnam", cssClass:false, textFormat :"DD/MM/YYYY", disabledComponentButton: true}
-                
-            ]
-        },
+        // uiControl: {
+        //     fields: [
+        //         {
+        //             field: "channelname",
+        //             uicontrol: "combobox",
+        //             dataSource: [
+        //                 { value: "phone_number", text: "Phone" },
+        //                 { value: "email", text: "Email" },
+        //                 { value: "zalo_id", text: "zalo ID" },
+        //                 { value: "somevabe_id", text: "Sổ mẹ và bé ID" },
+        //             ],
+        //             textField: "text",
+        //             valueField: "text"
+        //         },
+        //     ]
+        // },
         render: function () {
             var self = this;
             self.applyBindings();
             self.registerEvent();
             // self.model.set("id", gonrin.uuid())
-
-            console.log("item", self.model.toJSON());
         
         },
         registerEvent: function () {
