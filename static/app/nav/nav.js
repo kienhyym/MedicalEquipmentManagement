@@ -61,6 +61,7 @@ define(function (require) {
 			"entries": [
 				{
 					"text": "Quốc gia",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					"collectionName": "quocgia",
 					"route": "quocgia/collection",
@@ -72,6 +73,7 @@ define(function (require) {
 				},
 				{
 					"type": "view",
+					"icon": "far fa-clipboard",
 					"collectionName": "quocgia",
 					"route": "quocgia/model(/:id)",
 					"$ref": "app/DanhMuc/QuocGia/view/ModelView",
@@ -79,6 +81,7 @@ define(function (require) {
 				},
 				{
 					"text": "Tỉnh thành",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					"collectionName": "tinhthanh",
 					"route": "tinhthanh/collection",
@@ -89,6 +92,7 @@ define(function (require) {
 				},
 				{
 					"type": "view",
+					"icon": "far fa-clipboard",
 					"collectionName": "tinhthanh",
 					"route": "tinhthanh/model(/:id)",
 					"$ref": "app/DanhMuc/TinhThanh/view/ModelView",
@@ -96,6 +100,7 @@ define(function (require) {
 				},
 				{
 					"text": "Quận huyện",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					"collectionName": "quanhuyen",
 					"route": "quanhuyen/collection",
@@ -106,6 +111,7 @@ define(function (require) {
 				},
 				{
 					"type": "view",
+					"icon": "far fa-clipboard",
 					"collectionName": "quanhuyen",
 					"route": "quanhuyen/model(/:id)",
 					"$ref": "app/DanhMuc/QuanHuyen/view/ModelView",
@@ -113,6 +119,7 @@ define(function (require) {
 				},
 				{
 					"text": "Xã phường",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					"collectionName": "xaphuong",
 					"route": "xaphuong/collection",
@@ -123,6 +130,7 @@ define(function (require) {
 				},
 				{
 					"type": "view",
+					"icon": "far fa-clipboard",
 					"collectionName": "xaphuong",
 					"route": "xaphuong/model(/:id)",
 					"$ref": "app/DanhMuc/XaPhuong/view/ModelView",
@@ -132,7 +140,7 @@ define(function (require) {
 		},
 
 		{
-			"text": "Báo cáo",
+			"text": "Thông tư",
 			"icon": "fa fa-home",
 			"type": "category",
 
@@ -142,8 +150,8 @@ define(function (require) {
 			// },
 			"entries": [
 				{
-					"text": "phụ lục 1",
-					"icon": "fa fa-home",
+					"text": "Quy định về công trình vệ sinh phúc lợi tại nơi làm việc",	
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao/phuluc1/model",
@@ -153,9 +161,9 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 2",
+					"text": "Hồ sơ quản lý sức khỏe và bệnh tật người lao động",
 					"type": "view",
-					"icon": "fa fa-home",
+					"icon": "far fa-clipboard",
 					"collectionName": "hsqlsuckhoevabenhtatnguoilaodong",
 					"route": "hsqlsuckhoevabenhtatnguoilaodong/collection",
 					"$ref": "app/baocao/phuluc2/js/CollectionView",
@@ -175,9 +183,9 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 3",
+					"text": "Hồ sơ cấp cứu tai nạn lao động tại cơ sở lao động",
 					"type": "view",
-					"icon": "fa fa-home",
+					"icon": "far fa-clipboard",
 					"collectionName": "hscctainanlaodongtaicosolaodong",
 					"route": "hscctainanlaodongtaicosolaodong/collection",
 					"$ref": "app/baocao/phuluc3/js/CollectionView",
@@ -197,8 +205,8 @@ define(function (require) {
 				},
 
 				{
-					"text": "phụ lục 4",
-					"icon": "fa fa-home",
+					"text": "Quy định về túi sơ cứu tại nơi làm việc",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao/phuluc4/model",
@@ -208,8 +216,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 5",
-					"icon": "fa fa-home",
+					"text": "Danh mục trang thiết bị của khu vực sơ cứu, cấp cứu",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao/phuluc5/model",
@@ -219,8 +227,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 6",
-					"icon": "fa fa-home",
+					"text": "Nội dung và thời gian huấn luyện về sơ cứu tại cơ sở lao động",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao/phuluc6/model",
@@ -229,10 +237,11 @@ define(function (require) {
 						return true;
 					}
 				},
+
 				{
-					"text": "phụ lục 7",
+					"text": "Sổ theo dõi công tác huấn luyện sơ cứu, cấp cứu tại nơi làm việc",
 					"type": "view",
-					"icon": "fa fa-home",
+					"icon": "far fa-clipboard",
 					"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",
 					"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/collection",
 					"$ref": "app/baocao/phuluc7/js/CollectionView",
@@ -251,9 +260,9 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 8",
+					"text": "Báo cáo y tế lao động của cơ sở lao động",
 					"type": "view",
-					"icon": "fa fa-home",
+					"icon": "far fa-clipboard",
 					"collectionName": "baocaoytelaodongcuacosolaodong",
 					"route": "baocaoytelaodongcuacosolaodong/collection",
 					"$ref": "app/baocao/phuluc8/js/CollectionView",
@@ -272,9 +281,9 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 9",
+					"text": "Báo cáo hoạt động y tế lao động 6 tháng/năm tuyến huyện",
 					"type": "view",
-					"icon": "fa fa-home",
+					"icon": "far fa-clipboard",
 					"collectionName": "baocaohoatdongytelaodong6thangnamtuyenhuyen",
 					"route": "baocaohoatdongytelaodong6thangnamtuyenhuyen/collection",
 					"$ref": "app/baocao/phuluc9/js/CollectionView",
@@ -293,9 +302,9 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 10",
+					"text": "Báo cáo hoạt động y tế lao động 6 tháng/năm tuyến tỉnh",
 					"type": "view",
-					"icon": "fa fa-home",
+					"icon": "far fa-clipboard",
 					"collectionName": "baocaohoatdongytelaodong6thangnam",
 					"route": "baocaohoatdongytelaodong6thangnam/collection",
 					"$ref": "app/baocao/phuluc10/js/CollectionView",
@@ -314,8 +323,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 11",
-					"icon": "fa fa-home",
+					"text": "Báo cáo tổ chức đủ điều kiện quan trắc môi trường lao động được công bố",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao/phuluc11/model",
@@ -325,8 +334,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 12",
-					"icon": "fa fa-home",
+					"text": "Khung chương trình đào tạo quan trắc môi trường lao động, bênh nghề nghiệp",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao/phuluc12/model",
@@ -336,9 +345,9 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phụ lục 13",
+					"text": "Giấy chứng chỉ đào tạo về quan trắc môi trường lao động",
 					"type": "view",
-					"icon": "fa fa-home",
+					"icon": "far fa-clipboard",
 					"collectionName": "chungchidaotaovequantracmoitruonglaodong",
 					"route": "chungchidaotaovequantracmoitruonglaodong/collection",
 					"$ref": "app/baocao/phuluc13/js/CollectionView",
@@ -359,14 +368,14 @@ define(function (require) {
 			]
 		},
 		{
-			"text": "Báo cáo 2",
+			"text": "Thông tư hướng dẫn",
 			"icon": "fa fa-home",
 			"type": "category",
 
 			"entries": [
-				{
-					"text": "SỔ KHÁM SỨC KHỎE ĐỊNH KỲ CỦA NGƯỜI LÁI XE Ô TÔ",
-					"icon": "fa fa-home",
+				{ 
+					"text": "Sổ khám sức khỏe định kỳ của người lái xe ô tô",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc21/model",
@@ -376,8 +385,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 1",
-					"icon": "fa fa-home",
+					"text": "Giấy giới thiệu",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc1/model",
@@ -387,8 +396,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 2",
-					"icon": "fa fa-home",
+					"text": "Phiếu khám sức khỏe trước khi bố trí làm việc",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc2/model",
@@ -398,8 +407,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 3",
-					"icon": "fa fa-home",
+					"text": "Sổ khám sức khỏe phát hiện bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc3/model",
@@ -409,8 +418,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 4",
-					"icon": "fa fa-home",
+					"text": "Nội dung khám chuyên khoa phát hiện bệnh nghề nghiệp trong danh mục bệnh nghề nghiệp được bảo hiểm",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc4/model",
@@ -420,8 +429,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 5",
-					"icon": "fa fa-home",
+					"text": "Biên bản xác nhận tiếp xúc với yếu tố có hại gây bệnh nghề nghiệp cấp tính",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc5/model",
@@ -431,8 +440,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 6",
-					"icon": "fa fa-home",
+					"text": "Thời gian và nội dung khám định kỳ cho người lao động mắc bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc6/model",
@@ -442,8 +451,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 7",
-					"icon": "fa fa-home",
+					"text": "Hồ sơ bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc7/model",
@@ -453,8 +462,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 8",
-					"icon": "fa fa-home",
+					"text": "Biên bản hội chấn bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc8/model",
@@ -464,8 +473,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 9",
-					"icon": "fa fa-home",
+					"text": "Báo cáo trường hợp người lao động mắc bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc9/model",
@@ -475,8 +484,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 10",
-					"icon": "fa fa-home",
+					"text": "Tổng hợp kết quả khám sức khỏe phát hiện bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc10/model",
@@ -486,8 +495,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 11",
-					"icon": "fa fa-home",
+					"text": "Tổng hợp kết quả khám định kỳ người mắc bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc11/model",
@@ -497,8 +506,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "phục luc 12",
-					"icon": "fa fa-home",
+					"text": "Báo cáo danh sách các cơ sở lao động có người lao động mắc bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
 					"route": "baocao2/phuluc12/model",
