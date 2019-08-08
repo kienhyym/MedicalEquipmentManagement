@@ -16,13 +16,6 @@ define(function (require) {
         foreignRemoteField: "id",
         foreignField: "hscctainanlaodongtaicosolaodong_id",
 
-        uiControl: {
-            fields: [
-                
-		            {field:"ngaythangnam", cssClass:false, textFormat :"DD/MM/YYYY", disabledComponentButton: true}
-                
-            ]
-        },
         render: function () {
             var self = this;
             self.applyBindings();

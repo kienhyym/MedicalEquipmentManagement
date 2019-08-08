@@ -31,11 +31,7 @@ body {
   padding-top: 5px;
   margin:  0px;
 }
-.tablee tr td{
-padding: 5px;
-color: rgb(70, 70, 70);
-font-family: Arial, Helvetica, sans-serif;
-}
+
 
 #cardbody{
   position: relative;
@@ -53,6 +49,9 @@ font-family: Arial, Helvetica, sans-serif;
 }
 
 
+.table-bordered tr td input{
+  text-align: center;
+}
 
 
 

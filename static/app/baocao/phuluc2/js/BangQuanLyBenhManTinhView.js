@@ -16,46 +16,7 @@ define(function (require) {
         foreignRemoteField: "id",
         foreignField: "hsqlsuckhoevabenhtatnguoilaodong_id",
 
-        uiControl: {
-            fields: [
-                {
-					field: "phanxuongkhuvuc",
-					cssClass: false,
-                },
-                {
-					field: "tenbenhnhan",
-					cssClass: false,
-                },
-                {
-					field: "tenbenh",
-					cssClass: false,
-                },
-                {
-					field: "tuoinam",
-					cssClass: false,
-                },
-                {
-					field: "tuoinu",
-					cssClass: false,
-                },
-                {
-					field: "tuoinghe",
-					cssClass: false,
-                },
-                {
-					field: "phuongphapdieutri",
-					cssClass: false,
-                },
-                {
-					field: "tinhtrang",
-					cssClass: false,
-                },
-                {
-					field: "luuykhibotricongviec",
-					cssClass: false,
-                },
-            ]
-        },
+    
         render: function () {
             var self = this;            
             self.applyBindings();
