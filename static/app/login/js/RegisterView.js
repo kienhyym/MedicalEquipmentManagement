@@ -68,13 +68,11 @@ define(function (require) {
                 $.ajax({
                     method: "POST",
                     url:self.getApp().serviceURL + "/api/v1/register",
-                    // url: "http://0.0.0.0:9080/api/v1/register",
                     data: JSON.stringify({
                         email: self.$el.find("#txtemail").val(),
                         name: self.$el.find("#txtname").val(),
                         phone_number: self.$el.find("#txtphone").val(),
                         password: self.$el.find("#txtpass").val()
-                        
                     }), 
                     success: function (response) {
                         if (response) {
@@ -82,7 +80,6 @@ define(function (require) {
 							self.getApp().notify("Đăng ký thành công");
                             self.getApp().getRouter().navigate("login");
                         }
-                       
                     }, error: function (xhr) {
                         console.log('xhr',xhr);
 						// toastr.error(xhr.responseJSON.message);

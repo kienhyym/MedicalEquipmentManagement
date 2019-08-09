@@ -54,26 +54,71 @@ async def logout(request):
     return json({})
 
 
-
 @app.route('/api/v1/login', methods=['POST'])
 async def login(request):
     data = request.json
+    print("==================data", data)
     username = data['username']
     password = data['password']
     print("==================USER NAME", username)
     print("==================PASSWORD", password)
     user = db.session.query(User).filter(or_(User.email == username, User.phone_number == username)).first()
+
+
     print("==================", user)
     if (user is not None) and auth.verify_password(password, user.password):
+        
         auth.login_user(request, user)
         result = user_to_dict(user)
-        print("-----------------------", result)
         return json(result)
+        
     return json({"error_code":"LOGIN_FAILED","error_message":"Tài khoản hoặc mật khẩu không đúng"}, status=520)
 
+@app.route('/api/v1/changepassword', methods=['POST'])
+async def changepassword(request):
+    data = request.json
+    print("==================data", data)
+    password_old = data['password_old']
+    password_new = data['password_new']
+    current_uid = data['user_id']
+
+    print("==================PASSWORD_OLD", password_old)
+    print("==================PASSWORD_NEW", password_new)
+    print("===================current_uid============", current_uid)
+    user = db.session.query(User).filter(or_(User.id == current_uid)).first()
+
+    if current_uid and password_new is not None and auth.verify_password(password_old, user.password):
+        print("==============USER INFO", auth.verify_password(password_old, user.password))
+
+        user_info = db.session.query(User).filter(User.id == current_uid).first()
+        print("==============USER INFO", user_info)
+        if user_info is not None:
+            user_info.password = auth.encrypt_password(password_new)
+
+            db.session.commit()
+            return json({})
+# @app.route('/api/v1/changepassword', methods=['POST'])
+# async def changepassword(request):
+#     data = request.json
+#     print("==================data", data)
+#     password = data.get('password', None)
+#     current_uid = auth.current_user(request)
+#     user_id = data['user_id']
+#     password2 = data['password']
+#     print("==================PASSWORD", password)
+#     print("===================current_uid============", current_uid)
+#     print("===================user_id============", user_id)
+#     print("===================password2============", password2)
 
 
+#     if current_uid and password is not None:
+#         user_info = db.session.query(User).filter(User.id == current_uid).first()
+#         print("==============USER INFO", user_info)
+#         if user_info is not None:
+#             user_info.password = auth.encrypt_password(password)
 
+#             db.session.commit()
+#             return json({})
 
 @app.route('/api/v1/register', methods=["POST"])
 def register(request):
@@ -85,8 +130,6 @@ def register(request):
             "error_code": "USER_EXISTED",
             "error_message": "Email hoặc phone đã tồn tại"
             }, status = 520)
-
-
     else:
         new_user = User()
         new_user.name = data["name"]
@@ -94,11 +137,16 @@ def register(request):
         new_user.phone_number = data["phone_number"]
         # new_user.user_image = data["user_image"]
         new_user.password = auth.encrypt_password(data["password"])
-
+        # new_user.password = data["password"]
         db.session.add(new_user)
         db.session.commit()
         result = user_to_dict(new_user)
         return json(result)
+
+
+
+
+
 
 
 
@@ -143,7 +191,7 @@ async def preput_user(request=None, data=None, Model=None, **kw):
     if user is None:
         return json({"error_code":"NOT_FOUND","error_message":"Không tìm thấy tài khoản người dùng"}, status=520)
 
-    if currentUser.has_role("CucTruong") or str(currentUser.id) == data['id']:
+    if currentUser.has_role("Giám Đốc") or str(currentUser.id) == data['id']:
         password = data['password']
         data['password'] = auth.encrypt_password(password, user.salt)
     else:
@@ -153,16 +201,16 @@ async def predelete_user(request=None, data=None, Model=None, **kw):
     currentUser = await current_user(request)
     if (currentUser is None):
         return json({"error_code":"SESSION_EXPIRED","error_message":"Hết phiên làm việc, vui lòng đăng nhập lại!"}, status=520)
-    if currentUser.has_role("CucTruong") == False:
+    if currentUser.has_role("Giám Đốc") == False:
         return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
 
 
 sqlapimanager.create_api(User, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func, prepost_user], PUT_SINGLE=[auth_func, preput_user], DELETE=[predelete_user]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    exclude_columns= ["password","salt","active"],
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func, prepost_user], PUT_SINGLE=[auth_func, preput_user], DELETE=[predelete_user]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    # exclude_columns= ["password","salt","active"],
     collection_name='user')
 
 sqlapimanager.create_api(Role, max_results_per_page=1000000,

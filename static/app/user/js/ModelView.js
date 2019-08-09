@@ -9,7 +9,7 @@ define(function (require) {
 	var RoleSelectView = require('app/role/js/SelectView');
 	var DonViSelectView = require('app/donvi/js/SelectView');
 
-	var ConnectionChannelItemView = require('app/user/js/ConnectionChannelItemView');
+	// var ConnectionChannelItemView = require('app/user/js/ConnectionChannelItemView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -41,7 +41,7 @@ define(function (require) {
 						label: "TRANSLATE:SAVE",
 						command: function () {
 							var self = this;
-							console.log(self.model.get("password"));
+							console.log(self.model.get("name"));
 
 							self.hasPassword();
 
@@ -127,21 +127,31 @@ define(function (require) {
 					foreignField: "donvi_id",
 					dataSource: DonViSelectView
 				},
-
 				{
-					field: "userconnectionchannels",
-					uicontrol: false,
-					itemView: ConnectionChannelItemView,
-
-					tools: [{
-						name: "create",
-						type: "button",
-						buttonClass: "btn btn-outline-success btn-sm",
-						label: "<span class='fa fa-plus'></span>",
-						command: "create"
-					}],
-					toolEl: "#add_connection_channel"
+					field: "test",
+					Url: "https://api.imgur.com/3/image",
+					color: "Bule",
+					view_link: true,
+					width: 300
+					/* upload: function(){
+						alert('options');
+					}*/
 				},
+
+				// {
+				// 	field: "userconnectionchannels",
+				// 	uicontrol: false,
+				// 	itemView: ConnectionChannelItemView,
+
+				// 	tools: [{
+				// 		name: "create",
+				// 		type: "button",
+				// 		buttonClass: "btn btn-outline-success btn-sm",
+				// 		label: "<span class='fa fa-plus'></span>",
+				// 		command: "create"
+				// 	}],
+				// 	toolEl: "#add_connection_channel"
+				// },
 			]
 		},
 

@@ -20,6 +20,11 @@ define(function(require) {
             $("#register-btn").unbind('click').bind('click', function(){
                 self.getApp().getRouter().navigate("register");
             });
+            $("#forgot-btn").unbind('click').bind('click', function(){
+                self.getApp().getRouter().navigate("forgot");
+        	});
+         
+
             return this;
         },
         processLogin: function() {
@@ -36,7 +41,7 @@ define(function(require) {
                 type: 'post',
                 data: data,
                 success: function(response) {
-                    console.log(self.getApp().serviceURL );
+                    console.log("a>>>>>>>>>>>>>>>>>>>>>>",self.getApp() );
                     self.getApp().postLogin(response);
                 },
                 error: function(xhr) {
