@@ -2,7 +2,35 @@ body {
   font-size: .875rem;
 }
 
+.date-group{
+  position: relative;
+}
+.input-group-append{
+  position: absolute;
+  top: 0px;
+  width: 100%;
 
+}
+.input-group-addon{
+  width: 100%;
+  opacity: 0;
+  outline: 0px;
+  border-radius: 0px;
+  
+}
+.dropdown-menu{
+  z-index:99999;
+  position: fixed;
+  top: 150px;
+  left: 150px;
+
+}
+.datetimepicker-input{
+  border-radius: 0px;
+  width: 30%;
+  font-size: 14px;
+  padding-bottom: 0px;
+}
 
 .list-unstyled {
   list-style-type: none;

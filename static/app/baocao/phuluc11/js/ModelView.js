@@ -111,7 +111,598 @@ define(function (require) {
 				// 	toolEl: "#add_row"
 				// },
 				{
+					field: "yeutonhietdo",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+
+				{
+					field: "yeutodoam",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+
+				{
+					field: "yeutotocdogio",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobucxanhiet",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+
+
+
+				{
+					field: "yeutoanhsang",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutotiengontheodaitan",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutorungchuyentheodaitan",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutovantocrungdunghoacngang",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutophongxa",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutodientutruongtansocongnghiep",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutodientutruongtansocao",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobucxatungoai",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+
+
+
+
+				{
+					field: "yeutobuitoanphan",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobuihohap",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobuithongthuong",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobuisilic",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobuiamiang",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobuikimloai",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobuithan",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobuitalc",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+{
+					field: "yeutobuibong",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+
+
+				{
+					field: "yeutothuyngan",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutoasen",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+{
+					field: "yeutooxitcacbon",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutobenzen",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutotnt",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+
+				{
+					field: "yeutonicotin",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutohoachattrusau",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "danhgiaganhnangthankinhtamly",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "danhgiaecgonomy",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutovisinhvat",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutogaydiung",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutodungmoi",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
+					field: "yeutogayungthu",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				
+				{
 					field: "donvibaocao",
+					cssClass: false,
+				},
+				{
+					field: "thoigianvietbaocao",
 					cssClass: false,
 				},
 				{
@@ -126,7 +717,80 @@ define(function (require) {
 					field: "noivietbaocao",
 					cssClass: false,
 				},
-				
+				{
+					field: "ngayvietbaocao",
+					cssClass: false,
+				},
+				{
+					field: "thangvietbaocao",
+					cssClass: false,
+				},
+				{
+					field: "namvietbaocao",
+					cssClass: false,
+				},
+				{
+					field: "ngaytienhanh",
+					cssClass: false,
+				},
+				{
+					field: "thangtienhanh",
+					cssClass: false,
+				},
+				{
+					field: "namtienhanh",
+					cssClass: false,
+				},
+				{
+					field: "tentochuc",
+					cssClass: false,
+				},
+				{
+					field: "nguoidaidien",
+					cssClass: false,
+				},{
+					field: "chucvu",
+					cssClass: false,
+				},
+				{
+					field: "so",
+					cssClass: false,
+				},
+				{
+					field: "diachi",
+					cssClass: false,
+				},
+				{
+					field: "sodienthoai",
+					cssClass: false,
+				},
+				{
+					field: "sofax",
+					cssClass: false,
+				},
+				{
+					field: "email",
+					cssClass: false,
+				},
+				{
+					field: "website",
+					cssClass: false,
+				},
+				{
+					field: "nguoichiutrachnhiemchuyenmon",
+					cssClass: false,
+				},
+				{
+					field: "chucvunguoichiutrachnhiem",
+					cssClass: false,
+				},
+
+				{
+					field: "sodienthoainguoichiutrachnhiem",
+					cssClass: false,
+				},
+
+
 
 			]
 		},

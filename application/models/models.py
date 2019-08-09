@@ -1548,6 +1548,7 @@ class BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBo(CommonModel):
     ngayvietbaocao = db.Column(String(255))
     thangvietbaocao = db.Column(String(255))
     namvietbaocao = db.Column(String(255))
+    thoigianvietbaocao = db.Column(db.DateTime())
     ngaytienhanh = db.Column(String(255))
     thangtienhanh = db.Column(String(255))
     namtienhanh = db.Column(String(255))

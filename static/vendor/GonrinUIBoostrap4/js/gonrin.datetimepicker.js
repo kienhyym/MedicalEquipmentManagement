@@ -319,7 +319,7 @@
                     toolbar = $('<li>').addClass('picker-switch' + (options.collapse ? ' accordion-toggle' : '')).append(getToolbar());
 
                 if (options.inline) {
-                    template.removeClass('dropdown-menu');
+                    template.removeClass('dropdown-menu')
                 }
 
                 if (use24Hours) {
@@ -2397,7 +2397,7 @@
             if (parentEl.is('div') && parentEl.hasClass('date-group')) {
                 inputGroupSpan = parentEl;
             } else {
-                element.wrap('<div class="input-group date-group"></div>');
+                element.wrap('<div class="input-group date-group "></div>');
                 inputGroupSpan = element.parent();
             }
 
@@ -2405,7 +2405,8 @@
             var componentButton = element.nextAll('span:first');
 
             if ((componentButton.length == 0) || !($(componentButton[0]).hasClass('input-group-append'))) {
-                componentButton = $('<span class="input-group-append">').html('<span class="btn btn-outline-secondary input-group-addon"><i class="fa fa-calendar"></i></span>');
+                componentButton = $('<span class="input-group-append">').html('<span class="btn btn-outline-secondary input-group-addon">&nbsp;</span>');  
+                // <i class="fa fa-calendar"></i>
                 inputGroupSpan.append(componentButton);
             }
 

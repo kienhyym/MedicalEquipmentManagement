@@ -128,14 +128,11 @@ define(function (require) {
 					dataSource: DonViSelectView
 				},
 				{
-					field: "test",
-					Url: "https://api.imgur.com/3/image",
-					color: "Bule",
-					view_link: true,
-					width: 300
-					/* upload: function(){
-						alert('options');
-					}*/
+					field: "type",
+					uicontrol: "imagelink",
+					service: {
+						url: "https://upstart.vn/services/api/image/upload?path=test"
+					}
 				},
 
 				// {

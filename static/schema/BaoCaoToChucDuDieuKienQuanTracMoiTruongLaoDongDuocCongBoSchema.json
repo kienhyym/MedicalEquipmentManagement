@@ -53,6 +53,9 @@
         "type": "string",
         "length": 255
     },
+    "thoigianvietbaocao": {
+        "type": "datetime"
+    },
     "ngaytienhanh": {
         "type": "string",
         "length": 255

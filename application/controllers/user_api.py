@@ -205,6 +205,7 @@ async def predelete_user(request=None, data=None, Model=None, **kw):
         return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
 
 
+
 sqlapimanager.create_api(User, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
