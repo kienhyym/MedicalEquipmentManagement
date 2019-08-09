@@ -62,10 +62,7 @@
 
 
                         <!-- Nhập thông tin tổ chức -->
-                        <!-- <label> Ngày</label> <input type="text" class="input-phuluc2" style="width: 5%">
-        <label>tháng</label><input type="text" class="input-phuluc2" style="width: 5%">
-        <label>năm</label><input type="text" class="input-phuluc2" style="width: 5%">
-        <label>Sở Y tế đã tiến hành công bố đủ điều kiện quan trắc môi trường lao động cho:</label> -->
+
                         <label>ngày</label>
                         <input type="text" class="input-phuluc2" style="width: 5%;" data-bind="value:ngaytienhanh">
                         <label>,tháng</label>
@@ -200,10 +197,13 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="flexboxer col-md-12 p-0">
-                            <label>- Các yếu tố vật lý khác (ghi rõ) </label>
-                            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                        <div class="row col-md-12 flexboxer">
+                                <label>- &nbsp;</label>
+                                <div id="add_row" class="mb-1"></div>
+                                <label> &nbsp;Các yếu tố vật lý khác (ghi rõ) </label>   
                         </div>
+                        <div data-bind="list:cacyeutovatlykhac_field"></div>
+                        <br>
                         <label>6.3 Yếu tố bụi các loại:</label>
                         <div
                             class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
@@ -246,10 +246,15 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="flexboxer col-md-12 p-0">
-                            <label>- Các loại bụi khác (ghi rõ) </label>
-                            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                        
+                        <div class="row col-md-12 flexboxer">
+                                <label>- &nbsp;</label>
+                                <div id="add_row2" class="mb-1"></div>
+                                <label> &nbsp;Các loại bụi khác (ghi rõ) </label>    
                         </div>
+                        <div data-bind="list:cacloaibuikhac_field"></div>
+                        <br>
+                        
                         <label>6.4. Yếu tố hơi khí độc (Liệt kê ghi rõ theo các yếu tố có giới hạn cho phép theo quy
                             chuẩn vệ sinh lao
                             động) như:</label>
@@ -286,11 +291,15 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="flexboxer col-md-12 p-0">
-                            <label>- Các hóa chất khác (Ghi rõ) </label>
-                            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                    
+                        <div class="row col-md-12 flexboxer">
+                                <label>- &nbsp;</label>
+                                <div id="add_row3" class="mb-1"></div>
+                                <label> &nbsp;Các hóa chất khác (Ghi rõ) </label>                              
                         </div>
-
+                        <div data-bind="list:cachoachatkhac_field"></div>
+                        <br>
+                    
                         <label>6.5. Yếu tố tâm sinh lý và ec-gô-nô-my</label>
                         <div
                             class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
@@ -328,23 +337,18 @@
                                 </tr>
                             </table>
                         </div>
-                        <label>6.7. Các yếu tố khác (Liệt kê rõ)</label>
-                        <div class="flexboxer col-md-12 p-0">
-                            <label>- </label>
-                            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+                        
+                        <div class="row col-md-12 flexboxer">
+                                <label>- &nbsp;</label>
+                                <div id="add_row4" class="mb-1"></div>
+                                <label> &nbsp;6.7. Các yếu tố khác (Liệt kê rõ) </label>
                         </div>
-                        <div class="flexboxer col-md-12 p-0">
-                            <label>- </label>
-                            <input type="text" class="input-phuluc2" style="flex-grow: 1">
-                        </div>
-                        <div class="flexboxer col-md-12 p-0">
-                            <label>- </label>
-                            <input type="text" class="input-phuluc2" style="flex-grow: 1">
-                        </div>
+                        <div data-bind="list:cacyeutokhac_field"></div>
+
                         <!-- Hết nhập dữ liệu bảng  -->
 
                         <!-- Ký đóng dấu -->
-                        <br>
+                    
                         <br>
                         <div class="row col-md-12 justify-content-center d-flex m-0 p-0">
                             <div class="border w-50 ">

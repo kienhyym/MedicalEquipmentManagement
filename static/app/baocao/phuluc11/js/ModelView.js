@@ -7,7 +7,12 @@ define(function (require) {
 	var template = require('text!app/baocao/phuluc11/tpl/model.html'),
 		schema = require('json!schema/BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBoSchema.json');
 
-	// var ConnectionBangHoSoCapCuuItemView = require('app/baocao/phuluc11/js/BangHSCCTaiNanLaoDongTaiCoSoLaoDongView');
+	var CacYeuToVatLyKhac_ItemView = require('app/baocao/phuluc11/js/CacYeuToVatLyKhacView');
+	var CacLoaiBuiKhac_ItemView = require('app/baocao/phuluc11/js/CacLoaiBuiKhacView');
+	var CacHoaChatKhac_ItemView = require('app/baocao/phuluc11/js/CacHoaChatKhacView');
+	var CacYeuToKhac_ItemView = require('app/baocao/phuluc11/js/CacYeuToKhacView');
+
+
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
@@ -97,19 +102,58 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-				// {
-				// 	field: "banghscctainanlaodongtaicosolaodongfield",
-				// 	uicontrol: false,
-				// 	itemView: ConnectionBangHoSoCapCuuItemView,
-				// 	tools: [{
-				// 		name: "create",
-				// 		type: "button",
-				// 		buttonClass: "btn btn-outline-success btn-sm",
-				// 		label: "<span class='fa fa-plus'></span>",
-				// 		command: "create"
-				// 	}],
-				// 	toolEl: "#add_row"
-				// },
+				{
+					field: "cacyeutovatlykhac_field",
+					uicontrol: false,
+					itemView: CacYeuToVatLyKhac_ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row"
+				},
+				{
+					field: "cacloaibuikhac_field",
+					uicontrol: false,
+					itemView: CacLoaiBuiKhac_ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row2"
+				},
+				{
+					field: "cachoachatkhac_field",
+					uicontrol: false,
+					itemView: CacHoaChatKhac_ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row3"
+				},
+				{
+					field: "cacyeutokhac_field",
+					uicontrol: false,
+					itemView: CacYeuToKhac_ItemView,
+					tools: [{
+						name: "create",
+						type: "button",
+						buttonClass: "btn btn-outline-success btn-sm",
+						label: "<span class='fa fa-plus'></span>",
+						command: "create"
+					}],
+					toolEl: "#add_row4"
+				},
 				{
 					field: "yeutonhietdo",
 
