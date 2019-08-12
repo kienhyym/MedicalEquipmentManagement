@@ -10,19 +10,19 @@ from PIL import Image
 import time
 import random, string
 import aiofiles
-import cv2
+# import cv2
 
     
-@app.route('/api/v1/upload/image', methods=['GET'])
-def save_file_image(request):
-    data = request.json
-    # if data is not None:
+# @app.route('/api/v1/upload/image', methods=['GET'])
+# def save_file_image(request):
+#     data = request.json
+#     # if data is not None:
 
-    image = cv2.imread('/home/kien/Documents/workspace/SoLaoDong/repo/static/img/backgroun.jpg')
-    image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    cv2.imwrite('/home/kien/Documents/workspace/SoLaoDong/repo/static/img/test01.jpg', image_gray) 
+#     image = cv2.imread('/home/kien/Documents/workspace/SoLaoDong/repo/static/img/backgroun.jpg')
+#     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+#     cv2.imwrite('/home/kien/Documents/workspace/SoLaoDong/repo/static/img/test01.jpg', image_gray) 
 
-    return json({})
+#     return json({})
 
 
 
