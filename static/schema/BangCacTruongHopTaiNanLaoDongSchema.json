@@ -63,8 +63,5 @@
     },
     "hsqlsuckhoevabenhtatnguoilaodong_id": {
         "type": "string"
-    },
-    "hsqlsuckhoevabenhtatnguoilaodong": {
-        "type": "dict"
     }
 }

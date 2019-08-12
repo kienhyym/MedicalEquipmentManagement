@@ -10,6 +10,7 @@ from application.models.models import *
 import random, string
 
 
+
 async def get_user_with_permission(user):
     user_info = to_dict(user)
     roles = [{"id":str(role.id),"description":role.description,"role_name":role.name} for role in user.roles]

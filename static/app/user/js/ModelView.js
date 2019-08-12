@@ -160,7 +160,8 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
-						
+						self.uploadFile();
+
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
@@ -168,6 +169,7 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
+				self.uploadFile();
 			}
 		},
 
@@ -176,6 +178,30 @@ define(function (require) {
 			var hasPassword = self.model.get("password");
 			console.log(hasPassword);
 			self.model.set("password", hasPassword);
+		},
+
+		uploadFile: function () {
+			var self = this;
+
+
+			self.$el.find("input[name=file1]").change(function () {
+				var filesName = [];
+				for (var i = 0; i < $(this).get(0).files.length; ++i) {
+					filesName.push($(this).get(0).files[i].name);
+				}
+				console.log("filesName", filesName);
+			});
+
+			$.ajax({
+				type: "GET",
+				url: self.getApp().serviceURL + "/api/v1/upload/image",
+				success: (response) => {
+					console.log("response", response)
+				}, error: (err) => {
+					console.log("err", err)
+				}
+			})
+
 		}
 	});
 });

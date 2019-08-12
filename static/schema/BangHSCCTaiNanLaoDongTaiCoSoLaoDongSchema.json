@@ -67,8 +67,5 @@
     },
     "hscctainanlaodongtaicosolaodong_id": {
         "type": "string"
-    },
-    "hscctainanlaodongtaicosolaodong": {
-        "type": "dict"
     }
 }

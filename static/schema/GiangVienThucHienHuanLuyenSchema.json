@@ -31,8 +31,5 @@
     },
     "sotheodoicongtachuanluyensocuucapcuutainoilamviec_id": {
         "type": "string"
-    },
-    "sotheodoicongtachuanluyensocuucapcuutainoilamviec": {
-        "type": "dict"
     }
 }

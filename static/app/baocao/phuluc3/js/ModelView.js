@@ -174,7 +174,7 @@ define(function (require) {
 			}
 		},
 		registerEvent: function () {
-			this.sothutu();
+			//this.sothutu();
 		},
 	
 		sothutu: function () {

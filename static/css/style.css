@@ -5,12 +5,7 @@ body {
 .date-group{
   position: relative;
 }
-.input-group-append{
-  position: absolute;
-  top: 0px;
-  width: 100%;
 
-}
 .input-group-addon{
   width: 100%;
   opacity: 0;

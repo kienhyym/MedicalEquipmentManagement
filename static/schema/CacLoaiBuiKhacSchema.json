@@ -31,8 +31,5 @@
     },
     "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo_id": {
         "type": "string"
-    },
-    "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo": {
-        "type": "dict"
     }
 }

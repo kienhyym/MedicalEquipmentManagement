@@ -20,7 +20,10 @@ define(function (require) {
             var self = this;
             self.applyBindings();
             self.registerEvent();
-            // self.model.set("id", gonrin.uuid())
+            if(!self.model.get("id")){
+                self.model.set("id", gonrin.uuid())
+            }
+            // 
 
             console.log("item", self.model.toJSON());
         

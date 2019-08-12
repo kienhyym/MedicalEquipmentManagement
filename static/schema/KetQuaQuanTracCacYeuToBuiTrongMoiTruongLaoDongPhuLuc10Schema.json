@@ -61,8 +61,5 @@
     },
     "baocaohoatdongytelaodong6thangnam_id": {
         "type": "string"
-    },
-    "baocaohoatdongytelaodong6thangnam": {
-        "type": "dict"
     }
 }

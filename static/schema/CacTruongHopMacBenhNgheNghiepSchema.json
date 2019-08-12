@@ -47,8 +47,5 @@
     },
     "baocaoytelaodongcuacosolaodong_id": {
         "type": "string"
-    },
-    "baocaoytelaodongcuacosolaodong": {
-        "type": "dict"
     }
 }
