@@ -42,7 +42,7 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 	window.lodash = lodash;
 
 	var app = new Gonrin.Application({
-		//serviceURL: "http://0.0.0.0:9080",
+		// serviceURL: "http://0.0.0.0:9080",
 		serviceURL: "http://103.74.120.54:9080",
 		router: new Router(),
 		lang: lang,

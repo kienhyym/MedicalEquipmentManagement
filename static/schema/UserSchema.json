@@ -64,8 +64,5 @@
     },
     "userconnectionchannels": {
         "type": "list"
-    },
-    "images": {
-        "type": "list"
     }
 }

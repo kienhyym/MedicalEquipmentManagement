@@ -37,19 +37,18 @@ class User(CommonModel):
     active = db.Column(db.Boolean(), default=True)
     roles = db.relationship('Role', secondary=roles_users, cascade="save-update")
     userconnectionchannels = db.relationship('UserConnectionChannel', cascade="all, delete-orphan")
-    images = db.relationship('Image', cascade="all, delete-orphan")
 
     def has_role(self, role):
         if isinstance(role, str):
             return role in (role.name for role in self.roles)
         else:
             return role in self.roles
-class Image(CommonModel):
-    __tablename__ = 'image'
-    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    user_id = db.Column(UUID(as_uuid=True), ForeignKey('user.id'), nullable=True)
-    user = db.relationship('User', viewonly=True)
-    value = db.Column(String(255))
+# class Image(CommonModel):
+#     __tablename__ = 'image'
+#     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+#     user_id = db.Column(UUID(as_uuid=True), ForeignKey('user.id'), nullable=True)
+#     user = db.relationship('User', viewonly=True)
+#     value = db.Column(String(255))
 
 class DonVi(CommonModel):
     __tablename__ = 'donvi'

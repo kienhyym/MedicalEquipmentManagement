@@ -161,7 +161,7 @@ define(function (require) {
 		},
 
 		{
-			"text": "Thông tư",
+			"text": "Hồ sơ",
 			"icon": "fa fa-home",
 			"type": "category",
 
@@ -170,17 +170,6 @@ define(function (require) {
 			// 	return this.checkHasRole("Admin") ;
 			// },
 			"entries": [
-				{
-					"text": "Quy định về công trình vệ sinh phúc lợi tại nơi làm việc",	
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc1/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
 				{
 					"text": "Hồ sơ quản lý sức khỏe và bệnh tật người lao động",
 					"type": "view",
@@ -224,41 +213,6 @@ define(function (require) {
 						return false;
 					}
 				},
-
-				{
-					"text": "Quy định về túi sơ cứu tại nơi làm việc",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc4/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Danh mục trang thiết bị của khu vực sơ cứu, cấp cứu",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc5/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Nội dung và thời gian huấn luyện về sơ cứu tại cơ sở lao động",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc6/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-
 				{
 					"text": "Sổ theo dõi công tác huấn luyện sơ cứu, cấp cứu tại nơi làm việc",
 					"type": "view",
@@ -280,6 +234,139 @@ define(function (require) {
 						return false;
 					}
 				},
+				{
+					"text": "Giấy chứng chỉ đào tạo về quan trắc môi trường lao động",
+					"type": "view",
+					"icon": "far fa-clipboard",
+					"collectionName": "chungchidaotaovequantracmoitruonglaodong",
+					"route": "chungchidaotaovequantracmoitruonglaodong/collection",
+					"$ref": "app/baocao/phuluc13/js/CollectionView",
+					"visible": function () {
+						return true;
+					}
+
+				},
+				{
+					"type": "view",
+					"collectionName": "chungchidaotaovequantracmoitruonglaodong",
+					"route": "chungchidaotaovequantracmoitruonglaodong/model(/:id)",
+					"$ref": "app/baocao/phuluc13/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+				{
+					"text": "Tổng hợp kết quả khám sức khỏe phát hiện bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc10/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Tổng hợp kết quả khám định kỳ người mắc bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc11/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Hồ sơ bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc7/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Biên bản hội chấn bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc8/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{ 
+					"text": "Sổ khám sức khỏe định kỳ của người lái xe ô tô",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc21/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Giấy giới thiệu",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc1/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Phiếu khám sức khỏe trước khi bố trí làm việc",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc2/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Sổ khám sức khỏe phát hiện bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc3/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				
+				{
+					"text": "Biên bản xác nhận tiếp xúc với yếu tố có hại gây bệnh nghề nghiệp cấp tính",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc5/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+			]
+		},
+		{
+			"text": "Báo cáo",
+			"icon": "fa fa-home",
+			"type": "category",
+
+			// "visible": function(){
+			// 	//console.log(this.checkHasRole("Admin"));
+			// 	return this.checkHasRole("Admin") ;
+			// },
+			"entries": [
 				{
 					"text": "Báo cáo y tế lao động của cơ sở lao động",
 					"type": "view",
@@ -368,140 +455,13 @@ define(function (require) {
 				},
 
 
-				{
-					"text": "Khung chương trình đào tạo quan trắc môi trường lao động, bênh nghề nghiệp",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao/phuluc12/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Giấy chứng chỉ đào tạo về quan trắc môi trường lao động",
-					"type": "view",
-					"icon": "far fa-clipboard",
-					"collectionName": "chungchidaotaovequantracmoitruonglaodong",
-					"route": "chungchidaotaovequantracmoitruonglaodong/collection",
-					"$ref": "app/baocao/phuluc13/js/CollectionView",
-					"visible": function () {
-						return true;
-					}
 
-				},
 				{
-					"type": "view",
-					"collectionName": "chungchidaotaovequantracmoitruonglaodong",
-					"route": "chungchidaotaovequantracmoitruonglaodong/model(/:id)",
-					"$ref": "app/baocao/phuluc13/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-			]
-		},
-		{
-			"text": "Thông tư hướng dẫn",
-			"icon": "fa fa-home",
-			"type": "category",
-
-			"entries": [
-				{ 
-					"text": "Sổ khám sức khỏe định kỳ của người lái xe ô tô",
+					"text": "Báo cáo danh sách các cơ sở lao động có người lao động mắc bệnh nghề nghiệp",
 					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
-					"route": "baocao2/phuluc21/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Giấy giới thiệu",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc1/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Phiếu khám sức khỏe trước khi bố trí làm việc",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc2/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Sổ khám sức khỏe phát hiện bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc3/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Nội dung khám chuyên khoa phát hiện bệnh nghề nghiệp trong danh mục bệnh nghề nghiệp được bảo hiểm",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc4/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Biên bản xác nhận tiếp xúc với yếu tố có hại gây bệnh nghề nghiệp cấp tính",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc5/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Thời gian và nội dung khám định kỳ cho người lao động mắc bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc6/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Hồ sơ bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc7/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Biên bản hội chấn bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc8/model",
+					"route": "baocao2/phuluc12/model",
 					// "$ref": "app/baocao2/phuluc7/js/ModelView",
 					"visible": function () {
 						return true;
@@ -518,43 +478,108 @@ define(function (require) {
 						return true;
 					}
 				},
-				{
-					"text": "Tổng hợp kết quả khám sức khỏe phát hiện bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc10/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Tổng hợp kết quả khám định kỳ người mắc bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc11/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-				{
-					"text": "Báo cáo danh sách các cơ sở lao động có người lao động mắc bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc12/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
-					"visible": function () {
-						return true;
-					}
-				},
-
 
 			]
 		},
+
+
+		{
+			"text": "Thông tư",
+			"icon": "fa fa-home",
+			"type": "category",
+
+			// "visible": function(){
+			// 	//console.log(this.checkHasRole("Admin"));
+			// 	return this.checkHasRole("Admin") ;
+			// },
+			"entries": [
+				{
+					"text": "Quy định về công trình vệ sinh phúc lợi tại nơi làm việc",	
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao/phuluc1/model",
+					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				
+				{
+					"text": "Quy định về túi sơ cứu tại nơi làm việc",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao/phuluc4/model",
+					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Danh mục trang thiết bị của khu vực sơ cứu, cấp cứu",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao/phuluc5/model",
+					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Nội dung và thời gian huấn luyện về sơ cứu tại cơ sở lao động",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao/phuluc6/model",
+					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+
+				
+				
+
+
+				{
+					"text": "Khung chương trình đào tạo quan trắc môi trường lao động, bênh nghề nghiệp",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao/phuluc12/model",
+					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Nội dung khám chuyên khoa phát hiện bệnh nghề nghiệp trong danh mục bệnh nghề nghiệp được bảo hiểm",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc4/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				{
+					"text": "Thời gian và nội dung khám định kỳ cho người lao động mắc bệnh nghề nghiệp",
+					"icon": "far fa-clipboard",
+					"type": "view",
+					// "collectionName": "baocao",
+					"route": "baocao2/phuluc6/model",
+					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return true;
+					}
+				},
+				
+			]
+		},
+		
 	];
 
 });

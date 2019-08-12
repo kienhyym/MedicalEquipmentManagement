@@ -127,13 +127,13 @@ define(function (require) {
 					foreignField: "donvi_id",
 					dataSource: DonViSelectView
 				},
-				{
-					field: "type",
-					uicontrol: "imagelink",
-					service: {
-						url: "https://upstart.vn/services/api/image/upload?path=test"
-					}
-				},
+				// {
+				// 	field: "type",
+				// 	uicontrol: "imagelink",
+				// 	service: {
+				// 		url: "https://upstart.vn/services/api/image/upload?path=test"
+				// 	}
+				// },
 
 				// {
 				// 	field: "userconnectionchannels",
@@ -180,28 +180,5 @@ define(function (require) {
 			self.model.set("password", hasPassword);
 		},
 
-		uploadFile: function () {
-			var self = this;
-
-
-			self.$el.find("input[name=file1]").change(function () {
-				var filesName = [];
-				for (var i = 0; i < $(this).get(0).files.length; ++i) {
-					filesName.push($(this).get(0).files[i].name);
-				}
-				console.log("filesName", filesName);
-			});
-
-			$.ajax({
-				type: "GET",
-				url: self.getApp().serviceURL + "/api/v1/upload/image",
-				success: (response) => {
-					console.log("response", response)
-				}, error: (err) => {
-					console.log("err", err)
-				}
-			})
-
-		}
 	});
 });
