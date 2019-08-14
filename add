@@ -1,0 +1,575 @@
+[33mcommit 1a5d9228c20cb31eee6a976db6e57d2efa206d74[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: kiennd <kiennd@healthchain.vn>
+Date:   Mon Aug 12 09:35:16 2019 +0700
+
+    update danh muc
+
+[1mdiff --git a/application/controllers/user_api.py b/application/controllers/user_api.py[m
+[1mindex 36aec38..c114c70 100644[m
+[1m--- a/application/controllers/user_api.py[m
+[1m+++ b/application/controllers/user_api.py[m
+[36m@@ -214,13 +214,6 @@[m [msqlapimanager.create_api(User, max_results_per_page=1000000,[m
+     # exclude_columns= ["password","salt","active"],[m
+     collection_name='user')[m
+ [m
+[31m-sqlapimanager.create_api(Image, max_results_per_page=1000000,[m
+[31m-    methods=['GET', 'POST', 'DELETE', 'PUT'],[m
+[31m-    url_prefix='/api/v1',[m
+[31m-    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func, prepost_user], PUT_SINGLE=[auth_func, preput_user], DELETE=[predelete_user]),[m
+[31m-    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),[m
+[31m-    # exclude_columns= ["password","salt","active"],[m
+[31m-    collection_name='image')[m
+ [m
+ sqlapimanager.create_api(Role, max_results_per_page=1000000,[m
+     methods=['GET'],[m
+[1mdiff --git a/application/models/models.py b/application/models/models.py[m
+[1mindex b156d0c..367b918 100644[m
+[1m--- a/application/models/models.py[m
+[1m+++ b/application/models/models.py[m
+[36m@@ -37,19 +37,18 @@[m [mclass User(CommonModel):[m
+     active = db.Column(db.Boolean(), default=True)[m
+     roles = db.relationship('Role', secondary=roles_users, cascade="save-update")[m
+     userconnectionchannels = db.relationship('UserConnectionChannel', cascade="all, delete-orphan")[m
+[31m-    images = db.relationship('Image', cascade="all, delete-orphan")[m
+ [m
+     def has_role(self, role):[m
+         if isinstance(role, str):[m
+             return role in (role.name for role in self.roles)[m
+         else:[m
+             return role in self.roles[m
+[31m-class Image(CommonModel):[m
+[31m-    __tablename__ = 'image'[m
+[31m-    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)[m
+[31m-    user_id = db.Column(UUID(as_uuid=True), ForeignKey('user.id'), nullable=True)[m
+[31m-    user = db.relationship('User', viewonly=True)[m
+[31m-    value = db.Column(String(255))[m
+[32m+[m[32m# class Image(CommonModel):[m
+[32m+[m[32m#     __tablename__ = 'image'[m
+[32m+[m[32m#     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)[m
+[32m+[m[32m#     user_id = db.Column(UUID(as_uuid=True), ForeignKey('user.id'), nullable=True)[m
+[32m+[m[32m#     user = db.relationship('User', viewonly=True)[m
+[32m+[m[32m#     value = db.Column(String(255))[m
+ [m
+ class DonVi(CommonModel):[m
+     __tablename__ = 'donvi'[m
+[1mdiff --git a/static/app/app.js b/static/app/app.js[m
+[1mindex 578481b..7809d41 100644[m
+[1m--- a/static/app/app.js[m
+[1m+++ b/static/app/app.js[m
+[36m@@ -42,7 +42,7 @@[m [mrequire(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/[m
+ 	window.lodash = lodash;[m
+ [m
+ 	var app = new Gonrin.Application({[m
+[31m-		//serviceURL: "http://0.0.0.0:9080",[m
+[32m+[m		[32m// serviceURL: "http://0.0.0.0:9080",[m
+ 		serviceURL: "http://103.74.120.54:9080",[m
+ 		router: new Router(),[m
+ 		lang: lang,[m
+[1mdiff --git a/static/app/nav/nav.js b/static/app/nav/nav.js[m
+[1mindex 5651325..01e442e 100644[m
+[1m--- a/static/app/nav/nav.js[m
+[1m+++ b/static/app/nav/nav.js[m
+[36m@@ -161,7 +161,7 @@[m [mdefine(function (require) {[m
+ 		},[m
+ [m
+ 		{[m
+[31m-			"text": "Thông tư",[m
+[32m+[m			[32m"text": "Hồ sơ",[m
+ 			"icon": "fa fa-home",[m
+ 			"type": "category",[m
+ [m
+[36m@@ -170,17 +170,6 @@[m [mdefine(function (require) {[m
+ 			// 	return this.checkHasRole("Admin") ;[m
+ 			// },[m
+ 			"entries": [[m
+[31m-				{[m
+[31m-					"text": "Quy định về công trình vệ sinh phúc lợi tại nơi làm việc",	[m
+[31m-					"icon": "far fa-clipboard",[m
+[31m-					"type": "view",[m
+[31m-					// "collectionName": "baocao",[m
+[31m-					"route": "baocao/phuluc1/model",[m
+[31m-					// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+[31m-					"visible": function () {[m
+[31m-						return true;[m
+[31m-					}[m
+[31m-				},[m
+ 				{[m
+ 					"text": "Hồ sơ quản lý sức khỏe và bệnh tật người lao động",[m
+ 					"type": "view",[m
+[36m@@ -224,62 +213,160 @@[m [mdefine(function (require) {[m
+ 						return false;[m
+ 					}[m
+ 				},[m
+[32m+[m				[32m{[m
+[32m+[m					[32m"text": "Sổ theo dõi công tác huấn luyện sơ cứu, cấp cứu tại nơi làm việc",[m
+[32m+[m					[32m"type": "view",[m
+[32m+[m					[32m"icon": "far fa-clipboard",[m
+[32m+[m					[32m"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",[m
+[32m+[m					[32m"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/collection",[m
+[32m+[m					[32m"$ref": "app/baocao/phuluc7/js/CollectionView",[m
+[32m+[m					[32m"visible": function () {[m
+[32m+[m						[32mreturn true;[m
+[32m+[m					[32m}[m
+ [m
+[32m+[m				[32m},[m
+ 				{[m
+[31m-					"text": "Quy định về túi sơ cứu tại nơi làm việc",[m
+[32m+[m					[32m"type": "view",[m
+[32m+[m					[32m"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",[m
+[32m+[m					[32m"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/model(/:id)",[m
+[32m+[m					[32m"$ref": "app/baocao/phuluc7/js/ModelView",[m
+[32m+[m					[32m"visible": function () {[m
+[32m+[m						[32mreturn false;[m
+[32m+[m					[32m}[m
+[32m+[m				[32m},[m
+[32m+[m				[32m{[m
+[32m+[m					[32m"text": "Giấy chứng chỉ đào tạo về quan trắc môi trường lao động",[m
+[32m+[m					[32m"type": "view",[m
+[32m+[m					[32m"icon": "far fa-clipboard",[m
+[32m+[m					[32m"collectionName": "chungchidaotaovequantracmoitruonglaodong",[m
+[32m+[m					[32m"route": "chungchidaotaovequantracmoitruonglaodong/collection",[m
+[32m+[m					[32m"$ref": "app/baocao/phuluc13/js/CollectionView",[m
+[32m+[m					[32m"visible": function () {[m
+[32m+[m						[32mreturn true;[m
+[32m+[m					[32m}[m
+[32m+[m
+[32m+[m				[32m},[m
+[32m+[m				[32m{[m
+[32m+[m					[32m"type": "view",[m
+[32m+[m					[32m"collectionName": "chungchidaotaovequantracmoitruonglaodong",[m
+[32m+[m					[32m"route": "chungchidaotaovequantracmoitruonglaodong/model(/:id)",[m
+[32m+[m					[32m"$ref": "app/baocao/phuluc13/js/ModelView",[m
+[32m+[m					[32m"visible": function () {[m
+[32m+[m						[32mreturn false;[m
+[32m+[m					[32m}[m
+[32m+[m				[32m},[m
+[32m+[m				[32m{[m
+[32m+[m					[32m"text": "Tổng hợp kết quả khám sức khỏe phát hiện bệnh nghề nghiệp",[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao/phuluc4/model",[m
+[31m-					// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+[32m+[m					[32m"route": "baocao2/phuluc10/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+ 				{[m
+[31m-					"text": "Danh mục trang thiết bị của khu vực sơ cứu, cấp cứu",[m
+[32m+[m					[32m"text": "Tổng hợp kết quả khám định kỳ người mắc bệnh nghề nghiệp",[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao/phuluc5/model",[m
+[31m-					// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+[32m+[m					[32m"route": "baocao2/phuluc11/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+ 				{[m
+[31m-					"text": "Nội dung và thời gian huấn luyện về sơ cứu tại cơ sở lao động",[m
+[32m+[m					[32m"text": "Hồ sơ bệnh nghề nghiệp",[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao/phuluc6/model",[m
+[31m-					// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+[32m+[m					[32m"route": "baocao2/phuluc7/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+[31m-[m
+ 				{[m
+[31m-					"text": "Sổ theo dõi công tác huấn luyện sơ cứu, cấp cứu tại nơi làm việc",[m
+[32m+[m					[32m"text": "Biên bản hội chấn bệnh nghề nghiệp",[m
+[32m+[m					[32m"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+[32m+[m					[32m// "collectionName": "baocao",[m
+[32m+[m					[32m"route": "baocao2/phuluc8/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[32m+[m					[32m"visible": function () {[m
+[32m+[m						[32mreturn true;[m
+[32m+[m					[32m}[m
+[32m+[m				[32m},[m
+[32m+[m				[32m{[m[41m [m
+[32m+[m					[32m"text": "Sổ khám sức khỏe định kỳ của người lái xe ô tô",[m
+ 					"icon": "far fa-clipboard",[m
+[31m-					"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",[m
+[31m-					"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/collection",[m
+[31m-					"$ref": "app/baocao/phuluc7/js/CollectionView",[m
+[32m+[m					[32m"type": "view",[m
+[32m+[m					[32m// "collectionName": "baocao",[m
+[32m+[m					[32m"route": "baocao2/phuluc21/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+[31m-[m
+ 				},[m
+ 				{[m
+[32m+[m					[32m"text": "Giấy giới thiệu",[m
+[32m+[m					[32m"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+[31m-					"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",[m
+[31m-					"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/model(/:id)",[m
+[31m-					"$ref": "app/baocao/phuluc7/js/ModelView",[m
+[32m+[m					[32m// "collectionName": "baocao",[m
+[32m+[m					[32m"route": "baocao2/phuluc1/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+[31m-						return false;[m
+[32m+[m						[32mreturn true;[m
+ 					}[m
+ 				},[m
+[32m+[m				[32m{[m
+[32m+[m					[32m"text": "Phiếu khám sức khỏe trước khi bố trí làm việc",[m
+[32m+[m					[32m"icon": "far fa-clipboard",[m
+[32m+[m					[32m"type": "view",[m
+[32m+[m					[32m// "collectionName": "baocao",[m
+[32m+[m					[32m"route": "baocao2/phuluc2/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[32m+[m					[32m"visible": function () {[m
+[32m+[m						[32mreturn true;[m
+[32m+[m					[32m}[m
+[32m+[m				[32m},[m
+[32m+[m				[32m{[m
+[32m+[m					[32m"text": "Sổ khám sức khỏe phát hiện bệnh nghề nghiệp",[m
+[32m+[m					[32m"icon": "far fa-clipboard",[m
+[32m+[m					[32m"type": "view",[m
+[32m+[m					[32m// "collectionName": "baocao",[m
+[32m+[m					[32m"route": "baocao2/phuluc3/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[32m+[m					[32m"visible": function () {[m
+[32m+[m						[32mreturn true;[m
+[32m+[m					[32m}[m
+[32m+[m				[32m},[m
+[32m+[m[41m				[m
+[32m+[m				[32m{[m
+[32m+[m					[32m"text": "Biên bản xác nhận tiếp xúc với yếu tố có hại gây bệnh nghề nghiệp cấp tính",[m
+[32m+[m					[32m"icon": "far fa-clipboard",[m
+[32m+[m					[32m"type": "view",[m
+[32m+[m					[32m// "collectionName": "baocao",[m
+[32m+[m					[32m"route": "baocao2/phuluc5/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[32m+[m					[32m"visible": function () {[m
+[32m+[m						[32mreturn true;[m
+[32m+[m					[32m}[m
+[32m+[m				[32m},[m
+[32m+[m			[32m][m
+[32m+[m		[32m},[m
+[32m+[m		[32m{[m
+[32m+[m			[32m"text": "Báo cáo",[m
+[32m+[m			[32m"icon": "fa fa-home",[m
+[32m+[m			[32m"type": "category",[m
+[32m+[m
+[32m+[m			[32m// "visible": function(){[m
+[32m+[m			[32m// 	//console.log(this.checkHasRole("Admin"));[m
+[32m+[m			[32m// 	return this.checkHasRole("Admin") ;[m
+[32m+[m			[32m// },[m
+[32m+[m			[32m"entries": [[m
+ 				{[m
+ 					"text": "Báo cáo y tế lao động của cơ sở lao động",[m
+ 					"type": "view",[m
+[36m@@ -368,107 +455,111 @@[m [mdefine(function (require) {[m
+ 				},[m
+ [m
+ [m
+[32m+[m
+ 				{[m
+[31m-					"text": "Khung chương trình đào tạo quan trắc môi trường lao động, bênh nghề nghiệp",[m
+[32m+[m					[32m"text": "Báo cáo danh sách các cơ sở lao động có người lao động mắc bệnh nghề nghiệp",[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao/phuluc12/model",[m
+[31m-					// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+[32m+[m					[32m"route": "baocao2/phuluc12/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+ 				{[m
+[31m-					"text": "Giấy chứng chỉ đào tạo về quan trắc môi trường lao động",[m
+[31m-					"type": "view",[m
+[32m+[m					[32m"text": "Báo cáo trường hợp người lao động mắc bệnh nghề nghiệp",[m
+ 					"icon": "far fa-clipboard",[m
+[31m-					"collectionName": "chungchidaotaovequantracmoitruonglaodong",[m
+[31m-					"route": "chungchidaotaovequantracmoitruonglaodong/collection",[m
+[31m-					"$ref": "app/baocao/phuluc13/js/CollectionView",[m
+[31m-					"visible": function () {[m
+[31m-						return true;[m
+[31m-					}[m
+[31m-[m
+[31m-				},[m
+[31m-				{[m
+ 					"type": "view",[m
+[31m-					"collectionName": "chungchidaotaovequantracmoitruonglaodong",[m
+[31m-					"route": "chungchidaotaovequantracmoitruonglaodong/model(/:id)",[m
+[31m-					"$ref": "app/baocao/phuluc13/js/ModelView",[m
+[32m+[m					[32m// "collectionName": "baocao",[m
+[32m+[m					[32m"route": "baocao2/phuluc9/model",[m
+[32m+[m					[32m// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+[31m-						return false;[m
+[32m+[m						[32mreturn true;[m
+ 					}[m
+ 				},[m
+[32m+[m
+ 			][m
+ 		},[m
+[32m+[m
+[32m+[m
+ 		{[m
+[31m-			"text": "Thông tư hướng dẫn",[m
+[32m+[m			[32m"text": "Thông tư",[m
+ 			"icon": "fa fa-home",[m
+ 			"type": "category",[m
+ [m
+[32m+[m			[32m// "visible": function(){[m
+[32m+[m			[32m// 	//console.log(this.checkHasRole("Admin"));[m
+[32m+[m			[32m// 	return this.checkHasRole("Admin") ;[m
+[32m+[m			[32m// },[m
+ 			"entries": [[m
+[31m-				{ [m
+[31m-					"text": "Sổ khám sức khỏe định kỳ của người lái xe ô tô",[m
+[32m+[m				[32m{[m
+[32m+[m					[32m"text": "Quy định về công trình vệ sinh phúc lợi tại nơi làm việc",[m[41m	[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc21/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[32m+[m					[32m"route": "baocao/phuluc1/model",[m
+[32m+[m					[32m// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+[32m+[m[41m				[m
+ 				{[m
+[31m-					"text": "Giấy giới thiệu",[m
+[32m+[m					[32m"text": "Quy định về túi sơ cứu tại nơi làm việc",[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc1/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[32m+[m					[32m"route": "baocao/phuluc4/model",[m
+[32m+[m					[32m// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+ 				{[m
+[31m-					"text": "Phiếu khám sức khỏe trước khi bố trí làm việc",[m
+[32m+[m					[32m"text": "Danh mục trang thiết bị của khu vực sơ cứu, cấp cứu",[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc2/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[32m+[m					[32m"route": "baocao/phuluc5/model",[m
+[32m+[m					[32m// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+ 				{[m
+[31m-					"text": "Sổ khám sức khỏe phát hiện bệnh nghề nghiệp",[m
+[32m+[m					[32m"text": "Nội dung và thời gian huấn luyện về sơ cứu tại cơ sở lao động",[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc3/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[32m+[m					[32m"route": "baocao/phuluc6/model",[m
+[32m+[m					[32m// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+[32m+[m
+[32m+[m[41m				[m
+[32m+[m[41m				[m
+[32m+[m
+[32m+[m
+ 				{[m
+[31m-					"text": "Nội dung khám chuyên khoa phát hiện bệnh nghề nghiệp trong danh mục bệnh nghề nghiệp được bảo hiểm",[m
+[32m+[m					[32m"text": "Khung chương trình đào tạo quan trắc môi trường lao động, bênh nghề nghiệp",[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc4/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[32m+[m					[32m"route": "baocao/phuluc12/model",[m
+[32m+[m					[32m// "$ref": "app/baocao/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+ 				{[m
+[31m-					"text": "Biên bản xác nhận tiếp xúc với yếu tố có hại gây bệnh nghề nghiệp cấp tính",[m
+[32m+[m					[32m"text": "Nội dung khám chuyên khoa phát hiện bệnh nghề nghiệp trong danh mục bệnh nghề nghiệp được bảo hiểm",[m
+ 					"icon": "far fa-clipboard",[m
+ 					"type": "view",[m
+ 					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc5/model",[m
+[32m+[m					[32m"route": "baocao2/phuluc4/model",[m
+ 					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+ 					"visible": function () {[m
+ 						return true;[m
+[36m@@ -485,76 +576,10 @@[m [mdefine(function (require) {[m
+ 						return true;[m
+ 					}[m
+ 				},[m
+[31m-				{[m
+[31m-					"text": "Hồ sơ bệnh nghề nghiệp",[m
+[31m-					"icon": "far fa-clipboard",[m
+[31m-					"type": "view",[m
+[31m-					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc7/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[31m-					"visible": function () {[m
+[31m-						return true;[m
+[31m-					}[m
+[31m-				},[m
+[31m-				{[m
+[31m-					"text": "Biên bản hội chấn bệnh nghề nghiệp",[m
+[31m-					"icon": "far fa-clipboard",[m
+[31m-					"type": "view",[m
+[31m-					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc8/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[31m-					"visible": function () {[m
+[31m-						return true;[m
+[31m-					}[m
+[31m-				},[m
+[31m-				{[m
+[31m-					"text": "Báo cáo trường hợp người lao động mắc bệnh nghề nghiệp",[m
+[31m-					"icon": "far fa-clipboard",[m
+[31m-					"type": "view",[m
+[31m-					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc9/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[31m-					"visible": function () {[m
+[31m-						return true;[m
+[31m-					}[m
+[31m-				},[m
+[31m-				{[m
+[31m-					"text": "Tổng hợp kết quả khám sức khỏe phát hiện bệnh nghề nghiệp",[m
+[31m-					"icon": "far fa-clipboard",[m
+[31m-					"type": "view",[m
+[31m-					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc10/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[31m-					"visible": function () {[m
+[31m-						return true;[m
+[31m-					}[m
+[31m-				},[m
+[31m-				{[m
+[31m-					"text": "Tổng hợp kết quả khám định kỳ người mắc bệnh nghề nghiệp",[m
+[31m-					"icon": "far fa-clipboard",[m
+[31m-					"type": "view",[m
+[31m-					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc11/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[31m-					"visible": function () {[m
+[31m-						return true;[m
+[31m-					}[m
+[31m-				},[m
+[31m-				{[m
+[31m-					"text": "Báo cáo danh sách các cơ sở lao động có người lao động mắc bệnh nghề nghiệp",[m
+[31m-					"icon": "far fa-clipboard",[m
+[31m-					"type": "view",[m
+[31m-					// "collectionName": "baocao",[m
+[31m-					"route": "baocao2/phuluc12/model",[m
+[31m-					// "$ref": "app/baocao2/phuluc7/js/ModelView",[m
+[31m-					"visible": function () {[m
+[31m-						return true;[m
+[31m-					}[m
+[31m-				},[m
+[31m-[m
+[31m-[m
+[32m+[m[41m				[m
+ 			][m
+ 		},[m
+[32m+[m[41m		[m
+ 	];[m
+ [m
+ });[m
+[1mdiff --git a/static/app/user/js/ModelView.js b/static/app/user/js/ModelView.js[m
+[1mindex 543df83..4d7ff3b 100644[m
+[1m--- a/static/app/user/js/ModelView.js[m
+[1m+++ b/static/app/user/js/ModelView.js[m
+[36m@@ -127,13 +127,13 @@[m [mdefine(function (require) {[m
+ 					foreignField: "donvi_id",[m
+ 					dataSource: DonViSelectView[m
+ 				},[m
+[31m-				{[m
+[31m-					field: "type",[m
+[31m-					uicontrol: "imagelink",[m
+[31m-					service: {[m
+[31m-						url: "https://upstart.vn/services/api/image/upload?path=test"[m
+[31m-					}[m
+[31m-				},[m
+[32m+[m				[32m// {[m
+[32m+[m				[32m// 	field: "type",[m
+[32m+[m				[32m// 	uicontrol: "imagelink",[m
+[32m+[m				[32m// 	service: {[m
+[32m+[m				[32m// 		url: "https://upstart.vn/services/api/image/upload?path=test"[m
+[32m+[m				[32m// 	}[m
+[32m+[m				[32m// },[m
+ [m
+ 				// {[m
+ 				// 	field: "userconnectionchannels",[m
+[36m@@ -180,28 +180,5 @@[m [mdefine(function (require) {[m
+ 			self.model.set("password", hasPassword);[m
+ 		},[m
+ [m
+[31m-		uploadFile: function () {[m
+[31m-			var self = this;[m
+[31m-[m
+[31m-[m
+[31m-			self.$el.find("input[name=file1]").change(function () {[m
+[31m-				var filesName = [];[m
+[31m-				for (var i = 0; i < $(this).get(0).files.length; ++i) {[m
+[31m-					filesName.push($(this).get(0).files[i].name);[m
+[31m-				}[m
+[31m-				console.log("filesName", filesName);[m
+[31m-			});[m
+[31m-[m
+[31m-			$.ajax({[m
+[31m-				type: "GET",[m
+[31m-				url: self.getApp().serviceURL + "/api/v1/upload/image",[m
+[31m-				success: (response) => {[m
+[31m-					console.log("response", response)[m
+[31m-				}, error: (err) => {[m
+[31m-					console.log("err", err)[m
+[31m-				}[m
+[31m-			})[m
+[31m-[m
+[31m-		}[m
+ 	});[m
+ });[m
+\ No newline at end of file[m
+[1mdiff --git a/static/schema/UserSchema.json b/static/schema/UserSchema.json[m
+[1mindex a7254f2..7f25c8c 100644[m
+[1m--- a/static/schema/UserSchema.json[m
+[1m+++ b/static/schema/UserSchema.json[m
+[36m@@ -64,8 +64,5 @@[m
+     },[m
+     "userconnectionchannels": {[m
+         "type": "list"[m
+[31m-    },[m
+[31m-    "images": {[m
+[31m-        "type": "list"[m
+     }[m
+ }[m
+\ No newline at end of file[m

@@ -42,8 +42,8 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 	window.lodash = lodash;
 
 	var app = new Gonrin.Application({
-		// serviceURL: "http://0.0.0.0:9080",
-		serviceURL: "http://103.74.120.54:9080",
+		// serviceURL: "http://0.0.0.0:9082",
+		serviceURL: "http://103.74.120.54:9082",
 		router: new Router(),
 		lang: lang,
 		layout: layout,
@@ -58,7 +58,7 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 			var self = this;
 			$.ajax({
 				url: self.serviceURL + "/api/v1/current_user",
-				// url: "http://0.0.0.0:9080/api/v1/current_user",
+				// url: "http://0.0.0.0:9082/api/v1/current_user",
 				dataType: "json",
 				success: function (data) {
 					self.postLogin(data);

@@ -26,7 +26,6 @@ define(function (require) {
 						label: "TRANSLATE:BACK",
 						command: function () {
 							var self = this;
-
 							Backbone.history.history.back();
 						}
 					},
@@ -130,10 +129,8 @@ define(function (require) {
 		render: function () {
 			var self = this;
 			var id = this.getApp().getRouter().getParam("id");
-
 			$.fn.selectpicker.Constructor.DEFAULTS.multipleSeparator = ' | ';
 			self.$el.find("#multiselect_required").selectpicker();
-
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
@@ -146,7 +143,6 @@ define(function (require) {
 						self.model.on("change:quanhuyen_id", function () {
 							self.getFieldElement("xaphuong").data("gonrin").setFilters({ "quanhuyen_id": { "$eq": self.model.get("quanhuyen_id") } });
 						});
-
 					},
 					error: function (xhr, status, error) {
 						try {
@@ -164,7 +160,6 @@ define(function (require) {
 			} else {
 				self.applyBindings();
 				self.registerEvent();
-
 				self.model.on("change:tinhthanh_id", function () {
 					console.log("change tinh thanh", self.model.get("tinhthanh_id"));
 					self.getFieldElement("quanhuyen").data("gonrin").setFilters({ "tinhthanh_id": { "$eq": self.model.get("tinhthanh_id") } });
@@ -174,18 +169,13 @@ define(function (require) {
 					console.log("change quanhuyen", self.model.get("quanhuyen_id"));
 				});
 			}
-
 		},
-
 		registerEvent: function () {
 			const self = this;
-
-
 			var data = [
 				{ "TUOI": "19", "KEY": 19 },
 				{"TUOI": "29", "KEY": 29 },
 			]
-
 			self.$el.find("#combobox").combobox({
 				textField: "TUOI",
 				valueField: "KEY",
@@ -193,7 +183,6 @@ define(function (require) {
 				value: 19
 			});
 		},
-
 		validateEmail: function (email) {
 			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			return re.test(String(email).toLowerCase());
