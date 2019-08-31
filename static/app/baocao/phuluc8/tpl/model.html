@@ -66,7 +66,7 @@
             <input type="text" class="input-phuluc2 stronger" data-bind="value:baocao6thangnam">
         </div>
         <label class="text-center"><i>(Cơ sở lao động gửi báo cáo về Trung tâm Y tế (dự phòng) quận/huyện/thành phố
-                thuộc tỉnh. Đối với cơ sở trực thuộc bộ, ngành gửi thêm 01 bản về đơn vị y tế bộ, ngành)</i>></label>
+                thuộc tỉnh. Đối với cơ sở trực thuộc bộ, ngành gửi thêm 01 bản về đơn vị y tế bộ, ngành)</i></label>
         <label class="stronger">I. Thông tin chung</label>
         <div class="flexboxer col-md-12 p-0">
             <label>1. Tên cơ sở lao động:</label>
@@ -75,14 +75,15 @@
         <div class="row">
                 <label class="col-md-3 m-0">2. Trực thuộc:</label>
 
-            <div class="col-md-2" style="position: relative" >
-                <label class="m-0">tỉnh/thành phố</label>
-                <input  type="checkbox" style="position: absolute;top:0.33333em;left:8em;" data-bind="value:tructhuoctinhthanhpho">
+            <div class="col-md-3 row " >
+                <div><label class="m-0">tỉnh/thành phố</label></div>
+                <div style="margin-top: 2px;margin-left: 5px;"><input type="text"  data-bind="value:tructhuoctinhvathanhpho"></div>
+
             </div>
 
-            <div class="col-md-2" style="position: relative" >
-                <label class="m-0">bộ, ngành</label>
-                <input type="checkbox" style="position: absolute;top:0.33333em;left:6em;" data-bind="value:tructhuocbonganh">
+            <div class="col-md-3 row ">
+                <div><label class="m-0">bộ, ngành</label></div>
+                <div style="margin-top: 2px;margin-left: 5px;"><input type="text" data-bind="value:tructhuocbovanganh"></div>
             </div>
         </div>
         <div class="flexboxer col-md-12 p-0">
@@ -146,6 +147,9 @@
                     <td>Không <input type="checkbox"></td>
                 </tr>
             </table>
+        </div>
+        <div class="flexboxer col-md-4 p-0 d-flex justify-content-center m-0">
+            <div id="laphosovesinhhaykhong"><input type="text" data-bind="value:laphosovesinhkhong"></div>
         </div>
         <label>7. Tổ chức bộ phận y tế</label>
         <div class="row">

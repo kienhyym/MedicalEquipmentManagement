@@ -1,0 +1,44 @@
+{
+	"id": {
+		"type": "string",
+		"primary": true
+	},
+    "hoten": {
+        "type": "string"
+    },
+    "bophanlamviec": {
+        "type": "string"
+    },
+    "tuoinam": {
+        "type": "string"
+    },
+    "tuoinu": {
+		"type": "string"
+	},
+    "phanloaisuckhoe1": {
+        "type": "string"
+    },
+    "phanloaisuckhoe2": {
+        "type": "string"
+    },
+    "phanloaisuckhoe3": {
+        "type": "string"
+    },
+    "phanloaisuckhoe4": {
+        "type": "string"
+    },
+    "phanloaisuckhoe5": {
+		"type": "string"
+	},
+    "tinhtrangbenhtat": {
+        "type": "string"
+    },
+    "huonggiaiquyet": {
+        "type": "string"
+    },
+    "ghichu": {
+        "type": "string"
+    }
+    
+
+}

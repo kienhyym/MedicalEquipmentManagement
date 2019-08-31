@@ -1,0 +1,137 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "noiviet": {
+        "type": "string",
+        "length": 255
+    },
+    "ngayviet": {
+        "type": "number"
+    },
+    "thangviet": {
+        "type": "number"
+    },
+    "namviet": {
+        "type": "number"
+    },
+    "cosokhambenh_tencoso": {
+        "type": "string",
+        "length": 255
+    },
+    "cosokhambenh_diachi": {
+        "type": "string",
+        "length": 255
+    },
+    "cosokhambenh_nguoilienhe": {
+        "type": "string",
+        "length": 255
+    },
+    "cosokhambenh_sodienthoai": {
+        "type": "string",
+        "length": 255
+    },
+    "cosolaodong_tencoso": {
+        "type": "string",
+        "length": 255
+    },
+    "cosolaodong_diachi": {
+        "type": "string",
+        "length": 255
+    },
+    "cosolaodong_nguoilienhe": {
+        "type": "string",
+        "length": 255
+    },
+    "cosolaodong_sodienthoai": {
+        "type": "string",
+        "length": 255
+    },
+    "cosolaodong_loaihinhsanxuat": {
+        "type": "string",
+        "length": 255
+    },
+    "cosolaodong_nganh": {
+        "type": "string",
+        "length": 255
+    },
+    "cosolaodong_quymo": {
+        "type": "string",
+        "length": 255
+    },
+    "truonghopmacbenhnghenghiep_ten": {
+        "type": "string",
+        "length": 255
+    },
+    "truonghopmacbenhnghenghiep_gioitinh": {
+        "type": "string",
+        "length": 255
+    },
+    "truonghopmacbenhnghenghiep_ngaysinh": {
+        "type": "number"
+    },
+    "truonghopmacbenhnghenghiep_thangsinh": {
+        "type": "number"
+    },
+    "truonghopmacbenhnghenghiep_namsinh": {
+        "type": "number"
+    },
+    "truonghopmacbenhnghenghiep_tenbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "truonghopmacbenhnghenghiep_nghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "truonghopmacbenhnghenghiep_namtiepxuc": {
+        "type": "number"
+    },
+    "truonghopmacbenhnghenghiep_thangtiepxuc": {
+        "type": "number"
+    },
+    "truonghopmacbenhnghenghiep_ngaytiepxuc": {
+        "type": "number"
+    },
+    "ngayxayrasuco_ngay": {
+        "type": "number"
+    },
+    "ngayxayrasuco_thang": {
+        "type": "number"
+    },
+    "ngayxayrasuco_nam": {
+        "type": "number"
+    },
+    "ngaychuandoan_ngay": {
+        "type": "number"
+    },
+    "ngaychuandoan_thang": {
+        "type": "number"
+    },
+    "ngaychuandoan_nam": {
+        "type": "number"
+    }
+}

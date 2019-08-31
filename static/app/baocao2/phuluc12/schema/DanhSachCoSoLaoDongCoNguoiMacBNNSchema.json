@@ -1,0 +1,38 @@
+{
+	"id": {
+		"type": "string",
+		"primary": true
+	},
+    "tencosolaodong": {
+        "type": "string"
+    },
+    "diachicosolaodong": {
+        "type": "string"
+    },
+    "sodienthoaicosoladong": {
+        "type": "string"
+    },
+    "tongsolaodong": {
+		"type": "string"
+	},
+    "tongsolaodongnu": {
+        "type": "string"
+    },
+    "tongsolaodongduockham": {
+        "type": "string"
+    },
+    "tongsolaodongduockhamnu": {
+        "type": "string"
+    },
+    "tongsolaodongduocchuandoanmacbenh": {
+        "type": "string"
+    },
+    "tongsolaodongduocchuandoanmacbenhnu": {
+		"type": "string"
+	},
+    "tenbenhnghenghiep": {
+        "type": "string"
+    }
+    
+
+}

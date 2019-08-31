@@ -35,7 +35,7 @@ define(function (require) {
 			"route": "donvi/model(/:id)",
 			"$ref": "app/donvi/js/ModelView",
 		},
-		
+
 
 
 		{
@@ -205,25 +205,51 @@ define(function (require) {
 			"route": "chungchidaotaovequantracmoitruonglaodong/model(/:id)",
 			"$ref": "app/baocao/phuluc13/js/ModelView",
 		},
-
 		{
 
-			"route": "baocao2/phuluc21/model",
+			"collectionName": "sokhamsuckhoedinhkycuanguoilaixeoto",
+			"route": "sokhamsuckhoedinhkycuanguoilaixeoto/collection",
+			"$ref": "app/baocao2/phuluc21/js/CollectionView",
+		},
+		{
+
+			"collectionName": "sokhamsuckhoedinhkycuanguoilaixeoto",
+			"route": "sokhamsuckhoedinhkycuanguoilaixeoto/model(/:id)",
 			"$ref": "app/baocao2/phuluc21/js/ModelView",
 		},
 		{
 
-			"route": "baocao2/phuluc1/model",
+			"collectionName": "giaygioithieu",
+			"route": "giaygioithieu/collection",
+			"$ref": "app/baocao2/phuluc1/js/CollectionView",
+		},
+		{
+
+			"collectionName": "giaygioithieu",
+			"route": "giaygioithieu/model(/:id)",
 			"$ref": "app/baocao2/phuluc1/js/ModelView",
 		},
-		{
 
-			"route": "baocao2/phuluc2/model",
-			"$ref": "app/baocao2/phuluc2/js/ModelView",
+
+		{
+			"collectionName": "phieukhamsuckhoetruockhibotrilamviec",
+			"route": "phieukhamsuckhoetruockhibotrilamviec/collection",
+			"$ref": "app/baocao2/phuluc2/js/CollectionView",
 		},
 		{
+			"collectionName": "phieukhamsuckhoetruockhibotrilamviec",
+			"route": "phieukhamsuckhoetruockhibotrilamviec/model(/:id)",
+			"$ref": "app/baocao2/phuluc2/js/ModelView",
+		},
 
-			"route": "baocao2/phuluc3/model",
+		{
+			"collectionName": "sokhamsuckhoephathienbenhnghenghiep",
+			"route": "sokhamsuckhoephathienbenhnghenghiep/collection",
+			"$ref": "app/baocao2/phuluc3/js/CollectionView",
+		},
+		{
+			"collectionName": "sokhamsuckhoephathienbenhnghenghiep",
+			"route": "sokhamsuckhoephathienbenhnghenghiep/model(/:id)",
 			"$ref": "app/baocao2/phuluc3/js/ModelView",
 		},
 		{
@@ -232,46 +258,84 @@ define(function (require) {
 			"$ref": "app/baocao2/phuluc4/js/ModelView",
 		},
 		{
-
-			"route": "baocao2/phuluc5/model",
+			"collectionName": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep",
+			"route": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep/collection",
+			"$ref": "app/baocao2/phuluc5/js/CollectionView",
+		},
+		{
+			"collectionName": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep",
+			"route": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep/model(/:id)",
 			"$ref": "app/baocao2/phuluc5/js/ModelView",
 		},
+
+
 		{
 
 			"route": "baocao2/phuluc6/model",
 			"$ref": "app/baocao2/phuluc6/js/ModelView",
 		},
-		{
 
-			"route": "baocao2/phuluc7/model",
-			"$ref": "app/baocao2/phuluc7/js/ModelView",
+		{
+			"collectionName": "hosobenhnghenghiep",
+			"route": "hosobenhnghenghiep/collection",
+			"$ref": "app/baocao2/phuluc7/js/CollectionView",
 		},
 		{
+			"collectionName": "hosobenhnghenghiep",
+			"route": "hosobenhnghenghiep/model(/:id)",
+			"$ref": "app/baocao2/phuluc7/js/ModelView",
+		},
 
-			"route": "baocao2/phuluc8/model",
+		{
+			"collectionName": "bienbanhoichanbenhnghenghiep",
+			"route": "bienbanhoichanbenhnghenghiep/collection",
+			"$ref": "app/baocao2/phuluc8/js/CollectionView",
+		},
+		{
+			"collectionName": "bienbanhoichanbenhnghenghiep",
+			"route": "bienbanhoichanbenhnghenghiep/model(/:id)",
 			"$ref": "app/baocao2/phuluc8/js/ModelView",
 		},
 		{
-
-			"route": "baocao2/phuluc9/model",
+			"collectionName": "baocaotruonghopnguoilaodongmacbenhnghenghiep",
+			"route": "baocaotruonghopnguoilaodongmacbenhnghenghiep/collection",
+			"$ref": "app/baocao2/phuluc9/js/CollectionView",
+		},
+		{
+			"collectionName": "baocaotruonghopnguoilaodongmacbenhnghenghiep",
+			"route": "baocaotruonghopnguoilaodongmacbenhnghenghiep/model(/:id)",
 			"$ref": "app/baocao2/phuluc9/js/ModelView",
 		},
 		{
-
-			"route": "baocao2/phuluc10/model",
+			"collectionName": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep",
+			"route": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep/collection",
+			"$ref": "app/baocao2/phuluc10/js/CollectionView",
+		},
+		{
+			"collectionName": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep",
+			"route": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep/model(/:id)",
 			"$ref": "app/baocao2/phuluc10/js/ModelView",
 		},
 		{
-
-			"route": "baocao2/phuluc11/model",
+			"collectionName": "tonghopketquakhamdinhkynguoimacbenhnghenghiep",
+			"route": "tonghopketquakhamdinhkynguoimacbenhnghenghiep/collection",
+			"$ref": "app/baocao2/phuluc11/js/CollectionView",
+		},
+		{
+			"collectionName": "tonghopketquakhamdinhkynguoimacbenhnghenghiep",
+			"route": "tonghopketquakhamdinhkynguoimacbenhnghenghiep/model(/:id)",
 			"$ref": "app/baocao2/phuluc11/js/ModelView",
 		},
 		{
-
-			"route": "baocao2/phuluc12/model",
+			"collectionName": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong",
+			"route": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong/collection",
+			"$ref": "app/baocao2/phuluc12/js/CollectionView",
+		},
+		{
+			"collectionName": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong",
+			"route": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong/model(/:id)",
 			"$ref": "app/baocao2/phuluc12/js/ModelView",
 		},
-
 	];
 
 });

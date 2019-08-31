@@ -1,5 +1,6 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
+        <div block-bind="toolbar"></div>
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
@@ -23,21 +24,21 @@
                     <td>
                         <div class="flexboxer  justify-content-center d-flex ">
                             <label>Số</label>
-                            <input type="text" class="input-phuluc2" style="width: 15%;">
+                            <input type="text" data-bind="value:so" class="input-phuluc2" style="width: 15%;">
                             <label>-</label>
-                            <input type="text" class="input-phuluc2" style="width: 15%;">
+                            <input type="text" data-bind="value:bc" class="input-phuluc2" style="width: 15%;">
                             <label>/GCN</label>
                         </div>
                     </td>
                     <td>
                         <div class="flexboxer  justify-content-end d-flex ">
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" data-bind="value:noiviet" class="input-phuluc2" style="width: 8%;">
                             <label>,ngày</label>
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" data-bind="value:ngayviet" class="input-phuluc2" style="width: 8%;">
                             <label>,tháng</label>
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" data-bind="value:thangviet" class="input-phuluc2" style="width: 8%;">
                             <label>,năm</label>
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" data-bind="value:namviet" class="input-phuluc2" style="width: 8%;">
                         </div>
                     </td>
                 </tr>
@@ -50,7 +51,7 @@
 
         <div class="flexboxer col-md-12 p-0 justify-content-center d-flex">
             <label>Kính gửi: Cơ sở sử dụng lao động </label>
-            <input type="text" class="input-phuluc2">
+            <input type="text" data-bind="value:kinhgui" class="input-phuluc2">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Thi hành Điều 21 Luật an toàn, vệ sinh lao động ngày 25/6/2015; Thông tư số 28/2016/TT-BYT ngày 30
@@ -86,22 +87,7 @@
                     <td>IV</td>
                     <td>V</td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-
-                </tr>
+                <tbody id="ketquakhamsuckhoe_grid"></tbody>
                 <tr>
                     <td></td>
                     <td>Tổng</td>
@@ -119,6 +105,7 @@
 
                 </tr>
             </table>
+            <button id="add_1_row" class="btn btn-primary">Thêm</button>
         </div>
 
 
@@ -127,7 +114,7 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>a) Số người lao động được khám/ tổng số người lao động (Tỷ lệ</label>
-            <input type="text" class="input-phuluc2" style="width: 5%;">
+            <input type="text"  class="input-phuluc2" style="width: 5%;">
             <label> %);</label>
         </div>
         <div class="flexboxer col-md-12 p-0">
@@ -135,37 +122,37 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Loại I: </label>
-            <input type="text" class="input-phuluc2" style="width: 10%;">
+            <input type="text"  class="input-phuluc2" style="width: 10%;">
             <label>người (Tỷ lệ </label>
-            <input type="text" class="input-phuluc2" style="width: 5%;">
+            <input type="text"  class="input-phuluc2" style="width: 5%;">
             %);
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Loại II: </label>
-            <input type="text" class="input-phuluc2" style="width: 10%;">
+            <input type="text"  class="input-phuluc2" style="width: 10%;">
             <label>người (Tỷ lệ </label>
-            <input type="text" class="input-phuluc2" style="width: 5%;">
+            <input type="text"  class="input-phuluc2" style="width: 5%;">
             %);
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Loại III: </label>
-            <input type="text" class="input-phuluc2" style="width: 10%;">
+            <input type="text"  class="input-phuluc2" style="width: 10%;">
             <label>người (Tỷ lệ </label>
-            <input type="text" class="input-phuluc2" style="width: 5%;">
+            <input type="text"  class="input-phuluc2" style="width: 5%;">
             %);
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Loại IV: </label>
-            <input type="text" class="input-phuluc2" style="width: 10%;">
+            <input type="text"  class="input-phuluc2" style="width: 10%;">
             <label>người (Tỷ lệ </label>
-            <input type="text" class="input-phuluc2" style="width: 5%;">
+            <input type="text"  class="input-phuluc2" style="width: 5%;">
             %);
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Loại V: </label>
-            <input type="text" class="input-phuluc2" style="width: 10%;">
+            <input type="text"  class="input-phuluc2" style="width: 10%;">
             <label>người (Tỷ lệ </label>
-            <input type="text" class="input-phuluc2" style="width: 5%;">
+            <input type="text"  class="input-phuluc2" style="width: 5%;">
             %);
         </div>
         <div class="flexboxer col-md-12 p-0">
@@ -173,7 +160,7 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Tổng số người lao động mắc bệnh: </label>
-            <input type="text" class="input-phuluc2" style="width: 10%;">
+            <input type="text"  class="input-phuluc2" style="width: 10%;">
             <label> ,trong đó:</label>
         </div>
         <div class="flexboxer col-md-12 p-0">
@@ -204,17 +191,9 @@
                     <td>Tên bệnh nghề nghiệp</td>
                     <td>Công việc hiện nay</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                    <tbody id="danhsachnguoimacbenhnghenghiep_grid"></tbody>
             </table>
+            <button type="button" class="btn btn-primary" id="btn_add_row_danhsachnguoimacbenhnghenghiep">Thêm</button>
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>2. Tổng hợp kết quả khám bệnh nghề nghiệp</label>
@@ -244,15 +223,8 @@
                     <td>(6)</td>
 
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tbody id="tonghopketquakhambenhnghenghiep_grid"></tbody>
 
-                </tr>
                 <tr>
                     <td></td>
                     <td>Tổng Cộng</td>
@@ -263,6 +235,8 @@
 
                 </tr>
             </table>
+            <button type="button" class="btn btn-primary" id="btn_add_row_tonghopketquakhambenhnghenghiep">Thêm</button>
+
         </div>
 
         <div class="flexboxer col-md-12 p-0">
@@ -287,6 +261,8 @@
         <div class="flexboxer col-md-12 p-0">
             <label>6. Tổ chức thực hiện chế độ bồi dưỡng độc hại, nguy hiểm bằng hiện vật.</label>
         </div>
+        <div id="kiennghicuadonkham_grid"></div>
+        <button id="btn_add_row_kiennghicuadonkham" class="btn btn-primary">Thêm</button>
 
 
         <div class="row col-md-12 justify-content-center d-flex m-0 p-0">

@@ -71,15 +71,15 @@
             <table class="table table-bordered">
                 <tr>
                     <td>Trung tâm Y tế dự phòng tỉnh/thành phố</td>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" data-bind="value:trungtamytetinhthanhpho"></td>
                 </tr>
                 <tr>
-                    <td>Trung tâm Bảo vệ sức khỏe môi trường lao động</td>
-                    <td><input type="checkbox"></td>
+                    <td>Trung tâm bảo vệ sức khỏe môi trường lao động</td>
+                    <td><input type="checkbox" data-bind="value:trungtambaovesuckhoelaodong"></td>
                 </tr>
                 <tr>
                     <td>Trung tâm Kiểm soát bệnh tật</td>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" data-bind="value:trungtamkiemsoatbenhtat"> </td>
                 </tr>
             </table>
         </div>
@@ -131,12 +131,14 @@
                     <td>Văn bản pháp quy</td>
                     <td>Số quận, huyện, thị xã, thành phố được phổ biến/Tổng số</td>
                     <td>Số cơ sở lao động được phổ biến</td>
+                    <td></td>
                 </tr>
                 <tbody data-bind="list:tinhhinhthuchienvanbanphapquyfield"></tbody>
 
                 <tr>
                     <td></td>
-                    <td class="stronger">Tổng số</td>
+                    <td>Tổng số</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -233,6 +235,7 @@
                     <td colspan="2">Cỡ vừa 51-200 NLĐ</td>
                     <td colspan="2">Cỡ lớn >200 NLĐ</td>
                     <td colspan="2">Tổng số</td>
+                    <td rowspan="2"></td>
                 </tr>
                 <tr>
                     <td>Số CS</td>
@@ -250,6 +253,7 @@
 
                     <td></td>
                     <td>Tổng cộng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -277,6 +281,7 @@
                     <td colspan="2">Cỡ vừa 51-200 NLĐ</td>
                     <td colspan="2">Cỡ lớn >200 NLĐ</td>
                     <td colspan="2">Tổng số</td>
+                    <td rowspan="2"></td>
                 </tr>
                 <tr>
                     <td>Số CS</td>
@@ -294,6 +299,7 @@
 
                     <td></td>
                     <td>Tổng cộng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -518,6 +524,8 @@
                     <td colspan="2">Phóng xạ</td>
                     <td colspan="2">Điện, Từ trường</td>
                     <td colspan="2">Yếu tố khác</td>
+                    <td rowspan="2"></td>
+
                 </tr>
                 <tr>
                     <td>(1)</td>
@@ -568,6 +576,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+
 
                 </tr>
             </table>
@@ -591,6 +601,8 @@
                     <td colspan="2">Bụi silic</td>
                     <td colspan="2">Bụi khác</td>
                     <td colspan="2">Tổng số</td>
+                    <td rowspan="2"></td>
+
                 </tr>
                 <tr>
                     <td>(1)</td>
@@ -609,6 +621,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -640,6 +653,8 @@
                     <td colspan="3">Đánh giá các yếu tố tiếp xúc nghề nghiệp (yếu tố vi sinh vật/gây dị ứng, mẫn cảm/gây
                         ung thư/dung môi)</td>
                     <td colspan="2">Yếu tố tâm sinh lý và ec-gô-nô-my</td>
+                    <td rowspan="2"></td>
+
                 </tr>
                 <tr>
                     <td>Yếu tố tiếp xúc</td>
@@ -660,7 +675,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-
+                    <td></td>
                 </tr>
             </table>
         </div>
@@ -763,9 +778,10 @@
                     <td colspan="2">Quý II</td>
                     <td colspan="2">Quý III</td>
                     <td colspan="2">Quý IV</td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td colspan="10">
+                    <td colspan="11">
                         <div class="row col-md-12">
                             <div id="add_row8" class="mb-1"></div>
                             &nbsp;
@@ -777,7 +793,7 @@
                 <tbody data-bind="list:tongsotruonghopmaccacloaibenhthongthuongphuluc10field"></tbody>
 
                 <tr>
-                    <td colspan="10">
+                    <td colspan="11">
                         <div class="row col-md-12">
                             <div id="add_row9" class="mb-1"></div>
                             &nbsp;
@@ -805,6 +821,7 @@
                     <td>Chết</td>
                     <td>Mắc</td>
                     <td>Chết</td>
+                    <td></td>
                 </tr>
                 
                 <tbody data-bind="list:cactruonghoptainanlaodongphuluc10field"></tbody>
@@ -812,6 +829,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng Cộng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -920,6 +938,7 @@
                     <td colspan="2">NLĐ được chẩn đoán BNN</td>
                     <td colspan="2"> NLĐ được giám định BNN</td>
                     <td colspan="6">Kết quả giám định BNN</td>
+                    <td rowspan="3"></td>
                 </tr>
                 <tr>
                     <td rowspan="2">Tổng số</td>
@@ -958,7 +977,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-
+                    <td></td>
                 </tr>
             </table>
         </div>
@@ -979,6 +998,8 @@
                     <td rowspan="2">Tên BNN</td>
                     <td rowspan="2">Tỷ lệ suy giảm KNLĐ</td>
                     <td rowspan="2">Công việc hiện nay</td>
+                    <td rowspan="2"></td>
+
                 </tr>
                 <tr>
                     <td>Nam</td>
@@ -997,6 +1018,7 @@
                     <td rowspan="2">Nội dung</td>
                     <td rowspan="2">Số cơ sở lao động được huấn luyện</td>
                     <td colspan="2">Số người lao động được huấn luyện</td>
+                    <td rowspan="2"></td>
                 </tr>
                 <tr>
                     <td>Tổng Số</td>
@@ -1004,7 +1026,7 @@
                 </tr>
                 <tr>
                     <td>I</td>
-                    <td colspan="4">
+                    <td colspan="5">
                         <div class="row col-md-12">
                             <div id="add_row13" class="mb-1"></div>
                             &nbsp;
@@ -1023,7 +1045,7 @@
 
                 <tr>
                     <td>II</td>
-                    <td colspan="4">
+                    <td colspan="5">
                         <div class="row col-md-12">
                             <div id="add_row14" class="mb-1"></div>
                             &nbsp;
@@ -1043,6 +1065,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng Số</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -1119,6 +1142,7 @@
                     <td rowspan="2">Số trường hợp TNLĐ được sơ cứu tại chỗ trước khi chuyển đến cơ sở KBCB</td>
                     <td colspan="4">Số người lao động khám, điều trị tại cơ sở KBCB</td>
                     <td rowspan="2">Ghi chú</td>
+                    <td rowspan="2"></td>
 
                 </tr>
                 <tr>
@@ -1139,7 +1163,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-
+                    <td></td>
                 </tr>
             </table>
         </div>
@@ -1190,7 +1214,7 @@
                     <td>Mã ngành nghề</td>
                     <td>Ngành nghề</td>
                     <td>Tổng số trường hợp tai nạn lao động được khám và điều trị</td>
-
+                    <td></td>
                 </tr>
                 
                 <tbody data-bind="list:phanloaicactruonghoptainanlaodongtheonganhnghephuluc10field"></tbody>
@@ -1198,6 +1222,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -1222,6 +1247,7 @@
                     <td>Số tiền</td>
                     <td>Ghi chú</td>
                     <td>Số tiền trung bình/cơ sở</td>
+                    <td></td>
                 </tr>
             
                 <tbody data-bind="list:kinhphichitraphuluc10field"></tbody>
@@ -1229,6 +1255,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -1251,6 +1278,7 @@
                     <td>Số lượng cán bộ</td>
                     <td>Số cơ sở lao động thực hiện quan trắc MTLĐ trong kỳ báo cáo</td>
                     <td>Nhận xét</td>
+                    <td></td>
                 </tr>
             
                 <tbody data-bind="list:danhsachcactochucquantractrendiabanfield"></tbody>
@@ -1258,6 +1286,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -1279,6 +1308,7 @@
                     <td>Số lượng cán bộ</td>
                     <td>Số cơ sở lao động thực hiện khám BNN trong kỳ báo cáo</td>
                     <td>Nhận xét</td>
+                    <td></td>
                 </tr>
             
                 <tbody data-bind="list:danhsachcosokhambenhtrendiabanfield"></tbody>
@@ -1286,6 +1316,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -1307,6 +1338,7 @@
                     <td>Số lượng cán bộ</td>
                     <td>Số cơ sở lao động đã huấn luyện về y tế lao động, sơ cứu, cấp cứu </td>
                     <td>Nhận xét</td>
+                    <td></td>
                 </tr>
             
                 <tbody data-bind="list:danhsachtochuchuanluyentrendiabanfield"></tbody>
@@ -1314,6 +1346,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -1391,11 +1424,15 @@
         <div class="row col-md-12 justify-content-center d-flex m-0 p-0">
             <div class="border w-50 text-center">
                 <label class=" pl-5 pr-5 stronger">THỦ TRƯỞNG</label><br>
-                <label class=" pl-5 pr-5 "><i>(ký, ghi rõ họ tên và đóng dấu)</i></label>
+                <label class=" pl-5 pr-5 "><i>(ký, ghi rõ họ tên và đóng dấu)</i></label><br>
+                <label>&nbsp;</label><br>
+                <label>&nbsp;</label>
             </div>
             <div class="border w-50 text-center">
                 <label class=" pl-5 pr-5 stronger">Người báo cáo</label><br>
-                <label class=" pl-5 pr-5 "><i>(ký, ghi rõ họ tên)</i></label>
+                <label class=" pl-5 pr-5 "><i>(ký, ghi rõ họ tên)</i></label><br>
+                <label>&nbsp;</label><br>
+                <label>&nbsp;</label>
             </div>
         </div>
     </div>

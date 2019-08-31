@@ -10,14 +10,15 @@ define(function (require) {
 	var BangQLSucKhoeTruocKhiBoTriViecLamItemView = require('app/baocao/phuluc2/js/BangQLSucKhoeTruocKhiBoTriViecLamView');
 	var BangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKyItemView = require('app/baocao/phuluc2/js/BangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKyView');
 	var BangSoTruongHopMacCacLoaiBenhThongThuongItemView = require('app/baocao/phuluc2/js/BangSoTruongHopMacCacLoaiBenhThongThuongVIew');
-	
+
 	var BangCacTruongHopMacBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangCacTruongHopMacBenhNgheNghiepView');
 	var BangCacTruongHopTaiNanLaoDongItemView = require('app/baocao/phuluc2/js/BangCacTruongHopTaiNanLaoDongView');
 	// var BangTinhHinhNghiViecItemView = require('app/baocao/phuluc2/js/BangTinhHinhNghiViecView');
 	var BangQuanLyBenhManTinhItemView = require('app/baocao/phuluc2/js/BangQuanLyBenhManTinhView');
-	// var BangQuanLyBenhManTinhTheoTungBenhItemView = require('app/baocao/phuluc2/js/BangQuanLyBenhManTinhTheoTungBenhView');
+	var BangQuanLyBenhManTinhTheoTungBenhView = require('app/baocao/phuluc2/js/BangQuanLyBenhManTinhTheoTungBenhView');
 	var BangTheoDoiBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangTheoDoiBenhNgheNghiepView');
 	var BangDanhSachNguoiLaoDongMacBenhNgheNghiepItemView = require('app/baocao/phuluc2/js/BangDanhSachNguoiLaoDongMacBenhNgheNghiepView');
+	var BangTinhHinhNghiViecView = require('app/baocao/phuluc2/js/BangTinhHinhNghiViecView');
 
 
 	return Gonrin.ModelView.extend({
@@ -203,7 +204,7 @@ define(function (require) {
 				// {
 				// 	field: "bangquanlybenhmantinhtheotungbenhfield",
 				// 	uicontrol: false,
-				// 	itemView: BangQuanLyBenhManTinhTheoTungBenhItemView,
+				// 	itemView: BangQuanLyBenhManTinhTheoTungBenhView,
 				// 	tools: [{
 				// 		name: "create",
 				// 		type: "button",
@@ -279,9 +280,9 @@ define(function (require) {
 					field: "nam",
 					cssClass: false,
 				},
-				
 
-				
+
+
 
 			]
 		},
@@ -293,85 +294,138 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
-						self.tinhtong();
-						self.sothutu()
-						self.sothutu2();		
+						self.renderBangquanlybenhmantinhtheotungbenh();
+						// self.renderbangtinhhinhnghiviec();
+						self.registerEvent();
+						// self.tinhtong();
+						// self.sothutu()
+						// self.sothutu2();
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
 					},
 				});
 			} else {
-				self.applyBindings();	
-				self.tinhtong();
-				self.sothutu();	
-				self.sothutu2();	
+				self.applyBindings();
+				self.renderBangquanlybenhmantinhtheotungbenh();
+				self.registerEvent();
 			}
 		},
-		
-		tinhtong: function () {
+
+		registerEvent: function () {
+			const self = this;
+			self.createBangTinhHinhNghiViec();
+			self.renderbangtinhhinhnghiviec();
+		},
+
+		createBangTinhHinhNghiViec: function () {
+			const self = this;
+			var containerEl = self.$el.find("#space_bangtinhhinhnghiviecfield");
+
+			self.$el.find("#btn_add_bangtinhhinhnghiviecfield").on("click", (eventClick) => {
+				console.log("click");
+				var viewNghiViec = new BangTinhHinhNghiViecView();
+				viewNghiViec.model.save(null, {
+					success: (model, response, options) => {
+						console.log("model", response);
+						viewNghiViec.model.set(response);
+						viewNghiViec.render();
+						$(viewNghiViec.el).hide().appendTo(containerEl).fadeIn();
+
+					}, error: (error) => {
+						console.log("error", error);
+					}
+
+				});
+			});
+		},
+
+		renderbangtinhhinhnghiviec: function () {
 			const self = this;
 
-			var arrx = [];
-			arrx = lodash(self.$el.find("tr td #x"));
-			arrx.forEach(function (item, index, array) {
-				var indexx = index;
-				var itemx = item;
-				var arry = [];
-				arry = lodash(self.$el.find("tr td #y"));
-				arry.forEach(function (item, index, array) {
-					if (indexx == index) {
-						var itemy = item;
-						var arrtong = [];
-						arrtong = lodash(self.$el.find("tr td #tong"));
-						arrtong.forEach(function (item, index, array) {
-							if (indexx == index) {
-								item.value = parseInt(itemx.value) + parseInt(itemy.value);
+			var danhSachTinhHinhNghiViec = self.model.get("bangtinhhinhnghiviecfield");
+			var containerEl = self.$el.find("#space_bangtinhhinhnghiviecfield");
+
+			danhSachTinhHinhNghiViec.forEach((item, idx) => {
+				var viewNghiViec = new BangTinhHinhNghiViecView();
+				viewNghiViec.model.set(item);
+				viewNghiViec.render();
+				console.log("viewNghiViec", viewNghiViec);
+
+				$(viewNghiViec.el).hide().appendTo(containerEl).fadeIn();
+				viewNghiViec.model.on("change", (change) => {
+					console.log("change", change);
+					var bangTinhHinhNghiViec =  self.model.get("bangtinhhinhnghiviecfield");
+					if (change.attributes) {
+						bangTinhHinhNghiViec.forEach((item, idx) => {
+							if (item.id === change.attributes.id) {
+								bangTinhHinhNghiViec[idx] = change.attributes;
 							}
 						});
+						self.model.set("bangtinhhinhnghiviecfield", bangTinhHinhNghiViec);
+
 					}
+				})
+			});
+		},
+
+		renderBangquanlybenhmantinhtheotungbenh: function () {
+			const self = this;
+
+			var ds_bangquanlybenhmantinhtheotungbenhfield = self.model.get("bangquanlybenhmantinhtheotungbenhfield");
+			var containerEl = self.$el.find("#space_bangquanlybenhmantinhtheotungbenhfield");
+			containerEl.empty();
+			ds_bangquanlybenhmantinhtheotungbenhfield.forEach((item, index) => {
+				var view = new BangQuanLyBenhManTinhTheoTungBenhView();
+				view.model.set(item);
+				view.render();
+				$(view.el).hide().appendTo(containerEl).fadeIn();
+
+				view.on("change", (data) => {
+					var ds_bangquanlybenhmantinhtheotungbenhfield = self.model.get("bangquanlybenhmantinhtheotungbenhfield");
+					ds_bangquanlybenhmantinhtheotungbenhfield.forEach((item, index) => {
+						if (item.id == data.id) {
+							ds_bangquanlybenhmantinhtheotungbenhfield[index] = data;
+						}
+					});
+					self.model.set("bangquanlybenhmantinhtheotungbenhfield", ds_bangquanlybenhmantinhtheotungbenhfield);
 				});
 			});
 
+			self.$el.find("#btn_add_bangquanlybenhmantinhtheotungbenhfield").unbind("click").bind("click", () => {
+				var view = new BangQuanLyBenhManTinhTheoTungBenhView();
+				view.model.save(null, {
+					success: function (model, respose, options) {
+						view.model.set(respose);
+
+						view.render();
+						$(view.el).hide().appendTo(containerEl).fadeIn();
+
+						var ds_bangquanlybenhmantinhtheotungbenhfield = self.model.get("bangquanlybenhmantinhtheotungbenhfield");
+						if (!ds_bangquanlybenhmantinhtheotungbenhfield) {
+							ds_bangquanlybenhmantinhtheotungbenhfield = [];
+						}
+						ds_bangquanlybenhmantinhtheotungbenhfield.push(view.model.toJSON());
+						self.model.set("bangquanlybenhmantinhtheotungbenhfield", ds_bangquanlybenhmantinhtheotungbenhfield);
+
+						view.on("change", (data) => {
+
+
+							var ds_bangquanlybenhmantinhtheotungbenhfield = self.model.get("bangquanlybenhmantinhtheotungbenhfield");
+							ds_bangquanlybenhmantinhtheotungbenhfield.forEach((item, index) => {
+								if (item.id == data.id) {
+									ds_bangquanlybenhmantinhtheotungbenhfield[index] = data;
+								}
+							});
+							self.model.set("bangquanlybenhmantinhtheotungbenhfield", ds_bangquanlybenhmantinhtheotungbenhfield);
+						});
+					},
+					error: function (xhr, status, error) {
+						// HANDLE ERROR
+					}
+				});
+			});
 		},
-
-		sothutu: function () {
-			const self = this;
-			var arr = [];
-			var arrr = [];
-
-			arr = lodash.sortBy(self.model.get("bangsotruonghopmaccacloaibenhthongthuongfield"), ["created_at"], ["asc"])
-			arr.forEach(function (item, index, array) {
-				console.log(index);
-			
-			});	
-		
-			arrr = lodash(self.$el.find("tr td #stt"));
-			arrr.forEach(function (item, index, array) {
-				console.log(item);
-				item.value=index+1;
-			});	
-
-		},
-		sothutu2: function () {
-			const self = this;
-			var arr = [];
-			var arrr = [];
-
-			arr = lodash.sortBy(self.model.get("bangcactruonghopmacbenhnghenghiepfield"), ["created_at"], ["asc"])
-			arr.forEach(function (item, index, array) {
-				console.log(index);
-			
-			});	
-		
-			arrr = lodash(self.$el.find("tr td #stt"));
-			arrr.forEach(function (item, index, array) {
-				console.log(item);
-				item.value=index+1;
-			});	
-
-		},
-
 	});
 
 });

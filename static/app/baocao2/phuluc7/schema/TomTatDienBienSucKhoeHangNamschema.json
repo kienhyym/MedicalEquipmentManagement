@@ -1,0 +1,30 @@
+{
+	"id": {
+		"type": "string",
+		"primary": true
+	},
+    "namkham": {
+        "type": "string"
+    },
+    "tinhtrangcuabenh": {
+        "type": "string"
+    },
+    "dieutri_tungay": {
+        "type": "string"
+    },
+    "dieuduong_tungay": {
+		"type": "string"
+	},
+    "phuchoi_chucnang": {
+        "type": "string"
+    },
+    "tyle_suygiam_laodong": {
+        "type": "string"
+    },
+    "ketqua_saudieutri_dieuduong": {
+        "type": "string"
+    },
+    "ghichu": {
+        "type": "string"
+    }
+}

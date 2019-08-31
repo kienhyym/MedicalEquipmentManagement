@@ -124,6 +124,54 @@ define(function (require) {
 		uiControl: {
 			fields: [
 				{
+					field: "trungtamytetinhthanhpho",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				{
+					field: "trungtambaovesuckhoelaodong",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				{
+					field: "trungtamkiemsoatbenhtat",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				{
 					field: "tinhhinhthuchienvanbanphapquyfield",
 					uicontrol: false,
 					itemView: TinhHinhThucHienVanBanPhapQuyItemView,

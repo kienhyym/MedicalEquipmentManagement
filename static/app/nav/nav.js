@@ -256,105 +256,198 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "Tổng hợp kết quả khám sức khỏe phát hiện bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
+					"text": "Tổng hợp kết quả đợt khám sức khỏe phát hiện bệnh nghề nghiệp",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc10/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep",
+					"route": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep/collection",
+					"$ref": "app/baocao2/phuluc10/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+
+				},
+				{
+					"type": "view",
+					"collectionName": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep",
+					"route": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep/model(/:id)",
+					"$ref": "app/baocao2/phuluc10/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 				{
 					"text": "Tổng hợp kết quả khám định kỳ người mắc bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc11/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "tonghopketquakhamdinhkynguoimacbenhnghenghiep",
+					"route": "tonghopketquakhamdinhkynguoimacbenhnghenghiep/collection",
+					"$ref": "app/baocao2/phuluc11/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+
+				},
+				{
+					"type": "view",
+					"collectionName": "tonghopketquakhamdinhkynguoimacbenhnghenghiep",
+					"route": "tonghopketquakhamdinhkynguoimacbenhnghenghiep/model(/:id)",
+					"$ref": "app/baocao2/phuluc11/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 				{
 					"text": "Hồ sơ bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc7/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "hosobenhnghenghiep",
+					"route": "hosobenhnghenghiep/collection",
+					"$ref": "app/baocao2/phuluc7/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+
+				},
+				{
+					"type": "view",
+					"collectionName": "hosobenhnghenghiep",
+					"route": "hosobenhnghenghiep/model(/:id)",
+					"$ref": "app/baocao2/phuluc7/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 				{
 					"text": "Biên bản hội chấn bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc8/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "bienbanhoichanbenhnghenghiep",
+					"route": "bienbanhoichanbenhnghenghiep/collection",
+					"$ref": "app/baocao2/phuluc8/js/CollectionView",
 					"visible": function () {
 						return true;
 					}
+
 				},
-				{ 
-					"text": "Sổ khám sức khỏe định kỳ của người lái xe ô tô",
-					"icon": "far fa-clipboard",
+				{
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc21/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"collectionName": "bienbanhoichanbenhnghenghiep",
+					"route": "bienbanhoichanbenhnghenghiep/model(/:id)",
+					"$ref": "app/baocao2/phuluc8/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+				{
+					"text": "Sổ khám sức khỏe định kỳ của người lái xe ô tô",
+					"type": "view",
+					"icon": "far fa-clipboard",
+					"collectionName": "sokhamsuckhoedinhkycuanguoilaixeoto",
+					"route": "sokhamsuckhoedinhkycuanguoilaixeoto/collection",
+					"$ref": "app/baocao2/phuluc21/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+
+				},
+				{
+					"type": "view",
+					"collectionName": "sokhamsuckhoedinhkycuanguoilaixeoto",
+					"route": "sokhamsuckhoedinhkycuanguoilaixeoto/model(/:id)",
+					"$ref": "app/baocao2/phuluc21/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 				{
 					"text": "Giấy giới thiệu",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc1/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "giaygioithieu",
+					"route": "giaygioithieu/collection",
+					"$ref": "app/baocao2/phuluc1/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+
+				},
+				{
+					"type": "view",
+					"collectionName": "giaygioithieu",
+					"route": "giaygioithieu/model(/:id)",
+					"$ref": "app/baocao2/phuluc1/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 				{
 					"text": "Phiếu khám sức khỏe trước khi bố trí làm việc",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc2/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "phieukhamsuckhoetruockhibotrilamviec",
+					"route": "phieukhamsuckhoetruockhibotrilamviec/collection",
+					"$ref": "app/baocao2/phuluc2/js/CollectionView",
 					"visible": function () {
 						return true;
 					}
+
 				},
+				{
+					"type": "view",
+					"collectionName": "phieukhamsuckhoetruockhibotrilamviec",
+					"route": "phieukhamsuckhoetruockhibotrilamviec/model(/:id)",
+					"$ref": "app/baocao2/phuluc3/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+
 				{
 					"text": "Sổ khám sức khỏe phát hiện bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc3/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "sokhamsuckhoephathienbenhnghenghiep",
+					"route": "sokhamsuckhoephathienbenhnghenghiep/collection",
+					"$ref": "app/baocao2/phuluc3/js/CollectionView",
 					"visible": function () {
 						return true;
 					}
+
 				},
-				
+				{
+					"type": "view",
+					"collectionName": "sokhamsuckhoephathienbenhnghenghiep",
+					"route": "sokhamsuckhoephathienbenhnghenghiep/model(/:id)",
+					"$ref": "app/baocao2/phuluc3/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+
 				{
 					"text": "Biên bản xác nhận tiếp xúc với yếu tố có hại gây bệnh nghề nghiệp cấp tính",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc5/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep",
+					"route": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep/collection",
+					"$ref": "app/baocao2/phuluc5/js/CollectionView",
 					"visible": function () {
 						return true;
 					}
+
 				},
+				{
+					"type": "view",
+					"collectionName": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep",
+					"route": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep/model(/:id)",
+					"$ref": "app/baocao2/phuluc5/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+
+
 			]
 		},
 		{
@@ -430,7 +523,7 @@ define(function (require) {
 						return false;
 					}
 				},
-				
+
 
 				{
 					"text": "Báo cáo tổ chức đủ điều kiện quan trắc môi trường lao động được công bố",
@@ -458,24 +551,44 @@ define(function (require) {
 
 				{
 					"text": "Báo cáo danh sách các cơ sở lao động có người lao động mắc bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc12/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong",
+					"route": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong/collection",
+					"$ref": "app/baocao2/phuluc12/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+
+				},
+				{
+					"type": "view",
+					"collectionName": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong",
+					"route": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong/model(/:id)",
+					"$ref": "app/baocao2/phuluc12/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 				{
 					"text": "Báo cáo trường hợp người lao động mắc bệnh nghề nghiệp",
-					"icon": "far fa-clipboard",
 					"type": "view",
-					// "collectionName": "baocao",
-					"route": "baocao2/phuluc9/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"icon": "far fa-clipboard",
+					"collectionName": "baocaotruonghopnguoilaodongmacbenhnghenghiep",
+					"route": "baocaotruonghopnguoilaodongmacbenhnghenghiep/collection",
+					"$ref": "app/baocao2/phuluc9/js/CollectionView",
 					"visible": function () {
 						return true;
+					}
+
+				},
+				{
+					"type": "view",
+					"collectionName": "baocaotruonghopnguoilaodongmacbenhnghenghiep",
+					"route": "baocaotruonghopnguoilaodongmacbenhnghenghiep/model(/:id)",
+					"$ref": "app/baocao2/phuluc9/js/ModelView",
+					"visible": function () {
+						return false;
 					}
 				},
 
@@ -494,7 +607,7 @@ define(function (require) {
 			// },
 			"entries": [
 				{
-					"text": "Quy định về công trình vệ sinh phúc lợi tại nơi làm việc",	
+					"text": "Quy định về công trình vệ sinh phúc lợi tại nơi làm việc",
 					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
@@ -504,7 +617,7 @@ define(function (require) {
 						return true;
 					}
 				},
-				
+
 				{
 					"text": "Quy định về túi sơ cứu tại nơi làm việc",
 					"icon": "far fa-clipboard",
@@ -539,8 +652,8 @@ define(function (require) {
 					}
 				},
 
-				
-				
+
+
 
 
 				{
@@ -576,10 +689,10 @@ define(function (require) {
 						return true;
 					}
 				},
-				
+
 			]
 		},
-		
+
 	];
 
 });

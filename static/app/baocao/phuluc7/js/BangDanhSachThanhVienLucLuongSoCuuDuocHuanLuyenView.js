@@ -16,27 +16,7 @@ define(function (require) {
         foreignRemoteField: "id",
         foreignField: "sotheodoicongtachuanluyensocuucapcuutainoilamviec_id",
 
-        uiControl: {
-            fields: [
-                {
-					field: "hovaten",
-					cssClass: false,
-                },
-                {
-					field: "namsinhnam",
-					cssClass: false,
-                },
-                {
-					field: "namsinhnu",
-					cssClass: false,
-                },
-                {
-					field: "vitrilamviec",
-					cssClass: false,
-                },
-                
-            ]
-        },
+
         render: function () {
             var self = this;
             self.applyBindings();

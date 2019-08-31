@@ -127,13 +127,13 @@ define(function (require) {
 					foreignField: "donvi_id",
 					dataSource: DonViSelectView
 				},
-				// {
-				// 	field: "type",
-				// 	uicontrol: "imagelink",
-				// 	service: {
-				// 		url: "https://upstart.vn/services/api/image/upload?path=test"
-				// 	}
-				// },
+				{
+					field: "type",
+					uicontrol: "uploadfile",
+					service: {
+						url: "https://upstart.vn/services/api/files/upload?path=test"
+					}
+				},
 
 				// {
 				// 	field: "userconnectionchannels",
@@ -160,7 +160,7 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
-						self.uploadFile();
+						// self.uploadFile();
 
 					},
 					error: function () {
@@ -169,7 +169,7 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
-				self.uploadFile();
+				// self.uploadFile();
 			}
 		},
 

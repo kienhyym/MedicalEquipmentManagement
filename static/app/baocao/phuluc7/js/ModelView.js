@@ -151,7 +151,7 @@ define(function (require) {
 					field: "thoigianthuchienhuanluyen",
 					cssClass: false,
 				},
-
+			
 			]
 		},
 

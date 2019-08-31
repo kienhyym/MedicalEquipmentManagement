@@ -1,5 +1,7 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
+            <div block-bind="toolbar"></div>
+
         <div class="row col-md-12 justify-content-center d-flex m-0 p-0">
             <div class="border w-50 text-center"">
                     <label class=" pl-5 pr-5 text-center">CƠ QUAN CHỦ QUẢN </label><br>
@@ -17,73 +19,73 @@
         </div>
         <div class="justify-content-center d-flex flexboxer col-md-12 p-0">
             <label class="stronger">Hồ sơ số</label>
-            <input type="text" class="input-phuluc2">
+            <input type="text" data-bind="value:hoso_so" class="input-phuluc2">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Họ và tên bệnh nhân: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:hotenbenhnhan" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
 
         <div class="flexboxer col-md-12 p-0">
             <label>Giới tính: Nam/Nữ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:gioitinh" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Ngày, tháng, năm sinh: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:ngaythangnamsinh" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-
-            <label>Số CMND/căn cước công dân:</label>
-            <input type="text" class="input-phuluc2">
+            <label>Số_CMND/căn_cước_công_dân:</label>
+            <input type="text" data-bind="value:ma_cancuoc_congdan" class="input-phuluc2">
             <label>Nơi cấp:</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" data-bind="value:noicap" class="input-phuluc2" style="width: 8%;">
             <label>ngày tháng năm cấp:</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" data-bind="value:ngaythangnamcap" class="input-phuluc2" style="width: 8%;">
         </div>
+
         <div class="flexboxer col-md-12 p-0">
             <label>Nghề hoặc công việc: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:nghehoaccongviec" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Tuổi nghề (năm):</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:tuoinghe" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Chỗ ở hiện tại: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:cho_o_hientai" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Số sổ khám sức khoẻ phát hiện bệnh nghề nghiệp: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:so_so_kham_suckhoe_phathien_benh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Tên cơ sở lao động: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:tencosolaodong" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Phân xưởng/vị trí lao động: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phanxuong_vitri_laodong" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Địa chỉ của cơ sở lao động:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:diachi_cua_coso_laodong" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Điện thoại: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:dienthoai" class="input-phuluc2" style="flex-grow: 1">
             <label> Số Fax: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:fax" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="justify-content-center d-flex flexboxer col-md-12 p-0">
             <label class="stronger">Năm</label>
-            <input type="text" class="input-phuluc2">
+            <input type="text" data-bind="value:nam" class="input-phuluc2">
         </div>
         <div class="justify-content-center d-flex flexboxer col-md-12 p-0">
             <label class="stronger">PHẦN I: KHÁM PHÁT HIỆN BỆNH NGHỀ NGHIỆP</label>
@@ -100,33 +102,33 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Tên cơ sở khám bệnh nghề nghiệp:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_tencoso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Địa chỉ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_diachi_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
 
         <div class="flexboxer col-md-12 p-0">
             <label>Ngày, tháng, năm lập hồ sơ bệnh nghề nghiệp: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_ngaythangnam_laphoso_benhnghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Điện thoại: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_dienthoai_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
 
             <label>Số Fax: : </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_fax_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>E-mail: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_email_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
 
             <label>Web-site: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_web_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
@@ -134,29 +136,29 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>1. Những nghề đã làm trước đây (thời gian và nghề nghiệp/công việc đã làm):</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_nghengiep_dalam_truocday" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>2. Nội dung công việc và điều kiện lao động hiện tại (các yếu tố có hại, trang bị bảo hộ lao
                 động):</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_noidung_congviec_va_dieukien_laodong_hientai" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
@@ -174,29 +176,29 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Các bệnh đã mắc (thời gian, nơi điều trị, kết quả điều trị): </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_cacbenh_damac" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>+ Trước khi vào nghề: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_tiensubenh_truockhivaonghe" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>+ Sau khi vào nghề:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_tiensubenh_saukhivaonghe" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
 
@@ -206,7 +208,7 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Tình hình sức khoẻ hiện tại (bệnh mắc chính, diễn biến của bệnh nghề nghiệp):</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_benhsu_tinhhinh_suckhoe_hientai" class="input-phuluc2" style="flex-grow: 1">
 
         </div>
 
@@ -219,11 +221,11 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_ketquakhamhientai_thetrangchung" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>3.2. Khám các chuyên khoa liên quan đến bệnh nghề nghiệp</label>
@@ -234,47 +236,47 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_ketquakhamhientai_khamchuyenkhoa_trieuchungconang" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>b) Khám thực thể</label>
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_ketquakhamhientai_khamchuyenkhoa_khamthucthe" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>c) Cận lâm sàng (xét nghiệm, chẩn đoán hình ảnh, thăm dò chức năng)</label>
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_ketquakhamhientai_khamchuyenkhoa_canlamsang" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
@@ -282,18 +284,18 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_tomtat_ketqua_khamchuyenkhoa_khac" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>IV. KẾT LUẬN</label>
@@ -304,33 +306,33 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_ketluan_chuandoan_sobo" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>2. Kết luận hội chẩn (nếu có- Đính kèm theo biên bản hội chẩn)</label>
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_ketluan_hoichan" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>3. Chẩn đoán xác định</label>
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_ketluan_chuandoan_xacdinh" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>4. Hướng giải quyết (chỉ định hội chẩn hoặc điều trị, điều dưỡng, phục hồi chức năng hoặc giám định,
@@ -338,15 +340,15 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan1_ketluan_huong_giaiquyet" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
 
@@ -359,13 +361,12 @@
 
             </div>
             <div class="border w-50 text-center">
-                <input type="text" class="input-phuluc2" style="width: 8%;">
-                <label>,ngày</label>
-                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <label>ngày</label>
+                <input type="text" data-bind="value:phan1_ngay_bacsyky" class="input-phuluc2" style="width: 8%;">
                 <label>,tháng</label>
-                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <input type="text" data-bind="value:phan1_thang_bacsyky" class="input-phuluc2" style="width: 8%;">
                 <label>,năm</label>
-                <input type="text" class="input-phuluc2" style="width: 8%;"><br>
+                <input type="text" data-bind="value:phan1_nam_bacsyky" class="input-phuluc2" style="width: 8%;"><br>
                 <label class=" pl-5 pr-5 text-center">Bác sỹ trưởng đoàn khám</label><br>
                 <label class=" pl-5 pr-5 text-center">(Ký, đóng dấu, ghi rõ họ tên)</label>
             </div>
@@ -390,33 +391,33 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Tên cơ sở khám bệnh nghề nghiệp: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_tencoso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Địa chỉ: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_diachi_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
 
         <div class="flexboxer col-md-12 p-0">
             <label>Ngày, tháng, năm lập hồ sơ bệnh nghề nghiệp: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_ngaythangnam_laphoso_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Điện thoại: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_dienthoai_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
 
             <label>Số Fax: : </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_fax_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>E-mail: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_email_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
 
             <label>Web-site: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_web_coso_khambenh_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
@@ -424,54 +425,57 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Tên bệnh nghề nghiệp chẩn đoán: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_tenbenhnghiep_chuandoan" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Cơ sở khám bệnh nghề nghiệp chẩn đoán </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_cosokhambenh_nghenghiep_chuandoan" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Ngày, tháng năm chẩn đoán:</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_ngaythangnam_chuandoan" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Ngày tháng năm khám định kỳ</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_ngaythangnam_khamdinhky" class="input-phuluc2" style="flex-grow: 1">
             <label>Lần khám: </label>
-            <input type="text" class="input-phuluc2">
+            <input type="text" data-bind="value:phan2_lankham_dinhky" class="input-phuluc2">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Khám giám định bệnh nghề nghiệp (nếu có):</label>
+            <input type="text" data-bind="value:phan2_khamdinhky_benhnghenghiep_neuco" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Hội đồng giám định y khoa:</label>
+            <input type="text" data-bind="value:phan2_hoidong_giamdinh_ykhoa" class="input-phuluc2" style="flex-grow: 1">
+
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Biên bản giám định y khoa số:</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" data-bind="value:phan2_bienban_giamdinh_ykhoa_so" class="input-phuluc2" style="width: 8%;">
             <label>ngày</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" data-bind="value:phan2_bienban_giamdinh_ykhoa_ngay" class="input-phuluc2" style="width: 8%;">
             <label>tháng</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" data-bind="value:phan2_bienban_giamdinh_ykhoa_thang" class="input-phuluc2" style="width: 8%;">
             <label>năm</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" data-bind="value:phan2_bienban_giamdinh_ykhoa_nam" class="input-phuluc2" style="width: 8%;">
 
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>- Tỉ lệ suy giảm khả năng lao động: </label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_tyle_suygiam_khanang_laodong" class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>Sổ trợ cấp ngày </label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" data-bind="value:phan2_sotrocapngay" class="input-phuluc2" style="width: 8%;">
             <label>tháng</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" data-bind="value:phan2_sotrocapthang" class="input-phuluc2" style="width: 8%;">
             <label>năm 201</label>
-            <input type="text" class="input-phuluc2" style="width: 8%;">
+            <input type="text" data-bind="value:phan2_sotrocapnam" class="input-phuluc2" style="width: 8%;">
 
         </div>
 
@@ -481,33 +485,33 @@
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>1. Những nghề đã làm trước đây (thời gian và nghề nghiệp/công việc đã làm):</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_tiensu_nghedalam" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
             <label>2. Nội dung công việc và điều kiện lao động hiện tại (các yếu tố có hại, trang bị bảo hộ lao
                 động):</label>
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_tiensu_noidung_va_dieukien_laodong" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
@@ -523,14 +527,14 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_ketqua_lamsang" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
@@ -538,14 +542,14 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_ketqua_canlamsang" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
 
@@ -557,10 +561,10 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_ketluan_chuandoansobo" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
 
@@ -569,14 +573,14 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_ketluan_hoichan" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
             <label>3. Chẩn đoán xác định (ghi rõ mức độ bệnh, tiến triển so với kết quả khám bệnh nghề nghiệp liền kề
@@ -584,14 +588,14 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_ketluan_chandoan_xacdinh" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
@@ -600,14 +604,14 @@
 
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text" data-bind="value:phan2_ketluan_huonggiaiquyet" class="input-phuluc2" style="flex-grow: 1">
         </div>
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="flexboxer col-md-12 p-0">
-            <input type="text" class="input-phuluc2" style="flex-grow: 1">
+            <input type="text"  class="input-phuluc2" style="flex-grow: 1">
         </div>
 
         <div class="row col-md-12 justify-content-center d-flex m-0 p-0">
@@ -615,13 +619,12 @@
 
             </div>
             <div class="border w-50 text-center">
-                <input type="text" class="input-phuluc2" style="width: 8%;">
-                <label>,ngày</label>
-                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <label>ngày</label>
+                <input type="text" data-bind="value:phan2_bacsyky_ngay" class="input-phuluc2" style="width: 8%;">
                 <label>,tháng</label>
-                <input type="text" class="input-phuluc2" style="width: 8%;">
+                <input type="text" data-bind="value:phan2_bacsyky_thang" class="input-phuluc2" style="width: 8%;">
                 <label>,năm</label>
-                <input type="text" class="input-phuluc2" style="width: 8%;"><br>
+                <input type="text" data-bind="value:phan2_bacsyky_nam" class="input-phuluc2" style="width: 8%;"><br>
                 <label class=" pl-5 pr-5 text-center">Bác sỹ trưởng đoàn khám</label><br>
                 <label class=" pl-5 pr-5 text-center">(Ký, đóng dấu, ghi rõ họ tên)</label>
             </div>
@@ -636,9 +639,9 @@
 
         </div>
 
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
+        <div class="table-responsive">
             <table class="table  table-bordered">
-                <tr>
+                <tr class="text-center">
                     <th>Năm khám</th>
                     <th>Tình trạng của bệnh</th>
                     <th>Điều trị từ ngày</th>
@@ -648,7 +651,7 @@
                     <th>Kết quả sau đợt điều trị, điều dưỡng</th>
                     <th>Ghi chú</th>
                 </tr>
-                <tr>
+                <tr class="text-center">
                     <th>1</th>
                     <th>2</th>
                     <th>3</th>    
@@ -658,18 +661,13 @@
                     <th>7</th>
                     <th>8</th>                                              
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+             
+                <tbody id="tomtatdienbiensuckhoehangnam_grid"  data-bind="list:phan3_tomtatdienbien_suckhoe_hangnam"></tbody>
             </table>
+            <button id="add_1_row" class="btn btn-primary">Thêm</button>
+
         </div>
+        
         <div class="row col-md-12 justify-content-center d-flex m-0 p-0">
                 <div class="border w-50  text-center">
     
@@ -677,11 +675,11 @@
                 <div class="border w-50 text-center">
                     
                     <label>Ngày</label>
-                    <input type="text" class="input-phuluc2" style="width: 8%;">
+                    <input type="text" data-bind="value:phan3_thutruongdonvilaodongky_ngay" class="input-phuluc2" style="width: 8%;">
                     <label>tháng</label>
-                    <input type="text" class="input-phuluc2" style="width: 8%;">
+                    <input type="text" data-bind="value:phan3_thutruongdonvilaodongky_thang" class="input-phuluc2" style="width: 8%;">
                     <label>năm</label>
-                    <input type="text" class="input-phuluc2" style="width: 8%;"><br>
+                    <input type="text" data-bind="value:phan3_thutruongdonvilaodongky_nam" class="input-phuluc2" style="width: 8%;"><br>
                     <label class=" pl-5 pr-5 text-center">Thủ trưởng đơn vị lao động</label><br>
                     <label class=" pl-5 pr-5 text-center">(Ký, ghi rõ họ tên)</label>
                 </div>

@@ -37,15 +37,7 @@
         "type": "string",
         "length": 255
     },
-    "phantramom": {
-        "type": "string",
-        "length": 255
-    },
     "tongsongayom": {
-        "type": "string",
-        "length": 255
-    },
-    "songaytrungbinhom": {
         "type": "string",
         "length": 255
     },
@@ -53,31 +45,7 @@
         "type": "string",
         "length": 255
     },
-    "phantramtainanlaodong": {
-        "type": "string",
-        "length": 255
-    },
     "tongsongaytainanlaodong": {
-        "type": "string",
-        "length": 255
-    },
-    "songaytrungbinhtainanlaodong": {
-        "type": "string",
-        "length": 255
-    },
-    "songuoibenhnghenghiep": {
-        "type": "string",
-        "length": 255
-    },
-    "phantrambenhnghenghiep": {
-        "type": "string",
-        "length": 255
-    },
-    "tongsongaybenhnghenghiep": {
-        "type": "string",
-        "length": 255
-    },
-    "songaytrungbinhbenhnghenghiep": {
         "type": "string",
         "length": 255
     },

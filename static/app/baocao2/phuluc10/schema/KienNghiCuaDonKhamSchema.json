@@ -1,0 +1,10 @@
+{
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "noidung": {
+        "type": "string"
+    }
+    
+}

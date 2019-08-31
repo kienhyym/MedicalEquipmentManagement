@@ -29,36 +29,10 @@
         "type": "string",
         "length": 255
     },
-    "phanxuongkhuvuc": {
-        "type": "string",
-        "length": 255
-    },
-    "tenbenhnhan": {
-        "type": "string",
-        "length": 255
-    },
-    "tuoinam": {
-        "type": "number"
-    },
-    "tuoinu": {
-        "type": "number"
-    },
-    "tuoinghe": {
-        "type": "number"
-    },
-    "phuongphapdieutri": {
-        "type": "string",
-        "length": 255
-    },
-    "tinhtrang": {
-        "type": "string",
-        "length": 255
-    },
-    "luuykhibotricongviec": {
-        "type": "string",
-        "length": 255
-    },
     "hsqlsuckhoevabenhtatnguoilaodong_id": {
         "type": "string"
+    },
+    "bangquanlybenhmantinhtheotungbenhchitietfield": {
+        "type": "list"
     }
 }

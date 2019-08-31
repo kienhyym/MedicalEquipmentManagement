@@ -311,6 +311,13 @@ sqlapimanager.create_api(BangQuanLyBenhManTinhTheoTungBenh, max_results_per_page
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='bangquanlybenhmantinhtheotungbenh')
 
+sqlapimanager.create_api(BangQuanLyBenhManTinhTheoTungBenhChiTiet, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='bangquanlybenhmantinhtheotungbenhchitiet')
+
 
 
 sqlapimanager.create_api(BangTheoDoiBenhNgheNghiep, max_results_per_page=1000000,
@@ -824,8 +831,7 @@ sqlapimanager.create_api(CacYeuToKhac, max_results_per_page=1000000,
 
 
 # Hết báo cáo 1 Phụ lục 11
-###############################################################
-
+########################################################################################################################################################
 # Báo cáo 1 Phụ lục 13
 sqlapimanager.create_api(ChungChiDaoTaoVeQuanTracMoiTruongLaoDong, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
@@ -834,3 +840,108 @@ sqlapimanager.create_api(ChungChiDaoTaoVeQuanTracMoiTruongLaoDong, max_results_p
     # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='chungchidaotaovequantracmoitruonglaodong')            
 # Hết báo cáo 1 Phụ lục 13
+######################################################################################################################################################################
+# Báo cáo 2 Phụ lục 1
+sqlapimanager.create_api(GiayGioiThieu, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='giaygioithieu')            
+# Hết báo cáo 2 Phụ lục 1
+######################################################################################################################################################################
+# Báo cáo 2 Phụ lục 2
+sqlapimanager.create_api(PhieuKhamSucKhoeTruocKhiBoTriLamViec, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='phieukhamsuckhoetruockhibotrilamviec')            
+# Hết báo cáo 2 Phụ lục 2
+######################################################################################################################################################################
+# Báo cáo 2 Phụ lục 3
+sqlapimanager.create_api(SoKhamSucKhoePhatHienBenhNgheNghiep, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='sokhamsuckhoephathienbenhnghenghiep')            
+# Hết báo cáo 2 Phụ lục 3
+######################################################################################################################################################################
+# Báo cáo 2 Phụ lục 5
+sqlapimanager.create_api(BienBanXacNhanTiepXucYeuToCoHaiGayBenhNgheNghiep, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep')            
+# Hết báo cáo 2 Phụ lục 5
+######################################################################################################################################################################
+# Báo cáo 2 Phụ lục 7
+sqlapimanager.create_api(HoSoBenhNgheNghiep, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='hosobenhnghenghiep')            
+# Hết báo cáo 2 Phụ lục 7
+######################################################################################################################################################################
+# Báo cáo 2 Phụ lục 8
+sqlapimanager.create_api(BienBanHoiChanBenhNgheNghiep, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='bienbanhoichanbenhnghenghiep')            
+# Hết báo cáo 2 Phụ lục 8
+######################################################################################################################################################################
+# Báo cáo 2 Phụ lục 9
+sqlapimanager.create_api(BaoCaoTruongHopNguoiLaoDongMacBenhNgheNghiep, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='baocaotruonghopnguoilaodongmacbenhnghenghiep')            
+# Hết báo cáo 2 Phụ lục 9
+######################################################################################################################################################################
+
+# Báo cáo 2 Phụ lục 10
+sqlapimanager.create_api(TongHopKetQuaDotKhamSucKhoePhatHienBenhNgheNghiep, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='tonghopketquadotkhamsuckhoephathienbenhnghenghiep')            
+# Hết báo cáo 2 Phụ lục 10
+######################################################################################################################################################################
+
+# Báo cáo 2 Phụ lục 11
+sqlapimanager.create_api(TongHopKetQuaKhamDinhKyNguoiMacBenhNgheNghiep, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='tonghopketquakhamdinhkynguoimacbenhnghenghiep')            
+# Hết báo cáo 2 Phụ lục 11
+
+######################################################################################################################################################################
+
+# Báo cáo 2 Phụ lục 12
+sqlapimanager.create_api(BaoCaoDanhSachCacCoSoLaoDongCoNguoiLaoDongMacBenhNgheNgiep, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong')            
+# Báo cáo 2 Phụ lục 12
+######################################################################################################################################################################
+
+# Báo cáo 3 Phụ lục 21
+sqlapimanager.create_api(SoKhamSucKhoeDinhKyCuaNguoiLaiXeOTo, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='sokhamsuckhoedinhkycuanguoilaixeoto')            
+# Báo cáo 3 Phụ lục 21
+######################################################################################################################################################################

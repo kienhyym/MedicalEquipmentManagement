@@ -108,8 +108,41 @@ define(function (require) {
 			fields: [
 
 				{
+					field: "tructhuoctinhvathanhpho",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+				{
+					field: "tructhuocbovanganh",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": 1,
+						"key": true
+					},
+					{
+						"value": 0,
+						"key": false
+					},
+					],
+				},
+
+				{
 					
-					field: "nguoilamcongtacytecokhong",
+					field: "laphosovesinhkhong",
 					uicontrol: "radio",
 					textField: "name",
 					valueField: "id",
@@ -283,13 +316,6 @@ define(function (require) {
 				},
 				{
 					field: "tencosolaodong",
-					cssClass: false,
-				},{
-					field: "tructhuoctinhthanhpho",
-					cssClass: false,
-				},
-				{
-					field: "tructhuocbonganh",
 					cssClass: false,
 				},
 				{

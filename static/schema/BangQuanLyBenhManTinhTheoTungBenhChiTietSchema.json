@@ -1,0 +1,60 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "phanxuongkhuvuc": {
+        "type": "string",
+        "length": 255
+    },
+    "tenbenhnhan": {
+        "type": "string",
+        "length": 255
+    },
+    "tuoinam": {
+        "type": "number"
+    },
+    "tuoinu": {
+        "type": "number"
+    },
+    "tuoinghe": {
+        "type": "number"
+    },
+    "phuongphapdieutri": {
+        "type": "string",
+        "length": 255
+    },
+    "tinhtrang": {
+        "type": "string",
+        "length": 255
+    },
+    "luuykhibotricongviec": {
+        "type": "string",
+        "length": 255
+    },
+    "bangquanlybenhmantinhtheotungbenh_id": {
+        "type": "string"
+    }
+}

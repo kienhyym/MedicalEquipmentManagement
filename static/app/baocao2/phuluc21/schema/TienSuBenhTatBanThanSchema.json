@@ -1,0 +1,13 @@
+{
+	"id": {
+		"type": "string",
+		"primary": true
+	},
+    "tenbenh": {
+        "type": "string"
+    },
+    "phathiennam": {
+        "type": "string"
+    }
+
+}

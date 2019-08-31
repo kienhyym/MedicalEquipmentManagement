@@ -1,0 +1,84 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "hoten": {
+        "type": "string",
+        "length": 255
+    },
+    "tuoi": {
+        "type": "string",
+        "length": 255
+    },
+    "gioitinh": {
+        "type": "string",
+        "length": 255
+    },
+    "nghenghiep": {
+        "type": "string",
+        "length": 255
+    },
+    "noicongtac": {
+        "type": "string",
+        "length": 255
+    },
+    "hoancanhxayrabenh": {
+        "type": "string",
+        "length": 255
+    },
+    "thongtinvetrinhtrangbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "thongtin_nguon_yeuto_hoancanh_gaybenh": {
+        "type": "string",
+        "length": 255
+    },
+    "xutri_ntn": {
+        "type": "string",
+        "length": 255
+    },
+    "tinhtrang_suckhoe": {
+        "type": "string",
+        "length": 255
+    },
+    "noiky": {
+        "type": "string",
+        "length": 255
+    },
+    "ngayky": {
+        "type": "string",
+        "length": 255
+    },
+    "thangky": {
+        "type": "string",
+        "length": 255
+    },
+    "namky": {
+        "type": "string",
+        "length": 255
+    }
+}

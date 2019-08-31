@@ -1,5 +1,8 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
+
+        <div block-bind="toolbar"></div>
+
         <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
             <table class="table  table-bordered">
                 <tr class="text-center ">
@@ -17,13 +20,13 @@
                         <label class="stronger">Độc lập - Tự do - Hạnh phúc</label><br>
                         <label class="stronger">..................</label>
                         <div class="flexboxer  justify-content-center d-flex ">
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" data-bind="value:noiviet"  class=" input-phuluc2" style="width: 8%;">
                             <label>,ngày</label>
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" data-bind="value:ngayviet"  class=" input-phuluc2" style="width: 8%;">
                             <label>,tháng</label>
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" data-bind="value:thangviet"  class=" input-phuluc2" style="width: 8%;">
                             <label>,năm</label>
-                            <input type="text" class="input-phuluc2" style="width: 8%;">
+                            <input type="text" data-bind="value:namviet" class=" input-phuluc2" style="width: 8%;">
                         </div>
                     </td>
                 </tr>
@@ -45,75 +48,178 @@
             <table class="table  table-bordered">
                 <tr>
                     <td rowspan="3">Thông tin cơ sở khám bệnh nghề nghiệp</td>
-                    <td colspan="4">Tên cơ sở khám bệnh nghề nghiệp:</td>
+                    <td colspan="4">
+                        <div class="flexboxer col-md-12 p-0">
+                            <label>Tên cơ sở khám bệnh nghề nghiệp:</label>
+                            <input type="text" data-bind="value:cosokhambenh_tencoso" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="4">Địa chỉ</td>
+                    <td colspan="4">
+                        <div class="flexboxer col-md-12 p-0">
+                            <label>Địa chỉ:</label>
+                            <input type="text" data-bind="value:cosokhambenh_diachi" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Người liên hệ </td>
-                    <td></td>
+                    <td>
+                        <div class="flexboxer col-md-12 p-0">
+                            <input type="text" data-bind="value:cosokhambenh_nguoilienhe" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                     <td>Số điện thoại:</td>
-                    <td></td>
+                    <td>
+                        <div class="flexboxer col-md-12 p-0">
+                            <input type="text" data-bind="value:cosokhambenh_sodienthoai" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                 </tr>
 
                 <tr>
                     <td rowspan="6">Thông tin cơ sở lao động</td>
-                    <td colspan="4">Tên cơ sở lao động</td>
+                    <td colspan="4">
+                        <div class="flexboxer col-md-12 p-0">
+                            <label>Tên cơ sở lao động:</label>
+                            <input type="text" data-bind="value:cosolaodong_tencoso" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="4">Địa chỉ</td>
+                    <td colspan="4">
+                        <div class="flexboxer col-md-12 p-0">
+                            <label>Địa chỉ:</label>
+                            <input type="text" data-bind="value:cosolaodong_diachi" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Người liên hệ </td>
-                    <td></td>
+                    <td>
+                        <div class="flexboxer col-md-12 p-0">
+                            <input type="text" data-bind="value:cosolaodong_nguoilienhe" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                     <td>Số điện thoại:</td>
-                    <td></td>
+                    <td>
+                        <div class="flexboxer col-md-12 p-0">
+                            <input type="text" data-bind="value:cosolaodong_sodienthoai" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="4">Loại hình sản xuất, kinh doanh</td>
+                    <td colspan="4">
+                        <div class="flexboxer col-md-12 p-0">
+                            <label>Loại hình sản xuất, kinh doanh:</label>
+                            <input type="text" data-bind="value:cosolaodong_loaihinhsanxuat" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="4">Ngành</td>
+                    <td colspan="4">
+                        <div class="flexboxer col-md-12 p-0">
+                            <label>Ngành:</label>
+                            <input type="text" data-bind="value:cosolaodong_nganh" class="input-phuluc2" style="flex-grow: 1">
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="4">Quy mô: 1. Lớn (>200 lao động); 2. Vừa (51 - ≤ 200 lao động); 3. Nhỏ (≤ 50 lao động)
+                    <td colspan="4">
+                        <div class="flexboxer col-md-12 p-0">
+                            <label>Quy mô:</label>
+                            <input type="text" data-bind="value:cosolaodong_quymo" class="input-phuluc2" style="flex-grow: 1"
+                                placeholder="1. Lớn (>200 lao động); 2. Vừa (51 - ≤ 200 lao động); 3. Nhỏ (≤ 50 lao động)">
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5">Thông tin trường hợp mắc bệnh nghề nghiệp</td>
                 </tr>
                 <tr>
-                    <td>Họ và tên người lao động</td>
+                    <td>
+                            <div class="flexboxer col-md-12 p-0">
+                                    <label>Họ và tên người lao động</label><br>
+                                </div>
+                            <div class="flexboxer col-md-12 p-0">
+                                    <input type="text" data-bind="value:truonghopmacbenhnghenghiep_ten" class="input-phuluc2" style="flex-grow: 1">
+                                </div>
+                    </td>
                     <td colspan="2">
                         <label>Giới tính</label><br>
-                        1 Nam              2 Nữ
-                        <label></label>                        
+
+                        <div class="flexboxer col-md-12 p-0">
+                            <input type="text" data-bind="value:truonghopmacbenhnghenghiep_gioitinh" class="input-phuluc2" style="flex-grow: 1"
+                                placeholder="1 Nam     2 Nữ">
+                        </div>
+                        <label></label>
                     </td>
                     <td colspan="2">
                         <label>Ngày sinh</label><br>
-                        <label>Ngày     tháng     năm</label>
+                        <div class="flexboxer col-md-12 p-0">
+                                <label>ngày:</label>
+                                <input type="text" data-bind="value:truonghopmacbenhnghenghiep_ngaysinh" class="input-phuluc2"style="width: 15%;">
+                                <label>tháng:</label>
+                                <input type="text" data-bind="value:truonghopmacbenhnghenghiep_thangsinh" class="input-phuluc2" style="width: 15%;">
+                                <label>năm:</label>
+                                <input type="text" data-bind="value:truonghopmacbenhnghenghiep_namsinh" class="input-phuluc2" style="width: 15%;">
+                            </div>
                     </td>
                 </tr>
 
                 <tr>
-                    <td colspan="5">Tên bệnh nghề nghiệp</td>
+                    <td colspan="5">
+                        
+                            <div class="flexboxer col-md-12 p-0">
+                                    <label>Tên bệnh nghề nghiệp</label>
+                                    <input type="text" data-bind="value:truonghopmacbenhnghenghiep_tenbenh" class="input-phuluc2" style="flex-grow: 1">
+                                </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Nghề nghiệp</td>
+                    <td>
+                            <div class="flexboxer col-md-12 p-0">
+                                    <label>Nghề nghiệp</label><br>
+                                </div>
+                            <div class=" flexboxer col-md-12 p-0">
+                                    <input type="text" data-bind="value:truonghopmacbenhnghenghiep_nghenghiep" class="input-phuluc2" style="flex-grow: 1">
+                                </div>
+                    </td>
                     <td colspan="4">
                         <label>Thời gian tiếp xúc thực tế</label><br>
-                        <label>Năm ……..Tháng ……..Ngày……</label>
+                        <div class="flexboxer col-md-12 p-0">
+                                <label>năm:</label>
+                                <input type="text" data-bind="value:truonghopmacbenhnghenghiep_namtiepxuc" class="input-phuluc2" style="width: 15%;">
+                                <label>tháng:</label>
+                                <input type="text" data-bind="value:truonghopmacbenhnghenghiep_thangtiepxuc" class="input-phuluc2" style="width: 15%;">
+                                <label>ngày:</label>
+                                <input type="text" data-bind="value:truonghopmacbenhnghenghiep_ngaytiepxuc" class="input-phuluc2"style="width: 15%;">
+                            </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label>Ngày xảy ra (đối với sự cố)</label><br>
-                        <label>Ngày     tháng      năm</label>
+                        <div class="flexboxer col-md-12 p-0">
+                                <label>ngày:</label>
+                                <input type="text" data-bind="value:ngayxayrasuco_ngay" class="input-phuluc2"style="width: 15%;">
+                                <label>tháng:</label>
+                                <input type="text" data-bind="value:ngayxayrasuco_thang" class="input-phuluc2" style="width: 15%;">
+                                <label>năm:</label>
+                                <input type="text" data-bind="value:ngayxayrasuco_nam" class="input-phuluc2" style="width: 15%;">
+                            </div>
                     </td>
                     <td colspan="4">
                         <label>Ngày chẩn đoán (đối với bệnh nghề nghiệp)</label><br>
-                        <label>Ngày     tháng      năm</label>
+                        <div class="flexboxer col-md-12 p-0">
+                                <label>ngày:</label>
+                                <input type="text" data-bind="value:ngaychuandoan_ngay" class="input-phuluc2"style="width: 15%;">
+                                <label>tháng:</label>
+                                <input type="text" data-bind="value:ngaychuandoan_thang" class="input-phuluc2" style="width: 15%;">
+                                <label>năm:</label>
+                                <input type="text" data-bind="value:ngaychuandoan_nam" class="input-phuluc2" style="width: 15%;">
+                            </div>
                     </td>
                 </tr>
             </table>

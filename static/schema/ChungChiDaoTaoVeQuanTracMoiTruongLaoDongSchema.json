@@ -54,8 +54,7 @@
         "length": 255
     },
     "sinhngay": {
-        "type": "string",
-        "length": 255
+        "type": "datetime"
     },
     "chungminhthu": {
         "type": "string",

@@ -61,13 +61,11 @@
         "type": "string",
         "length": 255
     },
-    "tructhuoctinhthanhpho": {
-        "type": "string",
-        "length": 255
+    "tructhuoctinhvathanhpho": {
+        "type": "number"
     },
-    "tructhuocbonganh": {
-        "type": "string",
-        "length": 255
+    "tructhuocbovanganh": {
+        "type": "number"
     },
     "diachi": {
         "type": "string",

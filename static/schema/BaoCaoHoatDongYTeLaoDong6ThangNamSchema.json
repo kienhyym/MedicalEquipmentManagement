@@ -57,6 +57,15 @@
         "type": "string",
         "length": 255
     },
+    "trungtamytetinhthanhpho": {
+        "type": "number"
+    },
+    "trungtambaovesuckhoelaodong": {
+        "type": "number"
+    },
+    "trungtamkiemsoatbenhtat": {
+        "type": "number"
+    },
     "trinhdobacsy": {
         "type": "number"
     },
