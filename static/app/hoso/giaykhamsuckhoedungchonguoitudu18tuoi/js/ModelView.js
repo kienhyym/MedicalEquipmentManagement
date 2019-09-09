@@ -175,6 +175,256 @@ define(function (require) {
 					},
 
 
+					{
+						field: "coquanchuquan",
+						cssClass: false,
+					},
+					{
+						field: "tencoquandonvi",
+						cssClass: false,
+					},{
+						field: "so_gksk",
+						cssClass: false,
+					},
+					{
+						field: "hovaten",
+						cssClass: false,
+					},
+					{
+						field: "gioitinh",
+						cssClass: false,
+					},
+					{
+						field: "hochieu",
+						cssClass: false,
+					},{
+						field: "hochieu_captai",
+						cssClass: false,
+					},
+					{
+						field: "choohientai",
+						cssClass: false,
+					},
+					{
+						field: "lydokham",
+						cssClass: false,
+					},
+					{
+						field: "tiensubenh_tiensugiadinh_coaimacbenh",
+						cssClass: false,
+					},{
+						field: "tiensubenh_tiensugiadinh_tenbenh",
+						cssClass: false,
+					},
+					{
+						field: "tiensubenh_tiensubanthan_comacbenh",
+						cssClass: false,
+					},
+
+					{
+						field: "tiensubenh_tiensubanthan_tenbenh",
+						cssClass: false,
+					},
+
+					{
+						field: "cauhoikhac_dangdieutrikhong_thongtin",
+						cssClass: false,
+					},
+
+					{
+						field: "cauhoikhac_tiensuthaisan",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_tuanhoan",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_tuanhoan_phanloai",
+						cssClass: false,
+					},
+					{
+						field: "noikhoa_hohap",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_hohap_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_tieuhoa",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_tieuhoa_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_than_tietnieu",
+						cssClass: false,
+					},
+					{
+						field: "noikhoa_than_tietnieu_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_coxuongkhop",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_coxuongkhop_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_thankinh",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_thankinh_phanloai",
+						cssClass: false,
+					},
+					{
+						field: "noikhoa_tamthan",
+						cssClass: false,
+					},
+
+					{
+						field: "noikhoa_tamthan_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "ngoaikhoa_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "sanphukhoa_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "mat_cacbenh",
+						cssClass: false,
+					},
+
+					{
+						field: "mat_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "taimuihong_cacbenh",
+						cssClass: false,
+					},
+
+					{
+						field: "taimuihong_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "ranghammmat_hamtren",
+						cssClass: false,
+					},
+
+					{
+						field: "ranghammmat_hamduoi",
+						cssClass: false,
+					},
+					{
+						field: "ranghammmat_cacbenh",
+						cssClass: false,
+					},
+
+					{
+						field: "ranghammat_phanloai",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemmau_soluonghongcau",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemmau_soluongbachcau",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemmau_soluongtieucau",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemmau_sinhhoamau_duongmau",
+						cssClass: false,
+					},
+					{
+						field: "xetnhiemmau_sinhhoamau_ure",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemmau_sinhhoamau_creatinin",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemmau_sinhhoamau_asat",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemmau_sinhhoamau_alat",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemmau_khac",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemnuoctieu_duong",
+						cssClass: false,
+					},
+
+					{
+						field: "xetnhiemnuoctieu_protein",
+						cssClass: false,
+					},
+					{
+						field: "xetnhiemnuoctieu_khac",
+						cssClass: false,
+					},
+					{
+						field: "chuandoanhinhanh",
+						cssClass: false,
+					},
+
+					{
+						field: "ketluan_phanloaisuckhoe",
+						cssClass: false,
+					},
+
+					{
+						field: "ketluan_cacbenh",
+						cssClass: false,
+					},
+
+
 				]
 		},
 
