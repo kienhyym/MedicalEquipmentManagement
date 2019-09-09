@@ -55,8 +55,9 @@
         "type": "string",
         "length": 255
     },
-    "luuykhibotricongviec": {
-        "type": "datetime"
+    "luuykhibotri_congviec": {
+        "type": "string",
+        "length": 255
     },
     "hsqlsuckhoevabenhtatnguoilaodong_id": {
         "type": "string"

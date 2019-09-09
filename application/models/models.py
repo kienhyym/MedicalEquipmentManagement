@@ -156,6 +156,7 @@ class BangQLSucKhoeTruocKhiBoTriViecLam(CommonModel):
     ngaythangnam = db.Column(db.DateTime())
     soduockhamtuyennam = db.Column(String(255))
     soduockhamtuyennu = db.Column(String(255))
+    tongcong = db.Column(String(255))
     phanloaisuckhoe =db.Column(db.Integer())
     hsqlsuckhoevabenhtatnguoilaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('hsqlsuckhoevabenhtatnguoilaodong.id'), nullable=True)
 #biểu mẫu 2
@@ -229,7 +230,7 @@ class BangQuanLyBenhManTinh(CommonModel):
     tuoinghe = db.Column(String(255))
     phuongphapdieutri = db.Column(String(255))
     tinhtrang = db.Column(String(255))
-    luuykhibotricongviec = db.Column(db.DateTime())
+    luuykhibotri_congviec = db.Column(String(255))
     hsqlsuckhoevabenhtatnguoilaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('hsqlsuckhoevabenhtatnguoilaodong.id'), nullable=True)
 # Biểu mẫu 6:QUẢN LÝ BỆNH MẠN TÍNH THEO TỪNG BỆNH
 class BangQuanLyBenhManTinhTheoTungBenh(CommonModel):
@@ -246,7 +247,7 @@ class BangQuanLyBenhManTinhTheoTungBenhChiTiet(CommonModel):
     tenbenhnhan = db.Column(String(255))
     tuoinam = db.Column(db.Integer())
     tuoinu = db.Column(db.Integer())
-    tuoinghe = db.Column(db.Integer())
+    tuoi_nghe = db.Column(String(255))
     phuongphapdieutri = db.Column(String(255))
     tinhtrang = db.Column(String(255))
     luuykhibotricongviec = db.Column(String(255))
@@ -649,26 +650,26 @@ class BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen(CommonModel):
 # IV. TỔ CHỨC BỘ PHẬN Y TẾ TẠI CƠ SỞ LAO ĐỘNG
 
 # 1. Phân loại cơ sở lao động theo hình thức tổ chức bộ phận y tế  
-    loaicososanxuattren50duoi200ndl = db.Column(db.Integer)
     hinhthuccotramytetren50duoi200ndl = db.Column(db.Integer)
     hinhthuccobenhvientren50duoi200ndl = db.Column(db.Integer)
     hinhthuccophongkhamtren50duoi200ndl = db.Column(db.Integer)
     hinhthuckhactren50duoi200ndl = db.Column(db.Integer)
     hopdongvoicosokhambenhtren50duoi200ndl = db.Column(db.Integer)
 
-    loaicososanxuattren200nld = db.Column(db.Integer)
+
     hinhthuccotramytetren200nld = db.Column(db.Integer)
     hinhthuccobenhvientren200nld = db.Column(db.Integer)
     hinhthuccophongkhamtren200nld = db.Column(db.Integer)
     hinhthuckhactren200nld = db.Column(db.Integer)
     hopdongvoicosokhambenhtren200nld = db.Column(db.Integer)
-    
-    loaicososanxuatduoi50nld = db.Column(db.Integer)
+
+
     hinhthuccotramyteduoi50nld = db.Column(db.Integer)
     hinhthuccobenhvienduoi50nld = db.Column(db.Integer)
     hinhthuccophongkhamduoi50nld = db.Column(db.Integer)
     hinhthuckhacduoi50nld = db.Column(db.Integer)
     hopdongvoicosokhambenhduoi50nld = db.Column(db.Integer)
+
 
 # 2. Trình độ người làm công tác Y tế tại các cơ sở lao động    
     songuoilamcongtacytetren50duoi200ndl = db.Column(db.Integer)
@@ -838,6 +839,8 @@ class KetQuaQuanTracCacYeuToBuiTrongMoiTruongLaoDong(CommonModel):
     buisilic2= db.Column(db.Integer)
     buikhac1 = db.Column(db.Integer)
     buikhac2= db.Column(db.Integer)
+    tong1 = db.Column(db.Integer)
+    tong2 = db.Column(db.Integer)
     baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
 # 3. Kết quả đánh giá các yếu tố tiếp xúc nghề nghiệp và yếu tố tâm sinh lý và ec-gô-nô-my
 class KetQuaDanhGiaCacYeuToTiepXucNgheNghiep(CommonModel):
@@ -2227,3 +2230,94 @@ class SoKhamSucKhoeDinhKyCuaNguoiLaiXeOTo(CommonModel):
 ######################################################################################################################################################################
 
 
+# MẪU GIẤY KHÁM SỨC KHỎE DÙNG CHO NGƯỜI TỪ ĐỦ 18 TUỔI TRỞ LÊN
+class GiayKhamSucKhoeDungChoNguoiTudu18Tuoi(CommonModel):
+    __tablename__ = 'giaykhamsuckhoedungchonguoitudu18tuoi'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    coquanchuquan = db.Column(String(255))
+    tencoquandonvi = db.Column(String(255))
+    so_gksk = db.Column(String(255))
+    hovaten = db.Column(String(255))
+    gioitinh = db.Column(String(255))
+    tuoi = db.Column(db.Integer())
+    hochieu = db.Column(String(255))
+    hochieu_capngay = db.Column(BigInteger())
+    hochieu_captai = db.Column(String(255))
+    choohientai = db.Column(String(255))
+    lydokham = db.Column(String(255))
+    tiensubenh_tiensugiadinh_coaimacbenh = db.Column(String(255))
+    tiensubenh_tiensugiadinh_tenbenh = db.Column(String(255))
+    tiensubenh_tiensubanthan_comacbenh = db.Column(String(255))
+    tiensubenh_tiensubanthan_tenbenh = db.Column(String(255))
+    cauhoikhac_dangdieutrikhong_thongtin = db.Column(String(255))
+    cauhoikhac_tiensuthaisan = db.Column(String(255))
+    nguoidenghikham_kyngay = db.Column(BigInteger())
+    # I, Khám thể lực
+    theluc_chieucao = db.Column(db.Integer())
+    theluc_cannang = db.Column(db.Integer())
+    theluc_chiso_bmi = db.Column(db.Integer())
+    theluc_mach = db.Column(db.Integer())
+    theluc_huyetap = db.Column(db.Integer())
+    phanloaitheluc = db.Column(String(255))
+    # II Khám lâm sàng
+    noikhoa_tuanhoan = db.Column(String(255))
+    noikhoa_tuanhoan_phanloai = db.Column(String(255))
+    noikhoa_hohap = db.Column(String(255))
+    noikhoa_hohap_phanloai = db.Column(String(255))
+    noikhoa_tieuhoa = db.Column(String(255))
+    noikhoa_tieuhoa_phanloai = db.Column(String(255))
+    noikhoa_than_tietnieu = db.Column(String(255))
+    noikhoa_than_tietnieu_phanloai = db.Column(String(255))
+    noikhoa_coxuongkhop = db.Column(String(255))
+    noikhoa_coxuongkhop_phanloai = db.Column(String(255))
+    noikhoa_thankinh = db.Column(String(255))
+    noikhoa_thankinh_phanloai = db.Column(String(255))
+    noikhoa_tamthan = db.Column(String(255))
+    noikhoa_tamthan_phanloai = db.Column(String(255))
+
+    ngoaikhoa_phanloai = db.Column(String(255))
+
+    sanphukhoa_phanloai = db.Column(String(255))
+
+    mat_khongkinh_phai = db.Column(db.Integer())
+    mat_khongkinh_trai = db.Column(db.Integer())
+    mat_cokinh_phai = db.Column(db.Integer())
+    mat_cokinh_trai = db.Column(db.Integer())
+    mat_cacbenh = db.Column(String(255))
+    mat_phanloai = db.Column(String(255))
+
+    taimuihong_taitrai_noithuong = db.Column(db.Integer())
+    taimuihong_taitrai_noitham = db.Column(db.Integer())
+    taimuihong_taiphai_noithuong = db.Column(db.Integer())
+    taimuihong_taiphai_noitham = db.Column(db.Integer())
+    taimuihong_cacbenh = db.Column(String(255))
+    taimuihong_phanloai = db.Column(String(255))
+
+    ranghammmat_hamtren = db.Column(String(255))
+    ranghammmat_hamduoi = db.Column(String(255))
+    ranghammmat_cacbenh = db.Column(String(255))
+    ranghammat_phanloai = db.Column(String(255))
+
+    dalieu_phanloai = db.Column(String(255))
+
+    # III. KHÁM CẬN L M SÀNG
+    xetnhiemmau_soluonghongcau = db.Column(String(255))
+    xetnhiemmau_soluongbachcau = db.Column(String(255))
+    xetnhiemmau_soluongtieucau = db.Column(String(255))
+    xetnhiemmau_sinhhoamau_duongmau = db.Column(String(255))
+    xetnhiemmau_sinhhoamau_ure = db.Column(String(255))
+    xetnhiemmau_sinhhoamau_creatinin = db.Column(String(255))
+    xetnhiemmau_sinhhoamau_asat = db.Column(String(255))
+    xetnhiemmau_sinhhoamau_alat = db.Column(String(255))
+    xetnhiemmau_khac = db.Column(String(255))
+
+    xetnhiemnuoctieu_duong = db.Column(String(255))
+    xetnhiemnuoctieu_protein  = db.Column(String(255))
+    xetnhiemnuoctieu_khac = db.Column(String(255))
+
+    chuandoanhinhanh = db.Column(String(255))
+
+    # IV. KẾT LUẬN
+    ketluan_phanloaisuckhoe = db.Column(String(255))
+    ketluan_cacbenh = db.Column(String(255))
+    nguoiketluan_kyngay = db.Column(BigInteger())

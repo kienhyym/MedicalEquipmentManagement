@@ -263,8 +263,9 @@
                     <td>Đơn vị kiểm tra</td>
                     <td>Nội dung kiểm tra</td>
                     <td>Ghi chú</td>
+                    <td></td>
                 </tr>
-               
+            
                 <tbody data-bind="list:congtacthanhtrafield"></tbody>
 
             </table>
@@ -313,14 +314,15 @@
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td colspan="2">Thời gian</td>
+                    <td colspan="1">Thời gian</td>
                     <td colspan="4">Ốm</td>
                     <td colspan="4">Tai nạn lao động</td>
                     <td colspan="4">Bệnh nghề nghiệp</td>
                     <td colspan="4">Tổng số</td>
+                    <td rowspan="3"></td>
+
                 </tr>
                 <tr>
-                    <td rowspan="2">Quý</td>
                     <td rowspan="2">Tháng</td>
                     <td>Số người</td>
                     <td>Tỷ lệ</td>
@@ -357,7 +359,6 @@
                     <td>(14)</td>
                     <td>(15)</td>
                     <td>(16)</td>
-
                 </tr>
             
                 <tbody data-bind="list:nghiviecdoomdautainanlaodongvabenhnghenghiepfield"></tbody>
@@ -406,6 +407,7 @@
                     <td colspan="2">NLĐ được chẩn đoán BNN</td>
                     <td colspan="2"> NLĐ được giám định BNN</td>
                     <td colspan="6"  style="line-height: 100px">Kết quả giám định BNN</td>
+                    <td rowspan="3" ></td>
                 </tr>
                 <tr>
                     <td rowspan="2">Tổng số</td>
@@ -426,6 +428,7 @@
                     <td>Nữ</td>
                     <td>TS</td>
                     <td>Nữ</td>
+
                 </tr>
         
                 <tbody data-bind="list:tinhhinhbenhnghenghieptaicosofield"></tbody>
@@ -445,7 +448,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-
+                    <td></td>
                 </tr>
 
 
@@ -467,7 +470,7 @@
                     <td rowspan="2">Tên BNN</td>
                     <td rowspan="2">Tỷ lệ suy giảm KNLĐ</td>
                     <td rowspan="2">Công việc hiện nay</td>
-
+                    <td rowspan="2"></td>
                 </tr>
                 <tr>
                     <td>Nam</td>
@@ -487,9 +490,12 @@
                     <td colspan="2">Quý II</td>
                     <td colspan="2">Quý III</td>
                     <td colspan="2">Quý IV</td>
+                    <td></td>
+
+
                 </tr>
                 <tr>
-                    <td colspan="10" class="text-left">
+                    <td colspan="11" class="text-left">
                         <div class="row col-md-12">
                             <div id="add_row5" class="mb-1"></div>
                             &nbsp;
@@ -502,7 +508,7 @@
                 <tbody data-bind="list:thongketongsotruonghopmaccacloaibenhthongthuongfield"></tbody>
 
                 <tr>
-                    <td colspan="10" class="text-left">
+                    <td colspan="11" class="text-left">
                         <div class="row col-md-12">
                             <div id="add_row6" class="mb-1"></div>
                             &nbsp;
@@ -530,6 +536,7 @@
                     <td>Chết</td>
                     <td>Mắc</td>
                     <td>Chết</td>
+                    <td></td>
                 </tr>
                 
                 <tbody data-bind="list:cactruonghoptainanlaodongfield"></tbody>
@@ -537,6 +544,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng Cộng</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -565,59 +573,59 @@
                 </tr>
                 <tr>
                     <td>Nam</td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai1nam"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai2nam"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai3nam"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai4nam"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai5nam"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="tongsonam" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai1nam"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai2nam"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai3nam"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai4nam"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai5nam"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
                 </tr>
 
                 <tr>
                     <td>Tỷ lệ %</td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" value="100%" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnam1" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnam2" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnam3" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnam4" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnam5" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
                 </tr>
                 <tr>
                     <td>Nữ</td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai1nu"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai2nu"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai3nu"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai4nu"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai5nu"  style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="tongsonu"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai1nu"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai2nu"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai3nu"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai4nu"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" data-bind="value:loai5nu"  style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
             
                 </tr>
                 <tr>
                     <td>Tỷ lệ %</td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" value="100%" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnu1" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnu2" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnu3" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnu4" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnu5" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
                 </tr>
                 <tr>
                     <td>Tổng cộng</td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="tongsonamnu" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="tongsonamnu1"style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="tongsonamnu2"style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="tongsonamnu3"style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="tongsonamnu4"style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="tongsonamnu5"style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
                 </tr>
                 <tr>
                     <td>Tỷ lệ %</td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
-                    <td style="padding: 0px;" ><input type="text" style="border: none;margin: 0px; padding: 0px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" value="100%" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnamnu1"style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnamnu2"style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnamnu3"style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnamnu4"style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td style="padding: 0px;" ><input type="text" id="phantramnamnu5" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
                 </tr>
             </table>
         </div>
@@ -625,13 +633,14 @@
         <div class="row col-md-12">
                 <div id="add_row8" class="mb-1"></div>
             </div>
-        <div class="table-responsive ">
+        <div class="table-responsive text-center">
             <table class="table table-bordered text-center">
 
                 <tr>
                     <td rowspan="2">TT</td>
                     <td rowspan="2">Nội dung huấn luyện</td>
                     <td colspan="2">Số lượng người được huấn luyện</td>
+                    <td rowspan="2"></td>
                 </tr>
                 <tr>
                     <td>Tổng số</td>
@@ -645,14 +654,15 @@
         <div class="row col-md-12">
                 <div id="add_row9" class="mb-1"></div>
             </div>
-        <div class="table-responsive ">
+        <div class="table-responsive text-center">
             <table class="table table-bordered text-center">
 
                 <tr>
-                    <td>Stt</td>
+                    <td>STT</td>
                     <td>Nội dung hoạt động</td>
                     <td>Số tiền</td>
                     <td>Ghi chú</td>
+                    <td></td>
                 </tr>
 
                 
@@ -661,6 +671,7 @@
                 <tr>
                     <td></td>
                     <td>Tổng cộng</td>
+                    <td style="padding: 0px;"><input type="text" id="tongtien" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
                     <td></td>
                     <td></td>
                 </tr>

@@ -15,7 +15,63 @@ define(function (require) {
         collectionName: "ketquakhamphathienbenhnghenghiep",
         foreignRemoteField: "id",
         foreignField: "baocaohoatdongytelaodong6thangnamtuyenhuyen_id",
+        uiControl:{
+            fields:[
+                
+            
+                {
+                    field:"tongsonldduockhamsuckhoephathienbnn",
+                    cssClass:false
+                },
+                {
+                    field:"tongsonldnuduockhamsuckhoephathienbnn",
+                    cssClass:false
+                },
+                {
+                    field:"tongsondlduocchuandoanbnn",
+                    cssClass:false
+                },
+                {
+                    field:"tongsondlnuduocchuandoanbnn",
+                    cssClass:false
+                },
+                {
+                    field:"tongsonldduocgiamdinhbnn",
+                    cssClass:false
+                },
+                {
+                    field:"tongsonldnuduocgiamdinhbnn",
+                    cssClass:false
+                },
 
+                {
+                    field:"tongsogiamdinhnhohon5phantram",
+                    cssClass:false
+                },
+                {
+                    field:"tongsogiamdinhnhohon5phantramnu",
+                    cssClass:false
+                },
+                {
+                    field:"tongsogiamdinhlonhon31phantram",
+                    cssClass:false
+                },
+                {
+                    field:"tongsogiamdinhlonhon31phantramnu",
+                    cssClass:false
+                },
+                {
+                    field:"tongsogiamdinhlonhon5nhohon31phantram",
+                    cssClass:false
+                },
+                {
+                    field:"tongsogiamdinhlonhon5nhohon31phantramnu",
+                    cssClass:false
+                },
+            
+            
+            ]
+        },
         render: function () {
             var self = this;
             self.applyBindings();

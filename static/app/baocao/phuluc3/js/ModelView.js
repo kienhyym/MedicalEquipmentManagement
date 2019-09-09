@@ -174,48 +174,26 @@ define(function (require) {
 			}
 		},
 		registerEvent: function () {
-			//this.sothutu();
+			this.sothutu();
 		},
 	
 		sothutu: function () {
 			const self = this;
-			var arr = [];
+			// var arr = [];
 			var arrr = [];
 
-			arr = lodash.sortBy(self.model.get("banghscctainanlaodongtaicosolaodongfield"), ["created_at"], ["asc"])
-			arr.forEach(function (item, index, array) {
-				console.log(index);
+			// arr = lodash.sortBy(self.model.get("banghscctainanlaodongtaicosolaodongfield"), ["created_at"], ["asc"])
+			// arr.forEach(function (item, index, array) {
+			// 	console.log(index);
 			
-			});	
-		
+			// });	
 			arrr = lodash(self.$el.find("tr td #stt"));
 			arrr.forEach(function (item, index, array) {
-				console.log(item);
-				item.value=index;
+				item.value=++index;
 			});	
 
 		},
-		// ChonNamHoacNu: function(){
-		// 	var arrTuoiNam = [];
-		// 	const self = this;
-		// 	arrTuoiNam = lodash(self.$el.find("tr td #tuoinam"));
-		// 	arrTuoiNam.forEach(function (item, index, array) {
-		// 		item.addEventListener("click", function(){
-		// 			var idTuoiNam = index;
-		// 			console.log('idTuoiNam',idTuoiNam)
-		// 			var arrTuoiNu = [];
-		// 			arrTuoiNu = lodash(self.$el.find("tr td #tuoinu"));
-		// 			arrTuoiNu.forEach(function (item, index, array) {
-		// 			if(index == idTuoiNam){
-		// 				item.value="";
-		// 				console.log('idTuoiNu',index)
-		// 			}
-					
-		// 			});
-		// 		});
-				
-		// 	});	
-		// },
+	
 		
 
 	});

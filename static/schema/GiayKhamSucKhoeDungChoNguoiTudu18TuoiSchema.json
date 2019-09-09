@@ -1,0 +1,303 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "coquanchuquan": {
+        "type": "string",
+        "length": 255
+    },
+    "tencoquandonvi": {
+        "type": "string",
+        "length": 255
+    },
+    "so_gksk": {
+        "type": "string",
+        "length": 255
+    },
+    "hovaten": {
+        "type": "string",
+        "length": 255
+    },
+    "gioitinh": {
+        "type": "string",
+        "length": 255
+    },
+    "tuoi": {
+        "type": "number"
+    },
+    "hochieu": {
+        "type": "string",
+        "length": 255
+    },
+    "hochieu_capngay": {
+        "type": "number"
+    },
+    "hochieu_captai": {
+        "type": "string",
+        "length": 255
+    },
+    "choohientai": {
+        "type": "string",
+        "length": 255
+    },
+    "lydokham": {
+        "type": "string",
+        "length": 255
+    },
+    "tiensubenh_tiensugiadinh_coaimacbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "tiensubenh_tiensugiadinh_tenbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "tiensubenh_tiensubanthan_comacbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "tiensubenh_tiensubanthan_tenbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "cauhoikhac_dangdieutrikhong_thongtin": {
+        "type": "string",
+        "length": 255
+    },
+    "cauhoikhac_tiensuthaisan": {
+        "type": "string",
+        "length": 255
+    },
+    "nguoidenghikham_kyngay": {
+        "type": "number"
+    },
+    "theluc_chieucao": {
+        "type": "number"
+    },
+    "theluc_cannang": {
+        "type": "number"
+    },
+    "theluc_chiso_bmi": {
+        "type": "number"
+    },
+    "theluc_mach": {
+        "type": "number"
+    },
+    "theluc_huyetap": {
+        "type": "number"
+    },
+    "phanloaitheluc": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_tuanhoan": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_tuanhoan_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_hohap": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_hohap_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_tieuhoa": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_tieuhoa_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_than_tietnieu": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_than_tietnieu_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_coxuongkhop": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_coxuongkhop_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_thankinh": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_thankinh_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_tamthan": {
+        "type": "string",
+        "length": 255
+    },
+    "noikhoa_tamthan_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "ngoaikhoa_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "sanphukhoa_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "mat_khongkinh_phai": {
+        "type": "number"
+    },
+    "mat_khongkinh_trai": {
+        "type": "number"
+    },
+    "mat_cokinh_phai": {
+        "type": "number"
+    },
+    "mat_cokinh_trai": {
+        "type": "number"
+    },
+    "mat_cacbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "mat_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "taimuihong_taitrai_noithuong": {
+        "type": "number"
+    },
+    "taimuihong_taitrai_noitham": {
+        "type": "number"
+    },
+    "taimuihong_taiphai_noithuong": {
+        "type": "number"
+    },
+    "taimuihong_taiphai_noitham": {
+        "type": "number"
+    },
+    "taimuihong_cacbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "taimuihong_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "ranghammmat_hamtren": {
+        "type": "string",
+        "length": 255
+    },
+    "ranghammmat_hamduoi": {
+        "type": "string",
+        "length": 255
+    },
+    "ranghammmat_cacbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "ranghammat_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "dalieu_phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemmau_soluonghongcau": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemmau_soluongbachcau": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemmau_soluongtieucau": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemmau_sinhhoamau_duongmau": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemmau_sinhhoamau_ure": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemmau_sinhhoamau_creatinin": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemmau_sinhhoamau_asat": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemmau_sinhhoamau_alat": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemmau_khac": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemnuoctieu_duong": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemnuoctieu_protein": {
+        "type": "string",
+        "length": 255
+    },
+    "xetnhiemnuoctieu_khac": {
+        "type": "string",
+        "length": 255
+    },
+    "chuandoanhinhanh": {
+        "type": "string",
+        "length": 255
+    },
+    "ketluan_phanloaisuckhoe": {
+        "type": "string",
+        "length": 255
+    },
+    "ketluan_cacbenh": {
+        "type": "string",
+        "length": 255
+    },
+    "nguoiketluan_kyngay": {
+        "type": "number"
+    }
+}

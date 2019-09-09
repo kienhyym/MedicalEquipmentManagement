@@ -15,7 +15,61 @@ define(function (require) {
         collectionName: "ketquaquantraccacyeutobuitrongmoitruonglaodong",
         foreignRemoteField: "id",
         foreignField: "baocaohoatdongytelaodong6thangnamtuyenhuyen_id",
-
+        uiControl:{
+            fields:[
+                
+            
+                {
+                    field:"buikhac2",
+                    cssClass:false
+                },
+                {
+                    field:"buikhac1",
+                    cssClass:false
+                },
+                {
+                    field:"buisilic2",
+                    cssClass:false
+                },
+                {
+                    field:"buisilic1",
+                    cssClass:false
+                },
+                {
+                    field:"buihohap2",
+                    cssClass:false
+                },
+                {
+                    field:"buihohap1",
+                    cssClass:false
+                },
+                {
+                    field:"buitoanphan2",
+                    cssClass:false
+                },
+                {
+                    field:"buitoanphan1",
+                    cssClass:false
+                },
+                {
+                    field:"songuoitiepxucvoicacyeutobui",
+                    cssClass:false
+                },
+                {
+                    field:"tongsonguoilaodong",
+                    cssClass:false
+                },
+                {
+                    field:"tong1",
+                    cssClass:false
+                },
+                {
+                    field:"tong2",
+                    cssClass:false
+                },
+            
+            ]
+        },
         render: function () {
             var self = this;
             self.applyBindings();

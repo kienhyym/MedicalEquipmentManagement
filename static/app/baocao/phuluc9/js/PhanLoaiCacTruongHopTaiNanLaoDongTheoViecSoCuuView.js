@@ -15,7 +15,33 @@ define(function (require) {
         collectionName: "phanloaicactruonghoptainanlaodongtheoviecsocuu",
         foreignRemoteField: "id",
         foreignField: "baocaohoatdongytelaodong6thangnamtuyenhuyen_id",
-
+        uiControl:{
+            fields:[
+                
+            
+                {
+                    field:"songuoiduocsocuutaicho",
+                    cssClass:false
+                },
+                {
+                    field:"tongsonguoiduocdieutritaicosokbcb",
+                    cssClass:false
+                },
+                {
+                    field:"tongsonguoiduocdieutrikhoitaicosokbcb",
+                    cssClass:false
+                },
+                {
+                    field:"tongsonguoiduocdieutrikhoidelaidichungtaicosokbcb",
+                    cssClass:false
+                },
+                {
+                    field:"tongsonguoiduocdieutrituvongtaicosokbcb",
+                    cssClass:false
+                },
+            
+            ]
+        },
         render: function () {
             var self = this;
             self.applyBindings();

@@ -39,8 +39,9 @@
     "tuoinu": {
         "type": "number"
     },
-    "tuoinghe": {
-        "type": "number"
+    "tuoi_nghe": {
+        "type": "string",
+        "length": 255
     },
     "phuongphapdieutri": {
         "type": "string",

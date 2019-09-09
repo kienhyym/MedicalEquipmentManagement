@@ -36,6 +36,10 @@
         "type": "string",
         "length": 255
     },
+    "tongcong": {
+        "type": "string",
+        "length": 255
+    },
     "phanloaisuckhoe": {
         "type": "number"
     },

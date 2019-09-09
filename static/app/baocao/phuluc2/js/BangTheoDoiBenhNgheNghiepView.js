@@ -15,7 +15,57 @@ define(function (require) {
         collectionName: "bangtheodoibenhnghenghiep",
         foreignRemoteField: "id",
         foreignField: "hsqlsuckhoevabenhtatnguoilaodong_id",
-
+        uiControl:{
+            fields:[
+                {
+                    field: "tongsokham",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsokhamnu",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsochuandoan",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsochuandoannu",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsogiamdinh",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsogiamdinhnu",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsogiamdinhnhohon5phantram",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsogiamdinhnhohon5phantramnu",
+                    cssClass: false,
+                },{
+                    field: "tongsogiamdinhlonhon31phantram",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsogiamdinhlonhon31phantramnu",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsogiamdinhlonhon5nhohon31phantram",
+                    cssClass: false,
+                },
+                {
+                    field: "tongsogiamdinhlonhon5nhohon31phantramnu",
+                    cssClass: false,
+                },
+            ]
+        },
     
         render: function () {
             var self = this;            

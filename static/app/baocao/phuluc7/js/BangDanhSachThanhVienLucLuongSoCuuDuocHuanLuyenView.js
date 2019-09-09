@@ -21,6 +21,9 @@ define(function (require) {
             var self = this;
             self.applyBindings();
             self.registerEvent();
+            if(!self.model.get("id")){
+                self.model.set("id", gonrin.uuid())
+            }
         
         },
         registerEvent: function () {

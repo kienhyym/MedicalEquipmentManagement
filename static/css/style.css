@@ -1,8 +1,9 @@
 body {
   font-size: .875rem;
 }
-.radio-option{
-  padding: 0px;
+.list-unstyled .radio-option {
+  padding: 25px;
+  
 }
 .date-group{
   position: relative;

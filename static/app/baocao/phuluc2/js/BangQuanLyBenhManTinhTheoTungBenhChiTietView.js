@@ -15,7 +15,35 @@ define(function (require) {
         collectionName: "bangquanlybenhmantinhtheotungbenhchitiet",
         foreignRemoteField: "id",
         foreignField: "bangquanlybenhmantinhtheotungbenh_id",
-
+        uiControl: {
+            fields: [
+                {
+                    field: "tuoinam",
+                    cssClass: false,
+                },
+                {
+                    field: "tuoinu",
+                    cssClass: false,
+                },
+                {
+                    field: "tuoinghe",
+                    cssClass: false,
+                },
+                // {
+                // 	field: "bangquanlybenhmantinhtheotungbenhchitietfield",
+                // 	uicontrol: false,
+                // 	itemView: BangQuanLyBenhManTinhTheoTungBenhChiTietItemView,
+                // 	tools: [{
+                // 		name: "create",
+                // 		type: "button",
+                // 		buttonClass: "btn btn-outline-success btn-sm",
+                // 		label: "<span class='fa fa-plus'></span>",
+                // 		command: "create"
+                // 	}],
+                // 	toolEl: "#add_row_child"
+                // },
+            ]
+        },
         render: function () {
             var self = this;
             self.applyBindings();

@@ -163,6 +163,9 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
+						self.stt_DanhSachNguoiLaoDongDuocHuanLuyen();
+						self.stt_DanhSachLucLuongDuocHuanLuyen();
+
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
@@ -170,8 +173,26 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
+				self.stt_DanhSachNguoiLaoDongDuocHuanLuyen();
+				self.stt_DanhSachLucLuongDuocHuanLuyen();
 			}
 		},
+		stt_DanhSachNguoiLaoDongDuocHuanLuyen:function(){
+			var self =this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_dsnld_duochuanluyen"));
+			arr.forEach(function (item, index, array) {
+				item.value=++index;
+			});	
+		},
+		stt_DanhSachLucLuongDuocHuanLuyen:function(){
+			var self =this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_lucluongsocuuduochuanluyen"));
+			arr.forEach(function (item, index, array) {
+				item.value=++index;
+			});	
+		}
 		
 
 	});

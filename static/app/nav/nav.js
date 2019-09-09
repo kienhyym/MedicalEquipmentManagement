@@ -5,6 +5,28 @@ define(function (require) {
 		Gonrin = require('gonrin');
 	return [
 		{
+			"text": "Mẫu giấy khám sức khỏe dùng cho người từ đủ 18 tuổi trở lên",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
+			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/collection",
+			"$ref": "app/hoso/giaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
+			"visible": function () {
+				return true;
+			}
+		},
+		{
+			"text": "Danh sách người dùng",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
+			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/model(/:id)",
+			"$ref": "app/hoso/giaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
+		{
 			"text": "Danh sách người dùng",
 			"icon": "fa fa-home",
 			"type": "view",

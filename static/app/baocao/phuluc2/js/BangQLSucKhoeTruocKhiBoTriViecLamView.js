@@ -56,6 +56,10 @@ define(function (require) {
             self.$el.find("#itemRemove").unbind("click").bind("click", function () {
                 self.remove(true);
             });
+        },
+        tinhtong:function () {
+			var self = this;
+            console.log(self.model);
         }
     });
 });

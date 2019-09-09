@@ -15,7 +15,34 @@ define(function (require) {
         collectionName: "phanloaicosolaodongtheonganhnghevaquymo",
         foreignRemoteField: "id",
         foreignField: "baocaohoatdongytelaodong6thangnamtuyenhuyen_id",
-
+        uiControl:{
+            fields:[
+                {
+                    field:"socsconho",
+                    cssClass:false
+                },
+                {
+                    field:"sonldcosoconho",
+                    cssClass:false
+                },
+                {
+                    field:"socscovua",
+                    cssClass:false
+                },
+                {
+                    field:"sonldcosocovua",
+                    cssClass:false
+                },
+                {
+                    field:"socscolon",
+                    cssClass:false
+                },
+                {
+                    field:"sonldcosocolon",
+                    cssClass:false
+                },
+            ]
+        },
         render: function () {
             var self = this;
             self.applyBindings();

@@ -22,7 +22,9 @@ define(function (require) {
             onRowClick: function (event) {
                 if (event.rowId) {
                     var path =  this.collectionName + '/model?id=' + event.rowId;
-                    this.getApp().getRouter().navigate(path);
+                    this.getApp().getRouter().navigate(path);   
+
+
                 }
             }
         },

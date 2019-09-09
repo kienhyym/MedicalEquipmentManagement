@@ -150,11 +150,14 @@ define(function (require) {
 					},
 					complete: function () {
 						self.btn_add_row();
+						self.stt_TongHopKetQuaKhamDinhKy();
+
 					}
 				});
 			} else {
 				self.applyBindings();
 				self.btn_add_row();
+				self.stt_TongHopKetQuaKhamDinhKy();
 			}
 		},
 		render_TongHopKetQuaKhamDinhKyNguoiMacBenhNgheNghiep: function (data) {
@@ -227,6 +230,13 @@ define(function (require) {
 
 				self.render_TongHopKetQuaKhamDinhKyNguoiMacBenhNgheNghiep(data_default);
 			})
+		},
+		stt_TongHopKetQuaKhamDinhKy:function(){
+			var self =this;
+			var arr = lodash(self.$el.find("tr td #stt_tonghopketquakhamdinhky"))
+			arr.forEach(function(item,index) {
+				item.value=++index;
+			});
 		}
 
 

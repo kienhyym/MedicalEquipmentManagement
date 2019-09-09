@@ -175,6 +175,11 @@ define(function (require) {
 						self.btn_add_row_danhsachnguoimacbenhnghenghiep();
 						self.btn_add_row_tonghopketquakhambenhnghenghiep();
 						self.btn_add_row_kiennghicuadonkham();
+						self.stt_KetQuaKhamSucKhoe();
+						self.stt_DanhSachNguoiMacBenh();
+						self.stt_TongHopKetQuaKham();
+
+
 
 					}
 				});
@@ -184,6 +189,9 @@ define(function (require) {
 				self.btn_add_row_danhsachnguoimacbenhnghenghiep();
 				self.btn_add_row_tonghopketquakhambenhnghenghiep();
 				self.btn_add_row_kiennghicuadonkham();
+				self.stt_KetQuaKhamSucKhoe();
+				self.stt_DanhSachNguoiMacBenh();
+				self.stt_TongHopKetQuaKham();
 			}
 		},
 		// RENDER_DATA_JSON
@@ -451,7 +459,31 @@ define(function (require) {
 
 				self.render_KienNghiCuaDonKham(data_default);
 			})
-		}
+		},
+		stt_KetQuaKhamSucKhoe:function(){
+			var self = this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_ketquakhamsk"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			});
+		},
+		stt_DanhSachNguoiMacBenh:function(){
+			var self = this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_danhsachnguoimacbenh"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			});
+		},
+		stt_TongHopKetQuaKham:function(){
+			var self = this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_tonghopketquakham"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			});
+		},
 
 
 

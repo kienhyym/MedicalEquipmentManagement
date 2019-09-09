@@ -421,54 +421,7 @@ define(function (require) {
 					field: "soluongnguoilaodongnuthamgiasocuu",
 					cssClass: false,
 				},
-				// {
-				// 	field: "loai1nam",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai1nam",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai2nam",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai3nam",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai4nam",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai5nam",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai1nu",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai2nu",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai3nu",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai4nu",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "loai5nu",
-				// 	cssClass: false,
-				// },
-				
-
-
-
+			
 
 			]
 		},
@@ -481,6 +434,7 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
+						self.registerFunction();
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
@@ -488,10 +442,142 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
+				self.registerFunction();
 			}
+			
 		},
-		
+		registerFunction :function(){
+			var self =this;
+			self.stt_KinhPhi();
+			self.stt_CongTacHuanLuyen();
+			self.TongKinhPhi();
+			self.phanLoaiSucKhoe();
+			self.stt_BenhThongThuong();
+			self.stt_CacTruongHopMacBenhNgheNghiep();
+			self.stt_CacTruongHopTaiNanLaoDong();
+			self.stt_DanhSachTruongHopMacBenh();
+			self.stt_TongHopTinhHinhBenhNgheNghiep();
+			self.stt_NghiOmTaiNanLaoDong();
+			self.stt_CongTacThanhTra();
+		},
+		// ################################################################
+		stt_KinhPhi:function(){
+			var self = this;
+			var arr = lodash(self.$el.find("tr td #stt_kinhphi"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			})
+		},
+		stt_CongTacHuanLuyen:function(){
+			var self = this;
+			var arr = lodash(self.$el.find("tr td #stt_congtacthanhtra"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			})
+		},
+		TongKinhPhi:function(){
+			var self = this;
+			var ds = self.model.get("kinhphivesinhlaodongvachamsocsuckhoenguoilaodongfield")
+				var tongtien=0;			
+			ds.forEach(function (item, index) {
+				tongtien += (parseInt(item.sotienkhamsuckhoedinhky));
+			})
+			self.$el.find("#tongtien").val(tongtien);
+		},
+		phanLoaiSucKhoe:function(){
+			var self = this;
+			var nam1 = self.model.get("loai1nam")
+			var nam2 = self.model.get("loai2nam")
+			var nam3 = self.model.get("loai3nam")
+			var nam4 = self.model.get("loai4nam")
+			var nam5 = self.model.get("loai5nam")
+			var tongsonam = parseInt(nam1)+parseInt(nam2)+parseInt(nam3)+parseInt(nam4)+parseInt(nam5);
+			self.$el.find("#tongsonam").val(tongsonam);
 
-	});
+			var nu1 = self.model.get("loai1nu")
+			var nu2 = self.model.get("loai2nu")
+			var nu3 = self.model.get("loai3nu")
+			var nu4 = self.model.get("loai4nu")
+			var nu5 = self.model.get("loai5nu")
+			var tongsonu = parseInt(nu1)+parseInt(nu2)+parseInt(nu3)+parseInt(nu4)+parseInt(nu5);
+			self.$el.find("#tongsonu").val(tongsonu);
+
+			self.$el.find("#tongsonamnu").val(tongsonu+tongsonam);
+
+			self.$el.find("#phantramnam1").val((parseInt(nam1)/tongsonam*100).toFixed(2)+"%");
+			self.$el.find("#phantramnam2").val((parseInt(nam2)/tongsonam*100).toFixed(2)+"%");
+			self.$el.find("#phantramnam3").val((parseInt(nam3)/tongsonam*100).toFixed(2)+"%");
+			self.$el.find("#phantramnam4").val((parseInt(nam4)/tongsonam*100).toFixed(2)+"%");
+			self.$el.find("#phantramnam5").val((parseInt(nam5)/tongsonam*100).toFixed(2)+"%");
+
+
+			self.$el.find("#phantramnu1").val((parseInt(nu1)/tongsonu*100).toFixed(2)+"%");
+			self.$el.find("#phantramnu2").val((parseInt(nu2)/tongsonu*100).toFixed(2)+"%");
+			self.$el.find("#phantramnu3").val((parseInt(nu3)/tongsonu*100).toFixed(2)+"%");
+			self.$el.find("#phantramnu4").val((parseInt(nu4)/tongsonu*100).toFixed(2)+"%");
+			self.$el.find("#phantramnu5").val((parseInt(nu5)/tongsonu*100).toFixed(2)+"%");
+
+			self.$el.find("#tongsonamnu1").val(parseInt(nam1)+parseInt(nu1));
+			self.$el.find("#tongsonamnu2").val(parseInt(nam2)+parseInt(nu2));
+			self.$el.find("#tongsonamnu3").val(parseInt(nam3)+parseInt(nu3));
+			self.$el.find("#tongsonamnu4").val(parseInt(nam4)+parseInt(nu4));
+			self.$el.find("#tongsonamnu5").val(parseInt(nam5)+parseInt(nu5));
+
+			self.$el.find("#phantramnamnu1").val(((parseInt(nam1)+parseInt(nu1))/(tongsonu+tongsonam)*100).toFixed(2)+"%");
+			self.$el.find("#phantramnamnu2").val(((parseInt(nam2)+parseInt(nu2))/(tongsonu+tongsonam)*100).toFixed(2)+"%");
+			self.$el.find("#phantramnamnu3").val(((parseInt(nam3)+parseInt(nu3))/(tongsonu+tongsonam)*100).toFixed(2)+"%");
+			self.$el.find("#phantramnamnu4").val(((parseInt(nam4)+parseInt(nu4))/(tongsonu+tongsonam)*100).toFixed(2)+"%");
+			self.$el.find("#phantramnamnu5").val(((parseInt(nam5)+parseInt(nu5))/(tongsonu+tongsonam)*100).toFixed(2)+"%");
+		},
+		stt_BenhThongThuong:function(){
+			var self = this;
+			var arr = lodash(self.$el.find("tr td #stt_benhthongthuong"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			})
+		},
+		stt_CacTruongHopMacBenhNgheNghiep:function(){
+			var self = this;
+			var arr = lodash(self.$el.find("tr td #stt_cactruonghopmacbenhnghenghiep"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			})
+		},
+		stt_CacTruongHopTaiNanLaoDong:function(){
+			var self = this;
+			var arr = lodash(self.$el.find("tr td #stt_cactruonghoptainanlaodong"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			})
+		},
+		stt_DanhSachTruongHopMacBenh:function(){
+			var self = this;
+			var arr = lodash(self.$el.find("tr td #stt_danhsachtruonghopmacbenh"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			})
+		},
+		stt_TongHopTinhHinhBenhNgheNghiep:function(){
+			var self = this;
+			var arr = lodash(self.$el.find("tr td #stt_tonghoptinhhinhbenhnghenghiep"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			})
+		},
+		stt_NghiOmTaiNanLaoDong:function(){
+			var self = this;
+			var arr = lodash(self.$el.find("tr td #stt_nghiomtainanlaodong"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			})
+		},
+		stt_CongTacThanhTra:function(){
+			var self = this;
+			var arr = lodash(self.$el.find("tr td #stt_congtacthanhtra"))
+			arr.forEach(function(item,index){
+				item.value=++index;
+			})
+		},
+	});	
 
 });

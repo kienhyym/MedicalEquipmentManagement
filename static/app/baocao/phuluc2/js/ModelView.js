@@ -56,7 +56,9 @@ define(function (require) {
 								success: function (model, respose, options) {
 									// self.getApp().hideloading();
 									self.getApp().notify("Lưu thông tin thành công");
-									self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									// self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									self.getApp().router.refresh();
+
 								},
 								error: function (xhr, status, error) {
 									try {
@@ -288,6 +290,7 @@ define(function (require) {
 		},
 		render: function () {
 			var self = this;
+
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
@@ -295,11 +298,8 @@ define(function (require) {
 					success: function (data) {
 						self.applyBindings();
 						self.renderBangquanlybenhmantinhtheotungbenh();
-						// self.renderbangtinhhinhnghiviec();
 						self.registerEvent();
-						// self.tinhtong();
-						// self.sothutu()
-						// self.sothutu2();
+						
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
@@ -316,6 +316,17 @@ define(function (require) {
 			const self = this;
 			self.createBangTinhHinhNghiViec();
 			self.renderbangtinhhinhnghiviec();
+			self.tinhTongBangQLSucKhoeTruocKhiBoTriViecLam();
+			self.tinhTongBangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKy();
+			self.tinhTongBangSoTruongHopMacCacLoaiBenhThongThuong();
+			self.tinhTongBangCacTruongHopTaiNanLaoDong();
+			self.tinhTongBangTheoDoiBenhNgheNghiep();
+			self.sothutuBangDanhSachNguoiLaoDongMacBenhNgheNghiep();
+			self.sothutuTinhHinhNghiOm();
+			self.sothutuCacTruongHopTaiNanLaoDong();
+			self.sothutuCacTruongHopMacBenhNghenghiep();
+			self.sothutuCacTruongHopMacBenhThongThuong();
+
 		},
 
 		createBangTinhHinhNghiViec: function () {
@@ -323,11 +334,9 @@ define(function (require) {
 			var containerEl = self.$el.find("#space_bangtinhhinhnghiviecfield");
 
 			self.$el.find("#btn_add_bangtinhhinhnghiviecfield").on("click", (eventClick) => {
-				console.log("click");
 				var viewNghiViec = new BangTinhHinhNghiViecView();
 				viewNghiViec.model.save(null, {
 					success: (model, response, options) => {
-						console.log("model", response);
 						viewNghiViec.model.set(response);
 						viewNghiViec.render();
 						$(viewNghiViec.el).hide().appendTo(containerEl).fadeIn();
@@ -350,12 +359,10 @@ define(function (require) {
 				var viewNghiViec = new BangTinhHinhNghiViecView();
 				viewNghiViec.model.set(item);
 				viewNghiViec.render();
-				console.log("viewNghiViec", viewNghiViec);
 
 				$(viewNghiViec.el).hide().appendTo(containerEl).fadeIn();
 				viewNghiViec.model.on("change", (change) => {
-					console.log("change", change);
-					var bangTinhHinhNghiViec =  self.model.get("bangtinhhinhnghiviecfield");
+					var bangTinhHinhNghiViec = self.model.get("bangtinhhinhnghiviecfield");
 					if (change.attributes) {
 						bangTinhHinhNghiViec.forEach((item, idx) => {
 							if (item.id === change.attributes.id) {
@@ -426,6 +433,222 @@ define(function (require) {
 				});
 			});
 		},
-	});
+		tinhTongBangQLSucKhoeTruocKhiBoTriViecLam: function () {
+			var self = this;
+			var dsKhamSucKhoe = self.model.get("bangqlsuckhoetruockhibotrivieclamfield")
 
+
+			self.$el.find(".btn-sm").bind("click", () => {
+
+			dsKhamSucKhoe.forEach(function (item, index) {
+
+				var tongcong = parseInt(item.soduockhamtuyennu) + parseInt(item.soduockhamtuyennam);
+				var param = {
+					id: item.id,
+					tongcong: tongcong,
+				}
+
+				$.ajax({
+					url: "http://0.0.0.0:9082/api/v1/bangqlsuckhoetruockhibotrivieclam/" + item.id,
+					type: 'PUT',
+					data: JSON.stringify(param),
+					headers: {
+						'content-type': 'application/json'
+					},
+					dataType: 'json',
+					success: function (data) {
+
+					},
+					error: function (request, textStatus, errorThrown) {
+						console.log(request);
+					}
+				})
+			})
+
+		})
+		},
+		tinhTongBangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKy: function () {
+			var self = this;
+			var dsKhamSucKhoe = self.model.get("bangqlsuckhoelaodongthongquakhamsuckhoedinhkyfield")
+
+
+			self.$el.find(".btn-sm").bind("click", () => {
+
+			dsKhamSucKhoe.forEach(function (item, index) {
+
+				var tongcong = parseInt(item.soduockhamtuyennu) + parseInt(item.soduockhamtuyennam);
+				var param = {
+					id: item.id,
+					tongcong: tongcong,
+				}
+
+				$.ajax({
+					url: "http://0.0.0.0:9082/api/v1/bangqlsuckhoelaodongthongquakhamsuckhoedinhky/" + item.id,
+					type: 'PUT',
+					data: JSON.stringify(param),
+					headers: {
+						'content-type': 'application/json'
+					},
+					dataType: 'json',
+					success: function (data) {
+					
+					},
+					error: function (request, textStatus, errorThrown) {
+						console.log(request);
+					}
+				})
+			})
+
+		})
+		},
+		tinhTongBangSoTruongHopMacCacLoaiBenhThongThuong: function () {
+			var self = this;
+			var ds = self.model.get("bangsotruonghopmaccacloaibenhthongthuongfield")
+				var th1=0;
+				var th2=0;
+				var th3=0;
+				var th4=0;
+			ds.forEach(function (item, index) {
+				th1 += (parseInt(item.sotruonghopquy1));
+				th2 += (parseInt(item.sotruonghopquy2));
+				th3 += (parseInt(item.sotruonghopquy3));
+				th4 += (parseInt(item.sotruonghopquy4));
+			})
+			self.$el.find("#tongcongtruonghop1").val(th1);
+			self.$el.find("#tongcongtruonghop2").val(th2);
+			self.$el.find("#tongcongtruonghop3").val(th3);
+			self.$el.find("#tongcongtruonghop4").val(th4);
+		
+		},
+		tinhTongBangCacTruongHopTaiNanLaoDong: function () {
+			var self = this;
+			var ds = self.model.get("bangcactruonghoptainanlaodongfield")
+				var quyImac=0;
+				var quyIchet=0;
+				var quyIImac=0;
+				var quyIIchet=0;
+				var quyIIImac=0;
+				var quyIIIchet=0;
+				var quyIVmac=0;
+				var quyIVchet=0;
+			ds.forEach(function (item, index) {
+				quyImac += (parseInt(item.sotruonghopquy1mac));
+				quyIchet += (parseInt(item.sotruonghopquy1chet));
+				quyIImac += (parseInt(item.sotruonghopquy2mac));
+				quyIIchet += (parseInt(item.sotruonghopquy2chet));
+				quyIIImac += (parseInt(item.sotruonghopquy3mac));
+				quyIIIchet += (parseInt(item.sotruonghopquy3chet));
+				quyIVmac += (parseInt(item.sotruonghopquy4mac));
+				quyIVchet += (parseInt(item.sotruonghopquy4chet));
+			})
+			self.$el.find("#sotruonghopquy1mac").val(quyImac);
+			self.$el.find("#sotruonghopquy1chet").val(quyIchet);
+			self.$el.find("#sotruonghopquy2mac").val(quyIImac);
+			self.$el.find("#sotruonghopquy2chet").val(quyIIchet);
+			self.$el.find("#sotruonghopquy3mac").val(quyIIImac);
+			self.$el.find("#sotruonghopquy3chet").val(quyIIIchet);
+			self.$el.find("#sotruonghopquy4mac").val(quyIVmac);
+			self.$el.find("#sotruonghopquy4chet").val(quyIVchet);
+		
+		
+		},
+		tinhTongBangTheoDoiBenhNgheNghiep: function () {
+			var self = this;
+			var ds = self.model.get("BangTheoDoiBenhNgheNghiepfield")
+				var tongsobenh=0;
+				var tongsokham=0;
+				var tongsokhamnu=0;
+				var tongsochuandoan=0;
+				var tongsochuandoannu=0;
+				var tongsogiamdinh=0;
+				var tongsogiamdinhnu=0;
+				var tongsoketquaduoi5=0;
+
+				var tongsoketquaduoi5nu=0;
+				var tongsoketquaduoitren5duoi31=0;
+				var tongsoketquaduoitren5duoi31nu=0;
+				var tongsoketquatren31=0;
+				var tongsoketquatren31nu=0;
+			
+
+
+			ds.forEach(function (item, index) {
+				tongsobenh++;
+				tongsokham += (parseInt(item.tongsokham));
+				tongsokhamnu += (parseInt(item.tongsokhamnu));
+				tongsochuandoan += (parseInt(item.tongsochuandoan));
+				tongsochuandoannu += (parseInt(item.tongsochuandoannu));
+				tongsogiamdinh += (parseInt(item.tongsogiamdinh));
+				tongsogiamdinhnu += (parseInt(item.tongsogiamdinhnu));
+				tongsoketquaduoi5 += (parseInt(item.tongsogiamdinhnhohon5phantram));
+				tongsoketquaduoi5nu += (parseInt(item.tongsogiamdinhnhohon5phantramnu));
+
+				tongsoketquaduoitren5duoi31 += (parseInt(item.tongsogiamdinhlonhon5nhohon31phantram));
+				tongsoketquaduoitren5duoi31nu += (parseInt(item.tongsogiamdinhlonhon5nhohon31phantramnu));
+				tongsoketquatren31 += (parseInt(item.tongsogiamdinhlonhon31phantram));
+				tongsoketquatren31nu += (parseInt(item.tongsogiamdinhlonhon31phantramnu));
+			})
+			self.$el.find("#tongsobenh").val(tongsobenh);
+			self.$el.find("#tongsokham").val(tongsokham);
+			self.$el.find("#tongsokhamnu").val(tongsokhamnu);
+			self.$el.find("#tongsochuandoan").val(tongsochuandoan);
+			self.$el.find("#tongsochuandoannu").val(tongsochuandoannu);
+			self.$el.find("#tongsogiamdinh").val(tongsogiamdinh);
+			self.$el.find("#tongsogiamdinhnu").val(tongsogiamdinhnu);
+
+			self.$el.find("#tongsoketquaduoi5").val(tongsoketquaduoi5);
+			self.$el.find("#tongsoketquaduoi5nu").val(tongsoketquaduoi5nu);
+			self.$el.find("#tongsoketquaduoitren5duoi31").val(tongsoketquaduoitren5duoi31);
+			self.$el.find("#tongsoketquaduoitren5duoi31nu").val(tongsoketquaduoitren5duoi31nu);
+			self.$el.find("#tongsoketquatren31").val(tongsoketquatren31);
+			self.$el.find("#tongsoketquatren31nu").val(tongsoketquatren31nu);
+		
+		
+		},
+		sothutuBangDanhSachNguoiLaoDongMacBenhNgheNghiep: function () {
+			const self = this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_ds_nld_macbenh"));
+			arr.forEach(function (item, index, array) {
+				item.value=++index;
+			});	
+
+		},
+		sothutuTinhHinhNghiOm: function () {
+			const self = this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_tinhhinhnghiom"));
+			arr.forEach(function (item, index, array) {
+				item.value=++index;
+			});	
+
+		},
+		sothutuCacTruongHopTaiNanLaoDong: function () {
+			const self = this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_cacthtainanlaodong"));
+			arr.forEach(function (item, index, array) {
+				item.value=++index;
+			});	
+
+		},
+		sothutuCacTruongHopMacBenhNghenghiep: function () {
+			const self = this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_cacthmacbenhnghenghiep"));
+			arr.forEach(function (item, index, array) {
+				item.value=++index;
+			});	
+
+		},
+		sothutuCacTruongHopMacBenhThongThuong: function () {
+			const self = this;
+			var arr = [];
+			arr = lodash(self.$el.find("tr td #stt_cacthmacbenhthongthuong"));
+			arr.forEach(function (item, index, array) {
+				item.value=++index;
+			});	
+
+		},
+	});
 });

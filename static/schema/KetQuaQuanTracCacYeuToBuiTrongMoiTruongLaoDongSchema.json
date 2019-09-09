@@ -59,6 +59,12 @@
     "buikhac2": {
         "type": "number"
     },
+    "tong1": {
+        "type": "number"
+    },
+    "tong2": {
+        "type": "number"
+    },
     "baocaohoatdongytelaodong6thangnamtuyenhuyen_id": {
         "type": "string"
     }

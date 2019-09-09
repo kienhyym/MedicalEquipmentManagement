@@ -1,7 +1,7 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
         <div block-bind="toolbar"></div>
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
+        <div class="table-responsive">
             <table class="table  table-bordered">
                 <tr class="text-center ">
                     <td>
@@ -66,9 +66,9 @@
         <div class="flexboxer col-md-12 p-0">
             <label>1. Kết quả khám sức khoẻ:</label>
         </div>
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
+        <div class="table-responsive">
             <table class="table  table-bordered">
-                <tr>
+                <tr class="text-center">
                     <td rowspan="2">TT</td>
                     <td rowspan="2">Họ và tên</td>
                     <td rowspan="2">Bộ phận làm việc</td>
@@ -77,8 +77,9 @@
                     <td rowspan="2">Tình trạng bệnh tật</td>
                     <td rowspan="2">Hướng giải quyết</td>
                     <td rowspan="2">Ghi chú</td>
+                    <td rowspan="2"></td>
                 </tr>
-                <tr>
+                <tr class="text-center">
                     <td>Nam</td>
                     <td>Nữ</td>
                     <td>I</td>
@@ -88,7 +89,7 @@
                     <td>V</td>
                 </tr>
                 <tbody id="ketquakhamsuckhoe_grid"></tbody>
-                <tr>
+                <tr class="text-center">
                     <td></td>
                     <td>Tổng</td>
                     <td></td>
@@ -102,7 +103,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-
+                    <td></td>
                 </tr>
             </table>
             <button id="add_1_row" class="btn btn-primary">Thêm</button>
@@ -179,9 +180,9 @@
         <div class="flexboxer col-md-12 p-0">
             <label>1. Danh sách người mắc bệnh nghề nghiệp:</label>
         </div>
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
+        <div class="table-responsive">
             <table class="table  table-bordered">
-                <tr>
+                <tr class="text-center">
                     <td>TT</td>
                     <td>Tên bệnh nhân</td>
                     <td>Tuổi</td>
@@ -190,6 +191,7 @@
                     <td>Ngày phát hiện bệnh</td>
                     <td>Tên bệnh nghề nghiệp</td>
                     <td>Công việc hiện nay</td>
+                    <td></td>
                 </tr>
                     <tbody id="danhsachnguoimacbenhnghenghiep_grid"></tbody>
             </table>
@@ -198,41 +200,41 @@
         <div class="flexboxer col-md-12 p-0">
             <label>2. Tổng hợp kết quả khám bệnh nghề nghiệp</label>
         </div>
-        <div class="table-responsive-md table-responsive-lg table-responsive-sm table-responsive-xl tablee">
+        <div class="table-responsive">
             <table class="table  table-bordered">
-                <tr>
+                <tr class="text-center">
                     <td rowspan="2">TT</td>
                     <td rowspan="2">Tên bệnh nghề nghiệp</td>
                     <td colspan="2">NLĐ được khám sức khoẻ phát hiện BNN</td>
                     <td colspan="2">NLĐ được chẩn đoán mắc BNN</td>
+                    <td rowspan="3"></td>
 
                 </tr>
-                <tr>
+                <tr class="text-center">
                     <td>Tổng số</td>
                     <td>Lao động nữ</td>
                     <td>Tổng số</td>
                     <td>Lao động nữ</td>
 
                 </tr>
-                <tr>
+                <tr class="text-center">
                     <td>(1)</td>
                     <td>(2)</td>
                     <td>(3)</td>
                     <td>(4)</td>
                     <td>(5)</td>
                     <td>(6)</td>
-
                 </tr>
                 <tbody id="tonghopketquakhambenhnghenghiep_grid"></tbody>
 
-                <tr>
+                <tr class="text-center">
                     <td></td>
                     <td>Tổng Cộng</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-
+                    <td></td>
                 </tr>
             </table>
             <button type="button" class="btn btn-primary" id="btn_add_row_tonghopketquakhambenhnghenghiep">Thêm</button>

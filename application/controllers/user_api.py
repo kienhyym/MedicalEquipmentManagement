@@ -945,3 +945,12 @@ sqlapimanager.create_api(SoKhamSucKhoeDinhKyCuaNguoiLaiXeOTo, max_results_per_pa
     collection_name='sokhamsuckhoedinhkycuanguoilaixeoto')            
 # Báo cáo 3 Phụ lục 21
 ######################################################################################################################################################################
+# Báo cáo 3 Phụ lục 21
+sqlapimanager.create_api(GiayKhamSucKhoeDungChoNguoiTudu18Tuoi, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func], DELETE_SINGLE=[auth_func]),
+    # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    collection_name='giaykhamsuckhoedungchonguoitudu18tuoi')            
+# Báo cáo 3 Phụ lục 21
+######################################################################################################################################################################

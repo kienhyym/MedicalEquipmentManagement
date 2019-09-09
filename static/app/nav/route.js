@@ -5,6 +5,16 @@ define(function (require) {
 		Gonrin = require('gonrin');
 	return [
 		{
+			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
+			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/collection",
+			"$ref": "app/hoso/giaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
+		},
+		{
+			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
+			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/model(/:id)",
+			"$ref": "app/hoso/giaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
+		},
+		{
 			"collectionName": "user",
 			"route": "user/collection",
 			"$ref": "app/user/js/CollectionView",

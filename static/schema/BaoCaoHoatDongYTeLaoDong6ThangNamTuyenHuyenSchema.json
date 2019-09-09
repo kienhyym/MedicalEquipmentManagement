@@ -160,9 +160,6 @@
     "socosolaphosovesinhlaodongcoyeutocohai": {
         "type": "number"
     },
-    "loaicososanxuattren50duoi200ndl": {
-        "type": "number"
-    },
     "hinhthuccotramytetren50duoi200ndl": {
         "type": "number"
     },
@@ -178,9 +175,6 @@
     "hopdongvoicosokhambenhtren50duoi200ndl": {
         "type": "number"
     },
-    "loaicososanxuattren200nld": {
-        "type": "number"
-    },
     "hinhthuccotramytetren200nld": {
         "type": "number"
     },
@@ -194,9 +188,6 @@
         "type": "number"
     },
     "hopdongvoicosokhambenhtren200nld": {
-        "type": "number"
-    },
-    "loaicososanxuatduoi50nld": {
         "type": "number"
     },
     "hinhthuccotramyteduoi50nld": {

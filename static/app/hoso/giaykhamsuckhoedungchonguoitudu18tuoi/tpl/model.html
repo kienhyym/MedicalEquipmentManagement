@@ -1,0 +1,584 @@
+<div block-bind="content">
+    <div class="card-body border mt-5" style="background-color: white">
+
+        <div block-bind="toolbar"></div>
+
+        <div class="justify-content-center d-flex">
+            <label class="stronger">MẪU GIẤY KHÁM SỨC KHỎE DÙNG CHO NGƯỜI TỪ ĐỦ 18 TUỔI TRỞ LÊN
+            </label>
+        </div>
+        <div class="justify-content-center d-flex">
+            <label class="stronger"><i>
+                    (Kèm theo Thông tư số 15/2013/TT-BYT ngày 06 tháng 5 năm 2013
+                    của Bộ trưởng Bộ Y tế)</i>
+            </label>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4 ">
+                <div type="text" style="border-top: 1px solid gray"></div>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <br>
+        <div class="row ">
+            <div class="col-md-4 col-sm-12">
+                <div class="flexboxer col-md-12  p-0 pl-5 pr-5">
+                    <input data-bind="value:coquanchuquan" type="text" placeholder="(1)" class="input-phuluc2" style="text-align: center;flex-grow: 1">
+                </div>
+                <div class="flexboxer col-md-12  p-0 pl-5 pr-5">
+                    <input data-bind="value:tencoquandonvi" type=" text"  placeholder="(2)"class="input-phuluc2" style="text-align: center;flex-grow: 1">
+                </div>
+            </div>
+
+            <div class="col-md-8 col-sm-12 text-center">
+                <label class="stronger">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
+                <label class="stronger">Độc lập - Tự do - Hạnh phúc</label><br>
+                <label class="stronger">..................</label>
+            </div>
+        </div>
+        <div class="flexboxer col-md-12  p-0 pl-5 pr-5 text-center">
+                <label>Số:/GKSK-</label>
+                    <input data-bind="value:so_gksk" type=" text"  placeholder="      (3)"class="input-phuluc2" style="text-align: left;width: 10%;">
+                </div>
+        <!-- Tiều đề -->
+
+        <div class="justify-content-center d-flex">
+            <label class="stronger">GIẤY KHÁM SỨC KHỎE</label>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-12">
+                <div style="width: 150px;height: 200px;border: 1px solid black;margin: 0 auto;"></div>
+            </div>
+            <div class="col-md-9 col-sm-12">
+                <div class="flexboxer p-0">
+                    <label>Họ và tên (chữ in hoa): </label>
+                    <input data-bind="value:hovaten" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+                </div>
+                <div class="flexboxer p-0">
+                    <label>Giơi tính:</label>
+                    <label>Nam</label>
+                    <input data-bind="value:gioitinh" type="radio">
+                    <label>nữ</label>
+                    <input type="radio">
+                </div>
+                <div class="flexboxer p-0">
+                    <label>Tuổi</label>
+                    <input data-bind="value:tuoi" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+                </div>
+                <div class="flexboxer p-0">
+                    <label>Số chứng minh thư hoăc hộ chiếu:</label>
+                    <input data-bind="value:hochieu" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+                    <label>ngày cấp</label>
+                    <input data-bind="value:hochieu_capngay" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+                </div>
+                <div class="flexboxer p-0">
+                    <label>Tại:</label>
+                    <input data-bind="value:hochieu_captai" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+                </div>
+                <div class="flexboxer p-0">
+                    <label>Chỗ ở hiện tại:</label>
+                    <input data-bind="value:choohientai" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+                </div>
+                <div class="flexboxer p-0">
+                    <label>Lý do khám sức khỏe:</label>
+                    <input data-bind="value:lydokham" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="justify-content-center d-flex">
+            <label class="stronger">TIỀN SỬ BỆNH CỦA ĐỐI TƯỢNG KHÁM SỨC KHỎE</label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>1. Tiền sử gia đình:</label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label> Có ai trong gia đình ông (bà) mắc một trenong các bệnh: truyền nhiễm, tim mạch, đái tháo đường,
+                lao, hen phế quản, ung thư, động kinh, rối loạn tâm thần, bệnh khác: </label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>a)Có</label>
+            <input data-bind="value:tiensubenh_tiensugiadinh_coaimacbenh" type="radio">
+            <label>b)Không</label>
+            <input type="radio">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>Nếu “có”, đề nghị ghi cụ thể tên bệnh:</label>
+            <input data-bind="value:tiensubenh_tiensugiadinh_tenbenh" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>1. Tiền sử gia đình:</label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>Ông (bà) đã/đang mắc bệnh, tình trạng bệnh nào sau đây không: Bệnh truyền nhiễm, bệnh tim mạch,
+                đái tháo đường, lao, hen phế quản, ung thư, động kinh, rối loạn tâm thần, bệnh khác: </label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>a)Có</label>
+            <input data-bind="value:tiensubenh_tiensubanthan_comacbenh" type="radio">
+            <label>b)Không</label>
+            <input type="radio">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>Nếu “có”, đề nghị ghi cụ thể tên bệnh: </label>
+            <input data-bind="value:tiensubenh_tiensubanthan_tenbenh" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>3. Câu hỏi khác (nếu có): </label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>a) Ông (bà) có đang điều trị bệnh gì không? Nếu có, xin hãy liệt kê các thuốc đang dùng và liều
+                lượng: </label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <input data-bind="value:cauhoikhac_dangdieutrikhong_thongtin" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <input type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>b) Tiền sử thai sản (Đối với phụ nữ):</label>
+            <input data-bind="value:cauhoikhac_tiensuthaisan" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+        </div>
+
+
+        <div class="row ">
+            <div class="col-md-6 col-sm-12 text-center">
+                <label class="stronger"></label><br>
+
+                <label class="stronger">Tôi xin cam đoan những điều khai trên đây </label><br>
+                <label class="stronger">hoàn toàn đúng với sự thật theo sự hiểu biết của tôi.</label>
+
+            </div>
+
+            <div class="col-md-6 col-sm-12 text-center">
+                <div class="flexboxer col-md-12 p-0 justify-content-center">
+                    <input data-bind="value:nguoidenghikham_kyngay" type="text" class="input-phuluc2" style="text-align: left;width: 15%;">
+                    <label>,ngày:</label>
+                    <input type="text" class="input-phuluc2" style="text-align: left;width: 15%;">
+                    <label>tháng:</label>
+                    <input type="text" class="input-phuluc2" style="text-align: left;width: 15%;">
+                    <label>năm:</label>
+                    <input type="text" class="input-phuluc2" style="text-align: left;width: 15%;">
+                </div>
+                <label class="stronger">Người đề nghị khám sức khỏe
+                </label><br>
+                <label class="stronger"><i>(Ký và ghi rõ họ, tên)</i></label>
+
+            </div>
+        </div>
+
+        <div class="flexboxer p-0 stronger">
+            <label>I. KHÁM THỂ LỰC </label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>Chiều cao:</label>
+            <input data-bind="value:theluc_chieucao" type="text" class="input-phuluc2 " style="text-align: left;flex-grow: 1 ;">
+            <label>cm;&nbsp; &nbsp;</label>
+            <label>Cân nặng:</label>
+            <input data-bind="value:theluc_cannang" type="text" class="input-phuluc2 " style="text-align: left;flex-grow: 1 ;">
+            <label>cm;&nbsp; &nbsp; </label>
+            <label> Chỉ số BMI:</label>
+            <input data-bind="value:theluc_chiso_bmi" type="text" class="input-phuluc2 " style="text-align: left;flex-grow: 1 ;">
+            <label>cm; </label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>Mạch:</label>
+            <input data-bind="value:theluc_mach" type="text" class="input-phuluc2 " style="text-align: left;flex-grow: 1 ;">
+            <label>lần/phút;&nbsp; &nbsp;</label>
+            <label>Huyết áp:</label>
+            <input data-bind="value:theluc_huyetap" type="text" class="input-phuluc2 " style="text-align: left;flex-grow: 1 ;">
+            <label>mmHg; </label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>Phân loại thể lực:</label>
+            <input data-bind="value:phanloaitheluc" type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>II. KHÁM LÂM SÀNG </label>
+        </div>
+        <div class="table-responsive">
+            <table class="table-bordered table">
+                <tr class="text-center">
+                    <th class="w-75">Nội dung khám</th>
+                    <th class="w-25">Họ tên, chữ ký của Bác sỹ</th>
+                </tr>
+                <tr>
+                    <td class="w-75">
+                        <div class="flexboxer p-0 stronger">
+                            <label>1. Nội khoa</label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>a) Tuần hoàn: </label>
+                            <input data-bind="value:noikhoa_tuanhoan" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Phân loại: </label>
+                            <input data-bind="value:noikhoa_tuanhoan_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>b) Hô hấp:</label>
+                            <input data-bind="value:noikhoa_hohap" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Phân loại: </label>
+                            <input data-bind="value:noikhoa_hohap_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>c) Tiêu hóa: </label>
+                            <input data-bind="value:noikhoa_tieuhoa" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Phân loại: </label>
+                            <input data-bind="value:noikhoa_tieuhoa_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>d) Thận-Tiết niệu:</label>
+                            <input data-bind="value:noikhoa_than_tietnieu" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Phân loại: </label>
+                            <input data-bind="value:noikhoa_than_tietnieu_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>đ) Cơ-xương-khớp: </label>
+                            <input data-bind="value:noikhoa_coxuongkhop" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Phân loại: </label>
+                            <input data-bind="value:noikhoa_coxuongkhop_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>e) Thần kinh: </label>
+                            <input data-bind="value:noikhoa_thankinh" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Phân loại: </label>
+                            <input data-bind="value:noikhoa_thankinh_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>g) Tâm thần: </label>
+                            <input data-bind="value:noikhoa_tamthan" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Phân loại: </label>
+                            <input data-bind="value:noikhoa_tamthan_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>2. Ngoại khoa:</label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Phân loại: </label>
+                            <input data-bind="value:ngoaikhoa_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>3. Sản phụ khoa:</label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Phân loại: </label>
+                            <input data-bind="value:sanphukhoa_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>4. Mắt: </label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Kết quả khám thị lực: </label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Không kính:Mắt phải: </label>
+                            <input data-bind="value:mat_khongkinh_phai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                            <label>Mắt trái: </label>
+                            <input data-bind="value:mat_khongkinh_trai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Có kính:Mắt phải: </label>
+                            <input data-bind="value:mat_cokinh_phai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                            <label>Mắt trái: </label>
+                            <input data-bind="value:mat_cokinh_trai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Các bệnh về mắt (nếu có): </label>
+                            <input data-bind="value:mat_cacbenh" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Phân loại: </label>
+                            <input data-bind="value:mat_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>5. Tai-Mũi-Họng</label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Kết quả khám thính lực: </label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Tai trái: Nói thường:</label>
+                            <input data-bind="value:taimuihong_taitrai_noithuong" type="text" class="input-phuluc2 " style="text-align: left;flex-grow: 1 ;">
+                            <label>m;</label>
+                            <label>Nói thầm:. </label>
+                            <input data-bind="value:taimuihong_taitrai_noitham" type="text" class="input-phuluc2 " style="text-align: left;flex-grow: 1 ;">
+                            <label>m;</label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Tai phải: Nói thường:</label>
+                            <input data-bind="value:taimuihong_taiphai_noithuong" type="text" class="input-phuluc2 " style="text-align: left;flex-grow: 1 ;">
+                            <label>m;</label>
+
+                            <label>Nói thầm:. </label>
+                            <input data-bind="value:taimuihong_taiphai_noitham" type="text" class="input-phuluc2 " style="text-align: left;flex-grow: 1 ;">
+                            <label>m;</label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Các bệnh về tai mũi họng (nếu có): </label>
+                            <input data-bind="value:taimuihong_cacbenh" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Phân loại: </label>
+                            <input data-bind="value:taimuihong_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>6. Răng-Hàm-Mặt</label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Kết quả khám: </label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>+ Hàm trên:</label>
+                            <input data-bind="value:ranghammmat_hamtren" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label> + Hàm dưới: </label>
+                            <input data-bind="value:ranghammmat_hamduoi" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Các bệnh về Răng-Hàm-Mặt (nếu có) </label>
+                            <input data-bind="value:ranghammmat_cacbenh" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Phân loại: </label>
+                            <input data-bind="value:ranghammat_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>7. Da liễu: </label>
+                        </div>
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>- Phân loại: </label>
+                            <input data-bind="value:dalieu_phanloai" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                    </td>
+                    <td class="w-25"></td>
+            </table>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>III. KHÁM CẬN LÂM SÀNG
+            </label>
+        </div>
+        <div class="table-responsive">
+            <table class="table-bordered table">
+                <tr class="text-center">
+                    <th class="w-75">Nội dung khám</th>
+                    <th class="w-25">Họ tên, chữ ký của Bác sỹ</th>
+                </tr>
+                <tr>
+                    <td class="w-75">
+
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>1. Xét nghiệm máu:
+                            </label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>a) Công thức máu: </label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Số lượng HC:</label>
+                            <input data-bind="value:xetnhiemmau_soluonghongcau" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Số lượng Bạch cầu: </label>
+                            <input data-bind="value:xetnhiemmau_soluongbachcau" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label> Số lượng Tiểu cầu: </label>
+                            <input data-bind="value:xetnhiemmau_soluongtieucau" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>b) Sinh hóa máu:</label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>Đường máu: </label>
+                            <input data-bind="value:xetnhiemmau_sinhhoamau_duongmau" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label> Urê:</label>
+                            <input data-bind="value:xetnhiemmau_sinhhoamau_ure" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                            <label> Creatinin:.</label>
+                            <input data-bind="value:xetnhiemmau_sinhhoamau_creatinin" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label> ASAT (GOT): </label>
+                            <input data-bind="value:xetnhiemmau_sinhhoamau_asat" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                            <label> ALAT (GPT): </label>
+                            <input data-bind="value:xetnhiemmau_sinhhoamau_alat" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>c) Khác (nếu có): </label>
+                            <input data-bind="value:xetnhiemmau_khac" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+
+                        <div class="flexboxer p-0 stronger">
+                            <label>2. Xét nghiệm nước tiểu:</label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>a) Đường: </label>
+                            <input data-bind="value:xetnhiemnuoctieu_duong" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>b) Prôtêin: . </label>
+                            <input data-bind="value:xetnhiemnuoctieu_protein" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>c) Khác (nếu có): </label>
+                            <input data-bind="value:xetnhiemnuoctieu_khac" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <label>3. Chẩn đoán hình ảnh: </label>
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <input data-bind="value:chuandoanhinhanh" type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                        <div class="flexboxer p-0 stronger">
+                            <input type="text" class="input-phuluc2 input-mobile"
+                                style="text-align: left;flex-grow: 1 ;">
+                        </div>
+                    </td>
+                    <td class="w-25"></td>
+            </table>
+        </div>
+
+        <div class="flexboxer p-0 stronger">
+            <label>IV. KẾT LUẬN </label>
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>1. Phân loại sức khỏe:</label>
+            <input data-bind="value:ketluan_phanloaisuckhoe" type="text" class="input-phuluc2 input-mobile"  placeholder="                         (4)" style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <label>2. Các bệnh, tật (nếu có): .</label>
+            <input data-bind="value:ketluan_cacbenh" type="text" class="input-phuluc2 input-mobile" placeholder="                          (5)"  style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <input type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <input type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <div class="flexboxer p-0 stronger">
+            <input type="text" class="input-phuluc2 input-mobile" style="text-align: left;flex-grow: 1 ;">
+        </div>
+        <br>
+        <div class="row ">
+                <div class="col-md-6 col-sm-12 text-center">
+                    <label class="stronger"></label><br>
+    
+                    <label class="stronger"></label><br>
+                    <label class="stronger"></label><br>    
+                </div>
+    
+                <div class="col-md-6 col-sm-12 text-center">
+                    <div class="flexboxer col-md-12 p-0 justify-content-center">
+                        <input data-bind="value:nguoiketluan_kyngay" type="text" class="input-phuluc2" style="text-align: left;width: 15%;">
+                        <label>,ngày:</label>
+                        <input type="text" class="input-phuluc2" style="text-align: left;width: 15%;">
+                        <label>tháng:</label>
+                        <input type="text" class="input-phuluc2" style="text-align: left;width: 15%;">
+                        <label>năm:</label>
+                        <input type="text" class="input-phuluc2" style="text-align: left;width: 15%;">
+                    </div>
+                    <label class="stronger">              NGƯỜI KẾT LUẬN
+
+                    </label><br>
+                    <label class="stronger"><i>                (Ký, ghi rõ họ, tên và đóng dấu)</i></label>
+    
+                </div>
+            </div>
+            <div class="col-4 ">
+                    <div type="text" style="border-top: 1px solid gray"></div>
+                </div>
+                <label style="font-size: 12px;">(1)Tên cơ quan chủ quản của cơ sở khám sức khỏe</label><br>
+                <label style="font-size: 12px;">(2)Tên của cơ sở khám sức khỏe</label><br>
+                <label style="font-size: 12px;">(3)Chữ viết tắt tên cơ sở khám sức khỏe</label><br>
+                <label style="font-size: 12px;">(4)Phân loại sức khỏe theo loại I hoặc II hoặc III hoặc IV hoặc V theo quy định tại Quyết định số 1613/BYT - QĐ hoặc phân loại sức khỏe theo quy định của bộ tiêu chuẩn sức khỏe chuyên ngành đối với trường hợp khám sức khỏe chuyên ngành</label>
+                <label style="font-size: 12px;">(5)Ghi rõ các bệnh, tật, phương án điều trị, phục hồi chức năng hoặc giới thiệu khám chuyên khoa để khám bệnh, chữa bệnh</label>
+            </div>
+</div>
