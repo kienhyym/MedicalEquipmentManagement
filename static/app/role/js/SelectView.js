@@ -6,49 +6,109 @@ define(function (require) {
 
 	var template = require('text!app/role/tpl/select.html'),
 		schema = require('json!schema/RoleSchema.json');
+	var CustomFilterView = require('app/base/view/CustomFilterView');
 
 	return Gonrin.CollectionDialogView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
 		collectionName: "role",
-		textField: "display_name",
+		bindings: "data-bind",
+		textField: "name",
+		valueField: "id",
 		tools: [
-			// {
-			// 	name: "close",
-			// 	type: "button",
-			// 	buttonClass: "btn btn-danger btn-sm margin-left-5",
-			// 	label: "Close",
-			// 	command: function () {
-			// 		this.close();
-			// 	}
-			// },
 			{
-				name: "select",
-				type: "button",
-				buttonClass: "btn btn-info btn-sm font-weight-bold margin-left-5",
-				label: "TRANSLATE:SELECT",
-				command: function () {
-					this.trigger("onSelected");
-					this.close();
-				}
-			}
+				name: "defaultgr",
+				type: "group",
+				groupClass: "toolbar-group",
+				buttons: [
+					{
+						name: "select",
+						type: "button",
+						buttonClass: "btn-success btn-sm",
+						label: "TRANSLATE:SELECT",
+						command: function () {
+							var self = this;
+							self.trigger("onSelected");
+							self.close();
+						}
+					},
+				]
+			},
 		],
 		uiControl: {
 			fields: [
-				{ field: "name", label: "Tên vai trò" },
+				{ field: "ma", label: "Mã", width: 150 },
+				{ field: "name", label: "Tên", width: 250 },
 			],
 			onRowClick: function (event) {
 				this.uiControl.selectedItems = event.selectedItems;
-				console.log(event.selectedItems);
-				// this.trigger("onSelected");
-				// this.close();
 			},
 		},
-		render: function () {
-			this.applyBindings();
-		}
 
+		// render: function () {
+		// 	var self = this;
+		// 	self.applyBindings();
+		// },
+		render: function () {
+			var self = this;
+			self.uiControl.orderBy = [{ "field": "name", "direction": "desc" }];
+			var filter = new CustomFilterView({
+				el: self.$el.find("#grid_search"),
+				sessionKey: self.collectionName + "_filter"
+			});
+			filter.render();
+
+			if (!filter.isEmptyFilter()) {
+				var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
+				var query = {
+					"$or": [
+						{ "name": { "$like": text } },
+					]
+				};
+
+				var filters = query;
+				if (self.uiControl.filters !== null) {
+					filters = {
+						"$and": [
+							self.uiControl.filters,
+							query
+						]
+					};
+				}
+				self.uiControl.filters = filters;
+			}
+			self.applyBindings();
+
+			filter.on('filterChanged', function (evt) {
+				var $col = self.getCollectionElement();
+				var text = !!evt.data.text ? evt.data.text.trim() : "";
+				if ($col) {
+					if (text !== null) {
+						var query = {
+							"$or": [
+								{ "name": { "$like": text } },
+							]
+						};
+						var filters = query;
+						if (self.uiControl.filters !== null) {
+							filters = {
+								"$and": [
+									self.uiControl.filters,
+									query
+								]
+							};
+						}
+						$col.data('gonrin').filter(filters);
+						//self.uiControl.filters = filters;
+					} else {
+						self.uiControl.filters = null;
+					}
+				}
+				self.applyBindings();
+			});
+			return this;
+		},
 	});
 
 });

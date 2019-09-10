@@ -10,9 +10,11 @@ define(function (require) {
 			"type": "view",
 			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
 			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/collection",
-			"$ref": "app/hoso/giaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
+			"$ref": "app/hoso/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
 			"visible": function () {
-				return true;
+				console.log('xxxxxxxxxxx',this.userHasRole("worker"))
+				return this.userHasRole("worker");
+
 			}
 		},
 		{
@@ -21,7 +23,7 @@ define(function (require) {
 			"type": "view",
 			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
 			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/model(/:id)",
-			"$ref": "app/hoso/giaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
+			"$ref": "app/hoso/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
 			"visible": function () {
 				return false;
 			}
@@ -34,7 +36,8 @@ define(function (require) {
 			"route": "user/collection",
 			"$ref": "app/user/js/CollectionView",
 			"visible": function () {
-				return true;
+				return this.userHasRole("company");
+
 			}
 		},
 		{
@@ -56,7 +59,8 @@ define(function (require) {
 			"route": "role/collection",
 			"$ref": "app/role/js/CollectionView",
 			"visible": function () {
-				return true;
+				return this.userHasRole("company");
+
 			}
 		},
 		{
@@ -78,7 +82,8 @@ define(function (require) {
 			"route": "donvi/collection",
 			"$ref": "app/donvi/js/CollectionView",
 			"visible": function () {
-				return true;
+				return this.userHasRole("company");
+
 			}
 		},
 		{
@@ -92,101 +97,101 @@ define(function (require) {
 				return false;
 			}
 		},
-		{
-			"text": "Danh mục",
-			"icon": "fa fa-home",
-			"type": "category",
+		// {
+		// 	"text": "Danh mục",
+		// 	"icon": "fa fa-home",
+		// 	"type": "category",
 
-			// "visible": function(){
-			// 	//console.log(this.checkHasRole("Admin"));
-			// 	return this.checkHasRole("Admin") ;
-			// },
-			"entries": [
-				{
-					"text": "Quốc gia",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					"collectionName": "quocgia",
-					"route": "quocgia/collection",
-					"$ref": "app/DanhMuc/QuocGia/view/CollectionView",
-					// "visible": function(){
-					// 	//console.log(this.checkHasRole("Admin"));
-					// 	return this.checkHasRole("Admin") ;
-					// }
-				},
-				{
-					"type": "view",
-					"icon": "far fa-clipboard",
-					"collectionName": "quocgia",
-					"route": "quocgia/model(/:id)",
-					"$ref": "app/DanhMuc/QuocGia/view/ModelView",
-					"visible": false
-				},
-				{
-					"text": "Tỉnh thành",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					"collectionName": "tinhthanh",
-					"route": "tinhthanh/collection",
-					"$ref": "app/DanhMuc/TinhThanh/view/CollectionView",
-					// "visible": function(){
-					// 	return this.checkHasRole("Admin") ;
-					// }
-				},
-				{
-					"type": "view",
-					"icon": "far fa-clipboard",
-					"collectionName": "tinhthanh",
-					"route": "tinhthanh/model(/:id)",
-					"$ref": "app/DanhMuc/TinhThanh/view/ModelView",
-					"visible": false
-				},
-				{
-					"text": "Quận huyện",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					"collectionName": "quanhuyen",
-					"route": "quanhuyen/collection",
-					"$ref": "app/DanhMuc/QuanHuyen/view/CollectionView",
-					// "visible": function(){
-					// 	return this.checkHasRole("Admin") ;
-					// }
-				},
-				{
-					"type": "view",
-					"icon": "far fa-clipboard",
-					"collectionName": "quanhuyen",
-					"route": "quanhuyen/model(/:id)",
-					"$ref": "app/DanhMuc/QuanHuyen/view/ModelView",
-					"visible": false
-				},
-				{
-					"text": "Xã phường",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					"collectionName": "xaphuong",
-					"route": "xaphuong/collection",
-					"$ref": "app/DanhMuc/XaPhuong/view/CollectionView",
-					// "visible": function(){
-					// 	return this.checkHasRole("Admin") ;
-					// }
-				},
-				{
-					"type": "view",
-					"icon": "far fa-clipboard",
-					"collectionName": "xaphuong",
-					"route": "xaphuong/model(/:id)",
-					"$ref": "app/DanhMuc/XaPhuong/view/ModelView",
-					"visible": false
-				},
-			]
-		},
+		// 	// "visible": function(){
+		// 	// 	//console.log(this.checkHasRole("Admin"));
+		// 	// 	return this.checkHasRole("Admin") ;
+		// 	// },
+		// 	"entries": [
+		// 		{
+		// 			"text": "Quốc gia",
+		// 			"icon": "far fa-clipboard",
+		// 			"type": "view",
+		// 			"collectionName": "quocgia",
+		// 			"route": "quocgia/collection",
+		// 			"$ref": "app/danhmuc/QuocGia/view/CollectionView",
+		// 			// "visible": function(){
+		// 			// 	//console.log(this.checkHasRole("Admin"));
+		// 			// 	return this.checkHasRole("Admin") ;
+		// 			// }
+		// 		},
+		// 		{
+		// 			"type": "view",
+		// 			"icon": "far fa-clipboard",
+		// 			"collectionName": "quocgia",
+		// 			"route": "quocgia/model(/:id)",
+		// 			"$ref": "app/danhmuc/QuocGia/view/ModelView",
+		// 			"visible": false
+		// 		},
+		// 		{
+		// 			"text": "Tỉnh thành",
+		// 			"icon": "far fa-clipboard",
+		// 			"type": "view",
+		// 			"collectionName": "tinhthanh",
+		// 			"route": "tinhthanh/collection",
+		// 			"$ref": "app/danhmuc/TinhThanh/view/CollectionView",
+		// 			// "visible": function(){
+		// 			// 	return this.checkHasRole("Admin") ;
+		// 			// }
+		// 		},
+		// 		{
+		// 			"type": "view",
+		// 			"icon": "far fa-clipboard",
+		// 			"collectionName": "tinhthanh",
+		// 			"route": "tinhthanh/model(/:id)",
+		// 			"$ref": "app/danhmuc/TinhThanh/view/ModelView",
+		// 			"visible": false
+		// 		},
+		// 		{
+		// 			"text": "Quận huyện",
+		// 			"icon": "far fa-clipboard",
+		// 			"type": "view",
+		// 			"collectionName": "quanhuyen",
+		// 			"route": "quanhuyen/collection",
+		// 			"$ref": "app/danhmuc/QuanHuyen/view/CollectionView",
+		// 			// "visible": function(){
+		// 			// 	return this.checkHasRole("Admin") ;
+		// 			// }
+		// 		},
+		// 		{
+		// 			"type": "view",
+		// 			"icon": "far fa-clipboard",
+		// 			"collectionName": "quanhuyen",
+		// 			"route": "quanhuyen/model(/:id)",
+		// 			"$ref": "app/danhmuc/QuanHuyen/view/ModelView",
+		// 			"visible": false
+		// 		},
+		// 		{
+		// 			"text": "Xã phường",
+		// 			"icon": "far fa-clipboard",
+		// 			"type": "view",
+		// 			"collectionName": "xaphuong",
+		// 			"route": "xaphuong/collection",
+		// 			"$ref": "app/danhmuc/XaPhuong/view/CollectionView",
+		// 			// "visible": function(){
+		// 			// 	return this.checkHasRole("Admin") ;
+		// 			// }
+		// 		},
+		// 		{
+		// 			"type": "view",
+		// 			"icon": "far fa-clipboard",
+		// 			"collectionName": "xaphuong",
+		// 			"route": "xaphuong/model(/:id)",
+		// 			"$ref": "app/danhmuc/XaPhuong/view/ModelView",
+		// 			"visible": false
+		// 		},
+		// 	]
+		// },
 
 		{
 			"text": "Hồ sơ",
 			"icon": "fa fa-home",
 			"type": "category",
-
+			
 			// "visible": function(){
 			// 	//console.log(this.checkHasRole("Admin"));
 			// 	return this.checkHasRole("Admin") ;
@@ -200,7 +205,8 @@ define(function (require) {
 					"route": "hsqlsuckhoevabenhtatnguoilaodong/collection",
 					"$ref": "app/baocao/phuluc2/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 				},
 				{
@@ -222,7 +228,8 @@ define(function (require) {
 					"route": "hscctainanlaodongtaicosolaodong/collection",
 					"$ref": "app/baocao/phuluc3/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -243,7 +250,8 @@ define(function (require) {
 					"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/collection",
 					"$ref": "app/baocao/phuluc7/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -264,7 +272,8 @@ define(function (require) {
 					"route": "chungchidaotaovequantracmoitruonglaodong/collection",
 					"$ref": "app/baocao/phuluc13/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -285,7 +294,8 @@ define(function (require) {
 					"route": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep/collection",
 					"$ref": "app/baocao2/phuluc10/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -306,7 +316,8 @@ define(function (require) {
 					"route": "tonghopketquakhamdinhkynguoimacbenhnghenghiep/collection",
 					"$ref": "app/baocao2/phuluc11/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -327,7 +338,8 @@ define(function (require) {
 					"route": "hosobenhnghenghiep/collection",
 					"$ref": "app/baocao2/phuluc7/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -348,7 +360,8 @@ define(function (require) {
 					"route": "bienbanhoichanbenhnghenghiep/collection",
 					"$ref": "app/baocao2/phuluc8/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -369,7 +382,8 @@ define(function (require) {
 					"route": "sokhamsuckhoedinhkycuanguoilaixeoto/collection",
 					"$ref": "app/baocao2/phuluc21/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -390,7 +404,8 @@ define(function (require) {
 					"route": "giaygioithieu/collection",
 					"$ref": "app/baocao2/phuluc1/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -411,7 +426,8 @@ define(function (require) {
 					"route": "phieukhamsuckhoetruockhibotrilamviec/collection",
 					"$ref": "app/baocao2/phuluc2/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -433,7 +449,8 @@ define(function (require) {
 					"route": "sokhamsuckhoephathienbenhnghenghiep/collection",
 					"$ref": "app/baocao2/phuluc3/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -455,7 +472,8 @@ define(function (require) {
 					"route": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep/collection",
 					"$ref": "app/baocao2/phuluc5/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -470,7 +488,11 @@ define(function (require) {
 				},
 
 
-			]
+			],
+			"visible": function () {
+				return this.userHasRole("company");
+
+			}
 		},
 		{
 			"text": "Báo cáo",
@@ -490,7 +512,8 @@ define(function (require) {
 					"route": "baocaoytelaodongcuacosolaodong/collection",
 					"$ref": "app/baocao/phuluc8/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -511,7 +534,8 @@ define(function (require) {
 					"route": "baocaohoatdongytelaodong6thangnamtuyenhuyen/collection",
 					"$ref": "app/baocao/phuluc9/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -532,7 +556,8 @@ define(function (require) {
 					"route": "baocaohoatdongytelaodong6thangnam/collection",
 					"$ref": "app/baocao/phuluc10/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -555,7 +580,8 @@ define(function (require) {
 					"route": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo/collection",
 					"$ref": "app/baocao/phuluc11/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -579,7 +605,8 @@ define(function (require) {
 					"route": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong/collection",
 					"$ref": "app/baocao2/phuluc12/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -600,7 +627,8 @@ define(function (require) {
 					"route": "baocaotruonghopnguoilaodongmacbenhnghenghiep/collection",
 					"$ref": "app/baocao2/phuluc9/js/CollectionView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 
 				},
@@ -614,7 +642,11 @@ define(function (require) {
 					}
 				},
 
-			]
+			],
+			"visible": function () {
+				return this.userHasRole("company");
+
+			}
 		},
 
 
@@ -636,7 +668,8 @@ define(function (require) {
 					"route": "baocao/phuluc1/model",
 					// "$ref": "app/baocao/phuluc7/js/ModelView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 				},
 
@@ -648,7 +681,8 @@ define(function (require) {
 					"route": "baocao/phuluc4/model",
 					// "$ref": "app/baocao/phuluc7/js/ModelView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 				},
 				{
@@ -659,7 +693,8 @@ define(function (require) {
 					"route": "baocao/phuluc5/model",
 					// "$ref": "app/baocao/phuluc7/js/ModelView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 				},
 				{
@@ -670,7 +705,8 @@ define(function (require) {
 					"route": "baocao/phuluc6/model",
 					// "$ref": "app/baocao/phuluc7/js/ModelView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 				},
 
@@ -686,7 +722,8 @@ define(function (require) {
 					"route": "baocao/phuluc12/model",
 					// "$ref": "app/baocao/phuluc7/js/ModelView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 				},
 				{
@@ -697,7 +734,8 @@ define(function (require) {
 					"route": "baocao2/phuluc4/model",
 					// "$ref": "app/baocao2/phuluc7/js/ModelView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 				},
 				{
@@ -708,11 +746,16 @@ define(function (require) {
 					"route": "baocao2/phuluc6/model",
 					// "$ref": "app/baocao2/phuluc7/js/ModelView",
 					"visible": function () {
-						return true;
+						return this.userHasRole("company");
+
 					}
 				},
 
-			]
+			],
+			"visible": function () {
+				return this.userHasRole("company");
+
+			}
 		},
 
 	];

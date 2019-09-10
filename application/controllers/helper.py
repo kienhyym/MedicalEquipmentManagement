@@ -68,8 +68,7 @@ async def hasRole(request, role):
     if currentUser is not None:
         return currentUser.has_role(role)
     else:    
-        return False;
-
+        return False;   
 
 def current_uid(request):
     user_token = request.headers.get("X-USER-TOKEN", request.args.get("access_token", None))

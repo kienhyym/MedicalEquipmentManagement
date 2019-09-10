@@ -6,29 +6,24 @@ body {
   
 }
 .date-group{
+display: flex;
+}
+.gonrin-datetimepicker-widget{
+  justify-content: center;
+  
+} 
+/* .date-group{
   position: relative;
 }
 
-.input-group-addon{
-  width: 100%;
-  opacity: 0;
-  outline: 0px;
-  border-radius: 0px;
-  
-}
-.dropdown-menu{
-  z-index:99999;
-  position: fixed;
-  top: 150px;
-  left: 150px;
 
-}
-.datetimepicker-input{
-  border-radius: 0px;
-  width: 30%;
-  font-size: 14px;
-  padding-bottom: 0px;
-}
+.gonrin-datetimepicker-widget{
+  z-index:99999;
+  position: absolute;
+  top: 250px;
+  left: 250px;
+
+} */
 
 .list-unstyled {
   list-style-type: none;
@@ -57,7 +52,12 @@ body {
   padding-top: 5px;
   margin:  0px;
 }
-
+.gioi-tinh div .list-unstyled .radio-option{
+  padding: 0px;
+}
+.gioi-tinh div .list-unstyled .radio-option span{
+  padding: 5px;
+}
 
 #cardbody{
   position: relative;

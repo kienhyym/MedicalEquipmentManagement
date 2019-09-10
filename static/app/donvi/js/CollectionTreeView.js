@@ -12,9 +12,9 @@ define(function (require) {
     var templatemodel = require('text!app/donvi/tpl/model.html');
 
     // var TuyenDonViEnum = require('json!app/enum/TuyenDonViEnum.json');
-    var TinhThanhSelectView = require('app/DanhMuc/TinhThanh/view/SelectView');
-    var QuanHuyenSelectView = require('app/DanhMuc/QuanHuyen/view/SelectView');
-    var XaPhuongSelectView = require('app/DanhMuc/XaPhuong/view/SelectView');
+    var TinhThanhSelectView = require('app/danhmuc/TinhThanh/view/SelectView');
+    var QuanHuyenSelectView = require('app/danhmuc/QuanHuyen/view/SelectView');
+    var XaPhuongSelectView = require('app/danhmuc/XaPhuong/view/SelectView');
     var DonViSelectView = require('app/donvi/js/TreeSelectView');
 
 

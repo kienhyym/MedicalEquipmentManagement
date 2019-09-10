@@ -319,7 +319,7 @@
                     toolbar = $('<li>').addClass('picker-switch' + (options.collapse ? ' accordion-toggle' : '')).append(getToolbar());
 
                 if (options.inline) {
-                    template.removeClass('dropdown-menu')
+                    template.removeClass('dropdown-menu');
                 }
 
                 if (use24Hours) {
@@ -2397,7 +2397,7 @@
             if (parentEl.is('div') && parentEl.hasClass('date-group')) {
                 inputGroupSpan = parentEl;
             } else {
-                element.wrap('<div class="input-group date-group "></div>');
+                element.wrap('<div class="input-group date-group"></div>');
                 inputGroupSpan = element.parent();
             }
 
@@ -2405,20 +2405,16 @@
             var componentButton = element.nextAll('span:first');
 
             if ((componentButton.length == 0) || !($(componentButton[0]).hasClass('input-group-append'))) {
-                componentButton = $('<span style="position: absolute;top: 0px;width: 100%;" class="input-group-append">').html('<span class="btn btn-outline-secondary input-group-addon">&nbsp;</span>');  
-                // <i class="fa fa-calendar"></i>
+                componentButton = $('<span class="input-group-append">').html('<span class="btn btn-outline-secondary input-group-addon"><i class="fa fa-calendar"></i></span>');
                 inputGroupSpan.append(componentButton);
             }
-
-
-
 
             component = componentButton;
             element.addClass("form-control");
 
             var prevEl = element.prev('input');
             if ((prevEl.length == 0) || !($(prevEl[0]).hasClass('datetimepicker-input'))) {
-                prevEl = $('<input class="form-control datetimepicker-input" type="text">');
+                prevEl = $('<input class="form-control datetimepicker-input" type="text" readonly style="background-color:white">');
                 var classList = element.attr("class").split(' ');
                 $.each(classList, function (idx, clz) {
                     prevEl.addClass(clz);
@@ -2546,7 +2542,7 @@
         readonly: false,
         icons: {
             time: 'fa fa-clock-o',
-            // date: 'fa fa-calendar',
+            date: 'fa fa-calendar',
             up: 'fa fa-chevron-up',
             down: 'fa fa-chevron-down',
             previous: 'fa fa-chevron-left',

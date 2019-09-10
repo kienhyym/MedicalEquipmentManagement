@@ -5,9 +5,9 @@ define(function (require) {
 		Gonrin = require('gonrin');
 	var template = require('text!app/donvi/tpl/model.html'),
 		schema = require('json!schema/DonViSchema.json');
-	var XaPhuongSelectView = require('app/DanhMuc/XaPhuong/view/SelectView');
-	var QuanHuyenSelectView = require('app/DanhMuc/QuanHuyen/view/SelectView');
-	var TinhThanhSelectView = require('app/DanhMuc/TinhThanh/view/SelectView');
+	var XaPhuongSelectView = require('app/danhmuc/XaPhuong/view/SelectView');
+	var QuanHuyenSelectView = require('app/danhmuc/QuanHuyen/view/SelectView');
+	var TinhThanhSelectView = require('app/danhmuc/TinhThanh/view/SelectView');
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,

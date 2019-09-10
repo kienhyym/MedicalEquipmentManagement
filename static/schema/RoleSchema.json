@@ -25,6 +25,10 @@
         "type": "string",
         "primary": true
     },
+    "ma": {
+        "type": "string",
+        "length": 80
+    },
     "name": {
         "type": "string",
         "length": 80

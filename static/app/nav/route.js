@@ -7,12 +7,12 @@ define(function (require) {
 		{
 			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
 			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/collection",
-			"$ref": "app/hoso/giaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
+			"$ref": "app/hoso/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
 		},
 		{
 			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
 			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/model(/:id)",
-			"$ref": "app/hoso/giaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
+			"$ref": "app/hoso/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
 		},
 		{
 			"collectionName": "user",
@@ -51,45 +51,45 @@ define(function (require) {
 		{
 			"collectionName": "quocgia",
 			"route": "quocgia/collection",
-			"$ref": "app/DanhMuc/QuocGia/view/CollectionView",
+			"$ref": "app/danhmuc/QuocGia/view/CollectionView",
 		},
 		{
 			"collectionName": "quocgia",
 			"route": "quocgia/model(/:id)",
-			"$ref": "app/DanhMuc/QuocGia/view/ModelView",
+			"$ref": "app/danhmuc/QuocGia/view/ModelView",
 		},
 
 		{
 			"collectionName": "tinhthanh",
 			"route": "tinhthanh/collection",
-			"$ref": "app/DanhMuc/TinhThanh/view/CollectionView",
+			"$ref": "app/danhmuc/TinhThanh/view/CollectionView",
 		},
 		{
 			"collectionName": "tinhthanh",
 			"route": "tinhthanh/model(/:id)",
-			"$ref": "app/DanhMuc/TinhThanh/view/ModelView",
+			"$ref": "app/danhmuc/TinhThanh/view/ModelView",
 		},
 
 		{
 			"collectionName": "quanhuyen",
 			"route": "quanhuyen/collection",
-			"$ref": "app/DanhMuc/QuanHuyen/view/CollectionView",
+			"$ref": "app/danhmuc/QuanHuyen/view/CollectionView",
 		},
 		{
 			"collectionName": "quanhuyen",
 			"route": "quanhuyen/model(/:id)",
-			"$ref": "app/DanhMuc/QuanHuyen/view/ModelView",
+			"$ref": "app/danhmuc/QuanHuyen/view/ModelView",
 		},
 
 		{
 			"collectionName": "xaphuong",
 			"route": "xaphuong/collection",
-			"$ref": "app/DanhMuc/XaPhuong/view/CollectionView",
+			"$ref": "app/danhmuc/XaPhuong/view/CollectionView",
 		},
 		{
 			"collectionName": "xaphuong",
 			"route": "xaphuong/model(/:id)",
-			"$ref": "app/DanhMuc/XaPhuong/view/ModelView",
+			"$ref": "app/danhmuc/XaPhuong/view/ModelView",
 		},
 
 

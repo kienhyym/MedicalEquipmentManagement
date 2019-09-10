@@ -190,10 +190,10 @@ define(function (require) {
 						field: "hovaten",
 						cssClass: false,
 					},
-					{
-						field: "gioitinh",
-						cssClass: false,
-					},
+					// {
+					// 	field: "gioitinh",
+					// 	cssClass: false,
+					// },
 					{
 						field: "hochieu",
 						cssClass: false,
@@ -209,17 +209,18 @@ define(function (require) {
 						field: "lydokham",
 						cssClass: false,
 					},
+					// {
+					// 	field: "tiensubenh_tiensugiadinh_coaimacbenh",
+					// 	cssClass: false,
+					// },
 					{
-						field: "tiensubenh_tiensugiadinh_coaimacbenh",
-						cssClass: false,
-					},{
 						field: "tiensubenh_tiensugiadinh_tenbenh",
 						cssClass: false,
 					},
-					{
-						field: "tiensubenh_tiensubanthan_comacbenh",
-						cssClass: false,
-					},
+					// {
+					// 	field: "tiensubenh_tiensubanthan_comacbenh",
+					// 	cssClass: false,
+					// },
 
 					{
 						field: "tiensubenh_tiensubanthan_tenbenh",
@@ -423,7 +424,44 @@ define(function (require) {
 						field: "ketluan_cacbenh",
 						cssClass: false,
 					},
-
+					{
+						field: "dalieu_phanloai",
+						cssClass: false,
+					},
+					{
+						field: "gioitinh",
+						uicontrol: "radio",
+						textField: "name",
+						valueField: "id",
+						cssClassField: "cssClass",
+						dataSource: [
+							{ name: "nam", id: "nam"},
+							{ name: "nữ", id: "nu" },
+						],
+					},
+					{
+						field: "tiensubenh_tiensugiadinh_coaimacbenh",
+						uicontrol: "radio",
+						textField: "name",
+						valueField: "id",
+						cssClassField: "cssClass",
+						dataSource: [
+							{ name: "a)Có", id: "co"},
+							{ name: "b)Không", id: "khong" },
+						],
+					},
+					{
+						field: "tiensubenh_tiensubanthan_comacbenh",
+						uicontrol: "radio",
+						textField: "name",
+						valueField: "id",
+						cssClassField: "cssClass",
+						dataSource: [
+							{ name: "a)Có", id: "co"},
+							{ name: "b)Không", id: "khong" },
+						],
+					},
+	
 
 				]
 		},
