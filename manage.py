@@ -166,6 +166,7 @@ def add_danhsach_xaphuong():
 
 @manager.command
 def run():  
+    
     add_danhsach_quocgia_tinhthanh()
     add_danhsach_quanhuyen()
     add_danhsach_xaphuong()

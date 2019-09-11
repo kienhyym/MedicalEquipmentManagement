@@ -43,8 +43,10 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 		window.lodash = lodash;
 
 		var app = new Gonrin.Application({
+			serviceURL: location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : ''),
+
 			// serviceURL: "http://0.0.0.0:9082",
-			serviceURL: "http://103.74.120.54:9082",
+			// serviceURL: "http://103.74.120.54:9082",
 			router: new Router(),
 			lang: lang,
 			layout: layout,
@@ -105,12 +107,17 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 			},
 			bind_event: function () {
 				var self = this;
+				var currentUser = self.currentUser.id;
+
 				$("#logo").bind('click', function () {
 					self.router.navigate('lichthanhtra/model');
 				});
 
 				$("#logout").unbind('click').bind('click', function () {
 					self.router.navigate("logout");
+				});
+				$("#info_myself").unbind('click').bind('click', function () {
+					self.router.navigate("user/model?id="+currentUser);
 
 				});
 

@@ -46,60 +46,61 @@ define(function (require) {
 							
 							self.model.save(null, {
 								success: function (model, respose, options) {
-									$.ajax({
-										url: self.getApp().serviceURL + "/api/v1/role",
-										method: "GET",
-										data: { "data": JSON.stringify({ "order_by": [{ "field": "name", "direction": "desc" }], "page": 1, "results_per_page": 10000 }) },
-										contentType: "application/json",
-										success: function (data) {
-											var role_ma ;
-											console.log('model',self.model)
+									// $.ajax({
+									// 	url: self.getApp().serviceURL + "/api/v1/role",
+									// 	method: "GET",
+									// 	data: { "data": JSON.stringify({ "order_by": [{ "field": "name", "direction": "desc" }], "page": 1, "results_per_page": 10000 }) },
+									// 	contentType: "application/json",
+									// 	success: function (data) {
+									// 		var role_ma ;
+									// 		console.log('model',self.model)
 						
-											for (var i = 0; i < data.objects.length; i++) {
-												// console.log('item',data.objects[i].id)
-												// console.log('item2',currentUser.role_id)
-												if(data.objects[i].id == currentUser.role_id){
+									// 		for (var i = 0; i < data.objects.length; i++) {
+									// 			// console.log('item',data.objects[i].id)
+									// 			// console.log('item2',currentUser.role_id)
+									// 			if(data.objects[i].id == currentUser.role_id){
 												
 						
-													role_ma = data.objects[i].ma
-												self.model.set('role_ma',role_ma)
-												self.model.save(null, {
-													success: function (model, respose, options) {
-														self.getApp().notify("Lưu thông tin thành công");
-														self.getApp().getRouter().navigate(self.collectionName + "/collection");
-													},
-													error: function (xhr, status, error) {
-														try {
-															if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
-																self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
-																self.getApp().getRouter().navigate("login");
-															} else {
-																self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
-															}
-														}
-														catch (err) {
-															self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
-														}
-													}
-												});
-												}
-											}
-										},
-										error: function (xhr, status, error) {
-											try {
-												if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
-													self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
-													self.getApp().getRouter().navigate("login");
-												} else {
-													self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
-												}
-											} catch (err) {
-												self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
-											}
-										}
-									});
+									// 				role_ma = data.objects[i].ma
+									// 			self.model.set('role_ma',role_ma)
+									// 			self.model.save(null, {
+									// 				success: function (model, respose, options) {
+									// 					self.getApp().notify("Lưu thông tin thành công");
+									// 					self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									// 				},
+									// 				error: function (xhr, status, error) {
+									// 					try {
+									// 						if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+									// 							self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+									// 							self.getApp().getRouter().navigate("login");
+									// 						} else {
+									// 							self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+									// 						}
+									// 					}
+									// 					catch (err) {
+									// 						self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+									// 					}
+									// 				}
+									// 			});
+									// 			}
+									// 		}
+									// 	},
+									// 	error: function (xhr, status, error) {
+									// 		try {
+									// 			if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+									// 				self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+									// 				self.getApp().getRouter().navigate("login");
+									// 			} else {
+									// 				self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+									// 			}
+									// 		} catch (err) {
+									// 			self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+									// 		}
+									// 	}
+									// });
 									self.getApp().notify("Lưu thông tin thành công");
-									self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									location.reload();
+
 								},
 								error: function (xhr, status, error) {
 									try {
@@ -200,11 +201,17 @@ define(function (require) {
 			var self = this;
 			var id = this.getApp().getRouter().getParam("id");
 			var currentUser = self.getApp().currentUser;
+			
 			// console.log("currentUser.hasRole('worker')==", currentUser.hasRole('worker'));
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
+						self.model.on("change",function (change) {
+						var x = change.attributes.role.ma
+						self.model.set('role_ma',x)
+					})
+
 						// console.log('data',data)
 						self.applyBindings();
 						// self.uploadFile();
