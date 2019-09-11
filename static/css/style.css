@@ -7,6 +7,12 @@ body {
   padding: 25px;
   
 }
+/* .datetimepicker-input{
+  border:none;
+	border-bottom:1px dotted black;
+  padding-left: 1%;
+  outline: 0px;
+} */
 .list-unstyled {
   list-style-type: none;
   margin: 0;

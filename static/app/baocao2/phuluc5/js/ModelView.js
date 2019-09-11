@@ -162,6 +162,14 @@ define(function (require) {
 		render: function () {
 			var self = this;
 			var id = this.getApp().getRouter().getParam("id");
+			var width = $(window).width();
+			console.log(width);
+			if (width <= 414) {
+				// $(window).resize(function(){
+				self.$el.find("div").removeClass("flexboxer");
+				self.$el.find(".input-mobile").css("width", "100%");
+				// });
+			}
 			// var x = self.$el.find("input")
 			// x.removeClass("form-control");
 			// console.log(x)

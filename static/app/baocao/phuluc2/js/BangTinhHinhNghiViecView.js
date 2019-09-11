@@ -18,16 +18,21 @@ define(function (require) {
 
         
         render: function () {
-            var self = this;            
+            var self = this;   
+                
             self.applyBindings();
             self.registerEvent();
         
         },
         registerEvent: function () {
             const self = this;
+            self.model.on("change", () => {
+                self.trigger("change", self.model.toJSON());
+            });     
             self.$el.find("#itemRemove").unbind("click").bind("click", function () {
                 self.remove(true);
             });
+           
         }
     });
 });

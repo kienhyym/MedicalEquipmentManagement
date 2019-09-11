@@ -48,6 +48,7 @@ define(function (require) {
             self.registerEvent();
         
         },
+        
         error: function () {
             self.getApp().notify("Get data Eror");
         },
@@ -56,10 +57,10 @@ define(function (require) {
             self.$el.find("#itemRemove").unbind("click").bind("click", function () {
                 self.remove(true);
             });
+            self.model.on("change", () => {
+                self.trigger("change", self.model.toJSON());
+            });
         },
-        tinhtong:function () {
-			var self = this;
-            console.log(self.model);
-        }
+    
     });
 });

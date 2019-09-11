@@ -842,13 +842,20 @@ define(function (require) {
 		render: function () {
 			var self = this;
 			var id = this.getApp().getRouter().getParam("id");
+			var width = $(window).width();
+			console.log(width);
+			if (width <= 414) {
+				// $(window).resize(function(){
+				self.$el.find("div").removeClass("flexboxer");
+				self.$el.find(".input-mobile").css("width", "100%");
+				// });
+			}
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
-						self.registerEvent();
-						// self.sothutu();
+						
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
@@ -856,86 +863,9 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
-				self.registerEvent();
 			}
 		},
-		registerEvent: function () {
-			this.sothutu();
-			this.ChonNamHoacNu();
-			this.ChonNuHoacNam();
-		},
-		// sothutu: function () {
-		// 	var self = this;
-		// 	// var id = self.getApp().currentUser.id
-		// 	self.$el.find(" tr td #stt").val('x')
-		// 	var x = self.$el.find("tr td #stt")
 
-		// 	for(var i= 0;i<=x.length;i++){
-		// 		x[i].val('a');
-		// 	console.log(x[i]);
-
-		// 	}
-		// }
-		sothutu: function () {
-			const self = this;
-			var arr = [];
-			var arrr = [];
-
-			arr = lodash.sortBy(self.model.get("banghscctainanlaodongtaicosolaodongfield"), ["created_at"], ["asc"])
-			arr.forEach(function (item, index, array) {
-				console.log(index);
-			
-			});	
-		
-			arrr = lodash(self.$el.find("tr td #stt"));
-			arrr.forEach(function (item, index, array) {
-				console.log(item);
-				item.value=index;
-			});	
-
-		},
-		ChonNamHoacNu: function(){
-			var arrTuoiNam = [];
-			const self = this;
-			arrTuoiNam = lodash(self.$el.find("tr td #tuoinam"));
-			arrTuoiNam.forEach(function (item, index, array) {
-				item.addEventListener("click", function(){
-					var idTuoiNam = index;
-					console.log('idTuoiNam',idTuoiNam)
-					var arrTuoiNu = [];
-					arrTuoiNu = lodash(self.$el.find("tr td #tuoinu"));
-					arrTuoiNu.forEach(function (item, index, array) {
-					if(index == idTuoiNam){
-						item.value="";
-						console.log('idTuoiNu',index)
-					}
-					
-					});
-				});
-				
-			});	
-		},
-		ChonNuHoacNam: function(){
-			var arrTuoiNu = [];
-			const self = this;
-			arrTuoiNu = lodash(self.$el.find("tr td #tuoinu"));
-			arrTuoiNu.forEach(function (item, index, array) {
-				item.addEventListener("click", function(){
-					var idTuoiNu = index;
-					console.log('idTuoiNu',idTuoiNu)
-					var arrTuoiNam = [];
-					arrTuoiNam = lodash(self.$el.find("tr td #tuoinam"));
-					arrTuoiNam.forEach(function (item, index, array) {
-					if(index == idTuoiNu){
-						item.value="";
-						console.log('idTuoiNam',index)
-					}
-					
-					});
-				});
-				
-			});	
-		}
 
 	});
 

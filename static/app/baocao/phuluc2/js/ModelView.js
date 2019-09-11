@@ -292,6 +292,14 @@ define(function (require) {
 			var self = this;
 
 			var id = this.getApp().getRouter().getParam("id");
+			var width = $(window).width();
+			console.log(width);
+			if (width <= 414) {
+				// $(window).resize(function(){
+				self.$el.find("div").removeClass("flexboxer");
+				self.$el.find(".input-mobile").css("width", "100%");
+				// });
+			}
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
@@ -314,8 +322,9 @@ define(function (require) {
 
 		registerEvent: function () {
 			const self = this;
-			self.createBangTinhHinhNghiViec();
-			self.renderbangtinhhinhnghiviec();
+			self.addphuluc4();
+			// self.createBangTinhHinhNghiViec();
+			// self.renderbangtinhhinhnghiviec();
 			self.tinhTongBangQLSucKhoeTruocKhiBoTriViecLam();
 			self.tinhTongBangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKy();
 			self.tinhTongBangSoTruongHopMacCacLoaiBenhThongThuong();
@@ -327,6 +336,95 @@ define(function (require) {
 			self.sothutuCacTruongHopMacBenhNghenghiep();
 			self.sothutuCacTruongHopMacBenhThongThuong();
 
+		},
+		addphuluc4 :function(){
+			var self = this;
+			var ds_bangtinhhinhnghiviecfield = self.model.get("bangtinhhinhnghiviecfield");
+            if (!ds_bangtinhhinhnghiviecfield) {
+                ds_bangtinhhinhnghiviecfield = [];
+            }
+			var containerEl = self.$el.find("#space_bangtinhhinhnghiviecfield");
+            containerEl.empty();
+
+            var dataSource = lodash.orderBy(ds_bangtinhhinhnghiviecfield, ['created_at'], ['asc']);
+            dataSource.forEach((item, index) => {
+				var view = new BangTinhHinhNghiViecView();
+                view.model.set(item);
+                view.render();
+                $(view.el).hide().appendTo(containerEl).fadeIn();
+
+                view.on("change", (data) => {
+                    var ds_bangtinhhinhnghiviecfield = self.model.get("bangtinhhinhnghiviecfield");
+                    ds_bangtinhhinhnghiviecfield.forEach((item, index) => {
+                        if (item.id == data.id) {
+                            ds_bangtinhhinhnghiviecfield[index] = data;
+                        }
+                    });
+                    self.model.set("bangtinhhinhnghiviecfield", ds_bangtinhhinhnghiviecfield);
+                    // self.model.save(null, {
+                    //     success: function (model, respose, options) {
+                    //         // NOTIFY TO GRANPARENT
+                    //         self.trigger("change", self.model.toJSON());
+                    //     },
+                    //     error: function (xhr, status, error) {
+                    //     }
+                    // });
+                });
+            });
+			self.$el.find("#btn_add_bangtinhhinhnghiviecfield").on("click", (eventClick) => {
+				var view = new BangTinhHinhNghiViecView();
+				
+
+				view.model.save(null, {
+                    success: function (model, respose, options) {
+						console.log('tai nguyen2',respose)
+                        view.model.set(respose);
+                        view.render();
+                        $(view.el).hide().appendTo(containerEl).fadeIn();
+
+                        // PUSH THE CHILD TO LIST
+                        var ds_bangtinhhinhnghiviecfield = self.model.get("bangtinhhinhnghiviecfield");
+                        if (!ds_bangtinhhinhnghiviecfield) {
+                            ds_bangtinhhinhnghiviecfield = [];
+                        }
+                        ds_bangtinhhinhnghiviecfield.push(view.model.toJSON());
+                        self.model.set("bangtinhhinhnghiviecfield", ds_bangtinhhinhnghiviecfield);
+                        self.model.save(null, {
+                            success: function (model, respose, options) {
+                                // NOTIFY TO GRANPARENT
+                                self.trigger("change", self.model.toJSON());
+                            },
+                            error: function (xhr, status, error) {
+                            }
+                        });
+
+                        view.on("change", (data) => {
+                            var ds_bangtinhhinhnghiviecfield = self.model.get("bangtinhhinhnghiviecfield");
+                            if (!ds_bangtinhhinhnghiviecfield) {
+                                ds_bangtinhhinhnghiviecfield = [];
+                            }
+                            ds_bangtinhhinhnghiviecfield.forEach((item, index) => {
+                                if (item.id == data.id) {
+                                    ds_bangtinhhinhnghiviecfield[index] = data;
+                                }
+                            });
+
+                            self.model.set("bangtinhhinhnghiviecfield", ds_bangtinhhinhnghiviecfield);
+                            self.model.save(null, {
+                                success: function (model, respose, options) {
+                                    // NOTIFY TO GRANPARENT
+                                    self.trigger("change", self.model.toJSON());
+                                },
+                                error: function (xhr, status, error) {
+                                }
+                            });
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        // HANDLE ERROR
+                    }
+                });
+			});
 		},
 
 		createBangTinhHinhNghiViec: function () {

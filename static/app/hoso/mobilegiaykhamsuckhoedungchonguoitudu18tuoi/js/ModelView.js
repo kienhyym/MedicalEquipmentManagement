@@ -95,416 +95,420 @@ define(function (require) {
 				],
 			}],
 		uiControl: {
-				fields: [
+			fields: [
 
-					// {
-					// 	field: "tuoi",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "hochieu_capngay",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "nguoidenghikham_kyngay",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "tuoi",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "hochieu_capngay",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "nguoidenghikham_kyngay",
+				// 	cssClass: false,
+				// },
 
-					// 	{
-					// 	field: "theluc_chieucao",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "theluc_cannang",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "theluc_chiso_bmi",
-					// 	cssClass: false,
-					// },
-
-
-
-					// {
-					// 	field: "theluc_mach",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "theluc_huyetap",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "mat_khongkinh_phai",
-					// 	cssClass: false,
-					// },
+				// 	{
+				// 	field: "theluc_chieucao",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "theluc_cannang",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "theluc_chiso_bmi",
+				// 	cssClass: false,
+				// },
 
 
-					// {
-					// 	field: "mat_khongkinh_trai",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "mat_cokinh_phai",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "mat_cokinh_trai",
-					// 	cssClass: false,
-					// },
 
-					// {
-					// 	field: "taimuihong_taitrai_noithuong",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "taimuihong_taitrai_noitham",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "taimuihong_taiphai_noithuong",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "taimuihong_taiphai_noitham",
-					// 	cssClass: false,
-					// },
-
-					// {
-					// 	field: "nguoiketluan_kyngay",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "theluc_mach",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "theluc_huyetap",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "mat_khongkinh_phai",
+				// 	cssClass: false,
+				// },
 
 
-					// {
-					// 	field: "coquanchuquan",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "tencoquandonvi",
-					// 	cssClass: false,
-					// },{
-					// 	field: "so_gksk",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "hovaten",
-					// 	cssClass: false,
-					// },
-					// // {
-					// // 	field: "gioitinh",
-					// // 	cssClass: false,
-					// // },
-					// {
-					// 	field: "hochieu",
-					// 	cssClass: false,
-					// },{
-					// 	field: "hochieu_captai",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "choohientai",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "lydokham",
-					// 	cssClass: false,
-					// },
-					// // {
-					// // 	field: "tiensubenh_tiensugiadinh_coaimacbenh",
-					// // 	cssClass: false,
-					// // },
-					// {
-					// 	field: "tiensubenh_tiensugiadinh_tenbenh",
-					// 	cssClass: false,
-					// },
-					// // {
-					// // 	field: "tiensubenh_tiensubanthan_comacbenh",
-					// // 	cssClass: false,
-					// // },
+				// {
+				// 	field: "mat_khongkinh_trai",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "mat_cokinh_phai",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "mat_cokinh_trai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "tiensubenh_tiensubanthan_tenbenh",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "taimuihong_taitrai_noithuong",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "taimuihong_taitrai_noitham",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "taimuihong_taiphai_noithuong",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "taimuihong_taiphai_noitham",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "cauhoikhac_dangdieutrikhong_thongtin",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "nguoiketluan_kyngay",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "cauhoikhac_tiensuthaisan",
-					// 	cssClass: false,
-					// },
 
-					// {
-					// 	field: "noikhoa_tuanhoan",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "coquanchuquan",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "tencoquandonvi",
+				// 	cssClass: false,
+				// },{
+				// 	field: "so_gksk",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "hovaten",
+				// 	cssClass: false,
+				// },
+				// // {
+				// // 	field: "gioitinh",
+				// // 	cssClass: false,
+				// // },
+				// {
+				// 	field: "hochieu",
+				// 	cssClass: false,
+				// },{
+				// 	field: "hochieu_captai",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "choohientai",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "lydokham",
+				// 	cssClass: false,
+				// },
+				// // {
+				// // 	field: "tiensubenh_tiensugiadinh_coaimacbenh",
+				// // 	cssClass: false,
+				// // },
+				// {
+				// 	field: "tiensubenh_tiensugiadinh_tenbenh",
+				// 	cssClass: false,
+				// },
+				// // {
+				// // 	field: "tiensubenh_tiensubanthan_comacbenh",
+				// // 	cssClass: false,
+				// // },
 
-					// {
-					// 	field: "noikhoa_tuanhoan_phanloai",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "noikhoa_hohap",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "tiensubenh_tiensubanthan_tenbenh",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "noikhoa_hohap_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "cauhoikhac_dangdieutrikhong_thongtin",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "noikhoa_tieuhoa",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "cauhoikhac_tiensuthaisan",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "noikhoa_tieuhoa_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_tuanhoan",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "noikhoa_than_tietnieu",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "noikhoa_than_tietnieu_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_tuanhoan_phanloai",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "noikhoa_hohap",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "noikhoa_coxuongkhop",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_hohap_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "noikhoa_coxuongkhop_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_tieuhoa",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "noikhoa_thankinh",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_tieuhoa_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "noikhoa_thankinh_phanloai",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "noikhoa_tamthan",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_than_tietnieu",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "noikhoa_than_tietnieu_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "noikhoa_tamthan_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_coxuongkhop",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "ngoaikhoa_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_coxuongkhop_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "sanphukhoa_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_thankinh",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "mat_cacbenh",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_thankinh_phanloai",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "noikhoa_tamthan",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "mat_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "noikhoa_tamthan_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "taimuihong_cacbenh",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "ngoaikhoa_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "taimuihong_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "sanphukhoa_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "ranghammmat_hamtren",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "mat_cacbenh",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "ranghammmat_hamduoi",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "ranghammmat_cacbenh",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "mat_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "ranghammat_phanloai",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "taimuihong_cacbenh",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemmau_soluonghongcau",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "taimuihong_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemmau_soluongbachcau",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "ranghammmat_hamtren",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemmau_soluongtieucau",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "ranghammmat_hamduoi",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "ranghammmat_cacbenh",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemmau_sinhhoamau_duongmau",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "xetnhiemmau_sinhhoamau_ure",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "ranghammat_phanloai",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemmau_sinhhoamau_creatinin",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "xetnhiemmau_soluonghongcau",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemmau_sinhhoamau_asat",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "xetnhiemmau_soluongbachcau",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemmau_sinhhoamau_alat",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "xetnhiemmau_soluongtieucau",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemmau_khac",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "xetnhiemmau_sinhhoamau_duongmau",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "xetnhiemmau_sinhhoamau_ure",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemnuoctieu_duong",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "xetnhiemmau_sinhhoamau_creatinin",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "xetnhiemnuoctieu_protein",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "xetnhiemnuoctieu_khac",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "chuandoanhinhanh",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "xetnhiemmau_sinhhoamau_asat",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "ketluan_phanloaisuckhoe",
-					// 	cssClass: false,
-					// },
+				// {
+				// 	field: "xetnhiemmau_sinhhoamau_alat",
+				// 	cssClass: false,
+				// },
 
-					// {
-					// 	field: "ketluan_cacbenh",
-					// 	cssClass: false,
-					// },
-					// {
-					// 	field: "dalieu_phanloai",
-					// 	cssClass: false,
-					// },
-					{
-						field: "gioitinh",
-						uicontrol: "radio",
-						textField: "name",
-						valueField: "id",
-						cssClassField: "cssClass",
-						dataSource: [
-							{ name: "nam", id: "nam"},
-							{ name: "nữ", id: "nu" },
-						],
+				// {
+				// 	field: "xetnhiemmau_khac",
+				// 	cssClass: false,
+				// },
+
+				// {
+				// 	field: "xetnhiemnuoctieu_duong",
+				// 	cssClass: false,
+				// },
+
+				// {
+				// 	field: "xetnhiemnuoctieu_protein",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "xetnhiemnuoctieu_khac",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "chuandoanhinhanh",
+				// 	cssClass: false,
+				// },
+
+				// {
+				// 	field: "ketluan_phanloaisuckhoe",
+				// 	cssClass: false,
+				// },
+
+				// {
+				// 	field: "ketluan_cacbenh",
+				// 	cssClass: false,
+				// },
+				// {
+				// 	field: "dalieu_phanloai",
+				// 	cssClass: false,
+				// },
+				{
+					field: "gioitinh",
+					uicontrol: "radio",
+					textField: "name",
+					valueField: "id",
+					cssClassField: "cssClass",
+					dataSource: [
+						{ name: "nam", id: "nam" },
+						{ name: "nữ", id: "nu" },
+					],
+				},
+				{
+					field: "tiensubenh_tiensugiadinh_coaimacbenh",
+					uicontrol: "radio",
+					textField: "name",
+					valueField: "id",
+					cssClassField: "cssClass",
+					dataSource: [
+						{ name: "a)Có", id: "co" },
+						{ name: "b)Không", id: "khong" },
+					],
+				},
+				{
+					field: "tiensubenh_tiensubanthan_comacbenh",
+					uicontrol: "radio",
+					textField: "name",
+					valueField: "id",
+					cssClassField: "cssClass",
+					dataSource: [
+						{ name: "a)Có", id: "co" },
+						{ name: "b)Không", id: "khong" },
+					],
+				},
+				{
+					field: "nguoidenghikham_kyngay",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
 					},
-					{
-						field: "tiensubenh_tiensugiadinh_coaimacbenh",
-						uicontrol: "radio",
-						textField: "name",
-						valueField: "id",
-						cssClassField: "cssClass",
-						dataSource: [
-							{ name: "a)Có", id: "co"},
-							{ name: "b)Không", id: "khong" },
-						],
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
+				{
+					field: "nguoiketluan_kyngay",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
 					},
-					{
-						field: "tiensubenh_tiensubanthan_comacbenh",
-						uicontrol: "radio",
-						textField: "name",
-						valueField: "id",
-						cssClassField: "cssClass",
-						dataSource: [
-							{ name: "a)Có", id: "co"},
-							{ name: "b)Không", id: "khong" },
-						],
-					},
-					{
-						field: "nguoidenghikham_kyngay",
-						uicontrol: "datetimepicker",
-						textFormat: "DD/MM/YYYY",
-						extraFormats: ["DDMMYYYY"],
-						parseInputDate: function (val) {
-							return moment.unix(val)
-						},
-						parseOutputDate: function (date) {
-							return date.unix()
-						}
-					},
-					{
-						field: "nguoiketluan_kyngay",
-						uicontrol: "datetimepicker",
-						textFormat: "DD/MM/YYYY",
-						extraFormats: ["DDMMYYYY"],
-						parseInputDate: function (val) {
-							return moment.unix(val)
-						},
-						parseOutputDate: function (date) {
-							return date.unix()
-						}
-					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
 
-				]
+			]
 		},
 
 		render: function () {
 			var self = this;
 			var id = this.getApp().getRouter().getParam("id");
-			var width = $(window).width();
-			console.log(width);
+			// var width = $(window).width();
+			// console.log(width);
 			// if (width <= 414) {
 			// 	// $(window).resize(function(){
 			// 	self.$el.find("div").removeClass("flexboxer");
 			// 	self.$el.find(".input-mobile").css("width", "100%");
 			// 	// });
 			// }
-			
+
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
+						// var x = self.model.attributes.nguoidenghikham_kyngay
+						// console.log(moment(x*1000).format('LLLL'));
+						// var aaa= moment(x*1000).date();
+						// console.log(aaa)
 						self.applyBindings();
 					},
 					error: function () {
