@@ -14,9 +14,13 @@ body {
 
   
 }
+.dropdown-menu-right a{
+  z-index: 1;
+
+}
 .toolbar{
   position: fixed;
-  z-index: 99999;
+  z-index: 2;
   top: 75px;
   right: 15px;
 }
