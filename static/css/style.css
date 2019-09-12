@@ -3,9 +3,22 @@ body {
 }
 
 
-.list-unstyled .radio-option {
+.khamdinhky .list-unstyled .radio-option {
   padding: 25px;
   
+}
+#phanloaisuckhoe .list-unstyled .radio-option {
+  padding-left:  25px;
+  padding-right:  25px;
+  padding-top:  25px;
+
+  
+}
+.toolbar{
+  position: fixed;
+  z-index: 99999;
+  top: 75px;
+  right: 15px;
 }
 /* .datetimepicker-input{
   border:none;

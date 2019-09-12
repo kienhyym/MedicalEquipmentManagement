@@ -4,7 +4,48 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 	return [
-		
+		{
+			"text": "Giấy khám sức khỏe định kỳ",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
+			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/collection",
+			"$ref": "app/hosonguoilaodong/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
+			"visible": function () {
+				return this.userHasRole("worker");
+
+			}
+		},
+		{
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
+			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/model(/:id)",
+			"$ref": "app/hosonguoilaodong/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
+		{
+			"text": "Hồ sơ sức khỏe và bệnh tật",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "hsqlsuckhoevabenhtatnguoilaodong",
+			"route": "mobilehososuckhoevabenhtat/collection",
+			"$ref": "app/hosonguoilaodong/mobilehososuckhoevabenhtat/js/CollectionView",
+			"visible": function () {
+				return this.userHasRole("worker");
+			}
+		},
+		{
+			"type": "view",
+			"collectionName": "hsqlsuckhoevabenhtatnguoilaodong",
+			"route": "mobilehososuckhoevabenhtat/model(/:id)",
+			"$ref": "app/hosonguoilaodong/mobilehososuckhoevabenhtat/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
 		{
 			"text": "Danh sách người dùng",
 			"icon": "fa fa-home",
@@ -182,7 +223,7 @@ define(function (require) {
 					"route": "hsqlsuckhoevabenhtatnguoilaodong/collection",
 					"$ref": "app/baocao/phuluc2/js/CollectionView",
 					"visible": function () {
-						return this.userHasRole("worker")|| this.userHasRole("company");
+						return this.userHasRole("company");
 
 					}
 				},
@@ -463,33 +504,12 @@ define(function (require) {
 						return false;
 					}
 				},
-				{
-					"text": "Giấy khám sức khỏe định kỳ",
-					"icon": "far fa-clipboard",
-					"type": "view",
-					"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
-					"route": "giaykhamsuckhoedungchonguoitudu18tuoi/collection",
-					"$ref": "app/hoso/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
-					"visible": function () {
-						return this.userHasRole("worker");
-		
-					}
-				},
-				{
-					"icon": "far fa-clipboard",
-					"type": "view",
-					"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
-					"route": "giaykhamsuckhoedungchonguoitudu18tuoi/model(/:id)",
-					"$ref": "app/hoso/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
+				
 
 
 			],
 			"visible": function () {
-				return this.userHasRole("worker")|| this.userHasRole("company");
+				return this.userHasRole("company");
 
 			}
 		},

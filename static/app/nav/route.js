@@ -7,13 +7,25 @@ define(function (require) {
 		{
 			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
 			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/collection",
-			"$ref": "app/hoso/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
+			"$ref": "app/hosonguoilaodong/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/CollectionView",
 		},
 		{
 			"collectionName": "giaykhamsuckhoedungchonguoitudu18tuoi",
 			"route": "giaykhamsuckhoedungchonguoitudu18tuoi/model(/:id)",
-			"$ref": "app/hoso/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
+			"$ref": "app/hosonguoilaodong/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/js/ModelView",
 		},
+
+		{
+			"collectionName": "hsqlsuckhoevabenhtatnguoilaodong",
+			"route": "mobilehososuckhoevabenhtat/collection",
+			"$ref": "app/hosonguoilaodong/mobilehososuckhoevabenhtat/js/CollectionView",
+		},
+		{
+			"collectionName": "hsqlsuckhoevabenhtatnguoilaodong",
+			"route": "mobilehososuckhoevabenhtat/model(/:id)",
+			"$ref": "app/hosonguoilaodong/mobilehososuckhoevabenhtat/js/ModelView",
+		},
+
 		{
 			"collectionName": "user",
 			"route": "user/collection",

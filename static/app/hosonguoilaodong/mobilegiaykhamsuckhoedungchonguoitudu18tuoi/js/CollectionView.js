@@ -3,7 +3,7 @@ define(function (require) {
     var $ = require('jquery'),
         _ = require('underscore'),
         Gonrin = require('gonrin');
-    var template = require('text!app/hoso/giaykhamsuckhoedungchonguoitudu18tuoi/tpl/collection.html'),
+    var template = require('text!app/hosonguoilaodong/mobilegiaykhamsuckhoedungchonguoitudu18tuoi/tpl/collection.html'),
 	schema = require('json!schema/GiayKhamSucKhoeDungChoNguoiTudu18TuoiSchema.json');
     return Gonrin.CollectionView.extend({
         template: template,
