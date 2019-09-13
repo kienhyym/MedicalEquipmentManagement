@@ -547,7 +547,7 @@ define(function (require) {
 				}
 
 				$.ajax({
-					url: "http://0.0.0.0:9082/api/v1/bangqlsuckhoetruockhibotrivieclam/" + item.id,
+					url: self.getApp().serviceURL+"/api/v1/bangqlsuckhoetruockhibotrivieclam/" + item.id,
 					type: 'PUT',
 					data: JSON.stringify(param),
 					headers: {
@@ -581,7 +581,7 @@ define(function (require) {
 				}
 
 				$.ajax({
-					url: "http://0.0.0.0:9082/api/v1/bangqlsuckhoelaodongthongquakhamsuckhoedinhky/" + item.id,
+					url: self.getApp().serviceURL+"/api/v1/bangqlsuckhoelaodongthongquakhamsuckhoedinhky/" + item.id,
 					type: 'PUT',
 					data: JSON.stringify(param),
 					headers: {

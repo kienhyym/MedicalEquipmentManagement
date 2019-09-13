@@ -242,47 +242,6 @@ define(function (require) {
 					}],
 					toolEl: "#add_row10"
 				},
-				// {
-				// 	field: "tencosolaodong",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "nganhchuquan",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "diachi",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "dienthoai",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "sofax",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "email",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "website",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "nguoilienhe",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "nguoilaphoso",
-				// 	cssClass: false,
-				// },
-				// {
-				// 	field: "nam",
-				// 	cssClass: false,
-				// },
-
 
 
 
@@ -292,14 +251,6 @@ define(function (require) {
 			var self = this;
 
 			var id = this.getApp().getRouter().getParam("id");
-			// var width = $(window).width();
-			// console.log(width);
-			// if (width <= 414) {
-			// 	// $(window).resize(function(){
-			// 	self.$el.find("div").removeClass("flexboxer");
-			// 	self.$el.find(".input-mobile").css("width", "100%");
-			// 	// });
-			// }
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
@@ -547,7 +498,7 @@ define(function (require) {
 				}
 
 				$.ajax({
-					url: "http://0.0.0.0:9082/api/v1/bangqlsuckhoetruockhibotrivieclam/" + item.id,
+					url: self.getApp().serviceURL+"/api/v1/bangqlsuckhoetruockhibotrivieclam/" + item.id,
 					type: 'PUT',
 					data: JSON.stringify(param),
 					headers: {
@@ -568,7 +519,7 @@ define(function (require) {
 		tinhTongBangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKy: function () {
 			var self = this;
 			var dsKhamSucKhoe = self.model.get("bangqlsuckhoelaodongthongquakhamsuckhoedinhkyfield")
-
+			console.log('model',self.getApp().serviceURL )
 
 			self.$el.find(".btn-sm").bind("click", () => {
 
@@ -581,7 +532,7 @@ define(function (require) {
 				}
 
 				$.ajax({
-					url: "http://0.0.0.0:9082/api/v1/bangqlsuckhoelaodongthongquakhamsuckhoedinhky/" + item.id,
+					url: self.getApp().serviceURL+"/api/v1/bangqlsuckhoelaodongthongquakhamsuckhoedinhky/" + item.id,
 					type: 'PUT',
 					data: JSON.stringify(param),
 					headers: {
@@ -589,7 +540,6 @@ define(function (require) {
 					},
 					dataType: 'json',
 					success: function (data) {
-					
 					},
 					error: function (request, textStatus, errorThrown) {
 						console.log(request);

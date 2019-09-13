@@ -229,8 +229,39 @@ define(function (require) {
 
 				self.render_DanhSachCoSoLaoDongCoNguoiMacBNN(data_default);
 			})
-		}
-
+		},
+		tnhtong :function(){
+		var ModelTong = Gonrin.Model.extend({
+			defaults: getDefaultModel(tongschema),
+			computeds: {
+				tong_tuyenhuyen: function () {
+					var str1 = "canbo_";
+					var str2 = "trinhdodt_";
+					var ds = 0, self = this;
+					_.each(tongschema, function (props, key) {
+						//if(key.indexOf(str1) > -1 || key.indexOf(str2) > -1){
+						if (key.indexOf(str2) > -1) {
+							ds = ds + toInt(self.get(key));
+						}
+					});
+					return ds > 0 ? ds : null;
+				},
+			},
+			urlRoot: "/api/v1/bcquanlyydct"
+		});
+		var TongView = Gonrin.ModelView.extend({
+			template: tongtemplate,
+			modelSchema: tongschema,
+			modelClass: ModelTong,
+			bindings: 'tong-bind',
+			urlPrefix: "/api/v1/",
+			collectionName: "tong",
+			uiControl: [],
+			render: function () {
+				this.applyBindings();
+			}
+		});
+	}
 
 	});
 

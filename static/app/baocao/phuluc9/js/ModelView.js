@@ -1105,7 +1105,7 @@ define(function (require) {
 				}
 
 				$.ajax({
-					url: "http://0.0.0.0:9082/api/v1/ketquaquantraccacyeutobuitrongmoitruonglaodong/" + item.id,
+					url: self.getApp().serviceURL+"/api/v1/ketquaquantraccacyeutobuitrongmoitruonglaodong/" + item.id,
 					type: 'PUT',
 					data: JSON.stringify(param),
 					headers: {
