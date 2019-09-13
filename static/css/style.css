@@ -7,12 +7,15 @@ body {
   padding: 25px;
   
 }
+.gioitinh .list-unstyled .radio-option {
+  padding-top: 5px;
+  
+}
 #phanloaisuckhoe .list-unstyled .radio-option {
   padding-left:  25px;
   padding-right:  25px;
   padding-top:  25px;
 
-  
 }
 .dropdown-menu-right a{
   z-index: 1;
@@ -22,7 +25,7 @@ body {
   position: fixed;
   z-index: 2;
   top: 75px;
-  right: 15px;
+  right: 25px;
 }
 /* .datetimepicker-input{
   border:none;

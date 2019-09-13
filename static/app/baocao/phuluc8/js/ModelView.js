@@ -153,6 +153,42 @@ define(function (require) {
 					],
 				},
 				{
+					
+					field: "nguoilamcongtacytecokhong",
+					uicontrol: "radio",
+					textField: "name",
+					valueField: "id",
+					cssClassField: "cssClass",
+					dataSource: [
+						{ name: "Có", id: 1},
+						{ name: "Không", id: 0},
+					],
+				},
+				{
+					
+					field: "tramphongkhambenhviencokhong",
+					uicontrol: "radio",
+					textField: "name",
+					valueField: "id",
+					cssClassField: "cssClass",
+					dataSource: [
+						{ name: "Có", id: 1},
+						{ name: "Không", id: 0},
+					],
+				},
+				{
+					
+					field: "thuehopdongvoidonviytecokhong",
+					uicontrol: "radio",
+					textField: "name",
+					valueField: "id",
+					cssClassField: "cssClass",
+					dataSource: [
+						{ name: "Có", id: 1},
+						{ name: "Không", id: 0},
+					],
+				},
+				{
 					field: "nghiviecdoomdautainanlaodongvabenhnghenghiepfield",
 					uicontrol: false,
 					itemView: NghiViecDoOmDauTaiNanLaoDongVaBenhNgheNghiepItemView,
@@ -434,6 +470,7 @@ define(function (require) {
 			if (width <= 414) {
 				// $(window).resize(function(){
 				self.$el.find("div").removeClass("flexboxer");
+				self.$el.find(".kinhgui").removeClass("justify-content-center d-flex");
 				self.$el.find(".input-mobile").css("width", "100%");
 				// });
 			}
@@ -442,6 +479,8 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
+						self.$el.find(".input-phuluc2").removeClass("form-control");
+
 						self.registerFunction();
 					},
 					error: function () {
@@ -450,6 +489,8 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
+				self.$el.find(".input-phuluc2").removeClass("form-control");
+
 				self.registerFunction();
 			}
 			

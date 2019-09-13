@@ -1,58 +1,62 @@
 <div block-bind="content">
     <div class="card-body border mt-5" style="background-color: white">
 
-        <div class="card-header">
-            <div block-bind="toolbar"></div>
-        </div>
-        <div class="table-responsive">
-            <table class="table  table-bordered">
-                <tr class="text-center ">
-                    <td>
-                        <div class="flexboxer col-md-12 justify-content-center d-flex p-0 pl-5 pr-5">
-                            <label>CƠ QUAN CHỦ QUẢN </label>
-                        </div>
-                        <div class="flexboxer col-md-12 justify-content-center d-flex p-0  pl-3 pr-3"">
-                            <label class=" stronger">TÊN CƠ QUAN, ĐƠN VỊ</label>
-                        </div>
-                        <label class="stronger mt-2">..................</label>
-                    </td>
-                    <td>
-                        <label class="stronger">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
-                        <label class="stronger">Độc lập - Tự do - Hạnh phúc</label><br>
+            <div block-bind="toolbar"></div>       
+
+
+        <div class="row ">
+                <div class="col-md-4 col-sm-12">
+    
+                    <div class="flexboxer col-md-12 p-0 pl-5 pr-5 ">
+                        <input type="text" placeholder="CƠ QUAN CHỦ QUẢN " class=" text-center input-phuluc2 input-mobile "
+                            style="flex-grow: 1" >
+                    </div>
+                    <div class="flexboxer col-md-12 p-0 pl-5 pr-5 text-center">
+                        <input type="text" placeholder="TÊN CƠ QUAN, ĐƠN VỊ"
+                            class="text-center input-phuluc2 input-mobile " style="flex-grow: 1">
+                    </div>
+                    <div class="flexboxer col-md-12 p-0 pl-5 pr-5 d-flex justify-content-center">
                         <label class="stronger">..................</label>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div class="flexboxer  justify-content-center d-flex ">
+                    </div>
+                </div>
+    
+                <div class="col-md-8 col-sm-12 text-center">
+                    <label class="stronger">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
+                    <label class="stronger">Độc lập - Tự do - Hạnh phúc</label><br>
+                    <label class="stronger">..................</label>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-4 col-sm-12">
+                    <div class="flexboxer  justify-content-center d-flex ">
                             <label>Số</label>
-                            <input type="text" class="input-phuluc2 input-mobile " style="width: 15%;" data-bind="value:so">
+                            <input type="text" class="input-phuluc2 " style="width: 15%;" data-bind="value:so">
                             <label>/GCN</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flexboxer  justify-content-end d-flex ">
-                            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:noiviet">
+                    </div>
+    
+                </div>
+    
+                <div class="col-md-8 col-sm-12 text-center">
+                    <div class="flexboxer  justify-content-end d-flex ">
+                            <input type="text" class="input-phuluc2 " style="width: 8%;" data-bind="value:noiviet">
                             <label>,ngày</label>
-                            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:ngayviet">
+                            <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:ngayviet">
                             <label>,tháng</label>
-                            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:thangvieti">
+                            <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:thangvieti">
                             <label>,năm</label>
-                            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:namviet">
+                            <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:namviet">
                         </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
+                </div>
+            </div>
+            <br>
+    
 
 
         <!-- Tiều đề -->
         <div class="justify-content-center d-flex">
             <label class="stronger">GIẤY GIỚI THIỆU</label>
         </div>
-        <div class="flexboxer col-md-12 p-0 justify-content-center d-flex">
+        <div class="flexboxer col-md-12 p-0 justify-content-center d-flex kinhgui">
             <label>Kính gửi: </label>
             <input type="text" class="input-phuluc2 input-mobile " data-bind="value:kinhgui">
         </div>
@@ -72,24 +76,26 @@
         </div>
         <div class="flexboxer col-md-12 p-0 ">
             <label>Sinh ngày</label>
-            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:sinhngay">
+            <input type="text" class="input-phuluc2 " style="width: 8%;" data-bind="value:sinhngay">
             <label>tháng</label>
-            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:sinhthang">
+            <input type="text" class="input-phuluc2 " style="width: 8%;" data-bind="value:sinhthang">
             <label>năm</label>
-            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:sinhnam">
+            <input type="text" class="input-phuluc2 " style="width: 8%;" data-bind="value:sinhnam">
         </div>
         <div class="flexboxer col-md-12 p-0 ">
             <label>Số CMND </label>
             <input type="text" class="input-phuluc2 input-mobile " data-bind="value:so_cmtnn">
             <label>cấp ngày </label>
-            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:so_cmtnn_capngay">
+            <input type="text" class="input-phuluc2 " style="width: 8%;" data-bind="value:so_cmtnn_capngay">
             <label>tháng</label>
-            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:so_cmtnn_capthang">
+            <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:so_cmtnn_capthang">
             <label>năm</label>
-            <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:so_cmtnn_capnam">
-            <label>tại</label>
-            <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:so_cmtnn_captai">
-        </div>
+            <input type="text" class="input-phuluc2 " style="width: 8%;" data-bind="value:so_cmtnn_capnam">
+            </div>
+        <div class="flexboxer col-md-12 p-0 ">
+                <label>Cấp tại</label>
+                <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:so_cmtnn_captai">
+            </div>
         <div class="flexboxer col-md-12 p-0">
             <label>Nghề/công việc chuẩn bị bố trí hoặc đang làm:</label>
             <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:nghe_chuanbi_botri">
@@ -108,17 +114,26 @@
 
 
 
-
-        <div class="row col-md-12 justify-content-center d-flex m-0 p-0">
-            <div class="border w-50">
-
+        <br>
+        <div class="row ">
+                <div class="col-md-6 col-sm-12 border p-0">
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                </div>
+    
+                <div class="col-md-6 col-sm-12 text-center border p-0">
+                    <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:noiky">
+                    <label>,ngày</label>
+                    <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:ngayky">
+                    <label>,tháng</label>
+                    <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:thangky">
+                    <label>,năm</label>
+                    <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:namky">
+                    <label class=" pl-5 pr-5 text-center">LÃNH ĐẠO CƠ SỞ LAO ĐỘNG</label><br>
+                    <label class=" pl-5 pr-5 text-center">(Ký, ghi rõ họ tên, đóng dấu)</label>
+                </div>
             </div>
-            <div class="border w-50 text-center">
-                <label class=" pl-5 pr-5 text-center">LÃNH ĐẠO CƠ SỞ LAO ĐỘNG</label><br>
-                <label class=" pl-5 pr-5 text-center">(Ký, ghi rõ họ tên, đóng dấu)</label>
-            </div>
-        </div>
-
         <label><i>1 Địa danh</i></label> <br>
         <label><i>2 Tên cơ sở khám bệnh nghề nghiệp</i></label> <br>
 

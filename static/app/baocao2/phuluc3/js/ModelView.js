@@ -540,6 +540,8 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
+						self.$el.find(".input-phuluc2").removeClass("form-control");
+
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
@@ -547,6 +549,8 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
+				self.$el.find(".input-phuluc2").removeClass("form-control");
+
 			}
 		},
 	

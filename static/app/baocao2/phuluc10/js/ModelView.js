@@ -114,7 +114,22 @@ define(function (require) {
 					field: "namviet",
 					cssClass: false,
 				},
-
+				{
+					field: "so",
+					cssClass: false,
+				},
+				{
+					field: "bc",
+					cssClass: false,
+				},
+				{
+					field: "noiviet",
+					cssClass: false,
+				},
+				{
+					field: "kinhgui",
+					cssClass: false,
+				},
 			]
 		},
 
@@ -127,6 +142,8 @@ define(function (require) {
 			if (width <= 414) {
 				// $(window).resize(function(){
 				self.$el.find("div").removeClass("flexboxer");
+				self.$el.find(".kinhgui").removeClass("justify-content-center d-flex ");
+
 				self.$el.find(".input-mobile").css("width", "100%");
 				// });
 			}

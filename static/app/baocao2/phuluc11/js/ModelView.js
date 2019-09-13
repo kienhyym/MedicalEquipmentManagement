@@ -123,6 +123,54 @@ define(function (require) {
 					field: "namky",
 					cssClass: false,
 				},
+
+
+				{
+					field: "so_bc",
+					cssClass: false,
+				},
+				{
+					field: "noiviet",
+					cssClass: false,
+				},
+				{
+					field: "cosolaodong",
+					cssClass: false,
+				},
+				{
+					field: "cosokhambenhnghenghiep",
+					cssClass: false,
+				},
+
+				{
+					field: "donvi",
+					cssClass: false,
+				},
+				{
+					field: "dexuatduockham",
+					cssClass: false,
+				},
+				{
+					field: "dexuat_songuoi_canduocgiamdinh",
+					cssClass: false,
+				},
+				{
+					field: "dexuat_songuoi_canduocgiamdinh_lai",
+					cssClass: false,
+				},
+				{
+					field: "dexuat_songuoi_candieutri",
+					cssClass: false,
+				},
+				{
+					field: "dexuat_songuoi_canbotrilaivieclam",
+					cssClass: false,
+				},
+
+				{
+					field: "noiky",
+					cssClass: false,
+				},
 				
 			]
 		},
@@ -136,6 +184,7 @@ define(function (require) {
 			if (width <= 414) {
 				// $(window).resize(function(){
 				self.$el.find("div").removeClass("flexboxer");
+				self.$el.find(".kinhgui").removeClass("justify-content-center d-flex ");
 				self.$el.find(".input-mobile").css("width", "100%");
 				// });
 			}

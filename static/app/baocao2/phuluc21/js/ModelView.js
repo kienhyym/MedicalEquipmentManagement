@@ -16,6 +16,90 @@ define(function (require) {
 		collectionName: "sokhamsuckhoedinhkycuanguoilaixeoto",
 		bindings: "data-bind",
 		state: null,
+		uiControl:{
+			fields:[
+				{
+					field: "noidungkham_matsacgiac_binhthuong",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": "binhthuong",
+						"key": true
+					},
+					{
+						"value": null,
+						"key": false
+					},
+					],
+				},
+				{
+					field: "noidungkham_matsacgiac_mumautoanbo",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": "binhthuong",
+						"key": true
+					},
+					{
+						"value": null,
+						"key": false
+					},
+					],
+				},
+				{
+					field: "noidungkham_matsacgiac_mumauvang",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": "binhthuong",
+						"key": true
+					},
+					{
+						"value": null,
+						"key": false
+					},
+					],
+				},
+				{
+					field: "noidungkham_matsacgiac_mumaudo",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": "binhthuong",
+						"key": true
+					},
+					{
+						"value": null,
+						"key": false
+					},
+					],
+				},
+				{
+					field: "noidungkham_matsacgiac_mumauxanh",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": "binhthuong",
+						"key": true
+					},
+					{
+						"value": null,
+						"key": false
+					},
+					],
+				},
+			]
+		},
 		tools: [
 			{
 				name: "defaultgr",
@@ -96,71 +180,7 @@ define(function (require) {
 					},
 				],
 			}],
-		uiControl: {
-			fields: [
-				{
-					field: "gioitinh",
-					uicontrol: "radio",
-					textField: "name",
-					valueField: "id",
-					cssClassField: "cssClass",
-					dataSource: [
-						{ name: "nam", id: 1 },
-						{ name: "nữ", id: 0 },
-					
-					],
-                },
-				{
-					field: "nguoiketluanky_ngay",
-					cssClass: false,
-				},
-				{
-					field: "nguoiketluanky_thang",
-					cssClass: false,
-				},
-				{
-					field: "nguoiketluanky_nam",
-					cssClass: false,
-				},
-				{
-					field: "nguoidenghikhamskky_nam",
-					cssClass: false,
-				},
-				{
-					field: "nguoidenghikhamskky_thang",
-					cssClass: false,
-				},
-				{
-					field: "nguoidenghikhamskky_ngay",
-					cssClass: false,
-				},
-				{
-					field: "so_cmtnd_capnam",
-					cssClass: false,
-				},
-				{
-					field: "so_cmtnd_capthang",
-					cssClass: false,
-				},
-				{
-					field: "so_cmtnd_capngay",
-					cssClass: false,
-				},
-				{
-					field: "so_cmtnd",
-					cssClass: false,
-				},
-				{
-					field: "tuoi",
-					cssClass: false,
-				},
-				{
-					field: "gioitinh",
-					cssClass: false,
-				},
-				
-			]
-		},
+	
 
 		render: function () {
 			var self = this;
@@ -178,6 +198,7 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
+						self.$el.find(".input-phuluc2").removeClass("form-control");
 
 						var dataTienSuBenhTatBanThan = self.model.get("tiensubenhtatbanthan");
 
@@ -199,6 +220,8 @@ define(function (require) {
 				});
 			} else {
 				self.applyBindings();
+				self.$el.find(".input-phuluc2").removeClass("form-control");
+
 				self.btn_add_row();
 			}
 		},

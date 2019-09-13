@@ -1,16 +1,21 @@
-<td style="padding: 0px;"><input class="mt-2" type="text" quanlysuckhoe-bind="value:ngaythangnam" style="border: none;margin: 0px; padding: 5px;outline: 0px;line-height: 40px;"></td>
 <td style="padding: 0px;">
-    <div class="col-md-12 row d-flex justify-content-center">
+    <div class="mt-2">
+    <input class="mt-2" type="text" quanlysuckhoe-bind="value:ngaythangnam" style="border: none;margin: 0px; padding: 5px;outline: 0px;line-height: 40px;;width: 200px">
+        </div>
+</td>
+
+<td style="padding: 0px;">
+    <div class="col-md-12 flexboxer  d-flex justify-content-center" style="width: 200px">
         <label class="col-md-6 m-0  mt-1">Nam:</label>
-        <input type="text" id="x" class="input-phuluc2 col-md-6" quanlysuckhoe-bind="value:soduockhamtuyennam" >
+        <input type="text" id="x"  style="flex-grow: 1" class="input-phuluc2 col-md-6" quanlysuckhoe-bind="value:soduockhamtuyennam" >
     </div>
-    <div class="col-md-12 row d-flex justify-content-center">
+    <div class="col-md-12 flexboxer d-flex justify-content-center">
         <label class="col-md-6 m-0 mt-1">Nữ:</label>
-        <input type="text" id="y" class="input-phuluc2 col-md-6" quanlysuckhoe-bind="value:soduockhamtuyennu"  >
+        <input type="text" id="y"  style="flex-grow: 1" class="input-phuluc2 col-md-6" quanlysuckhoe-bind="value:soduockhamtuyennu"  >
     </div>
 
 </td>
-<td style="padding: 0px;"><input id="tong" type="text"  quanlysuckhoe-bind="value:tongcong" readonly style="text-align: center;border: none;outline: 0px;line-height: 50px;"></td>
+<td style="padding: 0px;"><input id="tong" type="text"  quanlysuckhoe-bind="value:tongcong" readonly style=" background-color: white; text-align: center;border: none;outline: 0px;line-height: 50px;width: 200px"></td>
 
 <td style="padding: 0px;" id="phanloaisuckhoe"><input id="radio" type="input"  quanlysuckhoe-bind="value:phanloaisuckhoe"></td>
-<td style="padding: 0px;padding-top: 10px;" class="text-center"><button  id="itemRemove" type="button" class="btn btn-listitem btn-outline-danger btn-sm ">x</button></td>
+<td style="padding: 0px;padding-top: 10px;" class="text-center"><button  id="itemRemove" type="button" class="btn btn-listitem btn-outline-danger btn-sm mt-2">x</button></td>

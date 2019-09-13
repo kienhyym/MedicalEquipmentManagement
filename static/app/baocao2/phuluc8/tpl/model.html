@@ -2,27 +2,30 @@
     <div class="card-body border mt-5" style="background-color: white">
         <div block-bind="toolbar"></div>
 
-        <div class="table-responsive">
-            <table class="table  table-bordered">
-                <tr class="text-center ">
-                    <td>
-                        <div class="flexboxer col-md-12 justify-content-center d-flex p-0 pl-5 pr-5">
-                            <label>CƠ QUAN CHỦ QUẢN </label>
-                        </div>
-                        <div class="flexboxer col-md-12 justify-content-center d-flex p-0  pl-3 pr-3"">
-                            <label class=" stronger">TÊN CƠ QUAN, ĐƠN VỊ</label>
-                        </div>
-                        <label class="stronger mt-2">..................</label>
-                    </td>
-                    <td>
-                        <label class="stronger">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
-                        <label class="stronger">Độc lập - Tự do - Hạnh phúc</label><br>
-                        <label class="stronger">..................</label>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        
 
+        <div class="row ">
+                <div class="col-md-4 col-sm-12">
+    
+                    <div class="flexboxer col-md-12 p-0 pl-5 pr-5 ">
+                        <input type="text" placeholder="CƠ QUAN CHỦ QUẢN" class=" text-center input-phuluc2 input-mobile "
+                            style="flex-grow: 1">
+                    </div>
+                    <div class="flexboxer col-md-12 p-0 pl-5 pr-5 text-center">
+                        <input type="text" placeholder="TÊN CƠ QUAN, ĐƠN VỊ" class="text-center input-phuluc2 input-mobile "
+                            style="flex-grow: 1">
+                    </div>
+                    <div class="flexboxer col-md-12 p-0 pl-5 pr-5 d-flex justify-content-center">
+                        <label class="stronger">..................</label>
+                    </div>
+                </div>
+    
+                <div class="col-md-8 col-sm-12 text-center">
+                    <label class="stronger">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
+                    <label class="stronger">Độc lập - Tự do - Hạnh phúc</label><br>
+                    <label class="stronger">..................</label>
+                </div>
+            </div>
 
 
         <!-- Tiều đề -->
@@ -126,23 +129,23 @@
         </div>
 
 
+        <br>
+        <div class="row ">
+            <div class="col-md-6 col-sm-12 border p-0 text-center ">
+                    <div>&nbsp;</div>
 
-
-
-        <div class="row col-md-12">
-            <div class="col-md-6 border text-center">
-                <label ">Thư ký hội đồng</label><br>
-                    <label ">(Ký, ghi rõ họ tên)</label>
+                    <label ">Thư ký hội đồng</label><br>
+                    <label ">(Ký, ghi rõ họ tên)</label><br>
             </div>
-            
-            <div class=" col-md-6 border text-center">
-                    <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:chutichky_noi">
+
+            <div class="col-md-6 col-sm-12 text-center border p-0">
+                    <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:chutichky_noi">
                     <label>,ngày</label>
-                    <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:chutichky_ngay">
+                    <input type="text" class="input-phuluc2 " style="width: 8%;" data-bind="value:chutichky_ngay">
                     <label>,tháng</label>
-                    <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:chutichky_thang">
+                    <input type="text" class="input-phuluc2  " style="width: 8%;" data-bind="value:chutichky_thang">
                     <label>,năm</label>
-                    <input type="text" class="input-phuluc2 input-mobile " style="width: 8%;" data-bind="value:chutichky_nam"><br>
+                    <input type="text" class="input-phuluc2 " style="width: 8%;" data-bind="value:chutichky_nam"><br>
                 <label class=" pl-5 pr-5 text-center">Chủ tịch Hội đồng</label><br>
                 <label class=" pl-5 pr-5 text-center">(Ký, ghi rõ họ tên, đóng dấu)</label>
             </div>

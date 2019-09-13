@@ -170,23 +170,23 @@ define(function (require) {
 				self.$el.find(".input-mobile").css("width", "100%");
 				// });
 			}
-			// var x = self.$el.find("input")
-			// x.removeClass("form-control");
-			// console.log(x)
+			
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						x.removeClass("form-control");
 						self.applyBindings();
+						self.$el.find(".input-phuluc2").removeClass("form-control");
+
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
 					},
 				});
 			} else {
-				x.removeClass("form-control");
 				self.applyBindings();
+				self.$el.find(".input-phuluc2").removeClass("form-control");
+
 			}
 		},
 	
