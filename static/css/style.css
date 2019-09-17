@@ -21,6 +21,12 @@ body {
   z-index: 1;
 
 }
+span.form-control.ref-form-control {
+  height: 35px;
+}
+.datetimepicker-input{
+  width: 100px;
+}
 .toolbar{
   position: fixed;
   z-index: 2;

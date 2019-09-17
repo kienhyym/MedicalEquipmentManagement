@@ -53,8 +53,8 @@
         "type": "string",
         "length": 255
     },
-    "thoigianvietbaocao": {
-        "type": "datetime"
+    "thoigian_vietbaocao": {
+        "type": "number"
     },
     "ngaytienhanh": {
         "type": "string",

@@ -38,8 +38,8 @@
     "nu": {
         "type": "number"
     },
-    "ngaybitainan": {
-        "type": "datetime"
+    "ngay_bitainan": {
+        "type": "number"
     },
     "nghenghiep": {
         "type": "string",
@@ -56,8 +56,8 @@
         "type": "string",
         "length": 255
     },
-    "thoigiandieutri": {
-        "type": "datetime"
+    "thoigian_dieutri": {
+        "type": "number"
     },
     "ketquadieutri": {
         "type": "number"

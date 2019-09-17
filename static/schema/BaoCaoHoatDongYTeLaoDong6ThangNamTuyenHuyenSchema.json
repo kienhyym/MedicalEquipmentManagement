@@ -43,13 +43,7 @@
         "type": "string",
         "length": 255
     },
-    "ngayvietbaocao": {
-        "type": "number"
-    },
-    "thangvietbaocao": {
-        "type": "number"
-    },
-    "namvietbaocao": {
+    "ngaythangnam": {
         "type": "number"
     },
     "baocaonam": {

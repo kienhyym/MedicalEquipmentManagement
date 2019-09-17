@@ -485,6 +485,18 @@ define(function (require) {
 						return date.unix()
 					}
 				},
+				{
+					field: "hochieu_capngay",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
 
 			]
 		},

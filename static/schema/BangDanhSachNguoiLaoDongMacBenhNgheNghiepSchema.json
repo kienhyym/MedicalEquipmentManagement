@@ -42,8 +42,8 @@
     "tuoinghe": {
         "type": "number"
     },
-    "ngayphathienbenhnghenghiep": {
-        "type": "datetime"
+    "ngay_phathienbenhnghenghiep": {
+        "type": "number"
     },
     "tenbenhnghenghiep": {
         "type": "string",

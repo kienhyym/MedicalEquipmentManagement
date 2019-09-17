@@ -1,0 +1,550 @@
+<div block-bind="content">
+    <div class="card-body border mt-5" style="background-color: white">
+
+        <div class="row">
+            <div class="col-md-7">
+                <h6 class="m-0">Thông tin chi tiết</h6>
+            </div>
+            <div class="col-md-5 text-right">
+                <div block-bind="toolbar"></div>
+            </div>
+        </div>
+
+        <!-- Tiều đề -->
+        <div class="justify-content-center d-flex">
+            <label class="stronger m-0">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label>
+        </div>
+        <div class="justify-content-center d-flex">
+            <label class="stronger m-0">Độc lập - Tự do - Hạnh phúc</label>
+        </div>
+        <div class="justify-content-center d-flex">
+            <label class="stronger mb-5">-------------------</label>
+        </div>
+
+        <div class="justify-content-center d-flex">
+            <label class="stronger m-0">HỒ SƠ QUẢN LÝ</label>
+        </div>
+        <div class="justify-content-center d-flex">
+            <label class="stronger">SỨC KHỎE VÀ BỆNH TẬT NGƯỜI LAO ĐỘNG</label>
+        </div>
+        <!-- Hết tiêu đê -->
+
+        <!-- Nhập thông tin  cơ sở lao động -->
+        <div class="flexboxer col-md-12 p-0">
+            <label>Tên cơ sở lao động:</label>
+            <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:tencosolaodong">
+        </div>
+        <div class="flexboxer col-md-12 p-0">
+            <label>Ngành chủ quản:</label>
+            <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:nganhchuquan">
+        </div>
+        <div class="flexboxer col-md-12 p-0">
+            <label>Địa chỉ:</label>
+            <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:diachi">
+        </div>
+        <div class="row col-md-12 p-0 m-0">
+            <div class="flexboxer col-md-6 p-0">
+                <label>Điện thoại:</label>
+                <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:dienthoai">
+            </div>
+            <div class="flexboxer col-md-6 p-0">
+                <label>Số_Fax:</label>
+                <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:sofax">
+            </div>
+        </div>
+        <div class="row col-md-12 p-0 m-0">
+            <div class="flexboxer col-md-6 p-0">
+                <label>E-mail:</label>
+                <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:email">
+            </div>
+            <div class="flexboxer col-md-6 p-0">
+                <label>Website:</label>
+                <input type="text" class="input-phuluc2 w-100" style="flex-grow: 1" data-bind="value:website">
+            </div>
+        </div>
+        <div class="flexboxer col-md-12 p-0">
+            <label>Người liên hệ:</label>
+            <input type="text" class="input-phuluc2 input-mobile " style="flex-grow: 1" data-bind="value:nguoilienhe">
+        </div>
+        <div class="justify-content-center d-flex">
+            <label class="m-0 pt-1">Năm:</label>
+            <input type="text" class="input-phuluc2 input-mobile " data-bind="value:nam">
+        </div>
+        <br>
+        <br>
+        <br>
+        <!-- Hết nhập thông tin cơ sở lao động -->
+
+
+        <!-- Biểu mẫu 1 -->
+        <div class="justify-content-center d-flex  m-1">
+            <label class="stronger">Biểu mẫu 1: QUẢN LÝ SỨC KHỎE TRƯỚC KHI BỐ TRÍ VIỆC LÀM</label>
+        </div>
+        <div class="row col-md-12">
+            <div id="add_row" class="mb-1"></div>
+        </div>
+        <div class="table-responsive">
+            <table class="table  table-bordered">
+                <tr class="text-center ">
+                    <td rowspan="2" style="line-height: 70px">Ngày, tháng, năm</td>
+                    <td rowspan="2" style="line-height: 70px">Số được khám tuyển</td>
+                    <td rowspan="2" style="line-height: 70px">Tổng cộng</td>
+                    <td>Phân loại sức khỏe</td>
+                    <td rowspan="2"></td>
+                </tr>
+
+                <tr class="text-center ">
+                    <td>
+                        <div style="display: flex; justify-content: space-around">
+                            <label>I</label>
+                            <label>II</label>
+                            <label>III</label>
+                            <label>IV</label>
+                            <label>V</label>
+                        </div>
+                    </td>
+                </tr>
+                <tbody data-bind="list:bangqlsuckhoetruockhibotrivieclamfield"></tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <br>
+        <!-- Hết Biểu mẫu 1 -->
+
+
+        <!-- Biểu mẫu 2-->
+
+        <div class="justify-content-center d-flex  m-1">
+            <label class="stronger">Biểu mẫu 2: QUẢN LÝ SỨC KHỎE NGƯỜI LAO ĐỘNG THÔNG QUA KHÁM SỨC KHỎE ĐỊNH
+                KỲ</label>
+        </div>
+        <div class="row col-md-12">
+            <div id="add_row2" class="mb-1"></div>
+        </div>
+        <div class="table-responsive">
+            <table class="table  table-bordered">
+                <tr class="text-center ">
+                    <td rowspan="2" style="line-height: 70px">Ngày, tháng, năm</td>
+                    <td rowspan="2" style="line-height: 70px">Số được khám tuyển</td>
+                    <td rowspan="2" style="line-height: 70px">Tổng cộng</td>
+                    <td>Phân loại sức khỏe</td>
+                    <td rowspan="2"></td>
+                </tr>
+
+                <tr class="text-center ">
+                    <td>
+                        <div style="display: flex; justify-content: space-around">
+                            <label>I</label>
+                            <label>II</label>
+                            <label>III</label>
+                            <label>IV</label>
+                            <label>V</label>
+                        </div>
+                    </td>
+                </tr>
+                <tbody data-bind="list:bangqlsuckhoelaodongthongquakhamsuckhoedinhkyfield"></tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <br>
+        <!-- Hết Biểu mẫu 2 -->
+
+
+        <!-- Biểu mẫu 3-->
+
+
+        <div class="justify-content-center d-flex  m-1">
+            <label class="stronger">Biểu mẫu 3: TÌNH HÌNH BỆNH TẬT TRONG THỜI GIAN BÁO CÁO</label>
+        </div>
+
+
+        <div class="table-responsive">
+            <table class="table  table-bordered">
+                <tr class="text-center ">
+                    <td style="padding: 0px;"><input type="text" value="TT" readonly style="background-color: white; border: none;margin: 0px; padding: 5px;outline: 0px;width:25px"></td>
+                    <td style="padding: 0px;"><input type="text" value="Nhóm bệnh" readonly style="background-color: white; border: none;margin: 0px; padding: 5px;outline: 0px;width:300px"></td>
+                    <td  colspan="2" style="padding: 0px;"><input type="text" value="Quý I" readonly style="background-color: white; border: none;margin: 0px; padding: 5px;outline: 0px;width:100px"></td>
+                    <td  colspan="2" style="padding: 0px;"><input type="text" value="Quý II" readonly style="background-color: white; border: none;margin: 0px; padding: 5px;outline: 0px;width:100px"></td>
+                    <td  colspan="2" style="padding: 0px;"><input type="text" value="Quý III" readonly style="background-color: white; border: none;margin: 0px; padding: 5px;outline: 0px;width:100px"></td>
+                    <td  colspan="2" style="padding: 0px;"><input type="text" value="Quý IV" readonly style="background-color: white; border: none;margin: 0px; padding: 5px;outline: 0px;width:100px"></td>
+
+                    <!-- <td style="width: 50px;">TT</td>
+                    <td>Nhóm bệnh</td>
+                    <td colspan="2">Quý I</td>
+                    <td colspan="2">Quý II</td>
+                    <td colspan="2">Quý III</td>
+                    <td colspan="2">Quý IV</td> -->
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td colspan="11">
+                        <div class="row col-md-12 m-0">
+                            <div id="add_row3" class="mb-1"></div>
+                            &nbsp;
+                            <div class="pt-2"> I. Số trường hợp mắc các loại bệnh thông thường:</div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tbody data-bind="list:bangsotruonghopmaccacloaibenhthongthuongfield"></tbody>
+
+                <tr class="text-center ">
+                    <td></td>
+                    <td>Cộng</td>
+                    <td colspan="2"><input type="text" id="tongcongtruonghop1" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%"" readonly></td>
+                    <td colspan="2"><input type="text" id="tongcongtruonghop2" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%"" readonly></td>
+                    <td colspan="2"><input type="text" id="tongcongtruonghop3" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%"" readonly></td>
+                    <td colspan="2"><input type="text" id="tongcongtruonghop4" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%"" readonly></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="11">
+                        <div class="row col-md-12 m-0">
+                            <div id="add_row4" class="mb-1"></div>
+                                &nbsp;
+                            <div class="pt-2">II. Các trường hợp mắc bệnh nghề nghiệp</div>
+                        </div>
+                    </td>
+                
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: center">Bệnh nghề nghiệp</td>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td></td>
+                </tr>
+                <tbody data-bind="list:bangcactruonghopmacbenhnghenghiepfield"></tbody>
+                <tr class="text-center ">
+                    <td colspan="2" >
+                            <div class="row col-md-12 m-0">
+                                    <div id="add_row5" class="mb-1"></div>
+                                    &nbsp;
+                                    <label class="pt-2">III. Các trường hợp tai nạn lao động</label>
+                                </div>
+                    </td>
+                    
+                    <td>Mắc</td>
+                    <td>Chết</td>
+                    <td>Mắc</td>
+                    <td>Chết</td>
+                    <td>Mắc</td>
+                    <td>Chết</td>
+                    <td>Mắc</td>
+                    <td>Chết</td>
+                    <td></td>
+                </tr>
+                <tbody data-bind="list:bangcactruonghoptainanlaodongfield"></tbody>
+                <tr class="text-center ">
+                    <td></td>
+                    <td>Tổng cộng</td>
+                    <td><input type="text" id="sotruonghopquy1mac" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%" readonly></td>
+                    <td><input type="text" id="sotruonghopquy1chet" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%" readonly></td>
+                    <td><input type="text" id="sotruonghopquy2mac" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%" readonly></td>
+                    <td><input type="text" id="sotruonghopquy2chet" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%" readonly></td>
+                    <td><input type="text" id="sotruonghopquy3mac" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%" readonly></td>
+                    <td><input type="text" id="sotruonghopquy3chet" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%" readonly></td>
+                    <td><input type="text" id="sotruonghopquy4mac" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%" readonly></td>
+                    <td><input type="text" id="sotruonghopquy4chet" style="border: none;margin: 0px; padding: 5px;outline: 0px;width:100%" readonly></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <label><i>Thống kê kết quả khám, chẩn đoán của người lao động tự đi khám
+                hoặc phân loại bệnh thông qua khám sức khỏe định kỳ hoặc khám phát hiện
+                sớm bệnh nghề nghiệp tại cơ sở lao động</i></label>
+        <br>
+        <br>
+        <br>
+        <!-- Hết Biểu mẫu 3 -->
+
+        <!-- Biểu mẫu 4 -->
+        <div class="justify-content-center d-flex  m-1">
+            <label class="stronger">Biểu mẫu 4:TÌNH HÌNH NGHỈ VIỆC DO ỐM, TAI NẠN LAO ĐỘNG VÀ BỆNH NGHỀ NGHIỆP</label>
+        </div>
+        <div class="row">
+        <div class="col-lg-12">
+            <button id="btn_add_bangtinhhinhnghiviecfield" class="btn btn-outline-success btn-sm">
+                <span class="fa fa-plus"></span>
+            </button>
+        </div>
+        </div>
+        <div class="flexboxer col-md-12 p-0">
+            <label>1. Số lượt người nghỉ ốm:</label>
+            <input type="text" class="input-phuluc2 input-mobile ">
+        </div>
+        <div class="flexboxer col-md-12 p-0 mb-1">
+            <label>2. Tổng số ngày nghỉ ốm:</label>
+            <input type="text" class="input-phuluc2 input-mobile ">
+        </div>
+
+        <div class="table-responsive">
+            <table class="table  table-bordered">
+                <tr class="text-center  ">
+
+                    <td colspan="1">Thời gian</td>
+                    <td colspan="4">Ốm</td>
+                    <td colspan="4">Tai nạn lao động</td>
+                    <td colspan="4">Bệnh nghề nghiệp</td>
+                    <td colspan="4">Tổng số</td>
+                    <td rowspan="3"></td>
+
+                </tr>
+                <tr class="text-center">
+                    <td>Tháng</td>
+                    <td>Số người</td>
+                    <td>%</td>
+                    <td>Tổng số ngày</td>
+                    <td>Số ngày trung bình</td>
+                    <td>Số người</td>
+                    <td>%</td>
+                    <td>Tổng số ngày</td>
+                    <td>Số ngày trung bình</td>
+                    <td>Số người</td>
+                    <td>%</td>
+                    <td>Tổng số ngày</td>
+                    <td>Số ngày trung bình</td>
+                    <td>Số người</td>
+                    <td>%</td>
+                    <td>Tổng số ngày</td>
+                    <td>Số ngày trung bình</td>
+                </tr>
+
+                <tr class="text-center ">
+                    <td>(1)</td>
+                    <td>(2)</td>
+                    <td>(3)</td>
+                    <td>(4)</td>
+                    <td>(5)</td>
+                    <td>(6)</td>
+                    <td>(7)</td>
+                    <td>(8)</td>
+                    <td>(9)</td>
+                    <td>(10)</td>
+                    <td>(11)</td>
+                    <td>(12)</td>
+                    <td>(13)</td>
+                    <td>(14)</td>
+                    <td>(15)</td>
+                    <td>(16)</td>
+                    <td>(17)</td>
+                </tr>
+                
+            
+                <tbody id="space_bangtinhhinhnghiviecfield"></tbody>
+                <tr class="text-center">
+                    <td>Cộng</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <label class="stronger">Ghi chú:</label><br>
+        <label><i>- Cột 3. 15 tỷ lệ % so với tổng số người lao động.</i></label><br>
+        <label><i>- Cột 7 tỷ lệ % so với tổng số người lao động trực tiếp sản xuất.</i></label><br>
+        <label><i>- Cột 11 tỷ lệ % so với tổng số người lao động tiếp xúc với các yếu tố có hại.</i></label><br>
+        <label><i>- Cột 5, 9, 13. 17 số ngày nghỉ trung bình (được tính bằng tổng số ngày nghỉ/tổng số người
+                nghỉ)</i></label>
+        <br>
+        <br>
+        <br>
+        <!-- Hết Biểu mẫu 4 -->
+
+        <!-- Biểu mẫu 5 -->
+        <div class="justify-content-center d-flex  m-1">
+            <label class="stronger">Biểu mẫu 5:QUẢN LÝ BỆNH MẠN TÍNH (*)</label>
+        </div>
+        <div id="add_row7" class="mb-1"></div>
+        <div class="table-responsive">
+            <table class="table  table-bordered">
+                <tr class="text-center ">
+                    <td rowspan="2">Phân xưởng, khu vực</td>
+                    <td rowspan="2">Tên bệnh nhân</td>
+                    <td rowspan="2">Tên bệnh</td>
+                    <td colspan="2">Tuổi, giới</td>
+                    <td rowspan="2">Tuổi nghề</td>
+                    <td rowspan="2">Phương pháp điều trị</td>
+                    <td rowspan="2">Tình trạng</td>
+                    <td rowspan="2">Lưu ý khi bố trí công việc</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Nam</td>
+                    <td class="text-center">Nữ</td>
+                </tr>
+                <tbody data-bind="list:bangquanlybenhmantinhfield"></tbody>
+
+            </table>
+        </div>
+        <label><i>(*) Khi cơ sở lao động có nhiều người lao động thì quản lý từng bệnh mạn tính theo quy
+                định Biểu mẫu 6
+            </i></label>
+        <br>
+        <br>
+        <br>
+        <!-- Hết Biểu mẫu 5 -->
+
+
+
+        <!-- Biểu mẫu 6 -->
+
+        <div class="justify-content-center d-flex  m-1">
+            <label class="stronger">Biểu mẫu 6:QUẢN LÝ BỆNH MẠN TÍNH THEO TỪNG BỆNH</label>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <button id="btn_add_bangquanlybenhmantinhtheotungbenhfield" class="btn btn-outline-success btn-sm">
+                    <span class="fa fa-plus"></span>
+                </button>
+            </div>
+        </div>
+    
+        <!-- <div data-bind="list:bangquanlybenhmantinhtheotungbenhfield"></div> -->
+
+        <div id="space_bangquanlybenhmantinhtheotungbenhfield"></div>
+        <br>
+        <br>
+        <br>
+        <!-- Hết  Biểu mẫu 6 -->
+
+
+
+
+
+        <!-- Biểu mẫu 7 -->
+        <div class="justify-content-center d-flex m-1">
+            <label class="stronger">Biểu mẫu 7: THEO DÕI BỆNH NGHỀ NGHIỆP</label>
+        </div>
+
+        <div id="add_row9" class="mb-1"></div>
+        <div class="table-responsive">
+            <table class="table  table-bordered">
+                <tr class="text-center ">
+                    <td rowspan="3" class="pt-5">Ngày, tháng năm(*)</td>
+                    <td rowspan="3" class="pt-5">Tên bệnh</td>
+                    <td colspan="2">Số khám</td>
+                    <td colspan="2">Số được chẩn đoán</td>
+                    <td colspan="2">Số được giám định</td>
+                    <td colspan="6">Kết quả giám định</td>
+                    <td rowspan="3"></td>
+                </tr>
+
+                <tr class="text-center ">
+                    <td rowspan="2" class="pt-3">Tổng số</td>
+                    <td rowspan="2" class="pt-3">Trong đó nữ</td>
+                    <td rowspan="2" class="pt-3">Tổng số</td>
+                    <td rowspan="2" class="pt-3">Trong đó số nữ</td>
+                    <td rowspan="2" class="pt-3">Tổng số</td>
+                    <td rowspan="2" class="pt-3">Trong đó số nữ</td>
+                    <td colspan="2">
+                        <5%</td> <td colspan="2">5-<31%</td> <td colspan="2">>=31%
+                    </td>
+
+                </tr>
+                <tr class="text-center ">
+                    <td>TS</td>
+                    <td>nữ</td>
+                    <td>TS</td>
+                    <td>nữ</td>
+                    <td>TS</td>
+                    <td>nữ</td>
+                </tr>
+                <tbody data-bind="list:BangTheoDoiBenhNgheNghiepfield"></tbody>
+
+                <tr class="text-center ">
+                    <td>Tổng số</td>
+                    <td><input type="text" id="tongsobenh" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsokham" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsokhamnu" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsochuandoan" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsochuandoannu" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsogiamdinh" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsogiamdinhnu" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsoketquaduoi5" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsoketquaduoi5nu" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsoketquaduoitren5duoi31" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsoketquaduoitren5duoi31nu" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsoketquatren31" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td><input type="text" id="tongsoketquatren31nu" style="border: none;margin: 0px; padding: 5px;outline: 0px;width: 100%;"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <label><i>(*) Ghi rõ thời gian khám phát hiện bệnh nghề nghiệp</i></label>
+        <br>
+        <br>
+        <br>
+        <!--Hết  Biểu mẫu 7 -->
+
+
+        <!-- Biểu mẫu 8 -->
+        <div class="justify-content-center d-flex  m-1">
+            <label class="stronger">Biểu mẫu 8:DANH SÁCH NGƯỜI LAO ĐỘNG MẮC BỆNH NGHỀ NGHIỆP</label>
+        </div>
+        <div id="add_row10" class="mb-1"></div>
+        <div class="table-responsive">
+            <table class="table  table-bordered">
+                <tr class="text-center ">
+                    <td rowspan="2" class="pt-3">TT</td>
+                    <td rowspan="2" class="pt-3">Tên bệnh nhân</td>
+                    <td colspan="2">tuổi, giới</td>
+                    <td rowspan="2" class="pt-3">Nghề khi bị BNN</td>
+                    <td rowspan="2" class="pt-3">Tuổi nghề</td>
+                    <td rowspan="2" class="pt-3">Ngày phát hiện BNN</td>
+                    <td rowspan="2" class="pt-3">Tên BNN</td>
+                    <td rowspan="2" class="pt-3">Phương pháp điều trị</td>
+                    <td rowspan="2" class="pt-3">Tỷ lệ mất khả năng lao động<div>
+                    </td>
+                    <td rowspan="2" class="pt-3">Công việc hiện nay</td>
+                    <td rowspan="2" class="pt-3">Lưu ý khi bố trí công việc</td>
+                    <td rowspan="2"></td>
+                </tr>
+
+                <tr class="text-center ">
+                    <td>Nam</td>
+                    <td>Nữ</td>
+                </tr>
+                <tbody data-bind="list:bangdanhsachnguoilaodongmacbenhnghenghiepfield"></tbody>
+
+                <!-- <tr class="text-center ">
+                    <td>Tổng số</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr> -->
+            </table>
+        </div>
+        <!--Hết  Biểu mẫu 8 -->
+    </div>
+</div>

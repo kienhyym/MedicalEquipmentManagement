@@ -53,8 +53,8 @@
         "type": "string",
         "length": 255
     },
-    "sinhngay": {
-        "type": "datetime"
+    "sinh_ngay": {
+        "type": "number"
     },
     "chungminhthu": {
         "type": "string",
@@ -97,15 +97,6 @@
         "length": 255
     },
     "ngayky": {
-        "type": "string",
-        "length": 255
-    },
-    "thangky": {
-        "type": "string",
-        "length": 255
-    },
-    "namky": {
-        "type": "string",
-        "length": 255
+        "type": "number"
     }
 }

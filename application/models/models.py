@@ -159,7 +159,7 @@ class HSQLSucKhoeVaBenhTatNguoiLaoDong(CommonModel):
 class BangQLSucKhoeTruocKhiBoTriViecLam(CommonModel):
     __tablename__ = 'bangqlsuckhoetruockhibotrivieclam'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ngaythangnam = db.Column(db.DateTime())
+    ngay_thang_nam = db.Column(BigInteger())
     soduockhamtuyennam = db.Column(String(255))
     soduockhamtuyennu = db.Column(String(255))
     tongcong = db.Column(String(255))
@@ -169,7 +169,7 @@ class BangQLSucKhoeTruocKhiBoTriViecLam(CommonModel):
 class BangQLSucKhoeLaoDongThongQuaKhamSucKhoeDinhKy(CommonModel):
     __tablename__ = 'bangqlsuckhoelaodongthongquakhamsuckhoedinhky'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ngaythangnam = db.Column(db.DateTime())
+    ngay_thang_nam = db.Column(BigInteger())
     soduockhamtuyennam = db.Column(String(255))
     soduockhamtuyennu = db.Column(String(255))
     tongcong = db.Column(String(255))
@@ -265,7 +265,7 @@ class BangQuanLyBenhManTinhTheoTungBenhChiTiet(CommonModel):
 class BangTheoDoiBenhNgheNghiep(CommonModel):
     __tablename__ = 'bangtheodoibenhnghenghiep'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ngaythangnam = db.Column(db.DateTime())
+    ngay_thang_nam = db.Column(BigInteger())
     tenbenh = db.Column(String(255))
     tongsokham = db.Column(db.Integer())
     tongsokhamnu = db.Column(db.Integer())
@@ -290,7 +290,7 @@ class BangDanhSachNguoiLaoDongMacBenhNgheNghiep(CommonModel):
     tuoinu = db.Column(db.Integer())
     nghekhibibenhnghenghiep  = db.Column(String(255))
     tuoinghe = db.Column(db.Integer())
-    ngayphathienbenhnghenghiep = db.Column(db.DateTime())
+    ngay_phathienbenhnghenghiep = db.Column(BigInteger())
     tenbenhnghenghiep = db.Column(String(255))
     phuongphapdieutri = db.Column(String(255))
     tylematkhananglaodong = db.Column(String(255))
@@ -318,7 +318,7 @@ class HSCCTaiNanLaoDongTaiCoSoLaoDong(CommonModel):
 class BangHSCCTaiNanLaoDongTaiCoSoLaoDong(CommonModel):
     __tablename__ = 'banghscctainanlaodongtaicosolaodong'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ngaythangnam = db.Column(db.DateTime())
+    ngay_thang_nam = db.Column(BigInteger())
     hotennannhan  = db.Column(String(255))
     tuoinam = db.Column(db.Integer())
     tuoinu = db.Column(db.Integer())
@@ -327,7 +327,7 @@ class BangHSCCTaiNanLaoDongTaiCoSoLaoDong(CommonModel):
     thoigiannannhanthuongtich = db.Column(String(255))
     yeutogaytainan = db.Column(String(255))
     xutricapcuu = db.Column(String(255))
-    thoigiannghiviec = db.Column(db.DateTime())
+    thoigian_nghiviec = db.Column(BigInteger())
     ketquagiamdinhtylematsulaodong = db.Column(String(255))
     hscctainanlaodongtaicosolaodong_id = db.Column(UUID(as_uuid=True), ForeignKey('hscctainanlaodongtaicosolaodong.id'), nullable=True)
 # Hết Báo cáo 1 Phụ lục 3
@@ -379,9 +379,10 @@ class BaoCaoYTeLaoDongCuaCoSoLaoDong(CommonModel):
     donvibaocao = db.Column(String(255))
     so = db.Column(String(255))
     noivietbaocao = db.Column(String(255))
-    ngay = db.Column(String(255))
-    thang = db.Column(String(255))
-    nam = db.Column(String(255))
+    # ngay = db.Column(String(255))
+    # thang = db.Column(String(255))
+    # nam = db.Column(String(255))
+    ngaythangnam = db.Column(BigInteger())
     kinhgui = db.Column(String(255))
     baocao6thangnam = db.Column(String(255))
     tencosolaodong = db.Column(String(255))
@@ -410,7 +411,7 @@ class BaoCaoYTeLaoDongCuaCoSoLaoDong(CommonModel):
     diachidichvuneuco = db.Column(String(255))
     sodienthoaidichvuneuco = db.Column(String(255))
     noidungcungcapdichvuneuco = db.Column(String(255))
-    thoigiancuncapdichvu = db.Column(db.DateTime())
+    thoigian_cungcapdichvu = db.Column(BigInteger())
 # 8. Lực lượng sơ cứu tại nơi làm việc (đối với cơ sở sản xuất kinh doanh) 
     lucluongsocuutainoilamviec = db.Column(String(255))
     soluongnguoilaodongthamgiasocuu = db.Column(String(255))
@@ -460,7 +461,7 @@ class NguoiLamCongTacYTeTaiCoSoLaoDong(CommonModel):
 class CongTacThanhTra(CommonModel):
     __tablename__ = 'congtacthanhtra'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ngaykiemtra = db.Column(db.DateTime())
+    ngay_kiemtra = db.Column(BigInteger())
     donvikiemtra = db.Column(String(255))
     noidungkiemtra = db.Column(String(255))
     ghichu = db.Column(String(255))
@@ -524,7 +525,7 @@ class DanhSachTruongHopBenhNgheNghiep(CommonModel):
     tuoinu = db.Column(db.Integer)
     nghekhibibnn = db.Column(String(255))
     tuoinghe = db.Column(db.Integer)
-    ngayphathienbenh = db.Column(db.DateTime())
+    ngay_phathienbenh = db.Column(BigInteger())
     tenbnn = db.Column(String(255))
     tylesuygiamkhananglaodong = db.Column(String(255))
     congviechiennay = db.Column(String(255))
@@ -611,9 +612,11 @@ class BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen(CommonModel):
     so = db.Column(db.Integer)
     bc = db.Column(db.Integer)
     noivietbaocao = db.Column(String(255))
-    ngayvietbaocao = db.Column(db.Integer)
-    thangvietbaocao = db.Column(db.Integer)
-    namvietbaocao= db.Column(db.Integer)
+    # ngayvietbaocao = db.Column(db.Integer)
+    # thangvietbaocao = db.Column(db.Integer)
+    # namvietbaocao= db.Column(db.Integer)
+    ngaythangnam = db.Column(BigInteger())
+
     baocaonam = db.Column(db.Integer)
 #CƠ SỞ LAO ĐỘNG TRONG PHẠM VI QUẢN LÝ
     loaicosolaodongtren200nld = db.Column(String(255))
@@ -937,7 +940,7 @@ class DanhSachNguoiMacBenhNgheNghiep(CommonModel):
     tuoinu = db.Column(db.Integer())
     nghekhibibnn = db.Column(String(255))
     tuoinghe = db.Column(String(255))
-    ngayphathienbenh = db.Column(db.DateTime())
+    ngay_phathienbenh = db.Column(BigInteger())
     tenbnn = db.Column(String(255))
     tylesuygiamknld = db.Column(String(255))
     congviechiennay = db.Column(String(255))
@@ -968,12 +971,12 @@ class DanhSachCacTruongHopTaiNanLaoDong(CommonModel):
     tuoi = db.Column(db.Integer())
     nam = db.Column(db.Integer())
     nu = db.Column(db.Integer())
-    ngaybitainan = db.Column(db.DateTime())
+    ngay_bitainan = db.Column(BigInteger())
     nghenghiep = db.Column(String(255))
     bophanbitonthuong = db.Column(String(255))
     duocsocuutaicho = db.Column(db.Integer())
     phuongtienchuyendencosokbcb = db.Column(String(255))
-    thoigiandieutri = db.Column(db.DateTime())
+    thoigian_dieutri = db.Column(BigInteger())
     ketquadieutri = db.Column(db.Integer())
     ghichu = db.Column(String(255))
     baocaohoatdongytelaodong6thangnamtuyenhuyen_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnamtuyenhuyen.id'), nullable=True)
@@ -1020,9 +1023,10 @@ class BaoCaoHoatDongYTeLaoDong6ThangNam(CommonModel):
     so = db.Column(String(255))
     bc = db.Column(String(255))
     noivietbaocao = db.Column(String(255))
-    ngayvietbaocao = db.Column(String(255))
-    thangvietbaocao = db.Column(String(255))
-    namvietbaocao = db.Column(String(255))
+    # ngayvietbaocao = db.Column(String(255))
+    # thangvietbaocao = db.Column(String(255))
+    # namvietbaocao = db.Column(String(255))
+    ngaythangnam  = db.Column(BigInteger())
     baocaonam = db.Column(String(255))
 
 # I. TÌNH HÌNH TỔ CHỨC VÀ THỰC HIỆN CÁC VĂN BẢN PHÁP QUY
@@ -1390,7 +1394,7 @@ class DanhSachNguoiMacBenhNgheNghiepPhuLuc10(CommonModel):
     tuoinu = db.Column(db.Integer())
     nghekhibibnn = db.Column(String(255))
     tuoinghe = db.Column(String(255))
-    ngayphathienbenh = db.Column(db.DateTime())
+    ngay_phathienbenh = db.Column(BigInteger())
     tenbnn = db.Column(String(255))
     tylesuygiamknld = db.Column(String(255))
     congviechiennay = db.Column(String(255))
@@ -1420,12 +1424,12 @@ class DanhSachCacTruongHopTaiNanLaoDongDuocKhamTaiCS(CommonModel):
     hovaten = db.Column(String(255))
     tuoinam = db.Column(db.Integer())
     tuoinu = db.Column(db.Integer())
-    ngaybitainan = db.Column(db.DateTime())
+    ngay_bitainan = db.Column(BigInteger())
     nghenghiep = db.Column(String(255))
     bophanbitonthuong = db.Column(String(255))
     duocsocuutaicho = db.Column(db.Integer())
     phuongtienchuyendencosokbcb = db.Column(String(255))
-    thoigiandieutri = db.Column(db.DateTime())
+    thoigian_dieutri = db.Column(BigInteger())
     ketquadieutri = db.Column(db.Integer())
     ghichu = db.Column(String(255))
     baocaohoatdongytelaodong6thangnam_id = db.Column(UUID(as_uuid=True), ForeignKey('baocaohoatdongytelaodong6thangnam.id'), nullable=True)
@@ -1509,7 +1513,7 @@ class BaoCaoToChucDuDieuKienQuanTracMoiTruongLaoDongDuocCongBo(CommonModel):
     ngayvietbaocao = db.Column(String(255))
     thangvietbaocao = db.Column(String(255))
     namvietbaocao = db.Column(String(255))
-    thoigianvietbaocao = db.Column(db.DateTime())
+    thoigian_vietbaocao = db.Column(BigInteger())
     ngaytienhanh = db.Column(String(255))
     thangtienhanh = db.Column(String(255))
     namtienhanh = db.Column(String(255))
@@ -1615,7 +1619,7 @@ class ChungChiDaoTaoVeQuanTracMoiTruongLaoDong(CommonModel):
     thangvietchungchi = db.Column(String(255))
     namvietchungchi = db.Column(String(255))
     chungnhanongba = db.Column(String(255))
-    sinhngay = db.Column(db.DateTime())
+    sinh_ngay = db.Column(BigInteger())
     chungminhthu = db.Column(String(255))
     diachi = db.Column(String(255))
     thoigianhuanluyen = db.Column(String(255))
@@ -1626,9 +1630,10 @@ class ChungChiDaoTaoVeQuanTracMoiTruongLaoDong(CommonModel):
     denthang = db.Column(String(255))
     dennam = db.Column(String(255))
     noiky = db.Column(String(255))
-    ngayky = db.Column(String(255))
-    thangky = db.Column(String(255))
-    namky = db.Column(String(255))
+    # ngayky = db.Column(String(255))
+    # thangky = db.Column(String(255))
+    # namky = db.Column(String(255))
+    ngayky = db.Column(BigInteger())
 #Hết Báo Cáo 1 Phụ Lục 13
 ######################################################################################################################################################################
 #Báo Cáo 2 phụ lục 1
@@ -1889,9 +1894,10 @@ class BienBanXacNhanTiepXucYeuToCoHaiGayBenhNgheNghiep(CommonModel):
     xutri_ntn = db.Column(String(255))
     tinhtrang_suckhoe = db.Column(String(255))
     noiky = db.Column(String(255))
-    ngayky  = db.Column(String(255))
-    thangky  = db.Column(String(255))
-    namky  = db.Column(String(255))
+    # ngayky  = db.Column(String(255))
+    # thangky  = db.Column(String(255))
+    # namky  = db.Column(String(255))
+    ngayky = db.Column(BigInteger())
 
 #Het Báo Cáo 2 phụ lục 5
 ######################################################################################################################################################################
@@ -2028,10 +2034,11 @@ class BienBanHoiChanBenhNgheNghiep(CommonModel):
 class BaoCaoTruongHopNguoiLaoDongMacBenhNgheNghiep(CommonModel):
     __tablename__ = 'baocaotruonghopnguoilaodongmacbenhnghenghiep'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    noiviet = db.Column(String(255))
-    ngayviet = db.Column(db.Integer())
-    thangviet = db.Column(db.Integer())
-    namviet = db.Column(db.Integer())
+    noivietbaocao = db.Column(String(255))
+    # ngayviet = db.Column(db.Integer())
+    # thangviet = db.Column(db.Integer())
+    # namviet = db.Column(db.Integer())
+    ngaythangnam = db.Column(BigInteger())
 
     cosokhambenh_tencoso = db.Column(String(255))
     cosokhambenh_diachi = db.Column(String(255))
@@ -2049,24 +2056,32 @@ class BaoCaoTruongHopNguoiLaoDongMacBenhNgheNghiep(CommonModel):
     truonghopmacbenhnghenghiep_ten = db.Column(String(255))
     truonghopmacbenhnghenghiep_gioitinh = db.Column(String(255))
 
-    truonghopmacbenhnghenghiep_ngaysinh = db.Column(db.Integer())
-    truonghopmacbenhnghenghiep_thangsinh = db.Column(db.Integer())
-    truonghopmacbenhnghenghiep_namsinh = db.Column(db.Integer())
+    # truonghopmacbenhnghenghiep_ngaysinh = db.Column(db.Integer())
+    # truonghopmacbenhnghenghiep_thangsinh = db.Column(db.Integer())
+    # truonghopmacbenhnghenghiep_namsinh = db.Column(db.Integer())
+    ngaysinh  = db.Column(BigInteger())
 
     truonghopmacbenhnghenghiep_tenbenh = db.Column(String(255))
     truonghopmacbenhnghenghiep_nghenghiep = db.Column(String(255))
 
-    truonghopmacbenhnghenghiep_namtiepxuc = db.Column(db.Integer())
-    truonghopmacbenhnghenghiep_thangtiepxuc = db.Column(db.Integer())
-    truonghopmacbenhnghenghiep_ngaytiepxuc = db.Column(db.Integer())
+    # truonghopmacbenhnghenghiep_namtiepxuc = db.Column(db.Integer())
+    # truonghopmacbenhnghenghiep_thangtiepxuc = db.Column(db.Integer())
+    # truonghopmacbenhnghenghiep_ngaytiepxuc = db.Column(db.Integer())
+    ngaytiepxuc = db.Column(BigInteger())
 
-    ngayxayrasuco_ngay = db.Column(db.Integer())
-    ngayxayrasuco_thang = db.Column(db.Integer())
-    ngayxayrasuco_nam = db.Column(db.Integer())
+    # ngayxayrasuco_ngay = db.Column(db.Integer())
+    # ngayxayrasuco_thang = db.Column(db.Integer())
+    # ngayxayrasuco_nam = db.Column(db.Integer())
+    ngayxayraxuco  = db.Column(BigInteger())
 
-    ngaychuandoan_ngay = db.Column(db.Integer())
-    ngaychuandoan_thang = db.Column(db.Integer())
-    ngaychuandoan_nam = db.Column(db.Integer())
+    # ngaychuandoan_ngay = db.Column(db.Integer())
+    # ngaychuandoan_thang = db.Column(db.Integer())
+    # ngaychuandoan_nam = db.Column(db.Integer())
+    ngaychuandoan = db.Column(BigInteger())
+    noiky = db.Column(String(255))
+    ngayky = db.Column(BigInteger())
+
+    
 # Hết Báo Cáo 2 phụ lục 9
 # BÁO CÁO TRƯỜNG HỢP NGƯỜI LAO ĐỘNG MẮC BỆNH NGHỀ NGHIỆP
 
@@ -2127,13 +2142,16 @@ class BaoCaoDanhSachCacCoSoLaoDongCoNguoiLaoDongMacBenhNgheNgiep(CommonModel):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     so = db.Column(String(255))
     bc = db.Column(String(255))
-    noiviet = db.Column(String(255))
-    ngayviet = db.Column(db.Integer())
-    thangviet = db.Column(db.Integer())
-    namviet = db.Column(db.Integer())
+    noivietbaocao = db.Column(String(255))
+    # ngayviet = db.Column(db.Integer())
+    # thangviet = db.Column(db.Integer())
+    # namviet = db.Column(db.Integer())
+    ngaythangnam = db.Column(BigInteger())
     kinhgui = db.Column(String(255))
     danhsachcosolaodongconguoimacbnn = db.Column(JSONB)
     nhungkhokhan = db.Column(String(255))
+    noiky  = db.Column(String(255))
+    ngayky = db.Column(BigInteger())
 # Hết Báo Cáo 2 phụ lục 12
 # BÁO CÁO DANH SÁCH CÁC CƠ SỞ LAO ĐỘNG CÓ NGƯỜI LAO ĐỘNG MẮC BỆNH NGHỀ NGHIỆP
 ######################################################################################################################################################################

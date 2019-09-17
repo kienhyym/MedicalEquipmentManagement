@@ -37,17 +37,8 @@
         "type": "string",
         "length": 255
     },
-    "ngay": {
-        "type": "string",
-        "length": 255
-    },
-    "thang": {
-        "type": "string",
-        "length": 255
-    },
-    "nam": {
-        "type": "string",
-        "length": 255
+    "ngaythangnam": {
+        "type": "number"
     },
     "kinhgui": {
         "type": "string",
@@ -137,8 +128,8 @@
         "type": "string",
         "length": 255
     },
-    "thoigiancuncapdichvu": {
-        "type": "datetime"
+    "thoigian_cungcapdichvu": {
+        "type": "number"
     },
     "lucluongsocuutainoilamviec": {
         "type": "string",

@@ -43,8 +43,8 @@
         "type": "string",
         "length": 255
     },
-    "ngayphathienbenh": {
-        "type": "datetime"
+    "ngay_phathienbenh": {
+        "type": "number"
     },
     "tenbnn": {
         "type": "string",

@@ -25,8 +25,8 @@
         "type": "string",
         "primary": true
     },
-    "ngaythangnam": {
-        "type": "datetime"
+    "ngay_thang_nam": {
+        "type": "number"
     },
     "hotennannhan": {
         "type": "string",
@@ -58,8 +58,8 @@
         "type": "string",
         "length": 255
     },
-    "thoigiannghiviec": {
-        "type": "datetime"
+    "thoigian_nghiviec": {
+        "type": "number"
     },
     "ketquagiamdinhtylematsulaodong": {
         "type": "string",

@@ -33,17 +33,11 @@
         "type": "string",
         "length": 255
     },
-    "noiviet": {
+    "noivietbaocao": {
         "type": "string",
         "length": 255
     },
-    "ngayviet": {
-        "type": "number"
-    },
-    "thangviet": {
-        "type": "number"
-    },
-    "namviet": {
+    "ngaythangnam": {
         "type": "number"
     },
     "kinhgui": {
@@ -56,5 +50,12 @@
     "nhungkhokhan": {
         "type": "string",
         "length": 255
+    },
+    "noiky": {
+        "type": "string",
+        "length": 255
+    },
+    "ngayky": {
+        "type": "number"
     }
 }

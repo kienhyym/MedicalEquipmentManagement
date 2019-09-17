@@ -25,8 +25,8 @@
         "type": "string",
         "primary": true
     },
-    "ngaythangnam": {
-        "type": "datetime"
+    "ngay_thang_nam": {
+        "type": "number"
     },
     "soduockhamtuyennam": {
         "type": "string",

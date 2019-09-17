@@ -221,7 +221,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "hsqlsuckhoevabenhtatnguoilaodong",
 					"route": "hsqlsuckhoevabenhtatnguoilaodong/collection",
-					"$ref": "app/baocao/phuluc2/js/CollectionView",
+					"$ref": "app/hoso/HoSoSucKhoeVaBenhTat/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -233,18 +233,18 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "hsqlsuckhoevabenhtatnguoilaodong",
 					"route": "hsqlsuckhoevabenhtatnguoilaodong/model(/:id)",
-					"$ref": "app/baocao/phuluc2/js/ModelView",
+					"$ref": "app/hoso/HoSoSucKhoeVaBenhTat/js/ModelView",
 					"visible": function () {
 						return false;
 					}
 				},
 				{
-					"text": "Hồ sơ cấp cứu tai nạn lao động tại cơ sở lao động",
+					"text": "Hồ sơ cấp cứu tai nạn",
 					"type": "view",
 					"icon": "far fa-clipboard",
 					"collectionName": "hscctainanlaodongtaicosolaodong",
 					"route": "hscctainanlaodongtaicosolaodong/collection",
-					"$ref": "app/baocao/phuluc3/js/CollectionView",
+					"$ref": "app/hoso/HoSoCapCuuTaiNan/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -255,18 +255,18 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "hscctainanlaodongtaicosolaodong",
 					"route": "hscctainanlaodongtaicosolaodong/model(/:id)",
-					"$ref": "app/baocao/phuluc3/js/ModelView",
+					"$ref": "app/hoso/HoSoCapCuuTaiNan/js/ModelView",
 					"visible": function () {
 						return false;
 					}
 				},
 				{
-					"text": "Sổ theo dõi công tác huấn luyện sơ cứu, cấp cứu tại nơi làm việc",
+					"text": "Sổ huấn luyện sơ, cấp cứu",
 					"type": "view",
 					"icon": "far fa-clipboard",
 					"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",
 					"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/collection",
-					"$ref": "app/baocao/phuluc7/js/CollectionView",
+					"$ref": "app/hoso/SoTheoDoiHuanLuyenSoCuuCapCuu/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -277,18 +277,18 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "sotheodoicongtachuanluyensocuucapcuutainoilamviec",
 					"route": "sotheodoicongtachuanluyensocuucapcuutainoilamviec/model(/:id)",
-					"$ref": "app/baocao/phuluc7/js/ModelView",
+					"$ref": "app/hoso/SoTheoDoiHuanLuyenSoCuuCapCuu/js/ModelView",
 					"visible": function () {
 						return false;
 					}
 				},
 				{
-					"text": "Giấy chứng chỉ đào tạo về quan trắc môi trường lao động",
+					"text": "Chứng chỉ quan trắc môi trường ",
 					"type": "view",
 					"icon": "far fa-clipboard",
 					"collectionName": "chungchidaotaovequantracmoitruonglaodong",
 					"route": "chungchidaotaovequantracmoitruonglaodong/collection",
-					"$ref": "app/baocao/phuluc13/js/CollectionView",
+					"$ref": "app/hoso/ChungTriDaoTaoQuanTracMoiTruong/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -299,18 +299,18 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "chungchidaotaovequantracmoitruonglaodong",
 					"route": "chungchidaotaovequantracmoitruonglaodong/model(/:id)",
-					"$ref": "app/baocao/phuluc13/js/ModelView",
+					"$ref": "app/hoso/ChungTriDaoTaoQuanTracMoiTruong/js/ModelView",
 					"visible": function () {
 						return false;
 					}
 				},
 				{
-					"text": "Tổng hợp kết quả đợt khám sức khỏe phát hiện bệnh nghề nghiệp",
+					"text": "Tổng hợp kết quả đợt khám",
 					"type": "view",
 					"icon": "far fa-clipboard",
 					"collectionName": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep",
 					"route": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep/collection",
-					"$ref": "app/baocao2/phuluc10/js/CollectionView",
+					"$ref": "app/hoso/TongHopKetQuaDotKhamPhatHienBNN/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -321,7 +321,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep",
 					"route": "tonghopketquadotkhamsuckhoephathienbenhnghenghiep/model(/:id)",
-					"$ref": "app/baocao2/phuluc10/js/ModelView",
+					"$ref": "app/hoso/TongHopKetQuaDotKhamPhatHienBNN/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -332,7 +332,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "tonghopketquakhamdinhkynguoimacbenhnghenghiep",
 					"route": "tonghopketquakhamdinhkynguoimacbenhnghenghiep/collection",
-					"$ref": "app/baocao2/phuluc11/js/CollectionView",
+					"$ref": "app/hoso/TongHopKetQuaKhamDinhKyNguoiMacBNN/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -343,7 +343,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "tonghopketquakhamdinhkynguoimacbenhnghenghiep",
 					"route": "tonghopketquakhamdinhkynguoimacbenhnghenghiep/model(/:id)",
-					"$ref": "app/baocao2/phuluc11/js/ModelView",
+					"$ref": "app/hoso/TongHopKetQuaKhamDinhKyNguoiMacBNN/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -354,7 +354,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "hosobenhnghenghiep",
 					"route": "hosobenhnghenghiep/collection",
-					"$ref": "app/baocao2/phuluc7/js/CollectionView",
+					"$ref": "app/hoso/HoSoBenhNgheNghiep/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -365,7 +365,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "hosobenhnghenghiep",
 					"route": "hosobenhnghenghiep/model(/:id)",
-					"$ref": "app/baocao2/phuluc7/js/ModelView",
+					"$ref": "app/hoso/HoSoBenhNgheNghiep/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -376,7 +376,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "bienbanhoichanbenhnghenghiep",
 					"route": "bienbanhoichanbenhnghenghiep/collection",
-					"$ref": "app/baocao2/phuluc8/js/CollectionView",
+					"$ref": "app/hoso/BienBanHoiChanBNN/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -387,18 +387,18 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "bienbanhoichanbenhnghenghiep",
 					"route": "bienbanhoichanbenhnghenghiep/model(/:id)",
-					"$ref": "app/baocao2/phuluc8/js/ModelView",
+					"$ref": "app/hoso/BienBanHoiChanBNN/js/ModelView",
 					"visible": function () {
 						return false;
 					}
 				},
 				{
-					"text": "Sổ khám sức khỏe định kỳ của người lái xe ô tô",
+					"text": "Sổ khám định kỳ người lái xe",
 					"type": "view",
 					"icon": "far fa-clipboard",
 					"collectionName": "sokhamsuckhoedinhkycuanguoilaixeoto",
 					"route": "sokhamsuckhoedinhkycuanguoilaixeoto/collection",
-					"$ref": "app/baocao2/phuluc21/js/CollectionView",
+					"$ref": "app/hoso/SoKhamDInhKyNguoiLaiXeOTo/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -409,7 +409,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "sokhamsuckhoedinhkycuanguoilaixeoto",
 					"route": "sokhamsuckhoedinhkycuanguoilaixeoto/model(/:id)",
-					"$ref": "app/baocao2/phuluc21/js/ModelView",
+					"$ref": "app/hoso/SoKhamDInhKyNguoiLaiXeOTo/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -420,7 +420,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "giaygioithieu",
 					"route": "giaygioithieu/collection",
-					"$ref": "app/baocao2/phuluc1/js/CollectionView",
+					"$ref": "app/hoso/GiayGioiThieu/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -431,7 +431,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "giaygioithieu",
 					"route": "giaygioithieu/model(/:id)",
-					"$ref": "app/baocao2/phuluc1/js/ModelView",
+					"$ref": "app/hoso/GiayGioiThieu/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -442,7 +442,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "phieukhamsuckhoetruockhibotrilamviec",
 					"route": "phieukhamsuckhoetruockhibotrilamviec/collection",
-					"$ref": "app/baocao2/phuluc2/js/CollectionView",
+					"$ref": "app/hoso/PhieuKhamSucKhoeTruocKhiBoTriLamViec/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -453,7 +453,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "phieukhamsuckhoetruockhibotrilamviec",
 					"route": "phieukhamsuckhoetruockhibotrilamviec/model(/:id)",
-					"$ref": "app/baocao2/phuluc3/js/ModelView",
+					"$ref": "app/hoso/PhieuKhamSucKhoeTruocKhiBoTriLamViec/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -465,7 +465,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "sokhamsuckhoephathienbenhnghenghiep",
 					"route": "sokhamsuckhoephathienbenhnghenghiep/collection",
-					"$ref": "app/baocao2/phuluc3/js/CollectionView",
+					"$ref": "app/hoso/SoKhamPhatHienBNN/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -476,7 +476,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "sokhamsuckhoephathienbenhnghenghiep",
 					"route": "sokhamsuckhoephathienbenhnghenghiep/model(/:id)",
-					"$ref": "app/baocao2/phuluc3/js/ModelView",
+					"$ref": "app/hoso/SoKhamPhatHienBNN/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -488,7 +488,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep",
 					"route": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep/collection",
-					"$ref": "app/baocao2/phuluc5/js/CollectionView",
+					"$ref": "app/hoso/BienBanXacNhanTiepXucYeuToCoHai/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -499,7 +499,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep",
 					"route": "bienbanxacnhantiepxucyeutocohaigaybenhnghenghiep/model(/:id)",
-					"$ref": "app/baocao2/phuluc5/js/ModelView",
+					"$ref": "app/hoso/BienBanXacNhanTiepXucYeuToCoHai/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -529,7 +529,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "baocaoytelaodongcuacosolaodong",
 					"route": "baocaoytelaodongcuacosolaodong/collection",
-					"$ref": "app/baocao/phuluc8/js/CollectionView",
+					"$ref": "app/baocao/BaoCaoYTeLaoDongCuaCoSoLaoDong/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -540,7 +540,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "baocaoytelaodongcuacosolaodong",
 					"route": "baocaoytelaodongcuacosolaodong/model(/:id)",
-					"$ref": "app/baocao/phuluc8/js/ModelView",
+					"$ref": "app/baocao/BaoCaoYTeLaoDongCuaCoSoLaoDong/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -551,7 +551,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "baocaohoatdongytelaodong6thangnamtuyenhuyen",
 					"route": "baocaohoatdongytelaodong6thangnamtuyenhuyen/collection",
-					"$ref": "app/baocao/phuluc9/js/CollectionView",
+					"$ref": "app/baocao/BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -562,7 +562,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "baocaohoatdongytelaodong6thangnamtuyenhuyen",
 					"route": "baocaohoatdongytelaodong6thangnamtuyenhuyen/model(/:id)",
-					"$ref": "app/baocao/phuluc9/js/ModelView",
+					"$ref": "app/baocao/BaoCaoHoatDongYTeLaoDong6ThangNamTuyenHuyen/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -573,7 +573,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "baocaohoatdongytelaodong6thangnam",
 					"route": "baocaohoatdongytelaodong6thangnam/collection",
-					"$ref": "app/baocao/phuluc10/js/CollectionView",
+					"$ref": "app/baocao/BaoCaoHoatDongYTeLaoDong6ThangNamTuyenTinh/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -584,7 +584,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "baocaohoatdongytelaodong6thangnam",
 					"route": "baocaohoatdongytelaodong6thangnam/model(/:id)",
-					"$ref": "app/baocao/phuluc10/js/ModelView",
+					"$ref": "app/baocao/BaoCaoHoatDongYTeLaoDong6ThangNamTuyenTinh/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -597,7 +597,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "chungchidaotaovebaocaotochucdudieukienquantracmoitruonglaodongduoccongboquantracmoitruonglaodong",
 					"route": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo/collection",
-					"$ref": "app/baocao/phuluc11/js/CollectionView",
+					"$ref": "app/baocao/BaoCaoToChucDuDieuKienQuanTracMTLD/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -608,7 +608,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo",
 					"route": "baocaotochucdudieukienquantracmoitruonglaodongduoccongbo/model(/:id)",
-					"$ref": "app/baocao/phuluc11/js/ModelView",
+					"$ref": "app/baocao/BaoCaoToChucDuDieuKienQuanTracMTLD/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -622,7 +622,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong",
 					"route": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong/collection",
-					"$ref": "app/baocao2/phuluc12/js/CollectionView",
+					"$ref": "app/baocao/DanhSachCacCoSoLaoDongCoNguoiLaoDongMacBNN/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -633,7 +633,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong",
 					"route": "baocaodanhsachcaccosolaodongconguoilaodongmacbenhlaodong/model(/:id)",
-					"$ref": "app/baocao2/phuluc12/js/ModelView",
+					"$ref": "app/baocao/DanhSachCacCoSoLaoDongCoNguoiLaoDongMacBNN/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -644,7 +644,7 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"collectionName": "baocaotruonghopnguoilaodongmacbenhnghenghiep",
 					"route": "baocaotruonghopnguoilaodongmacbenhnghenghiep/collection",
-					"$ref": "app/baocao2/phuluc9/js/CollectionView",
+					"$ref": "app/baocao/BaoCaoTruongHopNguoiLaoDongMacBNN/js/CollectionView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -655,7 +655,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "baocaotruonghopnguoilaodongmacbenhnghenghiep",
 					"route": "baocaotruonghopnguoilaodongmacbenhnghenghiep/model(/:id)",
-					"$ref": "app/baocao2/phuluc9/js/ModelView",
+					"$ref": "app/baocao/BaoCaoTruongHopNguoiLaoDongMacBNN/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -680,12 +680,12 @@ define(function (require) {
 			// },
 			"entries": [
 				{
-					"text": "Quy định về công trình vệ sinh phúc lợi tại nơi làm việc",
+					"text": "Quy định công trình vệ sinh",
 					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
-					"route": "baocao/phuluc1/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"route": "thongtu/QuyDinhVeCongTrinhVeSinh/model",
+					// "$ref": "app/hoso/SoTheoDoiHuanLuyenSoCuuCapCuu/js/ModelView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -693,12 +693,12 @@ define(function (require) {
 				},
 
 				{
-					"text": "Quy định về túi sơ cứu tại nơi làm việc",
+					"text": "Quy định về túi sơ cứu",
 					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
-					"route": "baocao/phuluc4/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"route": "thongtu/QuyDinhVeTuiSoCuu/model",
+					// "$ref": "app/hoso/SoTheoDoiHuanLuyenSoCuuCapCuu/js/ModelView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -709,8 +709,8 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
-					"route": "baocao/phuluc5/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"route": "thongtu/TrangThietBiKhuVucSoCuuCapCuu/model",
+					// "$ref": "app/hoso/SoTheoDoiHuanLuyenSoCuuCapCuu/js/ModelView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -721,8 +721,8 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
-					"route": "baocao/phuluc6/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"route": "thongtu/NoiDungVaThoiGianHuanLuyenSoCuu/model",
+					// "$ref": "app/hoso/SoTheoDoiHuanLuyenSoCuuCapCuu/js/ModelView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -738,8 +738,8 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
-					"route": "baocao/phuluc12/model",
-					// "$ref": "app/baocao/phuluc7/js/ModelView",
+					"route": "thongtu/KhungChuongTrinhDaoTao/model",
+					// "$ref": "app/hoso/SoTheoDoiHuanLuyenSoCuuCapCuu/js/ModelView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -750,8 +750,8 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
-					"route": "baocao2/phuluc4/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"route": "thongtu/NoiDungKhamChuyenKhoa/model",
+					// "$ref": "app/hoso/HoSoBenhNgheNghiep/js/ModelView",
 					"visible": function () {
 						return this.userHasRole("company");
 
@@ -762,8 +762,8 @@ define(function (require) {
 					"icon": "far fa-clipboard",
 					"type": "view",
 					// "collectionName": "baocao",
-					"route": "baocao2/phuluc6/model",
-					// "$ref": "app/baocao2/phuluc7/js/ModelView",
+					"route": "thongtu/ThoiGianVaNoiDungKhamDinhKyNLDMacBNN/model",
+					// "$ref": "app/hoso/HoSoBenhNgheNghiep/js/ModelView",
 					"visible": function () {
 						return this.userHasRole("company");
 

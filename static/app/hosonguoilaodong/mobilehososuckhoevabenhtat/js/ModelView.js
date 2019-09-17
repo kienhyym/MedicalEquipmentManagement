@@ -546,8 +546,10 @@ define(function (require) {
 					}
 				})
 			})
+			
 
 		})
+
 		},
 		tinhTongBangSoTruongHopMacCacLoaiBenhThongThuong: function () {
 			var self = this;

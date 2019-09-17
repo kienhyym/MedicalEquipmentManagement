@@ -25,17 +25,11 @@
         "type": "string",
         "primary": true
     },
-    "noiviet": {
+    "noivietbaocao": {
         "type": "string",
         "length": 255
     },
-    "ngayviet": {
-        "type": "number"
-    },
-    "thangviet": {
-        "type": "number"
-    },
-    "namviet": {
+    "ngaythangnam": {
         "type": "number"
     },
     "cosokhambenh_tencoso": {
@@ -90,13 +84,7 @@
         "type": "string",
         "length": 255
     },
-    "truonghopmacbenhnghenghiep_ngaysinh": {
-        "type": "number"
-    },
-    "truonghopmacbenhnghenghiep_thangsinh": {
-        "type": "number"
-    },
-    "truonghopmacbenhnghenghiep_namsinh": {
+    "ngaysinh": {
         "type": "number"
     },
     "truonghopmacbenhnghenghiep_tenbenh": {
@@ -107,31 +95,20 @@
         "type": "string",
         "length": 255
     },
-    "truonghopmacbenhnghenghiep_namtiepxuc": {
+    "ngaytiepxuc": {
         "type": "number"
     },
-    "truonghopmacbenhnghenghiep_thangtiepxuc": {
+    "ngayxayraxuco": {
         "type": "number"
     },
-    "truonghopmacbenhnghenghiep_ngaytiepxuc": {
+    "ngaychuandoan": {
         "type": "number"
     },
-    "ngayxayrasuco_ngay": {
-        "type": "number"
+    "noiky": {
+        "type": "string",
+        "length": 255
     },
-    "ngayxayrasuco_thang": {
-        "type": "number"
-    },
-    "ngayxayrasuco_nam": {
-        "type": "number"
-    },
-    "ngaychuandoan_ngay": {
-        "type": "number"
-    },
-    "ngaychuandoan_thang": {
-        "type": "number"
-    },
-    "ngaychuandoan_nam": {
+    "ngayky": {
         "type": "number"
     }
 }

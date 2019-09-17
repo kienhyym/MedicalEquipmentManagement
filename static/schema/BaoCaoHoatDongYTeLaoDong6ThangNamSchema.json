@@ -41,17 +41,8 @@
         "type": "string",
         "length": 255
     },
-    "ngayvietbaocao": {
-        "type": "string",
-        "length": 255
-    },
-    "thangvietbaocao": {
-        "type": "string",
-        "length": 255
-    },
-    "namvietbaocao": {
-        "type": "string",
-        "length": 255
+    "ngaythangnam": {
+        "type": "number"
     },
     "baocaonam": {
         "type": "string",
