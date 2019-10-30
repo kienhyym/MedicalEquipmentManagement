@@ -166,12 +166,13 @@ def add_danhsach_xaphuong():
 
 @manager.command
 def run():  
-    
-    add_danhsach_quocgia_tinhthanh()
-    add_danhsach_quanhuyen()
-    add_danhsach_xaphuong()
+    quocgiaa = db.session.query(QuocGia).first()
+    if quocgiaa is None:
+        add_danhsach_quocgia_tinhthanh()
+        add_danhsach_quanhuyen()
+        add_danhsach_xaphuong()
             
-    run_app(host="0.0.0.0", port=9082)
+    run_app(host="0.0.0.0", port=20606)
 
 if __name__ == '__main__':
     manager.main()

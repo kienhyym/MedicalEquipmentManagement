@@ -17,8 +17,7 @@ class Config(object):
 
     TRANSACTION_TOKEN_EXPIRE_TIME = 120
     
-    DOMAIN_URL = 'http://127.0.0.1:9082'
-    # DOMAIN_URL = 'http://103.74.120.54:9082/'
+    DOMAIN_URL = 'http://127.0.0.1:20606'
     
     MAIL_SERVER_HOST = 'kienhyym.gmail.com'
     MAIL_SERVER_PORT = 587
@@ -38,5 +37,5 @@ class Config(object):
 
 #     FS_ROOT= "/Users/namdv/workspace/thanhtra_moitruong/repo/static/uploads/"
     FS_ROOT= "/opt/deploy/thanhtra-moitruong/repo/static/uploads/"
-    FILE_SERVICE_URL = 'http://103.74.120.65:9082/static/uploads'
+    FILE_SERVICE_URL = 'http://103.74.120.65:20606/static/uploads'
 
