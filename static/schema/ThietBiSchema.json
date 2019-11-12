@@ -1,0 +1,83 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "ten": {
+        "type": "string",
+        "length": 255
+    },
+    "nhanhieu": {
+        "type": "string",
+        "length": 255
+    },
+    "hangsanxuat": {
+        "type": "string",
+        "length": 255
+    },
+    "made_in": {
+        "type": "string",
+        "length": 255
+    },
+    "model_serial_number": {
+        "type": "string",
+        "length": 255
+    },
+    "dienap": {
+        "type": "string",
+        "length": 255
+    },
+    "nguyengia": {
+        "type": "string",
+        "length": 255
+    },
+    "nguonnhap": {
+        "type": "string",
+        "length": 255
+    },
+    "chungtu": {
+        "type": "string",
+        "length": 255
+    },
+    "phanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "soluuhanh": {
+        "type": "string",
+        "length": 255
+    },
+    "soluong": {
+        "type": "number"
+    },
+    "congdung": {
+        "type": "string",
+        "length": 255
+    },
+    "huongdansudung": {
+        "type": "string",
+        "length": 255
+    }
+}

@@ -56,24 +56,10 @@
         "type": "boolean",
         "default": true
     },
-    "role_ma": {
-        "type": "string",
-        "length": 80,
-        "default": "worker"
-    },
-    "role_id": {
-        "type": "string"
-    },
     "donvi": {
         "type": "dict"
     },
     "roles": {
-        "type": "list"
-    },
-    "role": {
-        "type": "dict"
-    },
-    "userconnectionchannels": {
         "type": "list"
     }
 }

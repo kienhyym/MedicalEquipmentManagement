@@ -3,18 +3,15 @@ define(function (require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
-	var template = require('text!app/user/tpl/model.html'),
-		schema = require('json!schema/UserSchema.json');
-
-	var RoleSelectView = require('app/role/js/SelectView');
-	var DonViSelectView = require('app/donvi/js/SelectView');
+	var template = require('text!app/thietbi/tpl/model.html'),
+		schema = require('json!schema/ThietBiSchema.json');
 
 
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "user",
+		collectionName: "thietbi",
 		bindings: "data-bind",
 		state: null,
 		tools: [
@@ -100,22 +97,27 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-				{
-					field: "roles",
-					uicontrol: "ref",
-					textField: "name",
-					foreignRemoteField: "id",
-					selectionMode: "multiple",
-					dataSource: RoleSelectView
-				},
 				// {
-				// 	field: "donvi",
+				// 	field: "role",
 				// 	uicontrol: "ref",
-				// 	textField: "ten",
+				// 	textField: "name",
 				// 	foreignRemoteField: "id",
-				// 	foreignField: "donvi_id",
-				// 	dataSource: DonViSelectView
+				// 	foreignField: "role_id",
+				// 	// selectionMode: "multiple",
+				// 	dataSource: RoleSelectView
 				// },
+				{
+					field: "phanloai",
+					uicontrol: "combobox",
+					textField: "text",
+					valueField: "value",
+					dataSource: [
+						{ "value": "A", "text": "Loại A" },
+						{ "value": "B", "text": "Loại B" },
+						{ "value": "C", "text": "Loại C" },
+						{ "value": "D", "text": "Loại D" },
+					],
+				},
 
 	
 			]

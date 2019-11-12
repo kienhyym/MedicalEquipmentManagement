@@ -17,17 +17,7 @@ define(function (require) {
 			var isUser = gonrinApp().currentUser != null ? gonrinApp().currentUser.hasRole('User') : false;
 			return isUser;
 		},
-		userHasRole: function (role) {
-			var x = role;
-			var y = gonrinApp().currentUser.role_ma;
-			var z = false;
-			if(x===y){
-				z = true;
-			}
-			
-			var is = gonrinApp().currentUser != null ? z: false;
-			return is;
-		},
+		
 		requireRole: function (role) {
 			var user = gonrinApp().currentUser;
 			console.log("user.role====", user.role);

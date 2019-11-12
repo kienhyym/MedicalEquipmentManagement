@@ -1,114 +1,11 @@
+
+.navbar-brand,.navbar-search,.text-nowrap,.main-navbar__search{
+
+}
+
 body {
   font-size: .875rem;
 }
-
-
-.khamdinhky .list-unstyled .radio-option {
-  padding: 25px;
-  
-}
-.gioitinh .list-unstyled .radio-option {
-  padding-top: 5px;
-  
-}
-#phanloaisuckhoe .list-unstyled .radio-option {
-  padding-left:  25px;
-  padding-right:  25px;
-  padding-top:  25px;
-
-}
-.dropdown-menu-right a{
-  z-index: 1;
-
-}
-span.form-control.ref-form-control {
-  height: 35px;
-}
-.datetimepicker-input{
-  width: 100px;
-}
-.toolbar{
-  position: fixed;
-  z-index: 2;
-  top: 75px;
-  right: 25px;
-}
-/* .datetimepicker-input{
-  border:none;
-	border-bottom:1px dotted black;
-  padding-left: 1%;
-  outline: 0px;
-} */
-.list-unstyled {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  /* overflow: hidden; */
-  display: flex; 
-  justify-content: space-around";
-}
-
-.list-unstyled li {
-  float: left;
-  padding: 1px;
-}
-
-.input-phuluc2{
-	border:none;
-	border-bottom:1px dotted black;
-  padding-left: 1%;
-  outline: 0px;
-}
-.flexboxer{
-		display: flex;
-}
-.flexboxer label{
-  padding-top: 5px;
-  margin:  0px;
-}
-.gioi-tinh div .list-unstyled .radio-option{
-  padding: 0px;
-}
-.gioi-tinh div .list-unstyled .radio-option span{
-  padding: 5px;
-}
-
-#cardbody{
-  position: relative;
-}
-
-#imgcardbody{
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%,-90%)
-}
-
-.stronger{
-  color: black;
-  font-weight: 500;
-}
-
-
-.table-bordered tr td input{
-  text-align: center;
-}
-.table-bordered tr td{
-  padding: 5px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .feather {
   width: 16px;
   height: 16px;

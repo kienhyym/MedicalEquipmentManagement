@@ -21,7 +21,7 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<form class="needs-validation" novalidate="">
+					<div class="needs-validation" novalidate="">
 						<div class="row mb-3">
 
 							<div class="col-md-6 ">
@@ -52,38 +52,21 @@
 									placeholder="..." required="">
 							</div>
 							<div class="col-md-6">
-								<label for="password">Đơn vị<span class="text-muted"></span></label>
-								<input id="donvi" type="text" data-bind="dict:donvi" />
+								<label for="password">Password</label>
+								<input id="password" type="password" data-bind="value:password" />
 							</div>
 						</div>
 
 						<div class="row mb-3">
 							<div class="col-md-12">
 								<label for="password">Loại người dùng <span class="text-muted"></span></label>
-								<input type="text" data-bind="dict:role" />
+								<input type="text" data-bind="dict:roles" />
 							</div>
 
 						</div>
 
-						<!-- <div class="form-group">
-							<input type="text" class="form-control vaitro" data-bind="value:type">
-						</div> -->
-
-						<!-- <div class="row col-md-12 w-100 ml-1 mb-3 p-0 " style="border-bottom:1px solid gainsboro ">
-							<label>Kênh kết nối người dùng</label>
-						</div>
-						<div>
-							<div class="row col-md-12">
-								<div id="add_connection_channel" class="mb-1"></div>
-							</div>
-							<div data-bind="list:userconnectionchannels"></div>
-						</div> -->
-						<!-- <input multiple type="file" id="inpupload">
-						<button type="button" id="btUpload">Upload</button> -->
-<!-- 
-						<input type="file" id="foo" name="file1" multiple="multiple" />
-						<input name="file" type="text" /> -->
-					</form>	
+						
+					</div>	
 				</div>
 			</div>
 		</div>
