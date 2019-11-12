@@ -99,16 +99,40 @@ define(function (require) {
 			fields: [
 			
 				{
-					field: "phanloai",
-					uicontrol: "combobox",
-					textField: "text",
-					valueField: "value",
-					dataSource: [
-						{ "value": "A", "text": "Loại A (mức độ rủi ro thấp.)" },
-						{ "value": "B", "text": "Loại B (mức độ rủi ro trung bình thấp.)" },
-						{ "value": "C", "text": "Loại C (mức độ rủi ro trung bình cao.)" },
-						{ "value": "D", "text": "Loại D (mức độ rủi ro cao.)" },
-					],
+					field: "ngay_suco",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
+				{
+					field: "ngay_danhgia",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
+				{
+					field: "ngay_ketqua",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
 				},
 
 	
@@ -117,8 +141,8 @@ define(function (require) {
 
 		render: function () {
 			var self = this;
-			self.$el.find(".tensp").html("Thiết bị: "+sessionStorage.getItem('TenSanPham'))
-			self.model.set("thietbi_id",sessionStorage.getItem('IDSanPham'))
+			self.$el.find(".tensp").html("PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ: "+sessionStorage.getItem('TenSanPham'))
+			self.model.set("chitietthietbi_id",sessionStorage.getItem('IDSanPham'))
 			self.model.set("tenthietbi",sessionStorage.getItem('TenSanPham'))
 
 			var id = this.getApp().getRouter().getParam("id");			
@@ -126,7 +150,7 @@ define(function (require) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						self.$el.find(".tensp").html("Thiết bị: "+self.model.get("tenthietbi"))
+						// self.$el.find(".tensp").html("PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ: "+self.model.get("tenthietbi"))
 						self.applyBindings();
 
 					},

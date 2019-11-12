@@ -132,8 +132,6 @@ define(function (require) {
 							if (thoigiantaoA > thoigiantaoB) {
 								return -1;
 							}
-
-							// name trùng nhau
 							return 0;
 						});
 						danhsachsanpham.forEach(function (item, index) {

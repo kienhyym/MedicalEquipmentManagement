@@ -11,7 +11,7 @@
 					<div class="row">
 						<div class="col-md-7">
 
-							<h6 class="m-0 pt-2">PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ</h6>
+							<h6 class="m-0 pt-2 tensp"></h6>
 						</div>
 						<div class="col-md-5 text-right">
 							<div block-bind="toolbar"></div>
@@ -59,8 +59,10 @@
 
 							<div class="row col-md-6">
 								<label class="col-md-2 m-0 pt-2">Ngày:</label>
-								<input class="col-md-4" type="text" class="form-control" data-bind="value:ngay_suco"
-									placeholder="..." required="">
+								<div class="col-md-6">
+									<input type="text" class="form-control" data-bind="value:ngay_suco"
+										placeholder="..." required="">
+								</div>
 							</div>
 							<br>
 							<div class="row row col-md-12">
@@ -92,9 +94,11 @@
 
 							<div class="row row col-md-12">
 								<div class="row col-md-4">
-									<label class="col-md-4 m-0 pt-2">Ngày:</label>
-									<input class="col-md-8" type="text" class="form-control"
-										data-bind="value:ngay_danhgia" placeholder="..." required="">
+									<label class="col-md-4 m-0 pt-2 pr-0">Ngày:</label>
+									<div class="col-md-8 p-0">
+										<input type="text" class="form-control" data-bind="value:ngay_danhgia"
+											placeholder="..." required="">
+									</div>
 								</div>
 								<div class="row col-md-8">
 									<label class="col-md-5 m-0 pt-2">Cán bộ tổ sửa chữa TB(ký):</label>
@@ -113,31 +117,34 @@
 
 							<hr>
 							<div class="col-md-12">
-									<label>3 Kết quả, tình trạng thiết bị sau xử lý:</label>
-									<textarea type="text" class="form-control" rows="5" data-bind="value:ketqua"
-										placeholder="..." required=""></textarea>
-									<div class="invalid-feedback">
-										Vui lòng nhập email.
-									</div>
+								<label>3 Kết quả, tình trạng thiết bị sau xử lý:</label>
+								<textarea type="text" class="form-control" rows="5" data-bind="value:ketqua"
+									placeholder="..." required=""></textarea>
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
 								</div>
-								<br>
-	
-	
-	
-								<div class="row row col-md-12">
-									<div class="row col-md-4">
-										<label class="col-md-4 m-0 pt-2">Ngày:</label>
+							</div>
+							<br>
+
+
+
+							<div class="row row col-md-12">
+								<div class="row col-md-4">
+									<label class="col-md-4 m-0 pt-2 pr-0">Ngày:</label>
+									<div class="col-md-8 p-0">
+
 										<input class="col-md-8" type="text" class="form-control"
 											data-bind="value:ngay_ketqua" placeholder="..." required="">
 									</div>
-									<div class="row col-md-8">
-										<label class="col-md-5 m-0 pt-2">Xác nhận của ngƣời sử dụng (ký):</label>
-										<input class="col-md-7" type="text" class="form-control"
-											data-bind="value:xacnhan_nguoisudungnhanketqua" placeholder="..." required="">
-									</div>
 								</div>
-	
-								<br>
+								<div class="row col-md-8">
+									<label class="col-md-5 m-0 pt-2">Xác nhận của ngƣời sử dụng (ký):</label>
+									<input class="col-md-7" type="text" class="form-control"
+										data-bind="value:xacnhan_nguoisudungnhanketqua" placeholder="..." required="">
+								</div>
+							</div>
+
+							<br>
 						</div>
 
 					</div>
