@@ -47,6 +47,26 @@ define(function (require) {
 			"route": "thietbi/model(/:id)",
 			"$ref": "app/thietbi/js/ModelView",
 		},
+		{
+			"collectionName": "chitietthietbi",
+			"route": "chitietthietbi/collection",
+			"$ref": "app/chitietthietbi/js/CollectionView",
+		},
+		{
+			"collectionName": "chitietthietbi",
+			"route": "chitietthietbi/model(/:id)",
+			"$ref": "app/chitietthietbi/js/ModelView",
+		},
+		{
+			"collectionName": "phieuyeucausuachua",
+			"route": "phieuyeucausuachua/collection",
+			"$ref": "app/phieuyeucausuachua/js/CollectionView",
+		},
+		{
+			"collectionName": "phieuyeucausuachua",
+			"route": "phieuyeucausuachua/model(/:id)",
+			"$ref": "app/phieuyeucausuachua/js/ModelView",
+		},
 
 
 

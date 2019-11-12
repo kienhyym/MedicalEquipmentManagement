@@ -1,10 +1,7 @@
 <div block-bind="content">
 	<!-- Page Header -->
-	<div class="page-header row no-gutters py-4">
-		<div class="col-12 col-md-10 col-sm-4 text-center text-sm-left mb-0">
-			<span class="text-uppercase page-subtitle"> </span>
-			<h3 class="page-title text-uppercase">Thông tin thiết bị</h3>
-		</div>
+	<div class="page-header row no-gutters py-2">
+
 	</div>
 	<!-- End Page Header -->
 	<div class="row">
@@ -13,7 +10,7 @@
 				<div class="card-header  border-bottom">
 					<div class="row">
 						<div class="col-md-7">
-							<h6 class="m-0">Thông tin chi tiết</h6>
+							<h6 class="m-0 pt-2">Thông tin chi tiết thiết bị</h6>
 						</div>
 						<div class="col-md-5 text-right">
 							<div block-bind="toolbar"></div>
@@ -27,7 +24,7 @@
 							<div class="col-md-6 ">
 								<label>Tên thiết bị</label>
 								<input type="text" class="form-control" data-bind="value:ten"
-									placeholder="Nhập tên thiết bị" required="">
+									placeholder="Nhập tên thiết bị" required="" id="tensp">
 								<div class="invalid-feedback">
 									Vui lòng nhập Tên.
 								</div>
@@ -35,9 +32,9 @@
 
 
 							<div class="col-md-6">
-								<label>Nhãn hiệu<span class="text-muted"></span></label>
-								<input type="text" class="form-control" data-bind="value:nhanhieu"
-									placeholder="nhập nhãn hiệu">
+								<label>Số lượng</label>
+								<input type="number" class="form-control" data-bind="value:soluong" placeholder="..."
+									required="">
 								<div class="invalid-feedback">
 									Vui lòng nhập email.
 								</div>
@@ -45,81 +42,7 @@
 
 
 						</div>
-						<div class="row mb-3">
-							<div class="col-md-6">
-								<label>Hãng sản xuất</label>
-								<input type="text" class="form-control" data-bind="value:hangsanxuat" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label>Nơi sản xuất</label>
-								<input type="text" class="form-control" data-bind="value:made_in" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<div class="col-md-6">
-								<label>Hãng sản xuất</label>
-								<input type="text" class="form-control" data-bind="value:hangsanxuat" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label>Serial</label>
-								<input type="text" class="form-control" data-bind="value:model_serial_number" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-						</div>
 
-						<div class="row mb-3">
-							<div class="col-md-6">
-								<label>Điện áp</label>
-								<input type="text" class="form-control" data-bind="value:dienap" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label>Nguyên giá</label>
-								<input type="text" class="form-control" data-bind="value:nguyengia" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-						</div>
-
-
-						<div class="row mb-3">
-							<div class="col-md-6">
-								<label>Nguồn nhập</label>
-								<input type="text" class="form-control" data-bind="value:nguonnhap" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label>Chứng từ</label>
-								<input type="text" class="form-control" data-bind="value:chungtu" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-						</div>
 
 						<div class="row mb-3">
 							<div class="col-md-6">
@@ -141,15 +64,8 @@
 						</div>
 
 						<div class="row mb-3">
-							<div class="col-md-6">
-								<label>Số lượng</label>
-								<input type="number" class="form-control" data-bind="value:soluong" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-							<div class="col-md-6">
+
+							<div class="col-md-12">
 								<label>Công dụng</label>
 								<input type="text" class="form-control" data-bind="value:congdung" placeholder="..."
 									required="">
@@ -161,12 +77,29 @@
 
 						<div class="row mb-3">
 							<div class="col-md-12">
-								<label>Hướng dẫn sử dụng</label>
-								<textarea type="text" class="form-control" data-bind="value:huongdansudung" placeholder="..."
+								<label>Mô tả</label>
+								<textarea type="text" class="form-control" data-bind="value:mota" placeholder="..."
 									required=""></textarea>
 								<div class="invalid-feedback">
 									Vui lòng nhập email.
 								</div>
+							</div>
+						</div>
+						<div>
+							<div>
+								<table class="table table-bordered text-center">
+									<tr>
+										<th class="p-2 ">Serial</th>
+										<th class="p-2 ">Nhãn hiệu</th>
+										<th class="p-2 ">Nơi sản xuất</th>
+										<th class="p-2 ">Xem chi tiết</th>
+									</tr>
+									<tbody id="danhsachthietbi"></tbody>
+									<tr>
+										<td colspan="4" class="p-0"><button class="btn btn-light btn-sm w-100 btn-them p-2">Thêm thiết bị</button>
+										</td>
+									</tr>
+								</table>
 							</div>
 						</div>
 
@@ -174,5 +107,3 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</div>

@@ -76,7 +76,7 @@ define(function (require) {
 		// },
 
 		{
-			"text": "Thiết bị",
+			"text": " Danh sách thiết bị",
 			"icon": "fa fa-home",
 			"type": "view",
 			"collectionName": "thietbi",
@@ -92,6 +92,48 @@ define(function (require) {
 			"collectionName": "thietbi",
 			"route": "thietbi/model(/:id)",
 			"$ref": "app/thietbi/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
+		{
+			"text": "Quản lý thiết bị",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "chitietthietbi",
+			"route": "chitietthietbi/collection",
+			"$ref": "app/chitietthietbi/js/CollectionView",
+			"visible": function () {
+				return true
+
+			}
+		},
+		{
+			"type": "view",
+			"collectionName": "chitietthietbi",
+			"route": "chitietthietbi/model(/:id)",
+			"$ref": "app/chitietthietbi/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
+		{
+			"text": "DS phiếu sửa chữa",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "phieuyeucausuachua",
+			"route": "phieuyeucausuachua/collection",
+			"$ref": "app/phieuyeucausuachua/js/CollectionView",
+			"visible": function () {
+				return true
+
+			}
+		},
+		{
+			"type": "view",
+			"collectionName": "phieuyeucausuachua",
+			"route": "phieuyeucausuachua/model(/:id)",
+			"$ref": "app/phieuyeucausuachua/js/ModelView",
 			"visible": function () {
 				return false;
 			}

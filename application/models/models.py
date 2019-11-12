@@ -36,7 +36,6 @@ class User(CommonModel):
     description = db.Column(db.String())
     active = db.Column(db.Boolean(), default=True)
     roles = db.relationship('Role', secondary=roles_users, cascade="save-update")
-    role_id = db.Column(UUID(as_uuid=True),db.ForeignKey('role.id'), nullable=True)
 
 
     def has_role(self, role):
@@ -118,6 +117,17 @@ class ThietBi(CommonModel):
     __tablename__ = 'thietbi'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     ten = db.Column(String(255))
+    phanloai = db.Column(String(255))
+    soluuhanh = db.Column(String(255))
+    soluong= db.Column(db.Integer)
+    congdung = db.Column(String(255))
+    mota = db.Column(String(255))
+    chitietsanphamfield = db.relationship('ChiTietThietBi', cascade="all, delete-orphan")
+
+
+class ChiTietThietBi(CommonModel):
+    __tablename__ = 'chitietthietbi'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     nhanhieu = db.Column(String(255))
     hangsanxuat = db.Column(String(255))
     made_in = db.Column(String(255))
@@ -126,10 +136,27 @@ class ThietBi(CommonModel):
     nguyengia = db.Column(String(255))
     nguonnhap = db.Column(String(255))
     chungtu = db.Column(String(255))
-    phanloai = db.Column(String(255))
-    soluuhanh = db.Column(String(255))
-    soluong= db.Column(db.Integer)
-    congdung = db.Column(String(255))
-    huongdansudung = db.Column(String(255))
+    thietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('thietbi.id'), nullable=True)
+    tenthietbi = db.Column(String(255))
+    phieuyeucausuachuafield = db.relationship('PhieuYeuCauSuaChua', cascade="all, delete-orphan")
 
 
+class PhieuYeuCauSuaChua(CommonModel):
+    __tablename__ = 'phieuyeucausuachua'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tenthietbi = db.Column(String(255))
+    ma_qltb = db.Column(String(255))
+    nguoisudung = db.Column(String(255))
+    donvisudung = db.Column(String(255))
+    motasuco = db.Column(Text())
+    ngay_suco = db.Column(BigInteger())
+    xacnhan_nguoisudungbaosuco = db.Column(String(255))
+    xacnhan_donvi = db.Column(String(255))
+    danhgiasobo = db.Column(Text())
+    ngay_danhgia = db.Column(BigInteger())
+    xacnhan_canbosuachua = db.Column(String(255))
+    ykienlanhdao = db.Column(String(255))
+    ketqua = db.Column(Text())
+    ngay_ketqua = db.Column(BigInteger())
+    xacnhan_nguoisudungnhanketqua = db.Column(String(255))
+    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)

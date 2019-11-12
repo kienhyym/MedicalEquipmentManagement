@@ -1,0 +1,148 @@
+<div block-bind="content">
+	<!-- Page Header -->
+	<div class="page-header row no-gutters py-2">
+
+	</div>
+	<!-- End Page Header -->
+	<div class="row">
+		<div class="col-lg-12 col-md-12">
+			<div class="card  card-small mb-4">
+				<div class="card-header  border-bottom">
+					<div class="row">
+						<div class="col-md-7">
+
+							<h6 class="m-0 pt-2">PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ</h6>
+						</div>
+						<div class="col-md-5 text-right">
+							<div block-bind="toolbar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="needs-validation" novalidate="">
+						<div class="row">
+							<div class="row col-md-6">
+								<label class="col-md-4 m-0 pt-2">Tên thiết bị:</label>
+								<input class="col-md-8" type="text" class="form-control" data-bind="value:tenthietbi"
+									placeholder="..." required="">
+							</div>
+							<div class="row col-md-6">
+								<label class="col-md-4 m-0 pt-2">Mã QLTB:</label>
+								<input class="col-md-8" type="text" class="form-control" data-bind="value:ma_qltb"
+									placeholder="..." required="">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="row col-md-6">
+								<label class="col-md-4 m-0 pt-2">Người sử dụng:</label>
+								<input class="col-md-8" type="text" class="form-control" data-bind="value:nguoisudung"
+									placeholder="..." required="">
+							</div>
+							<div class="row col-md-6">
+								<label class="col-md-4 m-0 pt-2">Đơn vị:</label>
+								<input class="col-md-8" type="text" class="form-control" data-bind="value:donvisudung"
+									placeholder="..." required="">
+							</div>
+						</div>
+						<br>
+						<div style="border:1px solid #d4d3d3;">
+							<div class="col-md-12">
+								<label>1 Mô tả sự cố của thiết bị:</label>
+								<textarea type="text" class="form-control" rows="5" data-bind="value:motasuco"
+									placeholder="..." required=""></textarea>
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+							<br>
+
+							<div class="row col-md-6">
+								<label class="col-md-2 m-0 pt-2">Ngày:</label>
+								<input class="col-md-4" type="text" class="form-control" data-bind="value:ngay_suco"
+									placeholder="..." required="">
+							</div>
+							<br>
+							<div class="row row col-md-12">
+								<div class="row col-md-6">
+									<label class="col-md-5 m-0 pt-2">Người sử dụng (ký):</label>
+									<input class="col-md-7" type="text" class="form-control"
+										data-bind="value:xacnhan_nguoisudungbaosuco" placeholder="..." required="">
+								</div>
+								<div class="row col-md-6">
+									<label class="col-md-5 m-0 pt-2">Lãnh đạo đơn vị (ký):</label>
+									<input class="col-md-7" type="text" class="form-control"
+										data-bind="value:xacnhan_donvi" placeholder="..." required="">
+								</div>
+							</div>
+
+							<hr>
+
+							<div class="col-md-12">
+								<label>2 Tính trạng thiết bị, đánh giá sơ bộ và kiến nghị biện pháp xử lý:</label>
+								<textarea type="text" class="form-control" rows="5" data-bind="value:danhgiasobo"
+									placeholder="..." required=""></textarea>
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+							<br>
+
+
+
+							<div class="row row col-md-12">
+								<div class="row col-md-4">
+									<label class="col-md-4 m-0 pt-2">Ngày:</label>
+									<input class="col-md-8" type="text" class="form-control"
+										data-bind="value:ngay_danhgia" placeholder="..." required="">
+								</div>
+								<div class="row col-md-8">
+									<label class="col-md-5 m-0 pt-2">Cán bộ tổ sửa chữa TB(ký):</label>
+									<input class="col-md-7" type="text" class="form-control"
+										data-bind="value:xacnhan_canbosuachua" placeholder="..." required="">
+								</div>
+							</div>
+
+							<br>
+
+							<div class="row col-md-12">
+								<label class="col-md-4 m-0 pt-2">Ý kiến Lãnh đạo Phòng VT- TBYT:</label>
+								<input class="col-md-8" type="text" class="form-control" data-bind="value:ykienlanhdao"
+									placeholder="..." required="">
+							</div>
+
+							<hr>
+							<div class="col-md-12">
+									<label>3 Kết quả, tình trạng thiết bị sau xử lý:</label>
+									<textarea type="text" class="form-control" rows="5" data-bind="value:ketqua"
+										placeholder="..." required=""></textarea>
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+								<br>
+	
+	
+	
+								<div class="row row col-md-12">
+									<div class="row col-md-4">
+										<label class="col-md-4 m-0 pt-2">Ngày:</label>
+										<input class="col-md-8" type="text" class="form-control"
+											data-bind="value:ngay_ketqua" placeholder="..." required="">
+									</div>
+									<div class="row col-md-8">
+										<label class="col-md-5 m-0 pt-2">Xác nhận của ngƣời sử dụng (ký):</label>
+										<input class="col-md-7" type="text" class="form-control"
+											data-bind="value:xacnhan_nguoisudungnhanketqua" placeholder="..." required="">
+									</div>
+								</div>
+	
+								<br>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

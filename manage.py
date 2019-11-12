@@ -162,7 +162,13 @@ def add_danhsach_xaphuong():
         db.session.commit()
     except Exception as e:
         print("XA PHUONG ERROR", e)
-
+@manager.command
+def create_default_user(): 
+    #add user
+    user1 = User(email='admin@gmail.com', name='admin',phone_number="",password=auth.encrypt_password('zxc'))
+    db.session.add(user1)
+    db.session.flush()
+    db.session.commit()
 
 @manager.command
 def run():  
@@ -171,7 +177,8 @@ def run():
         add_danhsach_quocgia_tinhthanh()
         add_danhsach_quanhuyen()
         add_danhsach_xaphuong()
-            
+        create_default_user()
+
     run_app(host="0.0.0.0", port=20808)
 
 if __name__ == '__main__':

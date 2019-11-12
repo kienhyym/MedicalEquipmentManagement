@@ -3,15 +3,15 @@ define(function (require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
-	var template = require('text!app/thietbi/tpl/model.html'),
-		schema = require('json!schema/ThietBiSchema.json');
+	var template = require('text!app/chitietthietbi/tpl/model.html'),
+		schema = require('json!schema/ChiTietThietBiSchema.json');
 
 
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "thietbi",
+		collectionName: "chitietthietbi",
 		bindings: "data-bind",
 		state: null,
 		tools: [
@@ -37,10 +37,10 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
-
+							
 							self.model.save(null, {
 								success: function (model, respose, options) {
-
+								
 									self.getApp().notify("Lưu thông tin thành công");
 									self.getApp().getRouter().navigate(self.collectionName + "/collection");
 								},
@@ -58,8 +58,8 @@ define(function (require) {
 									}
 								}
 							});
-
-
+								
+							
 						}
 					},
 					{
@@ -97,7 +97,7 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-
+			
 				{
 					field: "phanloai",
 					uicontrol: "combobox",
@@ -111,42 +111,24 @@ define(function (require) {
 					],
 				},
 
-
+	
 			]
 		},
 
 		render: function () {
 			var self = this;
-			var id = this.getApp().getRouter().getParam("id");
+			self.$el.find(".tensp").html("Thiết bị: "+sessionStorage.getItem('TenSanPham'))
+			self.model.set("thietbi_id",sessionStorage.getItem('IDSanPham'))
+			self.model.set("tenthietbi",sessionStorage.getItem('TenSanPham'))
+
+			var id = this.getApp().getRouter().getParam("id");			
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						var danhsachsanpham = self.model.get('chitietsanphamfield');
-						danhsachsanpham.sort(function (a, b) {
-							var thoigiantaoA = a.created_at
-							var thoigiantaoB = b.created_at
-							if (thoigiantaoA < thoigiantaoB) {
-								return 1;
-							}
-							if (thoigiantaoA > thoigiantaoB) {
-								return -1;
-							}
-
-							// name trùng nhau
-							return 0;
-						});
-						danhsachsanpham.forEach(function (item, index) {
-							self.$el.find("#danhsachthietbi").append("<tr><td class='p-2'>" + item.model_serial_number + "</td><td class='p-2'>" + item.nhanhieu + "</td><td class='p-2'>" + item.made_in + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href="+self.getApp().serviceURL+ "/?#chitietthietbi/model?id="+item.id+">Xem chi tiết</a></td></tr>")
-							
-						})
+						self.$el.find(".tensp").html("Thiết bị: "+self.model.get("tenthietbi"))
 						self.applyBindings();
-						self.$el.find(".btn-them").unbind("click").bind("click", function () {
-							location.href = self.getApp().serviceURL + "/?#chitietthietbi/model";
-							sessionStorage.setItem('TenSanPham', self.$el.find("#tensp").val());
-							sessionStorage.setItem('IDSanPham', self.model.get("id"));
-						})
-						
+
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");

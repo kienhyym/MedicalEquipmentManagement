@@ -210,3 +210,13 @@ sqlapimanager.create_api(ThietBi, max_results_per_page=1000000,
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
     collection_name='thietbi')
+sqlapimanager.create_api(ChiTietThietBi, max_results_per_page=1000000,
+    methods=['GET'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    collection_name='chitietthietbi')
+sqlapimanager.create_api(PhieuYeuCauSuaChua, max_results_per_page=1000000,
+    methods=['GET'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    collection_name='phieuyeucausuachua')

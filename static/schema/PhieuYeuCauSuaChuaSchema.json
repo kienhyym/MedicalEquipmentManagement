@@ -1,0 +1,85 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "tenthietbi": {
+        "type": "string",
+        "length": 255
+    },
+    "ma_qltb": {
+        "type": "string",
+        "length": 255
+    },
+    "nguoisudung": {
+        "type": "string",
+        "length": 255
+    },
+    "donvisudung": {
+        "type": "string",
+        "length": 255
+    },
+    "motasuco": {
+        "type": "string"
+    },
+    "ngay_suco": {
+        "type": "number"
+    },
+    "xacnhan_nguoisudungbaosuco": {
+        "type": "string",
+        "length": 255
+    },
+    "xacnhan_donvi": {
+        "type": "string",
+        "length": 255
+    },
+    "danhgiasobo": {
+        "type": "string"
+    },
+    "ngay_danhgia": {
+        "type": "number"
+    },
+    "xacnhan_canbosuachua": {
+        "type": "string",
+        "length": 255
+    },
+    "ykienlanhdao": {
+        "type": "string",
+        "length": 255
+    },
+    "ketqua": {
+        "type": "string"
+    },
+    "ngay_ketqua": {
+        "type": "number"
+    },
+    "xacnhan_nguoisudungnhanketqua": {
+        "type": "string",
+        "length": 255
+    },
+    "chitietthietbi_id": {
+        "type": "string"
+    }
+}
