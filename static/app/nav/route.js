@@ -67,6 +67,18 @@ define(function (require) {
 			"route": "phieuyeucausuachua/model(/:id)",
 			"$ref": "app/phieuyeucausuachua/js/ModelView",
 		},
+		{
+			"collectionName": "bangkehoachkiemtrathietbitheonam",
+			"route": "bangkehoachkiemtrathietbitheonam/collection",
+			"$ref": "app/bangkehoachkiemtrathietbitheonam/js/CollectionView",
+		},
+		{
+			"collectionName": "bangkehoachkiemtrathietbitheonam",
+			"route": "bangkehoachkiemtrathietbitheonam/model(/:id)",
+			"$ref": "app/bangkehoachkiemtrathietbitheonam/js/ModelView",
+		},
+
+
 
 
 
