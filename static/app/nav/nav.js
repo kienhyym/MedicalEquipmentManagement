@@ -118,7 +118,7 @@ define(function (require) {
 			}
 		},
 		{
-			"text": "Kiểm tra thiết bị",
+			"text": "Hồ sơ kiểm tra thiết bị",
 			"icon": "fa fa-home",
 			"type": "view",
 			"collectionName": "bangkiemtrathietbi",
@@ -138,52 +138,7 @@ define(function (require) {
 				return false;
 			}
 		},
-
-		{
-			"text": "Dự toán sửa chữa",
-			"icon": "fa fa-home",
-			"type": "view",
-			"collectionName": "dutoansuachuanam",
-			"route": "dutoansuachuanam/collection",
-			"$ref": "app/dutoansuachuanam/js/CollectionView",
-			"visible": function () {
-				return true
-
-			}
-		},
-		{
-			"type": "view",
-			"collectionName": "dutoansuachuanam",
-			"route": "dutoansuachuanam/model(/:id)",
-			"$ref": "app/dutoansuachuanam/js/ModelView",
-			"visible": function () {
-				return false;
-			}
-		},
-
-
-
-		{
-			"text": "DS phiếu sửa chữa",
-			"icon": "fa fa-home",
-			"type": "view",
-			"collectionName": "phieuyeucausuachua",
-			"route": "phieuyeucausuachua/collection",
-			"$ref": "app/phieuyeucausuachua/js/CollectionView",
-			"visible": function () {
-				return true
-
-			}
-		},
-		{
-			"type": "view",
-			"collectionName": "phieuyeucausuachua",
-			"route": "phieuyeucausuachua/model(/:id)",
-			"$ref": "app/phieuyeucausuachua/js/ModelView",
-			"visible": function () {
-				return false;
-			}
-		},
+		
 		{
 			"text": "Kế hoạch kiểm tra năm",
 			"icon": "fa fa-home",
@@ -205,6 +160,79 @@ define(function (require) {
 				return false;
 			}
 		},
+		{
+			"text": "Chứng từ",
+			"icon": "fa fa-home",
+			"type": "category",
+			"entries": [
+				{
+					"text": "DS phiếu sửa chữa",
+					"icon": "fa fa-home",
+					"type": "view",
+					"collectionName": "phieuyeucausuachua",
+					"route": "phieuyeucausuachua/collection",
+					"$ref": "app/chungtu/phieuyeucausuachua/js/CollectionView",
+					"visible": function () {
+						return true
+		
+					}
+				},
+				{
+					"type": "view",
+					"collectionName": "phieuyeucausuachua",
+					"route": "phieuyeucausuachua/model(/:id)",
+					"$ref": "app/chungtu/phieuyeucausuachua/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+				{
+					"text": "Tình trạng thiết bị",
+					"icon": "fa fa-home",
+					"type": "view",
+					"collectionName": "bienbanxacnhantinhtrangthietbi",
+					"route": "bienbanxacnhantinhtrangthietbi/collection",
+					"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/CollectionView",
+					"visible": function () {
+						return true
+		
+					}
+				},
+				{
+					"type": "view",
+					"collectionName": "bienbanxacnhantinhtrangthietbi",
+					"route": "bienbanxacnhantinhtrangthietbi/model(/:id)",
+					"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+				{
+					"text": "Dự toán sửa chữa",
+					"icon": "fa fa-home",
+					"type": "view",
+					"collectionName": "dutoansuachuanam",
+					"route": "dutoansuachuanam/collection",
+					"$ref": "app/chungtu/dutoansuachuanam/js/CollectionView",
+					"visible": function () {
+						return true
+		
+					}
+				},
+				{
+					"type": "view",
+					"collectionName": "dutoansuachuanam",
+					"route": "dutoansuachuanam/model(/:id)",
+					"$ref": "app/chungtu/dutoansuachuanam/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+			]
+		},
+
+
+
 		// {
 		// 	"text": "Danh mục",
 		// 	"icon": "fa fa-home",

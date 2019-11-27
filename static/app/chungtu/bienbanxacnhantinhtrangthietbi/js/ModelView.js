@@ -3,15 +3,15 @@ define(function (require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
-	var template = require('text!app/phieuyeucausuachua/tpl/model.html'),
-		schema = require('json!schema/PhieuYeuCauSuaChuaSchema.json');
+	var template = require('text!app/chungtu/bienbanxacnhantinhtrangthietbi/tpl/model.html'),
+		schema = require('json!schema/BienBanXacNhanTinhTrangThietBiSchema.json');
 
 
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "phieuyeucausuachua",
+		collectionName: "bienbanxacnhantinhtrangthietbi",
 		bindings: "data-bind",
 		state: null,
 		tools: [
@@ -98,59 +98,53 @@ define(function (require) {
 		uiControl: {
 			fields: [
 			
-				{
-					field: "ngay_suco",
-					uicontrol: "datetimepicker",
-					textFormat: "DD/MM/YYYY",
-					extraFormats: ["DDMMYYYY"],
-					parseInputDate: function (val) {
-						return moment.unix(val)
-					},
-					parseOutputDate: function (date) {
-						return date.unix()
-					}
-				},
-				{
-					field: "ngay_danhgia",
-					uicontrol: "datetimepicker",
-					textFormat: "DD/MM/YYYY",
-					extraFormats: ["DDMMYYYY"],
-					parseInputDate: function (val) {
-						return moment.unix(val)
-					},
-					parseOutputDate: function (date) {
-						return date.unix()
-					}
-				},
-				{
-					field: "ngay_ketqua",
-					uicontrol: "datetimepicker",
-					textFormat: "DD/MM/YYYY",
-					extraFormats: ["DDMMYYYY"],
-					parseInputDate: function (val) {
-						return moment.unix(val)
-					},
-					parseOutputDate: function (date) {
-						return date.unix()
-					}
-				},
+				// {
+				// 	field: "phanloai",
+				// 	uicontrol: "combobox",
+				// 	textField: "text",
+				// 	valueField: "value",
+				// 	dataSource: [
+				// 		{ "value": "A", "text": "Loại A (mức độ rủi ro thấp.)" },
+				// 		{ "value": "B", "text": "Loại B (mức độ rủi ro trung bình thấp.)" },
+				// 		{ "value": "C", "text": "Loại C (mức độ rủi ro trung bình cao.)" },
+				// 		{ "value": "D", "text": "Loại D (mức độ rủi ro cao.)" },
+				// 	],
+				// },
+				// {
+				// 	field: "trangthai",
+				// 	uicontrol: "combobox",
+				// 	textField: "text",
+				// 	valueField: "value",
+				// 	dataSource: [
+				// 		{ "value": "Đã gửi yêu cầu sửa chữa", "text": "Đã gửi yêu cầu sửa chữa" },
+				// 		{ "value": "Đang sửa chữa", "text": "Đang sửa chữa" },
+				// 		{ "value": "Đang chờ kiểm duyệt", "text": "Đang chờ kiểm duyệt" },
+				// 		{ "value": "Đã kiểm duyệt", "text": "Đã kiểm duyệt" },
+				// 	],
+				// },
 
-	
+				{
+					field: "ngay",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
 			]
 		},
 
 		render: function () {
 			var self = this;
-			self.$el.find(".tensp").html("PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ: "+sessionStorage.getItem('TenSanPham'))
-			self.model.set("chitietthietbi_id",sessionStorage.getItem('IDSanPham'))
-			self.model.set("tenthietbi",sessionStorage.getItem('TenSanPham'))
-
 			var id = this.getApp().getRouter().getParam("id");			
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						// self.$el.find(".tensp").html("PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ: "+self.model.get("tenthietbi"))
 						self.applyBindings();
 
 					},

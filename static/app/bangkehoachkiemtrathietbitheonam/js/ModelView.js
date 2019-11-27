@@ -310,26 +310,6 @@ define(function (require) {
 			})
 
 
-
-			// thietBiDuocKiemTraItemView.model.on("change:tuan" + 1, function () {
-			// 	console.log("xxx", thietBiDuocKiemTraItemView.model.get("tuan" + 1))
-			// })
-			// thietBiDuocKiemTraItemView.model.on("change:tuan" + 2, function () {
-			// 	console.log("xxx", thietBiDuocKiemTraItemView.model.get("tuan" + 2))
-			// })
-			// thietBiDuocKiemTraItemView.model.on("change:tuan" + 3, function () {
-			// 	console.log("xxx", thietBiDuocKiemTraItemView.model.get("tuan" + 3))
-			// })
-			// thietBiDuocKiemTraItemView.model.on("change:tuan" + 4, function () {
-			// 	console.log("xxx", thietBiDuocKiemTraItemView.model.get("tuan" + 4))
-			// })
-			// thietBiDuocKiemTraItemView.model.on("change:tuan" + 5, function () {
-			// 	console.log("xxx", thietBiDuocKiemTraItemView.model.get("tuan" + 5))
-			// })
-
-
-
-
 			thietBiDuocKiemTraItemView.on("change", function (event) {
 				var datathietbiduockiemtrafield = self.model.get("thietbiduockiemtrafield");
 				if (datathietbiduockiemtrafield === null) {

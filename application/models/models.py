@@ -308,3 +308,20 @@ class DuToanSuaChua(CommonModel):
     ghichu = db.Column(String(255))
     ngaylap = db.Column(BigInteger())
     nguoilap = db.Column(String(255))
+
+class BienBanXacNhanTinhTrangThietBi(CommonModel):
+    __tablename__ = 'bienbanxacnhantinhtrangthietbi'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tentrangthietbi = db.Column(String(255))
+    tai  = db.Column(String(255))
+    nha = db.Column(String(255))
+    nguoisudung = db.Column(String(255))
+    donvi = db.Column(String(255))
+    ketquakiemtra = db.Column(Text())
+    huongkhacphuc = db.Column(Text())
+    ngay = db.Column(BigInteger())
+    noiviet = db.Column(String(255))
+    phongquantriky = db.Column(String(255))
+    nguoisudungky = db.Column(String(255))
+    nguoikiemtraky = db.Column(String(255))
+

@@ -4,21 +4,20 @@ define(function (require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
-    var template = require('text!app/dutoansuachuanam/tpl/collection.html'),
-		schema = require('json!schema/DuToanSuaChuaNamSchema.json');
+    var template = require('text!app/chungtu/phieuyeucausuachua/tpl/collection.html'),
+		schema = require('json!schema/PhieuYeuCauSuaChuaSchema.json');
 
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
-        collectionName: "dutoansuachuanam",
+        collectionName: "phieuyeucausuachua",
         uiControl:{
             fields: [
                 {
-                    field: "nam", label: "Năm", width: 250, readonly: true,
+                    field: "tenthietbi", label: "Tên thiết bị", width: 250, readonly: true,
                 },
-               
-               
+                
             ],
             onRowClick: function (event) {
                 if (event.rowId) {

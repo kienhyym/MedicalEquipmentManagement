@@ -1,0 +1,157 @@
+<div block-bind="content">
+	<!-- Page Header -->
+	<div class="page-header row no-gutters py-2">
+
+	</div>
+	<!-- End Page Header -->
+	<div class="row">
+		<div class="col-lg-12 col-md-12">
+			<div class="card  card-small mb-4">
+				<div class="card-header  border-bottom">
+					<div class="row">
+						<div class="col-md-7">
+							<h6 class="m-0 pt-2 tensp"></h6>
+						</div>
+						<div class="col-md-5 text-right">
+							<div block-bind="toolbar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-5 text-center">
+							<label>BỘ Y TẾ </label><br>
+							<label>VĂN PHÒNG</label><br>
+							<label>........................</label>
+						</div>
+						<div class="col-md-7 text-center">
+							<label>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</label><br>
+							<label>Độc lập - Tự do - Hạnh phúc</label><br>
+							<label>........................</label>
+						</div>
+					</div>
+					<div class="text-center">
+						<label>BIÊN BẢN KIỂM TRA (1) TÌNH TRẠNG HƯ HỎNG CỦA TRANG THIẾT BỊ
+						</label>
+					</div>
+					<div class="needs-validation" novalidate="">
+						<div class="row mb-3">
+							<div class="col-md-12 ">
+								<label>Tên trang thiết bị (2):</label>
+								<input type="text" class="form-control" data-bind="value:tentrangthietbi"
+									placeholder="Nhập tên thiết bị" required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập Tên.
+								</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-6">
+								<label>Tại (3) <span class="text-muted"></span></label>
+								<input type="text" class="form-control" data-bind="value:tai" placeholder="Tại">
+								<div class="invalid-feedback">
+									Vui lòng nhập nơi.
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label>Nhà: <span class="text-muted"></span></label>
+								<input type="text" class="form-control" data-bind="value:nha" placeholder="Nhà">
+								<div class="invalid-feedback">
+									Vui lòng nhập nhà.
+								</div>
+							</div>
+						</div>
+
+						<div class="row mb-3">
+							<div class="col-md-6">
+								<label>Họ và tên người sử dụng: <span class="text-muted"></span></label>
+								<input type="text" class="form-control" data-bind="value:nguoisudung"
+									placeholder="Người sử dụng">
+								<div class="invalid-feedback">
+									Vui lòng nhập người sử dụng.
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label>Đơn vị:<span class="text-muted"></span></label>
+								<input type="text" class="form-control" data-bind="value:donvi" placeholder="Đơn vị"">
+									<div class=" invalid-feedback">
+								Vui lòng nhập đơn vị.
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row mb-3">
+						<div class="col-md-12">
+							<label>Kết quả kiểm tra (4): <span class="text-muted"></span></label>
+							<textarea rows="3" ype="text" class="form-control" data-bind="value:ketquakiemtra"
+								placeholder="Người sử dụng"></textarea>
+							<div class="invalid-feedback">
+								Vui lòng nhập kết quả kiểm tra
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-12">
+							<label>Hướng khắc phục (5): <span class="text-muted"></span></label>
+							<textarea rows="3" type="text" class="form-control" data-bind="value:huongkhacphuc"
+								placeholder="Người sử dụng"></textarea>
+							<div class="invalid-feedback">
+								Vui lòng nhập kết quả kiểm tra
+							</div>
+						</div>
+					</div>
+					<label>Biên bản này lập thành 02 bản và lưu tại phòng quản trị.</label>
+
+					<div class="d-flex justify-content-end">
+						<div><input type="text" class="form-control" data-bind="value:noiviet"
+							placeholder="Nơi viết"></div>
+						<div><input type="text" class="form-control" data-bind="value:ngay"
+							placeholder="Ngày viết"></div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-4 text-center">
+							<label>ĐẠI DIỆN PHÒNG QUẢN TRỊ</label><br>
+							<label>(Ký, ghi rõ họ tên)</label><br>
+							<label>&nbsp;</label>
+						</div>
+						<div class="col-md-4 text-center">
+							<label>NGƯỜI SỬ DỤNG</label><br>
+							<label>(Ký, ghi rõ họ tên)</label><br>
+							<label>&nbsp;</label>
+						</div>
+						<div class="col-md-4 text-center">
+							<label>NGƯỜI KIỂM TRA</label><br>
+							<label>(Ký, ghi rõ họ tên)</label><br>
+							<label>&nbsp;</label>
+						</div>
+					</div>
+
+					<label>Ghi chú:</label><br>
+
+					<label>(1): Biên bản này được lập với các trường hợp sau:</label><br>
+
+					<label>- Việc sửa chữa đòi hỏi thay thế linh kiện, phụ tùng có giá trị trên 01 triệu đồng.</label><br>
+
+					<label>- Phải thuê đơn vị ngoài cơ quan để sửa chữa trang thiết bị.</label><br>
+
+					<label>- Việc sửa chữa trang thiết bị có độ phức tạp cao và cần nhiều thời gian.</label><br>
+
+					<label>(2): Ghi tên trang thiết bị được kiểm tra</label><br>
+
+					<label>(3): Ghi số phòng, tầng hoặc vị trí đặt thiết bị được kiểm tra.</label><br>
+
+					<label>(4): Người kiểm tra ghi cụ thể kết quả kiểm tra (hỏng cái gì, mức độ hư hỏng....)</label><br>
+
+					<label>(5): Người kiểm tra ghi đề xuất hướng khắc phục</label><br>
+
+					<label>- Sau khi biên bản lập xong văn phòng bộ ghi ý kiến về việc khắc phục (đồng ý/không đồng ý cho mua
+							linh kiện, phụ tùng để thay thế; đồng ý/không đồng ý thuê bên ngoài sửa chữa)</label>
+							<a href="static/img/truocsuachua.pdf">Tài liệu giấy</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

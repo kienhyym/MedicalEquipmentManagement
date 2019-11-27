@@ -1,0 +1,73 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "tentrangthietbi": {
+        "type": "string",
+        "length": 255
+    },
+    "tai": {
+        "type": "string",
+        "length": 255
+    },
+    "nha": {
+        "type": "string",
+        "length": 255
+    },
+    "nguoisudung": {
+        "type": "string",
+        "length": 255
+    },
+    "donvi": {
+        "type": "string",
+        "length": 255
+    },
+    "ketquakiemtra": {
+        "type": "string"
+    },
+    "huongkhacphuc": {
+        "type": "string"
+    },
+    "ngay": {
+        "type": "number"
+    },
+    "noiviet": {
+        "type": "string",
+        "length": 255
+    },
+    "phongquantriky": {
+        "type": "string",
+        "length": 255
+    },
+    "nguoisudungky": {
+        "type": "string",
+        "length": 255
+    },
+    "nguoikiemtraky": {
+        "type": "string",
+        "length": 255
+    }
+}

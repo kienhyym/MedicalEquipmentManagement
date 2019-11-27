@@ -70,23 +70,34 @@ define(function (require) {
 		{
 			"collectionName": "dutoansuachuanam",
 			"route": "dutoansuachuanam/collection",
-			"$ref": "app/dutoansuachuanam/js/CollectionView",
+			"$ref": "app/chungtu/dutoansuachuanam/js/CollectionView",
 		},
 		{
 			"collectionName": "dutoansuachuanam",
 			"route": "dutoansuachuanam/model(/:id)",
-			"$ref": "app/dutoansuachuanam/js/ModelView",
+			"$ref": "app/chungtu/dutoansuachuanam/js/ModelView",
+		},
+
+		{
+			"collectionName": "bienbanxacnhantinhtrangthietbi",
+			"route": "bienbanxacnhantinhtrangthietbi/collection",
+			"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/CollectionView",
+		},
+		{
+			"collectionName": "bienbanxacnhantinhtrangthietbi",
+			"route": "bienbanxacnhantinhtrangthietbi/model(/:id)",
+			"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/ModelView",
 		},
 
 		{
 			"collectionName": "phieuyeucausuachua",
 			"route": "phieuyeucausuachua/collection",
-			"$ref": "app/phieuyeucausuachua/js/CollectionView",
+			"$ref": "app/chungtu/phieuyeucausuachua/js/CollectionView",
 		},
 		{
 			"collectionName": "phieuyeucausuachua",
 			"route": "phieuyeucausuachua/model(/:id)",
-			"$ref": "app/phieuyeucausuachua/js/ModelView",
+			"$ref": "app/chungtu/phieuyeucausuachua/js/ModelView",
 		},
 
 
