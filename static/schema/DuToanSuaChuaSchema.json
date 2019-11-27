@@ -25,50 +25,37 @@
         "type": "string",
         "primary": true
     },
-    "nhanhieu": {
+    "noidung": {
         "type": "string",
         "length": 255
     },
-    "hangsanxuat": {
+    "dutoanchitiet": {
         "type": "string",
         "length": 255
     },
-    "made_in": {
+    "donvitinh": {
         "type": "string",
         "length": 255
     },
-    "model_serial_number": {
+    "soluong": {
+        "type": "number"
+    },
+    "dongia": {
         "type": "string",
         "length": 255
     },
-    "dienap": {
+    "thanhtien": {
+        "type": "number"
+    },
+    "ghichu": {
         "type": "string",
         "length": 255
     },
-    "nguyengia": {
+    "ngaylap": {
+        "type": "number"
+    },
+    "nguoilap": {
         "type": "string",
         "length": 255
-    },
-    "nguonnhap": {
-        "type": "string",
-        "length": 255
-    },
-    "trangthai": {
-        "type": "string",
-        "length": 255
-    },
-    "chungtu": {
-        "type": "string",
-        "length": 255
-    },
-    "thietbi_id": {
-        "type": "string"
-    },
-    "tenthietbi": {
-        "type": "string",
-        "length": 255
-    },
-    "phieuyeucausuachuafield": {
-        "type": "list"
     }
 }

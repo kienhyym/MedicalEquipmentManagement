@@ -25,50 +25,28 @@
         "type": "string",
         "primary": true
     },
-    "nhanhieu": {
+    "ngay": {
+        "type": "number"
+    },
+    "tinhtrang": {
         "type": "string",
         "length": 255
     },
-    "hangsanxuat": {
+    "mota": {
         "type": "string",
         "length": 255
     },
-    "made_in": {
-        "type": "string",
-        "length": 255
-    },
-    "model_serial_number": {
-        "type": "string",
-        "length": 255
-    },
-    "dienap": {
-        "type": "string",
-        "length": 255
-    },
-    "nguyengia": {
-        "type": "string",
-        "length": 255
-    },
-    "nguonnhap": {
-        "type": "string",
-        "length": 255
-    },
-    "trangthai": {
-        "type": "string",
-        "length": 255
-    },
-    "chungtu": {
-        "type": "string",
-        "length": 255
-    },
-    "thietbi_id": {
+    "nguoikiemtra_id": {
         "type": "string"
     },
     "tenthietbi": {
         "type": "string",
         "length": 255
     },
-    "phieuyeucausuachuafield": {
-        "type": "list"
+    "chitietthietbi_id": {
+        "type": "string"
+    },
+    "nguoikiemtra": {
+        "type": "dict"
     }
 }

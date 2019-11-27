@@ -58,6 +58,27 @@ define(function (require) {
 			"$ref": "app/chitietthietbi/js/ModelView",
 		},
 		{
+			"collectionName": "bangkiemtrathietbi",
+			"route": "bangkiemtrathietbi/collection",
+			"$ref": "app/bangkiemtrathietbi/js/CollectionView",
+		},
+		{
+			"collectionName": "bangkiemtrathietbi",
+			"route": "bangkiemtrathietbi/model(/:id)",
+			"$ref": "app/bangkiemtrathietbi/js/ModelView",
+		},
+		{
+			"collectionName": "dutoansuachuanam",
+			"route": "dutoansuachuanam/collection",
+			"$ref": "app/dutoansuachuanam/js/CollectionView",
+		},
+		{
+			"collectionName": "dutoansuachuanam",
+			"route": "dutoansuachuanam/model(/:id)",
+			"$ref": "app/dutoansuachuanam/js/ModelView",
+		},
+
+		{
 			"collectionName": "phieuyeucausuachua",
 			"route": "phieuyeucausuachua/collection",
 			"$ref": "app/phieuyeucausuachua/js/CollectionView",
@@ -67,6 +88,8 @@ define(function (require) {
 			"route": "phieuyeucausuachua/model(/:id)",
 			"$ref": "app/phieuyeucausuachua/js/ModelView",
 		},
+
+
 		{
 			"collectionName": "bangkehoachkiemtrathietbitheonam",
 			"route": "bangkehoachkiemtrathietbitheonam/collection",

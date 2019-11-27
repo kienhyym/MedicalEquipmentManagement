@@ -3,15 +3,15 @@ define(function (require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
-	var template = require('text!app/chitietthietbi/tpl/model.html'),
-		schema = require('json!schema/ChiTietThietBiSchema.json');
+	var template = require('text!app/bangkiemtrathietbi/tpl/model.html'),
+		schema = require('json!schema/BangKiemTraThietBiSchema.json');
 
 
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "chitietthietbi",
+		collectionName: "bangkiemtrathietbi",
 		bindings: "data-bind",
 		state: null,
 		tools: [

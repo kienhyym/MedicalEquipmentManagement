@@ -118,6 +118,52 @@ define(function (require) {
 			}
 		},
 		{
+			"text": "Kiểm tra thiết bị",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "bangkiemtrathietbi",
+			"route": "bangkiemtrathietbi/collection",
+			"$ref": "app/bangkiemtrathietbi/js/CollectionView",
+			"visible": function () {
+				return true
+
+			}
+		},
+		{
+			"type": "view",
+			"collectionName": "bangkiemtrathietbi",
+			"route": "bangkiemtrathietbi/model(/:id)",
+			"$ref": "app/bangkiemtrathietbi/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
+
+		{
+			"text": "Dự toán sửa chữa",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "dutoansuachuanam",
+			"route": "dutoansuachuanam/collection",
+			"$ref": "app/dutoansuachuanam/js/CollectionView",
+			"visible": function () {
+				return true
+
+			}
+		},
+		{
+			"type": "view",
+			"collectionName": "dutoansuachuanam",
+			"route": "dutoansuachuanam/model(/:id)",
+			"$ref": "app/dutoansuachuanam/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
+
+
+
+		{
 			"text": "DS phiếu sửa chữa",
 			"icon": "fa fa-home",
 			"type": "view",

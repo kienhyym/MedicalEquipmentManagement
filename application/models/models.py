@@ -124,7 +124,6 @@ class ThietBi(CommonModel):
     mota = db.Column(String(255))
     chitietsanphamfield = db.relationship('ChiTietThietBi', cascade="all, delete-orphan")
 
-
 class ChiTietThietBi(CommonModel):
     __tablename__ = 'chitietthietbi'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -135,11 +134,22 @@ class ChiTietThietBi(CommonModel):
     dienap = db.Column(String(255))
     nguyengia = db.Column(String(255))
     nguonnhap = db.Column(String(255))
+    trangthai = db.Column(String(255))
     chungtu = db.Column(String(255))
     thietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('thietbi.id'), nullable=True)
     tenthietbi = db.Column(String(255))
     phieuyeucausuachuafield = db.relationship('PhieuYeuCauSuaChua', cascade="all, delete-orphan")
 
+class BangKiemTraThietBi(CommonModel):
+    __tablename__ = 'bangkiemtrathietbi'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    ngay = db.Column(BigInteger())
+    tinhtrang = db.Column(String(255))
+    mota = db.Column(String(255))
+    nguoikiemtra_id = db.Column(UUID(as_uuid=True),db.ForeignKey('user.id'), nullable=True)
+    nguoikiemtra = db.relationship('User', viewonly=True)
+    tenthietbi = db.Column(String(255))
+    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
 
 class PhieuYeuCauSuaChua(CommonModel):
     __tablename__ = 'phieuyeucausuachua'
@@ -281,3 +291,20 @@ class ThietBiDuocKiemTra(CommonModel):
     tuan53 = db.Column(String(1))
     datatuan53 = db.Column(JSONB)
     giaytodikem_id =db.Column(JSONB)
+
+class DuToanSuaChuaNam(CommonModel):
+    __tablename__ = 'dutoansuachuanam'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    nam = db.Column(BigInteger())
+class DuToanSuaChua(CommonModel):
+    __tablename__ = 'dutoansuachua'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    noidung = db.Column(String(255))
+    dutoanchitiet = db.Column(String(255))
+    donvitinh = db.Column(String(255))
+    soluong = db.Column(BigInteger())
+    dongia = db.Column(String(255))
+    thanhtien = db.Column(BigInteger())
+    ghichu = db.Column(String(255))
+    ngaylap = db.Column(BigInteger())
+    nguoilap = db.Column(String(255))

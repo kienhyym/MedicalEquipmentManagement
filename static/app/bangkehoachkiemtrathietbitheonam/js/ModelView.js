@@ -207,7 +207,7 @@ define(function (require) {
 						contentType: "application/json",
 						success: function (data) {
 							data.objects.forEach(function (itemChiTietThietBi, indexChiTietThietBi) {
-								self.$el.find("#danhsachthietbinay").append("<tr><td class='p-2' id='" + itemChiTietThietBi.id + "'>" + itemChiTietThietBi.model_serial_number + "</td><td class='p-2'><input type='text' ></td><td class='p-1'><a class='btn btn-info btn-sm btn-phieusuachua p-1' href='" + self.getApp().serviceURL + "/?#phieuyeucausuachua/model'>Tạo mới</a></td></tr>")
+								self.$el.find("#danhsachthietbinay").append("<tr><td class='p-2' id='" + itemChiTietThietBi.id + "'>" + itemChiTietThietBi.model_serial_number + "</td><td class='p-2'>"+itemChiTietThietBi.trangthai+"</td><td class='p-1'><a class='btn btn-info btn-sm btn-phieusuachua p-1' href='" + self.getApp().serviceURL + "/?#phieuyeucausuachua/model'>Tạo mới</a></td></tr>")
 
 							});
 							self.$el.find('#danhsachthietbinay tr').each(function (indexxx, itemxx) {
@@ -224,7 +224,7 @@ define(function (require) {
 									sessionStorage.setItem('IDSanPham',data.objects[indexxx].id);
 								});
 							})
-							console.log('1111---',thietBiDuocKiemTraItemView.model.get('id'))
+							
 
 							self.$el.find('.btn-luu').unbind('click').bind("click", function () {
 								var arrThietBi = [];
