@@ -5,6 +5,7 @@ define(function (require) {
 		Gonrin = require('gonrin');
 	var template = require('text!app/chitietthietbi/tpl/model.html'),
 		schema = require('json!schema/ChiTietThietBiSchema.json');
+	var NhaCungCapSelectView = require('app/donvi/js/SelectView');
 
 
 	return Gonrin.ModelView.extend({
@@ -170,6 +171,52 @@ define(function (require) {
 					parseOutputDate: function (date) {
 						return date.unix()
 					}
+				},
+				{
+					field: "nhacungcap",
+					uicontrol: "ref",
+					textField: "ten",
+					foreignRemoteField: "id",
+					foreignField: "nhacungcap_id",
+					dataSource: NhaCungCapSelectView
+				},
+				{
+					field: "tinhtrangthietbikhimua",
+					uicontrol: "radio",
+					textField: "text",
+					valueField: "value",
+					cssClassField: "cssClass",
+					dataSource: [
+						{ text: "-Mới 100%", value: "moi" },
+						{ text: "- Thiết bị cũ,phần trăm còn lại:", value: "cu" },
+					],
+				},
+				{
+					field: "yeucauvebaoduong",
+					uicontrol: "radio",
+					textField: "text",
+					valueField: "value",
+					cssClassField: "cssClass",
+					dataSource: [
+						{ text: "- Không cần bảo dưỡng:", value: "Không cần bảo dưỡng" },
+						{ text: "- Bảo dưỡng, chu kỳ:", value: "Bảo dưỡng" },
+					],
+				},
+				{
+					field: "hetbaohanh",
+
+					uicontrol: "checkbox",
+					checkedField: "key",
+					valueField: "value",
+					dataSource: [{
+						"value": "hetbaohanh",
+						"key": true
+					},
+					{
+						"value": null,
+						"key": false
+					},
+					],
 				},
 			]
 		},

@@ -51,29 +51,29 @@ define(function (require) {
 				return false;
 			}
 		},
-		// {
-		// 	"text": "Đơn vị",
-		// 	"icon": "fa fa-home",
-		// 	"type": "view",
-		// 	"collectionName": "donvi",
-		// 	"route": "donvi/collection",
-		// 	"$ref": "app/donvi/js/CollectionView",
-		// 	"visible": function () {
-		// 		return true
+		{
+			"text": "Nhà cung cấp thiết bị",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "donvi",
+			"route": "donvi/collection",
+			"$ref": "app/donvi/js/CollectionView",
+			"visible": function () {
+				return true
 
-		// 	}
-		// },
-		// {
-		// 	"text": "Đơn vị",
-		// 	"icon": "fa fa-home",
-		// 	"type": "view",
-		// 	"collectionName": "donvi",
-		// 	"route": "donvi/model(/:id)",
-		// 	"$ref": "app/donvi/js/ModelView",
-		// 	"visible": function () {
-		// 		return false;
-		// 	}
-		// },
+			}
+		},
+		{
+			"text": "Đơn vị",
+			"icon": "fa fa-home",
+			"type": "view",
+			"collectionName": "donvi",
+			"route": "donvi/model(/:id)",
+			"$ref": "app/donvi/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
 
 		{
 			"text": " Danh sách thiết bị",

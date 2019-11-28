@@ -2,7 +2,7 @@ body {
   font-size: .875rem;
 }
 
-.input-phuluc2{
+/* .input-phuluc2{
 	border:none;
 	border-bottom:1px dotted black;
   padding-left: 1%;
@@ -25,8 +25,17 @@ body {
 padding: 5px;
 color: rgb(70, 70, 70);
 font-family: Arial, Helvetica, sans-serif;
-}
+} */
 
+.yeucauvebaoduong div ul li{
+  display: inline;
+  margin: 15px;
+}
+.tinhtrangthietbikhimua div ul li{
+  display: inline;
+  margin: 15px;
+
+}
 
 .feather {
   width: 16px;

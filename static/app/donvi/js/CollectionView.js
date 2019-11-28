@@ -14,8 +14,7 @@ define(function (require) {
         collectionName: "donvi",
         uiControl: {
             fields: [
-                { field: "ma", label: "Mã" },
-                { field: "ten", label: "Tên" },
+                { field: "ten", label: "Tên" ,width:"350px"},
                 {
                     field: "tinhthanh_id",
                     label: "Tỉnh thành",

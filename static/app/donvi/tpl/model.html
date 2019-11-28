@@ -3,7 +3,7 @@
 	<div class="page-header row no-gutters py-4">
 		<div class="col-12 col-md-10 col-sm-4 text-center text-sm-left mb-0">
 			<span class="text-uppercase page-subtitle"> </span>
-			<h3 class="page-title text-uppercase">Đơn Vị</h3>
+			<h3 class="page-title text-uppercase">Đơn vị cung cấp thiết bị</h3>
 		</div>
 	</div>
 	<!-- End Page Header -->
@@ -25,15 +25,8 @@
 				<div class="card-body">
 					<form class="needs-validation" novalidate="">
 						<div class="row">
-							<div class="col-md-6 mb-3">
-								<label>Mã Đơn Vị</label>
-								<input type="text" class="form-control" data-bind="value:ma"
-									placeholder="Nhập mã đơn vị" value="" required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập mã đơn vị.
-								</div>
-							</div>
-							<div class="col-md-6 mb-3">
+
+							<div class="col-md-12 mb-3">
 								<label>Tên đơn vị</label>
 								<input type="text" class="form-control" data-bind="value:ten"
 									placeholder="Nhập tên đơn vị " value="" required="">
@@ -53,13 +46,32 @@
 									</div>
 								</div>
 								<div class="col-md-6 mb-3">
-									<label for="tuyendonvi">Tuyen don</label>
-									<input type="text" class="form-control" id="tuyendonvi" data-bind="value:tuyendonvi"
+									<label for="tuyendonvi">Website</label>
+									<input type="text" class="form-control" id="tuyendonvi" data-bind="value:Website"
 										placeholder="..." required="">
 								</div>
 							</div>
 
 						</div>
+						<div class="mb-3">
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<label for="email">Số điện thoại <span class="text-muted"></span></label>
+									<input type="email" class="form-control" id="email" data-bind="value:sodienthoai"
+										placeholder="...">
+									<div class="invalid-feedback">
+										Vui lòng nhập email để nhận thông báo.
+									</div>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label for="tuyendonvi">Fax</label>
+									<input type="text" class="form-control" id="tuyendonvi" data-bind="value:Fax"
+										placeholder="..." required="">
+								</div>
+							</div>
+
+						</div>
+
 
 
 						<div class="row">
@@ -78,19 +90,26 @@
 								<input type="text" class="form-control" id="xaphuong" placeholder="..."
 									data-bind="dict:xaphuong" required="">
 							</div>
-							<!-- <div class="col-md-6 mb-3">
-								<label for="cc-expiration">Combobox</label>
-								<input type="text" class="form-control" id="combobox">
-							</div> -->
+
 						</div>
 						<div class="mb-3">
 							<label for="cc-expiration">Địa chỉ</label>
 							<textarea rows="3" class="form-control" data-bind="value:diachi" placeholder="..."
 								required=""></textarea>
 						</div>
-						<!-- <hr class="mb-4">
-						<button id="btn_save_info" class="btn btn-info btn-lg btn-block" type="submit">Lưu thông
-							tin</button> -->
+						<div class="mb-3">
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<label for="email">Giám đốc <span class="text-muted"></span></label>
+									<input type="email" class="form-control" id="email" data-bind="value:giamdoc"
+										placeholder="...">
+									<div class="invalid-feedback">
+										Vui lòng nhập email để nhận thông báo.
+									</div>
+								</div>
+
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>

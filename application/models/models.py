@@ -31,8 +31,6 @@ class User(CommonModel):
     password = db.Column(String, nullable=True)
     salt = db.Column(db.String())
     type = db.Column(db.String())
-    donvi_id = db.Column(UUID(as_uuid=True),db.ForeignKey('donvi.id'), nullable=True)
-    donvi = db.relationship('DonVi', viewonly=True)
     description = db.Column(db.String())
     active = db.Column(db.Boolean(), default=True)
     roles = db.relationship('Role', secondary=roles_users, cascade="save-update")
@@ -48,31 +46,20 @@ class User(CommonModel):
 class DonVi(CommonModel):
     __tablename__ = 'donvi'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(db.String(255), nullable=True)
-    ten = db.Column(db.String(255), nullable=False)
+    ten = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    Website = db.Column(db.String(255))
+    Fax = db.Column(db.String(255))
     sodienthoai = db.Column(db.String(63))
     diachi = db.Column(db.String(255))
-    email = db.Column(db.String(255))
-    ghichu = db.Column(db.String(255))
-    vungmien = db.Column(db.SmallInteger) #
-
     tinhthanh_id = db.Column(String, nullable=True)
     tinhthanh = db.Column(JSONB)
     quanhuyen_id = db.Column(String, nullable=True)
     quanhuyen = db.Column(JSONB)
     xaphuong_id = db.Column(String, nullable=True)
     xaphuong = db.Column(JSONB)
-    
-    tuyendonvi = db.Column(db.SmallInteger, nullable=False) # la trung tam, hay truong hoc ...
-    coquanchuquan = db.Column(db.String(255))
-    parent_id = db.Column(db.Integer, nullable=True)
-    
     giamdoc = db.Column(db.String)
-    sdtgiamdoc = db.Column(db.String)
-    emailgiamdoc = db.Column(db.String)
-    phogiamdoc = db.Column(db.String)
-    sdtphogiamdoc = db.Column(db.String)
-    emailphogiamdoc = db.Column(db.String)
+
     
 
 class DanToc(CommonModel):
@@ -134,9 +121,11 @@ class ChiTietThietBi(CommonModel):
     ma_qltb = db.Column(String(255))
     noisanxuat = db.Column(String(255))
     ngaymua = db.Column(BigInteger())
-    nhacungcap = db.Column(String(255))
+    nhacungcap_id = db.Column(UUID(as_uuid=True),db.ForeignKey('donvi.id'), nullable=True)
+    nhacungcap = db.relationship('DonVi', viewonly=True)
     baohanhtungay = db.Column(BigInteger())
     baohanhdenngay = db.Column(BigInteger())
+    hetbaohanh = db.Column(String(255))
     thongsokythuat = db.Column(Text())
     phukien = db.Column(Text())
     tinhtrangthietbikhimua = db.Column(String(255))

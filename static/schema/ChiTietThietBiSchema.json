@@ -44,15 +44,18 @@
     "ngaymua": {
         "type": "number"
     },
-    "nhacungcap": {
-        "type": "string",
-        "length": 255
+    "nhacungcap_id": {
+        "type": "string"
     },
     "baohanhtungay": {
         "type": "number"
     },
     "baohanhdenngay": {
         "type": "number"
+    },
+    "hetbaohanh": {
+        "type": "string",
+        "length": 255
     },
     "thongsokythuat": {
         "type": "string"
@@ -78,6 +81,9 @@
     },
     "thietbi_id": {
         "type": "string"
+    },
+    "nhacungcap": {
+        "type": "dict"
     },
     "phieuyeucausuachuafield": {
         "type": "list"

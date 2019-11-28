@@ -87,8 +87,8 @@
 							<div class="row mb-3">
 								<div class="col-md-12">
 									<label>6. NHÀ CUNG CẤP TTB:</label>
-									<input type="text" class="form-control" data-bind="value:nhacungcap"
-										placeholder="..." required="">
+									<input type="text" class="form-control" id="nhacungcap" placeholder="..."
+										data-bind="dict:nhacungcap" required="">
 									<div class="invalid-feedback">
 										Vui lòng nhập email.
 									</div>
@@ -114,7 +114,8 @@
 								</div>
 								<div class="col-md-4">
 									<label>Hết/Không bảo hành:</label>
-									<input type="text" class="form-control" placeholder="..." required="">
+									<input type="text" class="form-control" data-bind="value:hetbaohanh"
+										placeholder="..." required="">
 									<div class="invalid-feedback">
 										Vui lòng nhập email.
 									</div>
@@ -126,8 +127,9 @@
 							<div class="row mb-3">
 								<div class="col-md-12">
 									<label>8. THÔNG SỐ KỸ THUẬT/CẤU HÌNH:</label>
-									<input type="text" class="form-control" data-bind="value:thongsokythuat"
-										placeholder="..." required="">
+
+									<textarea rows="3" type="text" class="form-control" data-bind="value:thongsokythuat"
+										placeholder="..." required=""> </textarea>
 									<div class="invalid-feedback">
 										Vui lòng nhập email.
 									</div>
@@ -137,8 +139,9 @@
 							<div class="row mb-3">
 								<div class="col-md-12">
 									<label>9. PHỤ KIỆN KÈM THEO (nếu có):</label>
-									<input type="text" class="form-control" data-bind="value:phukien" placeholder="..."
-										required="">
+
+									<textarea rows="3" type="text" class="form-control" data-bind="value:phukien"
+										placeholder="..." required=""> </textarea>
 									<div class="invalid-feedback">
 										Vui lòng nhập email.
 									</div>
@@ -146,9 +149,12 @@
 							</div>
 							<label>10. TÌNH TRẠNG THIẾT BỊ KHI MUA/NHẬN</label>
 
-							<div class="row mb-3">
+							<div class="row mb-3 tinhtrangthietbikhimua">
+								<input type="text" class="form-control" data-bind="value:tinhtrangthietbikhimua"
+									placeholder="..." required="">
+								<label style="float: left;">- Mới 100%</label>
 
-								<div class="col-md-4">
+								<!-- <div class="col-md-4">
 									<label>- Mới 100%</label>
 									<input type="text" class="form-control" data-bind="value:tinhtrangthietbikhimua"
 										placeholder="..." required="">
@@ -170,11 +176,13 @@
 									<div class="invalid-feedback">
 										Vui lòng nhập email.
 									</div>
-								</div>
+								</div> -->
 							</div>
 							<label>11. YÊU CẦU VỀ BẢO DƯỠNG VÀ LƯU Ý KHI SỬ DỤNG (NẾU CÓ)</label>
-							<div class="row mb-3">
-								<div class="col-md-6">
+							<div class="row mb-3 yeucauvebaoduong">
+								<input type="text" class="form-control" data-bind="value:yeucauvebaoduong"
+									placeholder="..." required="">
+								<!-- <div class="col-md-6">
 									<label>- Không cần bảo dưỡng</label>
 									<input type="text" class="form-control" data-bind="value:yeucauvebaoduong"
 										placeholder="..." required="">
@@ -189,14 +197,14 @@
 									<div class="invalid-feedback">
 										Vui lòng nhập email.
 									</div>
-								</div>
+								</div> -->
 							</div>
 
 							<div class="row mb-3">
 								<div class="col-md-12">
 									<label>- Nội dung bảo dưỡng:</label>
-									<input type="text" class="form-control" data-bind="value:noidungbaoduong"
-										placeholder="..." required="">
+									<textarea rows="3" type="text" class="form-control"
+										data-bind="value:noidungbaoduong" placeholder="..." required=""> </textarea>
 									<div class="invalid-feedback">
 										Vui lòng nhập email.
 									</div>
@@ -205,8 +213,8 @@
 							<div class="row mb-3">
 								<div class="col-md-12">
 									<label>- Lưu ý khi sử dụng:</label>
-									<input type="text" class="form-control" data-bind="value:luuykhisudung"
-										placeholder="..." required="">
+									<textarea rows="3" type="text" class="form-control" data-bind="value:luuykhisudung"
+										placeholder="..." required=""> </textarea>
 									<div class="invalid-feedback">
 										Vui lòng nhập email.
 									</div>
@@ -235,6 +243,10 @@
 								</div>
 							</div>
 
+							<br>
+							<hr>
+							<label>Lịch sử viết giấy yêu cầu sửa chữa</label>
+
 							<div>
 								<table class="table table-bordered text-center">
 									<tr>
@@ -252,7 +264,7 @@
 									</tr>
 								</table>
 							</div>
-
+							<label>Lịch sử kiểm tra thiết bị</label>
 							<div>
 								<table class="table table-bordered text-center">
 									<tr>

@@ -25,13 +25,20 @@
         "type": "string",
         "primary": true
     },
-    "ma": {
+    "ten": {
         "type": "string",
         "length": 255
     },
-    "ten": {
+    "email": {
         "type": "string",
-        "required": true,
+        "length": 255
+    },
+    "Website": {
+        "type": "string",
+        "length": 255
+    },
+    "Fax": {
+        "type": "string",
         "length": 255
     },
     "sodienthoai": {
@@ -41,17 +48,6 @@
     "diachi": {
         "type": "string",
         "length": 255
-    },
-    "email": {
-        "type": "string",
-        "length": 255
-    },
-    "ghichu": {
-        "type": "string",
-        "length": 255
-    },
-    "vungmien": {
-        "type": "number"
     },
     "tinhthanh_id": {
         "type": "string"
@@ -71,33 +67,7 @@
     "xaphuong": {
         "type": "json"
     },
-    "tuyendonvi": {
-        "type": "number",
-        "required": true
-    },
-    "coquanchuquan": {
-        "type": "string",
-        "length": 255
-    },
-    "parent_id": {
-        "type": "number"
-    },
     "giamdoc": {
-        "type": "string"
-    },
-    "sdtgiamdoc": {
-        "type": "string"
-    },
-    "emailgiamdoc": {
-        "type": "string"
-    },
-    "phogiamdoc": {
-        "type": "string"
-    },
-    "sdtphogiamdoc": {
-        "type": "string"
-    },
-    "emailphogiamdoc": {
         "type": "string"
     }
 }

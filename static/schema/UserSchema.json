@@ -46,18 +46,12 @@
     "type": {
         "type": "string"
     },
-    "donvi_id": {
-        "type": "string"
-    },
     "description": {
         "type": "string"
     },
     "active": {
         "type": "boolean",
         "default": true
-    },
-    "donvi": {
-        "type": "dict"
     },
     "roles": {
         "type": "list"
