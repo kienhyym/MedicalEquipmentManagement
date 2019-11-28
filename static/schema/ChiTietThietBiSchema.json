@@ -70,5 +70,8 @@
     },
     "phieuyeucausuachuafield": {
         "type": "list"
+    },
+    "bangkiemtrathietbifield": {
+        "type": "list"
     }
 }

@@ -1,7 +1,7 @@
 <div block-bind="content">
 	<!-- Page Header -->
 	<div class="page-header row no-gutters py-2">
-		
+
 	</div>
 	<!-- End Page Header -->
 	<div class="row">
@@ -60,7 +60,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 
 						<div class="row mb-3">
 							<div class="col-md-6">
@@ -91,16 +91,18 @@
 									Vui lòng nhập email.
 								</div>
 							</div>
-							
+
 							<div class="col-md-6">
-									<label>Tình trạng thiết bị:</label>
-									<input type="text" class="form-control" data-bind="value:trangthai" placeholder="..."
-										required="">
-									<div class="invalid-feedback">
-										Vui lòng nhập email.
-									</div>
+								<label>Tình trạng thiết bị:</label>
+								<input type="text" class="form-control" data-bind="value:trangthai" placeholder="..."
+									required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
 								</div>
+							</div>
 						</div>
+
+
 
 						<div>
 							<table class="table table-bordered text-center">
@@ -112,13 +114,31 @@
 								</tr>
 								<tbody id="danhsachyeucausuachua"></tbody>
 								<tr>
-									<td colspan="4" class="p-0"><button class="btn btn-light btn-sm w-100 btn-them p-2">Yêu cầu sửa chữa</button>
+									<td colspan="4" class="p-0"><button
+											class="btn btn-light btn-sm w-100 btn-them p-2">Yêu cầu sửa chữa</button>
 									</td>
 								</tr>
 							</table>
 						</div>
 
-					
+						<div>
+							<table class="table table-bordered text-center">
+								<tr>
+									<th class="p-2 ">Tên thiết bị</th>
+									<th class="p-2 ">Ngày kiểm tra</th>
+									<th class="p-2 ">Tình trạng</th>
+									<th class="p-2 ">Xem chi tiết</th>
+								</tr>
+								<tbody id="danhsachhosokiemtrathietbi"></tbody>
+								<tr>
+									<td colspan="4" class="p-0"><button
+											class="btn btn-light btn-sm w-100 btn-them2 p-2">Cập nhật thông tin kiểm
+											tra</button>
+									</td>
+								</tr>
+							</table>
+						</div>
+
 
 					</div>
 				</div>

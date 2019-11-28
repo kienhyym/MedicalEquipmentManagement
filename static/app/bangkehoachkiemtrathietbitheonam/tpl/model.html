@@ -12,7 +12,7 @@
 						<div class="col-md-7">
 							<h6 class="m-0 pt-2">Kế hoạch kiểm tra thiết bị năm</h6>
 						</div>
-						<div class="col-md-5 text-right">e
+						<div class="col-md-5 text-right">
 							<div block-bind="toolbar"></div>
 							<label for="" class="btn-xxx">xxxxx</label>
 						</div>
@@ -214,42 +214,98 @@
 			</div>
 			<hr>
 			<div class="dialogView w-75"
-				style="position: absolute; top: 100px;left:100px;z-index: 99999;background-color: aqua;">
+				style="position: absolute; top: 50px;left:100px;z-index: 99999;background-color:white;border: 1px solid #d0d0d0; border-radius: 10px;box-shadow:0px 0px 3px;">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Thông tin kiểm tra</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h5 class="modal-title" id="exampleModalLabel">Danh sách thiết bị kiểm tra</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close1">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<label>Kết quả check:</label>
-					<input type="text" class="check">
-					<br>
-					<label>Ngày kiểm tra:</label>
-					<input type="text" class="ngaykiemtra">
-					<br>
-					<label>Số lượng kiểm tra:</label>
-					<input type="text" class="soluong">
-					<br>
-					<label>Kết quả:</label>
-					<input type="text" class="ketqua">
-					<div>
-						<table class="table table-bordered text-center">
-							<tr>
-								<th class="p-2">Thiết bị có vẫn đề</th>
-								<th class="p-2">Trạng thái</th>
-								<th class="p-2">Phiếu sửa chữa</th>
-							</tr>
-							<tbody id="danhsachthietbinay"></tbody>
-							
-						</table>
-					</div>
+				<div class="modal-body ">
+					<table class="table table-bordered text-center">
+						<tr>
+							<th class="p-2">Thiết bị có vẫn đề</th>
+							<th class="p-2">Trạng thái</th>
+							<th class="p-2">Phiếu sửa chữa</th>
+						</tr>
+						<tbody id="danhsachthietbinay"></tbody>
+
+					</table>
 				</div>
-				<div class="modal-footer">
-					<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-					<button type="button" class="btn btn-primary btn-luu">Save changes</button>
+			</div>
+
+			<div class="dialogView2 w-75"
+				style="position: absolute; top: 50px;left:100px;z-index: 99999;background-color:white;border: 1px solid #d0d0d0; border-radius: 10px;box-shadow:0px 0px 3px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Thiết bị được kiểm tra</h5>
+					<button type="button" class="close"  data-dismiss="modal" aria-label="Close" id="close2">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
+				<div class="modal-body ">
+						<div class="needs-validation" novalidate="">
+								<div class="row mb-3">
+		
+									<div class="col-md-6 ">
+										<label>Serial</label>
+										<input type="text" class="form-control" 
+											placeholder="Nhập tên thiết bị" required="" id="tenthietbi">
+										<div class="invalid-feedback">
+											Vui lòng nhập Tên.
+										</div>
+									</div>
+		
+		
+									<div class="col-md-6 " id="ngaykiemtranay">
+										<label>Ngày kiểm tra<span class="text-muted"></span></label>
+										<input type="text" class="form-control" 
+											placeholder="nhập nhãn hiệu" id="ngaykiemtra">
+										<div class="invalid-feedback">
+											Vui lòng nhập email.
+										</div>
+									</div>
+		
+		
+								</div>
+								<div class="row mb-3" >
+									<div class="col-md-6" id="tinhtrangnay">
+										<label>Tình trạng</label>
+										<input type="text" class="form-control" placeholder="..." id="tinhtrang"
+											required="">
+										<div class="invalid-feedback">
+											Vui lòng nhập email.
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label>Người kiểm tra</label>
+										<input type="text" class="form-control" readonly  placeholder="..." id="nguoikiemtra"
+											required="">
+										<div class="invalid-feedback">
+											Vui lòng nhập email.
+										</div>
+									</div>
+		
+								</div>
+								<div class="row mb-3">
+		
+									<div class="col-md-12">
+										<label>Mô tả tình trạng</label>
+										<textarea rows="3" type="text" class="form-control" 
+											placeholder="..." required="" id="motatinhtrang"></textarea>
+										<div class="invalid-feedback">
+											Vui lòng nhập email.
+										</div>
+									</div>
+								</div>
+							</div>
+				</div>
+			
+
+			<div class="modal-footer">
+				<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+				<button type="button" class="btn btn-primary btn-luu-thietbiduockiemtra">Save changes</button>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

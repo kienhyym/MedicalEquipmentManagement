@@ -119,15 +119,22 @@ define(function (require) {
 		render: function () {
 			var self = this;
 			self.$el.find('.dialogView').hide();
+			self.$el.find('.dialogView2').hide();
+
 
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						self.$el.find('.close').on('click', function () {
+						self.$el.find('#close1').on('click', function () {
 							self.$el.find('.dialogView').hide();
 							self.getApp().getRouter().refresh();
+
+						})
+						self.$el.find('#close2').on('click', function () {
+							self.$el.find('.dialogView2').hide();
+
 
 						})
 						var datathietbiduockiemtrafield = self.model.get("thietbiduockiemtrafield");
@@ -142,6 +149,7 @@ define(function (require) {
 
 						});
 						self.setThietBiID();
+						self.luuThietBiDuocKiemTra();
 						self.applyBindings();
 
 					},
@@ -170,27 +178,10 @@ define(function (require) {
 
 			thietBiDuocKiemTraItemView.$el.find('.dsTuan').each(function (item, index) {
 				var tuan = (item + 1);
-				$(index).on('click', function () {
+				$(index).unbind('click').bind('click', function () {
+					console.log(item)
 
 					self.$el.find('.dialogView').show();
-					var dataTuanNay = thietBiDuocKiemTraItemView.model.get("datatuan" + tuan);
-					if (dataTuanNay != null) {
-						if (thietBiDuocKiemTraItemView.model.get("datatuan" + tuan).ketqua != null) {
-							self.$el.find(".ketqua").val(thietBiDuocKiemTraItemView.model.get("datatuan" + tuan).ketqua)
-						}
-						if (thietBiDuocKiemTraItemView.model.get("datatuan" + tuan).ngaykiemtra != null) {
-							self.$el.find(".ngaykiemtra").val(thietBiDuocKiemTraItemView.model.get("datatuan" + tuan).ngaykiemtra)
-						}
-						if (thietBiDuocKiemTraItemView.model.get("datatuan" + tuan).soluong != null) {
-							self.$el.find(".soluong").val(thietBiDuocKiemTraItemView.model.get("datatuan" + tuan).soluong)
-						}
-						if (thietBiDuocKiemTraItemView.model.get("datatuan" + tuan) != null) {
-							self.$el.find(".check").val(thietBiDuocKiemTraItemView.model.get("tuan" + tuan))
-						}
-					}
-
-
-
 					// ############################ DATA CHI TIET THIET BI
 					var filters = {
 						filters: {
@@ -207,7 +198,7 @@ define(function (require) {
 						contentType: "application/json",
 						success: function (data) {
 							data.objects.forEach(function (itemChiTietThietBi, indexChiTietThietBi) {
-								self.$el.find("#danhsachthietbinay").append("<tr><td class='p-2' id='" + itemChiTietThietBi.id + "'>" + itemChiTietThietBi.model_serial_number + "</td><td class='p-2'>"+itemChiTietThietBi.trangthai+"</td><td class='p-1'><a class='btn btn-info btn-sm btn-phieusuachua p-1' href='" + self.getApp().serviceURL + "/?#phieuyeucausuachua/model'>Tạo mới</a></td></tr>")
+								self.$el.find("#danhsachthietbinay").append("<tr><td class='p-2' id='" + itemChiTietThietBi.id + "'>" + itemChiTietThietBi.model_serial_number + "</td><td class='p-2'>" + itemChiTietThietBi.trangthai + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-phieusuachua p-1'>Tạo mới</a></td></tr>")
 
 							});
 							self.$el.find('#danhsachthietbinay tr').each(function (indexxx, itemxx) {
@@ -218,16 +209,50 @@ define(function (require) {
 								}
 							})
 
+
 							self.$el.find('#danhsachthietbinay tr').each(function (indexxx, itemxx) {
+
 								$(itemxx).find('td').find('.btn-phieusuachua').bind('click', function () {
-									sessionStorage.setItem('TenSanPham',data.objects[indexxx].model_serial_number);
-									sessionStorage.setItem('IDSanPham',data.objects[indexxx].id);
+									sessionStorage.clear();
+
+									self.$el.find('.dialogView2').show();
+
+									sessionStorage.setItem('TenSanPham', data.objects[indexxx].model_serial_number);
+									sessionStorage.setItem('IDSanPham', data.objects[indexxx].id);
+									self.$el.find('#tenthietbi').val(sessionStorage.getItem('TenSanPham'));
+									self.$el.find('#nguoikiemtra').val(self.getApp().currentUser.name);
+									self.$el.find('#motatinhtrang').val('');
+
+									self.$el.find('#tinhtrang').combobox({
+										textField: "text",
+										valueField: "value",
+										allowTextInput: true,
+										enableSearch: true,
+										dataSource: [
+											{ "value": "Không vấn đề", "text": "Không vấn đề" },
+											{ "value": "Có vấn đề", "text": "Có vấn đề" },
+										],
+									});
+									self.$el.find('#ngaykiemtra').datetimepicker({
+										textFormat: 'DD-MM-YYYY',
+										extraFormats: ['DDMMYYYY'],
+										parseInputDate: function (val) {
+											return moment.unix(val)
+										},
+										parseOutputDate: function (date) {
+											return date.unix()
+										}
+									});
+									self.$el.find('#ngaykiemtranay .datetimepicker-input').val(null);
+									self.$el.find('#tinhtrangnay .form-control').val('');
+
 								});
 							})
-							
+
 
 							self.$el.find('.btn-luu').unbind('click').bind("click", function () {
 								var arrThietBi = [];
+
 								self.$el.find('#danhsachthietbinay tr').each(function (index, item) {
 									var objThietBi = {};
 									objThietBi.thietbi_id = $($(item).find('td')).attr('id');
@@ -464,14 +489,24 @@ define(function (require) {
 				});
 
 			})
-
-
-
-
-
-
-
 		},
+		luuThietBiDuocKiemTra: function () {
+			var self = this;
+		
+
+
+			self.$el.find('.btn-luu-thietbiduockiemtra').unbind('click').bind('click', function () {
+				console.log('xxxx', sessionStorage.getItem('TenSanPham'))
+				console.log('xxxx', self.$el.find('#ngaykiemtra').val())
+				console.log('xxxx', self.$el.find('#tinhtrang').val())
+				console.log('xxxx', self.getApp().currentUser.name)
+				console.log('xxxx', self.$el.find('#motatinhtrang').val())
+				console.log('ID nguoi dung', self.getApp().currentUser.id)
+				console.log('ID san pham', sessionStorage.getItem('IDSanPham'))
+
+			})
+		}
+
 
 
 	});

@@ -33,18 +33,27 @@
         "type": "string",
         "length": 255
     },
+    "donvithuchienphanloai": {
+        "type": "string",
+        "length": 255
+    },
     "soluuhanh": {
         "type": "string",
         "length": 255
     },
-    "soluong": {
-        "type": "number"
-    },
-    "congdung": {
+    "donviyeucauphanloai": {
         "type": "string",
         "length": 255
     },
-    "mota": {
+    "tinhtrang": {
+        "type": "string",
+        "length": 255
+    },
+    "bangphanloai": {
+        "type": "string",
+        "length": 255
+    },
+    "congkhaiphanloai": {
         "type": "string",
         "length": 255
     },

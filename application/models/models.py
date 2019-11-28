@@ -118,10 +118,12 @@ class ThietBi(CommonModel):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     ten = db.Column(String(255))
     phanloai = db.Column(String(255))
+    donvithuchienphanloai = db.Column(String(255))
     soluuhanh = db.Column(String(255))
-    soluong= db.Column(db.Integer)
-    congdung = db.Column(String(255))
-    mota = db.Column(String(255))
+    donviyeucauphanloai = db.Column(String(255))
+    tinhtrang = db.Column(String(255))
+    bangphanloai = db.Column(String(255))
+    congkhaiphanloai = db.Column(String(255))
     chitietsanphamfield = db.relationship('ChiTietThietBi', cascade="all, delete-orphan")
 
 class ChiTietThietBi(CommonModel):
@@ -139,6 +141,8 @@ class ChiTietThietBi(CommonModel):
     thietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('thietbi.id'), nullable=True)
     tenthietbi = db.Column(String(255))
     phieuyeucausuachuafield = db.relationship('PhieuYeuCauSuaChua', cascade="all, delete-orphan")
+    bangkiemtrathietbifield = db.relationship('BangKiemTraThietBi', cascade="all, delete-orphan")
+
 
 class BangKiemTraThietBi(CommonModel):
     __tablename__ = 'bangkiemtrathietbi'
@@ -146,8 +150,8 @@ class BangKiemTraThietBi(CommonModel):
     ngay = db.Column(BigInteger())
     tinhtrang = db.Column(String(255))
     mota = db.Column(String(255))
-    nguoikiemtra_id = db.Column(UUID(as_uuid=True),db.ForeignKey('user.id'), nullable=True)
-    nguoikiemtra = db.relationship('User', viewonly=True)
+    nguoikiemtra_id = db.Column(String(255))
+    nguoikiemtra = db.Column(String(255))
     tenthietbi = db.Column(String(255))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
 

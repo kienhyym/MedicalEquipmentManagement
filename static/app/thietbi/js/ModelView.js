@@ -104,10 +104,21 @@ define(function (require) {
 					textField: "text",
 					valueField: "value",
 					dataSource: [
-						{ "value": "A", "text": "Loại A (mức độ rủi ro thấp.)" },
-						{ "value": "B", "text": "Loại B (mức độ rủi ro trung bình thấp.)" },
-						{ "value": "C", "text": "Loại C (mức độ rủi ro trung bình cao.)" },
-						{ "value": "D", "text": "Loại D (mức độ rủi ro cao.)" },
+						{ "value": "A", "text": "TTBYT Loại A (mức độ rủi ro thấp.)" },
+						{ "value": "B", "text": "TTBYT Loại B (mức độ rủi ro trung bình thấp.)" },
+						{ "value": "C", "text": "TTBYT Loại C (mức độ rủi ro trung bình cao.)" },
+						{ "value": "D", "text": "TTBYT Loại D(mức độ rủi ro cao.)" },
+					],
+				},
+				{
+					field: "tinhtrang",
+					uicontrol: "combobox",
+					textField: "text",
+					valueField: "value",
+					dataSource: [
+						{ "value": "Đang lưu hành", "text": "Đang lưu hành" },
+						{ "value": "Ngừng lưu hành", "text": "Ngừng lưu hành" },
+						{ "value": "Cấm lưu hành", "text": "Cấm lưu hành" },
 					],
 				},
 

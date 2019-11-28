@@ -1,7 +1,7 @@
 <div block-bind="content">
 	<!-- Page Header -->
 	<div class="page-header row no-gutters py-2">
-		
+
 	</div>
 	<!-- End Page Header -->
 	<div class="row">
@@ -52,9 +52,21 @@
 								</div>
 							</div>
 							<div class="col-md-6">
-								<label>Mô tả tình trạng</label>
-								<input type="text" class="form-control" data-bind="value:mota" placeholder="..."
+								<label>Người kiểm tra</label>
+								<input type="text" class="form-control" readonly data-bind="value:nguoikiemtra" placeholder="..."
 									required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+
+						</div>
+						<div class="row mb-3">
+
+							<div class="col-md-12">
+								<label>Mô tả tình trạng</label>
+								<textarea rows="3" type="text" class="form-control" data-bind="value:mota"
+									placeholder="..." required=""></textarea>
 								<div class="invalid-feedback">
 									Vui lòng nhập email.
 								</div>

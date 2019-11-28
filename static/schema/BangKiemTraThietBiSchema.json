@@ -37,7 +37,12 @@
         "length": 255
     },
     "nguoikiemtra_id": {
-        "type": "string"
+        "type": "string",
+        "length": 255
+    },
+    "nguoikiemtra": {
+        "type": "string",
+        "length": 255
     },
     "tenthietbi": {
         "type": "string",
@@ -45,8 +50,5 @@
     },
     "chitietthietbi_id": {
         "type": "string"
-    },
-    "nguoikiemtra": {
-        "type": "dict"
     }
 }

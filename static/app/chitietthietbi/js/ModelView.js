@@ -132,7 +132,7 @@ define(function (require) {
 			self.$el.find(".tensp").html("Thiết bị: "+sessionStorage.getItem('TenSanPham'))
 			self.model.set("thietbi_id",sessionStorage.getItem('IDSanPham'))
 			self.model.set("tenthietbi",sessionStorage.getItem('TenSanPham'))
-
+			sessionStorage.clear();
 			var id = this.getApp().getRouter().getParam("id");			
 			if (id) {
 				this.model.set('id', id);
@@ -160,6 +160,31 @@ define(function (require) {
 							sessionStorage.setItem('TenSanPham', self.$el.find("#tensp").val());
 							sessionStorage.setItem('IDSanPham', self.model.get("id"));
 						})
+
+
+
+						var bangkiemtrathietbi = self.model.get('bangkiemtrathietbifield');
+						bangkiemtrathietbi.sort(function (a, b) {
+							var thoigiantaoA = a.created_at
+							var thoigiantaoB = b.created_at
+							if (thoigiantaoA < thoigiantaoB) {
+								return 1;
+							}
+							if (thoigiantaoA > thoigiantaoB) {
+								return -1;
+							}
+							return 0;
+						});
+						bangkiemtrathietbi.forEach(function (item, index) {
+							self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tenthietbi + "</td><td class='p-2'>" +moment(item.ngay*1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.tinhtrang + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href="+self.getApp().serviceURL+ "/?#bangkiemtrathietbi/model?id="+item.id+">Xem chi tiết</a></td></tr>")
+							
+						})
+						self.$el.find(".btn-them2").unbind("click").bind("click", function () {
+							location.href = self.getApp().serviceURL + "/?#bangkiemtrathietbi/model";
+							sessionStorage.setItem('TenThietBi',self.model.get("model_serial_number"));
+							sessionStorage.setItem('IDThietBi', self.model.get("id"));
+						})
+
 						self.applyBindings();
 
 					},

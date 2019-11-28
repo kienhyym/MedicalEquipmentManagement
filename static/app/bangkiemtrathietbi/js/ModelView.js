@@ -97,71 +97,53 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-			
+				
 				{
-					field: "phanloai",
+					field: "tinhtrang",
 					uicontrol: "combobox",
 					textField: "text",
 					valueField: "value",
 					dataSource: [
-						{ "value": "A", "text": "Loại A (mức độ rủi ro thấp.)" },
-						{ "value": "B", "text": "Loại B (mức độ rủi ro trung bình thấp.)" },
-						{ "value": "C", "text": "Loại C (mức độ rủi ro trung bình cao.)" },
-						{ "value": "D", "text": "Loại D (mức độ rủi ro cao.)" },
+						{ "value": "Không vấn đề", "text": "Không vấn đề" },
+						{ "value": "Có vấn đề", "text": "Có vấn đề" },
+						
 					],
 				},
+				
 				{
-					field: "trangthai",
-					uicontrol: "combobox",
-					textField: "text",
-					valueField: "value",
-					dataSource: [
-						{ "value": "Đã gửi yêu cầu sửa chữa", "text": "Đã gửi yêu cầu sửa chữa" },
-						{ "value": "Đang sửa chữa", "text": "Đang sửa chữa" },
-						{ "value": "Đang chờ kiểm duyệt", "text": "Đang chờ kiểm duyệt" },
-						{ "value": "Đã kiểm duyệt", "text": "Đã kiểm duyệt" },
-					],
+					field: "ngay",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
 				},
-
 	
 			]
 		},
 
 		render: function () {
 			var self = this;
-			self.$el.find(".tensp").html("Thiết bị: "+sessionStorage.getItem('TenSanPham'))
-			self.model.set("thietbi_id",sessionStorage.getItem('IDSanPham'))
-			self.model.set("tenthietbi",sessionStorage.getItem('TenSanPham'))
+			var userID = self.getApp().currentUser.id
 
+			self.$el.find(".tensp").html("Kiểm tra thiết bị: "+sessionStorage.getItem('TenThietBi'))
+			self.model.set("chitietthietbi_id",sessionStorage.getItem('IDThietBi'))
+			self.model.set("tenthietbi",sessionStorage.getItem('TenThietBi'))
+
+			self.model.set("nguoikiemtra",self.getApp().currentUser.name)
+			self.model.set("nguoikiemtra_id",userID)
+			sessionStorage.clear();
 			var id = this.getApp().getRouter().getParam("id");			
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						self.$el.find(".tensp").html("Thiết bị: "+self.model.get("tenthietbi"))
-						var danhsachyeucausuachua = self.model.get('phieuyeucausuachuafield');
-						danhsachyeucausuachua.sort(function (a, b) {
-							var thoigiantaoA = a.created_at
-							var thoigiantaoB = b.created_at
-							if (thoigiantaoA < thoigiantaoB) {
-								return 1;
-							}
-							if (thoigiantaoA > thoigiantaoB) {
-								return -1;
-							}
-							return 0;
-						});
-						danhsachyeucausuachua.forEach(function (item, index) {
-							self.$el.find("#danhsachyeucausuachua").append("<tr><td class='p-2'>" + item.ma_qltb + "</td><td class='p-2'>" +moment(item.ngay_suco*1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.nguoisudung + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href="+self.getApp().serviceURL+ "/?#phieuyeucausuachua/model?id="+item.id+">Xem chi tiết</a></td></tr>")
-							
-						})
-						self.$el.find(".btn-them").unbind("click").bind("click", function () {
-							location.href = self.getApp().serviceURL + "/?#phieuyeucausuachua/model";
-							sessionStorage.setItem('TenSanPham', self.$el.find("#tensp").val());
-							sessionStorage.setItem('IDSanPham', self.model.get("id"));
-						})
+						self.$el.find(".tensp").html("Kiểm tra thiết bị: "+self.model.get("tenthietbi"))
 						self.applyBindings();
-
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");

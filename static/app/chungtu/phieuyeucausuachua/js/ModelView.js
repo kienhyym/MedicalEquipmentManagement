@@ -144,7 +144,7 @@ define(function (require) {
 			self.$el.find(".tensp").html("PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ: "+sessionStorage.getItem('TenSanPham'))
 			self.model.set("chitietthietbi_id",sessionStorage.getItem('IDSanPham'))
 			self.model.set("tenthietbi",sessionStorage.getItem('TenSanPham'))
-
+			sessionStorage.clear();
 			var id = this.getApp().getRouter().getParam("id");			
 			if (id) {
 				this.model.set('id', id);
