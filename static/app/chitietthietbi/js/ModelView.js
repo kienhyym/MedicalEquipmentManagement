@@ -123,7 +123,54 @@ define(function (require) {
 					],
 				},
 
-	
+				{
+					field: "ngaymua",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
+				{
+					field: "baohanhtungay",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
+				{
+					field: "baohanhdenngay",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
+				{
+					field: "ngaynhap",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
 			]
 		},
 

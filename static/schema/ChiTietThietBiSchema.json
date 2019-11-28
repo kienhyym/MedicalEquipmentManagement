@@ -25,15 +25,7 @@
         "type": "string",
         "primary": true
     },
-    "nhanhieu": {
-        "type": "string",
-        "length": 255
-    },
-    "hangsanxuat": {
-        "type": "string",
-        "length": 255
-    },
-    "made_in": {
+    "tenthietbi": {
         "type": "string",
         "length": 255
     },
@@ -41,32 +33,51 @@
         "type": "string",
         "length": 255
     },
-    "dienap": {
+    "ma_qltb": {
         "type": "string",
         "length": 255
     },
-    "nguyengia": {
+    "noisanxuat": {
         "type": "string",
         "length": 255
     },
-    "nguonnhap": {
+    "ngaymua": {
+        "type": "number"
+    },
+    "nhacungcap": {
         "type": "string",
         "length": 255
     },
-    "trangthai": {
+    "baohanhtungay": {
+        "type": "number"
+    },
+    "baohanhdenngay": {
+        "type": "number"
+    },
+    "thongsokythuat": {
+        "type": "string"
+    },
+    "phukien": {
+        "type": "string"
+    },
+    "tinhtrangthietbikhimua": {
         "type": "string",
         "length": 255
     },
-    "chungtu": {
-        "type": "string",
-        "length": 255
+    "yeucauvebaoduong": {
+        "type": "string"
+    },
+    "noidungbaoduong": {
+        "type": "string"
+    },
+    "luuykhisudung": {
+        "type": "string"
+    },
+    "ngaynhap": {
+        "type": "number"
     },
     "thietbi_id": {
         "type": "string"
-    },
-    "tenthietbi": {
-        "type": "string",
-        "length": 255
     },
     "phieuyeucausuachuafield": {
         "type": "list"

@@ -505,6 +505,27 @@ define(function (require) {
 				console.log('ID san pham', sessionStorage.getItem('IDSanPham'))
 
 			})
+			$.ajax({
+				method: "POST",
+				url: self.getApp().serviceURL + "/api/v1/thietbiduockiemtra",
+				data: JSON.stringify({
+					thietbi_id: thietBiDaChon.id,
+					thietbi: thietBiDaChon
+				}),
+				headers: {
+					'content-type': 'application/json'
+				},
+				dataType: 'json',
+				success: function (response) {
+					if (response) {
+						self.getApp().notify("Đăng ký thành công");
+						self.getApp().getRouter().navigate(self.collectionName + "/collection");
+					}
+				}, error: function (xhr, ere) {
+					console.log('xhr', ere);
+
+				}
+			})
 		}
 
 

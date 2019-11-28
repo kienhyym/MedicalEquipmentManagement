@@ -5,7 +5,7 @@
 	</div>
 	<!-- End Page Header -->
 	<div class="row">
-		<div class="col-lg-8 col-md-12">
+		<div class="col-lg-12 col-md-12">
 			<div class="card  card-small mb-4">
 				<div class="card-header  border-bottom">
 					<div class="row">
@@ -18,131 +18,264 @@
 					</div>
 				</div>
 				<div class="card-body">
+					<div class="text-center">
+						<h3>LÝ LỊCH THIẾT BỊ</h3>
+					</div>
 					<div class="needs-validation" novalidate="">
 						<div class="row mb-3">
 
-							<div class="col-md-6 ">
-								<label>Serial</label>
-								<input type="text" class="form-control" data-bind="value:model_serial_number"
-									placeholder="Nhập tên thiết bị" required="" id="tensp">
+							<div class="col-md-12 ">
+								<label>1. TÊN THIẾT BỊ:</label>
+								<input type="text" class="form-control" data-bind="value:tenthietbi"
+									placeholder="Nhập tên thiết bị" required="">
 								<div class="invalid-feedback">
 									Vui lòng nhập Tên.
 								</div>
 							</div>
+						</div>
 
+						<div class="needs-validation" novalidate="">
+							<div class="row mb-3">
 
-							<div class="col-md-6">
-								<label>Nhãn hiệu<span class="text-muted"></span></label>
-								<input type="text" class="form-control" data-bind="value:nhanhieu"
-									placeholder="nhập nhãn hiệu">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
+								<div class="col-md-6 ">
+									<label>2. SERIAL:</label>
+									<input type="text" class="form-control" data-bind="value:model_serial_number"
+										placeholder="Nhập tên thiết bị" required="" id="tensp">
+									<div class="invalid-feedback">
+										Vui lòng nhập Tên.
+									</div>
 								</div>
+
+
+								<div class="col-md-6">
+									<label>3. MÃ QLTB:<span class="text-muted"></span></label>
+									<input type="text" class="form-control" data-bind="value:ma_qltb"
+										placeholder="nhập nhãn hiệu">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+
+
+							</div>
+							<div class="row mb-3">
+								<div class="col-md-12">
+									<label>4. NƠI SẢN XUẤT/ XUẤT XỨ:</label>
+									<input type="text" class="form-control" data-bind="value:noisanxuat"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+
+							</div>
+
+
+							<div class="row mb-3">
+								<div class="col-md-6">
+									<label>5. NGÀY MUA/NHẬN:</label>
+									<input type="text" class="form-control" data-bind="value:ngaymua" placeholder="..."
+										required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+
+							</div>
+
+
+							<div class="row mb-3">
+								<div class="col-md-12">
+									<label>6. NHÀ CUNG CẤP TTB:</label>
+									<input type="text" class="form-control" data-bind="value:nhacungcap"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-4">
+									<label>7. BẢO HÀNH:từ</label>
+									<input type="text" class="form-control" data-bind="value:baohanhtungay"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+								<div class="col-md-4">
+									<label>đến</label>
+									<input type="text" class="form-control" data-bind="value:baohanhdenngay"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+								<div class="col-md-4">
+									<label>Hết/Không bảo hành:</label>
+									<input type="text" class="form-control" placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+
+
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-12">
+									<label>8. THÔNG SỐ KỸ THUẬT/CẤU HÌNH:</label>
+									<input type="text" class="form-control" data-bind="value:thongsokythuat"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-12">
+									<label>9. PHỤ KIỆN KÈM THEO (nếu có):</label>
+									<input type="text" class="form-control" data-bind="value:phukien" placeholder="..."
+										required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+							</div>
+							<label>10. TÌNH TRẠNG THIẾT BỊ KHI MUA/NHẬN</label>
+
+							<div class="row mb-3">
+
+								<div class="col-md-4">
+									<label>- Mới 100%</label>
+									<input type="text" class="form-control" data-bind="value:tinhtrangthietbikhimua"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+								<div class="col-md-4">
+									<label>- Thiết bị cũ:</label>
+									<input type="text" class="form-control" data-bind="value:tinhtrangthietbikhimua"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+								<div class="col-md-4">
+									<label>phần trăm còn lại:</label>
+									<input type="text" class="form-control" placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+							</div>
+							<label>11. YÊU CẦU VỀ BẢO DƯỠNG VÀ LƯU Ý KHI SỬ DỤNG (NẾU CÓ)</label>
+							<div class="row mb-3">
+								<div class="col-md-6">
+									<label>- Không cần bảo dưỡng</label>
+									<input type="text" class="form-control" data-bind="value:yeucauvebaoduong"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label>- Bảo dưỡng:</label>
+									<input type="text" class="form-control" data-bind="value:yeucauvebaoduong"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-12">
+									<label>- Nội dung bảo dưỡng:</label>
+									<input type="text" class="form-control" data-bind="value:noidungbaoduong"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-md-12">
+									<label>- Lưu ý khi sử dụng:</label>
+									<input type="text" class="form-control" data-bind="value:luuykhisudung"
+										placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+							</div>
+
+							<!-- <div> -->
+							<div class="row mb-3">
+								<div class="col-md-4"></div>
+								<div class="col-md-4"></div>
+								<div class="col-md-4">
+									<label>Ngày</label>
+									<input type="text" class="form-control" data-bind="value:ngaynhap" placeholder="..."
+										required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+							</div>
+							<div class="row mb-3 text-center">
+								<div class="col-md-6">
+									<label>Trưởng phòng Vật tư- TBYT</label>
+								</div>
+								<div class="col-md-6">
+									<label>Cán bộ quản lý</label>
+								</div>
+							</div>
+
+							<div>
+								<table class="table table-bordered text-center">
+									<tr>
+										<th class="p-2 ">Mã QLTB</th>
+										<th class="p-2 ">Ngày thiết bị gặp sự cố</th>
+										<th class="p-2 ">Người sử dụng</th>
+										<th class="p-2 ">Xem chi tiết</th>
+									</tr>
+									<tbody id="danhsachyeucausuachua"></tbody>
+									<tr>
+										<td colspan="4" class="p-0"><button
+												class="btn btn-light btn-sm w-100 btn-them p-2">Yêu cầu sửa
+												chữa</button>
+										</td>
+									</tr>
+								</table>
+							</div>
+
+							<div>
+								<table class="table table-bordered text-center">
+									<tr>
+										<th class="p-2 ">Tên thiết bị</th>
+										<th class="p-2 ">Ngày kiểm tra</th>
+										<th class="p-2 ">Tình trạng</th>
+										<th class="p-2 ">Xem chi tiết</th>
+									</tr>
+									<tbody id="danhsachhosokiemtrathietbi"></tbody>
+									<tr>
+										<td colspan="4" class="p-0"><button
+												class="btn btn-light btn-sm w-100 btn-them2 p-2">Cập nhật thông tin
+												kiểm
+												tra</button>
+										</td>
+									</tr>
+								</table>
 							</div>
 
 
 						</div>
-						<div class="row mb-3">
-							<div class="col-md-6">
-								<label>Hãng sản xuất</label>
-								<input type="text" class="form-control" data-bind="value:hangsanxuat" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label>Nơi sản xuất</label>
-								<input type="text" class="form-control" data-bind="value:made_in" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-						</div>
-
-
-						<div class="row mb-3">
-							<div class="col-md-6">
-								<label>Điện áp</label>
-								<input type="text" class="form-control" data-bind="value:dienap" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label>Nguyên giá</label>
-								<input type="text" class="form-control" data-bind="value:nguyengia" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-						</div>
-
-
-						<div class="row mb-3">
-							<div class="col-md-6">
-								<label>Nguồn nhập</label>
-								<input type="text" class="form-control" data-bind="value:nguonnhap" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<label>Tình trạng thiết bị:</label>
-								<input type="text" class="form-control" data-bind="value:trangthai" placeholder="..."
-									required="">
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-						</div>
-
-
-
-						<div>
-							<table class="table table-bordered text-center">
-								<tr>
-									<th class="p-2 ">Mã QLTB</th>
-									<th class="p-2 ">Ngày thiết bị gặp sự cố</th>
-									<th class="p-2 ">Người sử dụng</th>
-									<th class="p-2 ">Xem chi tiết</th>
-								</tr>
-								<tbody id="danhsachyeucausuachua"></tbody>
-								<tr>
-									<td colspan="4" class="p-0"><button
-											class="btn btn-light btn-sm w-100 btn-them p-2">Yêu cầu sửa chữa</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-
-						<div>
-							<table class="table table-bordered text-center">
-								<tr>
-									<th class="p-2 ">Tên thiết bị</th>
-									<th class="p-2 ">Ngày kiểm tra</th>
-									<th class="p-2 ">Tình trạng</th>
-									<th class="p-2 ">Xem chi tiết</th>
-								</tr>
-								<tbody id="danhsachhosokiemtrathietbi"></tbody>
-								<tr>
-									<td colspan="4" class="p-0"><button
-											class="btn btn-light btn-sm w-100 btn-them2 p-2">Cập nhật thông tin kiểm
-											tra</button>
-									</td>
-								</tr>
-							</table>
-						</div>
-
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
