@@ -6,8 +6,8 @@ define(function (require) {
 	var template = require('text!app/user/tpl/model.html'),
 		schema = require('json!schema/UserSchema.json');
 
-	var RoleSelectView = require('app/role/js/SelectView');
-	var DonViSelectView = require('app/donvi/js/SelectView');
+	// var RoleSelectView = require('app/role/js/SelectView');
+	var VaiTroSelectView = require('app/vaitro/js/SelectView');
 
 
 	return Gonrin.ModelView.extend({
@@ -40,10 +40,10 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
-							
+
 							self.model.save(null, {
 								success: function (model, respose, options) {
-								
+
 									self.getApp().notify("Lưu thông tin thành công");
 									self.getApp().getRouter().refresh();
 								},
@@ -61,8 +61,8 @@ define(function (require) {
 									}
 								}
 							});
-								
-							
+
+
 						}
 					},
 					{
@@ -100,14 +100,14 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-				{
-					field: "roles",
-					uicontrol: "ref",
-					textField: "name",
-					foreignRemoteField: "id",
-					selectionMode: "multiple",
-					dataSource: RoleSelectView
-				},
+				// {
+				// 	field: "roles",
+				// 	uicontrol: "ref",
+				// 	textField: "name",
+				// 	foreignRemoteField: "id",
+				// 	selectionMode: "multiple",
+				// 	dataSource: RoleSelectView
+				// },
 				// {
 				// 	field: "donvi",
 				// 	uicontrol: "ref",
@@ -116,20 +116,63 @@ define(function (require) {
 				// 	foreignField: "donvi_id",
 				// 	dataSource: DonViSelectView
 				// },
+				{
+					field: "vaitro",
+					uicontrol: "combobox",
+					textField: "text",
+					valueField: "value",
+					dataSource: [
+						{ "value": "quanly", "text": "Quản lý" },
+						{ "value": "nhanvien", "text": "Nhân viên" },
+					],
+				},
 
-	
 			]
 		},
 
 		render: function () {
 			var self = this;
-			var id = this.getApp().getRouter().getParam("id");			
+				if(location.hash.length < 20){
+					self.$el.find(".btn-success").unbind("click").bind("click", function () {
+						var data = {
+							name: self.model.get('name'),
+							email: self.model.get('email'),
+							phone_number: self.model.get('phone_number'),
+							vaitro: self.model.get('vaitro'),
+							password: self.model.get('password'),
+						}
+							$.ajax({
+								method: "POST",
+								url: self.getApp().serviceURL + "/api/v1/register",
+								data: JSON.stringify(data),
+								headers: {
+									'content-type': 'application/json'
+								},
+								dataType: 'json',
+								success: function (response) {
+									if (response) {
+										console.log(response)
+										self.getApp().notify("Đăng ký thành công");
+										self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									}
+								}, error: function (xhr, ere) {
+									console.log('xhr', ere);
+								}
+							})
+						});
+				}
+				
+			
+
+			var id = this.getApp().getRouter().getParam("id");
+
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
-
+						self.$el.find('.password').hide();
+						
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");

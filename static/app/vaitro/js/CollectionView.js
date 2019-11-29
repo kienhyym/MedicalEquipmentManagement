@@ -4,24 +4,25 @@ define(function (require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
-    var template = require('text!app/chitietthietbi/tpl/collection.html'),
-		schema = require('json!schema/ChiTietThietBiSchema.json');
+    var template = require('text!app/vaitro/tpl/collection.html'),
+		schema = require('json!schema/VaiTroSchema.json');
 
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
-        collectionName: "chitietthietbi",
+        collectionName: "vaitro",
         uiControl:{
             fields: [
+
                 {
-                    field: "tenthietbi", label: "Tên thiết bị", width: 250, readonly: true,
+                    field: "ma", label: "Mã", width: 250, readonly: true,
                 },
                 {
-                    field: "model_serial_number", label: "Serial", width: 250, readonly: true,
+                    field: "ten", label: "vai trò", width: 250, readonly: true,
                 },
-            
                 
+
             ],
             onRowClick: function (event) {
                 if (event.rowId) {

@@ -18,14 +18,14 @@ define(function (require) {
 		},
 
 		{
-			"collectionName": "role",
-			"route": "role/collection",
-			"$ref": "app/role/js/CollectionView",
+			"collectionName": "vaitro",
+			"route": "vaitro/collection",
+			"$ref": "app/vaitro/js/CollectionView",
 		},
 		{
-			"collectionName": "role",
-			"route": "role/model(/:id)",
-			"$ref": "app/role/js/ModelView",
+			"collectionName": "vaitro",
+			"route": "vaitro/model(/:id)",
+			"$ref": "app/vaitro/js/ModelView",
 		},
 		{
 			"collectionName": "donvi",

@@ -21,7 +21,6 @@ class Role(CommonModel):
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
 
-
 class User(CommonModel):
     __tablename__ = 'user'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -31,10 +30,9 @@ class User(CommonModel):
     password = db.Column(String, nullable=True)
     salt = db.Column(db.String())
     type = db.Column(db.String())
-    description = db.Column(db.String())
     active = db.Column(db.Boolean(), default=True)
     roles = db.relationship('Role', secondary=roles_users, cascade="save-update")
-
+    vaitro = db.Column(db.String())
 
     def has_role(self, role):
         if isinstance(role, str):

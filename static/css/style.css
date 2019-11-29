@@ -34,8 +34,13 @@ font-family: Arial, Helvetica, sans-serif;
 .tinhtrangthietbikhimua div ul li{
   display: inline;
   margin: 15px;
-
 }
+.tinhtrangthietbikhimua{
+  width: 40%;
+  margin: 0px;
+  padding: 0px;
+}
+
 
 .feather {
   width: 16px;

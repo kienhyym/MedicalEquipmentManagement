@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
@@ -6,28 +6,28 @@ define(function(require) {
         tpl = require('text!app/login/tpl/login.html');
     var template = gonrin.template(tpl)({});
     return Gonrin.View.extend({
-        render: function() {
+        render: function () {
             var self = this;
             this.$el.html(template);
             self.getApp().currentUser = null;
             $("body").attr({
                 'style': 'background-color: #e9ecf3 !important;'
             });
-            this.$el.find("#login-form").unbind("submit").bind("submit", function() {
+            this.$el.find("#login-form").unbind("submit").bind("submit", function () {
                 self.processLogin();
                 return false;
             });
-            $("#register-btn").unbind('click').bind('click', function(){
+            $("#register-btn").unbind('click').bind('click', function () {
                 self.getApp().getRouter().navigate("register");
             });
-            $("#forgot-btn").unbind('click').bind('click', function(){
+            $("#forgot-btn").unbind('click').bind('click', function () {
                 self.getApp().getRouter().navigate("forgot");
-        	});
-         
+            });
+
 
             return this;
         },
-        processLogin: function() {
+        processLogin: function () {
             console.log("submit")
             var username = this.$('[name=username]').val().toLowerCase().trim();
             var password = this.$('[name=password]').val().trim();
@@ -37,14 +37,14 @@ define(function(require) {
             });
             var self = this;
             $.ajax({
-                url:self.getApp().serviceURL + "/api/v1/login",
+                url: self.getApp().serviceURL + "/api/v1/login",
                 type: 'post',
                 data: data,
-                success: function(response) {
-                    console.log("a>>>>>>>>>>>>>>>>>>>>>>",self.getApp() );
+                success: function (response) {
+                    console.log("a>>>>>>>>>>>>>>>>>>>>>>", self.getApp());
                     self.getApp().postLogin(response);
                 },
-                error: function(xhr) {
+                error: function (xhr) {
                 }
             });
         },

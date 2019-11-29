@@ -104,10 +104,10 @@ define(function (require) {
 					textField: "text",
 					valueField: "value",
 					dataSource: [
-						{ "value": "A", "text": "TTBYT Loại A (mức độ rủi ro thấp.)" },
-						{ "value": "B", "text": "TTBYT Loại B (mức độ rủi ro trung bình thấp.)" },
-						{ "value": "C", "text": "TTBYT Loại C (mức độ rủi ro trung bình cao.)" },
-						{ "value": "D", "text": "TTBYT Loại D(mức độ rủi ro cao.)" },
+						{ "value": "A", "text": "TTBYT Loại A" },
+						{ "value": "B", "text": "TTBYT Loại B " },
+						{ "value": "C", "text": "TTBYT Loại C " },
+						{ "value": "D", "text": "TTBYT Loại D " },
 					],
 				},
 				{

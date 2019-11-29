@@ -25,35 +25,19 @@
         "type": "string",
         "primary": true
     },
-    "phone_number": {
+    "ma": {
         "type": "string",
-        "length": 50
+        "length": 80
     },
-    "email": {
+    "ten": {
         "type": "string",
-        "length": 50
+        "length": 80
     },
-    "name": {
+    "thongtin": {
         "type": "string",
-        "length": 50
+        "length": 255
     },
-    "password": {
-        "type": "string"
-    },
-    "salt": {
-        "type": "string"
-    },
-    "type": {
-        "type": "string"
-    },
-    "active": {
-        "type": "boolean",
-        "default": true
-    },
-    "vaitro": {
-        "type": "string"
-    },
-    "roles": {
+    "userfield": {
         "type": "list"
     }
 }

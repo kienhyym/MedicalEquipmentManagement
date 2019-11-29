@@ -116,7 +116,7 @@ def register(request):
         new_user.phone_number = data["phone_number"]
         # new_user.user_image = data["user_image"]
         new_user.password = auth.encrypt_password(data["password"])
-        # new_user.password = data["password"]
+        new_user.vaitro = data["vaitro"]
         db.session.add(new_user)
         db.session.commit()
         result = user_to_dict(new_user)
@@ -199,6 +199,7 @@ sqlapimanager.create_api(Role, max_results_per_page=1000000,
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
     collection_name='role')
+    
 sqlapimanager.create_api(DonVi, max_results_per_page=1000000,
     methods=['GET'],
     url_prefix='/api/v1',

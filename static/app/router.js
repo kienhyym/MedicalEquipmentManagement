@@ -22,11 +22,11 @@ define(function (require) {
             "*path": "defaultRoute"
         },
         defaultRoute: function () {
-            //this.navigate("index",true);
-            //        	this.navigate('dangkykham/collection');
+            // this.navigate("index", true);
+            // this.navigate('dangkykham/collection');
         },
         index: function () {
-            this.navigate('dangkykham/collection');
+            // this.navigate('dangkykham/collection');
         },
         logout: function () {
             var self = this;
@@ -63,8 +63,8 @@ define(function (require) {
             var self = this;
             var changePasswordView = new ChangePasswordView(
                 {
-                el: $('.content-contain'),
-                id: self.getApp().currentUser.id 
+                    el: $('.content-contain'),
+                    id: self.getApp().currentUser.id
                 });
             changePasswordView.render();
         },

@@ -24,7 +24,7 @@
 
 							<div class="col-md-6 ">
 								<label>Tên</label>
-								<input type="text" class="form-control" data-bind="value:name" placeholder="Nhập tên "
+								<input type="text" class="form-control" id="name" data-bind="value:name" placeholder="Nhập tên "
 									required="">
 								<div class="invalid-feedback">
 									Vui lòng nhập Tên.
@@ -50,17 +50,17 @@
 									placeholder="..." required="">
 							</div>
 							<div class="col-md-6">
-								<label for="password">Password</label>
-								<input id="password" type="password" data-bind="value:password" />
+								<label for="vaitro">Vai trò<span class="text-muted"></span></label>
+								<input type="text" data-bind="value:vaitro" id="vaitro" />
 							</div>
 						</div>
 
 						<div class="row mb-3">
-							<div class="col-md-12">
-								<label for="password">Loại người dùng <span class="text-muted"></span></label>
-								<input type="text" data-bind="dict:roles" />
+						
+							<div class="col-md-6 password">
+								<label for="password">Password</label>
+								<input id="password" type="password" data-bind="value:password" />
 							</div>
-
 						</div>
 
 						
