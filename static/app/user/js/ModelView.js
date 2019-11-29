@@ -156,7 +156,8 @@ define(function (require) {
 										self.getApp().getRouter().navigate(self.collectionName + "/collection");
 									}
 								}, error: function (xhr, ere) {
-									console.log('xhr', ere);
+									self.getApp().notify({ message: "Thông tin tài khoản đã có trong hệ thống" }, { type: "danger", delay: 1000 });
+
 								}
 							})
 						});

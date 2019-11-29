@@ -45,6 +45,8 @@ define(function (require) {
                     self.getApp().postLogin(response);
                 },
                 error: function (xhr) {
+                    self.getApp().notify({ message: "Tài khoản hoặc mật khẩu không chính xác" }, { type: "danger", delay: 1000 });
+
                 }
             });
         },
