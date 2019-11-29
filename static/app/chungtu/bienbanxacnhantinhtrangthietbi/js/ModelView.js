@@ -140,6 +140,12 @@ define(function (require) {
 
 		render: function () {
 			var self = this;
+			self.$el.find(".tensp").html("Thiết bị: "+sessionStorage.getItem('TenThietBi'))
+			self.model.set("chitietthietbi_id",sessionStorage.getItem('IDThietBi'))
+			self.model.set("tentrangthietbi",sessionStorage.getItem('TenThietBi'))
+			// sessionStorage.clear();
+
+
 			var id = this.getApp().getRouter().getParam("id");			
 			if (id) {
 				this.model.set('id', id);

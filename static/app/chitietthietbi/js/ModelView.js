@@ -38,10 +38,10 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
-							
+
 							self.model.save(null, {
 								success: function (model, respose, options) {
-								
+
 									self.getApp().notify("Lưu thông tin thành công");
 									self.getApp().getRouter().navigate(self.collectionName + "/collection");
 								},
@@ -59,8 +59,8 @@ define(function (require) {
 									}
 								}
 							});
-								
-							
+
+
 						}
 					},
 					{
@@ -98,7 +98,7 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-			
+
 				{
 					field: "phanloai",
 					uicontrol: "combobox",
@@ -223,16 +223,16 @@ define(function (require) {
 
 		render: function () {
 			var self = this;
-			self.$el.find(".tensp").html("Thiết bị: "+sessionStorage.getItem('TenSanPham'))
-			self.model.set("thietbi_id",sessionStorage.getItem('IDSanPham'))
-			self.model.set("tenthietbi",sessionStorage.getItem('TenSanPham'))
-			sessionStorage.clear();
-			var id = this.getApp().getRouter().getParam("id");			
+			self.$el.find(".tensp").html("Thiết bị: " + sessionStorage.getItem('TenSanPham'))
+			self.model.set("thietbi_id", sessionStorage.getItem('IDSanPham'))
+			self.model.set("tenthietbi", sessionStorage.getItem('TenSanPham'))
+			// sessionStorage.clear();
+			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						self.$el.find(".tensp").html("Thiết bị: "+self.model.get("tenthietbi"))
+						self.$el.find(".tensp").html("Thiết bị: " + self.model.get("tenthietbi"))
 						var danhsachyeucausuachua = self.model.get('phieuyeucausuachuafield');
 						danhsachyeucausuachua.sort(function (a, b) {
 							var thoigiantaoA = a.created_at
@@ -245,10 +245,11 @@ define(function (require) {
 							}
 							return 0;
 						});
+
 						danhsachyeucausuachua.forEach(function (item, index) {
-							self.$el.find("#danhsachyeucausuachua").append("<tr><td class='p-2'>" + item.ma_qltb + "</td><td class='p-2'>" +moment(item.ngay_suco*1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.nguoisudung + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href="+self.getApp().serviceURL+ "/?#phieuyeucausuachua/model?id="+item.id+">Xem chi tiết</a></td></tr>")
-							
+							self.$el.find("#danhsachyeucausuachua").append("<tr><td class='p-2'>" + item.ma_qltb + "</td><td class='p-2'>" + moment(item.ngay_suco * 1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.nguoisudung + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href=" + self.getApp().serviceURL + "/?#phieuyeucausuachua/model?id=" + item.id + ">Xem chi tiết</a></td></tr>")
 						})
+
 						self.$el.find(".btn-them").unbind("click").bind("click", function () {
 							location.href = self.getApp().serviceURL + "/?#phieuyeucausuachua/model";
 							sessionStorage.setItem('TenSanPham', self.$el.find("#tensp").val());
@@ -257,8 +258,34 @@ define(function (require) {
 
 
 
-						var bangkiemtrathietbi = self.model.get('bangkiemtrathietbifield');
-						bangkiemtrathietbi.sort(function (a, b) {
+
+						// var bangkiemtrathietbi = self.model.get('bangkiemtrathietbifield');
+						// bangkiemtrathietbi.sort(function (a, b) {
+						// 	var thoigiantaoA = a.created_at
+						// 	var thoigiantaoB = b.created_at
+						// 	if (thoigiantaoA < thoigiantaoB) {
+						// 		return 1;
+						// 	}
+						// 	if (thoigiantaoA > thoigiantaoB) {
+						// 		return -1;
+						// 	}
+						// 	return 0;
+						// });
+						// bangkiemtrathietbi.forEach(function (item, index) {
+						// 	self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tenthietbi + "</td><td class='p-2'>" +moment(item.ngay*1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.tinhtrang + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href="+self.getApp().serviceURL+ "/?#bangkiemtrathietbi/model?id="+item.id+">Xem chi tiết</a></td></tr>")
+
+						// })
+						// self.$el.find(".btn-them2").unbind("click").bind("click", function () {
+						// 	location.href = self.getApp().serviceURL + "/?#bangkiemtrathietbi/model";
+						// 	sessionStorage.setItem('TenThietBi',self.model.get("model_serial_number"));
+						// 	sessionStorage.setItem('IDThietBi', self.model.get("id"));
+						// })
+
+
+
+
+						var bienbanxacnhantinhtrangthietbi = self.model.get('bienbanxacnhantinhtrangthietbifield');
+						bienbanxacnhantinhtrangthietbi.sort(function (a, b) {
 							var thoigiantaoA = a.created_at
 							var thoigiantaoB = b.created_at
 							if (thoigiantaoA < thoigiantaoB) {
@@ -269,13 +296,16 @@ define(function (require) {
 							}
 							return 0;
 						});
-						bangkiemtrathietbi.forEach(function (item, index) {
-							self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tenthietbi + "</td><td class='p-2'>" +moment(item.ngay*1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.tinhtrang + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href="+self.getApp().serviceURL+ "/?#bangkiemtrathietbi/model?id="+item.id+">Xem chi tiết</a></td></tr>")
-							
+						bienbanxacnhantinhtrangthietbi.forEach(function (item, index) {
+							self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tentrangthietbi +
+								"</td><td class='p-2'>" + moment(item.ngay * 1000).format("DD/MM/YYYY") +
+								"</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href=" +
+								self.getApp().serviceURL + "/?#bienbanxacnhantinhtrangthietbi/model?id=" + item.id + ">Xem chi tiết</a></td></tr>")
+
 						})
 						self.$el.find(".btn-them2").unbind("click").bind("click", function () {
-							location.href = self.getApp().serviceURL + "/?#bangkiemtrathietbi/model";
-							sessionStorage.setItem('TenThietBi',self.model.get("model_serial_number"));
+							location.href = self.getApp().serviceURL + "/?#bienbanxacnhantinhtrangthietbi/model";
+							sessionStorage.setItem('TenThietBi', self.model.get("model_serial_number"));
 							sessionStorage.setItem('IDThietBi', self.model.get("id"));
 						})
 

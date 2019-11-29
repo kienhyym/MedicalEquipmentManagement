@@ -69,5 +69,8 @@
     "nguoikiemtraky": {
         "type": "string",
         "length": 255
+    },
+    "chitietthietbi_id": {
+        "type": "string"
     }
 }

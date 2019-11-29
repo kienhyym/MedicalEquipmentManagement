@@ -31,6 +31,7 @@ define(function (require) {
 						command: function () {
 							var self = this;
 							Backbone.history.history.back();
+
 						}
 					},
 					{

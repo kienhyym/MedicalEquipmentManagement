@@ -134,6 +134,7 @@ class ChiTietThietBi(CommonModel):
     thietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('thietbi.id'), nullable=True)
     phieuyeucausuachuafield = db.relationship('PhieuYeuCauSuaChua', cascade="all, delete-orphan")
     bangkiemtrathietbifield = db.relationship('BangKiemTraThietBi', cascade="all, delete-orphan")
+    bienbanxacnhantinhtrangthietbifield = db.relationship('BienBanXacNhanTinhTrangThietBi', cascade="all, delete-orphan")
 
 
 class BangKiemTraThietBi(CommonModel):
@@ -146,6 +147,24 @@ class BangKiemTraThietBi(CommonModel):
     nguoikiemtra = db.Column(String(255))
     tenthietbi = db.Column(String(255))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
+
+class BienBanXacNhanTinhTrangThietBi(CommonModel):
+    __tablename__ = 'bienbanxacnhantinhtrangthietbi'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tentrangthietbi = db.Column(String(255))
+    tai  = db.Column(String(255))
+    nha = db.Column(String(255))
+    nguoisudung = db.Column(String(255))
+    donvi = db.Column(String(255))
+    ketquakiemtra = db.Column(Text())
+    huongkhacphuc = db.Column(Text())
+    ngay = db.Column(BigInteger())
+    noiviet = db.Column(String(255))
+    phongquantriky = db.Column(String(255))
+    nguoisudungky = db.Column(String(255))
+    nguoikiemtraky = db.Column(String(255))
+    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
+
 
 class PhieuYeuCauSuaChua(CommonModel):
     __tablename__ = 'phieuyeucausuachua'
@@ -305,19 +324,5 @@ class DuToanSuaChua(CommonModel):
     ngaylap = db.Column(BigInteger())
     nguoilap = db.Column(String(255))
 
-class BienBanXacNhanTinhTrangThietBi(CommonModel):
-    __tablename__ = 'bienbanxacnhantinhtrangthietbi'
-    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    tentrangthietbi = db.Column(String(255))
-    tai  = db.Column(String(255))
-    nha = db.Column(String(255))
-    nguoisudung = db.Column(String(255))
-    donvi = db.Column(String(255))
-    ketquakiemtra = db.Column(Text())
-    huongkhacphuc = db.Column(Text())
-    ngay = db.Column(BigInteger())
-    noiviet = db.Column(String(255))
-    phongquantriky = db.Column(String(255))
-    nguoisudungky = db.Column(String(255))
-    nguoikiemtraky = db.Column(String(255))
+
 

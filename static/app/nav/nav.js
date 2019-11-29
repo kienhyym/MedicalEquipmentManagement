@@ -159,27 +159,27 @@ define(function (require) {
 		// 	}
 		// },
 
-		{
-			"text": "Kế hoạch kiểm tra năm",
-			"icon": "fa fa-home",
-			"type": "view",
-			"collectionName": "bangkehoachkiemtrathietbitheonam",
-			"route": "bangkehoachkiemtrathietbitheonam/collection",
-			"$ref": "app/bangkehoachkiemtrathietbitheonam/js/CollectionView",
-			"visible": function () {
-				return true
+		// {
+		// 	"text": "Kế hoạch kiểm tra năm",
+		// 	"icon": "fa fa-home",
+		// 	"type": "view",
+		// 	"collectionName": "bangkehoachkiemtrathietbitheonam",
+		// 	"route": "bangkehoachkiemtrathietbitheonam/collection",
+		// 	"$ref": "app/bangkehoachkiemtrathietbitheonam/js/CollectionView",
+		// 	"visible": function () {
+		// 		return true
 
-			}
-		},
-		{
-			"type": "view",
-			"collectionName": "bangkehoachkiemtrathietbitheonam",
-			"route": "bangkehoachkiemtrathietbitheonam/model(/:id)",
-			"$ref": "app/bangkehoachkiemtrathietbitheonam/js/ModelView",
-			"visible": function () {
-				return false;
-			}
-		},
+		// 	}
+		// },
+		// {
+		// 	"type": "view",
+		// 	"collectionName": "bangkehoachkiemtrathietbitheonam",
+		// 	"route": "bangkehoachkiemtrathietbitheonam/model(/:id)",
+		// 	"$ref": "app/bangkehoachkiemtrathietbitheonam/js/ModelView",
+		// 	"visible": function () {
+		// 		return false;
+		// 	}
+		// },
 		{
 			"text": "Chứng từ",
 			"icon": "fa fa-home",
