@@ -5,7 +5,18 @@ define(function (require) {
 		Gonrin = require('gonrin');
 	return [
 
+		{
+			"text": "Lịch kiểm tra",
+			"icon": "fa fa-calendar",
+			"type": "view",
+			"collectionName": "thietbiduockiemtra",
+			"route": "lichthanhtra/collection",
+			"$ref": "app/lichthanhtra/view/ModelView",
+			"visible": function () {
+				return true
 
+			}
+		},
 
 		{
 			"text": "Hệ thống",
@@ -14,7 +25,7 @@ define(function (require) {
 			"entries": [
 				{
 					"text": "Danh sách người dùng",
-					"icon": "fa fa-home",
+					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "user",
 					"route": "user/collection",
@@ -25,8 +36,7 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "Danh sách người dùng",
-					"icon": "fa fa-home",
+
 					"type": "view",
 					"collectionName": "user",
 					"route": "user/model",
@@ -63,19 +73,19 @@ define(function (require) {
 
 		{
 			"text": "Danh mục",
-			"icon": "fa fa-home",
+			"icon": "fa fa-list-ul",
 			"type": "category",
 			"entries": [
 				{
 					"text": "Nhà cung cấp thiết bị",
-					"icon": "fa fa-home",
+					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "donvi",
 					"route": "donvi/collection",
 					"$ref": "app/donvi/js/CollectionView",
 					"visible": function () {
 						return true
-		
+
 					}
 				},
 				{
@@ -89,17 +99,17 @@ define(function (require) {
 						return false;
 					}
 				},
-		
+
 				{
 					"text": " Danh sách thiết bị",
-					"icon": "fa fa-home",
+					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "thietbi",
 					"route": "thietbi/collection",
 					"$ref": "app/thietbi/js/CollectionView",
 					"visible": function () {
 						return true
-		
+
 					}
 				},
 				{
@@ -113,14 +123,14 @@ define(function (require) {
 				},
 				{
 					"text": "Quản lý thiết bị",
-					"icon": "fa fa-home",
+					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "chitietthietbi",
 					"route": "chitietthietbi/collection",
 					"$ref": "app/chitietthietbi/js/CollectionView",
 					"visible": function () {
 						return true
-		
+
 					}
 				},
 				{
@@ -136,7 +146,7 @@ define(function (require) {
 		},
 
 
-		
+
 		// {
 		// 	"text": "Hồ sơ kiểm tra thiết bị",
 		// 	"icon": "fa fa-home",
@@ -182,12 +192,12 @@ define(function (require) {
 		// },
 		{
 			"text": "Chứng từ",
-			"icon": "fa fa-home",
+			"icon": "fa fa-file-text-o",
 			"type": "category",
 			"entries": [
 				{
 					"text": "Phiếu yêu cầu sửa chữa",
-					"icon": "fa fa-home",
+					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "phieuyeucausuachua",
 					"route": "phieuyeucausuachua/collection",
@@ -207,8 +217,8 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "Tình trạng thiết bị",
-					"icon": "fa fa-home",
+					"text": "Biên bản kiểm tra",
+					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "bienbanxacnhantinhtrangthietbi",
 					"route": "bienbanxacnhantinhtrangthietbi/collection",

@@ -255,3 +255,9 @@ sqlapimanager.create_api(BienBanXacNhanTinhTrangThietBi, max_results_per_page=10
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
     collection_name='bienbanxacnhantinhtrangthietbi')
+
+sqlapimanager.create_api(KeHoachHangNgay, max_results_per_page=1000000,
+    methods=['GET'],
+    url_prefix='/api/v1',
+    # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    collection_name='kehoachhangngay')

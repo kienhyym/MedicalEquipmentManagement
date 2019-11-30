@@ -109,6 +109,8 @@ class ThietBi(CommonModel):
     tinhtrang = db.Column(String(255))
     bangphanloai = db.Column(String(255))
     congkhaiphanloai = db.Column(String(255))
+    chuky = db.Column(String(10))
+
     chitietsanphamfield = db.relationship('ChiTietThietBi', cascade="all, delete-orphan")
 
 class ChiTietThietBi(CommonModel):
@@ -166,6 +168,7 @@ class BienBanXacNhanTinhTrangThietBi(CommonModel):
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
 
 
+
 class PhieuYeuCauSuaChua(CommonModel):
     __tablename__ = 'phieuyeucausuachua'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -186,11 +189,19 @@ class PhieuYeuCauSuaChua(CommonModel):
     xacnhan_nguoisudungnhanketqua = db.Column(String(255))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
 
+
+class KeHoachHangNgay(CommonModel):
+    __tablename__ = 'kehoachhangngay'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    dsthietbi = db.Column(JSONB)
+    ngay = db.Column(BigInteger())
+    
+
 class BangKeHoachKiemTraThietBiTheoNam(CommonModel):
     __tablename__ = 'bangkehoachkiemtrathietbitheonam'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     thietbiduockiemtrafield = db.relationship('ThietBiDuocKiemTra', cascade="all, delete-orphan")
-    nam = db.Column(Integer())
+    nam = db.Column(BigInteger())
 
 
 class ThietBiDuocKiemTra(CommonModel):
