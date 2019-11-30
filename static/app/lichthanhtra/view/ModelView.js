@@ -41,7 +41,10 @@ define(function (require) {
 				contentType: "application/json",
 				success: function (data) {
 					var chuky = 'chuky';
+					self.$el.find("#dsthietbi").empty();
+
 					(data.objects).forEach(function (item, index) {
+
 						self.$el.find("#dsthietbi").append("<tr><td class='p-2'>" + item.ten + "</td>" +
 							"<td class='p-1'><a class='btn btn-info btn-sm btn-danhsachthietbi p-1'>Danh sách thiết bị</a></td></tr>")
 
@@ -68,8 +71,9 @@ define(function (require) {
 								data: { "q": JSON.stringify(filters, { "order_by": [{ "field": "tentrangthietbi", "direction": "desc" }], "page": 1, "results_per_page": 100 }) },
 								contentType: "application/json",
 								success: function (data) {
-									(data.objects).forEach(function (item3, index3) {
+									self.$el.find("#dsthietbi2").empty();
 
+									(data.objects).forEach(function (item3, index3) {
 										self.$el.find("#dsthietbi2").append("<tr><td class='p-2'>" + item3.model_serial_number + "</td>" +
 											"<td class='p-1'><a class='btn btn-info btn-sm btn-ghiketqua p-1'>Ghi kết quả kiểm tra </a></td></tr>")
 
