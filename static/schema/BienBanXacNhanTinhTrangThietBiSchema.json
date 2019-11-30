@@ -54,21 +54,9 @@
     "ngay": {
         "type": "number"
     },
-    "noiviet": {
+    "chuky": {
         "type": "string",
-        "length": 255
-    },
-    "phongquantriky": {
-        "type": "string",
-        "length": 255
-    },
-    "nguoisudungky": {
-        "type": "string",
-        "length": 255
-    },
-    "nguoikiemtraky": {
-        "type": "string",
-        "length": 255
+        "length": 10
     },
     "chitietthietbi_id": {
         "type": "string"

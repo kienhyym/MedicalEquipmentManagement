@@ -109,8 +109,6 @@ class ThietBi(CommonModel):
     tinhtrang = db.Column(String(255))
     bangphanloai = db.Column(String(255))
     congkhaiphanloai = db.Column(String(255))
-    chuky = db.Column(String(10))
-
     chitietsanphamfield = db.relationship('ChiTietThietBi', cascade="all, delete-orphan")
 
 class ChiTietThietBi(CommonModel):
@@ -161,10 +159,7 @@ class BienBanXacNhanTinhTrangThietBi(CommonModel):
     ketquakiemtra = db.Column(Text())
     huongkhacphuc = db.Column(Text())
     ngay = db.Column(BigInteger())
-    noiviet = db.Column(String(255))
-    phongquantriky = db.Column(String(255))
-    nguoisudungky = db.Column(String(255))
-    nguoikiemtraky = db.Column(String(255))
+    chuky = db.Column(String(10))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
 
 

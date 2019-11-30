@@ -28,8 +28,10 @@ define(function (require) {
 			self.renderCalendar();
 			self.$el.find('.fc-day').each(function (index, item) {
 				$(item).unbind('click').bind('click', function () {
-					console.log($(item).attr('data-date'))
 					self.$el.find('.dialogView').show()
+				})
+				self.$el.find('.close1').unbind('click').bind('click', function () {
+					self.$el.find('.dialogView').hide()
 				})
 			})
 			$.ajax({
@@ -38,18 +40,19 @@ define(function (require) {
 				data: JSON.stringify({ "order_by": [{ "field": "tentrangthietbi", "direction": "desc" }], "page": 1, "results_per_page": 100 }),
 				contentType: "application/json",
 				success: function (data) {
+					var chuky = 'chuky';
 					(data.objects).forEach(function (item, index) {
 						self.$el.find("#dsthietbi").append("<tr><td class='p-2'>" + item.ten + "</td>" +
 							"<td class='p-1'><a class='btn btn-info btn-sm btn-danhsachthietbi p-1'>Danh sách thiết bị</a></td></tr>")
 
 					});
-					self.$el.find('#close3').unbind('click').bind('click',function () {
-						self.$el.find('.dialogView3').hide()
+					self.$el.find('.close2').unbind('click').bind('click', function () {
+						self.$el.find('.dialogView2').hide()
 					})
+
 					self.$el.find('.btn-danhsachthietbi').each(function (index2, item2) {
 						$(item2).unbind('click').bind('click', function () {
 							self.$el.find('.dialogView2').show()
-							console.log(data.objects[index2])
 							/////////////////////////////////
 							var filters = {
 								filters: {
@@ -65,16 +68,74 @@ define(function (require) {
 								data: { "q": JSON.stringify(filters, { "order_by": [{ "field": "tentrangthietbi", "direction": "desc" }], "page": 1, "results_per_page": 100 }) },
 								contentType: "application/json",
 								success: function (data) {
-									console.log(data);
 									(data.objects).forEach(function (item3, index3) {
 
 										self.$el.find("#dsthietbi2").append("<tr><td class='p-2'>" + item3.model_serial_number + "</td>" +
 											"<td class='p-1'><a class='btn btn-info btn-sm btn-ghiketqua p-1'>Ghi kết quả kiểm tra </a></td></tr>")
+
+									})
+									self.$el.find('.close3').unbind('click').bind('click', function () {
+										self.$el.find('.dialogView3').hide()
 									})
 									self.$el.find('.btn-ghiketqua').each(function (index3, item3) {
 										$(item3).unbind('click').bind('click', function () {
+											self.$el.find('#phieu-ngay').datetimepicker({
+												textFormat: 'DD-MM-YYYY',
+												extraFormats: ['DDMMYYYY'],
+												parseInputDate: function (val) {
+													return moment.unix(val)
+												},
+												parseOutputDate: function (date) {
+													return date.unix()
+												}
+											});
+											self.$el.find('#phieu-tentrangthietbi').val(data.objects[index3].model_serial_number)
+											self.$el.find('#ngayviet .datetimepicker-input').val(null)
+											self.$el.find('#phieu-ngay').val(null)
+											self.$el.find('#phieu-tai').val('')
+											self.$el.find('#phieu-nha').val('')
+											self.$el.find('#phieu-nguoisudung').val('')
+											self.$el.find('#phieu-donvi').val('')
+											self.$el.find('#phieu-ketquakiemtra').val('')
+											self.$el.find('#phieu-huongkhacphuc').val('')
 											self.$el.find('.dialogView3').show()
-											console.log(data.objects[index3])
+											//////////////////Lưu phiếu//////////////////
+											self.$el.find('.btn-luu-luuthietbiduockiemtra').unbind('click').bind('click', function () {
+												var datax = {
+													chuky: chuky,
+													tentrangthietbi: self.$el.find('#phieu-tentrangthietbi').val(),
+													tai: self.$el.find('#phieu-tai').val(),
+													nha: self.$el.find('#phieu-nha').val(),
+													nguoisudung: self.$el.find('#phieu-nguoisudung').val(),
+													donvi: self.$el.find('#phieu-donvi').val(),
+													ketquakiemtra: self.$el.find('#phieu-ketquakiemtra').val(),
+													huongkhacphuc: self.$el.find('#phieu-huongkhacphuc').val(),
+													ngay: self.$el.find('#phieu-ngay').val(),
+													chitietthietbi_id: data.objects[index3].id
+												}
+											
+											$.ajax({
+												method: "POST",
+												url: self.getApp().serviceURL + "/api/v1/bienbanxacnhantinhtrangthietbi",
+												data: JSON.stringify(datax),
+												headers: {
+													'content-type': 'application/json'
+												},
+												dataType: 'json',
+												success: function (response) {
+													if (response) {
+														self.getApp().notify("Nhập thông tin thành công");
+														self.getApp().getRouter().navigate(self.collectionName + "/collection");
+													}
+												}, error: function (xhr, ere) {
+													console.log('xhr', ere);
+
+												}
+											})
+										})
+											/////////////////Hết Lưu Phiếu//////////////////
+
+
 										})
 									})
 								},
@@ -109,6 +170,9 @@ define(function (require) {
 					}
 				}
 			});
+
+
+
 
 		},
 		renderCalendar: function () {
@@ -146,12 +210,12 @@ define(function (require) {
 					var filters = {
 						filters: {
 							"$and": [
-								{ "ngay": { "$gte": starttime._i / 1000 } }, { "ngay": { "$lte": endtime._i / 1000 } }
+								{ "ngay": { "$gte": starttime._i / 1000 } }, { "ngay": { "$lte": endtime._i / 1000 } },
+								{ "chuky": { "$eq": "chuky" } }
 							]
 						},
 						order_by: [{ "field": "created_at", "direction": "asc" }]
 					}
-					console.log(moment(starttime._i).format('MMMM Do YYYY, h:mm:ss a'), endtime._i)
 
 					$.ajax({
 						url: self.getApp().serviceURL + "/api/v1/bienbanxacnhantinhtrangthietbi",
@@ -159,7 +223,6 @@ define(function (require) {
 						data: { "q": JSON.stringify(filters, { "order_by": [{ "field": "tentrangthietbi", "direction": "desc" }], "page": 1, "results_per_page": 100 }) },
 						contentType: "application/json",
 						success: function (data) {
-							console.log(data);
 							var events = [];
 							for (var i = 0; i < data.objects.length; i++) {
 								var item = data.objects[i];
