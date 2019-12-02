@@ -5,6 +5,28 @@ body {
   height: 35px;
 }
 
+#sca div table tbody tr td{
+  padding: 5px;
+}
+#sca div {
+  padding: 5px;
+}
+#tools_sca{
+  padding: 0px;
+  margin: 0px;
+}
+#pag_sca {
+  padding: 0px;
+}
+#nav_list_pag_sca{
+  margin: 0px;
+}
+#tbl_sca{
+  margin: 0px;
+}
+#sca div table tbody tr:hover{
+  background-color: #b3bfcc;
+}
 /* .input-phuluc2{
 	border:none;
 	border-bottom:1px dotted black;

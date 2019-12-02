@@ -104,7 +104,6 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 			bind_event: function () {
 				var self = this;
 				var currentUser = self.currentUser.id;
-
 				$("#logo").bind('click', function () {
 					self.router.navigate('lichthanhtra/model');
 				});
@@ -113,11 +112,83 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 					self.router.navigate("logout");
 				});
 				$("#info_myself").unbind('click').bind('click', function () {
-					self.router.navigate("user/model?id="+currentUser);
+					self.router.navigate("user/model?id=" + currentUser);
 
 				});
+				$('#sca').hide()
+				$('#search_pc').unbind('click').bind('click', function (params) {
+					$('#sca').show()
 
-				//for show/hide notify
+				})
+				// var filters = {
+				// 	filters: {
+				// 		"$and": [
+				// 			{ "tenthietbi": { "$eq": $('#search_pc').val() } }
+				// 		]
+				// 	},
+				// 	order_by: [{ "field": "created_at", "direction": "asc" }]
+				// }
+				// console.log(filters)
+
+				$.ajax({
+					url: self.serviceURL + "/api/v1/chitietthietbi?results_per_page=100000&max_results_per_page=1000000",
+					method: "GET",
+					// data: "q=" + JSON.stringify(filters),
+					contentType: "application/json",
+					success: function (data) {
+
+						$('#search_pc').keyup(function () {
+							var arr = [];
+
+							data.objects.forEach(function (item, index) {
+								if ((item.tenthietbi).indexOf($("#search_pc").val()) !== -1) {
+									arr.push(item)
+								}
+							});
+
+						
+						
+						$("#sca").grid({
+							showSortingIndicator: true,
+							language: {
+								no_records_found: "không tìm thấy kết quả"
+							},
+							noResultsClass: "alert alert-default no-records-found",
+							refresh: true,
+							orderByMode: "client",
+							tools: [
+							],
+							fields: [
+								{ field: "tenthietbi", label: "Tên thiết bị", width: 250, height: "20px" },
+								{ field: "model_serial_number", label: "serial", width: 250, height: "20px" },
+							],
+							dataSource: arr,
+							primaryField: "id",
+							selectionMode: false,
+							pagination: {
+								page: 1,
+								pageSize: 20
+							},
+							onRowClick: function (event) {
+								if (event.rowId) {
+									self.router.navigate("chitietthietbi/model?id=" + event.rowId);
+									$('#sca').hide()
+
+								}
+							},
+						});
+					});
+						$('#tbl_sca').removeClass('table-striped')
+
+					},
+					error: function (xhr, status, error) {
+						self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+					},
+
+				})
+
+
+
 				$.extend($.easing, {
 					easeOutSine: function easeOutSine(x, t, b, c, d) {
 						return c * Math.sin(t / d * (Math.PI / 2)) + b;
