@@ -177,8 +177,13 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 								}
 							},
 						});
-					});
 						$('#tbl_sca').removeClass('table-striped')
+
+					});
+					$('#search_pc').blur(function(){
+						$('#sca').hide()
+
+					})
 
 					},
 					error: function (xhr, status, error) {
