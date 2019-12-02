@@ -223,6 +223,8 @@ define(function (require) {
 
 		render: function () {
 			var self = this;
+			self.$el.find('.dialogView').hide();
+
 			self.$el.find(".tensp").html("Thiết bị: " + sessionStorage.getItem('TenSanPham'))
 			self.model.set("thietbi_id", sessionStorage.getItem('IDSanPham'))
 			self.model.set("tenthietbi", sessionStorage.getItem('TenSanPham'))
@@ -233,14 +235,33 @@ define(function (require) {
 				this.model.fetch({
 					// http://0.0.0.0:20808/#chitietthietbi/model?id=26204cbe-8744-4eec-b912-6a4f452c37ce
 					success: function (data) {
-						var qrcode = new QRCode("id_qrcode", {
+
+						var qrcode = new QRCode("id_qrcodeMini", {
 							text:"www://"+ self.getApp().serviceURL+"/#chitietthietbi/model?id="+self.model.get("id"),
-							width:100,
-							height:100,
+							width:40,
+							height:40,
 							colorDark:"#000000",
 							colorLight:"#ffffff",
 							correctLevel:QRCode.CorrectLevel.H
 						});
+						var qrcode = new QRCode("id_qrcodeBigSize", {
+							text:"www://"+ self.getApp().serviceURL+"/#chitietthietbi/model?id="+self.model.get("id"),
+							width:220,
+							height:220,
+							colorDark:"#000000",
+							colorLight:"#ffffff",
+							correctLevel:QRCode.CorrectLevel.H
+						});
+						self.$el.find('#id_qrcodeMini').on('click',function () { 
+							self.$el.find('.dialogView').show()
+							self.$el.find('.bodychitiet').css("opacity","0.3");
+						})
+						self.$el.find(".close").on('click',function () { 
+							self.$el.find('.dialogView').hide()
+							self.$el.find('.bodychitiet').css("opacity","1");
+						})
+
+						
 						self.$el.find(".tensp").html("Thiết bị: " + self.model.get("tenthietbi"))
 						var danhsachyeucausuachua = self.model.get('phieuyeucausuachuafield');
 						danhsachyeucausuachua.sort(function (a, b) {
