@@ -106,11 +106,11 @@ define(function (require) {
 					dataSource: QuanHuyenSelectView
 				},
 				{
-					field: "tinhthanh",
+					field: "quocgia",
 					uicontrol: "ref",
 					textField: "ten",
 					foreignRemoteField: "id",
-					foreignField: "tinhthanh_id",
+					foreignField: "quocgia_id",
 					dataSource: TinhThanhSelectView
 				},
 				// {

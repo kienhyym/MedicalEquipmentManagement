@@ -6,6 +6,7 @@ define(function (require) {
 	var template = require('text!app/chitietthietbi/tpl/model.html'),
 		schema = require('json!schema/ChiTietThietBiSchema.json');
 	var NhaCungCapSelectView = require('app/donvi/js/SelectView');
+	var NoisanXuatCapSelectView = require('app/danhmuc/QuocGia/view/SelectView');
 
 
 	return Gonrin.ModelView.extend({
@@ -179,6 +180,14 @@ define(function (require) {
 					foreignRemoteField: "id",
 					foreignField: "nhacungcap_id",
 					dataSource: NhaCungCapSelectView
+				},
+				{
+					field: "quocgia",
+					uicontrol: "ref",
+					textField: "ten",
+					foreignRemoteField: "id",
+					foreignField: "quocgia_id",
+					dataSource: NoisanXuatCapSelectView
 				},
 				{
 					field: "tinhtrangthietbikhimua",

@@ -17,6 +17,27 @@ define(function (require) {
 
 			}
 		},
+		{
+			"text": "Sổ quản lý thiết bị",
+			"icon": "fa fa-book",
+			"type": "view",
+			"collectionName": "chitietthietbi",
+			"route": "chitietthietbi/collection",
+			"$ref": "app/chitietthietbi/js/CollectionView",
+			"visible": function () {
+				return true
+
+			}
+		},
+		{
+			"type": "view",
+			"collectionName": "chitietthietbi",
+			"route": "chitietthietbi/model(/:id)",
+			"$ref": "app/chitietthietbi/js/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
 
 		{
 			"text": "Hệ thống",
@@ -77,6 +98,25 @@ define(function (require) {
 			"type": "category",
 			"entries": [
 				{
+					"text": "Quốc gia",
+					"icon": "fa fa-angle-double-right",
+					"type": "view",
+					"collectionName": "quocgia",
+					"route": "quocgia/collection",
+					"$ref": "app/danhmuc/QuocGia/view/CollectionView",
+					"visible": function(){
+						return true ;
+					}
+				},
+				{
+					"type": "view",
+					"icon": "far fa-clipboard",
+					"collectionName": "quocgia",
+					"route": "quocgia/model(/:id)",
+					"$ref": "app/danhmuc/QuocGia/view/ModelView",
+					"visible": false
+				},
+				{
 					"text": "Nhà cung cấp thiết bị",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
@@ -121,27 +161,7 @@ define(function (require) {
 						return false;
 					}
 				},
-				{
-					"text": "Quản lý thiết bị",
-					"icon": "fa fa-angle-double-right",
-					"type": "view",
-					"collectionName": "chitietthietbi",
-					"route": "chitietthietbi/collection",
-					"$ref": "app/chitietthietbi/js/CollectionView",
-					"visible": function () {
-						return true
 
-					}
-				},
-				{
-					"type": "view",
-					"collectionName": "chitietthietbi",
-					"route": "chitietthietbi/model(/:id)",
-					"$ref": "app/chitietthietbi/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
 			]
 		},
 

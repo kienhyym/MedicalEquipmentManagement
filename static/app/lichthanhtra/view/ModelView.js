@@ -29,6 +29,15 @@ define(function (require) {
 			self.$el.find('.fc-day').each(function (index, item) {
 				$(item).unbind('click').bind('click', function () {
 					self.$el.find('.dialogView').show()
+						var x = $(item).attr('data-date')
+						var y = moment(moment().unix()*1000).format("YYYY-MM-DD")
+						if(x !== y){
+							self.$el.find('.modal-footer').hide()
+						}
+						else{
+							self.$el.find('.modal-footer').show()
+
+						}
 				})
 				self.$el.find('.close1').unbind('click').bind('click', function () {
 					self.$el.find('.dialogView').hide()
@@ -51,11 +60,14 @@ define(function (require) {
 					});
 					self.$el.find('.close2').unbind('click').bind('click', function () {
 						self.$el.find('.dialogView2').hide()
+						self.$el.find('.dialogView').show()
+
 					})
 
 					self.$el.find('.btn-danhsachthietbi').each(function (index2, item2) {
 						$(item2).unbind('click').bind('click', function () {
 							self.$el.find('.dialogView2').show()
+							self.$el.find('.dialogView').hide()
 							/////////////////////////////////
 							var filters = {
 								filters: {
@@ -80,6 +92,7 @@ define(function (require) {
 									})
 									self.$el.find('.close3').unbind('click').bind('click', function () {
 										self.$el.find('.dialogView3').hide()
+										self.$el.find('.dialogView2').show()
 									})
 									self.$el.find('.btn-ghiketqua').each(function (index3, item3) {
 										$(item3).unbind('click').bind('click', function () {
@@ -93,9 +106,8 @@ define(function (require) {
 													return date.unix()
 												}
 											});
+											$('#phieu-ngay').data("gonrin").setValue(moment().unix());
 											self.$el.find('#phieu-tentrangthietbi').val(data.objects[index3].model_serial_number)
-											self.$el.find('#ngayviet .datetimepicker-input').val(null)
-											self.$el.find('#phieu-ngay').val(null)
 											self.$el.find('#phieu-tai').val('')
 											self.$el.find('#phieu-nha').val('')
 											self.$el.find('#phieu-nguoisudung').val('')
@@ -117,26 +129,26 @@ define(function (require) {
 													ngay: self.$el.find('#phieu-ngay').val(),
 													chitietthietbi_id: data.objects[index3].id
 												}
-											
-											$.ajax({
-												method: "POST",
-												url: self.getApp().serviceURL + "/api/v1/bienbanxacnhantinhtrangthietbi",
-												data: JSON.stringify(datax),
-												headers: {
-													'content-type': 'application/json'
-												},
-												dataType: 'json',
-												success: function (response) {
-													if (response) {
-														self.getApp().notify("Nhập thông tin thành công");
-														self.getApp().getRouter().navigate(self.collectionName + "/collection");
-													}
-												}, error: function (xhr, ere) {
-													console.log('xhr', ere);
 
-												}
+												$.ajax({
+													method: "POST",
+													url: self.getApp().serviceURL + "/api/v1/bienbanxacnhantinhtrangthietbi",
+													data: JSON.stringify(datax),
+													headers: {
+														'content-type': 'application/json'
+													},
+													dataType: 'json',
+													success: function (response) {
+														if (response) {
+															self.getApp().notify("Nhập thông tin thành công");
+															self.getApp().getRouter().navigate(self.collectionName + "/collection");
+														}
+													}, error: function (xhr, ere) {
+														console.log('xhr', ere);
+
+													}
+												})
 											})
-										})
 											/////////////////Hết Lưu Phiếu//////////////////
 
 

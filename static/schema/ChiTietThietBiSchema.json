@@ -47,6 +47,9 @@
     "nhacungcap_id": {
         "type": "string"
     },
+    "quocgia_id": {
+        "type": "string"
+    },
     "baohanhtungay": {
         "type": "number"
     },
@@ -83,6 +86,9 @@
         "type": "string"
     },
     "nhacungcap": {
+        "type": "dict"
+    },
+    "quocgia": {
         "type": "dict"
     },
     "phieuyeucausuachuafield": {

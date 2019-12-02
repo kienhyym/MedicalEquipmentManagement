@@ -4,7 +4,7 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
-	var template = require('text!app/danhmuc/QuocGia/tpl/select.html'),
+	var template = require('text!app/danhmuc/QuocGia/tpl/collection.html'),
 		schema = require('json!schema/QuocGiaSchema.json');
 	var CustomFilterView = require('app/base/view/CustomFilterView');
 
@@ -13,7 +13,7 @@ define(function (require) {
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
 		collectionName: "quocgia",
-		bindings: "data-bind",
+		bindings: "data-quocgia-bind",
 		textField: "ten",
 		valueField: "id",
 		tools: [
@@ -43,16 +43,14 @@ define(function (require) {
 			],
 			onRowClick: function (event) {
 				this.uiControl.selectedItems = event.selectedItems;
-			},
-		},
 
-		// render: function () {
-		// 	var self = this;
-		// 	self.applyBindings();
-		// },
+			},
+			onRendered: function (e) {
+				this.trigger("onRendered");
+			}
+		},
 		render: function () {
 			var self = this;
-			self.uiControl.orderBy = [{ "field": "ten", "direction": "desc" }];
 			var filter = new CustomFilterView({
 				el: self.$el.find("#grid_search"),
 				sessionKey: self.collectionName + "_filter"
@@ -61,21 +59,11 @@ define(function (require) {
 
 			if (!filter.isEmptyFilter()) {
 				var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
-				var query = {
+				var filters = {
 					"$or": [
-						{ "ten": { "$like": text } },
+						{ "ten": { "$likeI": text } },
 					]
 				};
-
-				var filters = query;
-				if (self.uiControl.filters !== null) {
-					filters = {
-						"$and": [
-							self.uiControl.filters,
-							query
-						]
-					};
-				}
 				self.uiControl.filters = filters;
 			}
 			self.applyBindings();
@@ -85,20 +73,11 @@ define(function (require) {
 				var text = !!evt.data.text ? evt.data.text.trim() : "";
 				if ($col) {
 					if (text !== null) {
-						var query = {
+						var filters = {
 							"$or": [
-								{ "ten": { "$like": text } },
+								{ "ten": { "$likeI": text } },
 							]
 						};
-						var filters = query;
-						if (self.uiControl.filters !== null) {
-							filters = {
-								"$and": [
-									self.uiControl.filters,
-									query
-								]
-							};
-						}
 						$col.data('gonrin').filter(filters);
 						//self.uiControl.filters = filters;
 					} else {
@@ -109,6 +88,7 @@ define(function (require) {
 			});
 			return this;
 		},
+
 	});
 
 });

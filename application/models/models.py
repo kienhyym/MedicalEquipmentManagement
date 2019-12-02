@@ -121,6 +121,8 @@ class ChiTietThietBi(CommonModel):
     ngaymua = db.Column(BigInteger())
     nhacungcap_id = db.Column(UUID(as_uuid=True),db.ForeignKey('donvi.id'), nullable=True)
     nhacungcap = db.relationship('DonVi', viewonly=True)
+    quocgia_id = db.Column(UUID(as_uuid=True),db.ForeignKey('quocgia.id'), nullable=True)
+    quocgia = db.relationship('QuocGia', viewonly=True)
     baohanhtungay = db.Column(BigInteger())
     baohanhdenngay = db.Column(BigInteger())
     hetbaohanh = db.Column(String(255))
