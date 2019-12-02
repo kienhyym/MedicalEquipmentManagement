@@ -197,7 +197,7 @@ define(function (require) {
 					cssClassField: "cssClass",
 					dataSource: [
 						{ text: "-Mới 100%", value: "moi" },
-						{ text: "- Thiết bị cũ,phần trăm còn lại:", value: "cu" },
+						{ text: "- Thiết bị cũ:", value: "cu" },
 					],
 				},
 				{

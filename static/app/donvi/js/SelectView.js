@@ -38,8 +38,8 @@ define(function (require) {
 		],
 		uiControl: {
 			fields: [
-				{ field: "ma", label: "Mã", width: 150 },
-				{ field: "ten", label: "Tên", width: 250 },
+				{ field: "ten", label: "Tên" }
+
 			],
 			onRowClick: function (event) {
 				this.uiControl.selectedItems = event.selectedItems;
