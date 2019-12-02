@@ -147,7 +147,6 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 							});
 
 						
-						
 						$("#sca").grid({
 							showSortingIndicator: true,
 							language: {
