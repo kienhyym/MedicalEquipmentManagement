@@ -79,19 +79,33 @@
 							<div class="row mb-3">
 								<div class="col-md-12">
 									<label>4. NƠI SẢN XUẤT/ XUẤT XỨ:</label>
-									<input type="text" data-bind="dict:quocgia"
-										placeholder="..." required="">
+									<input type="text" data-bind="dict:quocgia" placeholder="..." required="">
 									<div class="invalid-feedback">
 										Vui lòng nhập email.
 									</div>
 								</div>
 
 							</div>
-
+							<div class="row mb-3">
+								<div class="col-md-6">
+									<label>5. KHOA:</label>
+									<input type="text" data-bind="dict:khoa" placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label>6.PHÒNG:</label>
+									<input type="text" data-bind="dict:phong" placeholder="..." required="">
+									<div class="invalid-feedback">
+										Vui lòng nhập email.
+									</div>
+								</div>
+							</div>
 
 							<div class="row mb-3">
 								<div class="col-md-6">
-									<label>5. NGÀY MUA/NHẬN:</label>
+									<label>7. NGÀY MUA/NHẬN:</label>
 									<input type="text" class="form-control" data-bind="value:ngaymua" placeholder="..."
 										required="">
 									<div class="invalid-feedback">
@@ -104,7 +118,7 @@
 
 							<div class="row mb-3">
 								<div class="col-md-12">
-									<label>6. NHÀ CUNG CẤP TTB:</label>
+									<label>8. NHÀ CUNG CẤP TTB:</label>
 									<input type="text" class="form-control" id="nhacungcap" placeholder="..."
 										data-bind="dict:nhacungcap" required="">
 									<div class="invalid-feedback">
@@ -115,7 +129,7 @@
 
 							<div class="row mb-3">
 								<div class="col-md-4">
-									<label>7. BẢO HÀNH:từ</label>
+									<label>9. BẢO HÀNH:từ</label>
 									<input type="text" class="form-control" data-bind="value:baohanhtungay"
 										placeholder="..." required="">
 									<div class="invalid-feedback">
@@ -144,7 +158,7 @@
 
 							<div class="row mb-3">
 								<div class="col-md-12">
-									<label>8. THÔNG SỐ KỸ THUẬT/CẤU HÌNH:</label>
+									<label>10. THÔNG SỐ KỸ THUẬT/CẤU HÌNH:</label>
 
 									<textarea rows="3" type="text" class="form-control" data-bind="value:thongsokythuat"
 										placeholder="..." required=""> </textarea>
@@ -156,7 +170,7 @@
 
 							<div class="row mb-3">
 								<div class="col-md-12">
-									<label>9. PHỤ KIỆN KÈM THEO (nếu có):</label>
+									<label>11. PHỤ KIỆN KÈM THEO (nếu có):</label>
 
 									<textarea rows="3" type="text" class="form-control" data-bind="value:phukien"
 										placeholder="..." required=""> </textarea>
@@ -165,17 +179,17 @@
 									</div>
 								</div>
 							</div>
-							<label>10. TÌNH TRẠNG THIẾT BỊ KHI MUA/NHẬN</label>
+							<label>12. TÌNH TRẠNG THIẾT BỊ KHI MUA/NHẬN</label>
 
 							<div class="row mb-3 tinhtrangthietbikhimua">
 								<input type="text" style="width: 40%;" class="form-control"
 									data-bind="value:tinhtrangthietbikhimua" placeholder="..." required="">
-									<label class="pt-2 pl-3">Phần trăm còn lại (%) &nbsp;</label>
-								<input stype="text" class="form-control" style="width: 50px;"
-									placeholder="..." required="">
-								
+								<label class="pt-2 pl-3">Phần trăm còn lại (%) &nbsp;</label>
+								<input stype="text" class="form-control" style="width: 50px;" placeholder="..."
+									required="">
+
 							</div>
-							<label>11. YÊU CẦU VỀ BẢO DƯỠNG VÀ LƯU Ý KHI SỬ DỤNG (NẾU CÓ)</label>
+							<label>13. YÊU CẦU VỀ BẢO DƯỠNG VÀ LƯU Ý KHI SỬ DỤNG (NẾU CÓ)</label>
 							<div class="row mb-3 yeucauvebaoduong">
 								<input type="text" class="form-control" data-bind="value:yeucauvebaoduong"
 									placeholder="..." required="">
@@ -266,8 +280,8 @@
 								<table class="table table-bordered text-center">
 									<tr>
 										<th class="p-2 ">Tên thiết bị</th>
+										<th class="p-2 ">Serial</th>
 										<th class="p-2 ">Ngày kiểm tra</th>
-										<!-- <th class="p-2 ">Tình trạng</th> -->
 										<th class="p-2 ">Xem chi tiết</th>
 									</tr>
 									<tbody id="danhsachhosokiemtrathietbi"></tbody>

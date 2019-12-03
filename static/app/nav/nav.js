@@ -50,7 +50,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "user",
 					"route": "user/collection",
-					"$ref": "app/user/js/CollectionView",
+					"$ref": "app/hethong/user/js/CollectionView",
 					"visible": function () {
 						return true
 
@@ -61,11 +61,58 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "user",
 					"route": "user/model",
-					"$ref": "app/user/js/ModelView",
+					"$ref": "app/hethong/user/js/ModelView",
 					"visible": function () {
 						return false;
 					}
 				},
+
+				{
+					"text": "Khoa",
+					"icon": "fa fa-angle-double-right",
+					"type": "view",
+					"collectionName": "khoa",
+					"route": "khoa/collection",
+					"$ref": "app/hethong/khoa/view/CollectionView",
+					"visible": function () {
+						return true
+
+					}
+				},
+				{
+
+					"type": "view",
+					"collectionName": "khoa",
+					"route": "khoa/model",
+					"$ref": "app/hethong/khoa/view/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+
+				{
+					"text": "Phòng",
+					"icon": "fa fa-angle-double-right",
+					"type": "view",
+					"collectionName": "phong",
+					"route": "phong/collection",
+					"$ref": "app/hethong/phong/view/CollectionView",
+					"visible": function () {
+						return true
+
+					}
+				},
+				{
+
+					"type": "view",
+					"collectionName": "phong",
+					"route": "phong/model",
+					"$ref": "app/hethong/phong/view/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+
 				// {
 				// 	"text": "Vai trò",
 				// 	"icon": "fa fa-home",
@@ -98,7 +145,7 @@ define(function (require) {
 			"type": "category",
 			"entries": [
 				{
-					"text": "Quốc gia",
+					"text": "Nguồn gốc",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "quocgia",
@@ -167,27 +214,7 @@ define(function (require) {
 
 
 
-		// {
-		// 	"text": "Hồ sơ kiểm tra thiết bị",
-		// 	"icon": "fa fa-home",
-		// 	"type": "view",
-		// 	"collectionName": "bangkiemtrathietbi",
-		// 	"route": "bangkiemtrathietbi/collection",
-		// 	"$ref": "app/bangkiemtrathietbi/js/CollectionView",
-		// 	"visible": function () {
-		// 		return true
-
-		// 	}
-		// },
-		// {
-		// 	"type": "view",
-		// 	"collectionName": "bangkiemtrathietbi",
-		// 	"route": "bangkiemtrathietbi/model(/:id)",
-		// 	"$ref": "app/bangkiemtrathietbi/js/ModelView",
-		// 	"visible": function () {
-		// 		return false;
-		// 	}
-		// },
+		
 
 		// {
 		// 	"text": "Kế hoạch kiểm tra năm",
@@ -211,7 +238,7 @@ define(function (require) {
 		// 	}
 		// },
 		{
-			"text": "Chứng từ",
+			"text": "Lịch sử thiết bị",
 			"icon": "fa fa-file-text-o",
 			"type": "category",
 			"entries": [
@@ -253,6 +280,27 @@ define(function (require) {
 					"collectionName": "bienbanxacnhantinhtrangthietbi",
 					"route": "bienbanxacnhantinhtrangthietbi/model(/:id)",
 					"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
+				{
+					"text": "KT thiết bị hàng ngày",
+					"icon": "fa fa-angle-double-right",
+					"type": "view",
+					"collectionName": "bangkiemtrathietbi",
+					"route": "bangkiemtrathietbi/collection",
+					"$ref": "app/chungtu/bangkiemtrathietbi/js/CollectionView",
+					"visible": function () {
+						return true
+		
+					}
+				},
+				{
+					"type": "view",
+					"collectionName": "bangkiemtrathietbi",
+					"route": "bangkiemtrathietbi/model(/:id)",
+					"$ref": "app/chungtu/bangkiemtrathietbi/js/ModelView",
 					"visible": function () {
 						return false;
 					}

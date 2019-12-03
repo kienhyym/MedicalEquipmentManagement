@@ -7,13 +7,31 @@
     </div>
 </div>
 <!-- End Page Header -->
-
+<div class="row mb-3">
+    <div class="col-md-6">
+        <label>Chọn bộ lọc:</label>
+        <input id="timkiem" type="text" placeholder="..." required="">
+        <div class="invalid-feedback">
+            Vui lòng nhập email.
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label>Nội dung tìm kiếm:</label>
+        <input id="noidungtimkiem" type="text" placeholder="..." required="" class="form-control">
+        <div class="invalid-feedback">
+            Vui lòng nhập email.
+        </div>
+    </div>
+    
+</div>
 <div class="row">
     <div class="col">
         <div class="card  card-small mb-4">
 
+
             <div class="card-body">
-                <div id="grid" data-bind='collection:$collection'></div>
+                <!-- <div id="grid" data-bind='collection:$collection'></div> -->
+                <div id="grid-data"></div>
             </div>
         </div>
     </div>

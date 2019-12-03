@@ -29,6 +29,10 @@
         "type": "string",
         "length": 255
     },
+    "model_serial_number": {
+        "type": "string",
+        "length": 255
+    },
     "ma_qltb": {
         "type": "string",
         "length": 255

@@ -7,6 +7,9 @@ define(function (require) {
 		schema = require('json!schema/ChiTietThietBiSchema.json');
 	var NhaCungCapSelectView = require('app/donvi/js/SelectView');
 	var NoisanXuatCapSelectView = require('app/danhmuc/QuocGia/view/SelectView');
+	var KhoaSelectView = require('app/hethong/khoa/view/SelectView');
+	var PhongSelectView = require('app/hethong/phong/view/SelectView');
+
 
 
 	return Gonrin.ModelView.extend({
@@ -190,6 +193,22 @@ define(function (require) {
 					dataSource: NoisanXuatCapSelectView
 				},
 				{
+					field: "phong",
+					uicontrol: "ref",
+					textField: "ten",
+					foreignRemoteField: "id",
+					foreignField: "phong_id",
+					dataSource: PhongSelectView
+				},
+				{
+					field: "khoa",
+					uicontrol: "ref",
+					textField: "ten",
+					foreignRemoteField: "id",
+					foreignField: "khoa_id",
+					dataSource: KhoaSelectView
+				},
+				{
 					field: "tinhtrangthietbikhimua",
 					uicontrol: "radio",
 					textField: "text",
@@ -244,33 +263,33 @@ define(function (require) {
 				this.model.fetch({
 					// http://0.0.0.0:20808/#chitietthietbi/model?id=26204cbe-8744-4eec-b912-6a4f452c37ce
 					success: function (data) {
-
+						
 						var qrcode = new QRCode("id_qrcodeMini", {
-							text:"www://"+ self.getApp().serviceURL+"/#chitietthietbi/model?id="+self.model.get("id"),
-							width:40,
-							height:40,
-							colorDark:"#000000",
-							colorLight:"#ffffff",
-							correctLevel:QRCode.CorrectLevel.H
+							text: "www://" + self.getApp().serviceURL + "/#chitietthietbi/model?id=" + self.model.get("id"),
+							width: 40,
+							height: 40,
+							colorDark: "#000000",
+							colorLight: "#ffffff",
+							correctLevel: QRCode.CorrectLevel.H
 						});
 						var qrcode = new QRCode("id_qrcodeBigSize", {
-							text:"www://"+ self.getApp().serviceURL+"/#chitietthietbi/model?id="+self.model.get("id"),
-							width:220,
-							height:220,
-							colorDark:"#000000",
-							colorLight:"#ffffff",
-							correctLevel:QRCode.CorrectLevel.H
+							text: "www://" + self.getApp().serviceURL + "/#chitietthietbi/model?id=" + self.model.get("id"),
+							width: 220,
+							height: 220,
+							colorDark: "#000000",
+							colorLight: "#ffffff",
+							correctLevel: QRCode.CorrectLevel.H
 						});
-						self.$el.find('#id_qrcodeMini').on('click',function () { 
+						self.$el.find('#id_qrcodeMini').on('click', function () {
 							self.$el.find('.dialogView').show()
-							self.$el.find('.bodychitiet').css("opacity","0.3");
+							self.$el.find('.bodychitiet').css("opacity", "0.3");
 						})
-						self.$el.find(".close").on('click',function () { 
+						self.$el.find(".close").on('click', function () {
 							self.$el.find('.dialogView').hide()
-							self.$el.find('.bodychitiet').css("opacity","1");
+							self.$el.find('.bodychitiet').css("opacity", "1");
 						})
 
-						
+
 						self.$el.find(".tensp").html("Thiết bị: " + self.model.get("tenthietbi"))
 						var danhsachyeucausuachua = self.model.get('phieuyeucausuachuafield');
 						danhsachyeucausuachua.sort(function (a, b) {
@@ -336,7 +355,8 @@ define(function (require) {
 							return 0;
 						});
 						bienbanxacnhantinhtrangthietbi.forEach(function (item, index) {
-							self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tentrangthietbi +
+							self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tenthietbi +
+								"</td><td class='p-2'>" + item.model_serial_number +
 								"</td><td class='p-2'>" + moment(item.ngay * 1000).format("DD/MM/YYYY") +
 								"</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href=" +
 								self.getApp().serviceURL + "/?#bienbanxacnhantinhtrangthietbi/model?id=" + item.id + ">Xem chi tiết</a></td></tr>")
@@ -344,7 +364,9 @@ define(function (require) {
 						})
 						self.$el.find(".btn-them2").unbind("click").bind("click", function () {
 							location.href = self.getApp().serviceURL + "/?#bienbanxacnhantinhtrangthietbi/model";
-							sessionStorage.setItem('TenThietBi', self.model.get("model_serial_number"));
+							sessionStorage.setItem('TenThietBi', self.model.get("tenthietbi"));
+							sessionStorage.setItem('Serial', self.model.get("model_serial_number"));
+							sessionStorage.setItem('Ma_qltb', self.model.get("ma_qltb"));
 							sessionStorage.setItem('IDThietBi', self.model.get("id"));
 						})
 

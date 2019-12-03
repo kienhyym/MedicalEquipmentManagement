@@ -142,7 +142,9 @@ define(function (require) {
 			var self = this;
 			self.$el.find(".tensp").html("Thiết bị: "+sessionStorage.getItem('TenThietBi'))
 			self.model.set("chitietthietbi_id",sessionStorage.getItem('IDThietBi'))
-			self.model.set("tentrangthietbi",sessionStorage.getItem('TenThietBi'))
+			self.model.set("tenthietbi",sessionStorage.getItem('TenThietBi'))
+			self.model.set("ma_qltb",sessionStorage.getItem('Ma_qltb'))
+			self.model.set("model_serial_number",sessionStorage.getItem('Serial'))
 			// sessionStorage.clear();
 
 

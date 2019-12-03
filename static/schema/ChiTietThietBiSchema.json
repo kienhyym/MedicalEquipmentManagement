@@ -60,6 +60,12 @@
         "type": "string",
         "length": 255
     },
+    "khoa_id": {
+        "type": "string"
+    },
+    "phong_id": {
+        "type": "string"
+    },
     "thongsokythuat": {
         "type": "string"
     },
@@ -89,6 +95,12 @@
         "type": "dict"
     },
     "quocgia": {
+        "type": "dict"
+    },
+    "khoa": {
+        "type": "dict"
+    },
+    "phong": {
         "type": "dict"
     },
     "phieuyeucausuachuafield": {

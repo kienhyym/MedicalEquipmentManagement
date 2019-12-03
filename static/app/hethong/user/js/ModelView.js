@@ -3,15 +3,18 @@ define(function (require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
-	var template = require('text!app/bangkiemtrathietbi/tpl/model.html'),
-		schema = require('json!schema/BangKiemTraThietBiSchema.json');
+	var template = require('text!app/hethong/user/tpl/model.html'),
+		schema = require('json!schema/UserSchema.json');
+
+	// var RoleSelectView = require('app/role/js/SelectView');
+	var VaiTroSelectView = require('app/vaitro/js/SelectView');
 
 
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "bangkiemtrathietbi",
+		collectionName: "user",
 		bindings: "data-bind",
 		state: null,
 		tools: [
@@ -28,6 +31,7 @@ define(function (require) {
 						command: function () {
 							var self = this;
 							Backbone.history.history.back();
+
 						}
 					},
 					{
@@ -37,12 +41,12 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
-							
+
 							self.model.save(null, {
 								success: function (model, respose, options) {
-								
+
 									self.getApp().notify("Lưu thông tin thành công");
-									self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									self.getApp().getRouter().refresh();
 								},
 								error: function (xhr, status, error) {
 									try {
@@ -58,8 +62,8 @@ define(function (require) {
 									}
 								}
 							});
-								
-							
+
+
 						}
 					},
 					{
@@ -97,53 +101,101 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-				
+				// {
+				// 	field: "roles",
+				// 	uicontrol: "ref",
+				// 	textField: "name",
+				// 	foreignRemoteField: "id",
+				// 	selectionMode: "multiple",
+				// 	dataSource: RoleSelectView
+				// },
+				// {
+				// 	field: "donvi",
+				// 	uicontrol: "ref",
+				// 	textField: "ten",
+				// 	foreignRemoteField: "id",
+				// 	foreignField: "donvi_id",
+				// 	dataSource: DonViSelectView
+				// },
 				{
-					field: "tinhtrang",
+					field: "vaitro",
 					uicontrol: "combobox",
 					textField: "text",
 					valueField: "value",
 					dataSource: [
-						{ "value": "Không vấn đề", "text": "Không vấn đề" },
-						{ "value": "Có vấn đề", "text": "Có vấn đề" },
-						
+						{ "value": "quanly", "text": "Quản lý" },
+						{ "value": "nhanvien", "text": "Nhân viên" },
 					],
 				},
-				
-				{
-					field: "ngay",
-					uicontrol: "datetimepicker",
-					textFormat: "DD/MM/YYYY",
-					extraFormats: ["DDMMYYYY"],
-					parseInputDate: function (val) {
-						return moment.unix(val)
-					},
-					parseOutputDate: function (date) {
-						return date.unix()
-					}
-				},
-	
+
 			]
 		},
 
 		render: function () {
 			var self = this;
-			var userID = self.getApp().currentUser.id
+				if(location.hash.length < 20){
+					
+						self.$el.find(".btn-success").unbind("click").bind("click", function () {
+							
+							if(self.model.get('name') == null || self.model.get('name') == ''){
+								self.getApp().notify({ message: "Chưa nhập tên "}, { type: "danger", delay: 1000 });
+							}
+							if(self.model.get('email') == null || self.model.get('email') == ''){
+								self.getApp().notify({ message: "Chưa nhập email "}, { type: "danger", delay: 1000 });
+							}
+							if(self.model.get('phone_number') == null || self.model.get('phone_number') == ''){
+								self.getApp().notify({ message: "Chưa nhập số điện thoại"}, { type: "danger", delay: 1000 });
+							}
+							if(self.model.get('vaitro') == null || self.model.get('vaitro') == ''){
+								self.getApp().notify({ message: "Chưa chọn vaitro "}, { type: "danger", delay: 1000 });
+							}
+							if(self.model.get('password') == null || self.model.get('password') == ''){
+								self.getApp().notify({ message: "Chưa nhập mật khẩu "}, { type: "danger", delay: 1000 });
+							}
+							else {
+							var data = {
+								name: self.model.get('name'),
+								email: self.model.get('email'),
+								phone_number: self.model.get('phone_number'),
+								vaitro: self.model.get('vaitro'),
+								password: self.model.get('password'),
+							}
+								$.ajax({
+									method: "POST",
+									url: self.getApp().serviceURL + "/api/v1/register",
+									data: JSON.stringify(data),
+									headers: {
+										'content-type': 'application/json'
+									},
+									dataType: 'json',
+									success: function (response) {
+										if (response) {
+											console.log(response)
+											self.getApp().notify("Đăng ký thành công");
+											self.getApp().getRouter().navigate(self.collectionName + "/collection");
+										}
+									}, error: function (xhr, ere) {
+										self.getApp().notify({ message: "Thông tin tài khoản đã có trong hệ thống" }, { type: "danger", delay: 1000 });
+	
+									}
+								})
+							}
 
-			self.$el.find(".tensp").html("Kiểm tra thiết bị: "+sessionStorage.getItem('TenThietBi'))
-			self.model.set("chitietthietbi_id",sessionStorage.getItem('IDThietBi'))
-			self.model.set("tenthietbi",sessionStorage.getItem('TenThietBi'))
+							});
+					
+				}
+				
+			
 
-			self.model.set("nguoikiemtra",self.getApp().currentUser.name)
-			self.model.set("nguoikiemtra_id",userID)
-			sessionStorage.clear();
-			var id = this.getApp().getRouter().getParam("id");			
+			var id = this.getApp().getRouter().getParam("id");
+
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						self.$el.find(".tensp").html("Kiểm tra thiết bị: "+self.model.get("tenthietbi"))
 						self.applyBindings();
+						self.$el.find('.password').hide();
+						
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");

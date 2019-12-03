@@ -9,13 +9,41 @@ define(function (require) {
 		{
 			"collectionName": "user",
 			"route": "user/collection",
-			"$ref": "app/user/js/CollectionView",
+			"$ref": "app/hethong/user/js/CollectionView",
 		},
 		{
 			"collectionName": "user",
 			"route": "user/model(/:id)",
-			"$ref": "app/user/js/ModelView",
+			"$ref": "app/hethong/user/js/ModelView",
 		},
+
+
+		{
+			"collectionName": "khoa",
+			"route": "khoa/collection",
+			"$ref": "app/hethong/khoa/view/CollectionView",
+		},
+		{
+			"collectionName": "khoa",
+			"route": "khoa/model(/:id)",
+			"$ref": "app/hethong/khoa/view/ModelView",
+		},
+
+
+		{
+			"collectionName": "phong",
+			"route": "phong/collection",
+			"$ref": "app/hethong/phong/view/CollectionView",
+		},
+		{
+			"collectionName": "phong",
+			"route": "phong/model(/:id)",
+			"$ref": "app/hethong/phong/view/ModelView",
+		},
+
+
+
+
 
 		{
 			"collectionName": "vaitro",
@@ -60,12 +88,12 @@ define(function (require) {
 		{
 			"collectionName": "bangkiemtrathietbi",
 			"route": "bangkiemtrathietbi/collection",
-			"$ref": "app/bangkiemtrathietbi/js/CollectionView",
+			"$ref": "app/chungtu/bangkiemtrathietbi/js/CollectionView",
 		},
 		{
 			"collectionName": "bangkiemtrathietbi",
 			"route": "bangkiemtrathietbi/model(/:id)",
-			"$ref": "app/bangkiemtrathietbi/js/ModelView",
+			"$ref": "app/chungtu/bangkiemtrathietbi/js/ModelView",
 		},
 		{
 			"collectionName": "dutoansuachuanam",

@@ -25,48 +25,19 @@
         "type": "string",
         "primary": true
     },
-    "tenthietbi": {
+    "ma": {
         "type": "string",
         "length": 255
     },
-    "tai": {
+    "ten": {
         "type": "string",
         "length": 255
     },
-    "model_serial_number": {
+    "thongtin": {
         "type": "string",
         "length": 255
     },
-    "ma_qltb": {
-        "type": "string",
-        "length": 255
-    },
-    "nha": {
-        "type": "string",
-        "length": 255
-    },
-    "nguoisudung": {
-        "type": "string",
-        "length": 255
-    },
-    "donvi": {
-        "type": "string",
-        "length": 255
-    },
-    "ketquakiemtra": {
-        "type": "string"
-    },
-    "huongkhacphuc": {
-        "type": "string"
-    },
-    "ngay": {
-        "type": "number"
-    },
-    "chuky": {
-        "type": "string",
-        "length": 10
-    },
-    "chitietthietbi_id": {
+    "khoa_id": {
         "type": "string"
     }
 }

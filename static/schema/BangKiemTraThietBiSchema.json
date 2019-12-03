@@ -44,11 +44,31 @@
         "type": "string",
         "length": 255
     },
+    "khoa_id": {
+        "type": "string"
+    },
+    "phong_id": {
+        "type": "string"
+    },
     "tenthietbi": {
+        "type": "string",
+        "length": 255
+    },
+    "model_serial_number": {
+        "type": "string",
+        "length": 255
+    },
+    "ma_qltb": {
         "type": "string",
         "length": 255
     },
     "chitietthietbi_id": {
         "type": "string"
+    },
+    "khoa": {
+        "type": "dict"
+    },
+    "phong": {
+        "type": "dict"
     }
 }

@@ -15,7 +15,13 @@ define(function (require) {
         uiControl:{
             fields: [
                 {
-                    field: "tentrangthietbi", label: "Tên thiết bị", width: 250, readonly: true,
+                    field: "tenthietbi", label: "Tên thiết bị", width: 350, readonly: true,
+                },
+                {
+                    field: "model_serial_number", label: "Serial", width: 100, readonly: true,
+                },
+                {
+                    field: "ma_qltb", label: "Mã QLTB", width: 150, readonly: true,
                 },
                 {
                     field: "ngay", label: "Ngày viết",
