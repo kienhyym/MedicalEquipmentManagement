@@ -149,7 +149,8 @@ define(function (require) {
 			self.$el.find(".tensp").html("Kiểm tra thiết bị: " + sessionStorage.getItem('TenThietBi'))
 			self.model.set("chitietthietbi_id", sessionStorage.getItem('IDThietBi'))
 			self.model.set("tenthietbi", sessionStorage.getItem('TenThietBi'))
-
+			self.model.set("model_serial_number", sessionStorage.getItem('SerialThietBi'))
+			self.model.set("ma_qltb", sessionStorage.getItem('MaQLTBThietBi'))
 			self.model.set("nguoikiemtra", self.getApp().currentUser.name)
 			self.model.set("nguoikiemtra_id", userID)
 			sessionStorage.clear();

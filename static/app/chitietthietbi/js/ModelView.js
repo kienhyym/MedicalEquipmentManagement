@@ -98,6 +98,20 @@ define(function (require) {
 							});
 						}
 					},
+					{
+						name: "taophieu",
+						type: "button",
+						buttonClass: "btn-info btn-sm",
+						label: "TRANSLATE:Tạo Phiếu",
+						command: function () {
+							var self = this;
+							location.href = self.getApp().serviceURL + "/?#bangkiemtrathietbi/model";
+							sessionStorage.setItem('TenThietBi', self.model.get("tenthietbi"));
+							sessionStorage.setItem('IDThietBi', self.model.get("id"));
+							sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
+							sessionStorage.setItem('MaQLTBThietBi', self.model.get("ma_qltb"));
+						}
+					},
 				],
 			}],
 		uiControl: {
@@ -263,7 +277,7 @@ define(function (require) {
 				this.model.fetch({
 					// http://0.0.0.0:20808/#chitietthietbi/model?id=26204cbe-8744-4eec-b912-6a4f452c37ce
 					success: function (data) {
-						
+
 						var qrcode = new QRCode("id_qrcodeMini", {
 							text: "www://" + self.getApp().serviceURL + "/#chitietthietbi/model?id=" + self.model.get("id"),
 							width: 40,
