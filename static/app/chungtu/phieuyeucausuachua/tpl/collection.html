@@ -1,20 +1,42 @@
 <div class="page-header row">
     <div class="col-12 text-center text-sm-left ">
-        <div class="d-flex justify-content-between p-2">
+        <div class="d-flex justify-content-between pt-2">
             <h5 class="m-0 pt-1">Danh sách phiếu yêu cầu sửa chữa</h5>
             <div block-bind="toolbar"></div>
         </div>
     </div>
 </div>
 <!-- End Page Header -->
-
-<div class="row">
-    <div class="col">
-        <div class="card  card-small mb-4">
-
-            <div class="card-body">
-                <div id="grid" data-bind='collection:$collection'></div>
+<div class="row mb-3">
+        <div class="col-md-6">
+            <label>Tìm kiếm theo tên thiết bị:</label>
+            <input id="tenthietbi" type="text" placeholder="..." required="" class="form-control">
+            <div class="invalid-feedback">
+                Vui lòng nhập email.
+            </div>
+        </div>
+        <div class="col-md-6" id="ngay">
+            <label>Tìm kiếm theo ngày:</label>
+            <input id="ngaycap" type="text" placeholder="..." required="" class="form-control">
+            <div class="invalid-feedback">
+                Vui lòng nhập email.
+            </div>
+        </div>
+        <!-- <div class="col-md-2" id="ngay">
+            <label>Tìm kiếm:</label>
+            <button id="timkiem" type="button" class="btn btn-primary">Tìm</button>
+    
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card  card-small mb-4">
+    
+                <div class="card-body">
+                    <!-- <div id="grid" data-bind='collection:$collection'></div> -->
+                    <div id="grid-data"></div>
+    
+                </div>
             </div>
         </div>
     </div>
-</div>

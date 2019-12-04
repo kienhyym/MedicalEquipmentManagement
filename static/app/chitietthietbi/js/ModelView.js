@@ -270,7 +270,7 @@ define(function (require) {
 			self.$el.find(".tensp").html("Thiết bị: " + sessionStorage.getItem('TenSanPham'))
 			self.model.set("thietbi_id", sessionStorage.getItem('IDSanPham'))
 			self.model.set("tenthietbi", sessionStorage.getItem('TenSanPham'))
-			// sessionStorage.clear();
+			sessionStorage.clear();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
@@ -304,29 +304,29 @@ define(function (require) {
 						})
 
 
-						self.$el.find(".tensp").html("Thiết bị: " + self.model.get("tenthietbi"))
-						var danhsachyeucausuachua = self.model.get('phieuyeucausuachuafield');
-						danhsachyeucausuachua.sort(function (a, b) {
-							var thoigiantaoA = a.created_at
-							var thoigiantaoB = b.created_at
-							if (thoigiantaoA < thoigiantaoB) {
-								return 1;
-							}
-							if (thoigiantaoA > thoigiantaoB) {
-								return -1;
-							}
-							return 0;
-						});
+						// self.$el.find(".tensp").html("Thiết bị: " + self.model.get("tenthietbi"))
+						// var danhsachyeucausuachua = self.model.get('phieuyeucausuachuafield');
+						// danhsachyeucausuachua.sort(function (a, b) {
+						// 	var thoigiantaoA = a.created_at
+						// 	var thoigiantaoB = b.created_at
+						// 	if (thoigiantaoA < thoigiantaoB) {
+						// 		return 1;
+						// 	}
+						// 	if (thoigiantaoA > thoigiantaoB) {
+						// 		return -1;
+						// 	}
+						// 	return 0;
+						// });
 
-						danhsachyeucausuachua.forEach(function (item, index) {
-							self.$el.find("#danhsachyeucausuachua").append("<tr><td class='p-2'>" + item.ma_qltb + "</td><td class='p-2'>" + moment(item.ngay_suco * 1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.nguoisudung + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href=" + self.getApp().serviceURL + "/?#phieuyeucausuachua/model?id=" + item.id + ">Xem chi tiết</a></td></tr>")
-						})
+						// danhsachyeucausuachua.forEach(function (item, index) {
+						// 	self.$el.find("#danhsachyeucausuachua").append("<tr><td class='p-2'>" + item.ma_qltb + "</td><td class='p-2'>" + moment(item.ngay_suco * 1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.nguoisudung + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href=" + self.getApp().serviceURL + "/?#phieuyeucausuachua/model?id=" + item.id + ">Xem chi tiết</a></td></tr>")
+						// })
 
-						self.$el.find(".btn-them").unbind("click").bind("click", function () {
-							location.href = self.getApp().serviceURL + "/?#phieuyeucausuachua/model";
-							sessionStorage.setItem('TenSanPham', self.$el.find("#tensp").val());
-							sessionStorage.setItem('IDSanPham', self.model.get("id"));
-						})
+						// self.$el.find(".btn-them").unbind("click").bind("click", function () {
+						// 	location.href = self.getApp().serviceURL + "/?#phieuyeucausuachua/model";
+						// 	sessionStorage.setItem('TenSanPham', self.$el.find("#tensp").val());
+						// 	sessionStorage.setItem('IDSanPham', self.model.get("id"));
+						// })
 
 
 
@@ -356,36 +356,87 @@ define(function (require) {
 
 
 
-						var bangkiemtrathietbi = self.model.get('bangkiemtrathietbifield');
-						bangkiemtrathietbi.sort(function (a, b) {
-							var thoigiantaoA = a.created_at
-							var thoigiantaoB = b.created_at
-							if (thoigiantaoA < thoigiantaoB) {
-								return 1;
-							}
-							if (thoigiantaoA > thoigiantaoB) {
-								return -1;
-							}
-							return 0;
-						});
-						bangkiemtrathietbi.forEach(function (item, index) {
-							console.log(item)
-							self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tinhtrang +
-								"</td><td class='p-2'>" + moment(item.ngay * 1000).format("DD/MM/YYYY") +
-								"</td><td class='p-2'>" + item.nguoikiemtra +
+						// var bangkiemtrathietbi = self.model.get('bangkiemtrathietbifield');
+						// bangkiemtrathietbi.sort(function (a, b) {
+						// 	var thoigiantaoA = a.created_at
+						// 	var thoigiantaoB = b.created_at
+						// 	if (thoigiantaoA < thoigiantaoB) {
+						// 		return 1;
+						// 	}
+						// 	if (thoigiantaoA > thoigiantaoB) {
+						// 		return -1;
+						// 	}
+						// 	return 0;
+						// });
+						// bangkiemtrathietbi.forEach(function (item, index) {
+						// 	console.log(item)
+						// 	self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tinhtrang +
+						// 		"</td><td class='p-2'>" + moment(item.ngay * 1000).format("DD/MM/YYYY") +
+						// 		"</td><td class='p-2'>" + item.nguoikiemtra +
 
-								"</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href=" +
-								self.getApp().serviceURL + "/?#bangkiemtrathietbi/model?id=" + item.id + ">Xem chi tiết</a></td></tr>")
+						// 		"</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href=" +
+						// 		self.getApp().serviceURL + "/?#bangkiemtrathietbi/model?id=" + item.id + ">Xem chi tiết</a></td></tr>")
 
+						// })
+						// self.$el.find(".btn-them2").unbind("click").bind("click", function () {
+						// 	location.href = self.getApp().serviceURL + "/?#bangkiemtrathietbi/model";
+						// 	sessionStorage.setItem('TenThietBi', self.model.get("tenthietbi"));
+						// 	sessionStorage.setItem('IDThietBi', self.model.get("id"));
+						// 	sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
+						// 	sessionStorage.setItem('MaQLTBThietBi', self.model.get("ma_qltb"));
+						// })
+
+
+
+
+
+						self.$el.find(".btn-taophieuyeucausuachua").unbind("click").bind("click", function () {
+							location.href = self.getApp().serviceURL + "/?#phieuyeucausuachua/model";
+							sessionStorage.setItem('TenThietBi', self.model.get("tenthietbi"));
+							sessionStorage.setItem('IDThietBi', self.model.get("id"));
+							sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
+							sessionStorage.setItem('MaQLTBThietBi', self.model.get("ma_qltb"));
 						})
-						self.$el.find(".btn-them2").unbind("click").bind("click", function () {
+						self.$el.find(".btn-taobienbankiemtra").unbind("click").bind("click", function () {
+							location.href = self.getApp().serviceURL + "/?#bienbanxacnhantinhtrangthietbi/model";
+							sessionStorage.setItem('TenThietBi', self.model.get("tenthietbi"));
+							sessionStorage.setItem('IDThietBi', self.model.get("id"));
+							sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
+							sessionStorage.setItem('MaQLTBThietBi', self.model.get("ma_qltb"));
+						})
+						self.$el.find(".btn-taokiemtrahangngay").unbind("click").bind("click", function () {
 							location.href = self.getApp().serviceURL + "/?#bangkiemtrathietbi/model";
 							sessionStorage.setItem('TenThietBi', self.model.get("tenthietbi"));
 							sessionStorage.setItem('IDThietBi', self.model.get("id"));
 							sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
 							sessionStorage.setItem('MaQLTBThietBi', self.model.get("ma_qltb"));
 						})
+						self.$el.find(".btn-taokiemdinh").unbind("click").bind("click", function () {
+							location.href = self.getApp().serviceURL + "/?#bangkiemdinh/model";
+							sessionStorage.setItem('TenThietBi', self.model.get("tenthietbi"));
+							sessionStorage.setItem('IDThietBi', self.model.get("id"));
+							sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
+							sessionStorage.setItem('MaQLTBThietBi', self.model.get("ma_qltb"));
+						})
 
+
+						self.$el.find(".btn-dsphieuyeucausuachua").unbind("click").bind("click", function () {
+							location.href = self.getApp().serviceURL + "/?#phieuyeucausuachua/collection";
+							sessionStorage.setItem('IDThietBi', self.model.get("id"));
+						})
+						self.$el.find(".btn-dsbienbankiemtra").unbind("click").bind("click", function () {
+							location.href = self.getApp().serviceURL + "/?#bienbanxacnhantinhtrangthietbi/collection";
+							sessionStorage.setItem('IDThietBi', self.model.get("id"));
+						})
+						self.$el.find(".btn-dskiemtrahangngay").unbind("click").bind("click", function () {
+							location.href = self.getApp().serviceURL + "/?#bangkiemtrathietbi/collection";
+							sessionStorage.setItem('IDThietBi', self.model.get("id"));
+						})
+						self.$el.find(".btn-dskiemdinh").unbind("click").bind("click", function () {
+							location.href = self.getApp().serviceURL + "/?#bangkiemdinh/collection";
+							sessionStorage.setItem('IDThietBi', self.model.get("id"));
+							
+						})
 						self.applyBindings();
 
 					},

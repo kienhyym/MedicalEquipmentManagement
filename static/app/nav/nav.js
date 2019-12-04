@@ -305,6 +305,26 @@ define(function (require) {
 						return false;
 					}
 				},
+				{
+					"text": "Lịch sử kiểm định",
+					"icon": "fa fa-angle-double-right",
+					"type": "view",
+					"collectionName": "bangkiemdinh",
+					"route": "bangkiemdinh/collection",
+					"$ref": "app/chungtu/bangkiemdinh/js/CollectionView",
+					"visible": function () {
+						return true
+					}
+				},
+				{
+					"type": "view",
+					"collectionName": "bangkiemdinh",
+					"route": "bangkiemdinh/model(/:id)",
+					"$ref": "app/chungtu/bangkiemdinh/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
 				// {
 				// 	"text": "Dự toán sửa chữa",
 				// 	"icon": "fa fa-home",

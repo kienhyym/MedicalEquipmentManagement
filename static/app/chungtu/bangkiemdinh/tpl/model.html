@@ -1,0 +1,106 @@
+<div block-bind="content">
+	<!-- Page Header -->
+	<div class="page-header row no-gutters py-2">
+
+	</div>
+	<!-- End Page Header -->
+	<div class="row">
+		<div class="col-lg-12 col-md-12">
+			<div class="card  card-small mb-4">
+				<div class="card-header  border-bottom">
+					<div class="row">
+						<div class="col-md-7">
+							<h6 class="m-0 pt-2">Xác nhận kiểm định</h6>
+						</div>
+						<div class="col-md-5 text-right">
+							<div block-bind="toolbar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="needs-validation" novalidate="">
+						<div class="row mb-3">
+							<div class="col-md-6 ">
+								<label>Tên thiết bị</label>
+								<input type="text" class="form-control" data-bind="value:tenthietbi"
+									placeholder="Nhập tên thiết bị" required="" id="tensp">
+								<div class="invalid-feedback">
+									Vui lòng nhập tên thiết bị.
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label>Serial<span class="text-muted"></span></label>
+								<input type="text" class="form-control" data-bind="value:model_serial_number"
+									placeholder="nhập serial">
+								<div class="invalid-feedback">
+									Vui lòng nhập serial.
+								</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-6 ">
+								<label>Mã QLTB</label>
+								<input type="text" class="form-control" data-bind="value:ma_qltb"
+									placeholder="Nhập mã quản lý thiết bị" required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập mã quản lý thiết bị.
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label>Mã tem kiểm định<span class="text-muted"></span></label>
+								<input type="text" class="form-control" data-bind="value:ma" placeholder="nhập mã tem">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row mb-3">
+							<div class="col-md-6">
+								<label>Ngày cấp</label>
+								<input type="text" class="form-control" data-bind="value:ngaycap" placeholder="..."
+									required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label>Ngày kiểm tra</label>
+								<input type="text" class="form-control" data-bind="value:ngayhethan" placeholder="..."
+									required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+
+						</div>
+
+						<div class="row mb-3">
+
+							<div class="col-md-12">
+								<label>Đơn vị kiểm định</label>
+								<input rows="3" type="text" class="form-control" data-bind="value:donvi"
+									placeholder="..." required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+
+							<div class="col-md-12">
+								<label>Hình ảnh tem kiểm định</label>
+								<input rows="3" type="text" class="form-control" data-bind="value:attachment"
+									placeholder="..." required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

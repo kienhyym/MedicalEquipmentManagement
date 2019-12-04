@@ -3,15 +3,16 @@ define(function (require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
-	var template = require('text!app/chungtu/phieuyeucausuachua/tpl/model.html'),
-		schema = require('json!schema/PhieuYeuCauSuaChuaSchema.json');
-
+	var template = require('text!app/chungtu/bangkiemdinh/tpl/model.html'),
+		schema = require('json!schema/BangKiemDinhSchema.json');
+	var KhoaSelectView = require('app/hethong/khoa/view/SelectView');
+	var PhongSelectView = require('app/hethong/phong/view/SelectView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "phieuyeucausuachua",
+		collectionName: "bangkiemdinh",
 		bindings: "data-bind",
 		state: null,
 		tools: [
@@ -37,10 +38,10 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
-							
+
 							self.model.save(null, {
 								success: function (model, respose, options) {
-								
+
 									self.getApp().notify("Lưu thông tin thành công");
 									self.getApp().getRouter().navigate(self.collectionName + "/collection");
 								},
@@ -58,8 +59,8 @@ define(function (require) {
 									}
 								}
 							});
-								
-							
+
+
 						}
 					},
 					{
@@ -97,64 +98,49 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-			
-				{
-					field: "ngay_suco",
-					uicontrol: "datetimepicker",
-					textFormat: "DD/MM/YYYY",
-					extraFormats: ["DDMMYYYY"],
-					parseInputDate: function (val) {
-						return moment.unix(val)
-					},
-					parseOutputDate: function (date) {
-						return date.unix()
-					}
-				},
-				{
-					field: "ngay_danhgia",
-					uicontrol: "datetimepicker",
-					textFormat: "DD/MM/YYYY",
-					extraFormats: ["DDMMYYYY"],
-					parseInputDate: function (val) {
-						return moment.unix(val)
-					},
-					parseOutputDate: function (date) {
-						return date.unix()
-					}
-				},
-				{
-					field: "ngay_ketqua",
-					uicontrol: "datetimepicker",
-					textFormat: "DD/MM/YYYY",
-					extraFormats: ["DDMMYYYY"],
-					parseInputDate: function (val) {
-						return moment.unix(val)
-					},
-					parseOutputDate: function (date) {
-						return date.unix()
-					}
-				},
 
-	
+
+				{
+					field: "ngaycap",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
+				
+				{
+					field: "ngayhethan",
+					uicontrol: "datetimepicker",
+					textFormat: "DD/MM/YYYY",
+					extraFormats: ["DDMMYYYY"],
+					parseInputDate: function (val) {
+						return moment.unix(val)
+					},
+					parseOutputDate: function (date) {
+						return date.unix()
+					}
+				},
 			]
 		},
 
 		render: function () {
 			var self = this;
-			self.$el.find(".tensp").html("PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ: "+sessionStorage.getItem('TenThietBi'))
 			self.model.set("chitietthietbi_id", sessionStorage.getItem('IDThietBi'))
 			self.model.set("tenthietbi", sessionStorage.getItem('TenThietBi'))
 			self.model.set("model_serial_number", sessionStorage.getItem('SerialThietBi'))
 			self.model.set("ma_qltb", sessionStorage.getItem('MaQLTBThietBi'))
 			sessionStorage.clear();
-			var id = this.getApp().getRouter().getParam("id");			
+			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						// self.$el.find(".tensp").html("PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ: "+self.model.get("tenthietbi"))
 						self.applyBindings();
-
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");

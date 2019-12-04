@@ -58,7 +58,8 @@ class DonVi(CommonModel):
     xaphuong = db.Column(JSONB)
     giamdoc = db.Column(db.String)
 
-    
+
+
 
 class DanToc(CommonModel):
     __tablename__ = 'dantoc'
@@ -141,6 +142,20 @@ class ChiTietThietBi(CommonModel):
     phieuyeucausuachuafield = db.relationship('PhieuYeuCauSuaChua', cascade="all, delete-orphan")
     bangkiemtrathietbifield = db.relationship('BangKiemTraThietBi', cascade="all, delete-orphan")
     bienbanxacnhantinhtrangthietbifield = db.relationship('BienBanXacNhanTinhTrangThietBi', cascade="all, delete-orphan")
+    bangkiemdinhfield = db.relationship('BangKiemDinh', cascade="all, delete-orphan")
+
+class BangKiemDinh(CommonModel):
+    __tablename__ = 'bangkiemdinh'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    ma = db.Column(String(255), index=True)
+    donvi = db.Column(String(255))
+    ngaycap = db.Column(BigInteger())
+    ngayhethan = db.Column(BigInteger())
+    attachment = db.Column(String(255))
+    tenthietbi = db.Column(String(255))
+    model_serial_number = db.Column(String(255))
+    ma_qltb = db.Column(String(255))
+    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
 
 
 class Khoa(CommonModel):

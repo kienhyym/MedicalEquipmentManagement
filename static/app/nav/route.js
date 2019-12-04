@@ -188,6 +188,16 @@ define(function (require) {
 			"$ref": "app/danhmuc/XaPhuong/view/ModelView",
 		},
 
+		{
+			"collectionName": "bangkiemdinh",
+			"route": "bangkiemdinh/collection",
+			"$ref": "app/chungtu/bangkiemdinh/js/CollectionView",
+		},
+		{
+			"collectionName": "bangkiemdinh",
+			"route": "bangkiemdinh/model(/:id)",
+			"$ref": "app/chungtu/bangkiemdinh/js/ModelView",
+		},
 
 
 	];

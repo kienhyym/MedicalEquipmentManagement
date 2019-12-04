@@ -1,0 +1,61 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "ma": {
+        "type": "string",
+        "length": 255
+    },
+    "donvi": {
+        "type": "string",
+        "length": 255
+    },
+    "ngaycap": {
+        "type": "number"
+    },
+    "ngayhethan": {
+        "type": "number"
+    },
+    "attachment": {
+        "type": "string",
+        "length": 255
+    },
+    "tenthietbi": {
+        "type": "string",
+        "length": 255
+    },
+    "model_serial_number": {
+        "type": "string",
+        "length": 255
+    },
+    "ma_qltb": {
+        "type": "string",
+        "length": 255
+    },
+    "chitietthietbi_id": {
+        "type": "string"
+    }
+}

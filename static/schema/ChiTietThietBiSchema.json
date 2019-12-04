@@ -111,5 +111,8 @@
     },
     "bienbanxacnhantinhtrangthietbifield": {
         "type": "list"
+    },
+    "bangkiemdinhfield": {
+        "type": "list"
     }
 }
