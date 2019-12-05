@@ -59,7 +59,6 @@ define(function (require) {
                         data: "q=" + JSON.stringify(filters),
                         contentType: "application/json",
                         success: function (data) {
-                            console.log('xxxxx', data.objects)
                             self.render_grid(data.objects);
 
                         },

@@ -61,6 +61,8 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 					dataType: "json",
 					success: function (data) {
 						self.postLogin(data);
+
+
 					},
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
 						self.router.navigate("login");
@@ -69,19 +71,6 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 			},
 			postLogin: function (data) {
 				var self = this;
-				self.trangthai = {
-					"new": "Tạo mới",
-					"send_review_truongphong": "Chờ cấp phòng duyệt",
-					"cancel_reviewed_truongphong": "Phòng từ chối",
-					"send_review_pct": "Chờ PCT duyệt",
-					"cancel_reviewed_pct": "PCT từ chối",
-					"send_approved": "Chờ CT duyệt",
-					"cancel_approved": "CT từ chối",
-					"approved": "CT đã duyệt quyết định",
-					"checked": "Đã kiểm tra",
-					"result_checked": "Đã có kết luận",
-					"completed": "Hoàn thành"
-				};
 				self.currentUser = new Gonrin.User(data);
 				var tpl = gonrin.template(layout)({});
 				$('.content-contain').html(tpl);
@@ -95,7 +84,6 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 				$("span#display_name").html(self.get_displayName(data));
 
 				self.bind_event();
-				//			self.router.navigate('lichthanhtra/model');
 				$("#changepassword").on("click", function () {
 					self.router.navigate("changepassword");
 				});
@@ -118,17 +106,41 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 				$('#sca').hide()
 				$('#search_pc').unbind('click').bind('click', function (params) {
 					$('#sca').show()
-
 				})
 				// var filters = {
 				// 	filters: {
 				// 		"$and": [
-				// 			{ "tenthietbi": { "$eq": $('#search_pc').val() } }
+				// 			{ "daxem": { "$eq": null } }
 				// 		]
 				// 	},
 				// 	order_by: [{ "field": "created_at", "direction": "asc" }]
 				// }
-				// console.log(filters)
+				$('.showthongbao').hide();
+				$('.clickthongbao').unbind('click').bind('click',function () {
+					$('.showthongbao').toggle();
+				})
+				$.ajax({
+					url: self.serviceURL + "/api/v1/phieuyeucausuachua?results_per_page=100000&max_results_per_page=1000000",
+					method: "GET",
+					// data: "q=" + JSON.stringify(filters),
+					contentType: "application/json",
+					success: function (data2) {
+						(data2.objects).forEach(function (item, index) {
+							$('#bangthongbao').append('<tr><td>Phiếu yêu cầu sửa chữa</td><td>' + item.tenthietbi + '[' + item.model_serial_number + ']</td></tr>')
+						})
+						$('tr').each(function (index, item) {
+							$(item).bind("click", function () {
+								self.router.navigate("phieuyeucausuachua/model?id=" + data2.objects[index].id);
+
+							})
+						})
+
+					},
+					error: function (xhr, status, error) {
+					}
+				});
+
+
 
 				$.ajax({
 					url: self.serviceURL + "/api/v1/chitietthietbi?results_per_page=100000&max_results_per_page=1000000",
@@ -146,47 +158,48 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 								}
 							});
 
-						
-						$("#sca").grid({
-							showSortingIndicator: true,
-							language: {
-								no_records_found: "không tìm thấy kết quả"
-							},
-							noResultsClass: "alert alert-default no-records-found",
-							refresh: true,
-							orderByMode: "client",
-							tools: [
-							],
-							fields: [
-								{ field: "tenthietbi", label: "Tên thiết bị", width: 250, height: "20px" },
-								{ field: "model_serial_number", label: "serial", width: 250, height: "20px" },
-							],
-							dataSource: arr,
-							primaryField: "id",
-							selectionMode: false,
-							pagination: {
-								page: 1,
-								pageSize: 20
-							},
-							onRowClick: function (event) {
-								if (event.rowId) {
-									self.router.navigate("chitietthietbi/model?id=" + event.rowId);
-									$('#sca').hide()
 
-								}
-							},
+							$("#sca").grid({
+								showSortingIndicator: true,
+								language: {
+									no_records_found: "không tìm thấy kết quả"
+								},
+								noResultsClass: "alert alert-default no-records-found",
+								refresh: true,
+								orderByMode: "client",
+								tools: [
+								],
+								fields: [
+									{ field: "tenthietbi", label: "Tên thiết bị", width: 250, height: "20px" },
+									{ field: "model_serial_number", label: "serial", width: 250, height: "20px" },
+								],
+								dataSource: arr,
+								primaryField: "id",
+								selectionMode: false,
+								pagination: {
+									page: 1,
+									pageSize: 20
+								},
+								onRowClick: function (event) {
+									if (event.rowId) {
+										self.router.navigate("chitietthietbi/model?id=" + event.rowId);
+										$('#sca').hide()
+
+									}
+								},
+							});
+							$('#tbl_sca').removeClass('table-striped')
+
 						});
-						$('#tbl_sca').removeClass('table-striped')
-
-					});
-					$('#search_pc').focusout(function(){
-						setTimeout(function () {
-							$('#sca').hide()
-						}, 300);
-					})
+						$('#search_pc').focusout(function () {
+							setTimeout(function () {
+								$('#sca').hide()
+							}, 300);
+						})
 
 					},
 					error: function (xhr, status, error) {
+						$('#sca').hide()
 						// self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
 					},
 

@@ -24,8 +24,9 @@ define(function (require) {
         },
         defaultRoute: function () {
             this.navigate("index", true);
-            // this.navigate('dangkykham/collection');
-        },
+            // var indexview = new Index({ el: $('.main-content-container') });
+            // indexview.render();      
+          },
         index: function () {
             // this.navigate('dangkykham/collection');
             var indexview = new Index({ el: $('.main-content-container') });

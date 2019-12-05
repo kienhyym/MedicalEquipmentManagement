@@ -25,10 +25,31 @@
         "type": "string",
         "primary": true
     },
-    "dsthietbi": {
-        "type": "json"
+    "tenthietbi": {
+        "type": "string",
+        "length": 255
     },
-    "ngay": {
+    "model_serial_number": {
+        "type": "string",
+        "length": 255
+    },
+    "ma_qltb": {
+        "type": "string",
+        "length": 255
+    },
+    "chitietthietbi_id": {
+        "type": "string",
+        "length": 255
+    },
+    "kiemdinh": {
+        "type": "string",
+        "length": 255
+    },
+    "ngaykiemdinh": {
         "type": "number"
+    },
+    "trangthaikiemdinh": {
+        "type": "string",
+        "length": 10
     }
 }

@@ -85,5 +85,9 @@
     },
     "chitietthietbi_id": {
         "type": "string"
+    },
+    "daxem": {
+        "type": "string",
+        "length": 5
     }
 }

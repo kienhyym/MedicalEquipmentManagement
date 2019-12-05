@@ -238,12 +238,12 @@ define(function (require) {
 		// 	}
 		// },
 		{
-			"text": "Lịch sử thiết bị",
+			"text": "Báo cáo thống kê",
 			"icon": "fa fa-file-text-o",
 			"type": "category",
 			"entries": [
 				{
-					"text": "Phiếu yêu cầu sửa chữa",
+					"text": "Yêu cầu sửa chữa",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "phieuyeucausuachua",
@@ -285,7 +285,7 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "KT thiết bị hàng ngày",
+					"text": "Kiểm tra hàng ngày",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "bangkiemtrathietbi",

@@ -41,9 +41,29 @@ define(function (require) {
 
 							self.model.save(null, {
 								success: function (model, respose, options) {
+									var data = {
+										tenthietbi: respose.tenthietbi,
+										ma_qltb: respose.ma_qltb,
+										model_serial_number: respose.model_serial_number,
+										ngaykiemdinh: respose.ngayhethan,
+										chitietthietbi_id: respose.chitietthietbi_id,
+										kiemdinh: respose.id,
+									}
+									$.ajax({
+										type: "POST",
+										url: self.getApp().serviceURL + "/api/v1/kehoachhangngay",
+										data: JSON.stringify(data),
+										success: function (response) {
+											self.getApp().notify("Lưu thông tin thành công");
+											self.getApp().getRouter().navigate(self.collectionName + "/collection");
+										},
+										error: function (response) {
+											self.getApp().notify({ message: "Lưu không thành công" }, { type: "danger", delay: 1000 });
+										}
+									});
 
-									self.getApp().notify("Lưu thông tin thành công");
-									self.getApp().getRouter().navigate(self.collectionName + "/collection");
+
+
 								},
 								error: function (xhr, status, error) {
 									try {
@@ -112,7 +132,7 @@ define(function (require) {
 						return date.unix()
 					}
 				},
-				
+
 				{
 					field: "ngayhethan",
 					uicontrol: "datetimepicker",

@@ -206,6 +206,7 @@ class BienBanXacNhanTinhTrangThietBi(CommonModel):
     ngay = db.Column(BigInteger())
     chuky = db.Column(String(10))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
+    daxem = db.Column(String(5))
 
 
 
@@ -229,14 +230,19 @@ class PhieuYeuCauSuaChua(CommonModel):
     ngay_ketqua = db.Column(BigInteger())
     xacnhan_nguoisudungnhanketqua = db.Column(String(255))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
+    daxem = db.Column(String(5))
 
 
 class KeHoachHangNgay(CommonModel):
     __tablename__ = 'kehoachhangngay'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    dsthietbi = db.Column(JSONB)
-    ngay = db.Column(BigInteger())
-    
+    tenthietbi = db.Column(String(255))
+    model_serial_number = db.Column(String(255))
+    ma_qltb = db.Column(String(255))
+    chitietthietbi_id = db.Column(String(255))
+    kiemdinh = db.Column(String(255))
+    ngaykiemdinh = db.Column(BigInteger())
+    trangthaikiemdinh = db.Column(String(10))
 
 class BangKeHoachKiemTraThietBiTheoNam(CommonModel):
     __tablename__ = 'bangkehoachkiemtrathietbitheonam'
