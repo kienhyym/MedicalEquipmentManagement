@@ -47,20 +47,14 @@ define(function (require) {
 					}),
 					success: function (response) {
 						if (response) {
-							console.log('response',response);
-							
+							// console.log('response', response);
 							self.getApp().notify("Đổi mật khẩu đã thành công");
-							// self.getApp().getRouter().navigate("");
-							window.location=self.getApp().serviceURL;
+							window.location = self.getApp().serviceURL;
 						}
-					
+
 
 					}, error: function (xhr) {
-						
-							self.getApp().notify("Mật khẩu cũ không chính xác ");
-							// window.location=self.getApp().serviceURL+"#changepassword";
-							// self.getApp().getRouter().navigate("changepassword");
-						
+						self.getApp().notify("Mật khẩu cũ không chính xác ");
 					}
 				})
 			});

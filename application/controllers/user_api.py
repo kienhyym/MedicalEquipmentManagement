@@ -4,6 +4,9 @@ import uuid
 import base64, re
 import binascii
 import aiohttp
+import requests
+import json as json_load
+
 import copy
 from gatco.response import json, text, html
 from application.extensions import sqlapimanager
@@ -123,6 +126,48 @@ def register(request):
         return json(result)
 
 
+@app.route('/api/v1/newpassword', methods=['POST'])
+async def changepassword(request):
+    data = request.json
+    id = data['id']
+    password_new = data['password']
+    user_info = db.session.query(User).filter(User.id == id).first()
+    user_info.password = auth.encrypt_password(password_new)
+    db.session.commit()
+    return json({})
+    
+@app.route('api/v1/tokenuser', methods=["POST"])
+def tokenuser(request):
+    token = random.randint(10000, 99999)
+    print ("===========randum============",token)
+    data = request.json
+    email = data['email']
+    user_info = db.session.query(User).filter(User.email == email).first()
+
+    if user_info is not None:
+        print("user_info", email)
+
+        email_info = {
+            "from": {
+                "id": "kien97ym@gmail.com",
+                "password": "kocopass_1"
+            },
+            "to": email,
+            "message": "Mã token của bạn là" + str(token),
+            "subject": "Yêu cầu đổi mật khẩu"
+        }
+        url = "https://upstart.vn/services/api/email/send"
+
+        re = requests.post(url=url, data=json_load.dumps(email_info))
+        # info = {
+        #     "token": str(token),
+        #     "user": to_dict(user_info)
+        # }
+
+    return json({
+        "ok": token,
+        'id':to_dict(user_info)['id']
+    })
 
 
 
@@ -182,6 +227,11 @@ async def predelete_user(request=None, data=None, Model=None, **kw):
         return json({"error_code":"SESSION_EXPIRED","error_message":"Hết phiên làm việc, vui lòng đăng nhập lại!"}, status=520)
     if currentUser.has_role("Giám Đốc") == False:
         return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
+
+
+
+
+
 
 
 
