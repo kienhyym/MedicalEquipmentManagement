@@ -7,7 +7,9 @@ body {
 .fc-time{
   display: none;
 }
-
+#bangthongbao tr td{
+  padding: 3px;
+}
 #sca div table tbody tr td{
   padding: 5px;
 }

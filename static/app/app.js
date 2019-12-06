@@ -92,8 +92,10 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 			bind_event: function () {
 				var self = this;
 				var currentUser = self.currentUser.id;
-				$("#logo").bind('click', function () {
-					self.router.navigate('lichthanhtra/model');
+				$(".navbar-brand").bind('click', function () {
+					self.router.navigate("index");
+
+					location.reload()
 				});
 
 				$("#logout").unbind('click').bind('click', function () {
@@ -116,24 +118,125 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 				// 	order_by: [{ "field": "created_at", "direction": "asc" }]
 				// }
 				$('.showthongbao').hide();
-				$('.clickthongbao').unbind('click').bind('click',function () {
+				$('.clickthongbao').unbind('click').bind('click', function () {
 					$('.showthongbao').toggle();
 				})
 				$.ajax({
 					url: self.serviceURL + "/api/v1/phieuyeucausuachua?results_per_page=100000&max_results_per_page=1000000",
 					method: "GET",
-					// data: "q=" + JSON.stringify(filters),
+					// data: JSON.stringify(),
 					contentType: "application/json",
 					success: function (data2) {
-						(data2.objects).forEach(function (item, index) {
-							$('#bangthongbao').append('<tr><td>Phiếu yêu cầu sửa chữa</td><td>' + item.tenthietbi + '[' + item.model_serial_number + ']</td></tr>')
-						})
-						$('tr').each(function (index, item) {
-							$(item).bind("click", function () {
-								self.router.navigate("phieuyeucausuachua/model?id=" + data2.objects[index].id);
+						$.ajax({
+							url: self.serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
+							method: "GET",
+							// data: JSON.stringify(),
+							contentType: "application/json",
+							success: function (data3) {
+								var mangthongbao = data2.objects;
 
-							})
-						})
+								data3.objects.forEach(function (item3, index3) {
+									if(item3.tinhtrang == "Có vấn đề")
+									mangthongbao.push(item3)
+								})
+								var mangthongbao = data2.objects;
+								mangthongbao.sort(function (a, b) {
+									var thoigiantaoA = a.created_at
+									var thoigiantaoB = b.created_at
+									if (thoigiantaoA < thoigiantaoB) {
+										return 1;
+									}
+									if (thoigiantaoA > thoigiantaoB) {
+										return -1;
+									}
+									return 0;
+								});
+
+								var tong = 0;
+								mangthongbao.forEach(function (item, index) {
+									if (item.daxem == null && item.tinhtrang != "Không vấn đề" ) {
+										tong++;
+									}
+								})
+								$('#soluong').append(tong);
+								console.log(mangthongbao)
+
+								mangthongbao.forEach(function (itemmangthongbao, indexmangthongbao) {
+
+									if(itemmangthongbao.tinhtrang == undefined){
+										console.log('itemmangthongbao',itemmangthongbao)
+										$('#bangthongbao').append('<tr class="danhsachthongbaomoi"><td>Phiếu yêu cầu sửa chữa</td><td>' + itemmangthongbao.tenthietbi + '[' + itemmangthongbao.model_serial_number + ']</td></tr>')
+									}
+									if(itemmangthongbao.tinhtrang == "Có vấn đề"){
+										$('#bangthongbao').append('<tr class="danhsachthongbaomoi"><td>Phiếu kiểm tra hàng ngày</td><td>' + itemmangthongbao.tenthietbi + '[' + itemmangthongbao.model_serial_number + ']</td></tr>')
+									}
+									if (itemmangthongbao.daxem == null) {
+										$($('.danhsachthongbaomoi')[indexmangthongbao]).css("background-color", "yellow")
+									}
+								})
+								$('.danhsachthongbaomoi').each(function (indexdanhsachthongbaomoi, itemdanhsachthongbaomoi) {
+									$(itemdanhsachthongbaomoi).bind("click", function () {
+										console.log(mangthongbao[indexdanhsachthongbaomoi])
+										if(mangthongbao[indexdanhsachthongbaomoi].tinhtrang == undefined){
+
+										self.router.navigate("phieuyeucausuachua/model?id=" + mangthongbao[indexdanhsachthongbaomoi].id);
+										$.ajax({
+											url: self.serviceURL + "/api/v1/phieuyeucausuachua/" + mangthongbao[indexdanhsachthongbaomoi].id,
+											method: "PUT",
+											data: JSON.stringify({
+												"daxem": "daxem"
+											}),
+											contentType: "application/json",
+											success: function (data) {
+												console.log('thanhcong')
+		
+											},
+											error: function (xhr, status, error) {
+											}
+										});
+										location.reload();
+										}
+										else if(mangthongbao[indexdanhsachthongbaomoi].tinhtrang == "Có vấn đề"){
+											self.router.navigate("bangkiemtrathietbi/model?id=" + mangthongbao[indexdanhsachthongbaomoi].id);
+											$.ajax({
+												url: self.serviceURL + "/api/v1/bangkiemtrathietbi/" + mangthongbao[indexdanhsachthongbaomoi].id,
+												method: "PUT",
+												data: JSON.stringify({
+													"daxem": "daxem"
+												}),
+												contentType: "application/json",
+												success: function (data) {
+													console.log('thanhcong')
+			
+												},
+												error: function (xhr, status, error) {
+												}
+											});
+											location.reload();
+
+										}
+										//////////////////////////////////////////////////////////////////////////////
+									
+										$('.showthongbao').hide();
+		
+									})
+								})
+
+
+							},
+							error: function (xhr, status, error) {
+
+							}
+						});
+
+
+
+
+
+
+
+
+
 
 					},
 					error: function (xhr, status, error) {

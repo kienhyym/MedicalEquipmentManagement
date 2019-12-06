@@ -155,6 +155,7 @@ class BangKiemDinh(CommonModel):
     tenthietbi = db.Column(String(255))
     model_serial_number = db.Column(String(255))
     ma_qltb = db.Column(String(255))
+    daxem = db.Column(String(5))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
 
 
@@ -189,6 +190,7 @@ class BangKiemTraThietBi(CommonModel):
     tenthietbi = db.Column(String(255))
     model_serial_number = db.Column(String(255))
     ma_qltb = db.Column(String(255))
+    daxem = db.Column(String(5))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
 
 class BienBanXacNhanTinhTrangThietBi(CommonModel):

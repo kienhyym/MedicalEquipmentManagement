@@ -55,6 +55,10 @@
         "type": "string",
         "length": 255
     },
+    "daxem": {
+        "type": "string",
+        "length": 5
+    },
     "chitietthietbi_id": {
         "type": "string"
     }

@@ -198,7 +198,13 @@ define(function (require) {
 			"route": "bangkiemdinh/model(/:id)",
 			"$ref": "app/chungtu/bangkiemdinh/js/ModelView",
 		},
+		{
 
+			"collectionName": "thietbiduockiemtra",
+			"route": "lichthanhtra/collection",
+			"$ref": "app/lichthanhtra/view/ModelView",
+
+		},
 
 	];
 

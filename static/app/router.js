@@ -4,7 +4,7 @@ define(function (require) {
 
     var $ = require('jquery'),
         Gonrin = require('gonrin');
-    var Index = require('app/lichthanhtra/view/ModelView');
+    // var Index = require('app/lichthanhtra/view/ModelView');
     var Login = require('app/login/js/LoginView');
     var ChangePasswordView = require('app/login/js/ChangePasswordView');
     var ForgotPasswordView = require('app/login/js/ForgotPasswordView');
@@ -13,7 +13,7 @@ define(function (require) {
 
     return Gonrin.Router.extend({
         routes: {
-            "index": "index",
+            // "index": "index",
             "login": "login",
             "logout": "logout",
             "forgot": "forgotPassword",
@@ -23,14 +23,14 @@ define(function (require) {
             "*path": "defaultRoute"
         },
         defaultRoute: function () {
-            this.navigate("index", true);
+            // this.navigate("index", true);
             // var indexview = new Index({ el: $('.main-content-container') });
             // indexview.render();      
           },
         index: function () {
             // this.navigate('dangkykham/collection');
-            var indexview = new Index({ el: $('.main-content-container') });
-            indexview.render();
+            // var indexview = new Index({ el: $('.main-content-container') });
+            // indexview.render();
         },
         logout: function () {
             var self = this;
