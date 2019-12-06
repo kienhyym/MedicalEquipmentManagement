@@ -17,7 +17,13 @@ define(function (require) {
 			var isUser = gonrinApp().currentUser != null ? gonrinApp().currentUser.hasRole('User') : false;
 			return isUser;
 		},
-		
+		checkVaitro: function (checkVaitroValue) {
+			var currentUser = gonrinApp().currentUser;
+			if (currentUser !== null && currentUser !== undefined) {
+				return (checkVaitroValue.indexOf(currentUser.vaitro) > -1);
+			}
+			return false;
+		},
 		requireRole: function (role) {
 			var user = gonrinApp().currentUser;
 			console.log("user.role====", user.role);

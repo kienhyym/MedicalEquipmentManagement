@@ -32,7 +32,7 @@ class User(CommonModel):
     type = db.Column(db.String())
     active = db.Column(db.Boolean(), default=True)
     roles = db.relationship('Role', secondary=roles_users, cascade="save-update")
-    vaitro = db.Column(db.String())
+    vaitro = db.Column(Integer())
 
     def has_role(self, role):
         if isinstance(role, str):

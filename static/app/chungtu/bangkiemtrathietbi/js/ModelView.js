@@ -105,8 +105,8 @@ define(function (require) {
 					textField: "text",
 					valueField: "value",
 					dataSource: [
-						{ "value": "Không vấn đề", "text": "Không vấn đề" },
-						{ "value": "Có vấn đề", "text": "Có vấn đề" },
+						{ "value": "Không vấn đề", "text": "Không bình thường" },
+						{ "value": "Có vấn đề", "text": "Bình thường" },
 
 					],
 				},

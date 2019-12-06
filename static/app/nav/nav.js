@@ -43,6 +43,10 @@ define(function (require) {
 			"text": "Hệ thống",
 			"icon": "fa fa-home",
 			"type": "category",
+			"visible": function () {
+				return this.checkVaitro([1,2]);
+
+			},
 			"entries": [
 				{
 					"text": "Danh sách người dùng",
@@ -143,6 +147,10 @@ define(function (require) {
 			"text": "Danh mục",
 			"icon": "fa fa-list-ul",
 			"type": "category",
+			"visible": function () {
+				return this.checkVaitro([1,2]);
+
+			},
 			"entries": [
 				{
 					"text": "Nguồn gốc",

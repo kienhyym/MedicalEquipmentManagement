@@ -123,8 +123,10 @@ define(function (require) {
 					textField: "text",
 					valueField: "value",
 					dataSource: [
-						{ "value": "quanly", "text": "Quản lý" },
-						{ "value": "nhanvien", "text": "Nhân viên" },
+						{ "value": 1, "text": "Giám đốc" },
+						{ "value": 2, "text": "Trưởng phòng vật tư" },
+						{ "value": 3, "text": "Nhân viên kỹ thuật" },
+						{ "value": 4, "text": "Nhân sự khoa phòng" },
 					],
 				},
 
