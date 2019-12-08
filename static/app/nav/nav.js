@@ -172,6 +172,25 @@ define(function (require) {
 					"visible": false
 				},
 				{
+					"text": "Hãng sản xuất",
+					"icon": "fa fa-angle-double-right",
+					"type": "view",
+					"collectionName": "hangsanxuat",
+					"route": "hangsanxuat/collection",
+					"$ref": "app/danhmuc/hangsanxuat/view/CollectionView",
+					"visible": function(){
+						return true ;
+					}
+				},
+				{
+					"type": "view",
+					"icon": "far fa-clipboard",
+					"collectionName": "hangsanxuat",
+					"route": "hangsanxuat/model(/:id)",
+					"$ref": "app/danhmuc/hangsanxuat/view/ModelView",
+					"visible": false
+				},
+				{
 					"text": "Nhà cung cấp thiết bị",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",

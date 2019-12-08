@@ -143,7 +143,16 @@ define(function (require) {
 
 
 
-
+		{
+			"collectionName": "hangsanxuat",
+			"route": "hangsanxuat/collection",
+			"$ref": "app/danhmuc/hangsanxuat/view/CollectionView",
+		},
+		{
+			"collectionName": "hangsanxuat",
+			"route": "hangsanxuat/model(/:id)",
+			"$ref": "app/danhmuc/hangsanxuat/view/ModelView",
+		},
 		{
 			"collectionName": "quocgia",
 			"route": "quocgia/collection",

@@ -9,7 +9,9 @@ define(function (require) {
 	var NoisanXuatCapSelectView = require('app/danhmuc/QuocGia/view/SelectView');
 	var KhoaSelectView = require('app/hethong/khoa/view/SelectView');
 	var PhongSelectView = require('app/hethong/phong/view/SelectView');
+	var HangSanXuatSelectView = require('app/danhmuc/hangsanxuat/view/SelectView');
 
+	
 
 
 	return Gonrin.ModelView.extend({
@@ -197,6 +199,14 @@ define(function (require) {
 					foreignRemoteField: "id",
 					foreignField: "nhacungcap_id",
 					dataSource: NhaCungCapSelectView
+				},
+				{
+					field: "hangsanxuat",
+					uicontrol: "ref",
+					textField: "ten",
+					foreignRemoteField: "id",
+					foreignField: "hangsanxuat_id",
+					dataSource: HangSanXuatSelectView
 				},
 				{
 					field: "quocgia",

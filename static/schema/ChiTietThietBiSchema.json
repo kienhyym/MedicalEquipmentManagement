@@ -50,6 +50,9 @@
     "quocgia_id": {
         "type": "string"
     },
+    "hangsanxuat_id": {
+        "type": "string"
+    },
     "baohanhtungay": {
         "type": "number"
     },
@@ -103,6 +106,9 @@
         "type": "dict"
     },
     "quocgia": {
+        "type": "dict"
+    },
+    "hangsanxuat": {
         "type": "dict"
     },
     "khoa": {

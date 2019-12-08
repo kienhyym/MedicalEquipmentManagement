@@ -125,6 +125,8 @@ class ChiTietThietBi(CommonModel):
     nhacungcap = db.relationship('DonVi', viewonly=True)
     quocgia_id = db.Column(UUID(as_uuid=True),db.ForeignKey('quocgia.id'), nullable=True)
     quocgia = db.relationship('QuocGia', viewonly=True)
+    hangsanxuat_id = db.Column(UUID(as_uuid=True),db.ForeignKey('hangsanxuat.id'), nullable=True)
+    hangsanxuat = db.relationship('HangSanXuat', viewonly=True)
     baohanhtungay = db.Column(BigInteger())
     baohanhdenngay = db.Column(BigInteger())
     hetbaohanh = db.Column(String(255))
@@ -146,6 +148,14 @@ class ChiTietThietBi(CommonModel):
     bangkiemtrathietbifield = db.relationship('BangKiemTraThietBi', cascade="all, delete-orphan")
     bienbanxacnhantinhtrangthietbifield = db.relationship('BienBanXacNhanTinhTrangThietBi', cascade="all, delete-orphan")
     bangkiemdinhfield = db.relationship('BangKiemDinh', cascade="all, delete-orphan")
+
+    
+class HangSanXuat(CommonModel):
+    __tablename__ = 'hangsanxuat'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    ma = db.Column(String(255), index=True)
+    ten = db.Column(String(255))
+    thongtin = db.Column(String(255))
 
 class BangKiemDinh(CommonModel):
     __tablename__ = 'bangkiemdinh'
