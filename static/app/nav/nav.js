@@ -153,7 +153,7 @@ define(function (require) {
 			},
 			"entries": [
 				{
-					"text": "Nguồn gốc",
+					"text": "Nơi sản xuất",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "quocgia",
