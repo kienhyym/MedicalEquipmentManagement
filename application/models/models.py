@@ -139,6 +139,7 @@ class ChiTietThietBi(CommonModel):
     noidungbaoduong = db.Column(Text())
     luuykhisudung = db.Column(Text())
     ngaynhap = db.Column(BigInteger())
+    trangthai = db.Column(String(255))
     chungloailoaithietbi = db.Column(String(255))
     thietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('thietbi.id'), nullable=True)
     phieuyeucausuachuafield = db.relationship('PhieuYeuCauSuaChua', cascade="all, delete-orphan")

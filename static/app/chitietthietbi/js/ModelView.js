@@ -135,10 +135,10 @@ define(function (require) {
 					textField: "text",
 					valueField: "value",
 					dataSource: [
-						{ "value": "Đã gửi yêu cầu sửa chữa", "text": "Đã gửi yêu cầu sửa chữa" },
-						{ "value": "Đang sửa chữa", "text": "Đang sửa chữa" },
-						{ "value": "Đang chờ kiểm duyệt", "text": "Đang chờ kiểm duyệt" },
-						{ "value": "Đã kiểm duyệt", "text": "Đã kiểm duyệt" },
+						{ "value": "yeucaukiemtrathietbi", "text": "Đang yêu cầu kiểm tra" },
+						{ "value": "dangsuachua", "text": "Đang sửa chữa" },
+						{ "value": "dangchokiemduyet", "text": "Đang chờ kiểm duyệt" },
+						{ "value": "dakiemduyet", "text": "Đã kiểm duyệt" },
 					],
 				},
 

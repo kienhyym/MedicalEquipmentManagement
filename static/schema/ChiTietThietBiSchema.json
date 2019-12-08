@@ -88,6 +88,10 @@
     "ngaynhap": {
         "type": "number"
     },
+    "trangthai": {
+        "type": "string",
+        "length": 255
+    },
     "chungloailoaithietbi": {
         "type": "string",
         "length": 255

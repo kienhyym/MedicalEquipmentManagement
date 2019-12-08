@@ -64,6 +64,8 @@ define(function (require) {
             var self = this;
             self.$el.find('.chungloai').show();
             self.$el.find('.khoaphong').hide();
+            self.$el.find('.trangthai').hide();
+
             $('#boloc').combobox({
                 textField: "text",
                 valueField: "value",
@@ -72,25 +74,34 @@ define(function (require) {
                 dataSource: [
                     { "value": "1", "text": "Chủng loại" },
                     { "value": "2", "text": "Khoa phòng" },
+                    { "value": "3", "text": "Trạng thái" },
+
 
                 ],
-                value:"1"
+                value: "1"
 
             })
             self.$el.find('#boloc').on('change.gonrin', function (e) {
                 var boloc = self.$el.find('#boloc').data('gonrin').getValue();
+                
+                if (boloc == "1") {
+                    self.$el.find('.chungloai').show();
+                    self.$el.find('.khoaphong').hide();
+                    self.$el.find('.trangthai').hide();
 
-               if(boloc == "1"){
-                self.$el.find('.khoaphong').hide();
-                self.$el.find('.chungloai').show();
+                }
+                if (boloc == "2") {
+                    self.$el.find('.khoaphong').show();
+                    self.$el.find('.chungloai').hide();
+                    self.$el.find('.trangthai').hide();
 
-               }
+                }
+                if (boloc == "3") {
+                    self.$el.find('.khoaphong').hide();
+                    self.$el.find('.chungloai').hide();
+                    self.$el.find('.trangthai').show();
 
-               if(boloc == "2"){
-                self.$el.find('.khoaphong').show();
-                self.$el.find('.chungloai').hide();
-
-               }
+                }
             })
 
             $('#chungloai').combobox({
@@ -107,6 +118,19 @@ define(function (require) {
                     { "value": "6", "text": "Robot" },
                     { "value": "7", "text": "Thiết bi miễn dịch" },
                     { "value": "8", "text": "Thiết bị lọc và hỗ trợ chức năng " },
+                ],
+
+            })
+            $('#trangthai').combobox({
+                textField: "text",
+                valueField: "value",
+                allowTextInput: true,
+                enableSearch: true,
+                dataSource: [
+                    { "value": "yeucaukiemtrathietbi", "text": "Đang yêu cầu kiểm tra" },
+                    { "value": "dangsuachua", "text": "Đang sửa chữa" },
+                    { "value": "dangchokiemduyet", "text": "Đang chờ kiểm duyệt" },
+                    { "value": "dakiemduyet", "text": "Đã kiểm duyệt" },
                 ],
 
             })
@@ -197,7 +221,19 @@ define(function (require) {
                 // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                 contentType: "application/json",
                 success: function (data) {
+                    self.$el.find('#trangthai').on('change.gonrin', function (e) {
+                        var boloc = self.$el.find('#trangthai').data('gonrin').getValue();
+                        var arrTinhTrang = [];
 
+                        data.objects.forEach(function (item, index) {
+                            if (item.trangthai == boloc) {
+                                arrTinhTrang.push(item)
+                            }
+
+                        });
+                        self.render_grid(arrTinhTrang);
+
+                    })
                     self.$el.find('#khoa').on('change.gonrin', function (e) {
                         var boloc = self.$el.find('#khoa').data('gonrin').getValue();
                         var arrKhoa = [];
