@@ -110,6 +110,7 @@ class ThietBi(CommonModel):
     tinhtrang = db.Column(String(255))
     bangphanloai = db.Column(String(255))
     congkhaiphanloai = db.Column(String(255))
+    loaithietbi = db.Column(String(255))
     chitietsanphamfield = db.relationship('ChiTietThietBi', cascade="all, delete-orphan")
 
 class ChiTietThietBi(CommonModel):
