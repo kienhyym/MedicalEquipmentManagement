@@ -155,11 +155,18 @@ define(function (require) {
 			self.model.set("model_serial_number", sessionStorage.getItem('SerialThietBi'))
 			self.model.set("ma_qltb", sessionStorage.getItem('MaQLTBThietBi'))
 			sessionStorage.clear();
+			self.$el.find(".linkDownload").hide();
+			self.$el.find("#img").hide();
+
+			self.bindEventSelect();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
+						self.renderUpload();
+						self.$el.find("#img").attr("src","."+self.model.get('attachment'))
+
 						self.applyBindings();
 					},
 					error: function () {
@@ -170,6 +177,52 @@ define(function (require) {
 				self.applyBindings();
 			}
 		},
+		renderUpload() {
+			var self = this;
+		
+			self.$el.find(".linkDownload").attr("href", self.model.get("attachment"));
+			self.$el.find(".linkDownload").show();
+			self.$el.find("#img").show();
+		},
+		bindEventSelect: function () {
+			var self = this;
 
+			self.$el.find(".upload_files").on("change", function () {
+				var http = new XMLHttpRequest();
+				var fd = new FormData();
+
+				var data_attr = $(this).attr("data-attr");
+				fd.append('file', this.files[0]);
+				http.open('POST', '/api/v1/upload/file');
+
+				http.upload.addEventListener('progress', function (evt) {
+					if (evt.lengthComputable) {
+						var percent = evt.loaded / evt.total;
+						percent = parseInt(percent * 100);
+
+					}
+				}, false);
+				http.addEventListener('error', function () {
+				}, false);
+
+				http.onreadystatechange = function () {
+					if (http.status === 200) {
+						if (http.readyState === 4) {
+							var data_file = JSON.parse(http.responseText), link, p, t;
+							self.getApp().notify("Tải file thành công");
+							self.model.set(data_attr, data_file.link);
+							self.$el.find(".linkDownload").show();
+							self.$el.find("#img").show();
+							self.$el.find("#img").attr("src","."+data_file.link)
+
+							// self.$el.find("#content").val(self.$el.find("#content").val()
+						}
+					} else {
+						self.getApp().notify("Không thể tải tệp tin lên máy chủ");
+					}
+				};
+				http.send(fd);
+			});
+		},
 	});
 });

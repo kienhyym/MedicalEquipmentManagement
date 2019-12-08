@@ -204,6 +204,8 @@ class BangKiemTraThietBi(CommonModel):
     model_serial_number = db.Column(String(255))
     ma_qltb = db.Column(String(255))
     daxem = db.Column(String(5))
+    attachment = db.Column(String(255))
+
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
 
 class BienBanXacNhanTinhTrangThietBi(CommonModel):

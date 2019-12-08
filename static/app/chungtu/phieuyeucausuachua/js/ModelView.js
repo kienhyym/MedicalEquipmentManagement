@@ -141,7 +141,6 @@ define(function (require) {
 
 		render: function () {
 			var self = this;
-			self.$el.find(".tensp").html("PHIẾU YÊU CẦU SỬA CHỮA THIẾT BỊ: "+sessionStorage.getItem('TenThietBi'))
 			self.model.set("chitietthietbi_id", sessionStorage.getItem('IDThietBi'))
 			self.model.set("tenthietbi", sessionStorage.getItem('TenThietBi'))
 			self.model.set("model_serial_number", sessionStorage.getItem('SerialThietBi'))

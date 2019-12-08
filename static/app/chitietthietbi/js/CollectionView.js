@@ -62,7 +62,7 @@ define(function (require) {
         // },
         render: function () {
             var self = this;
-            self.$el.find('.chungloai').show();
+            self.$el.find('.chungloai').hide();
             self.$el.find('.khoaphong').hide();
             self.$el.find('.trangthai').hide();
 
@@ -78,7 +78,6 @@ define(function (require) {
 
 
                 ],
-                value: "1"
 
             })
             self.$el.find('#boloc').on('change.gonrin', function (e) {

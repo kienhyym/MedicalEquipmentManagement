@@ -140,7 +140,6 @@ define(function (require) {
 
 		render: function () {
 			var self = this;
-			self.$el.find(".tensp").html("Thiết bị: "+sessionStorage.getItem('TenThietBi'))
 			self.model.set("chitietthietbi_id",sessionStorage.getItem('IDThietBi'))
 			self.model.set("tenthietbi",sessionStorage.getItem('TenThietBi'))
 			self.model.set("ma_qltb",sessionStorage.getItem('Ma_qltb'))

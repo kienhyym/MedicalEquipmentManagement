@@ -66,6 +66,10 @@
         "type": "string",
         "length": 5
     },
+    "attachment": {
+        "type": "string",
+        "length": 255
+    },
     "chitietthietbi_id": {
         "type": "string"
     },
