@@ -270,6 +270,8 @@ define(function (require) {
 			self.$el.find(".tensp").html("Thiết bị: " + sessionStorage.getItem('TenSanPham'))
 			self.model.set("thietbi_id", sessionStorage.getItem('IDSanPham'))
 			self.model.set("tenthietbi", sessionStorage.getItem('TenSanPham'))
+			self.model.set("chungloailoaithietbi", sessionStorage.getItem('ChungLoai'))
+
 			sessionStorage.clear();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {

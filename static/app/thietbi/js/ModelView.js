@@ -111,6 +111,22 @@ define(function (require) {
 					],
 				},
 				{
+					field: "chungloailoaithietbi",
+					uicontrol: "combobox",
+					textField: "text",
+					valueField: "value",
+					dataSource: [
+						{ "value": "1", "text": "Máy xét nhiệm" },
+						{ "value": "2", "text": "Máy chuẩn đoán hình ảnh " },
+						{ "value": "3", "text": "Máy thăm dò chức năng" },
+						{ "value": "4", "text": "Thiết bị hấp sấy " },
+						{ "value": "5", "text": "Thiết bị hỗ trợ sinh tồn " },
+						{ "value": "6", "text": "Robot" },
+						{ "value": "7", "text": "Thiết bi miễn dịch" },
+						{ "value": "8", "text": "Thiết bị lọc và hỗ trợ chức năng " },
+					],
+				},
+				{
 					field: "tinhtrang",
 					uicontrol: "combobox",
 					textField: "text",
@@ -154,6 +170,7 @@ define(function (require) {
 							location.href = self.getApp().serviceURL + "/?#chitietthietbi/model";
 							sessionStorage.setItem('TenSanPham', self.$el.find("#tensp").val());
 							sessionStorage.setItem('IDSanPham', self.model.get("id"));
+							sessionStorage.setItem('ChungLoai', self.model.get("chungloailoaithietbi"));
 						})
 						
 					},

@@ -39,5 +39,8 @@
     },
     "khoa_id": {
         "type": "string"
+    },
+    "khoa": {
+        "type": "dict"
     }
 }

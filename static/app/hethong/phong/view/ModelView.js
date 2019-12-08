@@ -6,6 +6,7 @@ define(function (require) {
 
 	var template = require('text!app/hethong/phong/tpl/model.html'),
 		schema = require('json!schema/PhongSchema.json');
+	var KhoaSelectView = require('app/hethong/khoa/view/SelectView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -97,6 +98,22 @@ define(function (require) {
 					},
 				],
 			}],
+		uiControl: {
+			fields: [
+
+
+
+				{
+					field: "khoa",
+					uicontrol: "ref",
+					textField: "ten",
+					foreignRemoteField: "id",
+					foreignField: "khoa_id",
+					dataSource: KhoaSelectView
+				},
+
+			]
+		},
 		render: function () {
 			var self = this;
 			var id = this.getApp().getRouter().getParam("id");

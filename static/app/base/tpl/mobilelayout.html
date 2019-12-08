@@ -162,64 +162,139 @@
         <div class="card  card-small mb-4">
 
           <div class="card-body">
+              <div class="d-flex justify-content-center">
+                  <h3>Phần mềm quản lý trang thiết bị y tế và vật tư tiêu hao</h3>
+                </div>
+
             Số thiết bị được kiểm tra trong ngày / tổng số thiết bị (<span style="color: red;">12</span>/<span
               style="color: red;">18</span>)
             <br>
-            <!-- Số chủng loại thiết bị được kiểm tra trong ngày / tổng số chủng loại (<span
-              style="color: red;">12</span>/<span style="color: red;">20</span>) -->
-          </div>
-          <div ">
-            <canvas id="myChart" width="400" height="100" ></canvas>
-          </div>
+            <span> Số thiết bị có vấn đề hôm nay:</span> <span style="color: red;">4</span><br>
+            <span>Số thiết bị đang sửa chữa:</span> <span style="color: red;">4</span><br>
+            <span>Số thiết bị đang chờ kiểm định:</span> <span style="color: red;">4</span>
+            <canvas id="myChart" width="400" height="100"></canvas>
+            <div class="d-flex justify-content-center">
+              <label>Biểu đồ thống kê kiểm tra thiết bị hàng tháng</label>
+            </div>
+            <br>
+
+            <script>
+              var ctx = document.getElementById('myChart');
+              var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                  datasets: [{
+                    label: 'Số lượng thiết bị được kiểm tra trong các tháng',
+                    data: [1, 2, 11, 4, 0, 6, 7, 5, 9, 10, 11, 3],
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                    ],
+                    borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(255, 99, 132, 1)',
+
+                      // 'rgba(54, 162, 235, 1)',
+                      // 'rgba(255, 206, 86, 1)',
+                      // 'rgba(75, 192, 192, 1)',
+                      // 'rgba(153, 102, 255, 1)',
+                      // 'rgba(255, 159, 64, 1)',
+
+                      // 'rgba(0 255 0)	',
+                      // 'rgba(255 255 0)	',
+                      // 'rgba(255 48 48)	',
+                      // 'rgba(255 20 147)	',
+                      // 'rgba(0 128 128)	',
+                      // 'rgba(139 69 19)	',
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }]
+                  }
+                }
+              });
+            </script>
+
+          <canvas id="myChart2" width="400" height="100"></canvas>
           <div class="d-flex justify-content-center">
-          <label>Biểu đô kiểm tra thiết bị hàng tháng</label>
+            <label>Biểu đô thống kê thiết bị được sửa chữa hàng tháng</label>
           </div>
           <br>
 
           <script>
-            var ctx = document.getElementById('myChart');
-            var myChart = new Chart(ctx, {
+            var ctx2 = document.getElementById('myChart2');
+            var myChart2 = new Chart(ctx2, {
               type: 'line',
               data: {
                 labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
                 datasets: [{
-                  label: 'Số lượng thiết bị được kiểm tra trong các tháng',
-                  data: [1, 2, 11, 4, 0, 6, 7, 5, 9, 10, 11, 3],
+                  label: 'Số lượng thiết bị sửa chữa trong các tháng',
+                  data: [1, 2, 1, 4, 0, 6, 3, 5, 1, 5, 2, 3],
                   backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
 
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
                   ],
                   borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)',
+                  'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
+                    'rgba(0, 99, 132, 0.2)',
 
                     // 'rgba(54, 162, 235, 1)',
                     // 'rgba(255, 206, 86, 1)',
                     // 'rgba(75, 192, 192, 1)',
                     // 'rgba(153, 102, 255, 1)',
                     // 'rgba(255, 159, 64, 1)',
-                    
+
                     // 'rgba(0 255 0)	',
                     // 'rgba(255 255 0)	',
                     // 'rgba(255 48 48)	',
@@ -242,7 +317,9 @@
             });
           </script>
         </div>
-        <!-- <div class="row col-md-5 showthongbao" style="position: absolute;top: 147px;">
+      </div>
+
+          <!-- <div class="row col-md-5 showthongbao" style="position: absolute;top: 147px;">
           <div class="col">
             <div class="card  card-small mb-4">
 
@@ -280,7 +357,7 @@
           </div>
         </div> -->
 
-      </div>
+        </div>
     </main>
   </div>
 </div>

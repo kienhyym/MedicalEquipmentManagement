@@ -62,19 +62,51 @@ define(function (require) {
         // },
         render: function () {
             var self = this;
-            $('#timkiem').combobox({
+            self.$el.find('.chungloai').show();
+            self.$el.find('.khoaphong').hide();
+            $('#boloc').combobox({
                 textField: "text",
                 valueField: "value",
                 allowTextInput: true,
                 enableSearch: true,
                 dataSource: [
-                    // { text: "Máy xét nhiệm", value: 1 },
-                    // { text: "Máy chuẩn đoán hình ảnh", value: 2 },
-                    // { text: "Máy thăm dò chức năng", value: 3 },
-                    // { text: "Hỗ trợ", value: 4 },
-                    // { text: "robot", value: 5 },
-                    { text: "Phòng", value: 6 },
-                    { text: "Khoa", value: 7 },
+                    { "value": "1", "text": "Chủng loại" },
+                    { "value": "2", "text": "Khoa phòng" },
+
+                ],
+                value:"1"
+
+            })
+            self.$el.find('#boloc').on('change.gonrin', function (e) {
+                var boloc = self.$el.find('#boloc').data('gonrin').getValue();
+
+               if(boloc == "1"){
+                self.$el.find('.khoaphong').hide();
+                self.$el.find('.chungloai').show();
+
+               }
+
+               if(boloc == "2"){
+                self.$el.find('.khoaphong').show();
+                self.$el.find('.chungloai').hide();
+
+               }
+            })
+
+            $('#chungloai').combobox({
+                textField: "text",
+                valueField: "value",
+                allowTextInput: true,
+                enableSearch: true,
+                dataSource: [
+                    { "value": "1", "text": "Máy xét nhiệm" },
+                    { "value": "2", "text": "Máy chuẩn đoán hình ảnh " },
+                    { "value": "3", "text": "Máy thăm dò chức năng" },
+                    { "value": "4", "text": "Thiết bị hấp sấy " },
+                    { "value": "5", "text": "Thiết bị hỗ trợ sinh tồn " },
+                    { "value": "6", "text": "Robot" },
+                    { "value": "7", "text": "Thiết bi miễn dịch" },
+                    { "value": "8", "text": "Thiết bị lọc và hỗ trợ chức năng " },
                 ],
 
             })
@@ -87,57 +119,195 @@ define(function (require) {
         },
         locData: function () {
             var self = this;
+            $.ajax({
+                url: self.getApp().serviceURL + "/api/v1/khoa?results_per_page=100000&max_results_per_page=1000000",
+                method: "GET",
+                // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
+                contentType: "application/json",
+                success: function (data) {
+
+                    $.ajax({
+                        url: self.getApp().serviceURL + "/api/v1/phong?results_per_page=100000&max_results_per_page=1000000",
+                        method: "GET",
+                        // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
+                        contentType: "application/json",
+                        success: function (data2) {
 
 
+                            $('#khoa').combobox({
+                                textField: "ten",
+                                valueField: "id",
+                                allowTextInput: true,
+                                enableSearch: true,
+                                dataSource: data.objects
+                            })
+                            self.$el.find('#khoa').on('change.gonrin', function (e) {
+                                var boloc = self.$el.find('#khoa').data('gonrin').getValue();
+                                var arrKhoa = [];
+
+                                data2.objects.forEach(function (item, index) {
+
+                                    if (item.khoa_id == boloc) {
+                                        console.log(item.khoa_id, boloc)
+
+                                        arrKhoa.push(item)
+                                    }
+
+                                });
+                                $('.phong').combobox({
+                                    textField: "ten",
+                                    valueField: "id",
+                                    allowTextInput: true,
+                                    enableSearch: true,
+                                    dataSource: arrKhoa,
+                                    refresh: true,
+
+                                })
+                                console.log(arrKhoa)
+                            })
+
+                        },
+
+                    })
+
+
+                },
+
+            })
+            $.ajax({
+                url: self.getApp().serviceURL + "/api/v1/phong?results_per_page=100000&max_results_per_page=1000000",
+                method: "GET",
+                // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
+                contentType: "application/json",
+                success: function (data) {
+
+                    $('#phong').combobox({
+                        textField: "ten",
+                        valueField: "id",
+                        allowTextInput: true,
+                        enableSearch: true,
+                        dataSource: data.objects
+                    })
+                },
+
+            })
             $.ajax({
                 url: self.getApp().serviceURL + "/api/v1/chitietthietbi?results_per_page=100000&max_results_per_page=1000000",
                 method: "GET",
                 // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                 contentType: "application/json",
                 success: function (data) {
+
+                    self.$el.find('#khoa').on('change.gonrin', function (e) {
+                        var boloc = self.$el.find('#khoa').data('gonrin').getValue();
+                        var arrKhoa = [];
+                        data.objects.forEach(function (item, index) {
+                            if (item.khoa_id == boloc) {
+                                arrKhoa.push(item)
+                            }
+                        });
+                        self.render_grid(arrKhoa);
+                        self.$el.find('#phong').on('change.gonrin', function (e) {
+                            var boloc = self.$el.find('#phong').data('gonrin').getValue();
+                            var arrPhong = [];
+                            arrKhoa.forEach(function (item, index) {
+                                if (item.phong_id == boloc) {
+                                    arrPhong.push(item)
+                                }
+                            });
+                            self.render_grid(arrPhong);
+                        })
+                    })
+                    self.$el.find('#phong').on('change.gonrin', function (e) {
+                        var boloc = self.$el.find('#phong').data('gonrin').getValue();
+                        var arrPhong = [];
+                        data.objects.forEach(function (item, index) {
+                            if (item.phong_id == boloc) {
+                                arrPhong.push(item)
+                            }
+                        });
+                        self.render_grid(arrPhong);
+                    })
+
                     self.render_grid(data.objects);
                     var boloc;
-                    self.$el.find('#timkiem').on('change.gonrin', function (e) {
-                        boloc = self.$el.find('#timkiem').data('gonrin').getValue();
-                        if (boloc == 7) {
+                    self.$el.find('#chungloai').on('change.gonrin', function (e) {
+                        boloc = self.$el.find('#chungloai').data('gonrin').getValue();
+                        data.objects.forEach(function (item, index) {
+                            var arrChungLoai = [];
+                            if (item.chungloailoaithietbi == boloc) {
+                                arrChungLoai.push(item)
+                            }
+                            self.render_grid(arrChungLoai);
                             self.$el.find("#noidungtimkiem").keyup(function () {
-                                var arr = [];
-                                data.objects.forEach(function (item, index) {
-                                    var arrKhacNull = [];
-                                    if (item.khoa != undefined || item.khoa != null) {
-                                        arrKhacNull.push(item)
+                                var arrTimKiem = [];
+                                arrChungLoai.forEach(function (item2, index2) {
+                                    if ((item2.tenthietbi).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
+                                        arrTimKiem.push(item2)
                                     }
-                                    arrKhacNull.forEach(function (item2, index2) {
-                                        if ((item2.khoa.ten).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
-                                            arr.push(item2)
-                                        }
-                                    })
-
-
-                                });
-                                self.render_grid(arr);
-
+                                })
+                                self.render_grid(arrTimKiem);
                             })
-                        }
-                        else if (boloc == 6) {
-                            self.$el.find("#noidungtimkiem").keyup(function () {
-                                var arr = [];
-                                data.objects.forEach(function (item, index) {
-                                    var arrKhacNull = [];
-                                    if (item.phong != undefined || item.phong != null) {
-                                        arrKhacNull.push(item)
-                                    }
-                                    arrKhacNull.forEach(function (item2, index2) {
-                                        if ((item2.phong.ten).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
-                                            arr.push(item2)
-                                        }
-                                    })
-                                });
-                                self.render_grid(arr);
-                            })
-                        }
-
+                        });
                     });
+                    self.$el.find("#noidungtimkiem").keyup(function () {
+                        var arrTimKiem = [];
+                        data.objects.forEach(function (item2, index2) {
+                            if ((item2.tenthietbi).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
+                                arrTimKiem.push(item2)
+                            }
+                        })
+                        self.render_grid(arrTimKiem);
+                        self.$el.find('#chungloai').on('change.gonrin', function (e) {
+                            boloc = self.$el.find('#chungloai').data('gonrin').getValue();
+                            arrTimKiem.forEach(function (item, index) {
+                                var arrChungLoai = [];
+                                if (item.chungloailoaithietbi == boloc) {
+                                    arrChungLoai.push(item)
+                                }
+                                self.render_grid(arrChungLoai);
+                            });
+                        });
+                    })
+                    // self.$el.find('#khoaphong').on('change.gonrin', function (e) {
+                    //     boloc = self.$el.find('#khoaphong').data('gonrin').getValue();
+                    //     if (boloc == 7) {
+                    //         self.$el.find("#noidungtimkiem").keyup(function () {
+                    //             var arr = [];
+                    //             data.objects.forEach(function (item, index) {
+                    //                 var arrKhacNull = [];
+                    //                 if (item.khoa != undefined || item.khoa != null) {
+                    //                     arrKhacNull.push(item)
+                    //                 }
+                    //                 arrKhacNull.forEach(function (item2, index2) {
+                    //                     if ((item2.khoa.ten).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
+                    //                         arr.push(item2)
+                    //                     }
+                    //                 })
+                    //             });
+                    //             self.render_grid(arr);
+
+                    //         })
+                    //     }
+                    //     else if (boloc == 6) {
+                    //         self.$el.find("#noidungtimkiem").keyup(function () {
+                    //             var arr = [];
+                    //             data.objects.forEach(function (item, index) {
+                    //                 var arrKhacNull = [];
+                    //                 if (item.phong != undefined || item.phong != null) {
+                    //                     arrKhacNull.push(item)
+                    //                 }
+                    //                 arrKhacNull.forEach(function (item2, index2) {
+                    //                     if ((item2.phong.ten).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
+                    //                         arr.push(item2)
+                    //                     }
+                    //                 })
+                    //             });
+                    //             self.render_grid(arr);
+                    //         })
+                    //     }
+
+                    // });
 
 
 

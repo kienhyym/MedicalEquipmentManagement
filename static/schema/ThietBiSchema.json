@@ -57,6 +57,10 @@
         "type": "string",
         "length": 255
     },
+    "chungloailoaithietbi": {
+        "type": "string",
+        "length": 255
+    },
     "chitietsanphamfield": {
         "type": "list"
     }

@@ -88,6 +88,10 @@
     "ngaynhap": {
         "type": "number"
     },
+    "chungloailoaithietbi": {
+        "type": "string",
+        "length": 255
+    },
     "thietbi_id": {
         "type": "string"
     },
