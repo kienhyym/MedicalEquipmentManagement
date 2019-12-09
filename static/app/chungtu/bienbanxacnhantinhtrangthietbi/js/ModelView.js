@@ -142,8 +142,8 @@ define(function (require) {
 			var self = this;
 			self.model.set("chitietthietbi_id",sessionStorage.getItem('IDThietBi'))
 			self.model.set("tenthietbi",sessionStorage.getItem('TenThietBi'))
-			self.model.set("ma_qltb",sessionStorage.getItem('Ma_qltb'))
-			self.model.set("model_serial_number",sessionStorage.getItem('Serial'))
+			self.model.set("ma_qltb",sessionStorage.getItem('MaQLTBThietBi'))
+			self.model.set("model_serial_number",sessionStorage.getItem('SerialThietBi'))
 			// sessionStorage.clear();
 
 

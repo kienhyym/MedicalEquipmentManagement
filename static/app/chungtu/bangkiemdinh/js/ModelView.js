@@ -157,6 +157,7 @@ define(function (require) {
 			sessionStorage.clear();
 			self.$el.find(".linkDownload").hide();
 			self.$el.find("#img").hide();
+			self.$el.find("#title").hide();
 
 			self.bindEventSelect();
 			var id = this.getApp().getRouter().getParam("id");
@@ -183,6 +184,8 @@ define(function (require) {
 			self.$el.find(".linkDownload").attr("href", self.model.get("attachment"));
 			self.$el.find(".linkDownload").show();
 			self.$el.find("#img").show();
+			self.$el.find("#title").show();
+
 		},
 		bindEventSelect: function () {
 			var self = this;
@@ -211,7 +214,7 @@ define(function (require) {
 							var data_file = JSON.parse(http.responseText), link, p, t;
 							self.getApp().notify("Tải file thành công");
 							self.model.set(data_attr, data_file.link);
-							self.$el.find(".linkDownload").show();
+							self.$el.find("#title").show();
 							self.$el.find("#img").show();
 							self.$el.find("#img").attr("src","."+data_file.link)
 

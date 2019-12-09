@@ -12,6 +12,24 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "chitietthietbi",
+        tools: [
+			{
+				name: "defaultgr",
+				type: "group",
+				groupClass: "toolbar-group",
+				buttons: [
+					{
+						name: "back",
+						type: "button",
+						buttonClass: "btn-default btn-sm",
+						label: "TRANSLATE:Quay lại",
+						command: function () {
+							var self = this;
+							Backbone.history.history.back();
+						}
+					},
+                ],
+			}],
         // uiControl: {
         //     fields: [
         //         {

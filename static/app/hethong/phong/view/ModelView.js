@@ -39,8 +39,13 @@ define(function (require) {
 						command: function () {
 							var self = this;
 							var ten = self.model.get("ten");
+							var khoa_id = self.model.get("khoa_id");
+
 							if (ten == null || ten == "") {
-								self.getApp().notify({ message: "Tên quốc gia không được để trống!" }, { type: "danger" });
+								self.getApp().notify({ message: "Tên phòng không được để trống!" }, { type: "danger" });
+							}
+							if (khoa_id == null || khoa_id == "") {
+								self.getApp().notify({ message: "Bạn chưa chọn khoa!" }, { type: "danger" });
 							} else {
 								self.model.save(null, {
 									success: function (model, respose, options) {

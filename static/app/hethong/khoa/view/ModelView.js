@@ -39,7 +39,7 @@ define(function (require) {
 							var self = this;
 							var ten = self.model.get("ten");
 							if (ten == null || ten == "") {
-								self.getApp().notify({ message: "Tên quốc gia không được để trống!" }, { type: "danger" });
+								self.getApp().notify({ message: "Tên Khoa không được để trống!" }, { type: "danger" });
 							} else {
 								self.model.save(null, {
 									success: function (model, respose, options) {

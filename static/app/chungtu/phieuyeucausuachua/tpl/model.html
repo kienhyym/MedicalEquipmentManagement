@@ -20,9 +20,18 @@
 				</div>
 				<div class="card-body">
 					<div class="needs-validation" novalidate="">
+							<div class="row">
+									<div class="row col-md-6">
+										<label class="col-md-4 m-0 pt-2">Tên thiết bị:</label>
+										<input class="col-md-8" type="text" class="form-control" data-bind="value:tenthietbi"
+											placeholder="..." required="">
+									</div>
+									
+								</div>
+								<br>
 						<div class="row">
 							<div class="row col-md-6">
-								<label class="col-md-4 m-0 pt-2">Tên thiết bị:</label>
+								<label class="col-md-4 m-0 pt-2">Serial:</label>
 								<input class="col-md-8" type="text" class="form-control" data-bind="value:model_serial_number"
 									placeholder="..." required="">
 							</div>
@@ -81,7 +90,7 @@
 							<hr>
 
 							<div class="col-md-12">
-								<label>2 Tính trạng thiết bị, đánh giá sơ bộ và kiến nghị biện pháp xử lý:</label>
+								<label>2 Tình trạng thiết bị, đánh giá sơ bộ và kiến nghị biện pháp xử lý:</label>
 								<textarea type="text" class="form-control" rows="5" data-bind="value:danhgiasobo"
 									placeholder="..." required=""></textarea>
 								<div class="invalid-feedback">
@@ -138,7 +147,7 @@
 									</div>
 								</div>
 								<div class="row col-md-8">
-									<label class="col-md-5 m-0 pt-2">Xác nhận của ngƣời sử dụng (ký):</label>
+									<label class="col-md-5 m-0 pt-2">Xác nhận của người sử dụng (ký):</label>
 									<input class="col-md-7" type="text" class="form-control"
 										data-bind="value:xacnhan_nguoisudungnhanketqua" placeholder="..." required="">
 								</div>
