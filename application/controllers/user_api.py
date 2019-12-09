@@ -360,8 +360,8 @@ sqlapimanager.create_api(Khoa, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[response_getmany_stt]),
     collection_name='khoa')
 
 sqlapimanager.create_api(Phong, max_results_per_page=1000000,

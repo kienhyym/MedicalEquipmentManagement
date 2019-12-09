@@ -41,6 +41,6 @@
         "type": "string"
     },
     "khoa": {
-        "type": "dict"
+        "type": "json"
     }
 }

@@ -31,6 +31,9 @@
     "thietbi_id": {
         "type": "string"
     },
+    "thietbi": {
+        "type": "json"
+    },
     "tuan1": {
         "type": "string",
         "length": 1
@@ -404,8 +407,5 @@
     },
     "giaytodikem_id": {
         "type": "json"
-    },
-    "thietbi": {
-        "type": "dict"
     }
 }

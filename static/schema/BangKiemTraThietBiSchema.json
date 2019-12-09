@@ -47,8 +47,14 @@
     "khoa_id": {
         "type": "string"
     },
+    "khoa": {
+        "type": "json"
+    },
     "phong_id": {
         "type": "string"
+    },
+    "phong": {
+        "type": "json"
     },
     "tenthietbi": {
         "type": "string",
@@ -72,11 +78,5 @@
     },
     "chitietthietbi_id": {
         "type": "string"
-    },
-    "khoa": {
-        "type": "dict"
-    },
-    "phong": {
-        "type": "dict"
     }
 }
