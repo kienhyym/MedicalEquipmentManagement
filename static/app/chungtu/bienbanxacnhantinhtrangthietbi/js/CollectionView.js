@@ -129,6 +129,11 @@ define(function (require) {
                 noResultsClass: "alert alert-default no-records-found",
                 fields: [
                     {
+						field: "stt",
+						label: "STT",
+						width: "30px",
+					},
+                    {
                         field: "tenthietbi", label: "Tên thiết bị", width: 350, readonly: true,
                     },
                     {

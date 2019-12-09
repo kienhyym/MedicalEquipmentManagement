@@ -15,6 +15,11 @@ define(function (require) {
 		bindings: "data-bind",
 		uiControl: {
 			fields: [
+				{
+					field: "stt",
+					label: "STT",
+					width: "30px",
+				},
 				{ field: "ma", label: "Mã", width: 250 },
 				{ field: "ten", label: "Tên", width: 250 },
 			],

@@ -14,6 +14,11 @@ define(function (require) {
         collectionName: "donvikiemdinh",
         uiControl: {
             fields: [
+                {
+                    field: "stt",
+                    label: "STT",
+                    width: "30px",
+                },
                 { field: "ten", label: "Tên", width: "350px" },
                 {
                     field: "tinhthanh_id",

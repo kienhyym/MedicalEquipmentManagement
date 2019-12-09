@@ -15,6 +15,11 @@ define(function (require) {
         uiControl:{
             fields: [
                 {
+                    field: "stt",
+                    label: "STT",
+                    width: "30px",
+                },
+                {
                     field: "ten", label: "Tên", width: 150, readonly: true,
                 },
                 {

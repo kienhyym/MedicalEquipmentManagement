@@ -34,89 +34,96 @@ define(function (require) {
             var self = this;
             var IDTB = sessionStorage.getItem('IDThietBi');
             sessionStorage.clear();
-                $.ajax({
-                    url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
-                    method: "GET",
-                    // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
-                    contentType: "application/json",
-                    success: function (data) {
-                        self.render_grid(data.objects);
-                        var arr = [];
-                        if(IDTB != null || IDTB != undefined){
-                            var filters = {
-                                filters: {
-                                    "$and": [
-                                        { "chitietthietbi_id": { "$eq": IDTB } }
-                                    ]
-                                },
-                                order_by: [{ "field": "created_at", "direction": "asc" }]
-                            }
+            $.ajax({
+                url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
+                method: "GET",
+                // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
+                contentType: "application/json",
+                success: function (data) {
+                    self.render_grid(data.objects);
+                    var arr = [];
+                    if (IDTB != null || IDTB != undefined) {
+                        var filters = {
+                            filters: {
+                                "$and": [
+                                    { "chitietthietbi_id": { "$eq": IDTB } }
+                                ]
+                            },
+                            order_by: [{ "field": "created_at", "direction": "asc" }]
                         }
-                        $.ajax({
-                            url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
-                            method: "GET",
-                            data: "q=" + JSON.stringify(filters),
-                            contentType: "application/json",
-                            success: function (data) {
-                                console.log('xxxxx', data.objects)
-                                self.render_grid(data.objects);
-    
-                            },
-                            error: function (xhr, status, error) {
-                                // self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
-                            },
-    
-                        })
-                        self.$el.find("#tenthietbi").keyup(function () {
-                            arr = [];
-                            data.objects.forEach(function (item, index) {
-                                if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
-                                    arr.push(item)
+                    }
+                    $.ajax({
+                        url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
+                        method: "GET",
+                        data: "q=" + JSON.stringify(filters),
+                        contentType: "application/json",
+                        success: function (data) {
+                            console.log('xxxxx', data.objects)
+                            self.render_grid(data.objects);
 
+                        },
+                        error: function (xhr, status, error) {
+                            // self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+                        },
+
+                    })
+                    self.$el.find("#tenthietbi").keyup(function () {
+                        arr = [];
+                        data.objects.forEach(function (item, index) {
+                            if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                arr.push(item)
+
+                            }
+                        });
+                        self.render_grid(arr);
+
+                    });
+                    var arr2 = [];
+                    self.$el.find('#ngaykiemtra').blur(function () {
+                        var x = self.$el.find('#ngaykiemtra').data("gonrin").getValue();
+
+                        if (arr.length != 0) {
+                            arr2 = [];
+                            arr.forEach(function (item, index) {
+                                if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                    arr2.push(item)
                                 }
                             });
-                            self.render_grid(arr);
-                        });
-                        var arr2 = [];
-                        self.$el.find('#ngaykiemtra').blur(function () {
-                            var x = self.$el.find('#ngaykiemtra').data("gonrin").getValue();
+                            self.render_grid(arr2);
 
-                            if (arr.length != 0) {
-                                arr2 = [];
-                                arr.forEach(function (item, index) {
-                                    if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
-                                        arr2.push(item)
+                        }
+                        else {
+                            arr2 = []
+                            data.objects.forEach(function (item, index) {
+                                if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                    arr2.push(item)
+                                }
+                            });
+                            self.render_grid(arr2);
+                            self.$el.find("#tenthietbi").keyup(function () {
+                                var arr3 = [];
+                                arr2.forEach(function (item, index) {
+                                    if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                        arr3.push(item)
+
                                     }
                                 });
-                                self.render_grid(arr2);
-                            }
-                            else {
-                                arr2 = []
-                                data.objects.forEach(function (item, index) {
-                                    if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
-                                        arr2.push(item)
-                                    }
-                                });
-                                self.render_grid(arr2);
-                                self.$el.find("#tenthietbi").keyup(function () {
-                                    var arr3 = [];
-                                    arr2.forEach(function (item, index) {
-                                        if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
-                                            arr3.push(item)
+                                self.render_grid(arr3);
 
-                                        }
-                                    });
-                                    self.render_grid(arr3);
-                                });
-                            }
+                            });
+                        }
 
-                        })
-                    },
+                    })
 
-                })
+                },
+
+
+            })
+
+
         },
         render_grid: function (dataSource) {
-			sessionStorage.clear();
+            sessionStorage.clear();
 
             var self = this;
             var element = self.$el.find("#grid-data");
@@ -128,6 +135,12 @@ define(function (require) {
                 },
                 noResultsClass: "alert alert-default no-records-found",
                 fields: [
+                   
+                    {
+						field: "stt",
+						label: "STT",
+						width: "30px",
+					},
                     {
                         field: "tenthietbi", label: "Tên thiết bị", width: 250, readonly: true,
                     },
@@ -164,6 +177,7 @@ define(function (require) {
                     page: 1,
                     pageSize: 100
                 },
+            
                 events: {
                     "rowclick": function (e) {
                         self.getApp().getRouter().navigate("bangkiemtrathietbi/model?id=" + e.rowId);
@@ -171,6 +185,22 @@ define(function (require) {
                 },
             });
 
+            // $(self.$el.find('.grid-data tr')).each(function (index, item) {
+            //     $(item).find('td:first').html(index + 1)
+
+            // })
+
+
+            // self.$el.find('.page-item').each(function (index, item) {
+
+            //     $(item).bind('click', function () {
+            //         console.log('xx', item)
+
+            //         // $(self.$el.find('.grid-data tr')).each(function (index, item) {
+            //         //     $(item).find('td:first').html(index + 1)
+            //         // })
+            //     })
+            // })
         },
     });
 
