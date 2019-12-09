@@ -82,7 +82,7 @@ define(function (require) {
             })
             self.$el.find('#boloc').on('change.gonrin', function (e) {
                 var boloc = self.$el.find('#boloc').data('gonrin').getValue();
-                
+
                 if (boloc == "1") {
                     self.$el.find('.chungloai').show();
                     self.$el.find('.khoaphong').hide();
@@ -133,11 +133,12 @@ define(function (require) {
                 ],
 
             })
-            self.locData();
 
 
 
             this.applyBindings();
+            self.locData();
+
             return this;
         },
         locData: function () {
@@ -200,7 +201,7 @@ define(function (require) {
             $.ajax({
                 url: self.getApp().serviceURL + "/api/v1/phong?results_per_page=100000&max_results_per_page=1000000",
                 method: "GET",
-                // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
+                data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                 contentType: "application/json",
                 success: function (data) {
 
@@ -214,18 +215,33 @@ define(function (require) {
                 },
 
             })
+
+
+
+
             $.ajax({
                 url: self.getApp().serviceURL + "/api/v1/chitietthietbi?results_per_page=100000&max_results_per_page=1000000",
                 method: "GET",
-                // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
+                data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                 contentType: "application/json",
                 success: function (data) {
+                    var arrdata = [];
+                    data.objects.forEach(function (item, index) {
+                        item.stt = index + 1;
+                        arrdata.push(item)
+                    });
+                    self.render_grid(arrdata);
+
                     self.$el.find('#trangthai').on('change.gonrin', function (e) {
                         var boloc = self.$el.find('#trangthai').data('gonrin').getValue();
                         var arrTinhTrang = [];
+                        var i = 1;
 
                         data.objects.forEach(function (item, index) {
                             if (item.trangthai == boloc) {
+                                // arrTinhTrang.push(item)
+                                item.stt = i;
+                                i++;
                                 arrTinhTrang.push(item)
                             }
 
@@ -236,17 +252,28 @@ define(function (require) {
                     self.$el.find('#khoa').on('change.gonrin', function (e) {
                         var boloc = self.$el.find('#khoa').data('gonrin').getValue();
                         var arrKhoa = [];
+                        var i = 1;
+
                         data.objects.forEach(function (item, index) {
                             if (item.khoa_id == boloc) {
+                                // arrKhoa.push(item)
+                                item.stt = i;
+                                i++;
                                 arrKhoa.push(item)
+
                             }
                         });
                         self.render_grid(arrKhoa);
+
                         self.$el.find('#phong').on('change.gonrin', function (e) {
                             var boloc = self.$el.find('#phong').data('gonrin').getValue();
                             var arrPhong = [];
+                            var i = 1;
+
                             arrKhoa.forEach(function (item, index) {
                                 if (item.phong_id == boloc) {
+                                    item.stt = i;
+                                    i++;
                                     arrPhong.push(item)
                                 }
                             });
@@ -256,28 +283,41 @@ define(function (require) {
                     self.$el.find('#phong').on('change.gonrin', function (e) {
                         var boloc = self.$el.find('#phong').data('gonrin').getValue();
                         var arrPhong = [];
+                        var i = 1;
+
                         data.objects.forEach(function (item, index) {
                             if (item.phong_id == boloc) {
+                                item.stt = i;
+                                i++;
                                 arrPhong.push(item)
                             }
                         });
                         self.render_grid(arrPhong);
                     })
 
-                    self.render_grid(data.objects);
-                    var boloc;
+
                     self.$el.find('#chungloai').on('change.gonrin', function (e) {
-                        boloc = self.$el.find('#chungloai').data('gonrin').getValue();
-                        data.objects.forEach(function (item, index) {
-                            var arrChungLoai = [];
-                            if (item.chungloailoaithietbi == boloc) {
-                                arrChungLoai.push(item)
+                        var boloc = self.$el.find('#chungloai').data('gonrin').getValue();
+                        var i = 1;
+                        var arrChungLoai = [];
+
+                        data.objects.forEach(function (itemcl, index) {
+                            console.log(itemcl.chungloailoaithietbi,boloc)
+                            if (itemcl.chungloailoaithietbi === boloc) {
+                                itemcl.stt = i;
+                                i++;
+                                arrChungLoai.push(itemcl)
                             }
                             self.render_grid(arrChungLoai);
+
                             self.$el.find("#noidungtimkiem").keyup(function () {
                                 var arrTimKiem = [];
+                                var i = 1;
+
                                 arrChungLoai.forEach(function (item2, index2) {
                                     if ((item2.tenthietbi).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
+                                        item.stt = i;
+                                        i++;
                                         arrTimKiem.push(item2)
                                     }
                                 })
@@ -287,62 +327,31 @@ define(function (require) {
                     });
                     self.$el.find("#noidungtimkiem").keyup(function () {
                         var arrTimKiem = [];
+                        var i = 1;
+
                         data.objects.forEach(function (item2, index2) {
                             if ((item2.tenthietbi).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
+                                item.stt = i;
+                                i++;
                                 arrTimKiem.push(item2)
                             }
                         })
                         self.render_grid(arrTimKiem);
                         self.$el.find('#chungloai').on('change.gonrin', function (e) {
                             boloc = self.$el.find('#chungloai').data('gonrin').getValue();
+                            var i = 1;
+                            var arrChungLoai = [];
+
                             arrTimKiem.forEach(function (item, index) {
-                                var arrChungLoai = [];
                                 if (item.chungloailoaithietbi == boloc) {
+                                    item.stt = i;
+                                    i++;
                                     arrChungLoai.push(item)
                                 }
                                 self.render_grid(arrChungLoai);
                             });
                         });
                     })
-                    // self.$el.find('#khoaphong').on('change.gonrin', function (e) {
-                    //     boloc = self.$el.find('#khoaphong').data('gonrin').getValue();
-                    //     if (boloc == 7) {
-                    //         self.$el.find("#noidungtimkiem").keyup(function () {
-                    //             var arr = [];
-                    //             data.objects.forEach(function (item, index) {
-                    //                 var arrKhacNull = [];
-                    //                 if (item.khoa != undefined || item.khoa != null) {
-                    //                     arrKhacNull.push(item)
-                    //                 }
-                    //                 arrKhacNull.forEach(function (item2, index2) {
-                    //                     if ((item2.khoa.ten).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
-                    //                         arr.push(item2)
-                    //                     }
-                    //                 })
-                    //             });
-                    //             self.render_grid(arr);
-
-                    //         })
-                    //     }
-                    //     else if (boloc == 6) {
-                    //         self.$el.find("#noidungtimkiem").keyup(function () {
-                    //             var arr = [];
-                    //             data.objects.forEach(function (item, index) {
-                    //                 var arrKhacNull = [];
-                    //                 if (item.phong != undefined || item.phong != null) {
-                    //                     arrKhacNull.push(item)
-                    //                 }
-                    //                 arrKhacNull.forEach(function (item2, index2) {
-                    //                     if ((item2.phong.ten).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
-                    //                         arr.push(item2)
-                    //                     }
-                    //                 })
-                    //             });
-                    //             self.render_grid(arr);
-                    //         })
-                    //     }
-
-                    // });
 
 
 
@@ -363,10 +372,10 @@ define(function (require) {
                 noResultsClass: "alert alert-default no-records-found",
                 fields: [
                     {
-						field: "stt",
-						label: "STT",
-						width: "30px",
-					},
+                        field: "stt",
+                        label: "STT",
+                        width: "30px",
+                    },
                     {
                         field: "tenthietbi", label: "Tên thiết bị", width: 250, readonly: true,
                     },

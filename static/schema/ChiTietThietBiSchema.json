@@ -47,20 +47,11 @@
     "nhacungcap_id": {
         "type": "string"
     },
-    "nhacungcap": {
-        "type": "json"
-    },
     "quocgia_id": {
         "type": "string"
     },
-    "quocgia": {
-        "type": "json"
-    },
     "hangsanxuat_id": {
         "type": "string"
-    },
-    "hangsanxuat": {
-        "type": "json"
     },
     "baohanhtungay": {
         "type": "number"
@@ -75,14 +66,8 @@
     "khoa_id": {
         "type": "string"
     },
-    "khoa": {
-        "type": "json"
-    },
     "phong_id": {
         "type": "string"
-    },
-    "phong": {
-        "type": "json"
     },
     "thongsokythuat": {
         "type": "string"
@@ -116,6 +101,21 @@
     },
     "thietbi_id": {
         "type": "string"
+    },
+    "nhacungcap": {
+        "type": "dict"
+    },
+    "quocgia": {
+        "type": "dict"
+    },
+    "hangsanxuat": {
+        "type": "dict"
+    },
+    "khoa": {
+        "type": "dict"
+    },
+    "phong": {
+        "type": "dict"
     },
     "phieuyeucausuachuafield": {
         "type": "list"

@@ -162,7 +162,7 @@ define(function (require) {
 							return 0;
 						});
 						danhsachsanpham.forEach(function (item, index) {
-							self.$el.find("#danhsachthietbi").append("<tr><td class='p-2'>" + item.model_serial_number + "</td><td class='p-2'>" + item.nhanhieu + "</td><td class='p-2'>" + item.made_in + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href="+self.getApp().serviceURL+ "/?#chitietthietbi/model?id="+item.id+">Xem chi tiết</a></td></tr>")
+							self.$el.find("#danhsachthietbi").append("<tr><td class='p-2'>" + item.model_serial_number + "</td><td class='p-2'>" + item.ma_qltb + "</td><td class='p-2'>" + item.trangthai + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href="+self.getApp().serviceURL+ "/?#chitietthietbi/model?id="+item.id+">Xem chi tiết</a></td></tr>")
 							
 						})
 						self.applyBindings();

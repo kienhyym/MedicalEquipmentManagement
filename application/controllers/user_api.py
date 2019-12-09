@@ -232,7 +232,6 @@ async def predelete_user(request=None, data=None, Model=None, **kw):
 async def response_getmany_stt(request=None, Model=None, result=None, **kw):
     if result is not None and "objects" in result:
         objects = to_dict(result["objects"])
-        print ('zzzzzzzzzzzzzzzzzz',objects)
         datas = []
         i = 1
         page = request.args.get("page",None)
@@ -240,15 +239,15 @@ async def response_getmany_stt(request=None, Model=None, result=None, **kw):
         currentUser = await current_user(request)
         if currentUser is None:
             return json({"error_code":"PERMISSION_DENY","error_message":"Hết phiên làm việc!"}, status=520)
-            
         if page is not None and results_per_page is not None and int(page) != 1:
             i = i + int(results_per_page)*int(page)
         for obj in objects:
             if obj is not None:
                 obj_tmp = to_dict(obj)
                 obj_tmp["stt"] = i
-                i = i +1
+                i = i + 1
                 datas.append(obj_tmp)
+
         result = datas
 
 
@@ -261,8 +260,8 @@ sqlapimanager.create_api(User, max_results_per_page=1000000,
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func, prepost_user], PUT_SINGLE=[auth_func, preput_user], DELETE=[predelete_user]),
     # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     # exclude_columns= ["password","salt","active"],
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='user')
 
 
@@ -270,90 +269,90 @@ sqlapimanager.create_api(Role, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='role')
     
 sqlapimanager.create_api(DonVi, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='donvi')
 
 sqlapimanager.create_api(ThietBi, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='thietbi')
 sqlapimanager.create_api(ChiTietThietBi, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='chitietthietbi')
 sqlapimanager.create_api(PhieuYeuCauSuaChua, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='phieuyeucausuachua')
 sqlapimanager.create_api(BangKeHoachKiemTraThietBiTheoNam, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='bangkehoachkiemtrathietbitheonam')
 sqlapimanager.create_api(ThietBiDuocKiemTra, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='thietbiduockiemtra')
 
 sqlapimanager.create_api(BangKiemTraThietBi, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='bangkiemtrathietbi')
 
 sqlapimanager.create_api(DuToanSuaChuaNam, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='dutoansuachuanam')
 
 sqlapimanager.create_api(DuToanSuaChua, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='dutoansuachua')
 
 sqlapimanager.create_api(BienBanXacNhanTinhTrangThietBi, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='bienbanxacnhantinhtrangthietbi')
 
 sqlapimanager.create_api(KeHoachHangNgay, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='kehoachhangngay')
 
 sqlapimanager.create_api(Khoa, max_results_per_page=1000000,
@@ -361,29 +360,29 @@ sqlapimanager.create_api(Khoa, max_results_per_page=1000000,
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
     preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[response_getmany_stt]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='khoa')
 
 sqlapimanager.create_api(Phong, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='phong')
 
 sqlapimanager.create_api(BangKiemDinh, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='bangkiemdinh')
 
 sqlapimanager.create_api(HangSanXuat, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func,response_getmany_stt], GET_MANY=[auth_func,response_getmany_stt], POST=[auth_func,response_getmany_stt], PUT_SINGLE=[auth_func,response_getmany_stt]),
-    postprocess=dict(POST=[response_getmany_stt], PUT_SINGLE=[response_getmany_stt], DELETE_SINGLE=[response_getmany_stt], GET_MANY =[response_getmany_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='hangsanxuat')

@@ -40,8 +40,15 @@ define(function (require) {
                 // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                 contentType: "application/json",
                 success: function (data) {
-                    self.render_grid(data.objects);
+                    var i = 1;
                     var arr = [];
+                    data.objects.forEach(function (item, index) {
+                        item.stt = i;
+                        i++;
+                        arr.push(item)
+                    })
+                    self.render_grid(arr);
+
                     if (IDTB != null || IDTB != undefined) {
                         var filters = {
                             filters: {
@@ -58,8 +65,14 @@ define(function (require) {
                         data: "q=" + JSON.stringify(filters),
                         contentType: "application/json",
                         success: function (data) {
-                            console.log('xxxxx', data.objects)
-                            self.render_grid(data.objects);
+                            var i = 1;
+                            var arr = [];
+                            data.objects.forEach(function (item, index) {
+                                item.stt = i;
+                                i++;
+                                arr.push(item)
+                            })
+                            self.render_grid(arr);
 
                         },
                         error: function (xhr, status, error) {
@@ -69,8 +82,12 @@ define(function (require) {
                     })
                     self.$el.find("#tenthietbi").keyup(function () {
                         arr = [];
+                        var i = 1;
+
                         data.objects.forEach(function (item, index) {
                             if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                item.stt = i;
+                                i++;
                                 arr.push(item)
 
                             }
@@ -78,14 +95,16 @@ define(function (require) {
                         self.render_grid(arr);
 
                     });
-                    var arr2 = [];
                     self.$el.find('#ngaykiemtra').blur(function () {
                         var x = self.$el.find('#ngaykiemtra').data("gonrin").getValue();
 
                         if (arr.length != 0) {
-                            arr2 = [];
+                            var arr2 = [];
+                            var i = 1;
                             arr.forEach(function (item, index) {
                                 if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                    item.stt = i;
+                                    i++;
                                     arr2.push(item)
                                 }
                             });
@@ -94,18 +113,23 @@ define(function (require) {
                         }
                         else {
                             arr2 = []
+                            var i = 1;
                             data.objects.forEach(function (item, index) {
                                 if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                    item.stt = i;
+                                    i++;
                                     arr2.push(item)
                                 }
                             });
                             self.render_grid(arr2);
                             self.$el.find("#tenthietbi").keyup(function () {
                                 var arr3 = [];
+                                var i =1;
                                 arr2.forEach(function (item, index) {
                                     if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                        item.stt = i;
+                                        i++;
                                         arr3.push(item)
-
                                     }
                                 });
                                 self.render_grid(arr3);
@@ -135,12 +159,12 @@ define(function (require) {
                 },
                 noResultsClass: "alert alert-default no-records-found",
                 fields: [
-                   
+
                     {
-						field: "stt",
-						label: "STT",
-						width: "30px",
-					},
+                        field: "stt",
+                        label: "STT",
+                        width: "30px",
+                    },
                     {
                         field: "tenthietbi", label: "Tên thiết bị", width: 250, readonly: true,
                     },
@@ -177,7 +201,7 @@ define(function (require) {
                     page: 1,
                     pageSize: 100
                 },
-            
+
                 events: {
                     "rowclick": function (e) {
                         self.getApp().getRouter().navigate("bangkiemtrathietbi/model?id=" + e.rowId);

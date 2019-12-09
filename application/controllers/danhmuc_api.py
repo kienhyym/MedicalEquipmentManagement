@@ -54,8 +54,8 @@ async def postprocess_add_stt(request=None, Model=None, result=None, **kw):
 sqlapimanager.create_api(QuocGia, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[auth_func,postprocess_add_stt], GET_MANY=[postprocess_add_stt], POST=[auth_func, prepost_danhmuc,postprocess_add_stt], PUT_SINGLE=[auth_func, preput_danhmuc,postprocess_add_stt]),
-    postprocess=dict(POST=[postprocess_add_stt], PUT_SINGLE=[postprocess_add_stt], DELETE_SINGLE=[postprocess_add_stt], GET_MANY =[postprocess_add_stt]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[], POST=[auth_func, prepost_danhmuc], PUT_SINGLE=[auth_func, preput_danhmuc]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='quocgia')
  
  

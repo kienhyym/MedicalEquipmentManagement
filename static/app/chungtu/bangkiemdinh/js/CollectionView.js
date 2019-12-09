@@ -40,9 +40,20 @@ define(function (require) {
                 // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                 contentType: "application/json",
                 success: function (data) {
-                    self.render_grid(data.objects);
+                    // self.render_grid(data.objects);
+
+                    var i = 1;
                     var arr = [];
-                    if(IDTB != null || IDTB != undefined){
+                    data.objects.forEach(function (item, index) {
+                        item.stt = i;
+                        i++;
+                        arr.push(item)
+                    })
+                    self.render_grid(arr);
+
+
+                    var arr = [];
+                    if (IDTB != null || IDTB != undefined) {
                         var filters = {
                             filters: {
                                 "$and": [
@@ -52,14 +63,21 @@ define(function (require) {
                             order_by: [{ "field": "created_at", "direction": "asc" }]
                         }
                     }
-                 
+
                     $.ajax({
                         url: self.getApp().serviceURL + "/api/v1/bangkiemdinh?results_per_page=100000&max_results_per_page=1000000",
                         method: "GET",
                         data: "q=" + JSON.stringify(filters),
                         contentType: "application/json",
                         success: function (data) {
-                            self.render_grid(data.objects);
+                            var i = 1;
+                            var arr = [];
+                            data.objects.forEach(function (item, index) {
+                                item.stt = i;
+                                i++;
+                                arr.push(item)
+                            })
+                            self.render_grid(arr);
 
                         },
                         error: function (xhr, status, error) {
@@ -69,11 +87,14 @@ define(function (require) {
                     })
 
                     self.$el.find("#tenthietbi").keyup(function () {
-                        arr = [];
+                        var i = 1;
+                        var arr = [];
+
                         data.objects.forEach(function (item, index) {
                             if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                item.stt = i;
+                                i++;
                                 arr.push(item)
-
                             }
                         });
                         self.render_grid(arr);
@@ -85,25 +106,37 @@ define(function (require) {
 
                         if (arr.length != 0) {
                             arr2 = [];
+                            var i = 1;
+
                             arr.forEach(function (item, index) {
                                 if (moment(item.ngaycap * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                    item.stt = i;
+                                    i++;
                                     arr2.push(item)
                                 }
                             });
                             self.render_grid(arr2);
                         }
                         else {
-                            arr2 = []
+                            arr2 = [];
+                            var i = 1;
+
                             data.objects.forEach(function (item, index) {
                                 if (moment(item.ngaycap * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                    item.stt = i;
+                                    i++;
                                     arr2.push(item)
                                 }
                             });
                             self.render_grid(arr2);
                             self.$el.find("#tenthietbi").keyup(function () {
                                 var arr3 = [];
+                                var i = 1;
+
                                 arr2.forEach(function (item, index) {
                                     if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                        item.stt = i;
+                                        i++;
                                         arr3.push(item)
 
                                     }
@@ -132,10 +165,10 @@ define(function (require) {
                 noResultsClass: "alert alert-default no-records-found",
                 fields: [
                     {
-						field: "stt",
-						label: "STT",
-						width: "30px",
-					},
+                        field: "stt",
+                        label: "STT",
+                        width: "30px",
+                    },
                     {
                         field: "tenthietbi", label: "Tên thiết bị", width: 250, readonly: true,
                     },
