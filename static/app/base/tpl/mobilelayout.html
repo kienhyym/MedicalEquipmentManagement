@@ -162,16 +162,64 @@
         <div class="card  card-small mb-4">
 
           <div class="card-body">
-              <div class="d-flex justify-content-center">
-                  <h3>Phần mềm quản lý trang thiết bị y tế và vật tư tiêu hao</h3>
-                </div>
+            <div class="d-flex justify-content-center">
+              <h3>Phần mềm quản lý trang thiết bị y tế và vật tư tiêu hao</h3>
+            </div>
 
-            Số thiết bị được kiểm tra trong ngày / tổng số thiết bị (<span style="color: red;">12</span>/<span
-              style="color: red;">18</span>)
+            <!-- Số thiết bị được kiểm tra trong ngày / tổng số thiết bị (<span style="color: red;"
+              id="slkiemtratrongngay">12</span>/<span style="color: red;" id="tongsotb">18</span>) -->
             <br>
-            <span> Số thiết bị có vấn đề hôm nay:</span> <span style="color: red;">4</span><br>
-            <span>Số thiết bị đang sửa chữa:</span> <span style="color: red;">4</span><br>
-            <span>Số thiết bị đang chờ kiểm định:</span> <span style="color: red;">4</span>
+            <div class="d-flex justify-content-around m-0">
+              <div class="w-25 p-0 m-2  d-flex align-items-center"
+                style="background-color: #14dcdc; height: 70px;color: white;font-weight: 700;">
+                <div class="w-25 text-center" style="background-color: #64c5c5;height: 70px;line-height: 70px;">
+                  <i style="color: white;" class="fa fa-calendar-check-o fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="w-75 text-center">
+                  <div>Hôm nay kiểm tra</div>
+                  <span id="slkiemtratrongngay">12 </span><span> thiết bị</span><br>
+                </div>
+              </div>
+
+
+              <div class="w-25 p-0 m-2  d-flex align-items-center"
+                style="background-color: red; height: 70px;color: white;font-weight: 700;">
+                <div class="w-25 text-center" style="background-color: #e65b4c;height: 70px;line-height: 70px;">
+                  <i style="color: white;" class="fa fa-bug fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="w-75 text-center">
+                  <div>Thiết bị có vấn đề</div>
+                  <span id="tbcovande">12 </span><span> thiết bị</span><br>
+                </div>
+              </div>
+
+              <div class="w-25 p-0  m-2  d-flex align-items-center"
+                style="background-color: #ffb100; height: 70px;color: white;font-weight: 700;">
+                <div class="w-25 text-center" style="background-color: #f1a907;height: 70px;line-height: 70px;">
+                  <i style="color: white;" class="fa fa-wrench fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="w-75 text-center">
+                  <div>Yêu cầu sửa chữa</div>
+                  <span id="tbsuachua">12 </span><span> thiết bị</span><br>
+                </div>
+              </div>
+
+              <div class="w-25 p-0 m-2 d-flex align-items-center"
+                style="background-color: #01da01; height: 70px;color: white;font-weight: 700;">
+                <div class="w-25 text-center" style="background-color: #53d02b;height: 70px;line-height: 70px;">
+                  <i style="color: white;" class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="w-75 text-center">
+                  <div>Chờ kiểm duyệt</div>
+                  <span id="tbchokiemduyet">12 </span><span> thiết bị</span><br>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <!-- <span> Số thiết bị có vấn đề hôm nay:</span> <span style="color: red;" id="thietbicovande">4</span><br>
+            <span>Số thiết bị đang sửa chữa:</span> <span style="color: red;" id="thietbidangsuachua">4</span><br>
+            <span>Số thiết bị đang chờ kiểm định:</span> <span style="color: red;" id="chokiemdinh">4</span> -->
             <canvas id="myChart" width="400" height="100"></canvas>
             <div class="d-flex justify-content-center">
               <label>Biểu đồ thống kê kiểm tra thiết bị hàng tháng</label>
@@ -179,42 +227,53 @@
             <br>
 
             <script>
-              var ctx = document.getElementById('myChart');
-              var myChart = new Chart(ctx, {
+              
+            </script>
+
+            <canvas id="myChart2" width="400" height="100"></canvas>
+            <div class="d-flex justify-content-center">
+              <label>Biểu đô thống kê thiết bị được sửa chữa hàng tháng</label>
+            </div>
+            <br>
+
+            <script>
+              var ctx2 = document.getElementById('myChart2');
+              var myChart2 = new Chart(ctx2, {
                 type: 'line',
                 data: {
                   labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
                   datasets: [{
-                    label: 'Số lượng thiết bị được kiểm tra trong các tháng',
-                    data: [1, 2, 11, 4, 0, 6, 7, 5, 9, 10, 11, 3],
+                    label: 'Số lượng thiết bị sửa chữa trong các tháng',
+                    data: [1, 2, 1, 4, 0, 6, 3, 5, 1, 5, 2, 3],
                     backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
 
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
                     ],
                     borderColor: [
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(255, 99, 132, 1)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
+                      'rgba(0, 99, 132, 0.2)',
 
                       // 'rgba(54, 162, 235, 1)',
                       // 'rgba(255, 206, 86, 1)',
@@ -243,83 +302,10 @@
                 }
               });
             </script>
-
-          <canvas id="myChart2" width="400" height="100"></canvas>
-          <div class="d-flex justify-content-center">
-            <label>Biểu đô thống kê thiết bị được sửa chữa hàng tháng</label>
           </div>
-          <br>
-
-          <script>
-            var ctx2 = document.getElementById('myChart2');
-            var myChart2 = new Chart(ctx2, {
-              type: 'line',
-              data: {
-                labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-                datasets: [{
-                  label: 'Số lượng thiết bị sửa chữa trong các tháng',
-                  data: [1, 2, 1, 4, 0, 6, 3, 5, 1, 5, 2, 3],
-                  backgroundColor: [
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                  ],
-                  borderColor: [
-                  'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-                    'rgba(0, 99, 132, 0.2)',
-
-                    // 'rgba(54, 162, 235, 1)',
-                    // 'rgba(255, 206, 86, 1)',
-                    // 'rgba(75, 192, 192, 1)',
-                    // 'rgba(153, 102, 255, 1)',
-                    // 'rgba(255, 159, 64, 1)',
-
-                    // 'rgba(0 255 0)	',
-                    // 'rgba(255 255 0)	',
-                    // 'rgba(255 48 48)	',
-                    // 'rgba(255 20 147)	',
-                    // 'rgba(0 128 128)	',
-                    // 'rgba(139 69 19)	',
-                  ],
-                  borderWidth: 1
-                }]
-              },
-              options: {
-                scales: {
-                  yAxes: [{
-                    ticks: {
-                      beginAtZero: true
-                    }
-                  }]
-                }
-              }
-            });
-          </script>
         </div>
-      </div>
 
-          <!-- <div class="row col-md-5 showthongbao" style="position: absolute;top: 147px;">
+        <!-- <div class="row col-md-5 showthongbao" style="position: absolute;top: 147px;">
           <div class="col">
             <div class="card  card-small mb-4">
 
@@ -357,7 +343,7 @@
           </div>
         </div> -->
 
-        </div>
+      </div>
     </main>
   </div>
 </div>

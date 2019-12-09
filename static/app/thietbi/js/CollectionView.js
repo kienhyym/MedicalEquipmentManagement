@@ -20,13 +20,13 @@ define(function (require) {
                     width: "30px",
                 },
                 {
-                    field: "ten", label: "Tên", width: 150, readonly: true,
+                    field: "ten", label: "Tên", width: 350, readonly: true,
                 },
                 {
-                    field: "soluong", label: "Số lượng", width: 50, readonly: true,
+                    field: "chungloailoaithietbi", label: "Chủng loại", width: 250, readonly: true,
                 },
                 {
-                    field: "congdung", label: "Công dụng", width: 350, readonly: true,
+                    field: "tinhtrang", label: "Tình trạng", width: 150, readonly: true,
                 },
                 
             ],
@@ -35,7 +35,14 @@ define(function (require) {
                     var path =  this.collectionName + '/model?id=' + event.rowId;
                     this.getApp().getRouter().navigate(path);
                 }
-            }
+            },rowClass: function (data) {
+                if (data.tinhtrang === "Đang lưu hành") {
+                    return "Green";
+                }
+                // if (data.name === "XYZ") {
+                //     return "Blue";
+                // }
+            },
         },
         render: function () {
             

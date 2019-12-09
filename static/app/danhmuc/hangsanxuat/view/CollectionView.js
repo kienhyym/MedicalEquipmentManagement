@@ -20,8 +20,8 @@ define(function (require) {
 					label: "STT",
 					width: "30px",
 				},
-	    	     { field: "ma", label: "Mã", width:250},
-		     	 { field: "ten", label: "Tên", width:250},
+	    	     { field: "ma", label: "Mã", width:200},
+		     	 { field: "ten", label: "Tên", width:350},
 		     ],
 		     onRowClick: function(event){
 		    	if(event.rowId){
