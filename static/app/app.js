@@ -106,8 +106,13 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 
 				});
 				$('#sca').hide()
+				$('#sca2').hide()
+
 				$('#search_pc').unbind('click').bind('click', function (params) {
 					$('#sca').show()
+				})
+				$('#grid_search2').unbind('click').bind('click', function (params) {
+					$('#sca2').show()
 				})
 				// var filters = {
 				// 	filters: {
@@ -652,6 +657,69 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 					},
 					error: function (xhr, status, error) {
 						$('#sca').hide()
+						// self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+					},
+
+				})
+				$.ajax({
+					url: self.serviceURL + "/api/v1/chitietthietbi?results_per_page=100000&max_results_per_page=1000000",
+					method: "GET",
+					// data: "q=" + JSON.stringify(filters),
+					contentType: "application/json",
+					success: function (data) {
+
+						$('#grid_search2').keyup(function () {
+							var arr = [];
+
+							data.objects.forEach(function (item, index) {
+								if ((item.tenthietbi).indexOf($("#grid_search2").val()) !== -1) {
+									arr.push(item)
+								}
+							});
+
+
+							$("#sca2").grid({
+								showSortingIndicator: true,
+								language: {
+									no_records_found: "không tìm thấy kết quả"
+								},
+								noResultsClass: "alert alert-default no-records-found",
+								refresh: true,
+								orderByMode: "client",
+								tools: [
+								],
+								fields: [
+									{ field: "tenthietbi", label: "Tên thiết bị", width: 250, height: "20px" },
+									{ field: "model_serial_number", label: "serial", width: 250, height: "20px" },
+								],
+								dataSource: arr,
+								primaryField: "id",
+								selectionMode: false,
+								pagination: {
+									page: 1,
+									pageSize: 20
+								},
+								onRowClick: function (event) {
+									if (event.rowId) {
+											$('.main-sidebar').removeClass('open');
+										self.router.navigate("chitietthietbi/model?id=" + event.rowId);
+										$('#sca2').hide()
+
+									}
+								},
+							});
+							$('#tbl_sca2').removeClass('table-striped')
+
+						});
+						$('#grid_search2').focusout(function () {
+							setTimeout(function () {
+								$('#sca2').hide()
+							}, 300);
+						})
+
+					},
+					error: function (xhr, status, error) {
+						$('#sca2').hide()
 						// self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
 					},
 
