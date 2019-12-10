@@ -36,24 +36,7 @@
     </aside>
     <!-- End Main Sidebar -->
     <main class="main-content col-lg-10 col-md-12 col-sm-12 p-0 offset-lg-2 offset-md-3">
-      <div class="row col-md-5 showthongbao" style="position: absolute;    top: 52px;
-        right: 119px;z-index: 3;">
-        <div class="col">
-          <div class="card  card-small mb-4">
-
-            <div class="">
-
-              <table class="table">
-                <tr class="text-center">
-                  <th>Loại phiếu</th>
-                  <th>Thiết bị</th>
-                </tr>
-                <tbody id="bangthongbao"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+    
       <div class="main-navbar sticky-top bg-white">
         <!-- Main Navbar -->
         <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
@@ -81,28 +64,7 @@
 
 
           </form>
-          <div class="row" style="z-index: 2;">
-              <div class="col d-flex flex-wrap align-content-center pr-4">
-                <div style="position: relative;display: flex;top:-2px" class="clickthongbao">
-                  <i class="fa fa-bell" aria-hidden="true" style="color: red;font-size: 18px;margin-right: 5px;"></i>
-                  <div style="position: relative">
-                    <!-- <label style="color: red;padding-left: 10px;">Thông báo</label> -->
-                    <div style="position: absolute;
-                        top: 11px;
-                        left: -12px;
-                        text-align: center;
-                        color: #fff;
-                        background: red;
-                        width: 17px;
-                        height: 17px;
-                        font-weight: 550;
-                        border: 1px solid white;
-                        font-size: 12px;">
-                      <span id="soluong"></span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
           <nav class="nav">
             <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left"
               data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
@@ -110,6 +72,46 @@
             </a>
           </nav>
           <ul class="navbar-nav border-left flex-row ">
+              <div class="row" style="z-index: 2;">
+                  <div class="col d-flex flex-wrap align-content-center pr-4 ml-2">
+                    <div style="position: relative;display: flex;top:-2px" class="clickthongbao">
+                      <i class="fa fa-bell" aria-hidden="true" style="color: red;font-size: 18px;margin: 5px;"></i>
+                      <div style="position: relative">
+                        <!-- <label style="color: red;padding-left: 10px;">Thông báo</label> -->
+                        <div style="position: absolute;
+                            top: 11px;
+                            left: -12px;
+                            text-align: center;
+                            color: #fff;
+                            background: red;
+                            width: 17px;
+                            height: 17px;
+                            font-weight: 550;
+                            border: 1px solid white;
+                            font-size: 12px;">
+                          <span id="soluong"></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row col-md-5 showthongbao" style="position: absolute;    top: 60px;
+                right: 10px;z-index: 3;">
+                <div class="col">
+                  <div class="card  card-small mb-4">
+        
+                    <div class="">
+        
+                      <table class="table">
+                        <tr class="text-center">
+                          <th>Loại phiếu</th>
+                          <th>Thiết bị</th>
+                        </tr>
+                        <tbody id="bangthongbao"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <!-- <li class="nav-item border-right dropdown notifications">
                   <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="nav-link-icon__wrapper">
