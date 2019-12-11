@@ -20,7 +20,7 @@ define(function (require) {
 					label: "STT",
 					width: "30px",
 				},
-				{ field: "ma", label: "Mã", width: 250 },
+				{ field: "ma", label: "Mã", width: 100 },
 				{ field: "ten", label: "Tên", width: 250 },
 			],
 			onRowClick: function (event) {

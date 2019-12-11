@@ -41,9 +41,42 @@ define(function (require) {
 
 							self.model.save(null, {
 								success: function (model, respose, options) {
+									if (respose.tinhtrang == "Có vấn đề") {
+										$.ajax({
+											method: "POST",
+											url: self.getApp().serviceURL + "/api/v1/thongbao",
+											data: JSON.stringify({
+												tenthietbi: respose.tenthietbi,
+												model_serial_number: respose.model_serial_number,
+												idloaithongbao: respose.id,
+												loaithongbao: "Phiếu kiểm tra hàng ngày",
+												maloaithongbao: "bangkiemtrathietbi",
 
-									self.getApp().notify("Lưu thông tin thành công");
-									self.getApp().getRouter().navigate(self.collectionName + "/collection");
+												daxem: "chuaxem",
+												ngaytao: respose.created_at
+											}),
+											headers: {
+												'content-type': 'application/json'
+											},
+											dataType: 'json',
+											success: function (response) {
+												if (response) {
+													self.getApp().notify("Lưu thông tin thành công");
+													self.getApp().getRouter().navigate(self.collectionName + "/collection");
+												}
+											}, error: function (xhr, ere) {
+												console.log('xhr', ere);
+
+											}
+										})
+									}else{
+										self.getApp().notify("Lưu thông tin thành công");
+										self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									
+									}
+
+
+
 								},
 								error: function (xhr, status, error) {
 									try {
@@ -105,8 +138,8 @@ define(function (require) {
 					textField: "text",
 					valueField: "value",
 					dataSource: [
-						{ "value": "Không vấn đề", "text": "Không bình thường" },
-						{ "value": "Có vấn đề", "text": "Bình thường" },
+						{ "value": "Không vấn đề", "text": "Bình thường" },
+						{ "value": "Có vấn đề", "text": "Không kình thường" },
 
 					],
 				},
@@ -163,7 +196,7 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.renderUpload();
-						self.$el.find("#img").attr("src","."+self.model.get('attachment'))
+						self.$el.find("#img").attr("src", "." + self.model.get('attachment'))
 						self.applyBindings();
 					},
 					error: function () {
@@ -176,7 +209,7 @@ define(function (require) {
 		},
 		renderUpload() {
 			var self = this;
-		
+
 			self.$el.find(".linkDownload").attr("href", self.model.get("attachment"));
 			self.$el.find(".linkDownload").show();
 			self.$el.find("#img").show();
@@ -210,7 +243,7 @@ define(function (require) {
 							self.model.set(data_attr, data_file.link);
 							self.$el.find(".linkDownload").show();
 							self.$el.find("#img").show();
-							self.$el.find("#img").attr("src","."+data_file.link)
+							self.$el.find("#img").attr("src", "." + data_file.link)
 
 							// self.$el.find("#content").val(self.$el.find("#content").val()
 						}

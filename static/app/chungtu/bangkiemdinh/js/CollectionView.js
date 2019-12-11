@@ -60,7 +60,7 @@ define(function (require) {
                                     { "chitietthietbi_id": { "$eq": IDTB } }
                                 ]
                             },
-                            order_by: [{ "field": "created_at", "direction": "asc" }]
+                            order_by: [{ "field": "created_at", "direction": "desc" }]
                         }
                     }
 

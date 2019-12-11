@@ -165,6 +165,7 @@ class BangKiemDinh(CommonModel):
     ngaycap = db.Column(BigInteger())
     ngayhethan = db.Column(BigInteger())
     attachment = db.Column(String(255))
+    tinhtrang = db.Column(String(255),default='dangduocsudung')
     tenthietbi = db.Column(String(255))
     model_serial_number = db.Column(String(255))
     ma_qltb = db.Column(String(255))
@@ -225,7 +226,16 @@ class BienBanXacNhanTinhTrangThietBi(CommonModel):
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
     daxem = db.Column(String(5))
 
-
+class ThongBao(CommonModel):
+    __tablename__ = 'thongbao'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    tenthietbi = db.Column(String(255))
+    model_serial_number = db.Column(String(255))
+    idloaithongbao = db.Column(String(255))
+    loaithongbao = db.Column(String(255))
+    maloaithongbao = db.Column(String(255))
+    daxem = db.Column(String(255))
+    ngaytao = db.Column(BigInteger())
 
 class PhieuYeuCauSuaChua(CommonModel):
     __tablename__ = 'phieuyeucausuachua'

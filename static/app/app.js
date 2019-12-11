@@ -301,7 +301,6 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 						var thang10 = ("10" + moment(moment().unix() * 1000).format("YYYY"))
 						var thang11 = ("11" + moment(moment().unix() * 1000).format("YYYY"))
 						var thang12 = ("12" + moment(moment().unix() * 1000).format("YYYY"))
-						console.log(thang1,thang2,thang33)
 						var T1 = 0;
 						var T2 = 0;
 						var T3 = 0;
@@ -479,123 +478,136 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 				})
 
 				$.ajax({
-					url: self.serviceURL + "/api/v1/phieuyeucausuachua?results_per_page=100000&max_results_per_page=1000000",
+					url: self.serviceURL + "/api/v1/bangkiemdinh?results_per_page=100000&max_results_per_page=1000000",
 					method: "GET",
-					// data: JSON.stringify(),
+					data: { "q": JSON.stringify({ "order_by": [{ "field": "created_at", "direction": "desc" }] }) },
 					contentType: "application/json",
-					success: function (data2) {
-						$.ajax({
-							url: self.serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
-							method: "GET",
-							// data: JSON.stringify(),
-							contentType: "application/json",
-							success: function (data3) {
-								var mangthongbao = data2.objects;
+					success: function (data) {
+						data.objects.forEach(function (item, index) {
+							if (item.tinhtrang == 'dangduocsudung') {
+								var ngayhomnay = moment(moment().unix() * 1000).format("DD/MM/YYYY");
+								var hethansau7ngay = moment(item.ngayhethan * 1000).subtract(7, 'days').format("DD/MM/YYYY");
+								var hethansau5ngay = moment(item.ngayhethan * 1000).subtract(5, 'days').format("DD/MM/YYYY");
 
-								data3.objects.forEach(function (item3, index3) {
-									if (item3.tinhtrang == "Có vấn đề")
-										mangthongbao.push(item3)
-								})
-								var mangthongbao = data2.objects;
-								mangthongbao.sort(function (a, b) {
-									var thoigiantaoA = a.created_at
-									var thoigiantaoB = b.created_at
-									if (thoigiantaoA < thoigiantaoB) {
-										return 1;
-									}
-									if (thoigiantaoA > thoigiantaoB) {
-										return -1;
-									}
-									return 0;
-								});
-
-								var tong = 0;
-								mangthongbao.forEach(function (item, index) {
-									if (item.daxem == null && item.tinhtrang != "Không vấn đề") {
-										tong++;
-									}
-								})
-								$('#soluong').append(tong);
-
-								mangthongbao.forEach(function (itemmangthongbao, indexmangthongbao) {
-
-									if (itemmangthongbao.tinhtrang == undefined) {
-										$('#bangthongbao').append('<tr class="danhsachthongbaomoi"><td>Phiếu yêu cầu sửa chữa</td><td>' + itemmangthongbao.tenthietbi + '[' + itemmangthongbao.model_serial_number + ']</td></tr>')
-									}
-									if (itemmangthongbao.tinhtrang == "Có vấn đề") {
-										$('#bangthongbao').append('<tr class="danhsachthongbaomoi"><td>Phiếu kiểm tra hàng ngày</td><td>' + itemmangthongbao.tenthietbi + '[' + itemmangthongbao.model_serial_number + ']</td></tr>')
-									}
-									if (itemmangthongbao.daxem == null) {
-										$($('.danhsachthongbaomoi')[indexmangthongbao]).css("background-color", "yellow")
-									}
-								})
-								$('.danhsachthongbaomoi').each(function (indexdanhsachthongbaomoi, itemdanhsachthongbaomoi) {
-									$(itemdanhsachthongbaomoi).bind("click", function () {
-										if (mangthongbao[indexdanhsachthongbaomoi].tinhtrang == undefined) {
-
-											self.router.navigate("phieuyeucausuachua/model?id=" + mangthongbao[indexdanhsachthongbaomoi].id);
-											$.ajax({
-												url: self.serviceURL + "/api/v1/phieuyeucausuachua/" + mangthongbao[indexdanhsachthongbaomoi].id,
-												method: "PUT",
-												data: JSON.stringify({
-													"daxem": "daxem"
-												}),
-												contentType: "application/json",
-												success: function (data) {
-													console.log('thanhcong')
-
-												},
-												error: function (xhr, status, error) {
+								// console.log(ngayhomnay, hethansauxngay)
+								if (ngayhomnay === hethansau7ngay || ngayhomnay === hethansau5ngay) {
+									$.ajax({
+										url: self.serviceURL + "/api/v1/thongbao?results_per_page=100000&max_results_per_page=1000000",
+										method: "GET",
+										data: { "q": JSON.stringify({ "order_by": [{ "field": "created_at", "direction": "desc" }] }) },
+										contentType: "application/json",
+										success: function (data) {
+											var dem = 0;
+											(data.objects).forEach(function (item2, index2) {
+												if (item2.idloaithongbao == item.id && moment(item2.ngaytao * 1000).format("DD/MM/YYYY") == ngayhomnay) {
+													dem++;
 												}
-											});
-											location.reload();
-										}
-										else if (mangthongbao[indexdanhsachthongbaomoi].tinhtrang == "Có vấn đề") {
-											self.router.navigate("bangkiemtrathietbi/model?id=" + mangthongbao[indexdanhsachthongbaomoi].id);
-											$.ajax({
-												url: self.serviceURL + "/api/v1/bangkiemtrathietbi/" + mangthongbao[indexdanhsachthongbaomoi].id,
-												method: "PUT",
-												data: JSON.stringify({
-													"daxem": "daxem"
-												}),
-												contentType: "application/json",
-												success: function (data) {
-													console.log('thanhcong')
+											})
+											if (dem == 0) {
+												$.ajax({
+													method: "POST",
+													url: self.serviceURL + "/api/v1/thongbao",
+													data: JSON.stringify({
+														tenthietbi: item.tenthietbi,
+														model_serial_number: item.model_serial_number,
+														idloaithongbao: item.id,
+														loaithongbao: "Kiểm định thiết bị",
+														maloaithongbao: "bangkiemdinh",
+														daxem: "chuaxem",
+														ngaytao: moment().unix()
+													}),
+													headers: {
+														'content-type': 'application/json'
+													},
+													dataType: 'json',
+													success: function (response) {
+														location.reload();
 
-												},
-												error: function (xhr, status, error) {
-												}
-											});
-											location.reload();
+													}, error: function (xhr, ere) {
+														console.log('xhr', ere);
+
+													}
+												})
+											}
 
 										}
-										//////////////////////////////////////////////////////////////////////////////
+									}
+									)
 
-										$('.showthongbao').hide();
-
-									})
-								})
-
-
-							},
-							error: function (xhr, status, error) {
-
+								}
 							}
-						});
+
+						})
+					},
+					error: function (xhr, status, error) {
+
+					}
+				});
+
+				$.ajax({
+					url: self.serviceURL + "/api/v1/thongbao?results_per_page=100000&max_results_per_page=1000000",
+					method: "GET",
+					data: { "q": JSON.stringify({ "order_by": [{ "field": "created_at", "direction": "desc" }] }) },
+					contentType: "application/json",
+					success: function (data) {
+						var tong = 0;
+						data.objects.forEach(function (item, index) {
+							if (item.daxem == "chuaxem") {
+								tong++;
+							}
+						})
+						if (tong != 0) {
+							$('.fa-bell').css("color", "red")
+							$('#bgcolor').css("backgroundColor", "red")
+
+						}
+						$('#soluong').append(tong);
 
 
 
+						data.objects.forEach(function (itemmangthongbao, indexmangthongbao) {
+							$('#bangthongbao').append('<tr class="danhsachthongbaomoi"><td>' + itemmangthongbao.loaithongbao + '</td><td>' + itemmangthongbao.tenthietbi + '[' + itemmangthongbao.model_serial_number + ']</td></tr>')
 
+							if (itemmangthongbao.daxem == "chuaxem") {
+								$($('.danhsachthongbaomoi')[indexmangthongbao]).css("background-color", "yellow")
+							}
+						})
 
+						$('.danhsachthongbaomoi').each(function (indexdanhsachthongbaomoi, itemdanhsachthongbaomoi) {
+							$(itemdanhsachthongbaomoi).unbind('click').bind("click", function () {
+								var link = data.objects[indexdanhsachthongbaomoi].maloaithongbao + "/model?id=" + data.objects[indexdanhsachthongbaomoi].idloaithongbao
+								self.router.navigate(link);
+								var link2 = self.serviceURL + "/api/v1/thongbao/" + data.objects[indexdanhsachthongbaomoi].id
+								$.ajax({
+									url: link2,
+									method: "PUT",
+									data: JSON.stringify({
+										"daxem": "daxem"
+									}),
+									contentType: "application/json",
+									success: function (data) {
+										console.log('thanhcong')
 
+									},
+									error: function (xhr, status, error) {
+									}
+								});
+								location.reload();
+								$('.showthongbao').hide();
 
-
+							})
+						})
 
 
 					},
 					error: function (xhr, status, error) {
+
 					}
 				});
+
+
+
+
 
 
 
@@ -701,7 +713,7 @@ require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/
 								},
 								onRowClick: function (event) {
 									if (event.rowId) {
-											$('.main-sidebar').removeClass('open');
+										$('.main-sidebar').removeClass('open');
 										self.router.navigate("chitietthietbi/model?id=" + event.rowId);
 										$('#sca2').hide()
 

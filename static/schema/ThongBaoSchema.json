@@ -25,29 +25,6 @@
         "type": "string",
         "primary": true
     },
-    "ma": {
-        "type": "string",
-        "length": 255
-    },
-    "donvi": {
-        "type": "string",
-        "length": 255
-    },
-    "ngaycap": {
-        "type": "number"
-    },
-    "ngayhethan": {
-        "type": "number"
-    },
-    "attachment": {
-        "type": "string",
-        "length": 255
-    },
-    "tinhtrang": {
-        "type": "string",
-        "length": 255,
-        "default": "dangduocsudung"
-    },
     "tenthietbi": {
         "type": "string",
         "length": 255
@@ -56,15 +33,23 @@
         "type": "string",
         "length": 255
     },
-    "ma_qltb": {
+    "idloaithongbao": {
+        "type": "string",
+        "length": 255
+    },
+    "loaithongbao": {
+        "type": "string",
+        "length": 255
+    },
+    "maloaithongbao": {
         "type": "string",
         "length": 255
     },
     "daxem": {
         "type": "string",
-        "length": 5
+        "length": 255
     },
-    "chitietthietbi_id": {
-        "type": "string"
+    "ngaytao": {
+        "type": "number"
     }
 }

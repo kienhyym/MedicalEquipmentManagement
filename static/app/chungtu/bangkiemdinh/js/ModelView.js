@@ -38,6 +38,45 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
+							console.log(self.model.get("chitietthietbi_id"))
+							var filters = {
+								filters: {
+									"$and": [
+										{ "chitietthietbi_id": { "$eq": self.model.get("chitietthietbi_id") } }
+									]
+								},
+								order_by: [{ "field": "created_at", "direction": "desc" }]
+							}
+							$.ajax({
+								type: "GET",
+								url: self.getApp().serviceURL + "/api/v1/bangkiemdinh",
+								data: "q=" + JSON.stringify(filters),
+								contentType: "application/json",
+
+								success: function (data) {
+									$.ajax({
+										method: "PUT",
+										url: self.getApp().serviceURL + "/api/v1/bangkiemdinh/"+data.objects[0].id,
+										data: JSON.stringify({
+											tinhtrang: "khongduocsudung",
+										}),
+										headers: {
+											'content-type': 'application/json'
+										},
+										dataType: 'json',
+										success: function (response) {
+											location.reload();
+
+										}, error: function (xhr, ere) {
+											console.log('xhr', ere);
+
+										}
+									})
+								},
+								error: function (response) {
+									self.getApp().notify({ message: "Lưu không thành công" }, { type: "danger", delay: 1000 });
+								}
+							});
 
 							self.model.save(null, {
 								success: function (model, respose, options) {

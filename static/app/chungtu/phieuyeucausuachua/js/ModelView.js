@@ -37,12 +37,40 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
-							
+
 							self.model.save(null, {
 								success: function (model, respose, options) {
-								
-									self.getApp().notify("Lưu thông tin thành công");
-									self.getApp().getRouter().navigate(self.collectionName + "/collection");
+
+									$.ajax({
+										method: "POST",
+										url: self.getApp().serviceURL + "/api/v1/thongbao",
+										data: JSON.stringify({
+											tenthietbi: respose.tenthietbi,
+											model_serial_number: respose.model_serial_number,
+											idloaithongbao: respose.id,
+											loaithongbao: "Phiếu yêu cầu sửa chữa",
+											maloaithongbao: "phieuyeucausuachua",
+											daxem: "chuaxem",
+											ngaytao: respose.created_at
+										}),
+										headers: {
+											'content-type': 'application/json'
+										},
+										dataType: 'json',
+										success: function (response) {
+											if (response) {
+												self.getApp().notify("Lưu thông tin thành công");
+												self.getApp().getRouter().navigate(self.collectionName + "/collection");
+											}
+										}, error: function (xhr, ere) {
+											console.log('xhr', ere);
+
+										}
+									})
+
+
+									// self.getApp().notify("Lưu thông tin thành công");
+									// self.getApp().getRouter().navigate(self.collectionName + "/collection");
 								},
 								error: function (xhr, status, error) {
 									try {
@@ -58,8 +86,8 @@ define(function (require) {
 									}
 								}
 							});
-								
-							
+
+
 						}
 					},
 					{
@@ -97,7 +125,7 @@ define(function (require) {
 			}],
 		uiControl: {
 			fields: [
-			
+
 				{
 					field: "ngay_suco",
 					uicontrol: "datetimepicker",
@@ -135,7 +163,7 @@ define(function (require) {
 					}
 				},
 
-	
+
 			]
 		},
 
@@ -146,7 +174,7 @@ define(function (require) {
 			self.model.set("model_serial_number", sessionStorage.getItem('SerialThietBi'))
 			self.model.set("ma_qltb", sessionStorage.getItem('MaQLTBThietBi'))
 			sessionStorage.clear();
-			var id = this.getApp().getRouter().getParam("id");			
+			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
