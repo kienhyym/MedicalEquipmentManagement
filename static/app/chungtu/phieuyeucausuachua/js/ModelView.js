@@ -59,8 +59,27 @@ define(function (require) {
 										dataType: 'json',
 										success: function (response) {
 											if (response) {
-												self.getApp().notify("Lưu thông tin thành công");
-												self.getApp().getRouter().navigate(self.collectionName + "/collection");
+										}
+										}, error: function (xhr, ere) {
+											console.log('xhr', ere);
+
+										}
+									})
+
+									$.ajax({
+										method: "PUT",
+										url: self.getApp().serviceURL + "/api/v1/chitietthietbi/"+self.model.get('chitietthietbi_id'),
+										data: JSON.stringify({
+											trangthai: "dangsuachua",
+											
+										}),
+										headers: {
+											'content-type': 'application/json'
+										},
+										dataType: 'json',
+										success: function (response) {
+											if (response) {
+							
 											}
 										}, error: function (xhr, ere) {
 											console.log('xhr', ere);
@@ -69,8 +88,8 @@ define(function (require) {
 									})
 
 
-									// self.getApp().notify("Lưu thông tin thành công");
-									// self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									self.getApp().notify("Lưu thông tin thành công");
+									self.getApp().getRouter().navigate(self.collectionName + "/collection");
 								},
 								error: function (xhr, status, error) {
 									try {

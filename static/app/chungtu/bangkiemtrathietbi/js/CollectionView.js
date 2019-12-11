@@ -175,7 +175,7 @@ define(function (require) {
                         field: "ma_qltb", label: "Mã QLTB", width: 150, readonly: true,
                     },
                     {
-                        field: "ngay", label: "Năm sử dụng",
+                        field: "ngay", label: "Ngày kiểm tra",
                         template: function (rowData) {
                             if (!!rowData && rowData.ngay) {
 

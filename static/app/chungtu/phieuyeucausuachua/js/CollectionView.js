@@ -190,7 +190,7 @@ define(function (require) {
                         field: "ma_qltb", label: "Mã QLTB", width: 150, readonly: true,
                     },
                     {
-                        field: "ngay_suco", label: "Ngày cấp",
+                        field: "ngay_suco", label: "Ngày xảy ra sự cố",
                         template: function (rowData) {
                             if (!!rowData && rowData.ngay_suco) {
 
