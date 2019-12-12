@@ -12,7 +12,7 @@ body {
 
  /* #dvkiemdinh { width: 420px;} */
 #titlehinhanh{
-  font-size: 20px;
+  font-size: 22px;
 
 }
 .trai{
@@ -29,6 +29,19 @@ body {
 }
 #printJS-form{
   margin-left: 90px;
+}
+.input-printer4{
+  border:none;
+	border-bottom:1px dotted black;
+  outline: 0px;
+  flex-grow: 1;
+  font-size: 18px;
+  padding:0px ;
+  margin: 0px;
+  padding-left: 2%;
+
+  padding-top:8px ;
+
 }
 .input-printer{
 	border:none;
@@ -51,7 +64,7 @@ body {
 .flexboxer label{
   padding-top: 5px;
   margin:  0px;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 
