@@ -56,7 +56,7 @@ define(function (require) {
 								success: function (data) {
 									$.ajax({
 										method: "PUT",
-										url: self.getApp().serviceURL + "/api/v1/bangkiemdinh/"+data.objects[0].id,
+										url: self.getApp().serviceURL + "/api/v1/bangkiemdinh/" + data.objects[0].id,
 										data: JSON.stringify({
 											tinhtrang: "khongduocsudung",
 										}),
@@ -123,6 +123,36 @@ define(function (require) {
 						}
 					},
 					{
+						name: "&nbsp; In &nbsp; ",
+						type: "button",
+						buttonClass: "btn-primary btn-sm",
+						// label: "TRANSLATE:Xóa",
+						visible: function () {
+							return this.getApp().getRouter().getParam("id") !== null;
+						},
+						command: function () {
+							var self = this;
+							// self.$el.find('#xxx').on('click', function () {
+								self.$el.find('#printJS-form').show();
+								self.$el.find('.bodynay').hide();
+				
+								self.$el.find('#tenthietbi').val(self.model.get('tenthietbi'))
+								self.$el.find('#serial').val(self.model.get('model_serial_number'))
+								self.$el.find('#maqltb').val(self.model.get('ma_qltb'))
+								self.$el.find('#matem').val(self.model.get('ma'))
+								self.$el.find('#dvkiemdinh').val(self.model.get('donvi'))
+				
+								self.$el.find('#ngaycap').val(moment(self.model.get('ngaycap') * 1000).format("DD/MM/YYYY"))
+								self.$el.find('#ngayhethan').val(moment(self.model.get('ngayhethan') * 1000).format("DD/MM/YYYY"))
+								self.$el.find('#imgin').attr('src',self.model.get('attachment') )
+				
+								new printJS({ printable: 'printJS-form', font_size: '30px;', type: 'html',   css: 'static/css/style.css' });
+								self.getApp().getRouter().refresh();
+				
+							// })
+						}
+					},
+					{
 						name: "delete",
 						type: "button",
 						buttonClass: "btn-danger btn-sm",
@@ -153,6 +183,7 @@ define(function (require) {
 							});
 						}
 					},
+					
 				],
 			}],
 		uiControl: {
@@ -189,6 +220,9 @@ define(function (require) {
 
 		render: function () {
 			var self = this;
+
+			
+
 			self.model.set("chitietthietbi_id", sessionStorage.getItem('IDThietBi'))
 			self.model.set("tenthietbi", sessionStorage.getItem('TenThietBi'))
 			self.model.set("model_serial_number", sessionStorage.getItem('SerialThietBi'))
@@ -205,7 +239,7 @@ define(function (require) {
 				this.model.fetch({
 					success: function (data) {
 						self.renderUpload();
-						self.$el.find("#img").attr("src","."+self.model.get('attachment'))
+						self.$el.find("#img").attr("src", "." + self.model.get('attachment'))
 
 						self.applyBindings();
 					},
@@ -219,7 +253,7 @@ define(function (require) {
 		},
 		renderUpload() {
 			var self = this;
-		
+
 			self.$el.find(".linkDownload").attr("href", self.model.get("attachment"));
 			self.$el.find(".linkDownload").show();
 			self.$el.find("#img").show();
@@ -255,7 +289,7 @@ define(function (require) {
 							self.model.set(data_attr, data_file.link);
 							self.$el.find("#title").show();
 							self.$el.find("#img").show();
-							self.$el.find("#img").attr("src","."+data_file.link)
+							self.$el.find("#img").attr("src", "." + data_file.link)
 
 							// self.$el.find("#content").val(self.$el.find("#content").val()
 						}
