@@ -45,26 +45,34 @@ define(function (require) {
 						command: function () {
 							var self = this;
 
-							self.model.save(null, {
-								success: function (model, respose, options) {
+							if (self.model.get("trangthai") == null ){
+								self.getApp().notify({ message: "Bạn chưa cập nhật trạng thái thiết bị" }, { type: "danger", delay: 1000 });
 
-									self.getApp().notify("Lưu thông tin thành công");
-									self.getApp().getRouter().navigate(self.collectionName + "/collection");
-								},
-								error: function (xhr, status, error) {
-									try {
-										if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
-											self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
-											self.getApp().getRouter().navigate("login");
-										} else {
-											self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+								return false;
+							}
+							else{
+								self.model.save(null, {
+									success: function (model, respose, options) {
+	
+										self.getApp().notify("Lưu thông tin thành công");
+										self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									},
+									error: function (xhr, status, error) {
+										try {
+											if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+												self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+												self.getApp().getRouter().navigate("login");
+											} else {
+												self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+											}
+										}
+										catch (err) {
+											self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
 										}
 									}
-									catch (err) {
-										self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
-									}
-								}
-							});
+								});
+							}
+							
 
 
 						}
