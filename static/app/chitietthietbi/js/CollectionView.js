@@ -421,6 +421,9 @@ define(function (require) {
                             else if (rowData.trangthai === "luukho") {
                                 return "Lưu kho chưa vận hành ";
                             }
+                            else if (rowData.trangthai === null) {
+                                return "";
+                            }
                            
                         }
                     },
