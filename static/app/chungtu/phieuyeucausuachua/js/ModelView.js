@@ -132,8 +132,10 @@ define(function (require) {
 							// var x = self.$el.find("#mota")[0].scrollHeight;
 							// console.log(x)
 							// self.$el.find("#mota")[0].style.height =  x + 'px';
-							self.$el.find('#motasuco').val(self.model.get('motasuco'))
+							self.$el.find('#mota').val(self.model.get('motasuco'))
 							self.$el.find('#ngaydanhgia').val(moment(self.model.get('ngay_danhgia') * 1000).format("DD/MM/YYYY"))
+							self.$el.find('#motasuco').val(self.model.get('danhgiasobo'))
+
 							self.$el.find('#ykien').val(self.model.get('ykienlanhdao'))
 							self.$el.find('#motaketqua').val(self.model.get('ketqua'))
 							self.$el.find('#ngayketqua').val(moment(self.model.get('ngay_ketqua') * 1000).format("DD/MM/YYYY"))

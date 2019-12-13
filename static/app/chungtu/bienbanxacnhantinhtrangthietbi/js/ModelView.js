@@ -63,6 +63,46 @@ define(function (require) {
 						}
 					},
 					{
+						name: "&nbsp; In &nbsp; ",
+						type: "button",
+						buttonClass: "btn-primary btn-sm",
+						// label: "TRANSLATE:Xóa",
+						visible: function () {
+							return this.getApp().getRouter().getParam("id") !== null;
+						},
+						command: function () {
+							var self = this;
+							// self.$el.find('#xxx').on('click', function () {
+							self.$el.find('#printJS-form').show();
+							self.$el.find('.bodynay').hide();
+
+							self.$el.find('#tenthietbi').val(self.model.get('tenthietbi'))
+							self.$el.find('#serial').val(self.model.get('model_serial_number'))
+							self.$el.find('#maqltb').val(self.model.get('ma_qltb'))
+
+							self.$el.find('#tai').val(self.model.get('tai'))
+							self.$el.find('#nha').val(self.model.get('nha'))
+
+							self.$el.find('#nguoisudung').val(self.model.get('nguoisudung'))
+							self.$el.find('#donvi').val(self.model.get('donvi'))
+
+							self.$el.find('#ketquakiemtra').val(self.model.get('ketquakiemtra'))
+							self.$el.find('#huongkhacphuc').val(self.model.get('huongkhacphuc'))
+							self.$el.find('#ngayketqua').val(moment(self.model.get('ngay') * 1000).format("DD/MM/YYYY"))
+
+							// var x = self.$el.find("#mota2")[0].scrollHeight;
+							// console.log(x)
+							// // self.$el.find("#mota").style.height = x + 'px';
+							// self.$el.find("#mota")[0].style.height =  x + 'px';
+
+
+							new printJS({ printable: 'printJS-form', font_size: '30px;', type: 'html', css: 'static/css/style.css' });
+							self.getApp().getRouter().refresh();
+
+							// })
+						}
+					},
+					{
 						name: "delete",
 						type: "button",
 						buttonClass: "btn-danger btn-sm",

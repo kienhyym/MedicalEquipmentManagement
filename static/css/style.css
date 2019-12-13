@@ -15,6 +15,7 @@ body {
   font-size: 22px;
 
 }
+
 .trai{
   width: 30%;
 }
@@ -29,6 +30,14 @@ body {
 }
 #printJS-form{
   margin-left: 90px;
+}
+.bordernay{
+  border :1px solid black;
+  border-bottom: none;
+  padding: 10px;
+}
+.bordernay2{
+  border-bottom: 1px solid black;
 }
 .input-printer4{
   border:none;
@@ -66,7 +75,20 @@ body {
   font-size: 22px;
 }
 
+.chuky1{
+  width: 100px;
+  display: flex;
+  margin: 0 auto;
 
+}
+
+.chuky{
+  width: 100px;
+  border:none;
+  border-bottom:1px dotted black;
+  margin: 0 auto;
+
+}
 
 
 .ref-form-control{

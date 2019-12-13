@@ -66,7 +66,7 @@
 						<div class="row mb-3">
 							<div class="col-md-6">
 								<label>Tại <span class="text-muted"></span></label>
-								<input type="text" class="form-control" data-bind="value:tai"  placeholder="Tại">
+								<input type="text" class="form-control" data-bind="value:tai" placeholder="Tại">
 								<div class="invalid-feedback">
 									Vui lòng nhập nơi.
 								</div>
@@ -122,9 +122,9 @@
 					<label>Biên bản này lập thành 02 bản và lưu tại phòng quản trị.</label>
 
 					<div class="d-flex justify-content-end">
-					
-						<div><input type="text" class="form-control" data-bind="value:ngay"
-							placeholder="Ngày viết"></div>
+
+						<div><input type="text" class="form-control" data-bind="value:ngay" placeholder="Ngày viết">
+						</div>
 					</div>
 					<br>
 					<!-- <div class="row">
@@ -165,9 +165,197 @@
 
 					<label>- Sau khi biên bản lập xong văn phòng bộ ghi ý kiến về việc khắc phục (đồng ý/không đồng ý cho mua
 							linh kiện, phụ tùng để thay thế; đồng ý/không đồng ý thuê bên ngoài sửa chữa)</label> -->
-							<a href="static/img/truocsuachua.pdf">Tài liệu giấy</a>
+					<!-- <a href="static/img/truocsuachua.pdf">Tài liệu giấy</a> -->
 				</div>
 			</div>
+
+
+			<div id="printJS-form" style="display: none;">
+
+				<div class="card-body">
+					<div class="needs-validation" novalidate="">
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+
+						<div class="row ">
+							<div class="trai">
+
+								<div class="flexboxer ">
+									<input type="text" placeholder="" value="CƠ QUAN CHỦ QUẢN"
+										class="input-printer3 input-printer-center">
+								</div>
+								<div class="flexboxer">
+									<input type="text" value="Bệnh viện Bạch Mai"
+										class="input-printer3 input-printer-center">
+								</div>
+								<div class="flexboxer">
+									<input type="text" value=".................."
+										class="input-printer3 input-printer-center">
+								</div>
+							</div>
+
+							<div class="phai">
+
+								<div class="flexboxer ">
+									<input type="text" placeholder="" value="CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+										class="input-printer3 input-printer-center">
+								</div>
+								<div class="flexboxer">
+									<input type="text" value="Độc lập - Tự do - Hạnh phúc"
+										class="input-printer3 input-printer-center">
+								</div>
+								<div class="flexboxer">
+									<input type="text" value=".................."
+										class="input-printer3 input-printer-center">
+								</div>
+							</div>
+						</div>
+						<br>
+						<br>
+						<div class="title">
+							<span>Biên bản kiểm tra</span>
+
+						</div>
+
+						<br>
+						<br>
+						<div class="flexboxer ">
+							<label>Tên&nbsp;thiết&nbsp;bị:</label>
+							<input type="text" class="input-printer" id="tenthietbi">
+						</div>
+
+						<br>
+						<div class="flexboxer ">
+							<label>Serial: </label>
+							<input type="text" class="input-printer" id="serial">
+							<label>Mã&nbsp;QLTB:</label>
+							<input type="text" class="input-printer" id="maqltb">
+						</div>
+						<br>
+						<div class="flexboxer ">
+							<label>Khoa:</label>
+							<input type="text" class="input-printer" id="tai">
+							<label>Phòng:</label>
+							<input type="text" class="input-printer" id="nha">
+						</div>
+						<br>
+						<div class="flexboxer ">
+							<label>Người&nbsp;sử&nbsp;dụng:</label>
+							<input type="text" class="input-printer" id="nguoisudung">
+							<!-- <label>Đơn&nbsp;vị:</label>
+							<input type="text" class="input-printer" id="donvi"> -->
+						</div>
+						<br>
+
+
+						<div class="flexboxer">
+							<label>Kết&nbsp;quả&nbsp;kiểm&nbsp;tra:</label>
+						</div>
+						<div class="flexboxer">
+							<textarea type="text" class="input-printer4" id="ketquakiemtra"></textarea>
+						</div>
+						<br>
+						<div class="flexboxer">
+							<label>Hướng&nbsp;khắc&nbsp;phục:</label>
+						</div>
+						<div class="flexboxer">
+							<textarea type="text" class="input-printer4" id="huongkhacphuc"></textarea>
+						</div>
+						<br>
+						<div class="flexboxer">
+							<label>Biên bản này lập thành 02 bản và lưu tại phòng quản trị.</label>
+						</div>
+						<br>
+						<div class="flexboxer ">
+
+							<label>&nbsp;</label>
+							<input type="text" class="input-printer3">
+							<label>Ngày:</label>
+							<input type="text" class="input-printer" id="ngayketqua">
+						</div>
+						<br>
+						<br>
+						<div class="row ">
+							<div class="traiky">
+								<div class="flexboxer ">
+									<input type="text" placeholder="" value="ĐẠI DIỆN PHÒNG QUẢN TRỊ"
+										class="input-printer3 input-printer-center">
+								</div>
+
+								<div class="flexboxer">
+									<input type="text" value="(Ký, ghi rõ họ tên)"
+										class="input-printer3 input-printer-center">
+								</div>
+								<div class="flexboxer chuky1">
+									<input type="text" class="chuky ">
+								</div>
+							</div>
+							<br>
+							<div class="giuaky">
+								<div class="flexboxer ">
+									<input type="text" placeholder="" value="NGƯỜI SỬ DỤNG"
+										class="input-printer3 input-printer-center">
+								</div>
+								<div class="flexboxer">
+									<input type="text" value="(Ký, ghi rõ họ tên)"
+										class="input-printer3 input-printer-center">
+								</div>
+								<div class="flexboxer chuky1">
+									<input type="text" class="chuky ">
+								</div>
+							</div>
+							<br>
+							<div class="phaiky">
+								<div class="flexboxer ">
+									<input type="text" placeholder="" value="NGƯỜI KIỂM TRA"
+										class="input-printer3 input-printer-center">
+								</div>
+								<div class="flexboxer">
+									<input type="text" value="(Ký, ghi rõ họ tên)"
+										class="input-printer3 input-printer-center">
+								</div>
+								<div class="flexboxer chuky1">
+									<input type="text" class= "chuky">
+								</div>
+							</div>
+							<br>
+						</div>
+						<br>
+
+
+
+
+
+						<label>Ghi chú:</label><br>
+
+						<label>(1): Biên bản này được lập với các trường hợp sau:</label><br>
+
+						<label>- Việc sửa chữa đòi hỏi thay thế linh kiện, phụ tùng có giá trị trên 01 triệu
+							đồng.</label><br>
+
+						<label>- Phải thuê đơn vị ngoài cơ quan để sửa chữa trang thiết bị.</label><br>
+
+						<label>- Việc sửa chữa trang thiết bị có độ phức tạp cao và cần nhiều thời gian.</label><br>
+
+						<label>(2): Ghi tên trang thiết bị được kiểm tra</label><br>
+
+						<label>(3): Ghi số phòng, tầng hoặc vị trí đặt thiết bị được kiểm tra.</label><br>
+
+						<label>(4): Người kiểm tra ghi cụ thể kết quả kiểm tra (hỏng cái gì, mức độ hư
+							hỏng....)</label><br>
+
+						<label>(5): Người kiểm tra ghi đề xuất hướng khắc phục</label><br>
+
+						<label>- Sau khi biên bản lập xong văn phòng bộ ghi ý kiến về việc khắc phục (đồng ý/không đồng
+							ý cho mua
+							linh kiện, phụ tùng để thay thế; đồng ý/không đồng ý thuê bên ngoài sửa chữa)</label>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>
