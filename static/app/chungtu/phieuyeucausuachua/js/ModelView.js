@@ -126,21 +126,17 @@ define(function (require) {
 							self.$el.find('#tenthietbi').val(self.model.get('tenthietbi'))
 							self.$el.find('#serial').val(self.model.get('model_serial_number'))
 							self.$el.find('#maqltb').val(self.model.get('ma_qltb'))
-							self.$el.find('#ngaykiemtra').val(moment(self.model.get('ngay') * 1000).format("DD/MM/YYYY"))
-
-							self.$el.find('#khoa').val(self.model.get('khoa').ten)
-							self.$el.find('#phong').val(self.model.get('phong').ten)
-
-							self.$el.find('#tinhtrang').val(self.model.get('tinhtrang'))
-							self.$el.find('#nguoikiemtra').val(self.model.get('nguoikiemtra'))
-
-							var x = self.$el.find("#mota2")[0].scrollHeight;
-							console.log(x)
-							self.$el.find("#mota")[0].style.height =  x + 'px';
-							self.$el.find('#mota').val(self.model.get('mota'))
-
-							self.$el.find('#imgin').attr('src', self.model.get('attachment'))
-
+							self.$el.find('#nguoisundung').val(self.model.get('nguoisudung'))
+							self.$el.find('#donvi').val(self.model.get('donvisudung'))
+							self.$el.find('#ngayxayrasuco').val(moment(self.model.get('ngay_suco') * 1000).format("DD/MM/YYYY"))
+							// var x = self.$el.find("#mota")[0].scrollHeight;
+							// console.log(x)
+							// self.$el.find("#mota")[0].style.height =  x + 'px';
+							self.$el.find('#motasuco').val(self.model.get('motasuco'))
+							self.$el.find('#ngaydanhgia').val(moment(self.model.get('ngay_danhgia') * 1000).format("DD/MM/YYYY"))
+							self.$el.find('#ykien').val(self.model.get('ykienlanhdao'))
+							self.$el.find('#motaketqua').val(self.model.get('ketqua'))
+							self.$el.find('#ngayketqua').val(moment(self.model.get('ngay_ketqua') * 1000).format("DD/MM/YYYY"))
 							new printJS({ printable: 'printJS-form', font_size: '30px;', type: 'html', css: 'static/css/style.css' });
 							self.getApp().getRouter().refresh();
 
