@@ -232,6 +232,12 @@ define(function (require) {
 			self.$el.find("#img").hide();
 			self.$el.find("#title").hide();
 
+			// self.$el.find('#mypic').onchange = function () {
+			// 	var file = self.$el.find('#mypic').files[0];
+			// 	console.log(file)
+			// 	drawOnCanvas(file);
+			//   };
+
 			self.bindEventSelect();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
@@ -263,7 +269,7 @@ define(function (require) {
 		bindEventSelect: function () {
 			var self = this;
 
-			self.$el.find(".upload_files").on("change", function () {
+			self.$el.find("#mypic").on("change", function () {
 				var http = new XMLHttpRequest();
 				var fd = new FormData();
 
@@ -286,7 +292,8 @@ define(function (require) {
 						if (http.readyState === 4) {
 							var data_file = JSON.parse(http.responseText), link, p, t;
 							self.getApp().notify("Tải file thành công");
-							self.model.set(data_attr, data_file.link);
+							self.model.set('attachment', data_file.link);
+							console.log(data_attr)
 							self.$el.find("#title").show();
 							self.$el.find("#img").show();
 							self.$el.find("#img").attr("src", "." + data_file.link)

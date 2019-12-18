@@ -19,103 +19,155 @@
 				</div>
 
 
-					<div class="card-body bodynay">
-						<div class="needs-validation" novalidate="">
-							<div class="row mb-3">
-								<div class="col-md-6 ">
-									<label>Tên thiết bị</label>
-									<input type="text" class="form-control" data-bind="value:tenthietbi"
-										placeholder="Nhập tên thiết bị" required="" readonly>
-									<div class="invalid-feedback">
-										Vui lòng nhập tên thiết bị.
-									</div>
-								</div>
-								<div class="col-md-6">
-									<label>Serial<span class="text-muted"></span></label>
-									<input type="text" class="form-control" readonly
-										data-bind="value:model_serial_number" placeholder="nhập serial">
-									<div class="invalid-feedback">
-										Vui lòng nhập serial.
-									</div>
+				<div class="card-body bodynay">
+					<div class="needs-validation" novalidate="">
+						<div class="row mb-3">
+							<div class="col-md-6 ">
+								<label>Tên thiết bị</label>
+								<input type="text" class="form-control" data-bind="value:tenthietbi"
+									placeholder="Nhập tên thiết bị" required="" readonly>
+								<div class="invalid-feedback">
+									Vui lòng nhập tên thiết bị.
 								</div>
 							</div>
-							<div class="row mb-3">
-								<div class="col-md-6 ">
-									<label>Mã QLTB</label>
-									<input type="text" class="form-control" data-bind="value:ma_qltb"
-										placeholder="Nhập mã quản lý thiết bị" readonly required="">
-									<div class="invalid-feedback">
-										Vui lòng nhập mã quản lý thiết bị.
-									</div>
-								</div>
-								<div class="col-md-6">
-									<label>Mã tem kiểm định<span class="text-muted"></span></label>
-									<input type="text" class="form-control" data-bind="value:ma"
-										placeholder="nhập mã tem">
-									<div class="invalid-feedback">
-										Vui lòng nhập email.
-									</div>
+							<div class="col-md-6">
+								<label>Serial<span class="text-muted"></span></label>
+								<input type="text" class="form-control" readonly data-bind="value:model_serial_number"
+									placeholder="nhập serial">
+								<div class="invalid-feedback">
+									Vui lòng nhập serial.
 								</div>
 							</div>
-
-
-							<div class="row mb-3">
-								<div class="col-md-6">
-									<label>Ngày cấp</label>
-									<input type="text" class="form-control" data-bind="value:ngaycap" placeholder="..."
-										required="">
-									<div class="invalid-feedback">
-										Vui lòng nhập email.
-									</div>
-								</div>
-								<div class="col-md-6">
-									<label>Ngày hết hạn</label>
-									<input type="text" class="form-control" data-bind="value:ngayhethan"
-										placeholder="..." required="">
-									<div class="invalid-feedback">
-										Vui lòng nhập email.
-									</div>
-								</div>
-
-							</div>
-
-							<div class="row mb-3">
-
-								<div class="col-md-12">
-									<label>Đơn vị kiểm định</label>
-									<input rows="3" type="text" class="form-control" data-bind="value:donvi"
-										placeholder="..." required="">
-									<div class="invalid-feedback">
-										Vui lòng nhập email.
-									</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-6 ">
+								<label>Mã QLTB</label>
+								<input type="text" class="form-control" data-bind="value:ma_qltb"
+									placeholder="Nhập mã quản lý thiết bị" readonly required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập mã quản lý thiết bị.
 								</div>
 							</div>
-							
-							<div class="row">
-								<div class="form-group col">
-									<label>Tài liệu đính kèm</label>
-									<div id="upload-attachment">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input upload_files " id="upload_files"
-												data-attr="attachment" lang="vi">
-											<label class="custom-file-label">Chọn file tải lên</label>
-										</div>
-									</div>
-									<div id="download-attachment" class="form-group col col-md-12 col-sm-12">
-									</div>
-									<div class="row"> <span class="link col"></span>
-									</div>
+							<div class="col-md-6">
+								<label>Mã tem kiểm định<span class="text-muted"></span></label>
+								<input type="text" class="form-control" data-bind="value:ma" placeholder="nhập mã tem">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
 								</div>
 							</div>
-							<span id="title">Hình ảnh tem kiểm định</span><br>
-							<img src="#" id="img" style="width: 200px;height: auto;">
-							<br>
-							<a class="linkDownload">Tải về</a>
+						</div>
+
+
+						<div class="row mb-3">
+							<div class="col-md-6">
+								<label>Ngày cấp</label>
+								<input type="text" class="form-control" data-bind="value:ngaycap" placeholder="..."
+									required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label>Ngày hết hạn</label>
+								<input type="text" class="form-control" data-bind="value:ngayhethan" placeholder="..."
+									required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
 
 						</div>
-					</div>
 
-				<div id="printJS-form"  style="display: none">
+						<div class="row mb-3">
+
+							<div class="col-md-12">
+								<label>Đơn vị kiểm định</label>
+								<input rows="3" type="text" class="form-control" data-bind="value:donvi"
+									placeholder="..." required="">
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col">
+								<label>Tài liệu đính kèm</label>
+								<div id="upload-attachment">
+									<div class="custom-file">
+										<input type="file" class="custom-file-input upload_files " id="upload_files"
+											data-attr="attachment" lang="vi">
+										<label class="custom-file-label">Chọn file tải lên</label>
+									</div>
+								</div>
+								<div id="download-attachment" class="form-group col col-md-12 col-sm-12">
+								</div>
+								<div class="row"> <span class="link col"></span>
+								</div>
+							</div>
+						</div>
+						<span id="title">Hình ảnh tem kiểm định</span><br>
+						<img src="#" id="img" style="width: 200px;height: auto;">
+						<br>
+						<a class="linkDownload">Tải về</a>
+						<h1>Camera Test</h1>
+						<input type="file" id="mypic" accept="image/*" capture="camera">
+						<canvas></canvas>
+						<br>
+						<!-- <script>
+							var input = document.querySelector('input[type=file]'); // see Example 4
+							input.onchange = function () {
+								var file = input.files[0];
+								//upload(file);
+								drawOnCanvas(file);   // see Example 6
+								//displayAsImage(file); // see Example 7
+							};
+
+							function upload(file) {
+								var form = new FormData(),
+									xhr = new XMLHttpRequest();
+
+								form.append('image', file);
+								xhr.open('post', 'server.php', true);
+								xhr.send(form);
+							}
+
+							function drawOnCanvas(file) {
+								var reader = new FileReader();
+								reader.onload = function (e) {
+									var dataURL = e.target.result,
+										c = document.querySelector('canvas'), // see Example 4
+										ctx = c.getContext('2d'),
+										img = new Image();
+
+									img.onload = function () {
+										c.width = img.width;
+										c.height = img.height;
+										ctx.drawImage(img, 0, 0);
+									};
+
+									img.src = dataURL;
+								};
+
+								reader.readAsDataURL(file);
+							}
+
+							function displayAsImage(file) {
+								var imgURL = URL.createObjectURL(file),
+									img = document.createElement('img');
+
+								img.onload = function () {
+									URL.revokeObjectURL(imgURL);
+								};
+
+								img.src = imgURL;
+								document.body.appendChild(img);
+							}
+						</script> -->
+					</div>
+				</div>
+
+				<div id="printJS-form" style="display: none">
 
 					<div class="card-body">
 						<div class="needs-validation" novalidate="">
@@ -126,41 +178,47 @@
 							<br>
 
 							<div class="row ">
-									<div class="trai">
-						
-										<div class="flexboxer ">
-											<input type="text" placeholder="" value="CƠ QUAN CHỦ QUẢN" class="input-printer3 input-printer-center">
-										</div>
-										<div class="flexboxer">
-											<input type="text" value="Bệnh viện Bạch Mai" class="input-printer3 input-printer-center">
-										</div>
-										<div class="flexboxer">
-												<input type="text" value=".................." class="input-printer3 input-printer-center">
-											</div>
-										
+								<div class="trai">
+
+									<div class="flexboxer ">
+										<input type="text" placeholder="" value="CƠ QUAN CHỦ QUẢN"
+											class="input-printer3 input-printer-center">
 									</div>
-						
-									<div class="phai">
-										
-										<div class="flexboxer ">
-												<input type="text" placeholder="" value="CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM" class="input-printer3 input-printer-center">
-											</div>
-											<div class="flexboxer">
-												<input type="text" value="Độc lập - Tự do - Hạnh phúc" class="input-printer3 input-printer-center">
-											</div>
-											<div class="flexboxer">
-													<input type="text" value=".................." class="input-printer3 input-printer-center">
-												</div>
+									<div class="flexboxer">
+										<input type="text" value="Bệnh viện Bạch Mai"
+											class="input-printer3 input-printer-center">
+									</div>
+									<div class="flexboxer">
+										<input type="text" value=".................."
+											class="input-printer3 input-printer-center">
+									</div>
+
+								</div>
+
+								<div class="phai">
+
+									<div class="flexboxer ">
+										<input type="text" placeholder="" value="CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+											class="input-printer3 input-printer-center">
+									</div>
+									<div class="flexboxer">
+										<input type="text" value="Độc lập - Tự do - Hạnh phúc"
+											class="input-printer3 input-printer-center">
+									</div>
+									<div class="flexboxer">
+										<input type="text" value=".................."
+											class="input-printer3 input-printer-center">
 									</div>
 								</div>
-								<br>
+							</div>
+							<br>
 							<br>
 							<div class="title">
 								<span>Phiếu kiểm định thiết bị</span>
 
 							</div>
 							<br>
-							
+
 							<br>
 							<div class="flexboxer col-md-12 p-0">
 								<label>Tên&nbsp;thiết&nbsp;bị:</label>
