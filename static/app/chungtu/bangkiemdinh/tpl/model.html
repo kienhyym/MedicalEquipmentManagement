@@ -90,7 +90,7 @@
 							</div>
 						</div>
 
-						<div class="row">
+						<!-- <div class="row">
 							<div class="form-group col">
 								<label>Tài liệu đính kèm</label>
 								<div id="upload-attachment">
@@ -105,13 +105,29 @@
 								<div class="row"> <span class="link col"></span>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<span id="title">Hình ảnh tem kiểm định</span><br>
 						<img src="#" id="img" style="width: 200px;height: auto;">
 						<br>
 						<a class="linkDownload">Tải về</a>
 						<h1>Camera Test</h1>
-						<input type="file" id="mypic" accept="image/*" capture="camera">
+						<div class="row">
+							<div class="form-group col">
+								<label>Tài liệu đính kèm</label>
+								<div id="upload-attachment">
+									<div class="custom-file">
+										<input type="file"  accept="image/*" capture="camera"
+											class="custom-file-input upload_files " id="upload_files"
+											data-attr="attachment" lang="vi">
+										<label class="custom-file-label">Chọn file tải lên</label>
+									</div>
+								</div>
+								<div id="download-attachment" class="form-group col col-md-12 col-sm-12">
+								</div>
+								<div class="row"> <span class="link col"></span>
+								</div>
+							</div>
+						</div>
 						<canvas></canvas>
 						<br>
 						<!-- <script>
