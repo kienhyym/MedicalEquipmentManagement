@@ -232,35 +232,38 @@ define(function (require) {
 			self.$el.find("#img").hide();
 			self.$el.find("#title").hide();
 
-			var input = document.querySelector('input[type=file]'); // see Example 4
-							input.onchange = function () {
-								var file = input.files[0];
-								console.log('xxx',file)
-								//upload(file);
-								drawOnCanvas(file);   // see Example 6
-								//displayAsImage(file); // see Example 7
-							};
-							function drawOnCanvas(file) {
-								var reader = new FileReader();
-								reader.onload = function (e) {
-									var dataURL = e.target.result,
-										c = document.querySelector('canvas'), // see Example 4
-										ctx = c.getContext('2d'),
-										img = new Image();
+			// var input = document.querySelector('input[type=file]'); // see Example 4
+			// 				input.onchange = function () {
+			// 					var file = input.files[0];
+			// 					console.log('xxx',file)
+			// 					//upload(file);
+			// 					drawOnCanvas(file);   // see Example 6
+			// 					//displayAsImage(file); // see Example 7
+			// 				};
+			// 				function drawOnCanvas(file) {
+			// 					var reader = new FileReader();
+			// 					reader.onload = function (e) {
+			// 						var dataURL = e.target.result,
+			// 							c = document.querySelector('canvas'), // see Example 4
+			// 							ctx = c.getContext('2d'),
+			// 							img = new Image();
 
-									img.onload = function () {
-										c.width = img.width;
-										c.height = img.height;
-										ctx.drawImage(img, 0, 0);
-									};
+			// 						img.onload = function () {
+			// 							c.width = 100;
+			// 							c.height = 100;
+			// 							ctx.drawImage(img, 0, 0);
+			// 						};
 
-									img.src = dataURL;
-								};
+			// 						img.src = dataURL;
+			// 						console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaa',reader.result)
 
-								reader.readAsDataURL(file);
-							}
+			// 					};
+
+			// 					reader.readAsDataURL(file);
+
+			// 				}
 							
-			// self.bindEventSelect();
+			self.bindEventSelect();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
@@ -293,11 +296,13 @@ define(function (require) {
 
 			var input = document.querySelector('input[type=file]'); // see Example 4
 							input.onchange = function () {
+								var file = input.files[0];
+
 				var http = new XMLHttpRequest();
 				var fd = new FormData();
 
 				var data_attr = $(this).attr("data-attr");
-				fd.append('file', this.files[0]);
+				fd.append('file', file);
 				http.open('POST', '/api/v1/upload/file');
 
 				http.upload.addEventListener('progress', function (evt) {
@@ -314,8 +319,10 @@ define(function (require) {
 					if (http.status === 200) {
 						if (http.readyState === 4) {
 							var data_file = JSON.parse(http.responseText), link, p, t;
+
 							self.getApp().notify("Tải file thành công");
 							self.model.set(data_attr, data_file.link);
+							console.log('link',data_file.link)
 							self.$el.find("#title").show();
 							self.$el.find("#img").show();
 							self.$el.find("#img").attr("src", "." + data_file.link)
