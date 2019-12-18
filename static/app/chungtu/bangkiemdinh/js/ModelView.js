@@ -269,7 +269,7 @@ define(function (require) {
 		bindEventSelect: function () {
 			var self = this;
 
-			self.$el.find("#mypic").on("change", function () {
+			self.$el.find(".upload_files").on("change", function () {
 				var http = new XMLHttpRequest();
 				var fd = new FormData();
 
@@ -292,8 +292,7 @@ define(function (require) {
 						if (http.readyState === 4) {
 							var data_file = JSON.parse(http.responseText), link, p, t;
 							self.getApp().notify("Tải file thành công");
-							self.model.set('attachment', data_file.link);
-							console.log(data_attr)
+							self.model.set(data_attr, data_file.link);
 							self.$el.find("#title").show();
 							self.$el.find("#img").show();
 							self.$el.find("#img").attr("src", "." + data_file.link)
