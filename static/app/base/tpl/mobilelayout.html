@@ -27,12 +27,12 @@
           </div>
           <input id="grid_search2" class="navbar-search form-control" type="text" placeholder="Tìm kiếm..."
             aria-label="Search">
-           
+
         </div>
         <div style="width: 100%;margin-top: -3px;">
-            <div id="sca2" style="background-color: white;border-radius: 10px;box-shadow: 0px 0px 2px;">
-            </div>
+          <div id="sca2" style="background-color: white;border-radius: 10px;box-shadow: 0px 0px 2px;">
           </div>
+        </div>
       </form>
 
       <div class="nav-wrapper">
@@ -41,7 +41,7 @@
     </aside>
     <!-- End Main Sidebar -->
     <main class="main-content col-lg-10 col-md-12 col-sm-12 p-0 offset-lg-2 offset-md-3">
-    
+
       <div class="main-navbar sticky-top bg-white">
         <!-- Main Navbar -->
         <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
@@ -65,11 +65,11 @@
             </div>
 
 
-            
+
 
 
           </form>
-          
+
           <nav class="nav">
             <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left"
               data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
@@ -77,13 +77,13 @@
             </a>
           </nav>
           <ul class="navbar-nav border-left flex-row ">
-              <div class="row" style="z-index: 2;">
-                  <div class="col d-flex flex-wrap align-content-center pr-4 ml-2">
-                    <div style="position: relative;display: flex;top:-2px" class="clickthongbao">
-                      <i class="fa fa-bell" aria-hidden="true" style="font-size: 18px;margin: 5px;"></i>
-                      <div style="position: relative">
-                        <!-- <label style="color: red;padding-left: 10px;">Thông báo</label> -->
-                        <div id="bgcolor" style="position: absolute;
+            <div class="row" style="z-index: 2;">
+              <div class="col d-flex flex-wrap align-content-center pr-4 ml-2">
+                <div style="position: relative;display: flex;top:-2px" class="clickthongbao">
+                  <i class="fa fa-bell" aria-hidden="true" style="font-size: 18px;margin: 5px;"></i>
+                  <div style="position: relative">
+                    <!-- <label style="color: red;padding-left: 10px;">Thông báo</label> -->
+                    <div id="bgcolor" style="position: absolute;
                             top: 11px;
                             left: -12px;
                             text-align: center;
@@ -94,29 +94,29 @@
                             font-weight: 550;
                             border: 1px solid white;
                             font-size: 12px;">
-                          <span id="soluong"></span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row col-md-5 showthongbao" style="position: absolute;    top: 60px;
-                right: 10px;z-index: 3; height: 500px;overflow:auto;">
-                <div class="col">
-                  <div class="card  card-small mb-4">
-        
-                    <div class="">
-        
-                      <table class="table">
-                        <tr class="text-center">
-                          <th>Loại phiếu</th>
-                          <th>Thiết bị</th>
-                        </tr>
-                        <tbody id="bangthongbao"></tbody>
-                      </table>
-                    </div>
+                      <span id="soluong"></span></div>
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="row col-md-5 showthongbao" style="position: absolute;    top: 60px;
+                right: 10px;z-index: 3; height: 500px;overflow:auto;">
+              <div class="col">
+                <div class="card  card-small mb-4">
+
+                  <div class="">
+
+                    <table class="table">
+                      <tr class="text-center">
+                        <th>Loại phiếu</th>
+                        <th>Thiết bị</th>
+                      </tr>
+                      <tbody id="bangthongbao"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- <li class="nav-item border-right dropdown notifications">
                   <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="nav-link-icon__wrapper">
@@ -169,17 +169,60 @@
         <div class="card  card-small mb-4">
 
           <div class="card-body">
-              <input id="myFileInput" type="file" accept="image/*;capture=camera">
-            <script>var myInput = document.getElementById('myFileInput');
-
-                function sendPic() {
-                    var file = myInput.files[0];
-                }
-                myInput.addEventListener('change', sendPic, false);</script>
-
-
-
-
+              <h1>Camera Test</h1>
+              <input type="file" id="mypic" accept="image/*" capture="camera">
+              <canvas></canvas>
+              <br>
+              <script>
+              var input = document.querySelector('input[type=file]'); // see Example 4
+              input.onchange = function () {
+                var file = input.files[0];
+                //upload(file);
+                drawOnCanvas(file);   // see Example 6
+                //displayAsImage(file); // see Example 7
+              };
+             
+              function upload(file) {
+                var form = new FormData(),
+                    xhr = new XMLHttpRequest();
+             
+                form.append('image', file);
+                xhr.open('post', 'server.php', true);
+                xhr.send(form);
+              }
+             
+              function drawOnCanvas(file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  var dataURL = e.target.result,
+                      c = document.querySelector('canvas'), // see Example 4
+                      ctx = c.getContext('2d'),
+                      img = new Image();
+             
+                  img.onload = function() {
+                    c.width = img.width;
+                    c.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                  };
+             
+                  img.src = dataURL;
+                };
+             
+                reader.readAsDataURL(file);
+              }
+             
+              function displayAsImage(file) {
+                var imgURL = URL.createObjectURL(file),
+                    img = document.createElement('img');
+             
+                img.onload = function() {
+                  URL.revokeObjectURL(imgURL);
+                };
+             
+                img.src = imgURL;
+                document.body.appendChild(img);
+              }
+              </script>
             <div class="d-flex justify-content-center">
               <h3>Phần mềm quản lý trang thiết bị y tế và vật tư tiêu hao</h3>
             </div>
@@ -209,8 +252,8 @@
                   </div>
                   <div class="w-75 text-center">
                     <div>
-                    <span class="dong1">Thiết bị </span>
-                    <span class="dong2">có vấn đề</span>
+                      <span class="dong1">Thiết bị </span>
+                      <span class="dong2">có vấn đề</span>
                     </div>
                     <span id="tbcovande">0 </span><span> thiết bị</span><br>
                   </div>
@@ -224,7 +267,7 @@
                     <i style="color: white;" class="fa fa-wrench fa-2x" aria-hidden="true"></i>
                   </div>
                   <div class="w-75 text-center">
-                    <div >Yêu cầu sửa chữa</div>
+                    <div>Yêu cầu sửa chữa</div>
                     <span id="tbsuachua">0 </span><span> thiết bị</span><br>
                   </div>
                 </div>
@@ -248,7 +291,7 @@
             <!-- <span> Số thiết bị có vấn đề hôm nay:</span> <span style="color: red;" id="thietbicovande">4</span><br>
             <span>Số thiết bị đang sửa chữa:</span> <span style="color: red;" id="thietbidangsuachua">4</span><br>
             <span>Số thiết bị đang chờ kiểm định:</span> <span style="color: red;" id="chokiemdinh">4</span> -->
-            <canvas id="myChart" width="400" height="150"  ></canvas>
+            <canvas id="myChart" width="400" height="150"></canvas>
             <div class="d-flex justify-content-center">
               <label>Biểu đồ thống kê kiểm tra thiết bị hàng tháng</label>
             </div>
