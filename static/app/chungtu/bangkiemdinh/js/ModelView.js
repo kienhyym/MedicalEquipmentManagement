@@ -232,12 +232,15 @@ define(function (require) {
 			self.$el.find("#img").hide();
 			self.$el.find("#title").hide();
 
-			// self.$el.find('#mypic').onchange = function () {
-			// 	var file = self.$el.find('#mypic').files[0];
-			// 	console.log(file)
-			// 	drawOnCanvas(file);
-			//   };
-
+			var input = document.querySelector('input[type=file]'); // see Example 4
+							input.onchange = function () {
+								var file = input.files[0];
+								console.log('xxx',file)
+								//upload(file);
+								drawOnCanvas(file);   // see Example 6
+								//displayAsImage(file); // see Example 7
+							};
+							
 			self.bindEventSelect();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
@@ -269,7 +272,8 @@ define(function (require) {
 		bindEventSelect: function () {
 			var self = this;
 
-			self.$el.find(".upload_files").on("change", function () {
+			var input = document.querySelector('input[type=file]'); // see Example 4
+							input.onchange = function () {
 				var http = new XMLHttpRequest();
 				var fd = new FormData();
 
@@ -304,7 +308,7 @@ define(function (require) {
 					}
 				};
 				http.send(fd);
-			});
+			};
 		},
 	});
 });
