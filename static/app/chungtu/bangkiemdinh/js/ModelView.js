@@ -260,7 +260,7 @@ define(function (require) {
 								reader.readAsDataURL(file);
 							}
 							
-			self.bindEventSelect();
+			// self.bindEventSelect();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
