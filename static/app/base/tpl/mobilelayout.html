@@ -169,6 +169,17 @@
         <div class="card  card-small mb-4">
 
           <div class="card-body">
+              <input id="myFileInput" type="file" accept="image/*;capture=camera">
+            <script>var myInput = document.getElementById('myFileInput');
+
+                function sendPic() {
+                    var file = myInput.files[0];
+                }
+                myInput.addEventListener('change', sendPic, false);</script>
+
+
+
+
             <div class="d-flex justify-content-center">
               <h3>Phần mềm quản lý trang thiết bị y tế và vật tư tiêu hao</h3>
             </div>
