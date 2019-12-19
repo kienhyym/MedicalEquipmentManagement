@@ -1,0 +1,50 @@
+{
+    "created_at": {
+        "type": "number"
+    },
+    "created_by": {
+        "type": "string"
+    },
+    "updated_at": {
+        "type": "number"
+    },
+    "updated_by": {
+        "type": "string"
+    },
+    "deleted": {
+        "type": "boolean",
+        "default": false
+    },
+    "deleted_by": {
+        "type": "string"
+    },
+    "deleted_at": {
+        "type": "number"
+    },
+    "id": {
+        "type": "string",
+        "primary": true
+    },
+    "thoigian": {
+        "type": "string",
+        "length": 255
+    },
+    "noidungkiemtra": {
+        "type": "string",
+        "length": 255
+    },
+    "hinhanh": {
+        "type": "string",
+        "length": 255
+    },
+    "ghichu": {
+        "type": "json"
+    },
+    "tranghthai": {
+        "type": "string",
+        "length": 50
+    },
+    "bangkiemtrathietbi_id": {
+        "type": "string"
+    }
+}
