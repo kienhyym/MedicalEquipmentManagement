@@ -65,7 +65,8 @@ define(function (require) {
 													self.getApp().getRouter().navigate(self.collectionName + "/collection");
 												}
 											}, error: function (xhr, ere) {
-												console.log('xhr', ere);
+												self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+
 
 											}
 										})
@@ -122,7 +123,6 @@ define(function (require) {
 							self.$el.find('#nguoikiemtra').val(self.model.get('nguoikiemtra'))
 
 							var x = self.$el.find("#mota2")[0].scrollHeight;
-							console.log(x)
 							// self.$el.find("#mota").style.height = x + 'px';
 							self.$el.find("#mota")[0].style.height = x + 'px';
 							self.$el.find('#mota').val(self.model.get('mota'))
@@ -364,7 +364,6 @@ define(function (require) {
 					self.$el.find('.buoc').click(function () {
 						$(".huongdan").toggle();
 						$(".kiemtra").toggle();
-
 					});
 					self.$el.find('.stt').each(function (index, item) {
 						$(item).html(index + 1)
@@ -378,9 +377,9 @@ define(function (require) {
 							dataSource: [
 								{ text: "không bình thường", value: "khong binh thuong" },
 								{ text: "bình thường", value: "binh thuong" },
-								
+
 							],
-						
+
 						});
 					});
 
@@ -389,9 +388,8 @@ define(function (require) {
 						$(item).unbind('click').bind('click', function () {
 							self.model.save(null, {
 								success: function (model, respose, options) {
-									self.getApp().getRouter().refresh();
 									$.ajax({
-										url: self.getApp().serviceURL + "/api/v1/buockiemtra",
+										url: self.getApp().serviceURL + "/api/v1/luucacbuoc",
 										method: "POST",
 										data: JSON.stringify({
 											id: gonrin.uuid(),
@@ -404,15 +402,13 @@ define(function (require) {
 										}),
 										contentType: "application/json",
 										success: function (data) {
-											var idnay =data.bangkiemtrathietbi_id;
 											self.getApp().notify({ message: "Lưu thành công" });
-											window.location=self.getApp().serviceURL + "/#bangkiemtrathietbi/model?id=" + idnay;
-
-
+											window.location = self.getApp().serviceURL + "/#bangkiemtrathietbi/model?id=" + self.model.get('id');
 										},
 										error: function (xhr, status, error) {
 											self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
 										},
+
 
 									})
 								},
@@ -507,67 +503,41 @@ define(function (require) {
 
 					});
 					self.giaTriCacBuoc(self.model.get('id'));
-
-
-					
+					self.dahoanthoanhkiemtra(self.model.get('id'))
 					self.$el.find('.stt').each(function (index, item) {
 						$(item).html(index + 1)
 					});
+
 					self.$el.find('.btn-Luu').each(function (index, item) {
-						// var self = this;
 						$(item).unbind('click').bind('click', function () {
-							self.model.save(null, {
-								success: function (model, respose, options) {
-									// self.getApp().getRouter().refresh();
-
-									$.ajax({
-										url: self.getApp().serviceURL + "/api/v1/buockiemtra",
-										method: "POST",
-										data: JSON.stringify({
-											id: gonrin.uuid(),
-											ghichu: $(self.$el.find('.ghichu')[index]).val(),
-											hinhanh: "",
-											thoigian: moment(moment().unix() * 1000).format("HH:mm"),
-											buockiemtra: index + 1,
-											tinhtrang: $(self.$el.find('.trangthai')[index]).val(),
-											bangkiemtrathietbi_id: self.model.get('id')
-										}),
-										contentType: "application/json",
-										success: function (data) {
-
-											self.getApp().notify({ message: "Lưu thành công" });
-
-										},
-										error: function (xhr, status, error) {
-											self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
-										},
-
-									})
+							$.ajax({
+								url: self.getApp().serviceURL + "/api/v1/luucacbuoc",
+								method: "POST",
+								data: JSON.stringify({
+									ghichu: $(self.$el.find('.ghichu')[index]).val(),
+									hinhanh: "",
+									thoigian: moment(moment().unix() * 1000).format("HH:mm"),
+									buockiemtra: index + 1,
+									tinhtrang: $(self.$el.find('.trangthai')[index]).val(),
+									bangkiemtrathietbi_id: self.model.get('id')
+								}),
+								contentType: "application/json",
+								success: function (data) {
+									self.getApp().notify({ message: "Lưu thành công" });
+									self.getApp().getRouter().refresh();
 								},
 								error: function (xhr, status, error) {
-									try {
-										if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
-											self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
-											self.getApp().getRouter().navigate("login");
-										} else {
-											self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
-										}
-									}
-									catch (err) {
-										self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
-									}
-								}
-							});
+									self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+								},
 
+							})
 						})
-
-
 					});
 				}
 			});
 
 		},
-		giaTriCacBuoc : function (id) {  
+		giaTriCacBuoc: function (id) {
 			var self = this;
 			var filters = {
 				filters: {
@@ -577,32 +547,57 @@ define(function (require) {
 				},
 				order_by: [{ "field": "buockiemtra", "direction": "asc" }]
 			}
+
 			$.ajax({
 				url: self.getApp().serviceURL + "/api/v1/buockiemtra",
 				method: "GET",
 				data: "q=" + JSON.stringify(filters),
 				contentType: "application/json",
 				success: function (data) {
-					data.objects.forEach(function (item,index) {
-						console.log(item)
-						$(self.$el.find('.thoigian')[item.buockiemtra-1]).val(item.thoigian)
-						// $(self.$el.find('.trangthai')[item.buockiemtra-1]).val(item.tinhtrang)
-						$(self.$el.find('.ghichu')[item.buockiemtra-1]).val(item.ghichu)
-						self.$el.find('.trangthai').each(function (index, item) {
-							$(item).combobox({
-								textField: "text",
-								valueField: "value",
-								allowTextInput: true,
-								enableSearch: true,
-								dataSource: [
-									{ text: "không bình thường", value: "khong binh thuong" },
-									{ text: "bình thường", value: "binh thuong" },
-									
-								],
-								value:item.tinhtrang
-							});
+					data.objects.forEach(function (item, index) {
+						$(self.$el.find('.thoigian')[item.buockiemtra - 1]).val(item.thoigian)
+						$(self.$el.find('.ghichu')[item.buockiemtra - 1]).val(item.ghichu)
+						$(self.$el.find('.trangthai')[item.buockiemtra - 1]).combobox({
+							textField: "text",
+							valueField: "value",
+							allowTextInput: true,
+							enableSearch: true,
+							dataSource: [
+								{ text: "không bình thường", value: "khong binh thuong" },
+								{ text: "bình thường", value: "binh thuong" },
+							],
+							value: item.tinhtrang
 						});
-					  })
+					})
+				},
+				error: function (xhr, status, error) {
+					self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+				},
+
+			})
+		},
+		dahoanthoanhkiemtra: function (id) {
+			var self = this;
+			var filters = {
+				filters: {
+					"$and": [
+						{ "bangkiemtrathietbi_id": { "$eq": id } }
+					]
+				},
+				order_by: [{ "field": "buockiemtra", "direction": "asc" }]
+			}
+
+			$.ajax({
+				url: self.getApp().serviceURL + "/api/v1/buockiemtra",
+				method: "GET",
+				data: "q=" + JSON.stringify(filters),
+				contentType: "application/json",
+				success: function (data) {
+					data.objects.forEach(function (item, index) {
+						$(self.$el.find('.fa-chevron-down')[item.buockiemtra - 1]).css("color","green")
+						$(self.$el.find('.stt')[item.buockiemtra - 1]).css("color","green")
+
+					})
 				},
 				error: function (xhr, status, error) {
 					self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });

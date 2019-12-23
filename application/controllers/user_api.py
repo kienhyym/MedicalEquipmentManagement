@@ -135,6 +135,37 @@ async def changepassword(request):
     user_info.password = auth.encrypt_password(password_new)
     db.session.commit()
     return json({})
+
+
+@app.route('/api/v1/luucacbuoc', methods=['POST'])
+async def luucacbuoc(request):
+    data = request.json
+    print("---------------------buoc kiem tra-------------------", data['buockiemtra'])
+    print("---------------------bangkiemtrathietbi_id-------------------", data['bangkiemtrathietbi_id'])
+    buoc = data['buockiemtra']
+    idbangkiemtra = data['bangkiemtrathietbi_id']
+    buockiemtra = db.session.query(BuocKiemTra).filter(and_(BuocKiemTra.bangkiemtrathietbi_id==idbangkiemtra, BuocKiemTra.buockiemtra==buoc)).first()
+    print("---------------------to_dict(buockiemtra)-------------------", to_dict(buockiemtra))
+    if buockiemtra is not None:
+        buockiemtra.ghichu = data["ghichu"]
+        buockiemtra.tinhtrang = data["tinhtrang"]
+        buockiemtra.thoigian = data["thoigian"]
+        buockiemtra.hinhanh = data["hinhanh"]
+        db.session.commit()
+        return json(to_dict(buockiemtra))
+    else :
+        new_buockiemtra = BuocKiemTra()
+        new_buockiemtra.ghichu = data["ghichu"]
+        new_buockiemtra.buockiemtra = data["buockiemtra"]
+        new_buockiemtra.tinhtrang = data["tinhtrang"]
+        new_buockiemtra.hinhanh = data["hinhanh"]
+        new_buockiemtra.thoigian = data["thoigian"]
+        new_buockiemtra.bangkiemtrathietbi_id = data["bangkiemtrathietbi_id"]
+        db.session.add(new_buockiemtra)
+        db.session.commit()
+        return json(to_dict(new_buockiemtra))
+
+
     
 @app.route('api/v1/tokenuser', methods=["POST"])
 def tokenuser(request):
