@@ -35,14 +35,16 @@ define(function (require) {
                     var path = this.collectionName + '/model?id=' + event.rowId;
                     this.getApp().getRouter().navigate(path);
                 }
-            }, rowClass: function (data) {
-                if (data.tinhtrang === "Đang lưu hành") {
-                    return "Green";
-                }
-                // if (data.name === "XYZ") {
-                //     return "Blue";
-                // }
-            },
+            }
+            // , rowClass: function (data) {
+
+            //     if (data.tinhtrang === "Đang lưu hành") {
+            //         return "Green";
+            //     }
+            //     // if (data.name === "XYZ") {
+            //     //     return "Blue";
+            //     // }
+            // },
         },
         render: function () {
 
@@ -114,6 +116,9 @@ define(function (require) {
                             } 
                             else if (rowData.chungloailoaithietbi === "8") {
                                 return "Thiết bị lọc và hỗ trợ chức năng ";
+                            }
+                            else {
+                                return "";
                             }
                         }
                     },
