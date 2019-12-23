@@ -47,9 +47,10 @@ define(function (require) {
 					}),
 					success: function (response) {
 						if (response) {
-							// console.log('response', response);
-							self.getApp().notify("Đổi mật khẩu đã thành công");
-							window.location = self.getApp().serviceURL;
+							self.getApp().notify({ message: "Đổi mật khẩu đã thành công", delay: 1000  });
+							setTimeout(function(){
+								window.location = self.getApp().serviceURL;
+							}, 1000);
 						}
 
 

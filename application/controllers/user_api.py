@@ -166,6 +166,8 @@ async def luucacbuoc(request):
         return json(to_dict(new_buockiemtra))
 
 
+
+
     
 @app.route('api/v1/tokenuser', methods=["POST"])
 def tokenuser(request):
@@ -180,8 +182,8 @@ def tokenuser(request):
 
         email_info = {
             "from": {
-                "id": "kien97ym@gmail.com",
-                "password": "kocopass_1"
+                "id": "sothietbi@gmail.com",
+                "password": "kocopass"
             },
             "to": email,
             "message": "Mã token của bạn là" + str(token),
@@ -280,6 +282,20 @@ async def response_getmany_stt(request=None, Model=None, result=None, **kw):
                 datas.append(obj_tmp)
         result = datas
 
+async def check_maphong_giongnhau(request=None, data=None, result=None, **kw):
+    if data is not None:
+        if "ma" in data and data['ma'] is not None and data['ma'] != "":
+            check_existed = db.session.query(Phong).filter(Phong.ma == data['ma']).count()
+            if check_existed >0:
+                return json({"error_code":"PARAMS_ERROR", "error_message":"Mã danh mục đã bị trùng, vui lòng chọn mã khác"}, status=520)
+
+async def check_makhoa_giongnhau(request=None, data=None, result=None, **kw):
+    if data is not None:
+        if "ma" in data and data['ma'] is not None and data['ma'] != "":
+            check_existed = db.session.query(Khoa).filter(Khoa.ma == data['ma']).count()
+            if check_existed >0:
+                return json({"error_code":"PARAMS_ERROR", "error_message":"Mã danh mục đã bị trùng, vui lòng chọn mã khác"}, status=520)
+
 
 
 
@@ -358,7 +374,7 @@ sqlapimanager.create_api(Khoa, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func,check_makhoa_giongnhau], PUT_SINGLE=[auth_func]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='khoa')
 
@@ -366,7 +382,7 @@ sqlapimanager.create_api(Phong, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
-    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func], PUT_SINGLE=[auth_func]),
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func,check_maphong_giongnhau], PUT_SINGLE=[auth_func]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='phong')
 

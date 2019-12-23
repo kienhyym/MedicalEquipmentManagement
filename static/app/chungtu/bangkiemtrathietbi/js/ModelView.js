@@ -483,7 +483,7 @@ define(function (require) {
 								</div>
 								<div class="col-md-6">
 									<label>Ghi chú</label>
-									<textarea rows="6" style="padding:1px" type="text" class="form-control ghichu" placeholder="..." required=""></textarea>
+									<textarea rows="6"  type="text" class="form-control ghichu" placeholder="..." required=""></textarea>
 								</div>
 								<div class="col-md-2">
 									<label>Hình ảnh</label>

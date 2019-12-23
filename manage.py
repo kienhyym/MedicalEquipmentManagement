@@ -172,7 +172,6 @@ def create_default_user():
 
 @manager.command
 def run():  
-
     quocgiaa = db.session.query(QuocGia).first()
     if quocgiaa is None:
         add_danhsach_quocgia_tinhthanh()
