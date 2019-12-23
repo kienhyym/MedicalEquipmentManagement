@@ -49,6 +49,11 @@
         "type": "string",
         "length": 255
     },
+    "danhsachhanche": {
+        "type": "string",
+        "length": 255,
+        "default": "dangduocsudung"
+    },
     "bangphanloai": {
         "type": "string",
         "length": 255

@@ -10,8 +10,9 @@ define(function (require) {
 	var KhoaSelectView = require('app/hethong/khoa/view/SelectView');
 	var PhongSelectView = require('app/hethong/phong/view/SelectView');
 	var HangSanXuatSelectView = require('app/danhmuc/hangsanxuat/view/SelectView');
+	var QuyTrinhKiemTraItemView = require('app/chitietthietbi/js/QuyTrinhKiemTraView');
 
-	
+
 
 
 	return Gonrin.ModelView.extend({
@@ -45,15 +46,15 @@ define(function (require) {
 						command: function () {
 							var self = this;
 
-							if (self.model.get("trangthai") == null ){
+							if (self.model.get("trangthai") == null) {
 								self.getApp().notify({ message: "Bạn chưa cập nhật trạng thái thiết bị" }, { type: "danger", delay: 1000 });
 
 								return false;
 							}
-							else{
+							else {
 								self.model.save(null, {
 									success: function (model, respose, options) {
-	
+
 										self.getApp().notify("Lưu thông tin thành công");
 										self.getApp().getRouter().navigate(self.collectionName + "/collection");
 									},
@@ -72,7 +73,7 @@ define(function (require) {
 									}
 								});
 							}
-							
+
 
 
 						}
@@ -294,9 +295,55 @@ define(function (require) {
 
 			sessionStorage.clear();
 			var id = this.getApp().getRouter().getParam("id");
+
+
+			self.callBackFunc().then(res => {
+				console.log('xcxcxcxcxcxcxcxcxcxcxccccccccccccccccccccccc')
+				console.log("res", res)
+			})
+			// $.ajax({
+			// 	url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
+			// 	method: "GET",
+			// 	// data: "q=" + JSON.stringify(filters),
+			// 	contentType: "application/json",
+			// 	success: function (data) {
+			// 		console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', data.objects)
+			// 		self.$el.find('#cliy').click(function () {
+			// 			self.state = data.objects;
+
+			// 		})
+			// 	},
+			// 	error: function (xhr, status, error) {
+			// 	},
+			// })
+
+			var result
+			setTimeout(function(){ 
+				$.ajax({
+					url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
+					method: "GET",
+					// data: "q=" + JSON.stringify(filters),
+					contentType: "application/json",
+					success: function (data) {
+						// self.$el.find('#cliy2').click(function () {
+							console.log('xxxxxxxxxxxxx22222xxxxxxxxxxxxxxxxxx', self.state )
+	
+						// })
+					},
+					error: function (xhr, status, error) {
+						// self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+					},
+	
+				})
+	
+			}, 3000);
+			
+
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
+
+
 					// http://0.0.0.0:20808/#chitietthietbi/model?id=26204cbe-8744-4eec-b912-6a4f452c37ce
 					success: function (data) {
 
@@ -412,6 +459,8 @@ define(function (require) {
 
 
 
+
+
 						self.$el.find(".btn-taophieuyeucausuachua").unbind("click").bind("click", function () {
 							location.href = self.getApp().serviceURL + "/?#phieuyeucausuachua/model";
 							sessionStorage.setItem('TenThietBi', self.model.get("tenthietbi"));
@@ -457,19 +506,120 @@ define(function (require) {
 						self.$el.find(".btn-dskiemdinh").unbind("click").bind("click", function () {
 							location.href = self.getApp().serviceURL + "/?#bangkiemdinh/collection";
 							sessionStorage.setItem('IDThietBi', self.model.get("id"));
-							
+
 						})
 						self.applyBindings();
-
+						var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
+						if (quytrinhkiemtra === null) {
+							self.model.set("quytrinhkiemtrafield", []);
+						}
+						$.each(quytrinhkiemtra, function (idx, value) {
+							self.registerEvent(value);
+						});
+						self.cacBuoc();
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
 					},
+					complete: function () {
+						self.$el.find("#btn_add").unbind("click").bind("click", () => {
+							var data_default = {
+								"id": gonrin.uuid(),
+								"buockiemtra":self.model.get("quytrinhkiemtrafield").length+1,
+								// "thoigian": moment(moment().unix() * 1000).format(" HH:mm"),
+								"hinhanh": null,
+								"noidungkiemtra": null,
+								// "tranghthai": null,
+							}
+							var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
+							if (quytrinhkiemtra === null) {
+								quytrinhkiemtra = [];
+							}
+							quytrinhkiemtra.push(data_default);
+							self.model.set("quytrinhkiemtrafield", quytrinhkiemtra)
+							self.applyBindings("quytrinhkiemtrafield");
+							
+							self.registerEvent(data_default);
+							self.$el.find('#quytrinhkiemtra div .row .stt').each(function (index, item) {
+								$(item).html('Bước '+ (index + 1))
+							})
+							// self.$el.find('#quytrinhkiemtra div .row .tg').each(function (index, item) {
+							// 	// $(item).val(moment(moment().unix() * 1000).format("DD/MM/YYYY"))
+							// })
+						});
+					}
 				});
 			} else {
 				self.applyBindings();
 			}
 		},
 
+
+		callBackFunc: function (params) {
+			var self = this;
+			return new Promise(resove => {
+				$.ajax({
+					url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
+					method: "GET",
+					// data: "q=" + JSON.stringify(filters),
+					contentType: "application/json",
+					success: function (data) {
+						resove = data.objects;
+					},
+					error: function (xhr, status, error) {
+						resove = [];
+					},
+				})
+			});
+		},
+		registerEvent: function (data) {
+			const self = this;
+			var QuyTrinhKiemTraItem = new QuyTrinhKiemTraItemView();
+			if (!!data) {
+				QuyTrinhKiemTraItem.model.set(JSON.parse(JSON.stringify(data)));
+
+			}
+			QuyTrinhKiemTraItem.render();
+			self.$el.find("#quytrinhkiemtra").append(QuyTrinhKiemTraItem.$el);
+			QuyTrinhKiemTraItem.on("change", function (event) {
+				var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
+				console.log(quytrinhkiemtra)
+				if (quytrinhkiemtra === null) {
+					quytrinhkiemtra = [];
+					quytrinhkiemtra.push(event.data)
+				}
+				for (var i = 0; i < quytrinhkiemtra.length; i++) {
+					if (quytrinhkiemtra[i].id == event.oldData.id) {
+						quytrinhkiemtra[i] = event.data;
+						break;
+					}
+				}
+				console.log(quytrinhkiemtra)
+				self.model.set("quytrinhkiemtrafield", quytrinhkiemtra);
+				self.applyBindings("quytrinhkiemtrafield");
+			})
+
+			// QuyTrinhKiemTraItem.$el.find("#itemRemove").unbind("click").bind("click", function () {
+
+			// 	var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
+			// 	for (var i = 0; i < quytrinhkiemtra.length; i++) {
+			// 		if (quytrinhkiemtra[i].id === QuyTrinhKiemTraItem.model.get("id")) {
+			// 			quytrinhkiemtra.splice(i, 1);
+			// 		}
+			// 	}
+			// 	self.model.set("quytrinhkiemtrafield", quytrinhkiemtra);
+			// 	self.applyBinding("quytrinhkiemtrafield");
+			// 	QuyTrinhKiemTraItem.destroy();
+			// 	QuyTrinhKiemTraItem.remove();
+			// });
+
+
+		},
+		cacBuoc: function () {
+			var self = this;
+			self.$el.find('#quytrinhkiemtra div .row .stt').each(function (index, item) {
+				$(item).append('Bước ', index + 1)
+			})
+		}
 	});
 });

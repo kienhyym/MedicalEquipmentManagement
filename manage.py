@@ -165,13 +165,14 @@ def add_danhsach_xaphuong():
 @manager.command
 def create_default_user(): 
     #add user
-    user1 = User(email='admin@gmail.com', name='admin',phone_number="",password=auth.encrypt_password('zxc'))
-    db.session.add(user1)
+    user2 = User(email='admin', name='admin',vaitro=1,password=auth.encrypt_password('123456'))
+    db.session.add(user2)
     db.session.flush()
     db.session.commit()
 
 @manager.command
 def run():  
+
     quocgiaa = db.session.query(QuocGia).first()
     if quocgiaa is None:
         add_danhsach_quocgia_tinhthanh()

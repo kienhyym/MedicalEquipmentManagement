@@ -269,6 +269,29 @@ define(function (require) {
 			"icon": "fa fa-file-text-o",
 			"type": "category",
 			"entries": [
+				
+				
+				{
+					"text": "Kiểm tra thiết bị",
+					"icon": "fa fa-angle-double-right",
+					"type": "view",
+					"collectionName": "bangkiemtrathietbi",
+					"route": "bangkiemtrathietbi/collection",
+					"$ref": "app/chungtu/bangkiemtrathietbi/js/CollectionView",
+					"visible": function () {
+						return true
+		
+					}
+				},
+				{
+					"type": "view",
+					"collectionName": "bangkiemtrathietbi",
+					"route": "bangkiemtrathietbi/model(/:id)",
+					"$ref": "app/chungtu/bangkiemtrathietbi/js/ModelView",
+					"visible": function () {
+						return false;
+					}
+				},
 				{
 					"text": "Yêu cầu sửa chữa",
 					"icon": "fa fa-angle-double-right",
@@ -307,27 +330,6 @@ define(function (require) {
 					"collectionName": "bienbanxacnhantinhtrangthietbi",
 					"route": "bienbanxacnhantinhtrangthietbi/model(/:id)",
 					"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-				{
-					"text": "Kiểm tra hàng ngày",
-					"icon": "fa fa-angle-double-right",
-					"type": "view",
-					"collectionName": "bangkiemtrathietbi",
-					"route": "bangkiemtrathietbi/collection",
-					"$ref": "app/chungtu/bangkiemtrathietbi/js/CollectionView",
-					"visible": function () {
-						return true
-		
-					}
-				},
-				{
-					"type": "view",
-					"collectionName": "bangkiemtrathietbi",
-					"route": "bangkiemtrathietbi/model(/:id)",
-					"$ref": "app/chungtu/bangkiemtrathietbi/js/ModelView",
 					"visible": function () {
 						return false;
 					}

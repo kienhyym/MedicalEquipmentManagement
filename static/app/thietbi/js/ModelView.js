@@ -111,6 +111,17 @@ define(function (require) {
 					],
 				},
 				{
+					field: "danhsachhanche",
+					uicontrol: "combobox",
+					textField: "text",
+					valueField: "value",
+					dataSource: [
+						{ "value": "kimloainang", "text": "Thải kim loại nặng" },
+						{ "value": "hoachatkhongthanthien", "text": "Hóa chất không thân thiện" },
+						{ "value": "khong", "text": "Không" },
+					],
+				},
+				{
 					field: "chungloailoaithietbi",
 					uicontrol: "combobox",
 					textField: "text",

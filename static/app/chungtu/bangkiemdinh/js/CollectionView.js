@@ -153,9 +153,72 @@ define(function (require) {
 
         },
         render_grid: function (dataSource) {
-
             var self = this;
+            // self.$el.find('.thietbi').remove();
+            // self.$el.find('.xuongdong').remove();
+            // console.log(Math.ceil(dataSource.length/10))
+            // dataSource.forEach(function (item, index) {
+            //     if(index < 10){
+
+            //         self.$el.find('#grid-table').append(`<div class="thietbi row">
+            //         <div class="d-flex justify-content-center  align-items-center col-md-1 col-sm-1 col-2 p-0 stt">${item.stt}</div>
+            //         <div class="col-md-10 col-sm-10 col-8 p-0">
+            //             <div style="font-weight:bold">${item.tenthietbi}(Serial:${item.model_serial_number})</div>
+            //             <div class="row">
+            //                 <div class = "col-md-4">Ngày cấp: ${moment(item.ngaycap * 1000).local().format("DD/MM/YYYY")} </div>
+            //                 <div class = "col-md-4">Ngày hết hạn:${moment(item.ngayhethan * 1000).local().format("DD/MM/YYYY")}</div>
+            //             </div>
+            //             <div>Trạng thái :${item.tinhtrang}</div>
+            //         </div>
+            //         <div class="d-flex justify-content-center align-items-center col-md-1 col-sm-1 col-2 p-0 "><button class="btn btn-primary p-2">Chọn</button></div>
+            //         </div><hr class="xuongdong">`)
+            //     }
+
+            // })
+            // self.$el.find('.thietbi').each(function (indexHTML2, itemHTML2) {
+            //     $(itemHTML2).bind('click', function () {
+            //         var link = (dataSource[parseInt($(itemHTML2).find('.stt').html())-1].id)
+            //         self.getApp().getRouter().navigate("bangkiemdinh/model?id=" + link);
+
+            //     })
+            // })
+            // self.$el.find('.xxx').each(function (indexHTML, itemHTML) {
+
+            //     $(itemHTML).click(function () {
+            //         self.$el.find('.thietbi').remove();
+            //         self.$el.find('.xuongdong').remove();
+
+            //         dataSource.forEach(function (item, index) {
+            //             if ((indexHTML) * 10 <= index && index < (indexHTML + 1) * 10)
+            //                 self.$el.find('#grid-table').append(`<div class="thietbi row">
+            //             <div class="d-flex justify-content-center  align-items-center col-md-1 col-sm-1 col-2 p-0 stt">${item.stt}</div>
+            //             <div class="col-md-10 col-sm-10 col-8 p-0">
+            //                 <div style="font-weight:bold">${item.tenthietbi}(Serial:${item.model_serial_number})</div>
+            //                 <div class="row">
+            //                     <div class = "col-md-4">Ngày cấp: ${moment(item.ngaycap * 1000).local().format("DD/MM/YYYY")} </div>
+            //                     <div class = "col-md-4">Ngày hết hạn:${moment(item.ngayhethan * 1000).local().format("DD/MM/YYYY")}</div>
+            //                 </div>
+            //                 <div>Trạng thái :${item.tinhtrang}</div>
+            //             </div>
+            //             <div class="d-flex justify-content-center align-items-center col-md-1 col-sm-1 col-2 p-0 "><button class="btn btn-primary p-2">Chọn</button></div>
+            //             </div><hr class="xuongdong">`)
+            //         })
+
+            //         self.$el.find('.thietbi').each(function (indexHTML2, itemHTML2) {
+            //             $(itemHTML2).bind('click', function () {
+            //                 var link = (dataSource[parseInt($(itemHTML2).find('.stt').html())-1].id)
+            //                 self.getApp().getRouter().navigate("bangkiemdinh/model?id=" + link);
+
+            //             })
+            //         })
+            //     })
+            // })
+
+
+
+
             var element = self.$el.find("#grid-data");
+
             element.grid({
                 // showSortingIndicator: true,
                 orderByMode: "client",
@@ -165,52 +228,27 @@ define(function (require) {
                 noResultsClass: "alert alert-default no-records-found",
                 fields: [
                     {
-                        field: "stt",
                         label: "STT",
-                        width: "30px",
-                    },
-                    {
-                        field: "tenthietbi", label: "Tên thiết bị", width: 250, readonly: true,
-                    },
-                    {
-                        field: "model_serial_number", label: "Serial", width: 150, readonly: true,
-                    },
-                    {
-                        field: "ma_qltb", label: "Mã QLTB", width: 150, readonly: true,
-                    },
-                    {
-                        field: "ma", label: "Mã tem", width: 150, readonly: true,
-                    },
-                    {
-                        field: "ngaycap", label: "Ngày cấp",
                         template: function (rowData) {
-                            if (!!rowData && rowData.ngaycap) {
-
+                                return `<div  style="position: relative;" ><div style="position: absolute; top:10px;left:6px;">${rowData.stt}</div></div>`;
+                        
+                        },
+                        width:20
+                    },
+                    {
+                        label: "Phiếu",
+                        template: function (rowData) {
+                            if (!!rowData && rowData.ngayhethan && rowData.ngaycap) {
                                 var utcTolocal = function (times, format) {
                                     return moment(times * 1000).local().format(format);
                                 }
-                                // return template_helper.datetimeFormat(rowData.ngaythanhtra, "DD/MM/YYYY");
-                                return utcTolocal(rowData.ngaycap, "DD/MM/YYYY");
+                                return `<div style="position: relative;"><div class="d-flex align-items-center"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </div>${rowData.tenthietbi}</div><div class='row'><div class='col-md-4'>Ngày cấp:${utcTolocal(rowData.ngaycap, "DD/MM/YYYY")}</div><div class='col-md-4'>Ngày hết hạn:${utcTolocal(rowData.ngayhethan, "DD/MM/YYYY")}</div>`;
                             }
                             return "";
-                        },
-                        width: 150,
+                        }
                     },
-                    {
-                        field: "ngayhethan", label: "Ngày hết hạn",
-                        template: function (rowData) {
-                            if (!!rowData && rowData.ngayhethan) {
 
-                                var utcTolocal = function (times, format) {
-                                    return moment(times * 1000).local().format(format);
-                                }
-                                // return template_helper.datetimeFormat(rowData.ngaythanhtra, "DD/MM/YYYY");
-                                return utcTolocal(rowData.ngayhethan, "DD/MM/YYYY");
-                            }
-                            return "";
-                        },
-                        width: 150,
-                    },
                 ],
                 dataSource: dataSource,
                 primaryField: "id",
@@ -218,7 +256,7 @@ define(function (require) {
                 selectionMode: false,
                 pagination: {
                     page: 1,
-                    pageSize: 100
+                    pageSize: 10
                 },
                 events: {
                     "rowclick": function (e) {

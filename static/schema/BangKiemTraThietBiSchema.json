@@ -66,6 +66,11 @@
         "type": "string",
         "length": 5
     },
+    "daduyet": {
+        "type": "string",
+        "length": 10,
+        "default": "chuaduyet"
+    },
     "attachment": {
         "type": "string",
         "length": 255
@@ -78,5 +83,8 @@
     },
     "phong": {
         "type": "dict"
+    },
+    "buockiemtrafield": {
+        "type": "list"
     }
 }

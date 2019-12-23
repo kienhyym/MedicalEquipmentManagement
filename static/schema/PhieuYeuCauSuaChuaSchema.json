@@ -89,5 +89,10 @@
     "daxem": {
         "type": "string",
         "length": 5
+    },
+    "daduyet": {
+        "type": "string",
+        "length": 10,
+        "default": "chuaduyet"
     }
 }

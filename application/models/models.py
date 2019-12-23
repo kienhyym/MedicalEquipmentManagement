@@ -150,7 +150,15 @@ class ChiTietThietBi(CommonModel):
     bangkiemtrathietbifield = db.relationship('BangKiemTraThietBi', cascade="all, delete-orphan")
     bienbanxacnhantinhtrangthietbifield = db.relationship('BienBanXacNhanTinhTrangThietBi', cascade="all, delete-orphan")
     bangkiemdinhfield = db.relationship('BangKiemDinh', cascade="all, delete-orphan")
+    quytrinhkiemtrafield = db.relationship('QuyTrinhKiemTra', cascade="all, delete-orphan")
 
+class QuyTrinhKiemTra(CommonModel):
+    __tablename__ = 'quytrinhkiemtra'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    buockiemtra = db.Column(Integer()) 
+    noidungkiemtra = db.Column(String())
+    hinhanh = db.Column(String(255)) 
+    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
     
 class HangSanXuat(CommonModel):
     __tablename__ = 'hangsanxuat'
@@ -251,17 +259,16 @@ class BangKiemTraThietBi(CommonModel):
     daduyet = db.Column(String(10),default='chuaduyet')
     attachment = db.Column(String(255))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
-    quytrinhkiemtrafield = db.relationship('QuyTrinhKiemTra', cascade="all, delete-orphan")
-
-
-class QuyTrinhKiemTra(CommonModel):
-    __tablename__ = 'quytrinhkiemtra'
+    buockiemtrafield = db.relationship('BuocKiemTra', cascade="all, delete-orphan")
+    
+class BuocKiemTra(CommonModel):
+    __tablename__ = 'buockiemtra'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    thoigian = db.Column(String(255))
-    noidungkiemtra = db.Column(String(255))
-    hinhanh = db.Column(String(255)) 
-    ghichu = db.Column(JSONB)
-    tranghthai = db.Column(String(50))
+    ghichu = db.Column(String(255))
+    buockiemtra = db.Column(Integer()) 
+    hinhanh = db.Column(String()) 
+    thoigian = db.Column(String(255)) 
+    tinhtrang = db.Column(String(255)) 
     bangkiemtrathietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('bangkiemtrathietbi.id'), nullable=True)
 
 

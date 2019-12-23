@@ -25,17 +25,25 @@
         "type": "string",
         "primary": true
     },
-    "buockiemtra": {
-        "type": "number"
-    },
-    "noidungkiemtra": {
-        "type": "string"
-    },
-    "hinhanh": {
+    "ghichu": {
         "type": "string",
         "length": 255
     },
-    "chitietthietbi_id": {
+    "buockiemtra": {
+        "type": "number"
+    },
+    "hinhanh": {
+        "type": "string"
+    },
+    "thoigian": {
+        "type": "string",
+        "length": 255
+    },
+    "tinhtrang": {
+        "type": "string",
+        "length": 255
+    },
+    "bangkiemtrathietbi_id": {
         "type": "string"
     }
 }
