@@ -10,7 +10,6 @@ define(function (require) {
 	var KhoaSelectView = require('app/hethong/khoa/view/SelectView');
 	var PhongSelectView = require('app/hethong/phong/view/SelectView');
 	var HangSanXuatSelectView = require('app/danhmuc/hangsanxuat/view/SelectView');
-	var QuyTrinhKiemTraItemView = require('app/chitietthietbi/js/QuyTrinhKiemTraView');
 
 
 
@@ -295,58 +294,11 @@ define(function (require) {
 
 			sessionStorage.clear();
 			var id = this.getApp().getRouter().getParam("id");
-
-
-			self.callBackFunc().then(res => {
-				console.log('xcxcxcxcxcxcxcxcxcxcxccccccccccccccccccccccc')
-				console.log("res", res)
-			})
-			// $.ajax({
-			// 	url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
-			// 	method: "GET",
-			// 	// data: "q=" + JSON.stringify(filters),
-			// 	contentType: "application/json",
-			// 	success: function (data) {
-			// 		console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', data.objects)
-			// 		self.$el.find('#cliy').click(function () {
-			// 			self.state = data.objects;
-
-			// 		})
-			// 	},
-			// 	error: function (xhr, status, error) {
-			// 	},
-			// })
-
-			var result
-			setTimeout(function(){ 
-				$.ajax({
-					url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
-					method: "GET",
-					// data: "q=" + JSON.stringify(filters),
-					contentType: "application/json",
-					success: function (data) {
-						// self.$el.find('#cliy2').click(function () {
-							console.log('xxxxxxxxxxxxx22222xxxxxxxxxxxxxxxxxx', self.state )
-	
-						// })
-					},
-					error: function (xhr, status, error) {
-						// self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
-					},
-	
-				})
-	
-			}, 3000);
-			
-
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
-
-
 					// http://0.0.0.0:20808/#chitietthietbi/model?id=26204cbe-8744-4eec-b912-6a4f452c37ce
 					success: function (data) {
-
 						var qrcode = new QRCode("id_qrcodeMini", {
 							text: "www://" + self.getApp().serviceURL + "/#chitietthietbi/model?id=" + self.model.get("id"),
 							width: 40,
@@ -371,94 +323,6 @@ define(function (require) {
 							self.$el.find('.dialogView').hide()
 							self.$el.find('.bodychitiet').css("opacity", "1");
 						})
-
-
-						// self.$el.find(".tensp").html("Thiết bị: " + self.model.get("tenthietbi"))
-						// var danhsachyeucausuachua = self.model.get('phieuyeucausuachuafield');
-						// danhsachyeucausuachua.sort(function (a, b) {
-						// 	var thoigiantaoA = a.created_at
-						// 	var thoigiantaoB = b.created_at
-						// 	if (thoigiantaoA < thoigiantaoB) {
-						// 		return 1;
-						// 	}
-						// 	if (thoigiantaoA > thoigiantaoB) {
-						// 		return -1;
-						// 	}
-						// 	return 0;
-						// });
-
-						// danhsachyeucausuachua.forEach(function (item, index) {
-						// 	self.$el.find("#danhsachyeucausuachua").append("<tr><td class='p-2'>" + item.ma_qltb + "</td><td class='p-2'>" + moment(item.ngay_suco * 1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.nguoisudung + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href=" + self.getApp().serviceURL + "/?#phieuyeucausuachua/model?id=" + item.id + ">Xem chi tiết</a></td></tr>")
-						// })
-
-						// self.$el.find(".btn-them").unbind("click").bind("click", function () {
-						// 	location.href = self.getApp().serviceURL + "/?#phieuyeucausuachua/model";
-						// 	sessionStorage.setItem('TenSanPham', self.$el.find("#tensp").val());
-						// 	sessionStorage.setItem('IDSanPham', self.model.get("id"));
-						// })
-
-
-
-
-						// var bangkiemtrathietbi = self.model.get('bangkiemtrathietbifield');
-						// bangkiemtrathietbi.sort(function (a, b) {
-						// 	var thoigiantaoA = a.created_at
-						// 	var thoigiantaoB = b.created_at
-						// 	if (thoigiantaoA < thoigiantaoB) {
-						// 		return 1;
-						// 	}
-						// 	if (thoigiantaoA > thoigiantaoB) {
-						// 		return -1;
-						// 	}
-						// 	return 0;
-						// });
-						// bangkiemtrathietbi.forEach(function (item, index) {
-						// 	self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tenthietbi + "</td><td class='p-2'>" +moment(item.ngay*1000).format("DD/MM/YYYY") + "</td><td class='p-2'>" + item.tinhtrang + "</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href="+self.getApp().serviceURL+ "/?#bangkiemtrathietbi/model?id="+item.id+">Xem chi tiết</a></td></tr>")
-
-						// })
-						// self.$el.find(".btn-them2").unbind("click").bind("click", function () {
-						// 	location.href = self.getApp().serviceURL + "/?#bangkiemtrathietbi/model";
-						// 	sessionStorage.setItem('TenThietBi',self.model.get("model_serial_number"));
-						// 	sessionStorage.setItem('IDThietBi', self.model.get("id"));
-						// })
-
-
-
-
-						// var bangkiemtrathietbi = self.model.get('bangkiemtrathietbifield');
-						// bangkiemtrathietbi.sort(function (a, b) {
-						// 	var thoigiantaoA = a.created_at
-						// 	var thoigiantaoB = b.created_at
-						// 	if (thoigiantaoA < thoigiantaoB) {
-						// 		return 1;
-						// 	}
-						// 	if (thoigiantaoA > thoigiantaoB) {
-						// 		return -1;
-						// 	}
-						// 	return 0;
-						// });
-						// bangkiemtrathietbi.forEach(function (item, index) {
-						// 	console.log(item)
-						// 	self.$el.find("#danhsachhosokiemtrathietbi").append("<tr><td class='p-2'>" + item.tinhtrang +
-						// 		"</td><td class='p-2'>" + moment(item.ngay * 1000).format("DD/MM/YYYY") +
-						// 		"</td><td class='p-2'>" + item.nguoikiemtra +
-
-						// 		"</td><td class='p-1'><a class='btn btn-info btn-sm btn-chitiet p-1' href=" +
-						// 		self.getApp().serviceURL + "/?#bangkiemtrathietbi/model?id=" + item.id + ">Xem chi tiết</a></td></tr>")
-
-						// })
-						// self.$el.find(".btn-them2").unbind("click").bind("click", function () {
-						// 	location.href = self.getApp().serviceURL + "/?#bangkiemtrathietbi/model";
-						// 	sessionStorage.setItem('TenThietBi', self.model.get("tenthietbi"));
-						// 	sessionStorage.setItem('IDThietBi', self.model.get("id"));
-						// 	sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
-						// 	sessionStorage.setItem('MaQLTBThietBi', self.model.get("ma_qltb"));
-						// })
-
-
-
-
-
 
 
 						self.$el.find(".btn-taophieuyeucausuachua").unbind("click").bind("click", function () {
@@ -509,45 +373,12 @@ define(function (require) {
 
 						})
 						self.applyBindings();
-						var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
-						if (quytrinhkiemtra === null) {
-							self.model.set("quytrinhkiemtrafield", []);
-						}
-						$.each(quytrinhkiemtra, function (idx, value) {
-							self.registerEvent(value);
-						});
-						self.cacBuoc();
+					
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
 					},
-					complete: function () {
-						self.$el.find("#btn_add").unbind("click").bind("click", () => {
-							var data_default = {
-								"id": gonrin.uuid(),
-								"buockiemtra":self.model.get("quytrinhkiemtrafield").length+1,
-								// "thoigian": moment(moment().unix() * 1000).format(" HH:mm"),
-								"hinhanh": null,
-								"noidungkiemtra": null,
-								// "tranghthai": null,
-							}
-							var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
-							if (quytrinhkiemtra === null) {
-								quytrinhkiemtra = [];
-							}
-							quytrinhkiemtra.push(data_default);
-							self.model.set("quytrinhkiemtrafield", quytrinhkiemtra)
-							self.applyBindings("quytrinhkiemtrafield");
-							
-							self.registerEvent(data_default);
-							self.$el.find('#quytrinhkiemtra div .row .stt').each(function (index, item) {
-								$(item).html('Bước '+ (index + 1))
-							})
-							// self.$el.find('#quytrinhkiemtra div .row .tg').each(function (index, item) {
-							// 	// $(item).val(moment(moment().unix() * 1000).format("DD/MM/YYYY"))
-							// })
-						});
-					}
+				
 				});
 			} else {
 				self.applyBindings();
@@ -555,71 +386,6 @@ define(function (require) {
 		},
 
 
-		callBackFunc: function (params) {
-			var self = this;
-			return new Promise(resove => {
-				$.ajax({
-					url: self.getApp().serviceURL + "/api/v1/bangkiemtrathietbi?results_per_page=100000&max_results_per_page=1000000",
-					method: "GET",
-					// data: "q=" + JSON.stringify(filters),
-					contentType: "application/json",
-					success: function (data) {
-						resove = data.objects;
-					},
-					error: function (xhr, status, error) {
-						resove = [];
-					},
-				})
-			});
-		},
-		registerEvent: function (data) {
-			const self = this;
-			var QuyTrinhKiemTraItem = new QuyTrinhKiemTraItemView();
-			if (!!data) {
-				QuyTrinhKiemTraItem.model.set(JSON.parse(JSON.stringify(data)));
-
-			}
-			QuyTrinhKiemTraItem.render();
-			self.$el.find("#quytrinhkiemtra").append(QuyTrinhKiemTraItem.$el);
-			QuyTrinhKiemTraItem.on("change", function (event) {
-				var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
-				console.log(quytrinhkiemtra)
-				if (quytrinhkiemtra === null) {
-					quytrinhkiemtra = [];
-					quytrinhkiemtra.push(event.data)
-				}
-				for (var i = 0; i < quytrinhkiemtra.length; i++) {
-					if (quytrinhkiemtra[i].id == event.oldData.id) {
-						quytrinhkiemtra[i] = event.data;
-						break;
-					}
-				}
-				console.log(quytrinhkiemtra)
-				self.model.set("quytrinhkiemtrafield", quytrinhkiemtra);
-				self.applyBindings("quytrinhkiemtrafield");
-			})
-
-			// QuyTrinhKiemTraItem.$el.find("#itemRemove").unbind("click").bind("click", function () {
-
-			// 	var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
-			// 	for (var i = 0; i < quytrinhkiemtra.length; i++) {
-			// 		if (quytrinhkiemtra[i].id === QuyTrinhKiemTraItem.model.get("id")) {
-			// 			quytrinhkiemtra.splice(i, 1);
-			// 		}
-			// 	}
-			// 	self.model.set("quytrinhkiemtrafield", quytrinhkiemtra);
-			// 	self.applyBinding("quytrinhkiemtrafield");
-			// 	QuyTrinhKiemTraItem.destroy();
-			// 	QuyTrinhKiemTraItem.remove();
-			// });
-
-
-		},
-		cacBuoc: function () {
-			var self = this;
-			self.$el.find('#quytrinhkiemtra div .row .stt').each(function (index, item) {
-				$(item).append('Bước ', index + 1)
-			})
-		}
+		
 	});
 });

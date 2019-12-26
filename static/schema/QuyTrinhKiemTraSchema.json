@@ -35,7 +35,7 @@
         "type": "string",
         "length": 255
     },
-    "chitietthietbi_id": {
+    "thietbi_id": {
         "type": "string"
     }
 }

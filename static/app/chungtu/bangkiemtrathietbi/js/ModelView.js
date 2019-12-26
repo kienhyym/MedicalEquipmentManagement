@@ -312,14 +312,13 @@ define(function (require) {
 			}
 			$.ajax({
 				type: "GET",
-				url: self.getApp().serviceURL + "/api/v1/chitietthietbi?results_per_page=100000&max_results_per_page=1000000",
+				url: self.getApp().serviceURL + "/api/v1/thietbi?results_per_page=100000&max_results_per_page=1000000",
 				data: "q=" + JSON.stringify(filters),
 				contentType: "application/json",
 				success: function (response) {
 					var quytrinh = response.objects[0].quytrinhkiemtrafield;
 					quytrinh.forEach(function (item, index) {
 						self.$el.find('#quytrinhkiemtra').append(`
-
 						<div class="row col-md-12">
 							<div class="col-md-1 p-0 mt-3 buoc">
 									<div class="text-center">

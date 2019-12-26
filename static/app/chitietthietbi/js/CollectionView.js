@@ -13,23 +13,23 @@ define(function (require) {
         urlPrefix: "/api/v1/",
         collectionName: "chitietthietbi",
         tools: [
-			{
-				name: "defaultgr",
-				type: "group",
-				groupClass: "toolbar-group",
-				buttons: [
-					{
-						name: "back",
-						type: "button",
-						buttonClass: "btn-default btn-sm",
-						label: "TRANSLATE:Quay lại",
-						command: function () {
-							var self = this;
-							Backbone.history.history.back();
-						}
-					},
+            {
+                name: "defaultgr",
+                type: "group",
+                groupClass: "toolbar-group",
+                buttons: [
+                    {
+                        name: "back",
+                        type: "button",
+                        buttonClass: "btn-default btn-sm",
+                        label: "TRANSLATE:Quay lại",
+                        command: function () {
+                            var self = this;
+                            Backbone.history.history.back();
+                        }
+                    },
                 ],
-			}],
+            }],
         // uiControl: {
         //     fields: [
         //         {
@@ -320,7 +320,7 @@ define(function (require) {
                         var arrChungLoai = [];
 
                         data.objects.forEach(function (itemcl, index) {
-                            console.log(itemcl.chungloailoaithietbi,boloc)
+                            console.log(itemcl.chungloailoaithietbi, boloc)
                             if (itemcl.chungloailoaithietbi === boloc) {
                                 itemcl.stt = i;
                                 i++;
@@ -400,7 +400,7 @@ define(function (require) {
                     {
                         field: "model_serial_number", label: "Serial", width: 150, readonly: true,
                     },
-                  
+
                     {
                         field: "trangthai",
                         label: "Trạng thái",
@@ -424,7 +424,7 @@ define(function (require) {
                             else if (rowData.trangthai === null) {
                                 return "";
                             }
-                           
+
                         }
                     },
                     {
@@ -456,11 +456,14 @@ define(function (require) {
                             else if (rowData.chungloailoaithietbi === "8") {
                                 return "Thiết bị lọc và hỗ trợ chức năng ";
                             }
-                           
+                            else {
+                                return ""
+                            }
+
                         }
                     },
-                    
-                   
+
+
                 ],
                 dataSource: dataSource,
                 primaryField: "id",

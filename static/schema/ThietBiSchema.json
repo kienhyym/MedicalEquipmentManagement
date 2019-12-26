@@ -68,5 +68,8 @@
     },
     "chitietsanphamfield": {
         "type": "list"
+    },
+    "quytrinhkiemtrafield": {
+        "type": "list"
     }
 }

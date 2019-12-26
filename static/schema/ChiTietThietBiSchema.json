@@ -133,8 +133,5 @@
     },
     "bangkiemdinhfield": {
         "type": "list"
-    },
-    "quytrinhkiemtrafield": {
-        "type": "list"
     }
 }

@@ -113,6 +113,7 @@ class ThietBi(CommonModel):
     congkhaiphanloai = db.Column(String(255))
     chungloailoaithietbi = db.Column(String(255))
     chitietsanphamfield = db.relationship('ChiTietThietBi', cascade="all, delete-orphan")
+    quytrinhkiemtrafield = db.relationship('QuyTrinhKiemTra', cascade="all, delete-orphan")
 
 class ChiTietThietBi(CommonModel):
     __tablename__ = 'chitietthietbi'
@@ -150,7 +151,6 @@ class ChiTietThietBi(CommonModel):
     bangkiemtrathietbifield = db.relationship('BangKiemTraThietBi', cascade="all, delete-orphan")
     bienbanxacnhantinhtrangthietbifield = db.relationship('BienBanXacNhanTinhTrangThietBi', cascade="all, delete-orphan")
     bangkiemdinhfield = db.relationship('BangKiemDinh', cascade="all, delete-orphan")
-    quytrinhkiemtrafield = db.relationship('QuyTrinhKiemTra', cascade="all, delete-orphan")
 
 class QuyTrinhKiemTra(CommonModel):
     __tablename__ = 'quytrinhkiemtra'
@@ -158,7 +158,7 @@ class QuyTrinhKiemTra(CommonModel):
     buockiemtra = db.Column(Integer()) 
     noidungkiemtra = db.Column(String())
     hinhanh = db.Column(String(255)) 
-    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
+    thietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('thietbi.id'), nullable=True)
     
 class HangSanXuat(CommonModel):
     __tablename__ = 'hangsanxuat'
