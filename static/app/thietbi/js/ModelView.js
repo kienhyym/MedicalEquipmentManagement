@@ -187,6 +187,12 @@ define(function (require) {
 							sessionStorage.setItem('ChungLoai', self.model.get("chungloailoaithietbi"));
 						})
 						var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
+						quytrinhkiemtra.sort(function(a, b){
+							if (a.buockiemtra< b.buockiemtra) {return -1;}
+							if (a.buockiemtra > b.buockiemtra) {return 1;}
+							return 0;
+						});
+						console.log(quytrinhkiemtra)
 						if (quytrinhkiemtra === null) {
 							self.model.set("quytrinhkiemtrafield", []);
 						}
@@ -271,16 +277,18 @@ define(function (require) {
 			}
 		},
 		registerEvent: function (data) {
+			
+			
 			const self = this;
 			var QuyTrinhKiemTraItem = new QuyTrinhKiemTraView();
 			if (!!data) {
 				QuyTrinhKiemTraItem.model.set(JSON.parse(JSON.stringify(data)));
-
 			}
 			QuyTrinhKiemTraItem.render();
 			self.$el.find("#quytrinhkiemtra").append(QuyTrinhKiemTraItem.$el);
 			QuyTrinhKiemTraItem.on("change", function (event) {
 				var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
+				
 				if (quytrinhkiemtra === null) {
 					quytrinhkiemtra = [];
 					quytrinhkiemtra.push(event.data)
@@ -295,19 +303,38 @@ define(function (require) {
 				self.applyBindings("quytrinhkiemtrafield");
 			})
 
-			// QuyTrinhKiemTraItem.$el.find("#itemRemove").unbind("click").bind("click", function () {
+			QuyTrinhKiemTraItem.$el.find("#itemRemove").unbind("click").bind("click", function () {
 
-			// 	var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
-			// 	for (var i = 0; i < quytrinhkiemtra.length; i++) {
-			// 		if (quytrinhkiemtra[i].id === QuyTrinhKiemTraItem.model.get("id")) {
-			// 			quytrinhkiemtra.splice(i, 1);
-			// 		}
-			// 	}
-			// 	self.model.set("quytrinhkiemtrafield", quytrinhkiemtra);
-			// 	self.applyBinding("quytrinhkiemtrafield");
-			// 	QuyTrinhKiemTraItem.destroy();
-			// 	QuyTrinhKiemTraItem.remove();
-			// });
+				var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
+				for (var i = 0; i < quytrinhkiemtra.length; i++) {
+					if (quytrinhkiemtra[i].id === QuyTrinhKiemTraItem.model.get("id")) {
+						quytrinhkiemtra.splice(i, 1);
+					}
+				}
+				self.model.set("quytrinhkiemtrafield", quytrinhkiemtra);
+				self.applyBinding("quytrinhkiemtrafield");
+				QuyTrinhKiemTraItem.destroy();
+				QuyTrinhKiemTraItem.remove();
+				self.model.save(null, {
+					success: function (model, respose, options) {
+						
+						self.getApp().notify("Xóa thông tin thành công");
+					},
+					error: function (xhr, status, error) {
+						try {
+							if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+								self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+								self.getApp().getRouter().navigate("login");
+							} else {
+								self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+							}
+						}
+						catch (err) {
+							self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+						}
+					}
+				});
+			});
 
 
 		},
