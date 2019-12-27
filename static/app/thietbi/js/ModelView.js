@@ -203,30 +203,66 @@ define(function (require) {
 						self.getApp().notify("Get data Eror");
 					},
 					complete: function () {
-						self.$el.find("#btn_add").unbind("click").bind("click", () => {
-							var data_default = {
-								"id": gonrin.uuid(),
-								"buockiemtra": self.model.get("quytrinhkiemtrafield").length + 1,
-								// "thoigian": moment(moment().unix() * 1000).format(" HH:mm"),
-								"hinhanh": null,
-								"noidungkiemtra": self.$el.find('#noidung').val(),
-								// "tranghthai": null,
-							}
-							var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
-							if (quytrinhkiemtra === null) {
-								quytrinhkiemtra = [];
-							}
-							quytrinhkiemtra.push(data_default);
-							self.model.set("quytrinhkiemtrafield", quytrinhkiemtra)
-							self.applyBindings("quytrinhkiemtrafield");
 
-							self.registerEvent(data_default);
-							self.$el.find('#quytrinhkiemtra div .row .stt').each(function (index, item) {
-								$(item).html('Bước ' + (index + 1))
-							})
-							// self.$el.find('#quytrinhkiemtra div .row .tg').each(function (index, item) {
-							// 	// $(item).val(moment(moment().unix() * 1000).format("DD/MM/YYYY"))
-							// })
+						self.$el.find("#btn_add").unbind("click").bind("click", () => {
+							console.log('xxxx')
+							if (self.$el.find("#noidung").val() !== "") {
+								var data_default = {
+									"id": gonrin.uuid(),
+									"buockiemtra": self.model.get("quytrinhkiemtrafield").length + 1,
+									// "thoigian": moment(moment().unix() * 1000).format(" HH:mm"),
+									"hinhanh": null,
+									"noidungkiemtra": self.$el.find('#noidung').val(),
+									// "tranghthai": null,
+								}
+								var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
+								if (quytrinhkiemtra === null) {
+									quytrinhkiemtra = [];
+								}
+
+								quytrinhkiemtra.push(data_default);
+								self.model.set("quytrinhkiemtrafield", quytrinhkiemtra)
+								self.applyBindings("quytrinhkiemtrafield");
+
+								self.registerEvent(data_default);
+								self.$el.find('#quytrinhkiemtra div .row .stt').each(function (index, item) {
+									$(item).html('Bước ' + (index + 1))
+								})
+								// self.$el.find('.noidungkiemtra').each(function (index, item) {
+								// 	$(item).addClass('col-md-12')
+								// })
+								// self.$el.find('.hinhanh').each(function (index, item) {
+								// 	$(item).css("display", "none");
+								// })
+
+								$(self.$el.find('.noidungkiemtra')[quytrinhkiemtra.length - 1]).addClass('col-md-12')
+								$(self.$el.find('.hinhanh')[quytrinhkiemtra.length - 1]).css("display", "none");
+
+								self.model.save(null, {
+									success: function (model, respose, options) {
+										self.$el.find("#noidung").val("")
+										self.getApp().notify("Lưu thông tin thành công");
+									},
+									error: function (xhr, status, error) {
+										try {
+											if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+												self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+												self.getApp().getRouter().navigate("login");
+											} else {
+												self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+											}
+										}
+										catch (err) {
+											self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+										}
+									}
+								});
+								// self.$el.find('#quytrinhkiemtra div .row .tg').each(function (index, item) {
+								// 	// $(item).val(moment(moment().unix() * 1000).format("DD/MM/YYYY"))
+								// })
+
+							}
+
 						});
 					}
 				});
@@ -372,32 +408,89 @@ define(function (require) {
 							var data_file = JSON.parse(http.responseText), link, p, t;
 							self.getApp().notify("Tải file thành công");
 							self.model.set(data_attr, data_file.link);
+							var linkhinhanh = data_file.link;
+							self.$el.find('#hinhanhnho').attr("src", data_file.link)
+
 							// console.log('data_file.link',data_file.link)
+
 							self.$el.find("#btn_add").unbind("click").bind("click", () => {
-								var data_default = {
-									"id": gonrin.uuid(),
-									"buockiemtra": self.model.get("quytrinhkiemtrafield").length + 1,
-									// "thoigian": moment(moment().unix() * 1000).format(" HH:mm"),
-									"hinhanh": data_file.link,
-									"noidungkiemtra": self.$el.find('#noidung').val(),
-									// "tranghthai": null,
-								}
+								if (self.$el.find("#noidung").val() !== "") {
+									var data_default = {
+										"id": gonrin.uuid(),
+										"buockiemtra": self.model.get("quytrinhkiemtrafield").length + 1,
+										// "thoigian": moment(moment().unix() * 1000).format(" HH:mm"),
+										"hinhanh": linkhinhanh,
+										"noidungkiemtra": self.$el.find('#noidung').val(),
+										// "tranghthai": null,
+									}
 
-								var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
-								if (quytrinhkiemtra === null) {
-									quytrinhkiemtra = [];
-								}
-								quytrinhkiemtra.push(data_default);
-								self.model.set("quytrinhkiemtrafield", quytrinhkiemtra)
-								self.applyBindings("quytrinhkiemtrafield");
+									var quytrinhkiemtra = self.model.get("quytrinhkiemtrafield");
+									if (quytrinhkiemtra === null) {
+										quytrinhkiemtra = [];
+									}
+									quytrinhkiemtra.push(data_default);
+									self.model.set("quytrinhkiemtrafield", quytrinhkiemtra)
+									self.applyBindings("quytrinhkiemtrafield");
 
-								self.registerEvent(data_default);
-								self.$el.find('#quytrinhkiemtra div .row .stt').each(function (index, item) {
-									$(item).html('Bước ' + (index + 1))
-								})
-								// self.$el.find('#quytrinhkiemtra div .row .tg').each(function (index, item) {
-								// 	// $(item).val(moment(moment().unix() * 1000).format("DD/MM/YYYY"))
-								// })
+									self.registerEvent(data_default);
+									self.$el.find('#quytrinhkiemtra div .row .stt').each(function (index, item) {
+										$(item).html('Bước ' + (index + 1))
+									})
+									if (linkhinhanh != null) {
+										$(self.$el.find('.noidungkiemtra')[quytrinhkiemtra.length - 1]).addClass('col-md-8')
+										$(self.$el.find('.hinhanh')[quytrinhkiemtra.length - 1]).addClass('col-md-4')
+										$(self.$el.find('.hinhanhthietbi')[quytrinhkiemtra.length - 1]).attr("src", linkhinhanh)
+										self.model.save(null, {
+											success: function (model, respose, options) {
+												self.$el.find('#hinhanhnho').removeAttr("src")
+												self.$el.find("#noidung").val("")
+												linkhinhanh = null;
+												self.getApp().notify("Lưu thông tin thành công");
+											},
+											error: function (xhr, status, error) {
+												try {
+													if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+														self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+														self.getApp().getRouter().navigate("login");
+													} else {
+														self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+													}
+												}
+												catch (err) {
+													self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+												}
+											}
+										});
+									}
+									else {
+										$(self.$el.find('.noidungkiemtra')[quytrinhkiemtra.length - 1]).addClass('col-md-12')
+										$(self.$el.find('.hinhanh')[quytrinhkiemtra.length - 1]).css("display", "none");
+										self.model.save(null, {
+											success: function (model, respose, options) {
+												self.$el.find('#hinhanhnho').removeAttr("src")
+												self.$el.find("#noidung").val("")
+												linkhinhanh = null;
+												self.getApp().notify("Lưu thông tin thành công");
+											},
+											error: function (xhr, status, error) {
+												try {
+													if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+														self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+														self.getApp().getRouter().navigate("login");
+													} else {
+														self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+													}
+												}
+												catch (err) {
+													self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+												}
+											}
+										});
+									}
+
+
+
+								}
 							});
 						}
 					} else {
