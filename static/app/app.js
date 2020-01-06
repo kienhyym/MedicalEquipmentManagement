@@ -32,7 +32,13 @@ require.config({
 });
 
 
-require(['jquery', 'gonrin', 'app/router', 'app/nav/NavbarView', 'text!app/base/tpl/mobilelayout.html', 'i18n!app/nls/app', 'vendor/lodash-4.17.10'],
+require(['jquery',
+	'gonrin',
+	'app/router',
+	'app/nav/NavbarView',
+	'text!app/base/tpl/mobilelayout.html',
+	'i18n!app/nls/app',
+	'vendor/lodash-4.17.10'],
 	function ($, Gonrin, Router, Nav, layout, lang, lodash) {
 		$.ajaxSetup({
 			headers: {
