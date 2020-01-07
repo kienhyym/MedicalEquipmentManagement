@@ -304,6 +304,144 @@ define(function (require) {
 								$(self.$el.find('.hinah')[index]).show()
 								$(self.$el.find('.closexxx')[index]).show()
 								$(self.$el.find('.hinah')[index]).attr('src', data_file.link)
+								if(self.model.get('id') == null){
+								$(self.$el.find('.closexxx')[index]).unbind('click').bind('click',function () {
+									$(self.$el.find('.hinah')[index]).attr('src', '#');
+					$(self.$el.find('.hinh')[index]).hide();
+					$(item).hide()
+									$(self.$el.find('.btn_luu')[index]).unbind('click').bind('click', function () {
+										$(self.$el.find('.hinah')[index]).hide();
+										$(self.$el.find('.hinh')[index]).hide();
+										$(self.$el.find('.btn-edit')[index]).show();
+										$(self.$el.find('.btn-back')[index]).hide();
+										$(self.$el.find('.closexxx')[index]).hide();
+	
+										$(self.$el.find('.ghichuthemnay')[index]).hide();
+										$(self.$el.find('.noidungghichu')[index]).html($(self.$el.find('.ghichuthem')[index]).val());
+										$(self.$el.find('.noidungghichu')[index]).show();
+										if (self.$el.find('.tot')[index].checked == true && self.$el.find('.kotot')[index].checked == false) {
+											$(self.$el.find('.radioKoTot')[index]).hide()
+										}
+										if (self.$el.find('.tot')[index].checked == false && self.$el.find('.kotot')[index].checked == true) {
+											$(self.$el.find('.radioTot')[index]).hide()
+										}
+										if ($(self.$el.find('.ghichuthem')[index]).val() == "") {
+											$(self.$el.find('.noidungghichu')[index]).hide()
+										}
+										var trangthai = null;
+										if (self.$el.find('.tot')[index].checked == true && self.$el.find('.kotot')[index].checked == false) {
+											trangthai = "ondinh";
+										}
+										if (self.$el.find('.tot')[index].checked == false && self.$el.find('.kotot')[index].checked == true) {
+											trangthai = "khongondinh";
+										}
+	
+										if (self.model.get('id') == null) {
+											self.model.save(null, {
+												success: function (model, respose, options) {
+													$.ajax({
+														url: self.getApp().serviceURL + "/api/v1/luucacbuoc",
+														method: "POST",
+														data: JSON.stringify({
+															id: gonrin.uuid(),
+															ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
+															hinhanh: "",
+															thoigian: moment(moment().unix() * 1000).format("HH:mm"),
+															buockiemtra: index + 1,
+															tinhtrang: trangthai,
+															bangkiemtrathietbi_id: self.model.get('id')
+														}),
+														contentType: "application/json",
+														success: function (data) {
+															self.getApp().notify({ message: "Lưu thành công" });
+															// window.location = self.getApp().serviceURL + "/#bangkiemtrathietbi/model?id=" + self.model.get('id');
+														},
+														error: function (xhr, status, error) {
+															self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+														},
+	
+	
+													})
+												},
+												error: function (xhr, status, error) {
+													try {
+														if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+															self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+															self.getApp().getRouter().navigate("login");
+														} else {
+															self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+														}
+													}
+													catch (err) {
+														self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+													}
+												}
+											});
+										}
+										else {
+											$.ajax({
+												url: self.getApp().serviceURL + "/api/v1/luucacbuoc",
+												method: "POST",
+												data: JSON.stringify({
+													ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
+													hinhanh: "",
+													thoigian: moment(moment().unix() * 1000).format("HH:mm"),
+													buockiemtra: index + 1,
+													tinhtrang: trangthai,
+													bangkiemtrathietbi_id: self.model.get('id')
+												}),
+												contentType: "application/json",
+												success: function (data) {
+													self.getApp().notify({ message: "Lưu thành công" });
+	
+												},
+												error: function (xhr, status, error) {
+													self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+												},
+	
+	
+											})
+										}
+	
+										$(self.$el.find('.btn-edit')[index]).unbind("click").bind('click', function () {
+											$(self.$el.find('.ghichuthemnay')[index]).toggle()
+											$(self.$el.find('.ghichuthem')[index]).html(item.ghichu)
+											$(self.$el.find('.noidungghichu')[index]).hide();
+											$(self.$el.find('.btn-edit')[index]).toggle()
+											$(self.$el.find('.btn-back')[index]).toggle()
+											$(self.$el.find('.hinah')[index]).hide();
+											$(self.$el.find('.hinh')[index]).hide()
+											$(self.$el.find('.closexxx')[index]).hide();
+	
+											$(self.$el.find('.radioKoTot')[index]).show();
+	
+											$(self.$el.find('.radioTot')[index]).show();
+										})
+										$(self.$el.find('.btn-back')[index]).unbind("click").bind('click', function () {
+											$(self.$el.find('.noidungghichu')[index]).show();
+											if ($(self.$el.find('.noidungghichu')[index]).text() == '' || $(self.$el.find('.noidungghichu')[index]).text() == null) {
+												$(self.$el.find('.noidungghichu')[index]).hide();
+	
+											}
+											$(self.$el.find('.noidungghichu')[index]).html(item.ghichu)
+											$(self.$el.find('.ghichuthemnay')[index]).toggle()
+											$(self.$el.find('.btn-edit')[index]).toggle()
+											$(self.$el.find('.btn-back')[index]).toggle()
+											$(self.$el.find('.closexxx')[index]).hide();
+	
+											$(self.$el.find('.hinah')[index]).hide();
+											$(self.$el.find('.hinh')[index]).hide()
+											if (item.tinhtrang == "ondinh") {
+												$(self.$el.find('.radioKoTot')[index]).toggle();
+											}
+											if (item.tinhtrang == "khongondinh") {
+												$(self.$el.find('.radioTot')[index]).toggle();
+											}
+										})
+									})
+								})
+								}
+								
 
 
 								$(self.$el.find('.btn_luu')[index]).unbind('click').bind('click', function () {
@@ -900,6 +1038,8 @@ define(function (require) {
 							url: self.getApp().serviceURL + "/api/v1/luucacbuoc",
 							method: "POST",
 							data: JSON.stringify({
+								id: gonrin.uuid(),
+
 								ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
 								hinhanh: "",
 								thoigian: moment(moment().unix() * 1000).format("HH:mm"),
