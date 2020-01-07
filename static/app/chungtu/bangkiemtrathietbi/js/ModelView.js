@@ -315,7 +315,8 @@ define(function (require) {
 										$(self.$el.find('.btn-edit')[index]).show();
 										$(self.$el.find('.btn-back')[index]).hide();
 										$(self.$el.find('.closexxx')[index]).hide();
-	
+										$(self.$el.find('.thoigian')[index]).html(moment(moment().unix() * 1000).format("HH:mm"));
+
 										$(self.$el.find('.ghichuthemnay')[index]).hide();
 										$(self.$el.find('.noidungghichu')[index]).html($(self.$el.find('.ghichuthem')[index]).val());
 										$(self.$el.find('.noidungghichu')[index]).show();
@@ -450,6 +451,7 @@ define(function (require) {
 									$(self.$el.find('.btn-edit')[index]).show();
 									$(self.$el.find('.btn-back')[index]).hide();
 									$(self.$el.find('.closexxx')[index]).hide();
+									$(self.$el.find('.thoigian')[index]).html(moment(moment().unix() * 1000).format("HH:mm"));
 
 									$(self.$el.find('.ghichuthemnay')[index]).hide();
 									$(self.$el.find('.noidungghichu')[index]).html($(self.$el.find('.ghichuthem')[index]).val());
@@ -607,7 +609,7 @@ define(function (require) {
 						self.$el.find('#quytrinhkiemtra').append(`
 						<div style="position:relative">
 									
-									<label style="position: absolute;top: 0px;right: 0px" class='thoigian'>09:00</label>
+									<label style="position: absolute;top: 0px;right: 0px" class='thoigian'></label>
 									<div class="buoc">
 										<label class="text-dark font-weight-bold">Bước <label class='m-0 stt text-dark font-weight-bold'>01</label></label>
 									</div>
@@ -690,15 +692,17 @@ define(function (require) {
 					self.bindEventSelect();
 					self.xoaHinhAnh(IDTB);
 					//Thay đổi chiều cao của ô ghi chú 
-					var item = self.$el.find('.ghichuthem')[0];
-					var chieucao = $(item)[0].scrollHeight;
-					$(item).keyup(function () {
-						if ($(item)[0].scrollHeight > chieucao) {
-							chieucao = $(item)[0].scrollHeight;
-							$(item)[0].style.height = chieucao + 'px';
 
-						}
+					self.$el.find('.ghichuthem').each(function (indexcao,itemcao) {
+						var chieucao = itemcao.scrollHeight;
+						$(itemcao).keyup(function () {
+							if (itemcao.scrollHeight > chieucao) {
+								chieucao = itemcao.scrollHeight;
+								itemcao.style.height = chieucao + 'px';
+							}
+						})
 					})
+					
 					//ẩn hiển hướng dẫn
 					self.$el.find('.buoc').click(function () {
 						$(".huongdan").toggle();
@@ -721,7 +725,7 @@ define(function (require) {
 							$(self.$el.find('.btn-edit')[index]).show();
 							$(self.$el.find('.btn-back')[index]).hide();
 							$(self.$el.find('.closexxx')[index]).hide();
-
+							$(self.$el.find('.thoigian')[index]).html(moment(moment().unix() * 1000).format("HH:mm"));
 							$(self.$el.find('.ghichuthemnay')[index]).hide();
 							$(self.$el.find('.noidungghichu')[index]).html($(self.$el.find('.ghichuthem')[index]).val());
 							$(self.$el.find('.noidungghichu')[index]).show();
@@ -1012,6 +1016,7 @@ define(function (require) {
 						$(self.$el.find('.btn-edit')[index]).show();
 						$(self.$el.find('.btn-back')[index]).hide();
 						$(self.$el.find('.closexxx')[index]).hide();
+						$(self.$el.find('.thoigian')[index]).html(moment(moment().unix() * 1000).format("HH:mm"));
 
 						$(self.$el.find('.ghichuthemnay')[index]).hide();
 						$(self.$el.find('.noidungghichu')[index]).html($(self.$el.find('.ghichuthem')[index]).val());
