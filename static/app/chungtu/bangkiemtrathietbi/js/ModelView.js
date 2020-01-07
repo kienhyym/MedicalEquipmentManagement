@@ -302,14 +302,17 @@ define(function (require) {
 								self.getApp().notify("Tải file thành công");
 								$(self.$el.find('.hinh')[index]).show()
 								$(self.$el.find('.hinah')[index]).show()
+								$(self.$el.find('.closexxx')[index]).show()
 								$(self.$el.find('.hinah')[index]).attr('src', data_file.link)
 								
 
 								$(self.$el.find('.btn_luu')[index]).unbind('click').bind('click', function () {
-									$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px" });
+									$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px","opacity":"1" });
 									$(self.$el.find('.hinh')[index]).addClass("justify-content-center");
 									$(self.$el.find('.btn-edit')[index]).show();
 									$(self.$el.find('.btn-back')[index]).hide();
+									$(self.$el.find('.closexxx')[index]).hide();
+
 									$(self.$el.find('.ghichuthemnay')[index]).hide();
 									$(self.$el.find('.noidungghichu')[index]).html($(self.$el.find('.ghichuthem')[index]).val());
 									$(self.$el.find('.noidungghichu')[index]).show();
@@ -396,6 +399,42 @@ define(function (require) {
 
 										})
 									}
+
+									$(self.$el.find('.btn-edit')[index]).unbind("click").bind('click', function () {
+										$(self.$el.find('.ghichuthemnay')[index]).toggle()
+										$(self.$el.find('.ghichuthem')[index]).html(item.ghichu)
+										$(self.$el.find('.noidungghichu')[index]).hide();
+										$(self.$el.find('.btn-edit')[index]).toggle()
+										$(self.$el.find('.btn-back')[index]).toggle()
+										$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "80px","opacity":"0.6" });
+										$(self.$el.find('.hinh')[index]).removeClass("justify-content-center")
+										$(self.$el.find('.closexxx')[index]).show();
+
+										$(self.$el.find('.radioKoTot')[index]).show();
+		
+										$(self.$el.find('.radioTot')[index]).show();
+									})
+									$(self.$el.find('.btn-back')[index]).unbind("click").bind('click', function () {
+										$(self.$el.find('.noidungghichu')[index]).show();
+										if($(self.$el.find('.noidungghichu')[index]).text() == '' || $(self.$el.find('.noidungghichu')[index]).text() == null){
+											$(self.$el.find('.noidungghichu')[index]).hide();
+		
+										}
+										$(self.$el.find('.noidungghichu')[index]).html(item.ghichu)
+										$(self.$el.find('.ghichuthemnay')[index]).toggle()
+										$(self.$el.find('.btn-edit')[index]).toggle()
+										$(self.$el.find('.btn-back')[index]).toggle()
+										$(self.$el.find('.closexxx')[index]).hide();
+
+										$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px","opacity":"1"});
+										$(self.$el.find('.hinh')[index]).addClass("justify-content-center")
+										if (item.tinhtrang == "ondinh") {
+											$(self.$el.find('.radioKoTot')[index]).toggle();
+										}
+										if (item.tinhtrang == "khongondinh") {
+											$(self.$el.find('.radioTot')[index]).toggle();
+										}
+									})
 								})
 							}
 						} else {
@@ -429,9 +468,7 @@ define(function (require) {
 					response.objects.forEach(function (item, index) {
 						self.$el.find('#quytrinhkiemtra').append(`
 						<div style="position:relative">
-									<i style="position: absolute;bottom: 0px;right: 0px;display:none"" class="fa fa-pencil-square-o btn-edit" aria-hidden="true"></i>
-									<i style="position: absolute;bottom: 0px;right: 0px;display:none" class="fa fa-reply-all btn-back" aria-hidden="true"></i>
-
+									
 									<label style="position: absolute;top: 0px;right: 0px" class='thoigian'>09:00</label>
 									<div class="buoc">
 										<label class="text-dark font-weight-bold">Bước <label class='m-0 stt text-dark font-weight-bold'>01</label></label>
@@ -492,10 +529,13 @@ define(function (require) {
 											</div>
 										
 											<label>&nbsp;</label>
-											<div class="hinh d-flex ">
-											<img src="static/img/user.png" style="width:80px;height:80px;display:none"  class="hinah">
+											<div class="hinh d-flex" style="position:relative">
+											<i class="fa fa-times-circle-o closexxx" aria-hidden="true" style="position: absolute;top: 3px;left: 68px;z-index:999;display:none;"></i>
+											<img src="static/img/user.png" style="width:80px;height:80px;display:none;opacity:0.6"  class="hinah">
 									</div>
 
+									<i style="position: absolute;bottom: 0px;right: 0px;display:none;z-index:999" class="fa fa-pencil-square-o btn-edit" aria-hidden="true"></i>
+									<i style="position: absolute;bottom: 0px;right: 0px;display:none;z-index:999" class="fa fa-reply-all btn-back" aria-hidden="true"></i>
 
 						</div>
 						<label>&nbsp;</label>
@@ -538,10 +578,12 @@ define(function (require) {
 					//Lưu thông tin
 					self.$el.find('.btn_luu').each(function (index, item) {
 						$(item).unbind('click').bind('click', function () {
-							$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px" });
+							$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px","opacity":"1" });
 							$(self.$el.find('.hinh')[index]).addClass("justify-content-center");
 							$(self.$el.find('.btn-edit')[index]).show();
 							$(self.$el.find('.btn-back')[index]).hide();
+							$(self.$el.find('.closexxx')[index]).hide();
+
 							$(self.$el.find('.ghichuthemnay')[index]).hide();
 							$(self.$el.find('.noidungghichu')[index]).html($(self.$el.find('.ghichuthem')[index]).val());
 							$(self.$el.find('.noidungghichu')[index]).show();
@@ -677,9 +719,11 @@ define(function (require) {
 								$(self.$el.find('.noidungghichu')[index]).hide();
 								$(self.$el.find('.btn-edit')[index]).toggle()
 								$(self.$el.find('.btn-back')[index]).toggle()
-								$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "80px" });
+								$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "80px","opacity":"0.6" });
 								$(self.$el.find('.hinh')[index]).removeClass("justify-content-center")
+								$(self.$el.find('.closexxx')[index]).show();
 								$(self.$el.find('.radioKoTot')[index]).show();
+
 								$(self.$el.find('.radioTot')[index]).show();
 							})
 							$(self.$el.find('.btn-back')[index]).unbind("click").bind('click', function () {
@@ -692,7 +736,9 @@ define(function (require) {
 								$(self.$el.find('.ghichuthemnay')[index]).toggle()
 								$(self.$el.find('.btn-edit')[index]).toggle()
 								$(self.$el.find('.btn-back')[index]).toggle()
-								$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px" });
+								$(self.$el.find('.closexxx')[index]).hide();
+
+								$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px","opacity":"1" });
 								$(self.$el.find('.hinh')[index]).addClass("justify-content-center")
 								if (item.tinhtrang == "ondinh") {
 									$(self.$el.find('.radioKoTot')[index]).toggle();
@@ -768,6 +814,8 @@ define(function (require) {
 							$(self.$el.find('.noidungghichu')[item.buockiemtra - 1]).hide();
 							$(self.$el.find('.btn-edit')[item.buockiemtra - 1]).toggle()
 							$(self.$el.find('.btn-back')[item.buockiemtra - 1]).toggle()
+							$(self.$el.find('.closexxx')[item.buockiemtra -1 ]).show();
+
 							$(self.$el.find('.hinah')[item.buockiemtra - 1]).css({ "height": "auto", "width": "80px" });
 							$(self.$el.find('.hinh')[item.buockiemtra - 1]).removeClass("justify-content-center")
 							$(self.$el.find('.radioKoTot')[item.buockiemtra - 1]).show();
@@ -781,6 +829,8 @@ define(function (require) {
 							$(self.$el.find('.ghichuthemnay')[item.buockiemtra - 1]).toggle()
 							$(self.$el.find('.btn-edit')[item.buockiemtra - 1]).toggle()
 							$(self.$el.find('.btn-back')[item.buockiemtra - 1]).toggle()
+							$(self.$el.find('.closexxx')[item.buockiemtra - 1]).hide();
+
 							$(self.$el.find('.hinah')[item.buockiemtra - 1]).css({ "height": "auto", "width": "200px" });
 							$(self.$el.find('.hinh')[item.buockiemtra - 1]).addClass("justify-content-center")
 							if (item.tinhtrang == "ondinh") {
