@@ -304,10 +304,10 @@ define(function (require) {
 								$(self.$el.find('.hinah')[index]).show()
 								$(self.$el.find('.closexxx')[index]).show()
 								$(self.$el.find('.hinah')[index]).attr('src', data_file.link)
-								
+
 
 								$(self.$el.find('.btn_luu')[index]).unbind('click').bind('click', function () {
-									$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px","opacity":"1" });
+									$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px", "opacity": "1" });
 									$(self.$el.find('.hinh')[index]).addClass("justify-content-center");
 									$(self.$el.find('.btn-edit')[index]).show();
 									$(self.$el.find('.btn-back')[index]).hide();
@@ -406,19 +406,19 @@ define(function (require) {
 										$(self.$el.find('.noidungghichu')[index]).hide();
 										$(self.$el.find('.btn-edit')[index]).toggle()
 										$(self.$el.find('.btn-back')[index]).toggle()
-										$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "80px","opacity":"0.6" });
+										$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "80px", "opacity": "0.6" });
 										$(self.$el.find('.hinh')[index]).removeClass("justify-content-center")
 										$(self.$el.find('.closexxx')[index]).show();
 
 										$(self.$el.find('.radioKoTot')[index]).show();
-		
+
 										$(self.$el.find('.radioTot')[index]).show();
 									})
 									$(self.$el.find('.btn-back')[index]).unbind("click").bind('click', function () {
 										$(self.$el.find('.noidungghichu')[index]).show();
-										if($(self.$el.find('.noidungghichu')[index]).text() == '' || $(self.$el.find('.noidungghichu')[index]).text() == null){
+										if ($(self.$el.find('.noidungghichu')[index]).text() == '' || $(self.$el.find('.noidungghichu')[index]).text() == null) {
 											$(self.$el.find('.noidungghichu')[index]).hide();
-		
+
 										}
 										$(self.$el.find('.noidungghichu')[index]).html(item.ghichu)
 										$(self.$el.find('.ghichuthemnay')[index]).toggle()
@@ -426,7 +426,7 @@ define(function (require) {
 										$(self.$el.find('.btn-back')[index]).toggle()
 										$(self.$el.find('.closexxx')[index]).hide();
 
-										$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px","opacity":"1"});
+										$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px", "opacity": "1" });
 										$(self.$el.find('.hinh')[index]).addClass("justify-content-center")
 										if (item.tinhtrang == "ondinh") {
 											$(self.$el.find('.radioKoTot')[index]).toggle();
@@ -550,7 +550,7 @@ define(function (require) {
 						})
 					}
 					self.bindEventSelect();
-
+					self.xoaHinhAnh(IDTB);
 					//Thay đổi chiều cao của ô ghi chú 
 					var item = self.$el.find('.ghichuthem')[0];
 					var chieucao = $(item)[0].scrollHeight;
@@ -578,7 +578,7 @@ define(function (require) {
 					//Lưu thông tin
 					self.$el.find('.btn_luu').each(function (index, item) {
 						$(item).unbind('click').bind('click', function () {
-							$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px","opacity":"1" });
+							$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px", "opacity": "1" });
 							$(self.$el.find('.hinh')[index]).addClass("justify-content-center");
 							$(self.$el.find('.btn-edit')[index]).show();
 							$(self.$el.find('.btn-back')[index]).hide();
@@ -671,7 +671,7 @@ define(function (require) {
 									filters: {
 										"$and": [
 											{ "bangkiemtrathietbi_id": { "$eq": self.model.get('id') } },
-											{ "buockiemtra": { "$eq": index+1 } }
+											{ "buockiemtra": { "$eq": index + 1 } }
 
 										]
 									},
@@ -683,30 +683,30 @@ define(function (require) {
 									data: "q=" + JSON.stringify(filters),
 									contentType: "application/json",
 									success: function (data) {
-										if(data.objects.length == 1){
+										if (data.objects.length == 1) {
 											linkHinhAnh = data.objects[0].hinhanh
 										}
-											$.ajax({
-												url: self.getApp().serviceURL + "/api/v1/luucacbuoc",
-												method: "POST",
-												data: JSON.stringify({
-													ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
-													hinhanh: linkHinhAnh,
-													thoigian: moment(moment().unix() * 1000).format("HH:mm"),
-													buockiemtra: index + 1,
-													tinhtrang: trangthai,
-													bangkiemtrathietbi_id: self.model.get('id')
-												}),
-												contentType: "application/json",
-												success: function (data) {
-													self.getApp().notify({ message: "Lưu thành công" });
-			
-												},
-												error: function (xhr, status, error) {
-													self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
-												},
-											})
-									
+										$.ajax({
+											url: self.getApp().serviceURL + "/api/v1/luucacbuoc",
+											method: "POST",
+											data: JSON.stringify({
+												ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
+												hinhanh: linkHinhAnh,
+												thoigian: moment(moment().unix() * 1000).format("HH:mm"),
+												buockiemtra: index + 1,
+												tinhtrang: trangthai,
+												bangkiemtrathietbi_id: self.model.get('id')
+											}),
+											contentType: "application/json",
+											success: function (data) {
+												self.getApp().notify({ message: "Lưu thành công" });
+
+											},
+											error: function (xhr, status, error) {
+												self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+											},
+										})
+
 									},
 									error: function (xhr, status, error) {
 										self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
@@ -719,7 +719,7 @@ define(function (require) {
 								$(self.$el.find('.noidungghichu')[index]).hide();
 								$(self.$el.find('.btn-edit')[index]).toggle()
 								$(self.$el.find('.btn-back')[index]).toggle()
-								$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "80px","opacity":"0.6" });
+								$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "80px", "opacity": "0.6" });
 								$(self.$el.find('.hinh')[index]).removeClass("justify-content-center")
 								$(self.$el.find('.closexxx')[index]).show();
 								$(self.$el.find('.radioKoTot')[index]).show();
@@ -728,7 +728,7 @@ define(function (require) {
 							})
 							$(self.$el.find('.btn-back')[index]).unbind("click").bind('click', function () {
 								$(self.$el.find('.noidungghichu')[index]).show();
-								if($(self.$el.find('.noidungghichu')[index]).text() == '' || $(self.$el.find('.noidungghichu')[index]).text() == null){
+								if ($(self.$el.find('.noidungghichu')[index]).text() == '' || $(self.$el.find('.noidungghichu')[index]).text() == null) {
 									$(self.$el.find('.noidungghichu')[index]).hide();
 
 								}
@@ -738,7 +738,7 @@ define(function (require) {
 								$(self.$el.find('.btn-back')[index]).toggle()
 								$(self.$el.find('.closexxx')[index]).hide();
 
-								$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px","opacity":"1" });
+								$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px", "opacity": "1" });
 								$(self.$el.find('.hinh')[index]).addClass("justify-content-center")
 								if (item.tinhtrang == "ondinh") {
 									$(self.$el.find('.radioKoTot')[index]).toggle();
@@ -795,15 +795,17 @@ define(function (require) {
 						if (item.hinhanh !== "") {
 							$(self.$el.find('.hinah')[item.buockiemtra - 1]).show();
 							$(self.$el.find('.hinah')[item.buockiemtra - 1]).attr('src', item.hinhanh)
-							$(self.$el.find('.hinah')[item.buockiemtra - 1]).css({ "height": "auto", "width": "200px" });
+							$(self.$el.find('.hinah')[item.buockiemtra - 1]).css({ "height": "auto", "width": "200px", "opacity": "1" });
 							$(self.$el.find('.hinh')[item.buockiemtra - 1]).addClass("justify-content-center")
 						}
+
 						if (item.buockiemtra !== "") {
+
 							$(self.$el.find('.btn-edit')[item.buockiemtra - 1]).show();
 
 						}
-						
-						
+
+
 
 						// Ẩn hình ảnh
 
@@ -812,10 +814,15 @@ define(function (require) {
 							$(self.$el.find('.ghichuthemnay')[item.buockiemtra - 1]).toggle()
 							$(self.$el.find('.ghichuthem')[item.buockiemtra - 1]).html(item.ghichu)
 							$(self.$el.find('.noidungghichu')[item.buockiemtra - 1]).hide();
-							$(self.$el.find('.btn-edit')[item.buockiemtra - 1]).toggle()
-							$(self.$el.find('.btn-back')[item.buockiemtra - 1]).toggle()
-							$(self.$el.find('.closexxx')[item.buockiemtra -1 ]).show();
+							$(self.$el.find('.btn-edit')[item.buockiemtra - 1]).hide()
+							$(self.$el.find('.btn-back')[item.buockiemtra - 1]).show()
+							if (item.hinhanh == "") {
+								$(self.$el.find('.closexxx')[item.buockiemtra - 1]).hide();
+							}
+							else {
+								$(self.$el.find('.closexxx')[item.buockiemtra - 1]).show();
 
+							}
 							$(self.$el.find('.hinah')[item.buockiemtra - 1]).css({ "height": "auto", "width": "80px" });
 							$(self.$el.find('.hinh')[item.buockiemtra - 1]).removeClass("justify-content-center")
 							$(self.$el.find('.radioKoTot')[item.buockiemtra - 1]).show();
@@ -827,8 +834,8 @@ define(function (require) {
 							$(self.$el.find('.noidungghichu')[item.buockiemtra - 1]).show();
 							$(self.$el.find('.noidungghichu')[item.buockiemtra - 1]).html(item.ghichu)
 							$(self.$el.find('.ghichuthemnay')[item.buockiemtra - 1]).toggle()
-							$(self.$el.find('.btn-edit')[item.buockiemtra - 1]).toggle()
-							$(self.$el.find('.btn-back')[item.buockiemtra - 1]).toggle()
+							$(self.$el.find('.btn-edit')[item.buockiemtra - 1]).show()
+							$(self.$el.find('.btn-back')[item.buockiemtra - 1]).hide()
 							$(self.$el.find('.closexxx')[item.buockiemtra - 1]).hide();
 
 							$(self.$el.find('.hinah')[item.buockiemtra - 1]).css({ "height": "auto", "width": "200px" });
@@ -852,6 +859,106 @@ define(function (require) {
 					self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
 				},
 
+			})
+		},
+		xoaHinhAnh: function (id) {
+			var self = this;
+			self.$el.find('.closexxx').each(function (index, item) {
+				$(item).unbind('click').bind('click', function () {
+					$(self.$el.find('.hinah')[index]).attr('src', '#');
+					$(self.$el.find('.hinh')[index]).hide();
+					$(item).hide()
+					$(self.$el.find('.btn_luu')[index]).unbind('click').bind('click', function () {
+						$(self.$el.find('.hinah')[index]).hide();
+						$(self.$el.find('.hinh')[index]).hide();
+						$(self.$el.find('.btn-edit')[index]).show();
+						$(self.$el.find('.btn-back')[index]).hide();
+						$(self.$el.find('.closexxx')[index]).hide();
+
+						$(self.$el.find('.ghichuthemnay')[index]).hide();
+						$(self.$el.find('.noidungghichu')[index]).html($(self.$el.find('.ghichuthem')[index]).val());
+						$(self.$el.find('.noidungghichu')[index]).show();
+						if (self.$el.find('.tot')[index].checked == true && self.$el.find('.kotot')[index].checked == false) {
+							$(self.$el.find('.radioKoTot')[index]).hide()
+						}
+						if (self.$el.find('.tot')[index].checked == false && self.$el.find('.kotot')[index].checked == true) {
+							$(self.$el.find('.radioTot')[index]).hide()
+						}
+
+						if ($(self.$el.find('.ghichuthem')[index]).val() == "") {
+							$(self.$el.find('.noidungghichu')[index]).hide()
+
+						}
+						var trangthai = null;
+						if (self.$el.find('.tot')[index].checked == true && self.$el.find('.kotot')[index].checked == false) {
+							trangthai = "ondinh";
+						}
+						if (self.$el.find('.tot')[index].checked == false && self.$el.find('.kotot')[index].checked == true) {
+							trangthai = "khongondinh";
+						}
+						$.ajax({
+							url: self.getApp().serviceURL + "/api/v1/luucacbuoc",
+							method: "POST",
+							data: JSON.stringify({
+								ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
+								hinhanh: "",
+								thoigian: moment(moment().unix() * 1000).format("HH:mm"),
+								buockiemtra: index + 1,
+								tinhtrang: trangthai,
+								bangkiemtrathietbi_id: self.model.get('id')
+							}),
+							contentType: "application/json",
+							success: function (data) {
+								self.getApp().notify({ message: "Lưu thành công" });
+
+							},
+							error: function (xhr, status, error) {
+								self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+							},
+						})
+						$(self.$el.find('.btn-edit')[index]).unbind("click").bind('click', function () {
+							$(self.$el.find('.ghichuthemnay')[index]).toggle()
+							$(self.$el.find('.ghichuthem')[index]).html(item.ghichu)
+							$(self.$el.find('.noidungghichu')[index]).hide();
+							$(self.$el.find('.btn-edit')[index]).toggle()
+							$(self.$el.find('.btn-back')[index]).toggle()
+							$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "80px", "opacity": "0.6" });
+							$(self.$el.find('.hinh')[index]).removeClass("justify-content-center")
+							if (item.hinhanh == "") {
+								$(self.$el.find('.closexxx')[item.buockiemtra - 1]).hide();
+							}
+							else {
+								$(self.$el.find('.closexxx')[item.buockiemtra - 1]).show();
+
+							}
+							$(self.$el.find('.radioKoTot')[index]).show();
+
+							$(self.$el.find('.radioTot')[index]).show();
+						})
+						$(self.$el.find('.btn-back')[index]).unbind("click").bind('click', function () {
+							$(self.$el.find('.noidungghichu')[index]).show();
+							if ($(self.$el.find('.noidungghichu')[index]).text() == '' || $(self.$el.find('.noidungghichu')[index]).text() == null) {
+								$(self.$el.find('.noidungghichu')[index]).hide();
+
+							}
+							$(self.$el.find('.noidungghichu')[index]).html(item.ghichu)
+							$(self.$el.find('.ghichuthemnay')[index]).toggle()
+							$(self.$el.find('.btn-edit')[index]).toggle()
+							$(self.$el.find('.btn-back')[index]).toggle()
+							$(self.$el.find('.closexxx')[index]).hide();
+
+							$(self.$el.find('.hinah')[index]).css({ "height": "auto", "width": "200px", "opacity": "1" });
+							$(self.$el.find('.hinh')[index]).addClass("justify-content-center")
+							if (item.tinhtrang == "ondinh") {
+								$(self.$el.find('.radioKoTot')[index]).toggle();
+							}
+							if (item.tinhtrang == "khongondinh") {
+								$(self.$el.find('.radioTot')[index]).toggle();
+							}
+						})
+					})
+
+				})
 			})
 		},
 		dahoanthoanhkiemtra: function (id) {
