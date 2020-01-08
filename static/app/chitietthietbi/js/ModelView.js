@@ -291,7 +291,7 @@ define(function (require) {
 			self.model.set("thietbi_id", sessionStorage.getItem('IDSanPham'))
 			self.model.set("tenthietbi", sessionStorage.getItem('TenSanPham'))
 			self.model.set("chungloailoaithietbi", sessionStorage.getItem('ChungLoai'))
-
+			
 			sessionStorage.clear();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
@@ -345,7 +345,14 @@ define(function (require) {
 							sessionStorage.setItem('IDThietBi', self.model.get("id"));
 							sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
 							sessionStorage.setItem('MaQLTBThietBi', self.model.get("ma_qltb"));
+							sessionStorage.setItem('Khoa', self.model.get("khoa_id"));
+							sessionStorage.setItem('Khoa2', self.model.get("khoa"));
+
+							sessionStorage.setItem('Phong', self.model.get("phong_id"));
 							sessionStorage.setItem('ThietBiID', self.model.get("thietbi_id"));
+						
+
+
 						})
 						self.$el.find(".btn-taokiemdinh").unbind("click").bind("click", function () {
 							location.href = self.getApp().serviceURL + "/?#bangkiemdinh/model";
