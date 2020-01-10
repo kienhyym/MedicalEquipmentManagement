@@ -4,15 +4,15 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
-	var template = require('text!app/thietbi/tpl/select.html'),
-		schema = require('json!schema/ThietBiSchema.json');
+	var template = require('text!app/danhmuc/donvi/tpl/select.html'),
+		schema = require('json!schema/DonViSchema.json');
 	var CustomFilterView = require('app/base/view/CustomFilterView');
 
 	return Gonrin.CollectionDialogView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "thietbi",
+		collectionName: "donvi",
 		bindings: "data-bind",
 		textField: "ten",
 		valueField: "id",
@@ -38,7 +38,8 @@ define(function (require) {
 		],
 		uiControl: {
 			fields: [
-				{ field: "ten", label: "Tên", width: 250 },
+				{ field: "ten", label: "Tên" }
+
 			],
 			onRowClick: function (event) {
 				this.uiControl.selectedItems = event.selectedItems;

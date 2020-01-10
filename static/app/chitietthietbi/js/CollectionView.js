@@ -21,7 +21,7 @@ define(function (require) {
                     {
                         name: "back",
                         type: "button",
-                        buttonClass: "btn-default btn-sm",
+                        buttonClass: "btn-default btn-sm btn-secondary",
                         label: "TRANSLATE:Quay lại",
                         command: function () {
                             var self = this;
@@ -29,7 +29,18 @@ define(function (require) {
                         }
                     },
                 ],
-            }],
+            },
+            {
+                name: "save",
+                type: "button",
+                buttonClass: "btn-success btn-sm",
+                label: "TRANSLATE:CREATE",
+                command: function () {
+                    var self = this;
+                    self.getApp().getRouter().navigate("chitietthietbi/model");
+                }
+            },
+        ],
         // uiControl: {
         //     fields: [
         //         {
@@ -390,78 +401,98 @@ define(function (require) {
                 noResultsClass: "alert alert-default no-records-found",
                 fields: [
                     {
-                        field: "stt",
                         label: "STT",
                         width: "30px",
-                    },
-                    {
-                        field: "tenthietbi", label: "Tên thiết bị", width: 250, readonly: true,
-                    },
-                    {
-                        field: "model_serial_number", label: "Serial", width: 150, readonly: true,
-                    },
-
-                    {
-                        field: "trangthai",
-                        label: "Trạng thái",
-                        width: 150, readonly: true,
                         template: function (rowData) {
-                            if (rowData.trangthai === "yeucaukiemtrathietbi") {
-                                return "Đang yêu cầu kiểm tra";
+                            if (!!rowData) {
+                                return `
+                                            <div>${rowData.stt}</div>
+                                        `;
                             }
-                            else if (rowData.trangthai === "dangsuachua") {
-                                return "Đang sửa chữa";
-                            }
-                            else if (rowData.trangthai === "dangchokiemduyet") {
-                                return "Đang chờ kiểm duyệt";
-                            }
-                            else if (rowData.trangthai === "dakiemduyet") {
-                                return "Đã kiểm duyệt";
-                            }
-                            else if (rowData.trangthai === "luukho") {
-                                return "Lưu kho chưa vận hành ";
-                            }
-                            else if (rowData.trangthai === null) {
-                                return "";
-                            }
-
+                            return "";
                         }
                     },
                     {
-                        field: "chungloailoaithietbi",
-                        label: "Chủng loại",
-                        width: 150, readonly: true,
+                        label: "Thiết bị",
                         template: function (rowData) {
-                            if (rowData.chungloailoaithietbi === "1") {
-                                return "Máy xét nhiệm";
+                            if (!!rowData) {
+                                var utcTolocal = function (times, format) {
+                                    return moment(times * 1000).local().format(format);
+                                }
+                                 var trangthai ='';
+                                if (rowData.trangthai === "yeucaukiemtrathietbi") {
+                                    trangthai = "Đang yêu cầu kiểm tra";
+                                }
+                                else if (rowData.trangthai === "dangsuachua") {
+                                    trangthai = "Đang sửa chữa";
+                                }
+                                else if (rowData.trangthai === "dangchokiemduyet") {
+                                    trangthai = "Đang chờ kiểm duyệt";
+                                }
+                                else if (rowData.trangthai === "dakiemduyet") {
+                                    trangthai = "Đã kiểm duyệt";
+                                }
+                                else if (rowData.trangthai === "luukho") {
+                                    trangthai = "Lưu kho chưa vận hành ";
+                                }
+                                return `    <div style="position: relative;">
+                                                <div>${rowData.tenthietbi} (Serial:${rowData.model_serial_number})</div>
+                                                <div>Trạng thái:${trangthai}</div>
+                                                <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
+                                            </div>
+                                            `;
                             }
-                            else if (rowData.chungloailoaithietbi === "2") {
-                                return "Máy chuẩn đoán hình ảnh";
-                            }
-                            else if (rowData.chungloailoaithietbi === "3") {
-                                return "Máy thăm dò chức năng";
-                            }
-                            else if (rowData.chungloailoaithietbi === "4") {
-                                return "Thiết bị hấp sấy";
-                            }
-                            else if (rowData.chungloailoaithietbi === "5") {
-                                return "Thiết bị hỗ trợ sinh tồn ";
-                            }
-                            else if (rowData.chungloailoaithietbi === "6") {
-                                return "Robot";
-                            }
-                            else if (rowData.chungloailoaithietbi === "7") {
-                                return "Thiết bi miễn dịch";
-                            }
-                            else if (rowData.chungloailoaithietbi === "8") {
-                                return "Thiết bị lọc và hỗ trợ chức năng ";
-                            }
-                            else {
-                                return ""
-                            }
-
+                            return "";
                         }
                     },
+
+                    // {
+                    //     field: "trangthai",
+                    //     label: "Trạng thái",
+                    //     width: 150, readonly: true,
+                    //     template: function (rowData) {
+                    //        
+                    //         else if (rowData.trangthai === null) {
+                    //             return "";
+                    //         }
+
+                    //     }
+                    // },
+                    // {
+                    //     field: "chungloailoaithietbi",
+                    //     label: "Chủng loại",
+                    //     width: 150, readonly: true,
+                    //     template: function (rowData) {
+                    //         if (rowData.chungloailoaithietbi === "1") {
+                    //             return "Máy xét nhiệm";
+                    //         }
+                    //         else if (rowData.chungloailoaithietbi === "2") {
+                    //             return "Máy chuẩn đoán hình ảnh";
+                    //         }
+                    //         else if (rowData.chungloailoaithietbi === "3") {
+                    //             return "Máy thăm dò chức năng";
+                    //         }
+                    //         else if (rowData.chungloailoaithietbi === "4") {
+                    //             return "Thiết bị hấp sấy";
+                    //         }
+                    //         else if (rowData.chungloailoaithietbi === "5") {
+                    //             return "Thiết bị hỗ trợ sinh tồn ";
+                    //         }
+                    //         else if (rowData.chungloailoaithietbi === "6") {
+                    //             return "Robot";
+                    //         }
+                    //         else if (rowData.chungloailoaithietbi === "7") {
+                    //             return "Thiết bi miễn dịch";
+                    //         }
+                    //         else if (rowData.chungloailoaithietbi === "8") {
+                    //             return "Thiết bị lọc và hỗ trợ chức năng ";
+                    //         }
+                    //         else {
+                    //             return ""
+                    //         }
+
+                    //     }
+                    // },
 
 
                 ],
@@ -479,7 +510,12 @@ define(function (require) {
                     },
                 },
             });
+            $(self.$el.find('.grid-data tr')).each(function (index, item) {
+                $(item).find('td:first').css('height', $(item).height())
 
+                console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
+
+            })
         },
     });
 

@@ -220,6 +220,7 @@ class PhieuYeuCauSuaChua(CommonModel):
     xacnhan_nguoisudungnhanketqua = db.Column(String(255))
     chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
     daxem = db.Column(String(5))
+    trangthai = db.Column(String(15))
     daduyet = db.Column(String(10),default='chuaduyet')
 
 

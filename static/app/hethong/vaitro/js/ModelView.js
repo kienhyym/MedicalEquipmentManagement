@@ -4,7 +4,7 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
-	var template = require('text!app/vaitro/tpl/model.html'),
+	var template = require('text!app/hethong/vaitro/tpl/model.html'),
 		schema = require('json!schema/VaiTroSchema.json');
 
 
@@ -22,7 +22,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-default btn-sm",
+						buttonClass: "btn-default btn-sm btn-secondary",
 						label: "TRANSLATE:BACK",
 						command: function () {
 							var self = this;

@@ -4,7 +4,7 @@ define(function (require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
-    var template = require('text!app/donvi/tpl/collection.html'),
+    var template = require('text!app/danhmuc/donvi/tpl/collection.html'),
         schema = require('json!schema/DonViSchema.json');
     var TemplateHelper = require('app/base/view/TemplateHelper');
     return Gonrin.CollectionView.extend({
@@ -104,30 +104,30 @@ define(function (require) {
                     {
                         field: "stt",
                         label: "STT",
-                        width: "30px",
+                        width: 30,
                     },
-                    { field: "ten", label: "Tên", width: "350px" },
-                    {
-                        field: "tinhthanh_id",
-                        label: "Tỉnh thành",
-                        foreign: "tinhthanh",
-                        foreignValueField: "id",
-                        foreignTextField: "ten",
-                    },
-                    {
-                        field: "quanhuyen_id",
-                        label: "Quận/Huyện",
-                        foreign: "quanhuyen",
-                        foreignValueField: "id",
-                        foreignTextField: "ten",
-                    },
-                    {
-                        field: "xaphuong_id",
-                        label: "Xã/Phường/Thị trấn",
-                        foreign: "xaphuong",
-                        foreignValueField: "id",
-                        foreignTextField: "ten",
-                    },
+                    { field: "ten", label: "Tên"},
+                    // {
+                    //     field: "tinhthanh_id",
+                    //     label: "Tỉnh thành",
+                    //     foreign: "tinhthanh",
+                    //     foreignValueField: "id",
+                    //     foreignTextField: "ten",
+                    // },
+                    // {
+                    //     field: "quanhuyen_id",
+                    //     label: "Quận/Huyện",
+                    //     foreign: "quanhuyen",
+                    //     foreignValueField: "id",
+                    //     foreignTextField: "ten",
+                    // },
+                    // {
+                    //     field: "xaphuong_id",
+                    //     label: "Xã/Phường/Thị trấn",
+                    //     foreign: "xaphuong",
+                    //     foreignValueField: "id",
+                    //     foreignTextField: "ten",
+                    // },
 				],
 				dataSource: dataSource,
 				primaryField: "id",
@@ -143,7 +143,12 @@ define(function (require) {
 					},
 				},
 			});
+            $(self.$el.find('.grid-data tr')).each(function (index, item) {
+                $(item).find('td:first').css('height',$(item).height())
 
+                console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
+
+            })
 		},
 
 	});

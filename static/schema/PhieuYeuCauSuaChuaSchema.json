@@ -90,6 +90,10 @@
         "type": "string",
         "length": 5
     },
+    "trangthai": {
+        "type": "string",
+        "length": 15
+    },
     "daduyet": {
         "type": "string",
         "length": 10,

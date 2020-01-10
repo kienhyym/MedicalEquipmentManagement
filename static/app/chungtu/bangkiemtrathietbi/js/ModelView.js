@@ -24,7 +24,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-default btn-sm",
+						buttonClass: "btn-default btn-sm btn-secondary",
 						label: "TRANSLATE:Quay lại",
 						command: function () {
 							var self = this;
@@ -680,7 +680,7 @@ define(function (require) {
 						self.$el.find('#quytrinhkiemtra').append(`
 						<div style="position:relative">
 									
-									<label style="position: absolute;top: 0px;right: 0px" class='thoigian'></label>
+									<label style="position: absolute;top: 0px;right: 20px" class='thoigian'></label>
 									<div class="buoc">
 										<label class="text-dark font-weight-bold">Bước <label class='m-0 stt text-dark font-weight-bold'>01</label></label>
 									</div>
@@ -739,14 +739,13 @@ define(function (require) {
 												</div>
 											</div>
 										
-											<label>&nbsp;</label>
 											<div class="hinh d-flex" style="position:relative">
 											<i class="fa fa-times-circle-o closexxx" aria-hidden="true" style="position: absolute;top: 3px;left: 68px;z-index:999;display:none;"></i>
 											<img src="static/img/user.png" style="width:80px;height:80px;display:none;opacity:0.6"  class="hinah">
 									</div>
 
-									<i style="position: absolute;bottom: 0px;right: 0px;display:none;z-index:999" class="fa fa-pencil-square-o btn-edit" aria-hidden="true"></i>
-									<i style="position: absolute;bottom: 0px;right: 0px;display:none;z-index:999" class="fa fa-reply-all btn-back" aria-hidden="true"></i>
+									<i style="position: absolute;top: 3px;right: 0px;display:none;z-index:999" class="fa fa-pencil-square-o btn-edit" aria-hidden="true"></i>
+									<i style="position: absolute;top: 3px;right: 0px;display:none;z-index:999" class="fa fa-reply-all btn-back" aria-hidden="true"></i>
 
 						</div>
 						<label>&nbsp;</label>

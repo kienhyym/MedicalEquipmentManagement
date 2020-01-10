@@ -196,7 +196,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "donvi",
 					"route": "donvi/collection",
-					"$ref": "app/donvi/js/CollectionView",
+					"$ref": "app/danhmuc/donvi/js/CollectionView",
 					"visible": function () {
 						return true
 
@@ -208,7 +208,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "donvi",
 					"route": "donvi/model(/:id)",
-					"$ref": "app/donvi/js/ModelView",
+					"$ref": "app/danhmuc/donvi/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -220,7 +220,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "thietbi",
 					"route": "thietbi/collection",
-					"$ref": "app/thietbi/js/CollectionView",
+					"$ref": "app/danhmuc/thietbi/js/CollectionView",
 					"visible": function () {
 						return true
 
@@ -230,7 +230,7 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "thietbi",
 					"route": "thietbi/model(/:id)",
-					"$ref": "app/thietbi/js/ModelView",
+					"$ref": "app/danhmuc/thietbi/js/ModelView",
 					"visible": function () {
 						return false;
 					}

@@ -5,7 +5,7 @@ define(function (require) {
 		Gonrin = require('gonrin');
 	var template = require('text!app/chitietthietbi/tpl/model.html'),
 		schema = require('json!schema/ChiTietThietBiSchema.json');
-	var NhaCungCapSelectView = require('app/donvi/js/SelectView');
+	var NhaCungCapSelectView = require('app/danhmuc/donvi/js/SelectView');
 	var NoisanXuatCapSelectView = require('app/danhmuc/QuocGia/view/SelectView');
 	var KhoaSelectView = require('app/hethong/khoa/view/SelectView');
 	var PhongSelectView = require('app/hethong/phong/view/SelectView');
@@ -30,7 +30,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-default btn-sm",
+						buttonClass: "btn-default btn-sm btn-secondary",
 						label: "TRANSLATE:Quay lại",
 						command: function () {
 							var self = this;

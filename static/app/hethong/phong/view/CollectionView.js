@@ -18,10 +18,9 @@ define(function (require) {
 				{
 					field: "stt",
 					label: "STT",
-					width: "30px",
+					width: 30,
 				},
-				{ field: "ma", label: "Mã", width: 100 },
-				{ field: "ten", label: "Tên", width: 250 },
+				{ field: "ten", label: "Tên" },
 			],
 			onRowClick: function (event) {
 				if (event.rowId) {
@@ -73,10 +72,9 @@ define(function (require) {
 					{
 						field: "stt",
 						label: "STT",
-						width: "30px",
+						width: 30,
 					},
-					{ field: "ma", label: "Mã", width: 250 },
-					{ field: "ten", label: "Tên", width: 250 },
+					{ field: "ten", label: "Tên"},
 				],
 				dataSource: dataSource,
 				primaryField: "id",
@@ -92,7 +90,12 @@ define(function (require) {
 					},
 				},
 			});
+			$(self.$el.find('.grid-data tr')).each(function (index, item) {
+                $(item).find('td:first').css('height',$(item).height())
 
+                console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
+
+            })
 		},
 
 	});

@@ -3,9 +3,9 @@ define(function (require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
-	var template = require('text!app/thietbi/tpl/model.html'),
+	var template = require('text!app/danhmuc/thietbi/tpl/model.html'),
 		schema = require('json!schema/ThietBiSchema.json');
-	var QuyTrinhKiemTraView = require('app/thietbi/js/QuyTrinhKiemTraView');
+	var QuyTrinhKiemTraView = require('app/danhmuc/thietbi/js/QuyTrinhKiemTraView');
 
 
 	return Gonrin.ModelView.extend({
@@ -24,7 +24,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-default btn-sm",
+						buttonClass: "btn-default btn-sm btn-secondary",
 						label: "TRANSLATE:Quay lại",
 						command: function () {
 							var self = this;

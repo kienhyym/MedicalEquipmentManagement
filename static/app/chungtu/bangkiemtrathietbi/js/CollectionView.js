@@ -12,6 +12,24 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "bangkiemtrathietbi",
+        tools: [
+            {
+                name: "defaultgr",
+                type: "group",
+                groupClass: "toolbar-group",
+                buttons: [
+                    {
+                        name: "back",
+                        type: "button",
+                        buttonClass: "btn-default btn-sm btn-secondary",
+                        label: "TRANSLATE:Quay lại",
+                        command: function () {
+                            var self = this;
+                            Backbone.history.history.back();
+                        }
+                    },
+                ],
+            }],
         render: function () {
             var self = this;
             self.$el.find('#ngaykiemtra').datetimepicker({
@@ -237,6 +255,7 @@ define(function (require) {
                                 return `    <div style="position: relative;">
                                                 <div>${rowData.tenthietbi} (Serial:${rowData.model_serial_number})</div>
                                                 <div>Ngày kiểm tra:${utcTolocal(rowData.ngay, "DD/MM/YYYY")}</div>
+                                                <div>Trạng thái:${rowData.tinhtrang}</div>
                                                 <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
                                             </div>
                                             `;

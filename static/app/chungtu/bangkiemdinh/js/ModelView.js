@@ -24,7 +24,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-default btn-sm",
+						buttonClass: "btn-default btn-sm btn-secondary",
 						label: "TRANSLATE:Quay lại",
 						command: function () {
 							var self = this;
@@ -47,59 +47,59 @@ define(function (require) {
 								},
 								order_by: [{ "field": "created_at", "direction": "desc" }]
 							}
-							$.ajax({
-								type: "GET",
-								url: self.getApp().serviceURL + "/api/v1/bangkiemdinh",
-								data: "q=" + JSON.stringify(filters),
-								contentType: "application/json",
+							// $.ajax({
+							// 	type: "GET",
+							// 	url: self.getApp().serviceURL + "/api/v1/bangkiemdinh",
+							// 	data: "q=" + JSON.stringify(filters),
+							// 	contentType: "application/json",
 
-								success: function (data) {
-									$.ajax({
-										method: "PUT",
-										url: self.getApp().serviceURL + "/api/v1/bangkiemdinh/" + data.objects[0].id,
-										data: JSON.stringify({
-											tinhtrang: "khongduocsudung",
-										}),
-										headers: {
-											'content-type': 'application/json'
-										},
-										dataType: 'json',
-										success: function (response) {
-											location.reload();
+							// 	success: function (data) {
+							// 		$.ajax({
+							// 			method: "PUT",
+							// 			url: self.getApp().serviceURL + "/api/v1/bangkiemdinh/" + data.objects[0].id,
+							// 			data: JSON.stringify({
+							// 				tinhtrang: "khongduocsudung",
+							// 			}),
+							// 			headers: {
+							// 				'content-type': 'application/json'
+							// 			},
+							// 			dataType: 'json',
+							// 			success: function (response) {
+							// 				location.reload();
 
-										}, error: function (xhr, ere) {
-											console.log('xhr', ere);
+							// 			}, error: function (xhr, ere) {
+							// 				console.log('xhr', ere);
 
-										}
-									})
-								},
-								error: function (response) {
-									self.getApp().notify({ message: "Lưu không thành công" }, { type: "danger", delay: 1000 });
-								}
-							});
+							// 			}
+							// 		})
+							// 	},
+							// 	error: function (response) {
+							// 		self.getApp().notify({ message: "Lưu không thành công" }, { type: "danger", delay: 1000 });
+							// 	}
+							// });
 
 							self.model.save(null, {
 								success: function (model, respose, options) {
-									var data = {
-										tenthietbi: respose.tenthietbi,
-										ma_qltb: respose.ma_qltb,
-										model_serial_number: respose.model_serial_number,
-										ngaykiemdinh: respose.ngayhethan,
-										chitietthietbi_id: respose.chitietthietbi_id,
-										kiemdinh: respose.id,
-									}
-									$.ajax({
-										type: "POST",
-										url: self.getApp().serviceURL + "/api/v1/kehoachhangngay",
-										data: JSON.stringify(data),
-										success: function (response) {
-											self.getApp().notify("Lưu thông tin thành công");
-											self.getApp().getRouter().navigate(self.collectionName + "/collection");
-										},
-										error: function (response) {
-											self.getApp().notify({ message: "Lưu không thành công" }, { type: "danger", delay: 1000 });
-										}
-									});
+									// var data = {
+									// 	tenthietbi: respose.tenthietbi,
+									// 	ma_qltb: respose.ma_qltb,
+									// 	model_serial_number: respose.model_serial_number,
+									// 	ngaykiemdinh: respose.ngayhethan,
+									// 	chitietthietbi_id: respose.chitietthietbi_id,
+									// 	kiemdinh: respose.id,
+									// }
+									// $.ajax({
+									// 	type: "POST",
+									// 	url: self.getApp().serviceURL + "/api/v1/kehoachhangngay",
+									// 	data: JSON.stringify(data),
+									// 	success: function (response) {
+									// 		self.getApp().notify("Lưu thông tin thành công");
+									// 		self.getApp().getRouter().navigate(self.collectionName + "/collection");
+									// 	},
+									// 	error: function (response) {
+									// 		self.getApp().notify({ message: "Lưu không thành công" }, { type: "danger", delay: 1000 });
+									// 	}
+									// });
 
 
 
@@ -228,9 +228,9 @@ define(function (require) {
 			self.model.set("model_serial_number", sessionStorage.getItem('SerialThietBi'))
 			self.model.set("ma_qltb", sessionStorage.getItem('MaQLTBThietBi'))
 			sessionStorage.clear();
-			self.$el.find(".linkDownload").hide();
-			self.$el.find("#img").hide();
-			self.$el.find("#title").hide();
+			// self.$el.find(".linkDownload").hide();
+			// self.$el.find("#img").hide();
+			// self.$el.find("#title").hide();
 
 			// var input = document.querySelector('input[type=file]'); // see Example 4
 			// 				input.onchange = function () {
@@ -263,14 +263,14 @@ define(function (require) {
 
 			// 				}
 							
-			self.bindEventSelect();
+			// self.bindEventSelect();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						self.renderUpload();
-						self.$el.find("#img").attr("src", "." + self.model.get('attachment'))
+						// self.renderUpload();
+						// self.$el.find("#img").attr("src", "." + self.model.get('attachment'))
 
 						self.applyBindings();
 					},

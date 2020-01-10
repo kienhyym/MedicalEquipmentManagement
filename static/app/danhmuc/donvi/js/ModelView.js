@@ -3,7 +3,7 @@ define(function (require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
-	var template = require('text!app/donvi/tpl/model.html'),
+	var template = require('text!app/danhmuc/donvi/tpl/model.html'),
 		schema = require('json!schema/DonViSchema.json');
 	var XaPhuongSelectView = require('app/danhmuc/XaPhuong/view/SelectView');
 	var QuanHuyenSelectView = require('app/danhmuc/QuanHuyen/view/SelectView');
@@ -22,7 +22,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-default btn-sm",
+						buttonClass: "btn-default btn-sm btn-secondary",
 						label: "TRANSLATE:BACK",
 						command: function () {
 							var self = this;

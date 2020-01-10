@@ -4,17 +4,17 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
-	var template = require('text!app/vaitro/tpl/select.html'),
-		schema = require('json!schema/VaiTroSchema.json');
+	var template = require('text!app/danhmuc/thietbi/tpl/select.html'),
+		schema = require('json!schema/ThietBiSchema.json');
 	var CustomFilterView = require('app/base/view/CustomFilterView');
 
 	return Gonrin.CollectionDialogView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "vaitro",
+		collectionName: "thietbi",
 		bindings: "data-bind",
-		textField: "name",
+		textField: "ten",
 		valueField: "id",
 		tools: [
 			{
@@ -38,8 +38,7 @@ define(function (require) {
 		],
 		uiControl: {
 			fields: [
-				{ field: "ma", label: "Mã", width: 150 },
-				{ field: "name", label: "Tên", width: 250 },
+				{ field: "ten", label: "Tên", width: 250 },
 			],
 			onRowClick: function (event) {
 				this.uiControl.selectedItems = event.selectedItems;
@@ -52,7 +51,7 @@ define(function (require) {
 		// },
 		render: function () {
 			var self = this;
-			self.uiControl.orderBy = [{ "field": "name", "direction": "desc" }];
+			self.uiControl.orderBy = [{ "field": "ten", "direction": "desc" }];
 			var filter = new CustomFilterView({
 				el: self.$el.find("#grid_search"),
 				sessionKey: self.collectionName + "_filter"
@@ -63,7 +62,7 @@ define(function (require) {
 				var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
 				var query = {
 					"$or": [
-						{ "name": { "$like": text } },
+						{ "ten": { "$like": text } },
 					]
 				};
 
@@ -87,7 +86,7 @@ define(function (require) {
 					if (text !== null) {
 						var query = {
 							"$or": [
-								{ "name": { "$like": text } },
+								{ "ten": { "$like": text } },
 							]
 						};
 						var filters = query;

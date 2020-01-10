@@ -12,6 +12,24 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "phieuyeucausuachua",
+        tools: [
+            {
+                name: "defaultgr",
+                type: "group",
+                groupClass: "toolbar-group",
+                buttons: [
+                    {
+                        name: "back",
+                        type: "button",
+                        buttonClass: "btn-default btn-sm btn-secondary",
+                        label: "TRANSLATE:Quay lại",
+                        command: function () {
+                            var self = this;
+                            Backbone.history.history.back();
+                        }
+                    },
+                ],
+            }],
         uiControl: {
             fields: [
                 {
@@ -176,33 +194,34 @@ define(function (require) {
                 noResultsClass: "alert alert-default no-records-found",
                 fields: [
                     {
-                        field: "stt",
                         label: "STT",
                         width: "30px",
+                        template: function (rowData) {
+                            if (!!rowData) {
+                                return `
+                                            <div>${rowData.stt}</div>
+                                        `;
+                            }
+                            return "";
+                        }
                     },
                     {
-                        field: "tenthietbi", label: "Tên thiết bị", width: 250, readonly: true,
-                    },
-                    {
-                        field: "model_serial_number", label: "Serial", width: 150, readonly: true,
-                    },
-                    {
-                        field: "ma_qltb", label: "Mã QLTB", width: 150, readonly: true,
-                    },
-                    {
-                        field: "ngay_suco", label: "Ngày xảy ra sự cố",
+                        label: "Phiếu",
                         template: function (rowData) {
                             if (!!rowData && rowData.ngay_suco) {
-
                                 var utcTolocal = function (times, format) {
                                     return moment(times * 1000).local().format(format);
                                 }
-                                // return template_helper.datetimeFormat(rowData.ngaythanhtra, "DD/MM/YYYY");
-                                return utcTolocal(rowData.ngay_suco, "DD/MM/YYYY");
+                                return `    <div style="position: relative;">
+                                                <div>${rowData.tenthietbi} (Serial:${rowData.model_serial_number})</div>
+                                                <div>Ngày kiểm tra:${utcTolocal(rowData.ngay_suco, "DD/MM/YYYY")}</div>
+                                                <div>Trạng thái:${rowData.trangthai}</div>
+                                                <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
+                                            </div>
+                                            `;
                             }
                             return "";
-                        },
-                        width: 150,
+                        }
                     },
 
                 ],
@@ -221,6 +240,12 @@ define(function (require) {
                 },
             });
 
+            $(self.$el.find('.grid-data tr')).each(function (index, item) {
+                $(item).find('td:first').css('height',$(item).height())
+
+                console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
+
+            })
         },
     });
 

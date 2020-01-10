@@ -48,32 +48,32 @@ define(function (require) {
 		{
 			"collectionName": "vaitro",
 			"route": "vaitro/collection",
-			"$ref": "app/vaitro/js/CollectionView",
+			"$ref": "app/hethong/vaitro/js/CollectionView",
 		},
 		{
 			"collectionName": "vaitro",
 			"route": "vaitro/model(/:id)",
-			"$ref": "app/vaitro/js/ModelView",
+			"$ref": "app/hethong/vaitro/js/ModelView",
 		},
 		{
 			"collectionName": "donvi",
 			"route": "donvi/collection",
-			"$ref": "app/donvi/js/CollectionView",
+			"$ref": "app/danhmuc/donvi/js/CollectionView",
 		},
 		{
 			"collectionName": "donvi",
 			"route": "donvi/model(/:id)",
-			"$ref": "app/donvi/js/ModelView",
+			"$ref": "app/danhmuc/donvi/js/ModelView",
 		},
 		{
 			"collectionName": "thietbi",
 			"route": "thietbi/collection",
-			"$ref": "app/thietbi/js/CollectionView",
+			"$ref": "app/danhmuc/thietbi/js/CollectionView",
 		},
 		{
 			"collectionName": "thietbi",
 			"route": "thietbi/model(/:id)",
-			"$ref": "app/thietbi/js/ModelView",
+			"$ref": "app/danhmuc/thietbi/js/ModelView",
 		},
 		{
 			"collectionName": "chitietthietbi",

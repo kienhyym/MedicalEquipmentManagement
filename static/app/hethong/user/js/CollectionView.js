@@ -75,18 +75,46 @@ define(function (require) {
 				noResultsClass: "alert alert-default no-records-found",
 				fields: [
                     {
-                        field: "stt",
                         label: "STT",
                         width: "30px",
+                        template: function (rowData) {
+                            if (!!rowData) {
+                                return `
+                                            <div>${rowData.stt}</div>
+                                        `;
+                            }
+                            return "";
+                        }
                     },
                     {
-                        field: "name", label: "Tên", width: 250, readonly: true,
-                    },
-                    {
-                        field: "email", label: "Email", width: 250, readonly: true,
-                    },
-                    {
-                        field: "phone_number", label: "Số điện thoại", width: 250, readonly: true,
+                        label: "Thông tin",
+                        template: function (rowData) {
+                            if (!!rowData) {
+                                var vaitro = '';
+                                if(rowData.vaitro == 1){
+                                    vaitro = "Giám đốc" 
+                                }
+                                if(rowData.vaitro == 2){
+                                    vaitro = "Trưởng phòng vật tư" 
+                                }
+                                if(rowData.vaitro == 3){
+                                    vaitro = "Nhân viên kỹ thuật" 
+                                }
+                                if(rowData.vaitro == 4){
+                                    vaitro = "Nhân sự khoa phòng" 
+                                }
+                                return `    <div style="position: relative;">
+                                                <div>Tên:${rowData.name}</div>
+                                                <div>Email:${rowData.email}</div>
+                                                <div>Số điện thoại:${rowData.phone_number}</div>
+                                                <div>Vai trò:${vaitro}</div>
+
+                                                <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
+                                            </div>
+                                            `;
+                            }
+                            return "";
+                        }
                     },
 				],
 				dataSource: dataSource,
@@ -103,7 +131,12 @@ define(function (require) {
 					},
 				},
 			});
+            $(self.$el.find('.grid-data tr')).each(function (index, item) {
+                $(item).find('td:first').css('height',$(item).height())
 
+                console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
+
+            })
 		},
 
 	});

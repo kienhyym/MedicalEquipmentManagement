@@ -7,7 +7,7 @@ define(function (require) {
 		schema = require('json!schema/UserSchema.json');
 
 	// var RoleSelectView = require('app/role/js/SelectView');
-	var VaiTroSelectView = require('app/vaitro/js/SelectView');
+	var VaiTroSelectView = require('app/hethong/vaitro/js/SelectView');
 
 
 	return Gonrin.ModelView.extend({
@@ -26,7 +26,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-default btn-sm",
+						buttonClass: "btn-default btn-sm btn-secondary",
 						label: "TRANSLATE:Quay lại",
 						command: function () {
 							var self = this;

@@ -22,7 +22,7 @@ define(function (require) {
 					{
 						name: "back",
 						type: "button",
-						buttonClass: "btn-default btn-sm",
+						buttonClass: "btn-default btn-sm  btn-secondary",
 						label: "TRANSLATE:BACK",
 						command: function () {
 							var self = this;

@@ -6,6 +6,7 @@
 .gonrin-datetimepicker-widget {
   list-style: none;
 }
+
 .gonrin-datetimepicker-widget.dropdown-menu {
   display: block;
   margin: 2px 0;
@@ -22,6 +23,13 @@
     width: 38em;
   }
 }
+@media (max-width: 768px) {
+  .gonrin-datetimepicker-widget.dropdown-menu{
+    margin: 2px -280px;
+    /* text-align: center; */
+  }
+}
+
 @media (min-width: 992px) {
   .gonrin-datetimepicker-widget.dropdown-menu.timepicker-sbs {
     width: 38em;

@@ -12,7 +12,24 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "bangkiemdinh",
-
+        tools: [
+            {
+                name: "defaultgr",
+                type: "group",
+                groupClass: "toolbar-group",
+                buttons: [
+                    {
+                        name: "back",
+                        type: "button",
+                        buttonClass: "btn-default btn-sm btn-secondary",
+                        label: "TRANSLATE:Quay lại",
+                        command: function () {
+                            var self = this;
+                            Backbone.history.history.back();
+                        }
+                    },
+                ],
+            }],
         render: function () {
             var self = this;
             self.$el.find('#ngaycap').datetimepicker({
@@ -229,21 +246,31 @@ define(function (require) {
                 fields: [
                     {
                         label: "STT",
+                        width: "30px",
                         template: function (rowData) {
-                                return `<div  style="position: relative;" ><div style="position: absolute; top:10px;left:6px;">${rowData.stt}</div></div>`;
-                        
-                        },
-                        width:20
+                            if (!!rowData) {
+                                return `
+                                            <div>${rowData.stt}</div>
+                                        `;
+                            }
+                            return "";
+                        }
                     },
                     {
                         label: "Phiếu",
                         template: function (rowData) {
-                            if (!!rowData && rowData.ngayhethan && rowData.ngaycap) {
+                            if (!!rowData) {
                                 var utcTolocal = function (times, format) {
                                     return moment(times * 1000).local().format(format);
                                 }
-                                return `<div style="position: relative;"><div class="d-flex align-items-center"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                </div>${rowData.tenthietbi}</div><div class='row'><div class='col-md-4'>Ngày cấp:${utcTolocal(rowData.ngaycap, "DD/MM/YYYY")}</div><div class='col-md-4'>Ngày hết hạn:${utcTolocal(rowData.ngayhethan, "DD/MM/YYYY")}</div>`;
+                                return `    <div style="position: relative;">
+                                                <div>${rowData.tenthietbi} (Serial:${rowData.model_serial_number})</div>
+                                                <div>Ngày cấp:${utcTolocal(rowData.ngaycap, "DD/MM/YYYY")}</div>
+                                                <div>Ngày hết hạn:${utcTolocal(rowData.ngayhethan, "DD/MM/YYYY")}</div>
+                                                <div>Trạng thái:${rowData.tinhtrang}</div>
+                                                <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
+                                            </div>
+                                            `;
                             }
                             return "";
                         }
@@ -264,7 +291,12 @@ define(function (require) {
                     },
                 },
             });
+            $(self.$el.find('.grid-data tr')).each(function (index, item) {
+                $(item).find('td:first').css('height',$(item).height())
 
+                console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
+
+            })
         },
     });
 

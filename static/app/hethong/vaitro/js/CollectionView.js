@@ -4,19 +4,25 @@ define(function (require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
-    var template = require('text!app/bangkehoachkiemtrathietbitheonam/tpl/collection.html'),
-		schema = require('json!schema/BangKeHoachKiemTraThietBiTheoNamSchema.json');
+    var template = require('text!app/hethong/vaitro/tpl/collection.html'),
+		schema = require('json!schema/VaiTroSchema.json');
 
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
-        collectionName: "bangkehoachkiemtrathietbitheonam",
+        collectionName: "vaitro",
         uiControl:{
             fields: [
+
                 {
-                    field: "nam", label: "Kế hoặc năm", width: 250, readonly: true,
-                }
+                    field: "ma", label: "Mã", width: 250, readonly: true,
+                },
+                {
+                    field: "ten", label: "vai trò", width: 250, readonly: true,
+                },
+                
+
             ],
             onRowClick: function (event) {
                 if (event.rowId) {
