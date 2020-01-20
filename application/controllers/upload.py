@@ -51,6 +51,8 @@ import aiofiles
 @app.route('/api/v1/upload/file', methods=['POST'])
 async def upload_file(request):
     url = app.config['FILE_SERVICE_URL']
+    print('------url-------------------------------------',url)
+    # url = "http://103.74.122.206:20808"
     fsroot = app.config['FS_ROOT']
     if request.method == 'POST':
         file = request.files.get('file', None)
