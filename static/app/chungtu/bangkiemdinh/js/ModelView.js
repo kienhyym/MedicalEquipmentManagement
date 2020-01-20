@@ -38,15 +38,15 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
-							console.log(self.model.get("chitietthietbi_id"))
-							var filters = {
-								filters: {
-									"$and": [
-										{ "chitietthietbi_id": { "$eq": self.model.get("chitietthietbi_id") } }
-									]
-								},
-								order_by: [{ "field": "created_at", "direction": "desc" }]
-							}
+							// console.log(self.model.get("chitietthietbi_id"))
+							// var filters = {
+							// 	filters: {
+							// 		"$and": [
+							// 			{ "chitietthietbi_id": { "$eq": self.model.get("chitietthietbi_id") } }
+							// 		]
+							// 	},
+							// 	order_by: [{ "field": "created_at", "direction": "desc" }]
+							// }
 							// $.ajax({
 							// 	type: "GET",
 							// 	url: self.getApp().serviceURL + "/api/v1/bangkiemdinh",
@@ -231,48 +231,17 @@ define(function (require) {
 			// self.$el.find(".linkDownload").hide();
 			// self.$el.find("#img").hide();
 			// self.$el.find("#title").hide();
-
-			// var input = document.querySelector('input[type=file]'); // see Example 4
-			// 				input.onchange = function () {
-			// 					var file = input.files[0];
-			// 					console.log('xxx',file)
-			// 					//upload(file);
-			// 					drawOnCanvas(file);   // see Example 6
-			// 					//displayAsImage(file); // see Example 7
-			// 				};
-			// 				function drawOnCanvas(file) {
-			// 					var reader = new FileReader();
-			// 					reader.onload = function (e) {
-			// 						var dataURL = e.target.result,
-			// 							c = document.querySelector('canvas'), // see Example 4
-			// 							ctx = c.getContext('2d'),
-			// 							img = new Image();
-
-			// 						img.onload = function () {
-			// 							c.width = 100;
-			// 							c.height = 100;
-			// 							ctx.drawImage(img, 0, 0);
-			// 						};
-
-			// 						img.src = dataURL;
-			// 						console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaa',reader.result)
-
-			// 					};
-
-			// 					reader.readAsDataURL(file);
-
-			// 				}
-							
-			// self.bindEventSelect();
+			self.bindEventSelect();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
-						// self.renderUpload();
-						// self.$el.find("#img").attr("src", "." + self.model.get('attachment'))
-
+						console.log(data)
+						self.renderUpload();
+						self.$el.find('#img').attr("src", "." + self.model.get('attachment'))
 						self.applyBindings();
+
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
@@ -284,16 +253,13 @@ define(function (require) {
 		},
 		renderUpload() {
 			var self = this;
-
 			self.$el.find(".linkDownload").attr("href", self.model.get("attachment"));
 			self.$el.find(".linkDownload").show();
 			self.$el.find("#img").show();
 			self.$el.find("#title").show();
-
 		},
 		bindEventSelect: function () {
 			var self = this;
-
 			var input = document.querySelector('input[type=file]'); // see Example 4
 							input.onchange = function () {
 								var file = input.files[0];
@@ -309,7 +275,6 @@ define(function (require) {
 					if (evt.lengthComputable) {
 						var percent = evt.loaded / evt.total;
 						percent = parseInt(percent * 100);
-
 					}
 				}, false);
 				http.addEventListener('error', function () {
@@ -319,15 +284,12 @@ define(function (require) {
 					if (http.status === 200) {
 						if (http.readyState === 4) {
 							var data_file = JSON.parse(http.responseText), link, p, t;
-
 							self.getApp().notify("Tải file thành công");
 							self.model.set(data_attr, data_file.link);
 							console.log('link',data_file.link)
 							self.$el.find("#title").show();
 							self.$el.find("#img").show();
 							self.$el.find("#img").attr("src", "." + data_file.link)
-
-							// self.$el.find("#content").val(self.$el.find("#content").val()
 						}
 					} else {
 						self.getApp().notify("Không thể tải tệp tin lên máy chủ");
