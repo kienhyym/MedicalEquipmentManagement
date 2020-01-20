@@ -2,9 +2,11 @@
 
 from gatco import Gatco,CookieSessionInterface
 from .config import Config
+from sanic_cors import CORS
 
 app = Gatco(name=__name__)
 app.config.from_object(Config)
+cors = CORS(app, automatic_options=True)
 # app.session_interface = None
 app.session_interface = CookieSessionInterface()
 

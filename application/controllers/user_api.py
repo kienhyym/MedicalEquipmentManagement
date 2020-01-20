@@ -57,7 +57,7 @@ async def logout(request):
     return json({})
 
 
-@app.route('/api/v1/login', methods=['POST'])
+@app.route('/api/v1/login', methods=['POST', 'OPTIONS'])
 async def login(request):
     data = request.json
     print("==================data", data)
