@@ -52,108 +52,169 @@ define(function (require) {
             var self = this;
             var IDTB = sessionStorage.getItem('IDThietBi');
             sessionStorage.clear();
-            $.ajax({
-                url: self.getApp().serviceURL + "/api/v1/bienbanxacnhantinhtrangthietbi?results_per_page=100000&max_results_per_page=1000000",
-                method: "GET",
-                // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
-                contentType: "application/json",
-                success: function (data) {
-                    var i = 1;
-                    var arr = [];
-                    data.objects.forEach(function (item, index) {
-                        item.stt = i;
-                        i++;
-                        arr.push(item)
-                    })
-                    self.render_grid(arr);
-                    var arr = [];
-                    if (IDTB != null || IDTB != undefined) {
-                        var filters = {
-                            filters: {
-                                "$and": [
-                                    { "chitietthietbi_id": { "$eq": IDTB } }
-                                ]
-                            },
-                            order_by: [{ "field": "created_at", "direction": "asc" }]
-                        }
-                    }
-                    $.ajax({
-                        url: self.getApp().serviceURL + "/api/v1/bienbanxacnhantinhtrangthietbi?results_per_page=100000&max_results_per_page=1000000",
-                        method: "GET",
-                        data: "q=" + JSON.stringify(filters),
-                        contentType: "application/json",
-                        success: function (data) {
-                            var i = 1;
-                            var arr = [];
-                            data.objects.forEach(function (item, index) {
-                                item.stt = i;
-                                i++;
-                                arr.push(item)
-                            })
-                            self.render_grid(arr);
-                        },
-                        error: function (xhr, status, error) {
-                            // self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
-                        },
-
-                    })
-                    self.$el.find("#tenthietbi").keyup(function () {
-                        arr = [];
+            if (IDTB !== null) {
+                var filters = {
+                    filters: {
+                        "$and": [
+                            { "chitietthietbi_id": { "$eq": IDTB } }
+                        ]
+                    },
+                    order_by: [{ "field": "created_at", "direction": "desc" }]
+                }
+                $.ajax({
+                    url: self.getApp().serviceURL + "/api/v1/bienbanxacnhantinhtrangthietbi?results_per_page=100000&max_results_per_page=1000000",
+                    method: "GET",
+                    data: "q=" + JSON.stringify(filters),
+                    contentType: "application/json",
+                    success: function (data) {
                         var i = 1;
+                        var arr = [];
                         data.objects.forEach(function (item, index) {
-                            if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
-                                item.stt = i;
-                                i++;
-                                arr.push(item)
-                            }
-                        });
+                            item.stt = i;
+                            i++;
+                            arr.push(item)
+                        })
                         self.render_grid(arr);
-                    });
-                    var arr2 = [];
-                    self.$el.find('#ngaykiemtra').blur(function () {
-                        var x = self.$el.find('#ngaykiemtra').data("gonrin").getValue();
 
-                        if (arr.length != 0) {
-                            arr2 = [];
-                            var i = 1;
-                            arr.forEach(function (item, index) {
-                                if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
-                                    item.stt = i;
-                                    i++;
-                                    arr2.push(item)
-                                }
-                            });
-                            self.render_grid(arr2);
-                        }
-                        else {
-                            arr2 = []
+
+                        self.$el.find("#tenthietbi").keyup(function () {
+                            arr = [];
                             var i = 1;
                             data.objects.forEach(function (item, index) {
-                                if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
                                     item.stt = i;
                                     i++;
-                                    arr2.push(item)
+                                    arr.push(item)
+
                                 }
                             });
-                            self.render_grid(arr2);
-                            self.$el.find("#tenthietbi").keyup(function () {
-                                var arr3 = [];
+                            self.render_grid(arr);
+
+                        });
+                        self.$el.find('#ngaykiemtra').blur(function () {
+                            var x = self.$el.find('#ngaykiemtra').data("gonrin").getValue();
+
+                            if (arr.length != 0) {
+                                var arr2 = [];
                                 var i = 1;
-                                arr2.forEach(function (item, index) {
-                                    if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                arr.forEach(function (item, index) {
+                                    if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
                                         item.stt = i;
                                         i++;
-                                        arr3.push(item)
+                                        arr2.push(item)
                                     }
                                 });
-                                self.render_grid(arr3);
+                                self.render_grid(arr2);
+
+                            }
+                            else {
+                                arr2 = []
+                                var i = 1;
+                                data.objects.forEach(function (item, index) {
+                                    if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                        item.stt = i;
+                                        i++;
+                                        arr2.push(item)
+                                    }
+                                });
+                                self.render_grid(arr2);
+                                self.$el.find("#tenthietbi").keyup(function () {
+                                    var arr3 = [];
+                                    var i = 1;
+                                    arr2.forEach(function (item, index) {
+                                        if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                            item.stt = i;
+                                            i++;
+                                            arr3.push(item)
+                                        }
+                                    });
+                                    self.render_grid(arr3);
+
+                                });
+                            }
+
+                        })
+
+                    },
+
+
+                })
+            }
+            else {
+                $.ajax({
+                    url: self.getApp().serviceURL + "/api/v1/bienbanxacnhantinhtrangthietbi?results_per_page=100000&max_results_per_page=1000000",
+                    method: "GET",
+                    data: { "q": JSON.stringify({ "order_by": [{ "field": "created_at", "direction": "desc" }] }) },
+                    contentType: "application/json",
+                    success: function (data) {
+                        var i = 1;
+                        var arr = [];
+                        data.objects.forEach(function (item, index) {
+                            item.stt = i;
+                            i++;
+                            arr.push(item)
+                        })
+                        self.render_grid(arr);
+                        self.$el.find("#tenthietbi").keyup(function () {
+                            arr = [];
+                            var i = 1;
+                            data.objects.forEach(function (item, index) {
+                                if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                    item.stt = i;
+                                    i++;
+                                    arr.push(item)
+
+                                }
                             });
-                        }
+                            self.render_grid(arr);
 
-                    })
+                        });
+                        self.$el.find('#ngaykiemtra').blur(function () {
+                            var x = self.$el.find('#ngaykiemtra').data("gonrin").getValue();
 
-                }
-            })
+                            if (arr.length != 0) {
+                                var arr2 = [];
+                                var i = 1;
+                                arr.forEach(function (item, index) {
+                                    if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                        item.stt = i;
+                                        i++;
+                                        arr2.push(item)
+                                    }
+                                });
+                                self.render_grid(arr2);
+
+                            }
+                            else {
+                                arr2 = []
+                                var i = 1;
+                                data.objects.forEach(function (item, index) {
+                                    if (moment(item.ngay * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
+                                        item.stt = i;
+                                        i++;
+                                        arr2.push(item)
+                                    }
+                                });
+                                self.render_grid(arr2);
+                                self.$el.find("#tenthietbi").keyup(function () {
+                                    var arr3 = [];
+                                    var i = 1;
+                                    arr2.forEach(function (item, index) {
+                                        if ((item.tenthietbi).indexOf(self.$el.find("#tenthietbi").val()) !== -1) {
+                                            item.stt = i;
+                                            i++;
+                                            arr3.push(item)
+                                        }
+                                    });
+                                    self.render_grid(arr3);
+
+                                });
+                            }
+
+                        })
+                    }
+                })
+            }
         },
         render_grid: function (dataSource) {
             sessionStorage.clear();

@@ -53,9 +53,6 @@ define(function (require) {
             var IDTB = sessionStorage.getItem('IDThietBi');
             sessionStorage.clear();
             if (IDTB !== null) {
-
-
-
                 var filters = {
                     filters: {
                         "$and": [

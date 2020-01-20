@@ -53,7 +53,19 @@
     "vaitro": {
         "type": "number"
     },
+    "khoa_id": {
+        "type": "string"
+    },
+    "phong_id": {
+        "type": "string"
+    },
     "roles": {
         "type": "list"
+    },
+    "khoa": {
+        "type": "dict"
+    },
+    "phong": {
+        "type": "dict"
     }
 }

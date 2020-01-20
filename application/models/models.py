@@ -33,7 +33,11 @@ class User(CommonModel):
     active = db.Column(db.Boolean(), default=True)
     roles = db.relationship('Role', secondary=roles_users, cascade="save-update")
     vaitro = db.Column(Integer())
-
+    khoa_id = db.Column(UUID(as_uuid=True),db.ForeignKey('khoa.id'), nullable=True)
+    khoa = db.relationship('Khoa', viewonly=True)
+    phong_id = db.Column(UUID(as_uuid=True),db.ForeignKey('phong.id'), nullable=True)
+    phong = db.relationship('Phong', viewonly=True)
+    
     def has_role(self, role):
         if isinstance(role, str):
             return role in (role.ma for role in self.roles)

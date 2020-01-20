@@ -8,7 +8,8 @@ define(function (require) {
 
 	// var RoleSelectView = require('app/role/js/SelectView');
 	var VaiTroSelectView = require('app/hethong/vaitro/js/SelectView');
-
+	var KhoaSelectView = require('app/hethong/khoa/view/SelectView');
+	var PhongSelectView = require('app/hethong/phong/view/SelectView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -46,7 +47,7 @@ define(function (require) {
 								success: function (model, respose, options) {
 
 									self.getApp().notify("Lưu thông tin thành công");
-									self.getApp().getRouter().refresh();
+									self.getApp().getRouter().navigate(self.collectionName + "/collection");
 								},
 								error: function (xhr, status, error) {
 									try {
@@ -129,7 +130,22 @@ define(function (require) {
 						{ "value": 4, "text": "Nhân sự khoa phòng" },
 					],
 				},
-
+				{
+					field: "phong",
+					uicontrol: "ref",
+					textField: "ten",
+					foreignRemoteField: "id",
+					foreignField: "phong_id",
+					dataSource: PhongSelectView
+				},
+				{
+					field: "khoa",
+					uicontrol: "ref",
+					textField: "ten",
+					foreignRemoteField: "id",
+					foreignField: "khoa_id",
+					dataSource: KhoaSelectView
+				},
 			]
 		},
 

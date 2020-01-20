@@ -49,7 +49,7 @@ define(function (require) {
 			},
 			"entries": [
 				{
-					"text": "Danh sách người dùng",
+					"text": "Nhân viên",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "user",
