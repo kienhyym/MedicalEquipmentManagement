@@ -303,7 +303,7 @@ async def check_makhoa_giongnhau(request=None, data=None, result=None, **kw):
 sqlapimanager.create_api(User, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
-    # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[, prepost_user], PUT_SINGLE=[, preput_user], DELETE=[predelete_user]),
+    # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[ prepost_user], PUT_SINGLE=[ preput_user], DELETE=[predelete_user]),
     # postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     # exclude_columns= ["password","salt","active"],
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
@@ -376,7 +376,7 @@ sqlapimanager.create_api(Khoa, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[,check_makhoa_giongnhau], PUT_SINGLE=[]),
+    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[check_makhoa_giongnhau], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='khoa')
 
@@ -384,7 +384,7 @@ sqlapimanager.create_api(Phong, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[,check_maphong_giongnhau], PUT_SINGLE=[]),
+    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[check_maphong_giongnhau], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='phong')
 
