@@ -285,7 +285,7 @@ class BangKiemDinh(CommonModel):
     donvi = db.Column(String(255))
     ngaycap = db.Column(BigInteger())
     ngayhethan = db.Column(BigInteger())
-    attachment = db.Column(String(255))
+    attachment = db.Column(String())
     tinhtrang = db.Column(String(255),default='dangduocsudung')
     tenthietbi = db.Column(String(255))
     model_serial_number = db.Column(String(255))

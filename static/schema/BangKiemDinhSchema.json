@@ -40,8 +40,7 @@
         "type": "number"
     },
     "attachment": {
-        "type": "string",
-        "length": 255
+        "type": "string"
     },
     "tinhtrang": {
         "type": "string",
