@@ -115,6 +115,8 @@ async def upload_file(request):
     url = app.config['FILE_SERVICE_URL']
     fsroot = app.config['FS_ROOT']
 
+    print ("files ", request.files)
+
     data = request.json
 
     print('data', data)
