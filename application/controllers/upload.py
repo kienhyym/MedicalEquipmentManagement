@@ -124,23 +124,23 @@ async def upload_file(request):
     # if request.method == 'POST':
 
     rand = ''.join(random.choice(string.digits) for _ in range(15))
-    file_name = os.path.splitext('xxxxxxxxxxxxxxxxx')
+    # file_name = os.path.splitext('xxxxxxxxxxxxxxxxx')
 
-    extname = os.path.splitext('xxxxxx')
-    newfilename = file_name + extname 
+    # extname = os.path.splitext('xxxxxx')
+    # newfilename = file_name + extname 
 
-    new_filename = newfilename.replace(" ", "_")
-    async with aiofiles.open(fsroot + new_filename, 'wb+') as f:
+    # new_filename = newfilename.replace(" ", "_")
+    async with aiofiles.open(fsroot + 'xxxx', 'wb+') as f:
         await f.write(img_uri)
 
     return json({
             "error_code": "OK",
             "error_message": "successful",
             "id":rand,
-            "link":url  + "/" + new_filename,
-            "filename":newfilename,
-            "filename_organization":file_name,
-            "extname":extname
+            "link":url  + "/" + xxxx,
+            "filename":xxxx,
+            "filename_organization":xxxx,
+            "extname":'xxxx'
         }, status=200)
     
     # return json({
