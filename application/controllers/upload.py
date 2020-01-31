@@ -124,7 +124,7 @@ async def upload_file(request):
     # if request.method == 'POST':
 
     rand = ''.join(random.choice(string.digits) for _ in range(15))
-    file_name = os.path.splitext(file.name)[0]
+    file_name = os.path.splitext('xxxxxxxxxxxxxxxxx')
 
     extname = os.path.splitext('xxxxxx')
     newfilename = file_name + extname 
