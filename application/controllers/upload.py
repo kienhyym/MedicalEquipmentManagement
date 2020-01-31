@@ -130,17 +130,17 @@ async def upload_file(request):
     # newfilename = file_name + extname 
 
     # new_filename = newfilename.replace(" ", "_")
-    async with aiofiles.open(fsroot + 'xxxx', 'wb+') as f:
+    async with aiofiles.open(fsroot + 'xxxxxxx', 'wb+') as f:
         await f.write(img_uri)
 
     return json({
             "error_code": "OK",
             "error_message": "successful",
             "id":rand,
-            "link":url  + "/" + xxxx,
-            "filename":xxxx,
-            "filename_organization":xxxx,
-            "extname":'xxxx'
+            "link":url  + "/xxxxxxx" ,
+            "filename":'xxxxxxx',
+            "filename_organization":'xxxxxxx',
+            "extname":'xxxxxxx'
         }, status=200)
     
     # return json({
