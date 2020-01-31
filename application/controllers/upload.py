@@ -56,7 +56,7 @@ async def upload_file(request):
     fsroot = app.config['FS_ROOT']
     if request.method == 'POST':
         file = request.files.get('file', None)
-    print('------file-------------------------------------',file)
+        print('------file-------------------------------------',file)
 
         image = request.files.get('image')
 
