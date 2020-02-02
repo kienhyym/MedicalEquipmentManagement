@@ -81,16 +81,36 @@ async def upload_file(request):
                     "filename_organization":file_name,
                     "extname":extname
                 }, status=200)
+    
+    return json({
+        "error_code": "Upload Error",
+        "error_message": "Could not upload file to store"
+    }, status=520)
 
-        else:
+
+@app.route('/api/v1/upload/file2', methods=['POST'])
+async def upload_file(request):
+    url = app.config['FILE_SERVICE_URL']
+    print('------url-------------------------------------',url)
+    # url = "http://103.74.122.206:20808"
+    fsroot = app.config['FS_ROOT']
+    if request.method == 'POST':
+        file = request.files.get('file', None)
+        print('------file-------------------------------------',file)
+
+        image = request.files.get('image')
+
+        if file :
             rand = ''.join(random.choice(string.digits) for _ in range(15))
-            file_name = os.path.splitext(file.name)[0]
-            # extname = os.path.splitext(file.name)[1]
+            file_name = os.path.splitext(file.name)
+            # print("-----------------Hello World------------------------",file_name)
+            extname = os.path.splitext(file.name)[1]
 #             newfilename = file_name + "-" + rand + extname
             newfilename = file_name + extname 
             new_filename = newfilename.replace(" ", "_")
             async with aiofiles.open(fsroot + new_filename, 'wb+') as f:
                 await f.write(file.body)
+            print("-----------------Hello World------------------------",new_filename)
 
             return json({
                     "error_code": "OK",
@@ -101,51 +121,8 @@ async def upload_file(request):
                     "filename_organization":file_name,
                     "extname":extname
                 }, status=200)
-
     
     return json({
         "error_code": "Upload Error",
         "error_message": "Could not upload file to store"
     }, status=520)
-
-
-@app.route('/api/v1/upload/file2', methods=['POST'])
-async def upload_file(request):
-
-    url = app.config['FILE_SERVICE_URL']
-    fsroot = app.config['FS_ROOT']
-
-    print ("files ", request.files)
-
-    data = request.json
-
-    print('data', data)
-
-    img_uri = data['imgURI']
-
-    # if request.method == 'POST':
-
-    rand = ''.join(random.choice(string.digits) for _ in range(15))
-    # file_name = os.path.splitext('xxxxxxxxxxxxxxxxx')
-
-    # extname = os.path.splitext('xxxxxx')
-    # newfilename = file_name + extname 
-
-    # new_filename = newfilename.replace(" ", "_")
-    async with aiofiles.open(fsroot + 'xxxxxxx', 'wb+') as f:
-        await f.write(str(img_uri))
-
-    return json({
-            "error_code": "OK",
-            "error_message": "successful",
-            "id":rand,
-            "link":url  + "/xxxxxxx" ,
-            "filename":'xxxxxxx',
-            "filename_organization":'xxxxxxx',
-            "extname":'xxxxxxx'
-        }, status=200)
-    
-    # return json({
-    #     "error_code": "Upload Error",
-    #     "error_message": "Could not upload file to store"
-    # }, status=520)
