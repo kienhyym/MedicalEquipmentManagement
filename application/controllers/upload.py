@@ -92,53 +92,25 @@ async def upload_file(request):
 @app.route('/api/v1/upload/file2', methods=['POST'])
 async def upload_file(request):
     url = app.config['FILE_SERVICE_URL']
-    print('------url-------------------------------------',url)
-    # url = "http://103.74.122.206:20808"
     fsroot = app.config['FS_ROOT']
     if request.method == 'POST':
         data = request.json
         file = data['files']
+        if file :
+            encoded = file
+            nameImage = random.randint(100000000000000000000,999999999999999999999)
+            nameImagedirect = fsroot+str(nameImage)+'.png'
+            print("-----------------Hello World------------------------",nameImagedirect)
 
-        print('------file-------------------------------------',file)
-        encoded = file
-        with open('decoded_image.png', 'wb') as file_to_save:
-            data = base64.b64decode(encoded)
-            # data = base64.decodebytes(encoded.encode('utf-8'))
-            file_to_save.write(data)
-            print('-----------------------------------DATA-------------------------------------',data)
-
-
-        # base64_img = file
-        # base64_img_bytes = base64_img.encode('utf-8')
-        # with open('decoded_image.png', 'wb') as file_to_save:
-        #     decoded_image_data = base64.decodebytes(base64_img_bytes)
-        #     file_to_save.write(data)
-        #     print('------data-------------------------------------',data)
-
-
-        if data :
-            rand = ''.join(random.choice(string.digits) for _ in range(15))
-            file_name = os.path.splitext(data.name)[0]
-            # print("-----------------Hello World------------------------",file_name)
-            extname = os.path.splitext(data.name)[1]
-#             newfilename = file_name + "-" + rand + extname
-            newfilename = file_name + extname 
-            new_filename = newfilename.replace(" ", "_")
-            async with aiofiles.open(fsroot + new_filename, 'wb+') as f:
-                await f.write(data.body)
-            print("-----------------Hello World------------------------",new_filename)
-
-            return json({
-                    "error_code": "OK",
-                    "error_message": "successful",
-                    "id":rand,
-                    "link":url  + "/" + new_filename,
-                    "filename":newfilename,
-                    "filename_organization":file_name,
-                    "extname":extname
-                }, status=200)
+            async with aiofiles.open(nameImagedirect, 'wb+') as f:
+                data2 = base64.b64decode(encoded)
+                await f.write(data2)
+                return json({
+                        "error_code": "OK",
+                        "url_img":str(nameImage)+'.png',
+                    }, status=200)
     
-    return json({
-        "error_code": "Upload Error",
-        "error_message": "Could not upload file to store"
-    }, status=520)
+        return json({
+            "error_code": "Upload Error",
+            "error_message": "Could not upload file to store"
+        }, status=520)

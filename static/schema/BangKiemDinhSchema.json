@@ -39,7 +39,7 @@
     "ngayhethan": {
         "type": "number"
     },
-    "attachment": {
+    "attachment_image": {
         "type": "string"
     },
     "tinhtrang": {
