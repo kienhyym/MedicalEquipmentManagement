@@ -10,6 +10,7 @@ from PIL import Image
 import time
 import random, string
 import aiofiles
+import base64
 
     
 # @app.route('/api/v1/upload/file', methods=['POST'])
@@ -87,3 +88,44 @@ async def upload_file(request):
         "error_message": "Could not upload file to store"
     }, status=520)
 
+
+@app.route('/api/v1/upload/file2', methods=['POST'])
+async def upload_file(request):
+    url = app.config['FILE_SERVICE_URL']
+    print('------url-------------------------------------',url)
+    # url = "http://103.74.122.206:20808"
+    fsroot = app.config['FS_ROOT']
+    if request.method == 'POST':
+        file = request.files
+        print('------file-------------------------------------',file)
+        encoded = file
+        data = base64.b64decode(encoded)
+        print('------data-------------------------------------',data)
+
+
+        if data :
+            rand = ''.join(random.choice(string.digits) for _ in range(15))
+            file_name = os.path.splitext(file.name)[0]
+            # print("-----------------Hello World------------------------",file_name)
+            extname = os.path.splitext(file.name)[1]
+#             newfilename = file_name + "-" + rand + extname
+            newfilename = file_name + extname 
+            new_filename = newfilename.replace(" ", "_")
+            async with aiofiles.open(fsroot + new_filename, 'wb+') as f:
+                await f.write(file.body)
+            print("-----------------Hello World------------------------",new_filename)
+
+            return json({
+                    "error_code": "OK",
+                    "error_message": "successful",
+                    "id":rand,
+                    "link":url  + "/" + new_filename,
+                    "filename":newfilename,
+                    "filename_organization":file_name,
+                    "extname":extname
+                }, status=200)
+    
+    return json({
+        "error_code": "Upload Error",
+        "error_message": "Could not upload file to store"
+    }, status=520)
