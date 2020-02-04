@@ -104,15 +104,15 @@ async def upload_file(request):
         #data = base64.b64decode(encoded)
 
         data = base64.decodebytes(encoded)
-        print('------data-------------------------------------',data)
+        print('-----------------------------------DATA-------------------------------------',data)
 
 
-        base64_img = file
-        base64_img_bytes = base64_img.encode('utf-8')
-        with open('decoded_image.png', 'wb') as file_to_save:
-            decoded_image_data = base64.decodebytes(base64_img_bytes)
-            file_to_save.write(data)
-            print('------data-------------------------------------',data)
+        # base64_img = file
+        # base64_img_bytes = base64_img.encode('utf-8')
+        # with open('decoded_image.png', 'wb') as file_to_save:
+        #     decoded_image_data = base64.decodebytes(base64_img_bytes)
+        #     file_to_save.write(data)
+        #     print('------data-------------------------------------',data)
 
 
         if data :
