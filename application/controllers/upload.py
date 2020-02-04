@@ -101,9 +101,10 @@ async def upload_file(request):
 
         print('------file-------------------------------------',file)
         encoded = file
-        #data = base64.b64decode(encoded)
-
-        data = base64.decodebytes(encoded.encode('utf-8'))
+        data = base64.b64decode(encoded)
+        # data = base64.decodebytes(encoded.encode('utf-8'))
+        file_to_save.write(data)
+        
         print('-----------------------------------DATA-------------------------------------',data)
 
 
