@@ -96,7 +96,9 @@ async def upload_file(request):
     # url = "http://103.74.122.206:20808"
     fsroot = app.config['FS_ROOT']
     if request.method == 'POST':
-        file = request.files
+        data = request.json
+        file = data['files']
+        
         print('------file-------------------------------------',file)
         encoded = file
         data = base64.b64decode(encoded)
