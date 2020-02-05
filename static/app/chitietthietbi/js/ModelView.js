@@ -300,7 +300,7 @@ define(function (require) {
 					// http://0.0.0.0:20808/#chitietthietbi/model?id=26204cbe-8744-4eec-b912-6a4f452c37ce
 					success: function (data) {
 						var qrcode = new QRCode("id_qrcodeMini", {
-							text: "www://" + self.getApp().serviceURL + "/#chitietthietbi/model?id=" + self.model.get("id"),
+							text: self.model.get("id"),
 							width: 40,
 							height: 40,
 							colorDark: "#000000",
@@ -308,7 +308,7 @@ define(function (require) {
 							correctLevel: QRCode.CorrectLevel.H
 						});
 						var qrcode = new QRCode("id_qrcodeBigSize", {
-							text: "www://" + self.getApp().serviceURL + "/#chitietthietbi/model?id=" + self.model.get("id"),
+							text: self.model.get("id"),
 							width: 220,
 							height: 220,
 							colorDark: "#000000",
