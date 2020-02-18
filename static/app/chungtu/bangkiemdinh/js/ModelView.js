@@ -38,71 +38,10 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
-							// console.log(self.model.get("chitietthietbi_id"))
-							// var filters = {
-							// 	filters: {
-							// 		"$and": [
-							// 			{ "chitietthietbi_id": { "$eq": self.model.get("chitietthietbi_id") } }
-							// 		]
-							// 	},
-							// 	order_by: [{ "field": "created_at", "direction": "desc" }]
-							// }
-							// $.ajax({
-							// 	type: "GET",
-							// 	url: self.getApp().serviceURL + "/api/v1/bangkiemdinh",
-							// 	data: "q=" + JSON.stringify(filters),
-							// 	contentType: "application/json",
-
-							// 	success: function (data) {
-							// 		$.ajax({
-							// 			method: "PUT",
-							// 			url: self.getApp().serviceURL + "/api/v1/bangkiemdinh/" + data.objects[0].id,
-							// 			data: JSON.stringify({
-							// 				tinhtrang: "khongduocsudung",
-							// 			}),
-							// 			headers: {
-							// 				'content-type': 'application/json'
-							// 			},
-							// 			dataType: 'json',
-							// 			success: function (response) {
-							// 				location.reload();
-
-							// 			}, error: function (xhr, ere) {
-							// 				console.log('xhr', ere);
-
-							// 			}
-							// 		})
-							// 	},
-							// 	error: function (response) {
-							// 		self.getApp().notify({ message: "Lưu không thành công" }, { type: "danger", delay: 1000 });
-							// 	}
-							// });
-
 							self.model.save(null, {
 								success: function (model, respose, options) {
-									// var data = {
-									// 	tenthietbi: respose.tenthietbi,
-									// 	ma_qltb: respose.ma_qltb,
-									// 	model_serial_number: respose.model_serial_number,
-									// 	ngaykiemdinh: respose.ngayhethan,
-									// 	chitietthietbi_id: respose.chitietthietbi_id,
-									// 	kiemdinh: respose.id,
-									// }
-									// $.ajax({
-									// 	type: "POST",
-									// 	url: self.getApp().serviceURL + "/api/v1/kehoachhangngay",
-									// 	data: JSON.stringify(data),
-									// 	success: function (response) {
-									// 		self.getApp().notify("Lưu thông tin thành công");
-									// 		self.getApp().getRouter().navigate(self.collectionName + "/collection");
-									// 	},
-									// 	error: function (response) {
-									// 		self.getApp().notify({ message: "Lưu không thành công" }, { type: "danger", delay: 1000 });
-									// 	}
-									// });
-
-
-
+									self.getApp().notify("Lưu thông tin thành công");
+									self.getApp().getRouter().navigate(self.collectionName + "/collection");
 								},
 								error: function (xhr, status, error) {
 									try {
@@ -133,22 +72,22 @@ define(function (require) {
 						command: function () {
 							var self = this;
 							// self.$el.find('#xxx').on('click', function () {
-								self.$el.find('#printJS-form').show();
-								self.$el.find('.bodynay').hide();
-				
-								self.$el.find('#tenthietbi').val(self.model.get('tenthietbi'))
-								self.$el.find('#serial').val(self.model.get('model_serial_number'))
-								self.$el.find('#maqltb').val(self.model.get('ma_qltb'))
-								self.$el.find('#matem').val(self.model.get('ma'))
-								self.$el.find('#dvkiemdinh').val(self.model.get('donvi'))
-				
-								self.$el.find('#ngaycap').val(moment(self.model.get('ngaycap') * 1000).format("DD/MM/YYYY"))
-								self.$el.find('#ngayhethan').val(moment(self.model.get('ngayhethan') * 1000).format("DD/MM/YYYY"))
-								self.$el.find('#imgin').attr('src',self.model.get('attachment_image') )
-				
-								new printJS({ printable: 'printJS-form', font_size: '30px;', type: 'html',   css: 'static/css/style.css' });
-								self.getApp().getRouter().refresh();
-				
+							self.$el.find('#printJS-form').show();
+							self.$el.find('.bodynay').hide();
+
+							self.$el.find('#tenthietbi').val(self.model.get('tenthietbi'))
+							self.$el.find('#serial').val(self.model.get('model_serial_number'))
+							self.$el.find('#maqltb').val(self.model.get('ma_qltb'))
+							self.$el.find('#matem').val(self.model.get('ma'))
+							self.$el.find('#dvkiemdinh').val(self.model.get('donvi'))
+
+							self.$el.find('#ngaycap').val(moment(self.model.get('ngaycap') * 1000).format("DD/MM/YYYY"))
+							self.$el.find('#ngayhethan').val(moment(self.model.get('ngayhethan') * 1000).format("DD/MM/YYYY"))
+							self.$el.find('#imgin').attr('src', self.model.get('attachment_image'))
+
+							new printJS({ printable: 'printJS-form', font_size: '30px;', type: 'html', css: 'static/css/style.css' });
+							self.getApp().getRouter().refresh();
+
 							// })
 						}
 					},
@@ -183,7 +122,7 @@ define(function (require) {
 							});
 						}
 					},
-					
+
 				],
 			}],
 		uiControl: {
@@ -221,7 +160,7 @@ define(function (require) {
 		render: function () {
 			var self = this;
 
-			
+
 
 			self.model.set("chitietthietbi_id", sessionStorage.getItem('IDThietBi'))
 			self.model.set("tenthietbi", sessionStorage.getItem('TenThietBi'))
@@ -239,7 +178,7 @@ define(function (require) {
 					success: function (data) {
 						console.log(data)
 						self.renderUpload();
-						self.$el.find('#img').attr("src", "." + self.model.get('attachment_image'))
+						self.$el.find('#img').attr("src", "static/uploads/" + self.model.get('attachment_image'))
 						self.applyBindings();
 
 					},
@@ -253,22 +192,16 @@ define(function (require) {
 		},
 		renderUpload() {
 			var self = this;
-			self.$el.find(".linkDownload").attr("href", self.model.get("attachment_image"));
-			self.$el.find(".linkDownload").show();
 			self.$el.find("#img").show();
-			self.$el.find("#title").show();
 		},
 		bindEventSelect: function () {
 			var self = this;
-			var input = document.querySelector('input[type=file]'); // see Example 4
-							input.onchange = function () {
-								var file = input.files[0];
-
+			self.$el.find(".upload_files").on("change", function () {
 				var http = new XMLHttpRequest();
 				var fd = new FormData();
 
 				var data_attr = $(this).attr("data-attr");
-				fd.append('file', file);
+				fd.append('file', this.files[0]);
 				http.open('POST', '/api/v1/upload/file');
 
 				http.upload.addEventListener('progress', function (evt) {
@@ -285,8 +218,10 @@ define(function (require) {
 						if (http.readyState === 4) {
 							var data_file = JSON.parse(http.responseText), link, p, t;
 							self.getApp().notify("Tải file thành công");
-							self.model.set(data_attr, data_file.link);
-							console.log('link',data_file.link)
+							self.model.set(data_attr, data_file.link.slice(16));
+							console.log('link', data_file.link.slice(16))
+							console.log('link', data_file.link)
+
 							self.$el.find("#title").show();
 							self.$el.find("#img").show();
 							self.$el.find("#img").attr("src", "." + data_file.link)
@@ -296,7 +231,7 @@ define(function (require) {
 					}
 				};
 				http.send(fd);
-			};
+			});
 		},
 	});
 });

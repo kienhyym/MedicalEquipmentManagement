@@ -688,7 +688,11 @@ define(function (require) {
 										<div class="col-md-9 p-1"><textarea rows="8" type="text" class="form-control">${item.noidungkiemtra}</textarea></div>
 										<div class="col-md-3 d-flex align-items-center justify-content-center p-0"><img src="static/img/user.png" height="170px" width="170px" style="border-radius: 6px;" class="p-0"></div>
 									</div>
+
+
 									<form>
+									<div class ="mohienkiemtrathietbi">
+
 									<div class="kiemtra row">
 										<div class="input-group flex-nowrap col-md-6 col-6 radioTot" >
 										<input type="text" class="form-control" value="Ổn định" aria-label="Username" aria-describedby="addon-wrapping">
@@ -746,7 +750,7 @@ define(function (require) {
 
 									<i style="position: absolute;top: 3px;right: 0px;display:none;z-index:999" class="fa fa-pencil-square-o btn-edit" aria-hidden="true"></i>
 									<i style="position: absolute;top: 3px;right: 0px;display:none;z-index:999" class="fa fa-reply-all btn-back" aria-hidden="true"></i>
-
+						</div>
 						</div>
 						<label>&nbsp;</label>
 
@@ -776,7 +780,7 @@ define(function (require) {
 					//ẩn hiển hướng dẫn
 					self.$el.find('.buoc').click(function () {
 						$(".huongdan").toggle();
-						$(".kiemtra").toggle();
+						$(".mohienkiemtrathietbi").toggle();
 					});
 					//Hiển thị số thứ tự
 					self.$el.find('.stt').each(function (index, item) {

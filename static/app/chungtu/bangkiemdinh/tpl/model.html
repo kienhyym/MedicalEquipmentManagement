@@ -109,76 +109,22 @@
 						<span id="title">Hình ảnh tem kiểm định</span><br>
 						<img src="#" id="img" style="width: 200px;height: auto;">
 						<br>
-						<a class="linkDownload">Tải về</a>
-						<h1>Camera Test</h1>
 						<div class="row">
 							<div class="form-group col">
 								<label>Tài liệu đính kèm</label>
-								<div id="upload-attachment">
+								<div id="upload-attachment_image">
 									<div class="custom-file">
-										<input type="file"  accept="image/*" capture="camera"
-											class="custom-file-input upload_files " id="upload_files"
-											data-attr="attachment" lang="vi">
+										<input type="file" data-attr="attachment_image" class="custom-file-input upload_files " id="upload_files" lang="vi">
 										<label class="custom-file-label">Chọn file tải lên</label>
 									</div>
 								</div>
-								<div id="download-attachment" class="form-group col col-md-12 col-sm-12">
+								<div id="download-attachment_image" class="form-group col col-md-12 col-sm-12">
 								</div>
 								<div class="row"> <span class="link col"></span>
 								</div>
 							</div>
 						</div>
 						<br>
-						<!-- <script>
-							var input = document.querySelector('input[type=file]'); // see Example 4
-							input.onchange = function () {
-								var file = input.files[0];
-								//upload(file);
-								drawOnCanvas(file);   // see Example 6
-								//displayAsImage(file); // see Example 7
-							};
-
-							function upload(file) {
-								var form = new FormData(),
-									xhr = new XMLHttpRequest();
-
-								form.append('image', file);
-								xhr.open('post', 'server.php', true);
-								xhr.send(form);
-							}
-
-							function drawOnCanvas(file) {
-								var reader = new FileReader();
-								reader.onload = function (e) {
-									var dataURL = e.target.result,
-										c = document.querySelector('canvas'), // see Example 4
-										ctx = c.getContext('2d'),
-										img = new Image();
-
-									img.onload = function () {
-										c.width = img.width;
-										c.height = img.height;
-										ctx.drawImage(img, 0, 0);
-									};
-
-									img.src = dataURL;
-								};
-
-								reader.readAsDataURL(file);
-							}
-
-							function displayAsImage(file) {
-								var imgURL = URL.createObjectURL(file),
-									img = document.createElement('img');
-
-								img.onload = function () {
-									URL.revokeObjectURL(imgURL);
-								};
-
-								img.src = imgURL;
-								document.body.appendChild(img);
-							}
-						</script> -->
 					</div>
 				</div>
 
