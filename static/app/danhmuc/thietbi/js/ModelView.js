@@ -518,6 +518,9 @@ define(function (require) {
 
 
 								}
+								else{
+									self.getApp().notify({ message: "Bạn đã chưa nhập nội dung cho bước này" }, { type: "danger", delay: 1000 });
+								}
 							});
 						}
 					} else {
