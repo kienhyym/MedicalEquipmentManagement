@@ -374,7 +374,7 @@ define(function (require) {
 								$(self.$el.find('.hinh')[index]).show()
 								$(self.$el.find('.hinah')[index]).show()
 								$(self.$el.find('.closexxx')[index]).show()
-								$(self.$el.find('.hinah')[index]).attr('src', data_file.link)
+								$(self.$el.find('.hinah')[index]).attr('src', "static/uploads/"+data_file.link.slice(16))
 								if (self.model.get('id') == null) {
 									$(self.$el.find('.closexxx')[index]).unbind('click').bind('click', function () {
 										$(self.$el.find('.hinah')[index]).attr('src', '#');
@@ -426,7 +426,7 @@ define(function (require) {
 															contentType: "application/json",
 															success: function (data) {
 																self.getApp().notify({ message: "Lưu thành công" });
-																// window.location = self.getApp().serviceURL + "/#bangkiemtrathietbi/model?id=" + self.model.get('id');
+																console.log('aaaaaaaaaaaaaaaa',data)
 															},
 															error: function (xhr, status, error) {
 																self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
@@ -465,6 +465,7 @@ define(function (require) {
 													contentType: "application/json",
 													success: function (data) {
 														self.getApp().notify({ message: "Lưu thành công" });
+														console.log('aaaaaaaaaaaaaaaa',data)
 
 													},
 													error: function (xhr, status, error) {
@@ -553,7 +554,7 @@ define(function (require) {
 													data: JSON.stringify({
 														id: gonrin.uuid(),
 														ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
-														hinhanh: data_file.link,
+														hinhanh: data_file.link.slice(16),
 														thoigian: moment(moment().unix() * 1000).format("HH:mm"),
 														buockiemtra: index + 1,
 														tinhtrang: trangthai,
@@ -562,7 +563,6 @@ define(function (require) {
 													contentType: "application/json",
 													success: function (data) {
 														self.getApp().notify({ message: "Lưu thành công" });
-														// window.location = self.getApp().serviceURL + "/#bangkiemtrathietbi/model?id=" + self.model.get('id');
 													},
 													error: function (xhr, status, error) {
 														self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
@@ -592,7 +592,7 @@ define(function (require) {
 											method: "POST",
 											data: JSON.stringify({
 												ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
-												hinhanh: data_file.link,
+												hinhanh: data_file.link.slice(16),
 												thoigian: moment(moment().unix() * 1000).format("HH:mm"),
 												buockiemtra: index + 1,
 												tinhtrang: trangthai,
@@ -601,6 +601,7 @@ define(function (require) {
 											contentType: "application/json",
 											success: function (data) {
 												self.getApp().notify({ message: "Lưu thành công" });
+												console.log('aaaaaaaaaaaaaaaa',data)
 
 											},
 											error: function (xhr, status, error) {
@@ -848,7 +849,7 @@ define(function (require) {
 											data: JSON.stringify({
 												id: gonrin.uuid(),
 												ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
-												hinhanh: linkHinhAnh,
+												hinhanh: linkHinhAnh.slice(16),
 												thoigian: moment(moment().unix() * 1000).format("HH:mm"),
 												buockiemtra: index + 1,
 												tinhtrang: trangthai,
@@ -857,7 +858,7 @@ define(function (require) {
 											contentType: "application/json",
 											success: function (data) {
 												self.getApp().notify({ message: "Lưu thành công" });
-												// window.location = self.getApp().serviceURL + "/#bangkiemtrathietbi/model?id=" + self.model.get('id');
+												console.log('aaaaaaaaaaaaaaaa',data)
 											},
 											error: function (xhr, status, error) {
 												self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
@@ -893,6 +894,7 @@ define(function (require) {
 									},
 									order_by: [{ "field": "buockiemtra", "direction": "asc" }]
 								}
+
 								$.ajax({
 									url: self.getApp().serviceURL + "/api/v1/buockiemtra?results_per_page=100000&max_results_per_page=1000000",
 									method: "GET",
@@ -907,7 +909,7 @@ define(function (require) {
 											method: "POST",
 											data: JSON.stringify({
 												ghichu: $(self.$el.find('.ghichuthem')[index]).val(),
-												hinhanh: linkHinhAnh,
+												hinhanh: linkHinhAnh.slice(16),
 												thoigian: moment(moment().unix() * 1000).format("HH:mm"),
 												buockiemtra: index + 1,
 												tinhtrang: trangthai,
@@ -916,6 +918,7 @@ define(function (require) {
 											contentType: "application/json",
 											success: function (data) {
 												self.getApp().notify({ message: "Lưu thành công" });
+												console.log('aaaaaaaaaaaaaaaa',data)
 
 											},
 											error: function (xhr, status, error) {
@@ -1010,7 +1013,7 @@ define(function (require) {
 						// Hiện thị hình ảnh
 						if (item.hinhanh !== "") {
 							$(self.$el.find('.hinah')[item.buockiemtra - 1]).show();
-							$(self.$el.find('.hinah')[item.buockiemtra - 1]).attr('src', item.hinhanh)
+							$(self.$el.find('.hinah')[item.buockiemtra - 1]).attr('src', "static/uploads/"+item.hinhanh)
 							$(self.$el.find('.hinah')[item.buockiemtra - 1]).css({ "height": "auto", "width": "200px", "opacity": "1" });
 							$(self.$el.find('.hinh')[item.buockiemtra - 1]).addClass("justify-content-center")
 						}
