@@ -687,7 +687,7 @@ define(function (require) {
 									</div>
 									<div class="row col-md-12 huongdan" style="display:none">
 										<div class="col-md-9 p-1"><textarea rows="8" type="text" class="form-control">${item.noidungkiemtra}</textarea></div>
-										<div class="col-md-3 d-flex align-items-center justify-content-center p-0"><img src="static/img/user.png" height="170px" width="170px" style="border-radius: 6px;" class="p-0"></div>
+										<div class="col-md-3 d-flex align-items-center justify-content-center p-0"><img src='http://103.74.122.206:20808${item.hinhanh}' height="170px" width="170px" style="border-radius: 6px;" class="p-0"></div>
 									</div>
 
 
