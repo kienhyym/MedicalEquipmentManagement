@@ -3,11 +3,13 @@ define(function (require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
+
+		//Gonrin = require('../../EthnicGroup/view/node_modules/gonrin');
 	var template = require('text!app/danhmuc/donvikiemdinh/tpl/model.html'),
 		schema = require('json!schema/DonViKiemDinhSchema.json');
-	var XaPhuongSelectView = require('app/danhmuc/XaPhuong/view/SelectView');
-	var QuanHuyenSelectView = require('app/danhmuc/QuanHuyen/view/SelectView');
-	var TinhThanhSelectView = require('app/danhmuc/TinhThanh/view/SelectView');
+	var XaPhuongSelectView = require('app/danhmuc/wards/view/SelectView');
+	var QuanHuyenSelectView = require('app/danhmuc/District/view/SelectView');
+	var TinhThanhSelectView = require('app/danhmuc/Province/view/SelectView');
 	return Gonrin.ModelView.extend({
 		template: template,
 		modelSchema: schema,
@@ -90,27 +92,27 @@ define(function (require) {
 		uiControl: {
 			fields: [
 				{
-					field: "xaphuong",
+					field: "wards",
 					uicontrol: "ref",
-					textField: "ten",
+					textField: "name",
 					foreignRemoteField: "id",
-					foreignField: "xaphuong_id",
+					foreignField: "wards_id",
 					dataSource: XaPhuongSelectView
 				},
 				{
-					field: "quanhuyen",
+					field: "district",
 					uicontrol: "ref",
-					textField: "ten",
+					textField: "name",
 					foreignRemoteField: "id",
-					foreignField: "quanhuyen_id",
+					foreignField: "district_id",
 					dataSource: QuanHuyenSelectView
 				},
 				{
-					field: "quocgia",
+					field: "nation",
 					uicontrol: "ref",
-					textField: "ten",
+					textField: "name",
 					foreignRemoteField: "id",
-					foreignField: "quocgia_id",
+					foreignField: "nation_id",
 					dataSource: TinhThanhSelectView
 				},
 				// {
@@ -137,11 +139,11 @@ define(function (require) {
 					success: function (data) {
 						self.applyBindings();
 						self.registerEvent();
-						self.model.on("change:tinhthanh_id", function () {
-							self.getFieldElement("quanhuyen").data("gonrin").setFilters({ "tinhthanh_id": { "$eq": self.model.get("tinhthanh_id") } });
+						self.model.on("change:province_id", function () {
+							self.getFieldElement("district").data("gonrin").setFilters({ "province_id": { "$eq": self.model.get("province_id") } });
 						});
-						self.model.on("change:quanhuyen_id", function () {
-							self.getFieldElement("xaphuong").data("gonrin").setFilters({ "quanhuyen_id": { "$eq": self.model.get("quanhuyen_id") } });
+						self.model.on("change:district_id", function () {
+							self.getFieldElement("wards").data("gonrin").setFilters({ "district_id": { "$eq": self.model.get("district_id") } });
 						});
 					},
 					error: function (xhr, status, error) {
@@ -160,13 +162,13 @@ define(function (require) {
 			} else {
 				self.applyBindings();
 				self.registerEvent();
-				self.model.on("change:tinhthanh_id", function () {
-					console.log("change tinh thanh", self.model.get("tinhthanh_id"));
-					self.getFieldElement("quanhuyen").data("gonrin").setFilters({ "tinhthanh_id": { "$eq": self.model.get("tinhthanh_id") } });
+				self.model.on("change:province_id", function () {
+					console.log("change tinh thanh", self.model.get("province_id"));
+					self.getFieldElement("district").data("gonrin").setFilters({ "province_id": { "$eq": self.model.get("province_id") } });
 				});
-				self.model.on("change:quanhuyen_id", function () {
-					self.getFieldElement("xaphuong").data("gonrin").setFilters({ "quanhuyen_id": { "$eq": self.model.get("quanhuyen_id") } });
-					console.log("change quanhuyen", self.model.get("quanhuyen_id"));
+				self.model.on("change:district_id", function () {
+					self.getFieldElement("wards").data("gonrin").setFilters({ "district_id": { "$eq": self.model.get("district_id") } });
+					console.log("change district", self.model.get("district_id"));
 				});
 			}
 		},

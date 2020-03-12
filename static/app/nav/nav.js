@@ -21,9 +21,9 @@ define(function (require) {
 			"text": "Sổ quản lý thiết bị",
 			"icon": "fa fa-book",
 			"type": "view",
-			"collectionName": "chitietthietbi",
-			"route": "chitietthietbi/collection",
-			"$ref": "app/chitietthietbi/js/CollectionView",
+			"collectionName": "equipmentdetails",
+			"route": "equipmentdetails/collection",
+			"$ref": "app/equipmentdetails/js/CollectionView",
 			"visible": function () {
 				return true
 
@@ -31,9 +31,9 @@ define(function (require) {
 		},
 		{
 			"type": "view",
-			"collectionName": "chitietthietbi",
-			"route": "chitietthietbi/model(/:id)",
-			"$ref": "app/chitietthietbi/js/ModelView",
+			"collectionName": "equipmentdetails",
+			"route": "equipmentdetails/model(/:id)",
+			"$ref": "app/equipmentdetails/js/ModelView",
 			"visible": function () {
 				return false;
 			}
@@ -72,12 +72,12 @@ define(function (require) {
 				},
 
 				{
-					"text": "Khoa",
+					"text": "Department",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "khoa",
-					"route": "khoa/collection",
-					"$ref": "app/hethong/khoa/view/CollectionView",
+					"collectionName": "department",
+					"route": "department/collection",
+					"$ref": "app/hethong/department/view/CollectionView",
 					"visible": function () {
 						return true
 
@@ -86,9 +86,9 @@ define(function (require) {
 				{
 
 					"type": "view",
-					"collectionName": "khoa",
-					"route": "khoa/model",
-					"$ref": "app/hethong/khoa/view/ModelView",
+					"collectionName": "department",
+					"route": "department/model",
+					"$ref": "app/hethong/department/view/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -98,9 +98,9 @@ define(function (require) {
 					"text": "Phòng",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "phong",
-					"route": "phong/collection",
-					"$ref": "app/hethong/phong/view/CollectionView",
+					"collectionName": "room",
+					"route": "room/collection",
+					"$ref": "app/hethong/room/view/CollectionView",
 					"visible": function () {
 						return true
 
@@ -109,9 +109,9 @@ define(function (require) {
 				{
 
 					"type": "view",
-					"collectionName": "phong",
-					"route": "phong/model",
-					"$ref": "app/hethong/phong/view/ModelView",
+					"collectionName": "room",
+					"route": "room/model",
+					"$ref": "app/hethong/room/view/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -121,9 +121,9 @@ define(function (require) {
 				// 	"text": "Vai trò",
 				// 	"icon": "fa fa-home",
 				// 	"type": "view",
-				// 	"collectionName": "vaitro",
-				// 	"route": "vaitro/collection",
-				// 	"$ref": "app/vaitro/js/CollectionView",
+				// 	"collectionName": "rank",
+				// 	"route": "rank/collection",
+				// 	"$ref": "app/rank/js/CollectionView",
 				// 	"visible": function () {
 				// 		return true
 
@@ -133,9 +133,9 @@ define(function (require) {
 				// 	"text": "Vai trò",
 				// 	"icon": "fa fa-home",
 				// 	"type": "view",
-				// 	"collectionName": "vaitro",
-				// 	"route": "vaitro/model(/:id)",
-				// 	"$ref": "app/vaitro/js/ModelView",
+				// 	"collectionName": "rank",
+				// 	"route": "rank/model(/:id)",
+				// 	"$ref": "app/rank/js/ModelView",
 				// 	"visible": function () {
 				// 		return false;
 				// 	}
@@ -156,9 +156,9 @@ define(function (require) {
 					"text": "Nơi sản xuất",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "quocgia",
-					"route": "quocgia/collection",
-					"$ref": "app/danhmuc/QuocGia/view/CollectionView",
+					"collectionName": "nation",
+					"route": "nation/collection",
+					"$ref": "app/danhmuc/Nation/view/CollectionView",
 					"visible": function(){
 						return true ;
 					}
@@ -166,18 +166,18 @@ define(function (require) {
 				{
 					"type": "view",
 					"icon": "far fa-clipboard",
-					"collectionName": "quocgia",
-					"route": "quocgia/model(/:id)",
-					"$ref": "app/danhmuc/QuocGia/view/ModelView",
+					"collectionName": "nation",
+					"route": "nation/model(/:id)",
+					"$ref": "app/danhmuc/Nation/view/ModelView",
 					"visible": false
 				},
 				{
 					"text": "Hãng sản xuất",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "hangsanxuat",
-					"route": "hangsanxuat/collection",
-					"$ref": "app/danhmuc/hangsanxuat/view/CollectionView",
+					"collectionName": "manufacturer",
+					"route": "manufacturer/collection",
+					"$ref": "app/danhmuc/manufacturer/view/CollectionView",
 					"visible": function(){
 						return true ;
 					}
@@ -185,18 +185,18 @@ define(function (require) {
 				{
 					"type": "view",
 					"icon": "far fa-clipboard",
-					"collectionName": "hangsanxuat",
-					"route": "hangsanxuat/model(/:id)",
-					"$ref": "app/danhmuc/hangsanxuat/view/ModelView",
+					"collectionName": "manufacturer",
+					"route": "manufacturer/model(/:id)",
+					"$ref": "app/danhmuc/manufacturer/view/ModelView",
 					"visible": false
 				},
 				{
 					"text": "Nhà cung cấp thiết bị",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "donvi",
-					"route": "donvi/collection",
-					"$ref": "app/danhmuc/donvi/js/CollectionView",
+					"collectionName": "organization",
+					"route": "organization/collection",
+					"$ref": "app/danhmuc/organization/js/CollectionView",
 					"visible": function () {
 						return true
 
@@ -206,9 +206,9 @@ define(function (require) {
 					"text": "Đơn vị",
 					"icon": "fa fa-home",
 					"type": "view",
-					"collectionName": "donvi",
-					"route": "donvi/model(/:id)",
-					"$ref": "app/danhmuc/donvi/js/ModelView",
+					"collectionName": "organization",
+					"route": "organization/model(/:id)",
+					"$ref": "app/danhmuc/organization/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -218,9 +218,9 @@ define(function (require) {
 					"text": " Danh sách thiết bị",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "thietbi",
-					"route": "thietbi/collection",
-					"$ref": "app/danhmuc/thietbi/js/CollectionView",
+					"collectionName": "medicalequipment",
+					"route": "medicalequipment/collection",
+					"$ref": "app/danhmuc/medicalequipment/js/CollectionView",
 					"visible": function () {
 						return true
 
@@ -228,9 +228,9 @@ define(function (require) {
 				},
 				{
 					"type": "view",
-					"collectionName": "thietbi",
-					"route": "thietbi/model(/:id)",
-					"$ref": "app/danhmuc/thietbi/js/ModelView",
+					"collectionName": "medicalequipment",
+					"route": "medicalequipment/model(/:id)",
+					"$ref": "app/danhmuc/medicalequipment/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -275,9 +275,9 @@ define(function (require) {
 					"text": "Kiểm tra thiết bị",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "bangkiemtrathietbi",
-					"route": "bangkiemtrathietbi/collection",
-					"$ref": "app/chungtu/bangkiemtrathietbi/js/CollectionView",
+					"collectionName": "equipmentinspectionform",
+					"route": "equipmentinspectionform/collection",
+					"$ref": "app/chungtu/equipmentinspectionform/js/CollectionView",
 					"visible": function () {
 						return true
 		
@@ -285,9 +285,9 @@ define(function (require) {
 				},
 				{
 					"type": "view",
-					"collectionName": "bangkiemtrathietbi",
-					"route": "bangkiemtrathietbi/model(/:id)",
-					"$ref": "app/chungtu/bangkiemtrathietbi/js/ModelView",
+					"collectionName": "equipmentinspectionform",
+					"route": "equipmentinspectionform/model(/:id)",
+					"$ref": "app/chungtu/equipmentinspectionform/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -296,9 +296,9 @@ define(function (require) {
 					"text": "Yêu cầu sửa chữa",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "phieuyeucausuachua",
-					"route": "phieuyeucausuachua/collection",
-					"$ref": "app/chungtu/phieuyeucausuachua/js/CollectionView",
+					"collectionName": "repairrequestform",
+					"route": "repairrequestform/collection",
+					"$ref": "app/chungtu/repairrequestform/js/CollectionView",
 					"visible": function () {
 						return true
 
@@ -306,9 +306,9 @@ define(function (require) {
 				},
 				{
 					"type": "view",
-					"collectionName": "phieuyeucausuachua",
-					"route": "phieuyeucausuachua/model(/:id)",
-					"$ref": "app/chungtu/phieuyeucausuachua/js/ModelView",
+					"collectionName": "repairrequestform",
+					"route": "repairrequestform/model(/:id)",
+					"$ref": "app/chungtu/repairrequestform/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -317,9 +317,9 @@ define(function (require) {
 					"text": "Biên bản kiểm tra",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "bienbanxacnhantinhtrangthietbi",
-					"route": "bienbanxacnhantinhtrangthietbi/collection",
-					"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/CollectionView",
+					"collectionName": "devicestatusverificationform",
+					"route": "devicestatusverificationform/collection",
+					"$ref": "app/chungtu/devicestatusverificationform/js/CollectionView",
 					"visible": function () {
 						return true
 
@@ -327,9 +327,9 @@ define(function (require) {
 				},
 				{
 					"type": "view",
-					"collectionName": "bienbanxacnhantinhtrangthietbi",
-					"route": "bienbanxacnhantinhtrangthietbi/model(/:id)",
-					"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/ModelView",
+					"collectionName": "devicestatusverificationform",
+					"route": "devicestatusverificationform/model(/:id)",
+					"$ref": "app/chungtu/devicestatusverificationform/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -338,18 +338,18 @@ define(function (require) {
 					"text": "Lịch sử kiểm định",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "bangkiemdinh",
-					"route": "bangkiemdinh/collection",
-					"$ref": "app/chungtu/bangkiemdinh/js/CollectionView",
+					"collectionName": "certificateform",
+					"route": "certificateform/collection",
+					"$ref": "app/chungtu/certificateform/js/CollectionView",
 					"visible": function () {
 						return true
 					}
 				},
 				{
 					"type": "view",
-					"collectionName": "bangkiemdinh",
-					"route": "bangkiemdinh/model(/:id)",
-					"$ref": "app/chungtu/bangkiemdinh/js/ModelView",
+					"collectionName": "certificateform",
+					"route": "certificateform/model(/:id)",
+					"$ref": "app/chungtu/certificateform/js/ModelView",
 					"visible": function () {
 						return false;
 					}
@@ -394,9 +394,9 @@ define(function (require) {
 		// 			"text": "Quốc gia",
 		// 			"icon": "far fa-clipboard",
 		// 			"type": "view",
-		// 			"collectionName": "quocgia",
-		// 			"route": "quocgia/collection",
-		// 			"$ref": "app/danhmuc/QuocGia/view/CollectionView",
+		// 			"collectionName": "nation",
+		// 			"route": "nation/collection",
+		// 			"$ref": "app/danhmuc/Nation/view/CollectionView",
 		// 			// "visible": function(){
 		// 			// 	//console.log(this.checkHasRole("Admin"));
 		// 			// 	return this.checkHasRole("Admin") ;
@@ -405,18 +405,18 @@ define(function (require) {
 		// 		{
 		// 			"type": "view",
 		// 			"icon": "far fa-clipboard",
-		// 			"collectionName": "quocgia",
-		// 			"route": "quocgia/model(/:id)",
-		// 			"$ref": "app/danhmuc/QuocGia/view/ModelView",
+		// 			"collectionName": "nation",
+		// 			"route": "nation/model(/:id)",
+		// 			"$ref": "app/danhmuc/Nation/view/ModelView",
 		// 			"visible": false
 		// 		},
 		// 		{
 		// 			"text": "Tỉnh thành",
 		// 			"icon": "far fa-clipboard",
 		// 			"type": "view",
-		// 			"collectionName": "tinhthanh",
-		// 			"route": "tinhthanh/collection",
-		// 			"$ref": "app/danhmuc/TinhThanh/view/CollectionView",
+		// 			"collectionName": "province",
+		// 			"route": "province/collection",
+		// 			"$ref": "app/danhmuc/Province/view/CollectionView",
 		// 			// "visible": function(){
 		// 			// 	return this.checkHasRole("Admin") ;
 		// 			// }
@@ -424,18 +424,18 @@ define(function (require) {
 		// 		{
 		// 			"type": "view",
 		// 			"icon": "far fa-clipboard",
-		// 			"collectionName": "tinhthanh",
-		// 			"route": "tinhthanh/model(/:id)",
-		// 			"$ref": "app/danhmuc/TinhThanh/view/ModelView",
+		// 			"collectionName": "province",
+		// 			"route": "province/model(/:id)",
+		// 			"$ref": "app/danhmuc/Province/view/ModelView",
 		// 			"visible": false
 		// 		},
 		// 		{
 		// 			"text": "Quận huyện",
 		// 			"icon": "far fa-clipboard",
 		// 			"type": "view",
-		// 			"collectionName": "quanhuyen",
-		// 			"route": "quanhuyen/collection",
-		// 			"$ref": "app/danhmuc/QuanHuyen/view/CollectionView",
+		// 			"collectionName": "district",
+		// 			"route": "district/collection",
+		// 			"$ref": "app/danhmuc/District/view/CollectionView",
 		// 			// "visible": function(){
 		// 			// 	return this.checkHasRole("Admin") ;
 		// 			// }
@@ -443,18 +443,18 @@ define(function (require) {
 		// 		{
 		// 			"type": "view",
 		// 			"icon": "far fa-clipboard",
-		// 			"collectionName": "quanhuyen",
-		// 			"route": "quanhuyen/model(/:id)",
-		// 			"$ref": "app/danhmuc/QuanHuyen/view/ModelView",
+		// 			"collectionName": "district",
+		// 			"route": "district/model(/:id)",
+		// 			"$ref": "app/danhmuc/District/view/ModelView",
 		// 			"visible": false
 		// 		},
 		// 		{
 		// 			"text": "Xã phường",
 		// 			"icon": "far fa-clipboard",
 		// 			"type": "view",
-		// 			"collectionName": "xaphuong",
-		// 			"route": "xaphuong/collection",
-		// 			"$ref": "app/danhmuc/XaPhuong/view/CollectionView",
+		// 			"collectionName": "wards",
+		// 			"route": "wards/collection",
+		// 			"$ref": "app/danhmuc/Wards/view/CollectionView",
 		// 			// "visible": function(){
 		// 			// 	return this.checkHasRole("Admin") ;
 		// 			// }
@@ -462,9 +462,9 @@ define(function (require) {
 		// 		{
 		// 			"type": "view",
 		// 			"icon": "far fa-clipboard",
-		// 			"collectionName": "xaphuong",
-		// 			"route": "xaphuong/model(/:id)",
-		// 			"$ref": "app/danhmuc/XaPhuong/view/ModelView",
+		// 			"collectionName": "wards",
+		// 			"route": "wards/model(/:id)",
+		// 			"$ref": "app/danhmuc/Wards/view/ModelView",
 		// 			"visible": false
 		// 		},
 		// 	]

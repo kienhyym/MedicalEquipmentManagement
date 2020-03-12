@@ -105,27 +105,27 @@ def generate_schema(path = None, exclude = None, prettyprint = True):
 
 @manager.command
 def add_danhsach_quocgia_tinhthanh():   
-    quocgias = QuocGia(ma = "VN", ten = "Việt Nam")
+    quocgias = Nation(code = "VN", name = "Việt Nam")
     db.session.add(quocgias)
     db.session.flush() 
     db.session.commit()
     try:
         SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-        #add dantoc
+        #add ethnicgroup
         json_url_dantoc = os.path.join(SITE_ROOT, "static/app/enum", "DanTocEnum.json")
         data_dantoc = json.load(open(json_url_dantoc))
         for item_dantoc in data_dantoc:
-            dantoc = DanToc(ma = item_dantoc["value"], ten = item_dantoc["text"])
-            db.session.add(dantoc)
+            ethnicgroup = EthnicGroup(code = item_dantoc["value"], name = item_dantoc["text"])
+            db.session.add(ethnicgroup)
         
         db.session.commit()
         json_url_dstinhthanh = os.path.join(SITE_ROOT, "static/app/enum", "ThongTinTinhThanh.json")
         data_dstinhthanh = json.load(open(json_url_dstinhthanh))
         for item_dstinhthanh in data_dstinhthanh:
-            tinhthanh_filter = db.session.query(TinhThanh).filter(TinhThanh.ma == item_dstinhthanh["matinhthanh"]).first()
+            tinhthanh_filter = db.session.query(Province).filter(Province.code == item_dstinhthanh["matinhthanh"]).first()
             if tinhthanh_filter is None:
-#                 quocgia_filter = db.session.query(QuocGia).filter(QuocGia.ma == 'VN').first()
-                tinhthanh_filter = TinhThanh(ten = item_dstinhthanh["tentinhthanh"], ma = item_dstinhthanh["matinhthanh"], quocgia_id = quocgias.id)
+#                 quocgia_filter = db.session.query(Nation).filter(Nation.code == 'VN').first()
+                tinhthanh_filter = Province(name = item_dstinhthanh["tentinhthanh"], code = item_dstinhthanh["matinhthanh"], nation_id = quocgias.id)
                 db.session.add(tinhthanh_filter)
         db.session.commit()
     except Exception as e:
@@ -138,10 +138,10 @@ def add_danhsach_quanhuyen():
         json_url_dsquanhuyen = os.path.join(SITE_ROOT, "static/app/enum", "ThongTinTinhThanh.json")
         data_dsquanhuyen = json.load(open(json_url_dsquanhuyen))
         for item_dsquanhuyen in data_dsquanhuyen:
-            quanhuyen_filter = db.session.query(QuanHuyen).filter(QuanHuyen.ma == item_dsquanhuyen["maquanhuyen"]).first()
+            quanhuyen_filter = db.session.query(District).filter(District.code == item_dsquanhuyen["maquanhuyen"]).first()
             if quanhuyen_filter is None:
-                tinhthanh_filter = db.session.query(TinhThanh).filter(TinhThanh.ma == item_dsquanhuyen["matinhthanh"]).first()
-                quanhuyen_filter = QuanHuyen(ten = item_dsquanhuyen["tenquanhuyen"], ma = item_dsquanhuyen["maquanhuyen"], tinhthanh_id = tinhthanh_filter.id)
+                tinhthanh_filter = db.session.query(Province).filter(Province.code == item_dsquanhuyen["matinhthanh"]).first()
+                quanhuyen_filter = District(name = item_dsquanhuyen["tenquanhuyen"], code = item_dsquanhuyen["maquanhuyen"], province_id = tinhthanh_filter.id)
                 db.session.add(quanhuyen_filter)
         db.session.commit()
     except Exception as e:
@@ -154,10 +154,10 @@ def add_danhsach_xaphuong():
         json_url_dsxaphuong = os.path.join(SITE_ROOT, "static/app/enum", "ThongTinTinhThanh.json")
         data_dsxaphuong = json.load(open(json_url_dsxaphuong))
         for item_dsxaphuong in data_dsxaphuong:
-            xaphuong_filter = db.session.query(XaPhuong).filter(XaPhuong.ma == item_dsxaphuong["maxaphuong"]).first()
+            xaphuong_filter = db.session.query(Wards).filter(Wards.code == item_dsxaphuong["maxaphuong"]).first()
             if xaphuong_filter is None:
-                quanhuyen_filter = db.session.query(QuanHuyen).filter(QuanHuyen.ma == item_dsxaphuong["maquanhuyen"]).first()
-                xaphuong_filter = XaPhuong(ten = item_dsxaphuong["tenxaphuong"], ma = item_dsxaphuong["maxaphuong"], quanhuyen_id = quanhuyen_filter.id)
+                quanhuyen_filter = db.session.query(District).filter(District.code == item_dsxaphuong["maquanhuyen"]).first()
+                xaphuong_filter = Wards(name = item_dsxaphuong["tenxaphuong"], code = item_dsxaphuong["maxaphuong"], district_id = quanhuyen_filter.id)
                 db.session.add(xaphuong_filter)
         db.session.commit()
     except Exception as e:
@@ -165,14 +165,14 @@ def add_danhsach_xaphuong():
 @manager.command
 def create_default_user(): 
     #add user
-    user2 = User(email='admin', name='admin',vaitro=1,password=auth.encrypt_password('123456'))
+    user2 = User(email='admin', name='admin',rank=1,password=auth.encrypt_password('123456'))
     db.session.add(user2)
     db.session.flush()
     db.session.commit()
 
 @manager.command
 def run():  
-    quocgiaa = db.session.query(QuocGia).first()
+    quocgiaa = db.session.query(Nation).first()
     if quocgiaa is None:
         add_danhsach_quocgia_tinhthanh()
         add_danhsach_quanhuyen()

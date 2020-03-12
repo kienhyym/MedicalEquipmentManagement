@@ -10,14 +10,14 @@ def default_uuid():
     return str(uuid.uuid4())
 
 roles_users = db.Table('roles_users',
-                       db.Column('user_id', UUID(as_uuid=True), db.ForeignKey('user.id', ondelete='cascade'), primary_key=True),
-                       db.Column('role_id', UUID(as_uuid=True), db.ForeignKey('role.id', onupdate='cascade'), primary_key=True))
+    db.Column('user_id', UUID(as_uuid=True), db.ForeignKey('user.id', ondelete='cascade'), primary_key=True),
+    db.Column('role_id', UUID(as_uuid=True), db.ForeignKey('role.id', onupdate='cascade'), primary_key=True))
 
 
 class Role(CommonModel):
     __tablename__ = 'role'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(db.String(80), unique=True)
+    code = db.Column(db.String(80), unique=True)
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
 
@@ -32,263 +32,260 @@ class User(CommonModel):
     type = db.Column(db.String())
     active = db.Column(db.Boolean(), default=True)
     roles = db.relationship('Role', secondary=roles_users, cascade="save-update")
-    vaitro = db.Column(Integer())
-    khoa_id = db.Column(UUID(as_uuid=True),db.ForeignKey('khoa.id'), nullable=True)
-    khoa = db.relationship('Khoa', viewonly=True)
-    phong_id = db.Column(UUID(as_uuid=True),db.ForeignKey('phong.id'), nullable=True)
-    phong = db.relationship('Phong', viewonly=True)
+    rank = db.Column(Integer())
+    department_id = db.Column(UUID(as_uuid=True),db.ForeignKey('department.id'), nullable=True)
+    department = db.relationship('Department', viewonly=True)
+    room_id = db.Column(UUID(as_uuid=True),db.ForeignKey('room.id'), nullable=True)
+    room = db.relationship('Room', viewonly=True)
     
     def has_role(self, role):
         if isinstance(role, str):
-            return role in (role.ma for role in self.roles)
+            return role in (role.code for role in self.roles)
         else:
             return role in self.roles
 
 
-class DonVi(CommonModel):
-    __tablename__ = 'donvi'
+class Organization(CommonModel):
+    __tablename__ = 'organization'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ten = db.Column(db.String(255))
+    name = db.Column(db.String(255))
     email = db.Column(db.String(255))
     Website = db.Column(db.String(255))
     Fax = db.Column(db.String(255))
-    sodienthoai = db.Column(db.String(63))
-    diachi = db.Column(db.String(255))
-    tinhthanh_id = db.Column(String, nullable=True)
-    tinhthanh = db.Column(JSONB)
-    quanhuyen_id = db.Column(String, nullable=True)
-    quanhuyen = db.Column(JSONB)
-    xaphuong_id = db.Column(String, nullable=True)
-    xaphuong = db.Column(JSONB)
-    giamdoc = db.Column(db.String)
+    phone_number = db.Column(db.String(63))
+    address = db.Column(db.String(255))
+    province_id = db.Column(UUID(as_uuid=True), ForeignKey('province.id'))
+    province = relationship('Province', viewonly=True)
+    district_id = db.Column(UUID(as_uuid=True), ForeignKey('district.id'))
+    district = relationship('District', viewonly=True)
+    wards_id = db.Column(UUID(as_uuid=True), ForeignKey('wards.id'))
+    wards = relationship('Wards', viewonly=True)
+    ceo = db.Column(db.String)
 
 
 
 
-class DanToc(CommonModel):
-    __tablename__ = 'dantoc'
+class EthnicGroup(CommonModel):
+    __tablename__ = 'ethnicgroup'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(String(255), index=True)
-    ten = db.Column(String(255))
+    code = db.Column(String(255), index=True)
+    name = db.Column(String(255))
     
-class QuocGia(CommonModel):
-    __tablename__ = 'quocgia'
+class Nation(CommonModel):
+    __tablename__ = 'nation'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(String(255), index=True)
-    ten = db.Column(String(255))
+    code = db.Column(String(255), index=True)
+    name = db.Column(String(255))
 
-class TinhThanh(CommonModel):
-    __tablename__ = 'tinhthanh'
+class Province(CommonModel):
+    __tablename__ = 'province'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(String(255),unique=True, index=True)
-    ten = db.Column(String(255))
-    quocgia_id = db.Column(UUID(as_uuid=True), nullable=True)
-    quocgia = db.Column(JSONB)
+    code = db.Column(String(255),unique=True, index=True)
+    name = db.Column(String(255))
+    nation_id = db.Column(UUID(as_uuid=True), nullable=True)
+    nation = db.Column(JSONB)
 
-class QuanHuyen(CommonModel):
-    __tablename__ = 'quanhuyen'
+class District(CommonModel):
+    __tablename__ = 'district'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(String(255),unique=True, index=True)
-    ten = db.Column(String(255))
-    tinhthanh_id = db.Column(UUID(as_uuid=True), nullable=True)
-    tinhthanh = db.Column(JSONB)
+    code = db.Column(String(255),unique=True, index=True)
+    name = db.Column(String(255))
+    province_id = db.Column(UUID(as_uuid=True), nullable=True)
+    province = db.Column(JSONB)
     
-class XaPhuong(CommonModel):
-    __tablename__ = 'xaphuong'
+class Wards(CommonModel):
+    __tablename__ = 'wards'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(String(255),unique=True, index=True)
-    ten = db.Column(String(255))
-    quanhuyen_id = db.Column(UUID(as_uuid=True), nullable=True)
-    quanhuyen = db.Column(JSONB)
+    code = db.Column(String(255),unique=True, index=True)
+    name = db.Column(String(255))
+    district_id = db.Column(UUID(as_uuid=True), nullable=True)
+    district = db.Column(JSONB)
 
 
     
-class ThietBi(CommonModel):
-    __tablename__ = 'thietbi'
+class MedicalEquipment(CommonModel):
+    __tablename__ = 'medicalequipment'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ten = db.Column(String(255))
-    phanloai = db.Column(String(255))
-    donvithuchienphanloai = db.Column(String(255))
-    soluuhanh = db.Column(String(255))
-    donviyeucauphanloai = db.Column(String(255))
-    tinhtrang = db.Column(String(255))
-    danhsachhanche = db.Column(String(255),default='dangduocsudung')
-    bangphanloai = db.Column(String(255))
-    congkhaiphanloai = db.Column(String(255))
-    chungloailoaithietbi = db.Column(String(255))
-    chitietsanphamfield = db.relationship('ChiTietThietBi', cascade="all, delete-orphan")
-    quytrinhkiemtrafield = db.relationship('QuyTrinhKiemTra', cascade="all, delete-orphan")
+    name = db.Column(String(255))
+    classify = db.Column(String(255))
+    implementing_organization_classification = db.Column(String(255))
+    circulation_number = db.Column(String(255))
+    organization_requesting_classification = db.Column(String(255))
+    status = db.Column(String(255))
+    restricted_list = db.Column(String(255),default='active')
+    classification_table = db.Column(String(255))
+    public_classification = db.Column(String(255))
+    types_of_equipment = db.Column(String(255))
+    list_of_equipment_details = db.relationship('EquipmentDetails', cascade="all, delete-orphan")
+    List_of_equipment_inspection_procedures = db.relationship('EquipmentInspectionProcedures', cascade="all, delete-orphan")
 
-class ChiTietThietBi(CommonModel):
-    __tablename__ = 'chitietthietbi'
+class EquipmentDetails(CommonModel):
+    __tablename__ = 'equipmentdetails'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    tenthietbi = db.Column(String(255))
+    name = db.Column(String(255))
     model_serial_number = db.Column(String(255))
-    ma_qltb = db.Column(String(255))
-    noisanxuat = db.Column(String(255))
-    danhsachhanche = db.Column(String(255),default='khong')
-    ngaymua = db.Column(BigInteger())
-    nhacungcap_id = db.Column(UUID(as_uuid=True),db.ForeignKey('donvi.id'), nullable=True)
-    nhacungcap = db.relationship('DonVi', viewonly=True)
-    quocgia_id = db.Column(UUID(as_uuid=True),db.ForeignKey('quocgia.id'), nullable=True)
-    quocgia = db.relationship('QuocGia', viewonly=True)
-    hangsanxuat_id = db.Column(UUID(as_uuid=True),db.ForeignKey('hangsanxuat.id'), nullable=True)
-    hangsanxuat = db.relationship('HangSanXuat', viewonly=True)
-    baohanhtungay = db.Column(BigInteger())
-    baohanhdenngay = db.Column(BigInteger())
-    hetbaohanh = db.Column(String(255))
-    khoa_id = db.Column(UUID(as_uuid=True),db.ForeignKey('khoa.id'), nullable=True)
-    khoa = db.relationship('Khoa', viewonly=True)
-    phong_id = db.Column(UUID(as_uuid=True),db.ForeignKey('phong.id'), nullable=True)
-    phong = db.relationship('Phong', viewonly=True)
-    thongsokythuat = db.Column(Text())
-    phukien = db.Column(Text())
-    tinhtrangthietbikhimua = db.Column(String(255))
-    yeucauvebaoduong = db.Column(Text())
-    noidungbaoduong = db.Column(Text())
-    luuykhisudung = db.Column(Text())
-    ngaynhap = db.Column(BigInteger())
-    trangthai = db.Column(String(255))
-    chungloailoaithietbi = db.Column(String(255))
-    thietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('thietbi.id'), nullable=True)
-    phieuyeucausuachuafield = db.relationship('PhieuYeuCauSuaChua', cascade="all, delete-orphan")
-    bangkiemtrathietbifield = db.relationship('BangKiemTraThietBi', cascade="all, delete-orphan")
-    bienbanxacnhantinhtrangthietbifield = db.relationship('BienBanXacNhanTinhTrangThietBi', cascade="all, delete-orphan")
-    bangkiemdinhfield = db.relationship('BangKiemDinh', cascade="all, delete-orphan")
+    management_code = db.Column(String(255))
+    made_in = db.Column(String(255))
+    restricted_list = db.Column(String(255),default='no')
+    time_of_purchase = db.Column(BigInteger())
+    supplier_id = db.Column(UUID(as_uuid=True),db.ForeignKey('organization.id'), nullable=True)
+    supplier = db.relationship('Organization', viewonly=True)
+    nation_id = db.Column(UUID(as_uuid=True),db.ForeignKey('nation.id'), nullable=True)
+    nation = db.relationship('Nation', viewonly=True)
+    manufacturer_id = db.Column(UUID(as_uuid=True),db.ForeignKey('manufacturer.id'), nullable=True)
+    manufacturer = db.relationship('Manufacturer', viewonly=True)
+    warranty_starttime = db.Column(BigInteger())
+    warranty_endtime = db.Column(BigInteger())
+    Warranty_expired = db.Column(String(255))
+    department_id = db.Column(UUID(as_uuid=True),db.ForeignKey('department.id'), nullable=True)
+    department = db.relationship('Department', viewonly=True)
+    room_id = db.Column(UUID(as_uuid=True),db.ForeignKey('room.id'), nullable=True)
+    room = db.relationship('Room', viewonly=True)
+    specifications = db.Column(String())
+    accessories = db.Column(String())
+    device_status_when_making_a_purchase = db.Column(String(255))
+    maintenance_requirements = db.Column(String())
+    content_for_maintenance = db.Column(String())
+    note = db.Column(String())
+    date_of_entering_device = db.Column(BigInteger())
+    status = db.Column(String(255))
+    types_of_equipment = db.Column(String(255))
+    medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'), nullable=True)
+    List_of_requests_for_repair = db.relationship('RepairRequestForm', cascade="all, delete-orphan")
+    list_of_checklists_for_equipment = db.relationship('EquipmentInspectionForm', cascade="all, delete-orphan")
+    List_of_device_status_verification_sheets = db.relationship('DeviceStatusVerificationForm', cascade="all, delete-orphan")
+    list_of_certificates = db.relationship('CertificateForm ', cascade="all, delete-orphan")
 
-class QuyTrinhKiemTra(CommonModel):
-    __tablename__ = 'quytrinhkiemtra'
+class EquipmentInspectionProcedures(CommonModel):
+    __tablename__ = 'equipmentinspectionprocedures'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    buockiemtra = db.Column(Integer()) 
-    noidungkiemtra = db.Column(String())
-    hinhanh = db.Column(String(255)) 
-    thietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('thietbi.id'), nullable=True)
+    step = db.Column(Integer()) 
+    content = db.Column(String())
+    picture = db.Column(String(255)) 
+    medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'), nullable=True)
     
-class HangSanXuat(CommonModel):
-    __tablename__ = 'hangsanxuat'
+class Manufacturer(CommonModel):
+    __tablename__ = 'manufacturer'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(String(255), index=True)
-    ten = db.Column(String(255))
-    thongtin = db.Column(String(255))
+    code = db.Column(String(255), index=True)
+    name = db.Column(String(255))
+    information = db.Column(String(255))
 
 
-
-
-class Khoa(CommonModel):
-    __tablename__ = 'khoa'
+class Department(CommonModel):
+    __tablename__ = 'department'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(String(255))
-    ten = db.Column(String(255))
-    thongtin = db.Column(String(255))
-    phongfield = db.relationship('Phong', cascade="all, delete-orphan")
+    code = db.Column(String(255))
+    name = db.Column(String(255))
+    information = db.Column(String(255))
+    phongfield = db.relationship('Room', cascade="all, delete-orphan")
 
-class Phong(CommonModel):
-    __tablename__ = 'phong'
+class Room(CommonModel):
+    __tablename__ = 'room'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(String(255))
-    ten = db.Column(String(255))
-    thongtin = db.Column(String(255))
-    khoa_id = db.Column(UUID(as_uuid=True),db.ForeignKey('khoa.id'), nullable=True)
-    khoa = db.relationship('Khoa', viewonly=True)
+    code = db.Column(String(255))
+    name = db.Column(String(255))
+    information = db.Column(String(255))
+    department_id = db.Column(UUID(as_uuid=True),db.ForeignKey('department.id'), nullable=True)
+    department = db.relationship('Department', viewonly=True)
 
 
-class ThongBao(CommonModel):
-    __tablename__ = 'thongbao'
+class Notification(CommonModel):
+    __tablename__ = 'notification'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    tenthietbi = db.Column(String(255))
+    name = db.Column(String(255))
     model_serial_number = db.Column(String(255))
-    idloaithongbao = db.Column(String(255))
-    loaithongbao = db.Column(String(255))
-    maloaithongbao = db.Column(String(255))
-    daxem = db.Column(String(255))
-    ngaytao = db.Column(BigInteger())
+    notification_type_id = db.Column(String(255))
+    notification_type = db.Column(String(255))
+    notification_type_code = db.Column(String(255))
+    status = db.Column(String(255))
+    notification_time = db.Column(BigInteger())
 
-class PhieuYeuCauSuaChua(CommonModel):
-    __tablename__ = 'phieuyeucausuachua'
+class RepairRequestForm(CommonModel):
+    __tablename__ = 'repairrequestform'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    tenthietbi = db.Column(String(255))
+    name = db.Column(String(255))
     model_serial_number = db.Column(String(255))
-    ma_qltb = db.Column(String(255))
-    nguoisudung = db.Column(String(255))
-    donvisudung = db.Column(String(255))
-    motasuco = db.Column(Text())
-    ngay_suco = db.Column(BigInteger())
-    xacnhan_nguoisudungbaosuco = db.Column(String(255))
-    xacnhan_donvi = db.Column(String(255))
-    danhgiasobo = db.Column(Text())
-    ngay_danhgia = db.Column(BigInteger())
-    xacnhan_canbosuachua = db.Column(String(255))
-    ykienlanhdao = db.Column(String(255))
-    ketqua = db.Column(Text())
-    ngay_ketqua = db.Column(BigInteger())
-    xacnhan_nguoisudungnhanketqua = db.Column(String(255))
-    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
-    daxem = db.Column(String(5))
-    trangthai = db.Column(String(15))
-    daduyet = db.Column(String(10),default='chuaduyet')
+    management_code = db.Column(String(255))
+    user = db.Column(String(255))
+    organization_of_use = db.Column(String(255))
+    describe_the_problem = db.Column(String())
+    time_of_problem = db.Column(BigInteger())
+    user_confirmed = db.Column(String(255))
+    organization_confirmed = db.Column(String(255))
+    preliminary_assessment = db.Column(String())
+    evaluation_time = db.Column(BigInteger())
+    repair_person_confirmed = db.Column(String(255))
+    opinion_of_leader = db.Column(String(255))
+    result = db.Column(String())
+    Time_to_return_results = db.Column(BigInteger())
+    User_confirms_the_result = db.Column(String(255))
+    equipmentdetails_id = db.Column(UUID(as_uuid=True), ForeignKey('equipmentdetails.id'), nullable=True)
+    check = db.Column(String(10))
+    status = db.Column(String(15))
+    confirm = db.Column(String(20),default='not_approved')
 
 
-class BienBanXacNhanTinhTrangThietBi(CommonModel):
-    __tablename__ = 'bienbanxacnhantinhtrangthietbi'
+class DeviceStatusVerificationForm(CommonModel):
+    __tablename__ = 'devicestatusverificationform'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    tenthietbi = db.Column(String(255))
-    tai = db.Column(String(255))
+    name = db.Column(String(255))
+    at = db.Column(String(255))
     model_serial_number = db.Column(String(255))
-    ma_qltb = db.Column(String(255))
-    nha = db.Column(String(255))
-    nguoisudung = db.Column(String(255))
-    donvi = db.Column(String(255))
-    ketquakiemtra = db.Column(Text())
-    huongkhacphuc = db.Column(Text())
-    ngay = db.Column(BigInteger())
-    chuky = db.Column(String(10))
-    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
-    daxem = db.Column(String(5))
+    management_code = db.Column(String(255))
+    home = db.Column(String(255))
+    user = db.Column(String(255))
+    organization = db.Column(String(255))
+    conclusion_of_equipment_issues = db.Column(String())
+    directions_to_overcome = db.Column(String())
+    date = db.Column(BigInteger())
+    cycle = db.Column(String(20))
+    check = db.Column(String(10))
+    equipmentdetails_id = db.Column(UUID(as_uuid=True), ForeignKey('equipmentdetails.id'), nullable=True)
 
-class BangKiemTraThietBi(CommonModel):
-    __tablename__ = 'bangkiemtrathietbi'
+class EquipmentInspectionForm(CommonModel):
+    __tablename__ = 'equipmentinspectionform'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ngay = db.Column(BigInteger())
-    tinhtrang = db.Column(String(255))
-    mota = db.Column(String(255))
-    nguoikiemtra_id = db.Column(String(255))
-    nguoikiemtra = db.Column(String(255))
-    khoa_id = db.Column(UUID(as_uuid=True),db.ForeignKey('khoa.id'), nullable=True)
-    khoa = db.relationship('Khoa', viewonly=True)
-    phong_id = db.Column(UUID(as_uuid=True),db.ForeignKey('phong.id'), nullable=True)
-    phong = db.relationship('Phong', viewonly=True)
-    tenthietbi = db.Column(String(255))
+    date = db.Column(BigInteger())
+    status = db.Column(String(255))
+    describe = db.Column(String(255))
+    checker_id = db.Column(String(255))
+    checker = db.Column(String(255))
+    department_id = db.Column(UUID(as_uuid=True),db.ForeignKey('department.id'), nullable=True)
+    department = db.relationship('Department', viewonly=True)
+    room_id = db.Column(UUID(as_uuid=True),db.ForeignKey('room.id'), nullable=True)
+    room = db.relationship('Room', viewonly=True)
+    name = db.Column(String(255))
     model_serial_number = db.Column(String(255))
-    ma_qltb = db.Column(String(255))
-    daxem = db.Column(String(5))
-    daduyet = db.Column(String(10),default='chuaduyet')
+    management_code = db.Column(String(255))
+    check = db.Column(String(10))
+    confirm = db.Column(String(20),default='not_approved')
     attachment = db.Column(String(255))
-    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
-    buockiemtrafield = db.relationship('BuocKiemTra', cascade="all, delete-orphan")
+    equipmentdetails_id = db.Column(UUID(as_uuid=True), ForeignKey('equipmentdetails.id'), nullable=True)
+    list_of_steps = db.relationship('Step', cascade="all, delete-orphan")
     
-class BuocKiemTra(CommonModel):
-    __tablename__ = 'buockiemtra'
+class Step(CommonModel):
+    __tablename__ = 'step'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ghichu = db.Column(String(255))
-    buockiemtra = db.Column(Integer()) 
-    hinhanh = db.Column(String()) 
-    thoigian = db.Column(String(255)) 
-    tinhtrang = db.Column(String(255)) 
-    bangkiemtrathietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('bangkiemtrathietbi.id'), nullable=True)
+    note = db.Column(String(255))
+    step = db.Column(Integer()) 
+    picture = db.Column(String()) 
+    time = db.Column(String(255)) 
+    status = db.Column(String(255)) 
+    equipmentinspectionform_id = db.Column(UUID(as_uuid=True), ForeignKey('equipmentinspectionform.id'), nullable=True)
 
 
-
-class BangKiemDinh(CommonModel):
-    __tablename__ = 'bangkiemdinh'
+class CertificateForm (CommonModel):
+    __tablename__ = 'certificateform'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    ma = db.Column(String(255), index=True)
-    donvi = db.Column(String(255))
-    ngaycap = db.Column(BigInteger())
-    ngayhethan = db.Column(BigInteger())
+    code = db.Column(String(255), index=True)
+    organization = db.Column(String(255))
+    date_of_certification = db.Column(BigInteger())
+    expiration_date = db.Column(BigInteger())
     attachment_image = db.Column(String())
-    tinhtrang = db.Column(String(255),default='dangduocsudung')
-    tenthietbi = db.Column(String(255))
+    status = db.Column(String(255),default='active')
+    name = db.Column(String(255))
     model_serial_number = db.Column(String(255))
-    ma_qltb = db.Column(String(255))
-    daxem = db.Column(String(5))
-    chitietthietbi_id = db.Column(UUID(as_uuid=True), ForeignKey('chitietthietbi.id'), nullable=True)
+    management_code = db.Column(String(255))
+    check = db.Column(String(10))
+    equipmentdetails_id = db.Column(UUID(as_uuid=True), ForeignKey('equipmentdetails.id'), nullable=True)

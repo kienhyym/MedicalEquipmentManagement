@@ -25,7 +25,7 @@
         "type": "string",
         "primary": true
     },
-    "ten": {
+    "name": {
         "type": "string",
         "length": 255
     },
@@ -41,33 +41,33 @@
         "type": "string",
         "length": 255
     },
-    "sodienthoai": {
+    "phone_number": {
         "type": "string",
         "length": 63
     },
-    "diachi": {
+    "address": {
         "type": "string",
         "length": 255
     },
-    "tinhthanh_id": {
+    "province_id": {
         "type": "string"
     },
-    "tinhthanh": {
+    "province": {
         "type": "json"
     },
-    "quanhuyen_id": {
+    "district_id": {
         "type": "string"
     },
-    "quanhuyen": {
+    "district": {
         "type": "json"
     },
-    "xaphuong_id": {
+    "wards_id": {
         "type": "string"
     },
-    "xaphuong": {
+    "wards": {
         "type": "json"
     },
-    "giamdoc": {
+    "ceo": {
         "type": "string"
     }
 }

@@ -90,24 +90,24 @@ define(function (require) {
                         label: "Thông tin",
                         template: function (rowData) {
                             if (!!rowData) {
-                                var vaitro = '';
-                                if(rowData.vaitro == 1){
-                                    vaitro = "Giám đốc" 
+                                var rank = '';
+                                if(rowData.rank == 1){
+                                    rank = "Giám đốc" 
                                 }
-                                if(rowData.vaitro == 2){
-                                    vaitro = "Trưởng phòng vật tư" 
+                                if(rowData.rank == 2){
+                                    rank = "Trưởng phòng vật tư" 
                                 }
-                                if(rowData.vaitro == 3){
-                                    vaitro = "Nhân viên kỹ thuật" 
+                                if(rowData.rank == 3){
+                                    rank = "Nhân viên kỹ thuật" 
                                 }
-                                if(rowData.vaitro == 4){
-                                    vaitro = "Nhân sự khoa phòng" 
+                                if(rowData.rank == 4){
+                                    rank = "Nhân sự department phòng" 
                                 }
                                 return `    <div style="position: relative;">
                                                 <div>Tên:${rowData.name}</div>
                                                 <div>Email:${rowData.email}</div>
                                                 <div>Số điện thoại:${rowData.phone_number}</div>
-                                                <div>Vai trò:${vaitro}</div>
+                                                <div>Vai trò:${rank}</div>
 
                                                 <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
                                             </div>

@@ -25,29 +25,29 @@
         "type": "string",
         "primary": true
     },
-    "ma": {
+    "code": {
         "type": "string",
         "length": 255
     },
-    "donvi": {
+    "organization": {
         "type": "string",
         "length": 255
     },
-    "ngaycap": {
+    "date_of_certification": {
         "type": "number"
     },
-    "ngayhethan": {
+    "expiration_date": {
         "type": "number"
     },
     "attachment_image": {
         "type": "string"
     },
-    "tinhtrang": {
+    "status": {
         "type": "string",
         "length": 255,
-        "default": "dangduocsudung"
+        "default": "active"
     },
-    "tenthietbi": {
+    "name": {
         "type": "string",
         "length": 255
     },
@@ -55,15 +55,15 @@
         "type": "string",
         "length": 255
     },
-    "ma_qltb": {
+    "management_code": {
         "type": "string",
         "length": 255
     },
-    "daxem": {
+    "status": {
         "type": "string",
         "length": 5
     },
-    "chitietthietbi_id": {
+    "equipmentdetails_id": {
         "type": "string"
     }
 }

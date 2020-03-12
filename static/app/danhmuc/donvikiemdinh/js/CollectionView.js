@@ -4,6 +4,8 @@ define(function (require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
+        //Gonrin = require('../../EthnicGroup/view/node_modules/gonrin');
+
     var template = require('text!app/danhmuc/donvikiemdinh/tpl/collection.html'),
         schema = require('json!schema/DonViKiemDinhSchema.json');
     var TemplateHelper = require('app/base/view/TemplateHelper');
@@ -19,27 +21,27 @@ define(function (require) {
                     label: "STT",
                     width: "30px",
                 },
-                { field: "ten", label: "Tên", width: "350px" },
+                { field: "name", label: "Tên", width: "350px" },
                 {
-                    field: "tinhthanh_id",
+                    field: "province_id",
                     label: "Tỉnh thành",
-                    foreign: "tinhthanh",
+                    foreign: "province",
                     foreignValueField: "id",
-                    foreignTextField: "ten",
+                    foreignTextField: "name",
                 },
                 {
-                    field: "quanhuyen_id",
+                    field: "district_id",
                     label: "Quận/Huyện",
-                    foreign: "quanhuyen",
+                    foreign: "district",
                     foreignValueField: "id",
-                    foreignTextField: "ten",
+                    foreignTextField: "name",
                 },
                 {
-                    field: "xaphuong_id",
+                    field: "wards_id",
                     label: "Xã/Phường/Thị trấn",
-                    foreign: "xaphuong",
+                    foreign: "wards",
                     foreignValueField: "id",
-                    foreignTextField: "ten",
+                    foreignTextField: "name",
                 },
             ],
 
@@ -60,7 +62,7 @@ define(function (require) {
 		locData: function () {
 			var self = this;
 			$.ajax({
-				url: self.getApp().serviceURL + "/api/v1/donvi?results_per_page=100000&max_results_per_page=1000000",
+				url: self.getApp().serviceURL + "/api/v1/organization?results_per_page=100000&max_results_per_page=1000000",
 				method: "GET",
 				data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
 				contentType: "application/json",
@@ -90,27 +92,27 @@ define(function (require) {
                         label: "STT",
                         width: "30px",
                     },
-                    { field: "ten", label: "Tên", width: "350px" },
+                    { field: "name", label: "Tên", width: "350px" },
                     {
-                        field: "tinhthanh_id",
+                        field: "province_id",
                         label: "Tỉnh thành",
-                        foreign: "tinhthanh",
+                        foreign: "province",
                         foreignValueField: "id",
-                        foreignTextField: "ten",
+                        foreignTextField: "name",
                     },
                     {
-                        field: "quanhuyen_id",
+                        field: "district_id",
                         label: "Quận/Huyện",
-                        foreign: "quanhuyen",
+                        foreign: "district",
                         foreignValueField: "id",
-                        foreignTextField: "ten",
+                        foreignTextField: "name",
                     },
                     {
-                        field: "xaphuong_id",
+                        field: "wards_id",
                         label: "Xã/Phường/Thị trấn",
-                        foreign: "xaphuong",
+                        foreign: "wards",
                         foreignValueField: "id",
-                        foreignTextField: "ten",
+                        foreignTextField: "name",
                     },
 				],
 				dataSource: dataSource,
@@ -123,7 +125,7 @@ define(function (require) {
 				},
 				events: {
 					"rowclick": function (e) {
-						self.getApp().getRouter().navigate("donvi/model?id=" + e.rowId);
+						self.getApp().getRouter().navigate("organization/model?id=" + e.rowId);
 					},
 				},
 			});

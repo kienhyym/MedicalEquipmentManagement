@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
     var $                   = require('jquery'),
         _                   = require('underscore'),
-        Gonrin				= require('gonrin');
+        Gonrin				= require('../../EthnicGroup/view/node_modules/gonrin');
     
     var template 			= require('text!app/view/tpl/DanhMuc/ThonXom/collection.html'),
     	schema 				= require('json!schema/ThonXomSchema.json');
@@ -15,14 +15,14 @@ define(function (require) {
 		bindings:"data-thonxom-bind",
     	uiControl:{
 	    	fields: [
-		     	 { field: "ma", label: "Mã", width:250},
-		     	 { field: "ten", label: "Tên", width:250},
+		     	 { field: "code", label: "Mã", width:250},
+		     	 { field: "name", label: "Tên", width:250},
 		     	 {
-	            	 field: "xaphuong_id", 
+	            	 field: "wards_id", 
 	            	 label: "Xã Phường",
-	            	 foreign: "xaphuong",
+	            	 foreign: "wards",
 	            	 foreignValueField: "id",
-					 foreignTextField: "ten",
+					 foreignTextField: "name",
 					 width:250
 	           	 },
 		     ],
@@ -40,10 +40,10 @@ define(function (require) {
 	     render:function(){
 	    	 var self = this;
 //	        var currentUser = this.getApp().currentUser;
-//            if (currentUser!==null && currentUser!== undefined && this.getApp().data("xaphuong_id") !== null &&  currentUser.donvi.tuyendonvi_id>=3 && currentUser.donvi.tuyendonvi_id!==10) {
-//                this.uiControl.filters = { "xaphuong_id": { "$eq": currentUser.donvi.xaphuong_id } };
+//            if (currentUser!==null && currentUser!== undefined && this.getApp().data("wards_id") !== null &&  currentUser.organization.tuyendonvi_id>=3 && currentUser.organization.tuyendonvi_id!==10) {
+//                this.uiControl.filters = { "wards_id": { "$eq": currentUser.organization.wards_id } };
 //            }
-	    	 this.uiControl.orderBy = [{"field": "ten", "direction": "desc"}];
+	    	 this.uiControl.orderBy = [{"field": "name", "direction": "desc"}];
 	    	 this.applyBindings();
 	    	 return this;
     	},

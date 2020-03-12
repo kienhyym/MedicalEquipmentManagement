@@ -16,7 +16,7 @@ define(function (require) {
             fields: [
 
                 {
-                    field: "ma", label: "Mã", width: 250, readonly: true,
+                    field: "code", label: "Mã", width: 250, readonly: true,
                 },
                 {
                     field: "name", label: "vai trò", width: 250, readonly: true,

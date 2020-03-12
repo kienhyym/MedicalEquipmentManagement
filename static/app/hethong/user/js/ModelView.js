@@ -7,9 +7,9 @@ define(function (require) {
 		schema = require('json!schema/UserSchema.json');
 
 	// var RoleSelectView = require('app/role/js/SelectView');
-	var VaiTroSelectView = require('app/hethong/vaitro/js/SelectView');
-	var KhoaSelectView = require('app/hethong/khoa/view/SelectView');
-	var PhongSelectView = require('app/hethong/phong/view/SelectView');
+	// var VaiTroSelectView = require('app/hethong/rank/js/SelectView');
+	var KhoaSelectView = require('app/hethong/department/view/SelectView');
+	var PhongSelectView = require('app/hethong/room/view/SelectView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -111,15 +111,15 @@ define(function (require) {
 				// 	dataSource: RoleSelectView
 				// },
 				// {
-				// 	field: "donvi",
+				// 	field: "organization",
 				// 	uicontrol: "ref",
-				// 	textField: "ten",
+				// 	textField: "name",
 				// 	foreignRemoteField: "id",
 				// 	foreignField: "donvi_id",
 				// 	dataSource: DonViSelectView
 				// },
 				{
-					field: "vaitro",
+					field: "rank",
 					uicontrol: "combobox",
 					textField: "text",
 					valueField: "value",
@@ -127,23 +127,23 @@ define(function (require) {
 						{ "value": 1, "text": "Giám đốc" },
 						{ "value": 2, "text": "Trưởng phòng vật tư" },
 						{ "value": 3, "text": "Nhân viên kỹ thuật" },
-						{ "value": 4, "text": "Nhân sự khoa phòng" },
+						{ "value": 4, "text": "Nhân sự department phòng" },
 					],
 				},
 				{
-					field: "phong",
+					field: "room",
 					uicontrol: "ref",
-					textField: "ten",
+					textField: "name",
 					foreignRemoteField: "id",
-					foreignField: "phong_id",
+					foreignField: "room_id",
 					dataSource: PhongSelectView
 				},
 				{
-					field: "khoa",
+					field: "department",
 					uicontrol: "ref",
-					textField: "ten",
+					textField: "name",
 					foreignRemoteField: "id",
-					foreignField: "khoa_id",
+					foreignField: "department_id",
 					dataSource: KhoaSelectView
 				},
 			]
@@ -164,8 +164,8 @@ define(function (require) {
 							if(self.model.get('phone_number') == null || self.model.get('phone_number') == ''){
 								self.getApp().notify({ message: "Chưa nhập số điện thoại"}, { type: "danger", delay: 1000 });
 							}
-							if(self.model.get('vaitro') == null || self.model.get('vaitro') == ''){
-								self.getApp().notify({ message: "Chưa chọn vaitro "}, { type: "danger", delay: 1000 });
+							if(self.model.get('rank') == null || self.model.get('rank') == ''){
+								self.getApp().notify({ message: "Chưa chọn rank "}, { type: "danger", delay: 1000 });
 							}
 							if(self.model.get('password') == null || self.model.get('password') == ''){
 								self.getApp().notify({ message: "Chưa nhập mật khẩu "}, { type: "danger", delay: 1000 });
@@ -175,7 +175,7 @@ define(function (require) {
 								name: self.model.get('name'),
 								email: self.model.get('email'),
 								phone_number: self.model.get('phone_number'),
-								vaitro: self.model.get('vaitro'),
+								rank: self.model.get('rank'),
 								password: self.model.get('password'),
 							}
 								$.ajax({

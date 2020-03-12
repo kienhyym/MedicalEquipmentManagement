@@ -25,11 +25,11 @@
         "type": "string",
         "primary": true
     },
-    "tenthietbi": {
+    "name": {
         "type": "string",
         "length": 255
     },
-    "tai": {
+    "at": {
         "type": "string",
         "length": 255
     },
@@ -37,39 +37,39 @@
         "type": "string",
         "length": 255
     },
-    "ma_qltb": {
+    "management_code": {
         "type": "string",
         "length": 255
     },
-    "nha": {
+    "home": {
         "type": "string",
         "length": 255
     },
-    "nguoisudung": {
+    "user": {
         "type": "string",
         "length": 255
     },
-    "donvi": {
+    "organization": {
         "type": "string",
         "length": 255
     },
-    "ketquakiemtra": {
+    "conclusion_of_equipment_issues": {
         "type": "string"
     },
-    "huongkhacphuc": {
+    "directions_to_overcome": {
         "type": "string"
     },
-    "ngay": {
+    "date": {
         "type": "number"
     },
-    "chuky": {
+    "cycle": {
         "type": "string",
         "length": 10
     },
-    "chitietthietbi_id": {
+    "equipmentdetails_id": {
         "type": "string"
     },
-    "daxem": {
+    "status": {
         "type": "string",
         "length": 5
     }

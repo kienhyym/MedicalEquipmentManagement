@@ -4,22 +4,22 @@ define(function (require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
-    var template = require('text!app/hethong/vaitro/tpl/collection.html'),
+    var template = require('text!app/hethong/rank/tpl/collection.html'),
 		schema = require('json!schema/VaiTroSchema.json');
 
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
-        collectionName: "vaitro",
+        collectionName: "rank",
         uiControl:{
             fields: [
 
                 {
-                    field: "ma", label: "Mã", width: 250, readonly: true,
+                    field: "code", label: "Mã", width: 250, readonly: true,
                 },
                 {
-                    field: "ten", label: "vai trò", width: 250, readonly: true,
+                    field: "name", label: "vai trò", width: 250, readonly: true,
                 },
                 
 

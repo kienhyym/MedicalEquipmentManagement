@@ -25,15 +25,15 @@
         "type": "string",
         "primary": true
     },
-    "ma": {
+    "code": {
         "type": "string",
         "length": 80
     },
-    "ten": {
+    "name": {
         "type": "string",
         "length": 80
     },
-    "thongtin": {
+    "information": {
         "type": "string",
         "length": 255
     },

@@ -41,22 +41,22 @@ async def kehoach_review(request):
     kehoach = db.session.query(KeHoachThanhTra).filter(KeHoachThanhTra.id == makehoach).first()
     if kehoach is not None:
         if currentUser.has_role("CucTruong"):
-            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["approved"]
+            kehoach.status = KeHoach_ThanhTra_TrangThai["approved"]
             kehoach.userid_quyetdinh = currentUser.id
             kehoach.username_quyetdinh = currentUser.name
             kehoach.ngaypheduyet_quyetdinh = floor(time.time())
         elif currentUser.has_role("CucPho"):
-            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["send_approved"]
+            kehoach.status = KeHoach_ThanhTra_TrangThai["send_approved"]
             kehoach.userid_pctduyet = currentUser.id
             kehoach.username_pctduyet = currentUser.name
             kehoach.ngaypheduyet_pct = floor(time.time())
         elif currentUser.has_role("TruongPhong"):
-            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["send_review_pct"]
+            kehoach.status = KeHoach_ThanhTra_TrangThai["send_review_pct"]
             kehoach.userid_phongduyet = currentUser.id
             kehoach.username_phongduyet = currentUser.name
             kehoach.ngaypheduyet_phong = floor(time.time())
         elif currentUser.has_role("ChuyenVien"):
-            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["send_review_truongphong"]
+            kehoach.status = KeHoach_ThanhTra_TrangThai["send_review_truongphong"]
         else:
             return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
 
@@ -80,11 +80,11 @@ async def cancel_kehoach(request):
     kehoach = db.session.query(KeHoachThanhTra).filter(KeHoachThanhTra.id == makehoach).first()
     if kehoach is not None:
         if currentUser.has_role("CucTruong"):
-            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["cancel_approved"]
+            kehoach.status = KeHoach_ThanhTra_TrangThai["cancel_approved"]
         elif currentUser.has_role("CucPho"):
-            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["cancel_reviewed_pct"]
+            kehoach.status = KeHoach_ThanhTra_TrangThai["cancel_reviewed_pct"]
         elif currentUser.has_role("TruongPhong"):
-            kehoach.trangthai = KeHoach_ThanhTra_TrangThai["cancel_reviewed_truongphong"]
+            kehoach.status = KeHoach_ThanhTra_TrangThai["cancel_reviewed_truongphong"]
         else:
             return json({"error_code":"PERMISSION_DENY","error_message":"Không có quyền thực hiện hành động này"}, status=520)
 

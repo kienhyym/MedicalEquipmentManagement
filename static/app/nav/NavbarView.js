@@ -20,7 +20,7 @@ define(function (require) {
 		checkVaitro: function (checkVaitroValue) {
 			var currentUser = gonrinApp().currentUser;
 			if (currentUser !== null && currentUser !== undefined) {
-				return (checkVaitroValue.indexOf(currentUser.vaitro) > -1);
+				return (checkVaitroValue.indexOf(currentUser.rank) > -1);
 			}
 			return false;
 		},

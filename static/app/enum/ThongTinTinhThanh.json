@@ -954,7 +954,7 @@
         "matinhthanh": "01",
         "tenquanhuyen": "Quận Hai Bà Trưng",
         "maquanhuyen": "007",
-        "tenxaphuong": "Phường Bách Khoa",
+        "tenxaphuong": "Phường Bách Department",
         "maxaphuong": "00277",
         "cap": "Phường",
         "tentienganh": ""
@@ -2554,7 +2554,7 @@
         "matinhthanh": "01",
         "tenquanhuyen": "Huyện Mê Linh",
         "maquanhuyen": "250",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "09019",
         "cap": "Xã",
         "tentienganh": ""
@@ -2954,7 +2954,7 @@
         "matinhthanh": "01",
         "tenquanhuyen": "Huyện Ba Vì",
         "maquanhuyen": "271",
-        "tenxaphuong": "Xã Phong Vân",
+        "tenxaphuong": "Xã Room Vân",
         "maxaphuong": "09640",
         "cap": "Xã",
         "tentienganh": ""
@@ -3094,7 +3094,7 @@
         "matinhthanh": "01",
         "tenquanhuyen": "Huyện Ba Vì",
         "maquanhuyen": "271",
-        "tenxaphuong": "Xã Tiên Phong",
+        "tenxaphuong": "Xã Tiên Room",
         "maxaphuong": "09682",
         "cap": "Xã",
         "tentienganh": ""
@@ -4484,7 +4484,7 @@
         "matinhthanh": "01",
         "tenquanhuyen": "Huyện Chương Mỹ",
         "maquanhuyen": "277",
-        "tenxaphuong": "Xã Hồng Phong",
+        "tenxaphuong": "Xã Hồng Room",
         "maxaphuong": "10093",
         "cap": "Xã",
         "tentienganh": ""
@@ -4894,7 +4894,7 @@
         "matinhthanh": "01",
         "tenquanhuyen": "Huyện Thường Tín",
         "maquanhuyen": "279",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "10222",
         "cap": "Xã",
         "tentienganh": ""
@@ -5184,7 +5184,7 @@
         "matinhthanh": "01",
         "tenquanhuyen": "Huyện Phú Xuyên",
         "maquanhuyen": "280",
-        "tenxaphuong": "Xã Nam Phong",
+        "tenxaphuong": "Xã Nam Room",
         "maxaphuong": "10309",
         "cap": "Xã",
         "tentienganh": ""
@@ -6704,7 +6704,7 @@
         "matinhthanh": "02",
         "tenquanhuyen": "Huyện Vị Xuyên",
         "maquanhuyen": "030",
-        "tenxaphuong": "Xã Phong Quang",
+        "tenxaphuong": "Xã Room Quang",
         "maxaphuong": "00934",
         "cap": "Xã",
         "tentienganh": ""
@@ -6894,7 +6894,7 @@
         "matinhthanh": "02",
         "tenquanhuyen": "Huyện Bắc Mê",
         "maquanhuyen": "031",
-        "tenxaphuong": "Xã Yên Phong",
+        "tenxaphuong": "Xã Yên Room",
         "maxaphuong": "00997",
         "cap": "Xã",
         "tentienganh": ""
@@ -7994,7 +7994,7 @@
         "matinhthanh": "04",
         "tenquanhuyen": "Huyện Bảo Lâm",
         "maquanhuyen": "042",
-        "tenxaphuong": "Xã Vĩnh Phong",
+        "tenxaphuong": "Xã Vĩnh Room",
         "maxaphuong": "01309",
         "cap": "Xã",
         "tentienganh": ""
@@ -8644,7 +8644,7 @@
         "matinhthanh": "04",
         "tenquanhuyen": "Huyện Trùng Khánh",
         "maquanhuyen": "047",
-        "tenxaphuong": "Xã Phong Nậm",
+        "tenxaphuong": "Xã Room Nậm",
         "maxaphuong": "01483",
         "cap": "Xã",
         "tentienganh": ""
@@ -8664,7 +8664,7 @@
         "matinhthanh": "04",
         "tenquanhuyen": "Huyện Trùng Khánh",
         "maquanhuyen": "047",
-        "tenxaphuong": "Xã Đình Phong",
+        "tenxaphuong": "Xã Đình Room",
         "maxaphuong": "01489",
         "cap": "Xã",
         "tentienganh": ""
@@ -8724,7 +8724,7 @@
         "matinhthanh": "04",
         "tenquanhuyen": "Huyện Trùng Khánh",
         "maquanhuyen": "047",
-        "tenxaphuong": "Xã Phong Châu",
+        "tenxaphuong": "Xã Room Châu",
         "maxaphuong": "01507",
         "cap": "Xã",
         "tentienganh": ""
@@ -9004,7 +9004,7 @@
         "matinhthanh": "04",
         "tenquanhuyen": "Huyện Quảng Uyên",
         "maquanhuyen": "049",
-        "tenxaphuong": "Xã Quốc Phong",
+        "tenxaphuong": "Xã Quốc Room",
         "maxaphuong": "01591",
         "cap": "Xã",
         "tentienganh": ""
@@ -10284,7 +10284,7 @@
         "matinhthanh": "06",
         "tenquanhuyen": "Huyện Bạch Thông",
         "maquanhuyen": "063",
-        "tenxaphuong": "Xã Đôn Phong",
+        "tenxaphuong": "Xã Đôn Room",
         "maxaphuong": "01984",
         "cap": "Xã",
         "tentienganh": ""
@@ -10384,7 +10384,7 @@
         "matinhthanh": "06",
         "tenquanhuyen": "Huyện Bạch Thông",
         "maquanhuyen": "063",
-        "tenxaphuong": "Xã Dương Phong",
+        "tenxaphuong": "Xã Dương Room",
         "maxaphuong": "02014",
         "cap": "Xã",
         "tentienganh": ""
@@ -10584,7 +10584,7 @@
         "matinhthanh": "06",
         "tenquanhuyen": "Huyện Chợ Đồn",
         "maquanhuyen": "064",
-        "tenxaphuong": "Xã Phong Huân",
+        "tenxaphuong": "Xã Room Huân",
         "maxaphuong": "02074",
         "cap": "Xã",
         "tentienganh": ""
@@ -10954,7 +10954,7 @@
         "matinhthanh": "06",
         "tenquanhuyen": "Huyện Na Rì",
         "maquanhuyen": "066",
-        "tenxaphuong": "Xã Quang Phong",
+        "tenxaphuong": "Xã Quang Room",
         "maxaphuong": "02185",
         "cap": "Xã",
         "tentienganh": ""
@@ -13314,7 +13314,7 @@
         "matinhthanh": "10",
         "tenquanhuyen": "Huyện Bảo Thắng",
         "maquanhuyen": "086",
-        "tenxaphuong": "Thị trấn N.T Phong Hải",
+        "tenxaphuong": "Thị trấn N.T Room Hải",
         "maxaphuong": "02902",
         "cap": "Thị trấn",
         "tentienganh": ""
@@ -13374,7 +13374,7 @@
         "matinhthanh": "10",
         "tenquanhuyen": "Huyện Bảo Thắng",
         "maquanhuyen": "086",
-        "tenxaphuong": "Xã Phong Niên",
+        "tenxaphuong": "Xã Room Niên",
         "maxaphuong": "02920",
         "cap": "Xã",
         "tentienganh": ""
@@ -15244,10 +15244,10 @@
         "matinhthanh": "11",
         "tenquanhuyen": "Huyện Nậm Pồ",
         "maquanhuyen": "103",
-        "tenxaphuong": "Xã Nà Khoa",
+        "tenxaphuong": "Xã Nà Department",
         "maxaphuong": "03168",
         "cap": "Xã",
-        "tentienganh": "Na Khoa commune"
+        "tentienganh": "Na Department commune"
     },
     {
         "tentinhthanh": "Tỉnh Điện Biên",
@@ -15364,7 +15364,7 @@
         "matinhthanh": "12",
         "tenquanhuyen": "Thành phố Lai Châu",
         "maquanhuyen": "105",
-        "tenxaphuong": "Phường Tân Phong",
+        "tenxaphuong": "Phường Tân Room",
         "maxaphuong": "03387",
         "cap": "Phường",
         "tentienganh": ""
@@ -15404,7 +15404,7 @@
         "matinhthanh": "12",
         "tenquanhuyen": "Thành phố Lai Châu",
         "maquanhuyen": "105",
-        "tenxaphuong": "Phường Đông Phong",
+        "tenxaphuong": "Phường Đông Room",
         "maxaphuong": "03408",
         "cap": "Phường",
         "tentienganh": ""
@@ -15922,7 +15922,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Lả Nhì Thàng",
         "maxaphuong": "03391",
@@ -15932,7 +15932,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Huổi Luông",
         "maxaphuong": "03490",
@@ -15942,17 +15942,17 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
-        "tenxaphuong": "Thị trấn Phong Thổ",
+        "tenxaphuong": "Thị trấn Room Thổ",
         "maxaphuong": "03549",
         "cap": "Thị trấn",
-        "tentienganh": "Phong Thổ town"
+        "tentienganh": "Room Thổ town"
     },
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Sì Lờ Lầu",
         "maxaphuong": "03550",
@@ -15962,7 +15962,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Mồ Sì San",
         "maxaphuong": "03553",
@@ -15972,7 +15972,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Ma Li Chải",
         "maxaphuong": "03556",
@@ -15982,7 +15982,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Pa Vây Sử",
         "maxaphuong": "03559",
@@ -15992,7 +15992,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Vàng Ma Chải",
         "maxaphuong": "03562",
@@ -16002,7 +16002,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Tông Qua Lìn",
         "maxaphuong": "03565",
@@ -16012,7 +16012,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Mù Sang",
         "maxaphuong": "03568",
@@ -16022,7 +16022,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Dào San",
         "maxaphuong": "03571",
@@ -16032,7 +16032,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Ma Ly Pho",
         "maxaphuong": "03574",
@@ -16042,7 +16042,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Bản Lang",
         "maxaphuong": "03577",
@@ -16052,7 +16052,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Hoang Thèn",
         "maxaphuong": "03580",
@@ -16062,7 +16062,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Khổng Lào",
         "maxaphuong": "03583",
@@ -16072,7 +16072,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Nậm Xe",
         "maxaphuong": "03586",
@@ -16082,7 +16082,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Mường So",
         "maxaphuong": "03589",
@@ -16092,7 +16092,7 @@
     {
         "tentinhthanh": "Tỉnh Lai Châu",
         "matinhthanh": "12",
-        "tenquanhuyen": "Huyện Phong Thổ",
+        "tenquanhuyen": "Huyện Room Thổ",
         "maquanhuyen": "109",
         "tenxaphuong": "Xã Sin Suối Hồ",
         "maxaphuong": "03592",
@@ -16234,7 +16234,7 @@
         "matinhthanh": "12",
         "tenquanhuyen": "Huyện Tân Uyên",
         "maquanhuyen": "111",
-        "tenxaphuong": "Xã Mường Khoa",
+        "tenxaphuong": "Xã Mường Department",
         "maxaphuong": "03601",
         "cap": "Xã",
         "tentienganh": ""
@@ -16244,7 +16244,7 @@
         "matinhthanh": "12",
         "tenquanhuyen": "Huyện Tân Uyên",
         "maquanhuyen": "111",
-        "tenxaphuong": "Xã Phúc Khoa",
+        "tenxaphuong": "Xã Phúc Department",
         "maxaphuong": "03602",
         "cap": "Xã",
         "tentienganh": ""
@@ -17204,7 +17204,7 @@
         "matinhthanh": "14",
         "tenquanhuyen": "Huyện Bắc Yên",
         "maquanhuyen": "121",
-        "tenxaphuong": "Xã Mường Khoa",
+        "tenxaphuong": "Xã Mường Department",
         "maxaphuong": "03880",
         "cap": "Xã",
         "tentienganh": ""
@@ -17234,7 +17234,7 @@
         "matinhthanh": "14",
         "tenquanhuyen": "Huyện Bắc Yên",
         "maquanhuyen": "121",
-        "tenxaphuong": "Xã Tạ Khoa",
+        "tenxaphuong": "Xã Tạ Department",
         "maxaphuong": "03889",
         "cap": "Xã",
         "tentienganh": ""
@@ -17464,7 +17464,7 @@
         "matinhthanh": "14",
         "tenquanhuyen": "Huyện Phù Yên",
         "maquanhuyen": "122",
-        "tenxaphuong": "Xã Tường Phong",
+        "tenxaphuong": "Xã Tường Room",
         "maxaphuong": "03955",
         "cap": "Xã",
         "tentienganh": ""
@@ -17514,7 +17514,7 @@
         "matinhthanh": "14",
         "tenquanhuyen": "Huyện Phù Yên",
         "maquanhuyen": "122",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "03970",
         "cap": "Xã",
         "tentienganh": ""
@@ -17524,7 +17524,7 @@
         "matinhthanh": "14",
         "tenquanhuyen": "Huyện Phù Yên",
         "maquanhuyen": "122",
-        "tenxaphuong": "Xã Nam Phong",
+        "tenxaphuong": "Xã Nam Room",
         "maxaphuong": "03973",
         "cap": "Xã",
         "tentienganh": ""
@@ -17534,7 +17534,7 @@
         "matinhthanh": "14",
         "tenquanhuyen": "Huyện Phù Yên",
         "maquanhuyen": "122",
-        "tenxaphuong": "Xã Bắc Phong",
+        "tenxaphuong": "Xã Bắc Room",
         "maxaphuong": "03976",
         "cap": "Xã",
         "tentienganh": ""
@@ -18384,7 +18384,7 @@
         "matinhthanh": "14",
         "tenquanhuyen": "Huyện Vân Hồ",
         "maquanhuyen": "128",
-        "tenxaphuong": "Xã Chiềng Khoa",
+        "tenxaphuong": "Xã Chiềng Department",
         "maxaphuong": "04036",
         "cap": "Xã",
         "tentienganh": ""
@@ -19044,7 +19044,7 @@
         "matinhthanh": "15",
         "tenquanhuyen": "Huyện Văn Yên",
         "maquanhuyen": "136",
-        "tenxaphuong": "Xã Phong Dụ Hạ",
+        "tenxaphuong": "Xã Room Dụ Hạ",
         "maxaphuong": "04402",
         "cap": "Xã",
         "tentienganh": ""
@@ -19114,7 +19114,7 @@
         "matinhthanh": "15",
         "tenquanhuyen": "Huyện Văn Yên",
         "maquanhuyen": "136",
-        "tenxaphuong": "Xã Phong Dụ Thượng",
+        "tenxaphuong": "Xã Room Dụ Thượng",
         "maxaphuong": "04423",
         "cap": "Xã",
         "tentienganh": ""
@@ -20604,7 +20604,7 @@
         "matinhthanh": "17",
         "tenquanhuyen": "Huyện Đà Bắc",
         "maquanhuyen": "150",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "04888",
         "cap": "Xã",
         "tentienganh": ""
@@ -21202,9 +21202,9 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
-        "tenxaphuong": "Thị trấn Cao Phong",
+        "tenxaphuong": "Thị trấn Cao Room",
         "maxaphuong": "05089",
         "cap": "Thị trấn",
         "tentienganh": ""
@@ -21212,7 +21212,7 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
         "tenxaphuong": "Xã Bình Thanh",
         "maxaphuong": "05092",
@@ -21222,7 +21222,7 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
         "tenxaphuong": "Xã Thung Nai",
         "maxaphuong": "05095",
@@ -21232,9 +21232,9 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
-        "tenxaphuong": "Xã Bắc Phong",
+        "tenxaphuong": "Xã Bắc Room",
         "maxaphuong": "05098",
         "cap": "Xã",
         "tentienganh": ""
@@ -21242,9 +21242,9 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
-        "tenxaphuong": "Xã Thu Phong",
+        "tenxaphuong": "Xã Thu Room",
         "maxaphuong": "05101",
         "cap": "Xã",
         "tentienganh": ""
@@ -21252,9 +21252,9 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
-        "tenxaphuong": "Xã Đông Phong",
+        "tenxaphuong": "Xã Đông Room",
         "maxaphuong": "05104",
         "cap": "Xã",
         "tentienganh": ""
@@ -21262,9 +21262,9 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
-        "tenxaphuong": "Xã Xuân Phong",
+        "tenxaphuong": "Xã Xuân Room",
         "maxaphuong": "05107",
         "cap": "Xã",
         "tentienganh": ""
@@ -21272,9 +21272,9 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
-        "tenxaphuong": "Xã Tây Phong",
+        "tenxaphuong": "Xã Tây Room",
         "maxaphuong": "05110",
         "cap": "Xã",
         "tentienganh": ""
@@ -21282,9 +21282,9 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "05113",
         "cap": "Xã",
         "tentienganh": ""
@@ -21292,9 +21292,9 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
-        "tenxaphuong": "Xã Dũng Phong",
+        "tenxaphuong": "Xã Dũng Room",
         "maxaphuong": "05116",
         "cap": "Xã",
         "tentienganh": ""
@@ -21302,9 +21302,9 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
-        "tenxaphuong": "Xã Nam Phong",
+        "tenxaphuong": "Xã Nam Room",
         "maxaphuong": "05119",
         "cap": "Xã",
         "tentienganh": ""
@@ -21312,7 +21312,7 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
         "tenxaphuong": "Xã Yên Lập",
         "maxaphuong": "05122",
@@ -21322,7 +21322,7 @@
     {
         "tentinhthanh": "Tỉnh Hoà Bình",
         "matinhthanh": "17",
-        "tenquanhuyen": "Huyện Cao Phong",
+        "tenquanhuyen": "Huyện Cao Room",
         "maquanhuyen": "154",
         "tenxaphuong": "Xã Yên Thượng",
         "maxaphuong": "05125",
@@ -21404,7 +21404,7 @@
         "matinhthanh": "17",
         "tenquanhuyen": "Huyện Tân Lạc",
         "maquanhuyen": "155",
-        "tenxaphuong": "Xã Phong Phú",
+        "tenxaphuong": "Xã Room Phú",
         "maxaphuong": "05149",
         "cap": "Xã",
         "tentienganh": ""
@@ -23894,7 +23894,7 @@
         "matinhthanh": "19",
         "tenquanhuyen": "Thị xã Phổ Yên",
         "maquanhuyen": "172",
-        "tenxaphuong": "Xã Tiên Phong",
+        "tenxaphuong": "Xã Tiên Room",
         "maxaphuong": "05884",
         "cap": "Xã",
         "tentienganh": ""
@@ -24534,7 +24534,7 @@
         "matinhthanh": "20",
         "tenquanhuyen": "Huyện Bình Gia",
         "maquanhuyen": "181",
-        "tenxaphuong": "Xã Hồng Phong",
+        "tenxaphuong": "Xã Hồng Room",
         "maxaphuong": "06079",
         "cap": "Xã",
         "tentienganh": ""
@@ -24954,7 +24954,7 @@
         "matinhthanh": "20",
         "tenquanhuyen": "Huyện Cao Lộc",
         "maquanhuyen": "183",
-        "tenxaphuong": "Xã Hồng Phong",
+        "tenxaphuong": "Xã Hồng Room",
         "maxaphuong": "06205",
         "cap": "Xã",
         "tentienganh": ""
@@ -26444,7 +26444,7 @@
         "matinhthanh": "22",
         "tenquanhuyen": "Thành phố Hạ Long",
         "maquanhuyen": "193",
-        "tenxaphuong": "Phường Hà Phong",
+        "tenxaphuong": "Phường Hà Room",
         "maxaphuong": "06652",
         "cap": "Phường",
         "tentienganh": ""
@@ -27194,7 +27194,7 @@
         "matinhthanh": "22",
         "tenquanhuyen": "Huyện Tiên Yên",
         "maquanhuyen": "199",
-        "tenxaphuong": "Xã Phong Dụ",
+        "tenxaphuong": "Xã Room Dụ",
         "maxaphuong": "06871",
         "cap": "Xã",
         "tentienganh": ""
@@ -27474,7 +27474,7 @@
         "matinhthanh": "22",
         "tenquanhuyen": "Huyện Hải Hà",
         "maquanhuyen": "201",
-        "tenxaphuong": "Xã Quảng Phong",
+        "tenxaphuong": "Xã Quảng Room",
         "maxaphuong": "06952",
         "cap": "Xã",
         "tentienganh": ""
@@ -28034,7 +28034,7 @@
         "matinhthanh": "22",
         "tenquanhuyen": "Thị xã Đông Triều",
         "maquanhuyen": "205",
-        "tenxaphuong": "Xã Hồng Phong",
+        "tenxaphuong": "Xã Hồng Room",
         "maxaphuong": "07120",
         "cap": "Xã",
         "tentienganh": ""
@@ -28204,7 +28204,7 @@
         "matinhthanh": "22",
         "tenquanhuyen": "Thị xã Quảng Yên",
         "maquanhuyen": "206",
-        "tenxaphuong": "Phường Phong Hải",
+        "tenxaphuong": "Phường Room Hải",
         "maxaphuong": "07174",
         "cap": "Phường",
         "tentienganh": ""
@@ -28234,7 +28234,7 @@
         "matinhthanh": "22",
         "tenquanhuyen": "Thị xã Quảng Yên",
         "maquanhuyen": "206",
-        "tenxaphuong": "Phường Phong Cốc",
+        "tenxaphuong": "Phường Room Cốc",
         "maxaphuong": "07183",
         "cap": "Phường",
         "tentienganh": ""
@@ -28254,7 +28254,7 @@
         "matinhthanh": "22",
         "tenquanhuyen": "Thị xã Quảng Yên",
         "maquanhuyen": "206",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "07189",
         "cap": "Xã",
         "tentienganh": ""
@@ -29434,7 +29434,7 @@
         "matinhthanh": "24",
         "tenquanhuyen": "Huyện Lục Ngạn",
         "maquanhuyen": "219",
-        "tenxaphuong": "Xã Phong Minh",
+        "tenxaphuong": "Xã Room Minh",
         "maxaphuong": "07534",
         "cap": "Xã",
         "tentienganh": ""
@@ -29444,7 +29444,7 @@
         "matinhthanh": "24",
         "tenquanhuyen": "Huyện Lục Ngạn",
         "maquanhuyen": "219",
-        "tenxaphuong": "Xã Phong Vân",
+        "tenxaphuong": "Xã Room Vân",
         "maxaphuong": "07537",
         "cap": "Xã",
         "tentienganh": ""
@@ -30004,7 +30004,7 @@
         "matinhthanh": "24",
         "tenquanhuyen": "Huyện Yên Dũng",
         "maquanhuyen": "221",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "07711",
         "cap": "Xã",
         "tentienganh": ""
@@ -30454,7 +30454,7 @@
         "matinhthanh": "24",
         "tenquanhuyen": "Huyện Hiệp Hòa",
         "maquanhuyen": "223",
-        "tenxaphuong": "Xã Lương Phong",
+        "tenxaphuong": "Xã Lương Room",
         "maxaphuong": "07846",
         "cap": "Xã",
         "tentienganh": ""
@@ -30844,7 +30844,7 @@
         "matinhthanh": "25",
         "tenquanhuyen": "Thị xã Phú Thọ",
         "maquanhuyen": "228",
-        "tenxaphuong": "Phường Phong Châu",
+        "tenxaphuong": "Phường Room Châu",
         "maxaphuong": "07945",
         "cap": "Phường",
         "tentienganh": ""
@@ -31034,7 +31034,7 @@
         "matinhthanh": "25",
         "tenquanhuyen": "Huyện Đoan Hùng",
         "maquanhuyen": "230",
-        "tenxaphuong": "Xã Phong Phú",
+        "tenxaphuong": "Xã Room Phú",
         "maxaphuong": "08002",
         "cap": "Xã",
         "tentienganh": ""
@@ -31804,7 +31804,7 @@
         "matinhthanh": "25",
         "tenquanhuyen": "Huyện Phù Ninh",
         "maquanhuyen": "233",
-        "tenxaphuong": "Thị trấn Phong Châu",
+        "tenxaphuong": "Thị trấn Room Châu",
         "maxaphuong": "08230",
         "cap": "Thị trấn",
         "tentienganh": ""
@@ -34074,7 +34074,7 @@
         "matinhthanh": "26",
         "tenquanhuyen": "Huyện Bình Xuyên",
         "maquanhuyen": "249",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "08965",
         "cap": "Xã",
         "tentienganh": ""
@@ -34724,7 +34724,7 @@
         "matinhthanh": "26",
         "tenquanhuyen": "Huyện Sông Lô",
         "maquanhuyen": "253",
-        "tenxaphuong": "Xã Cao Phong",
+        "tenxaphuong": "Xã Cao Room",
         "maxaphuong": "08860",
         "cap": "Xã",
         "tentienganh": ""
@@ -34864,7 +34864,7 @@
         "matinhthanh": "27",
         "tenquanhuyen": "Thành phố Bắc Ninh",
         "maquanhuyen": "256",
-        "tenxaphuong": "Phường Phong Khê",
+        "tenxaphuong": "Phường Room Khê",
         "maxaphuong": "09244",
         "cap": "Phường",
         "tentienganh": ""
@@ -34922,7 +34922,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Thị trấn Chờ",
         "maxaphuong": "09193",
@@ -34932,7 +34932,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Dũng Liệt",
         "maxaphuong": "09196",
@@ -34942,7 +34942,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Tam Đa",
         "maxaphuong": "09199",
@@ -34952,7 +34952,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Tam Giang",
         "maxaphuong": "09202",
@@ -34962,7 +34962,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Yên Trung",
         "maxaphuong": "09205",
@@ -34972,7 +34972,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Thụy Hòa",
         "maxaphuong": "09208",
@@ -34982,7 +34982,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Hòa Tiến",
         "maxaphuong": "09211",
@@ -34992,7 +34992,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Đông Tiến",
         "maxaphuong": "09217",
@@ -35002,7 +35002,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Yên Phụ",
         "maxaphuong": "09220",
@@ -35012,7 +35012,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Trung Nghĩa",
         "maxaphuong": "09223",
@@ -35022,9 +35022,9 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
-        "tenxaphuong": "Xã Đông Phong",
+        "tenxaphuong": "Xã Đông Room",
         "maxaphuong": "09229",
         "cap": "Xã",
         "tentienganh": ""
@@ -35032,7 +35032,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Long Châu",
         "maxaphuong": "09232",
@@ -35042,7 +35042,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Văn Môn",
         "maxaphuong": "09238",
@@ -35052,7 +35052,7 @@
     {
         "tentinhthanh": "Tỉnh Bắc Ninh",
         "matinhthanh": "27",
-        "tenquanhuyen": "Huyện Yên Phong",
+        "tenquanhuyen": "Huyện Yên Room",
         "maquanhuyen": "258",
         "tenxaphuong": "Xã Đông Thọ",
         "maxaphuong": "09241",
@@ -35184,7 +35184,7 @@
         "matinhthanh": "27",
         "tenquanhuyen": "Huyện Quế Võ",
         "maquanhuyen": "259",
-        "tenxaphuong": "Xã Châu Phong",
+        "tenxaphuong": "Xã Châu Room",
         "maxaphuong": "09292",
         "cap": "Xã",
         "tentienganh": ""
@@ -36564,7 +36564,7 @@
         "matinhthanh": "30",
         "tenquanhuyen": "Huyện Nam Sách",
         "maquanhuyen": "291",
-        "tenxaphuong": "Xã Hồng Phong",
+        "tenxaphuong": "Xã Hồng Room",
         "maxaphuong": "10654",
         "cap": "Xã",
         "tentienganh": ""
@@ -38314,7 +38314,7 @@
         "matinhthanh": "30",
         "tenquanhuyen": "Huyện Ninh Giang",
         "maquanhuyen": "299",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "11197",
         "cap": "Xã",
         "tentienganh": ""
@@ -38404,7 +38404,7 @@
         "matinhthanh": "30",
         "tenquanhuyen": "Huyện Ninh Giang",
         "maquanhuyen": "299",
-        "tenxaphuong": "Xã Hồng Phong",
+        "tenxaphuong": "Xã Hồng Room",
         "maxaphuong": "11224",
         "cap": "Xã",
         "tentienganh": ""
@@ -38634,7 +38634,7 @@
         "matinhthanh": "30",
         "tenquanhuyen": "Huyện Thanh Miện",
         "maquanhuyen": "300",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "11293",
         "cap": "Xã",
         "tentienganh": ""
@@ -39754,7 +39754,7 @@
         "matinhthanh": "31",
         "tenquanhuyen": "Huyện An Dương",
         "maquanhuyen": "312",
-        "tenxaphuong": "Xã Hồng Phong",
+        "tenxaphuong": "Xã Hồng Room",
         "maxaphuong": "11593",
         "cap": "Xã",
         "tentienganh": ""
@@ -40174,7 +40174,7 @@
         "matinhthanh": "31",
         "tenquanhuyen": "Huyện Kiến Thuỵ",
         "maquanhuyen": "314",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "11734",
         "cap": "Xã",
         "tentienganh": ""
@@ -40684,7 +40684,7 @@
         "matinhthanh": "31",
         "tenquanhuyen": "Huyện Vĩnh Bảo",
         "maquanhuyen": "316",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "11893",
         "cap": "Xã",
         "tentienganh": ""
@@ -40694,7 +40694,7 @@
         "matinhthanh": "31",
         "tenquanhuyen": "Huyện Vĩnh Bảo",
         "maquanhuyen": "316",
-        "tenxaphuong": "Xã Vĩnh Phong",
+        "tenxaphuong": "Xã Vĩnh Room",
         "maxaphuong": "11896",
         "cap": "Xã",
         "tentienganh": ""
@@ -40804,7 +40804,7 @@
         "matinhthanh": "31",
         "tenquanhuyen": "Huyện Cát Hải",
         "maquanhuyen": "317",
-        "tenxaphuong": "Xã Văn Phong",
+        "tenxaphuong": "Xã Văn Room",
         "maxaphuong": "11929",
         "cap": "Xã",
         "tentienganh": ""
@@ -41474,7 +41474,7 @@
         "matinhthanh": "33",
         "tenquanhuyen": "Huyện Mỹ Hào",
         "maquanhuyen": "328",
-        "tenxaphuong": "Xã Hòa Phong",
+        "tenxaphuong": "Xã Hòa Room",
         "maxaphuong": "12115",
         "cap": "Xã",
         "tentienganh": ""
@@ -41734,7 +41734,7 @@
         "matinhthanh": "33",
         "tenquanhuyen": "Huyện Ân Thi",
         "maquanhuyen": "329",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "12193",
         "cap": "Xã",
         "tentienganh": ""
@@ -42484,7 +42484,7 @@
         "matinhthanh": "34",
         "tenquanhuyen": "Thành phố Thái Bình",
         "maquanhuyen": "336",
-        "tenxaphuong": "Phường Lê Hồng Phong",
+        "tenxaphuong": "Phường Lê Hồng Room",
         "maxaphuong": "12433",
         "cap": "Phường",
         "tentienganh": ""
@@ -42544,7 +42544,7 @@
         "matinhthanh": "34",
         "tenquanhuyen": "Thành phố Thái Bình",
         "maquanhuyen": "336",
-        "tenxaphuong": "Phường Tiền Phong",
+        "tenxaphuong": "Phường Tiền Room",
         "maxaphuong": "12451",
         "cap": "Phường",
         "tentienganh": ""
@@ -43554,7 +43554,7 @@
         "matinhthanh": "34",
         "tenquanhuyen": "Huyện Đông Hưng",
         "maquanhuyen": "340",
-        "tenxaphuong": "Xã Phong Châu",
+        "tenxaphuong": "Xã Room Châu",
         "maxaphuong": "12733",
         "cap": "Xã",
         "tentienganh": ""
@@ -43754,7 +43754,7 @@
         "matinhthanh": "34",
         "tenquanhuyen": "Huyện Đông Hưng",
         "maquanhuyen": "340",
-        "tenxaphuong": "Xã Đông Phong",
+        "tenxaphuong": "Xã Đông Room",
         "maxaphuong": "12793",
         "cap": "Xã",
         "tentienganh": ""
@@ -44104,7 +44104,7 @@
         "matinhthanh": "34",
         "tenquanhuyen": "Huyện Thái Thụy",
         "maquanhuyen": "341",
-        "tenxaphuong": "Xã Thụy Phong",
+        "tenxaphuong": "Xã Thụy Room",
         "maxaphuong": "12904",
         "cap": "Xã",
         "tentienganh": ""
@@ -44454,7 +44454,7 @@
         "matinhthanh": "34",
         "tenquanhuyen": "Huyện Tiền Hải",
         "maquanhuyen": "342",
-        "tenxaphuong": "Xã Đông Phong",
+        "tenxaphuong": "Xã Đông Room",
         "maxaphuong": "13009",
         "cap": "Xã",
         "tentienganh": ""
@@ -44524,7 +44524,7 @@
         "matinhthanh": "34",
         "tenquanhuyen": "Huyện Tiền Hải",
         "maquanhuyen": "342",
-        "tenxaphuong": "Xã Tây Phong",
+        "tenxaphuong": "Xã Tây Room",
         "maxaphuong": "13030",
         "cap": "Xã",
         "tentienganh": ""
@@ -45104,7 +45104,7 @@
         "matinhthanh": "34",
         "tenquanhuyen": "Huyện Vũ Thư",
         "maquanhuyen": "344",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "13210",
         "cap": "Xã",
         "tentienganh": ""
@@ -45334,7 +45334,7 @@
         "matinhthanh": "34",
         "tenquanhuyen": "Huyện Vũ Thư",
         "maquanhuyen": "344",
-        "tenxaphuong": "Xã Hồng Phong",
+        "tenxaphuong": "Xã Hồng Room",
         "maxaphuong": "13282",
         "cap": "Xã",
         "tentienganh": ""
@@ -45364,7 +45364,7 @@
         "matinhthanh": "35",
         "tenquanhuyen": "Thành phố Phủ Lý",
         "maquanhuyen": "347",
-        "tenxaphuong": "Phường Lê Hồng Phong",
+        "tenxaphuong": "Phường Lê Hồng Room",
         "maxaphuong": "13291",
         "cap": "Phường",
         "tentienganh": ""
@@ -45724,7 +45724,7 @@
         "matinhthanh": "35",
         "tenquanhuyen": "Huyện Duy Tiên",
         "maquanhuyen": "349",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "13378",
         "cap": "Xã",
         "tentienganh": ""
@@ -45854,7 +45854,7 @@
         "matinhthanh": "35",
         "tenquanhuyen": "Huyện Kim Bảng",
         "maquanhuyen": "350",
-        "tenxaphuong": "Xã Khả Phong",
+        "tenxaphuong": "Xã Khả Room",
         "maxaphuong": "13420",
         "cap": "Xã",
         "tentienganh": ""
@@ -45924,7 +45924,7 @@
         "matinhthanh": "35",
         "tenquanhuyen": "Huyện Thanh Liêm",
         "maquanhuyen": "351",
-        "tenxaphuong": "Xã Liêm Phong",
+        "tenxaphuong": "Xã Liêm Room",
         "maxaphuong": "13450",
         "cap": "Xã",
         "tentienganh": ""
@@ -45984,7 +45984,7 @@
         "matinhthanh": "35",
         "tenquanhuyen": "Huyện Thanh Liêm",
         "maquanhuyen": "351",
-        "tenxaphuong": "Xã Thanh Phong",
+        "tenxaphuong": "Xã Thanh Room",
         "maxaphuong": "13471",
         "cap": "Xã",
         "tentienganh": ""
@@ -46714,7 +46714,7 @@
         "matinhthanh": "36",
         "tenquanhuyen": "Thành phố Nam Định",
         "maquanhuyen": "356",
-        "tenxaphuong": "Xã Nam Phong",
+        "tenxaphuong": "Xã Nam Room",
         "maxaphuong": "13696",
         "cap": "Xã",
         "tentienganh": ""
@@ -47214,7 +47214,7 @@
         "matinhthanh": "36",
         "tenquanhuyen": "Huyện Ý Yên",
         "maquanhuyen": "360",
-        "tenxaphuong": "Xã Yên Phong",
+        "tenxaphuong": "Xã Yên Room",
         "maxaphuong": "13846",
         "cap": "Xã",
         "tentienganh": ""
@@ -47484,7 +47484,7 @@
         "matinhthanh": "36",
         "tenquanhuyen": "Huyện Nghĩa Hưng",
         "maquanhuyen": "361",
-        "tenxaphuong": "Xã Nghĩa Phong",
+        "tenxaphuong": "Xã Nghĩa Room",
         "maxaphuong": "13927",
         "cap": "Xã",
         "tentienganh": ""
@@ -48074,7 +48074,7 @@
         "matinhthanh": "36",
         "tenquanhuyen": "Huyện Xuân Trường",
         "maquanhuyen": "364",
-        "tenxaphuong": "Xã Xuân Phong",
+        "tenxaphuong": "Xã Xuân Room",
         "maxaphuong": "14104",
         "cap": "Xã",
         "tentienganh": ""
@@ -48434,7 +48434,7 @@
         "matinhthanh": "36",
         "tenquanhuyen": "Huyện Giao Thủy",
         "maquanhuyen": "365",
-        "tenxaphuong": "Xã Giao Phong",
+        "tenxaphuong": "Xã Giao Room",
         "maxaphuong": "14212",
         "cap": "Xã",
         "tentienganh": ""
@@ -48664,7 +48664,7 @@
         "matinhthanh": "36",
         "tenquanhuyen": "Huyện Hải Hậu",
         "maquanhuyen": "366",
-        "tenxaphuong": "Xã Hải Phong",
+        "tenxaphuong": "Xã Hải Room",
         "maxaphuong": "14281",
         "cap": "Xã",
         "tentienganh": ""
@@ -48924,7 +48924,7 @@
         "matinhthanh": "37",
         "tenquanhuyen": "Thành phố Ninh Bình",
         "maquanhuyen": "369",
-        "tenxaphuong": "Phường Ninh Phong",
+        "tenxaphuong": "Phường Ninh Room",
         "maxaphuong": "14359",
         "cap": "Phường",
         "tentienganh": ""
@@ -49134,7 +49134,7 @@
         "matinhthanh": "37",
         "tenquanhuyen": "Huyện Nho Quan",
         "maquanhuyen": "372",
-        "tenxaphuong": "Xã Đồng Phong",
+        "tenxaphuong": "Xã Đồng Room",
         "maxaphuong": "14416",
         "cap": "Xã",
         "tentienganh": ""
@@ -49154,7 +49154,7 @@
         "matinhthanh": "37",
         "tenquanhuyen": "Huyện Nho Quan",
         "maquanhuyen": "372",
-        "tenxaphuong": "Xã Lạng Phong",
+        "tenxaphuong": "Xã Lạng Room",
         "maxaphuong": "14422",
         "cap": "Xã",
         "tentienganh": ""
@@ -49174,7 +49174,7 @@
         "matinhthanh": "37",
         "tenquanhuyen": "Huyện Nho Quan",
         "maquanhuyen": "372",
-        "tenxaphuong": "Xã Văn Phong",
+        "tenxaphuong": "Xã Văn Room",
         "maxaphuong": "14428",
         "cap": "Xã",
         "tentienganh": ""
@@ -49494,7 +49494,7 @@
         "matinhthanh": "37",
         "tenquanhuyen": "Huyện Gia Viễn",
         "maquanhuyen": "373",
-        "tenxaphuong": "Xã Gia Phong",
+        "tenxaphuong": "Xã Gia Room",
         "maxaphuong": "14524",
         "cap": "Xã",
         "tentienganh": ""
@@ -50124,7 +50124,7 @@
         "matinhthanh": "37",
         "tenquanhuyen": "Huyện Yên Mô",
         "maquanhuyen": "377",
-        "tenxaphuong": "Xã Yên Phong",
+        "tenxaphuong": "Xã Yên Room",
         "maxaphuong": "14719",
         "cap": "Xã",
         "tentienganh": ""
@@ -51894,7 +51894,7 @@
         "matinhthanh": "38",
         "tenquanhuyen": "Huyện Cẩm Thủy",
         "maquanhuyen": "390",
-        "tenxaphuong": "Xã Cẩm Phong",
+        "tenxaphuong": "Xã Cẩm Room",
         "maxaphuong": "15166",
         "cap": "Xã",
         "tentienganh": ""
@@ -52344,7 +52344,7 @@
         "matinhthanh": "38",
         "tenquanhuyen": "Huyện Hà Trung",
         "maquanhuyen": "392",
-        "tenxaphuong": "Xã Hà Phong",
+        "tenxaphuong": "Xã Hà Room",
         "maxaphuong": "15301",
         "cap": "Xã",
         "tentienganh": ""
@@ -52764,7 +52764,7 @@
         "matinhthanh": "38",
         "tenquanhuyen": "Huyện Yên Định",
         "maquanhuyen": "394",
-        "tenxaphuong": "Xã Yên Phong",
+        "tenxaphuong": "Xã Yên Room",
         "maxaphuong": "15427",
         "cap": "Xã",
         "tentienganh": ""
@@ -53034,7 +53034,7 @@
         "matinhthanh": "38",
         "tenquanhuyen": "Huyện Thọ Xuân",
         "maquanhuyen": "395",
-        "tenxaphuong": "Xã Xuân Phong",
+        "tenxaphuong": "Xã Xuân Room",
         "maxaphuong": "15508",
         "cap": "Xã",
         "tentienganh": ""
@@ -54474,7 +54474,7 @@
         "matinhthanh": "38",
         "tenquanhuyen": "Huyện Hoằng Hóa",
         "maquanhuyen": "399",
-        "tenxaphuong": "Xã Hoằng Phong",
+        "tenxaphuong": "Xã Hoằng Room",
         "maxaphuong": "15973",
         "cap": "Xã",
         "tentienganh": ""
@@ -54694,7 +54694,7 @@
         "matinhthanh": "38",
         "tenquanhuyen": "Huyện Hậu Lộc",
         "maquanhuyen": "400",
-        "tenxaphuong": "Xã Phong Lộc",
+        "tenxaphuong": "Xã Room Lộc",
         "maxaphuong": "16042",
         "cap": "Xã",
         "tentienganh": ""
@@ -55274,7 +55274,7 @@
         "matinhthanh": "38",
         "tenquanhuyen": "Huyện Như Xuân",
         "maquanhuyen": "402",
-        "tenxaphuong": "Xã Thanh Phong",
+        "tenxaphuong": "Xã Thanh Room",
         "maxaphuong": "16216",
         "cap": "Xã",
         "tentienganh": ""
@@ -55984,7 +55984,7 @@
         "matinhthanh": "38",
         "tenquanhuyen": "Huyện Quảng Xương",
         "maquanhuyen": "406",
-        "tenxaphuong": "Xã Quảng Phong",
+        "tenxaphuong": "Xã Quảng Room",
         "maxaphuong": "16450",
         "cap": "Xã",
         "tentienganh": ""
@@ -56924,7 +56924,7 @@
         "matinhthanh": "40",
         "tenquanhuyen": "Thị xã Thái Hoà",
         "maquanhuyen": "414",
-        "tenxaphuong": "Phường Quang Phong",
+        "tenxaphuong": "Phường Quang Room",
         "maxaphuong": "16993",
         "cap": "Phường",
         "tentienganh": ""
@@ -57012,7 +57012,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Thị trấn Kim Sơn",
         "maxaphuong": "16738",
@@ -57022,7 +57022,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Thông Thụ",
         "maxaphuong": "16741",
@@ -57032,7 +57032,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Đồng Văn",
         "maxaphuong": "16744",
@@ -57042,7 +57042,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Hạnh Dịch",
         "maxaphuong": "16747",
@@ -57052,9 +57052,9 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
-        "tenxaphuong": "Xã Tiền Phong",
+        "tenxaphuong": "Xã Tiền Room",
         "maxaphuong": "16750",
         "cap": "Xã",
         "tentienganh": ""
@@ -57062,7 +57062,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Nậm Giải",
         "maxaphuong": "16753",
@@ -57072,7 +57072,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Tri Lễ",
         "maxaphuong": "16756",
@@ -57082,7 +57082,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Châu Kim",
         "maxaphuong": "16759",
@@ -57092,7 +57092,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Mường Nọc",
         "maxaphuong": "16762",
@@ -57102,7 +57102,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Quế Sơn",
         "maxaphuong": "16763",
@@ -57112,7 +57112,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Châu Thôn",
         "maxaphuong": "16765",
@@ -57122,7 +57122,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Nậm Nhoóng",
         "maxaphuong": "16768",
@@ -57132,9 +57132,9 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
-        "tenxaphuong": "Xã Quang Phong",
+        "tenxaphuong": "Xã Quang Room",
         "maxaphuong": "16771",
         "cap": "Xã",
         "tentienganh": ""
@@ -57142,7 +57142,7 @@
     {
         "tentinhthanh": "Tỉnh Nghệ An",
         "matinhthanh": "40",
-        "tenquanhuyen": "Huyện Quế Phong",
+        "tenquanhuyen": "Huyện Quế Room",
         "maquanhuyen": "415",
         "tenxaphuong": "Xã Căm Muộn",
         "maxaphuong": "16774",
@@ -57234,7 +57234,7 @@
         "matinhthanh": "40",
         "tenquanhuyen": "Huyện Quỳ Châu",
         "maquanhuyen": "416",
-        "tenxaphuong": "Xã Châu Phong",
+        "tenxaphuong": "Xã Châu Room",
         "maxaphuong": "16801",
         "cap": "Xã",
         "tentienganh": ""
@@ -59104,7 +59104,7 @@
         "matinhthanh": "40",
         "tenquanhuyen": "Huyện Diễn Châu",
         "maquanhuyen": "425",
-        "tenxaphuong": "Xã Diễn Phong",
+        "tenxaphuong": "Xã Diễn Room",
         "maxaphuong": "17416",
         "cap": "Xã",
         "tentienganh": ""
@@ -60184,7 +60184,7 @@
         "matinhthanh": "40",
         "tenquanhuyen": "Huyện Thanh Chương",
         "maquanhuyen": "428",
-        "tenxaphuong": "Xã Phong Thịnh",
+        "tenxaphuong": "Xã Room Thịnh",
         "maxaphuong": "17728",
         "cap": "Xã",
         "tentienganh": ""
@@ -60194,7 +60194,7 @@
         "matinhthanh": "40",
         "tenquanhuyen": "Huyện Thanh Chương",
         "maquanhuyen": "428",
-        "tenxaphuong": "Xã Thanh Phong",
+        "tenxaphuong": "Xã Thanh Room",
         "maxaphuong": "17731",
         "cap": "Xã",
         "tentienganh": ""
@@ -60774,7 +60774,7 @@
         "matinhthanh": "40",
         "tenquanhuyen": "Huyện Nghi Lộc",
         "maquanhuyen": "429",
-        "tenxaphuong": "Xã Nghi Phong",
+        "tenxaphuong": "Xã Nghi Room",
         "maxaphuong": "17902",
         "cap": "Xã",
         "tentienganh": ""
@@ -62884,7 +62884,7 @@
         "matinhthanh": "42",
         "tenquanhuyen": "Huyện Hương Khê",
         "maquanhuyen": "444",
-        "tenxaphuong": "Xã Phú Phong",
+        "tenxaphuong": "Xã Phú Room",
         "maxaphuong": "18535",
         "cap": "Xã",
         "tentienganh": ""
@@ -63584,7 +63584,7 @@
         "matinhthanh": "42",
         "tenquanhuyen": "Huyện Kỳ Anh",
         "maquanhuyen": "447",
-        "tenxaphuong": "Xã Kỳ Phong",
+        "tenxaphuong": "Xã Kỳ Room",
         "maxaphuong": "18766",
         "cap": "Xã",
         "tentienganh": ""
@@ -64474,7 +64474,7 @@
         "matinhthanh": "44",
         "tenquanhuyen": "Huyện Tuyên Hóa",
         "maquanhuyen": "453",
-        "tenxaphuong": "Xã Phong Hóa",
+        "tenxaphuong": "Xã Room Hóa",
         "maxaphuong": "18991",
         "cap": "Xã",
         "tentienganh": ""
@@ -65234,7 +65234,7 @@
         "matinhthanh": "44",
         "tenquanhuyen": "Huyện Lệ Thủy",
         "maquanhuyen": "457",
-        "tenxaphuong": "Xã Phong Thủy",
+        "tenxaphuong": "Xã Room Thủy",
         "maxaphuong": "19267",
         "cap": "Xã",
         "tentienganh": ""
@@ -65494,7 +65494,7 @@
         "matinhthanh": "44",
         "tenquanhuyen": "Thị xã Ba Đồn",
         "maquanhuyen": "458",
-        "tenxaphuong": "Phường Quảng Phong",
+        "tenxaphuong": "Phường Quảng Room",
         "maxaphuong": "19078",
         "cap": "Phường",
         "tentienganh": ""
@@ -66234,7 +66234,7 @@
         "matinhthanh": "45",
         "tenquanhuyen": "Huyện Gio Linh",
         "maquanhuyen": "466",
-        "tenxaphuong": "Xã Gio Phong",
+        "tenxaphuong": "Xã Gio Room",
         "maxaphuong": "19507",
         "cap": "Xã",
         "tentienganh": ""
@@ -66622,7 +66622,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Thị Trấn Ái Tử",
         "maxaphuong": "19624",
@@ -66632,7 +66632,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu An",
         "maxaphuong": "19627",
@@ -66642,7 +66642,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Vân",
         "maxaphuong": "19630",
@@ -66652,7 +66652,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Phước",
         "maxaphuong": "19633",
@@ -66662,7 +66662,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Độ",
         "maxaphuong": "19636",
@@ -66672,7 +66672,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Trạch",
         "maxaphuong": "19639",
@@ -66682,7 +66682,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Thuận",
         "maxaphuong": "19642",
@@ -66692,7 +66692,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Đại",
         "maxaphuong": "19645",
@@ -66702,7 +66702,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Hòa",
         "maxaphuong": "19648",
@@ -66712,7 +66712,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Lăng",
         "maxaphuong": "19651",
@@ -66722,7 +66722,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Sơn",
         "maxaphuong": "19654",
@@ -66732,7 +66732,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Long",
         "maxaphuong": "19657",
@@ -66742,7 +66742,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Tài",
         "maxaphuong": "19660",
@@ -66752,7 +66752,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Đông",
         "maxaphuong": "19663",
@@ -66762,7 +66762,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Trung",
         "maxaphuong": "19666",
@@ -66772,7 +66772,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Ái",
         "maxaphuong": "19669",
@@ -66782,7 +66782,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Thượng",
         "maxaphuong": "19672",
@@ -66792,7 +66792,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Giang",
         "maxaphuong": "19675",
@@ -66802,7 +66802,7 @@
     {
         "tentinhthanh": "Tỉnh Quảng Trị",
         "matinhthanh": "45",
-        "tenquanhuyen": "Huyện Triệu Phong",
+        "tenquanhuyen": "Huyện Triệu Room",
         "maquanhuyen": "469",
         "tenxaphuong": "Xã Triệu Thành",
         "maxaphuong": "19678",
@@ -67282,9 +67282,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Thị trấn Phong Điền",
+        "tenxaphuong": "Thị trấn Room Điền",
         "maxaphuong": "19819",
         "cap": "Thị trấn",
         "tentienganh": ""
@@ -67292,7 +67292,7 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
         "tenxaphuong": "Xã Điền Hương",
         "maxaphuong": "19822",
@@ -67302,7 +67302,7 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
         "tenxaphuong": "Xã Điền Môn",
         "maxaphuong": "19825",
@@ -67312,7 +67312,7 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
         "tenxaphuong": "Xã Điền Lộc",
         "maxaphuong": "19828",
@@ -67322,9 +67322,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong Bình",
+        "tenxaphuong": "Xã Room Bình",
         "maxaphuong": "19831",
         "cap": "Xã",
         "tentienganh": ""
@@ -67332,7 +67332,7 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
         "tenxaphuong": "Xã Điền Hòa",
         "maxaphuong": "19834",
@@ -67342,9 +67342,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong Chương",
+        "tenxaphuong": "Xã Room Chương",
         "maxaphuong": "19837",
         "cap": "Xã",
         "tentienganh": ""
@@ -67352,9 +67352,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong Hải",
+        "tenxaphuong": "Xã Room Hải",
         "maxaphuong": "19840",
         "cap": "Xã",
         "tentienganh": ""
@@ -67362,7 +67362,7 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
         "tenxaphuong": "Xã Điền Hải",
         "maxaphuong": "19843",
@@ -67372,9 +67372,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong Hòa",
+        "tenxaphuong": "Xã Room Hòa",
         "maxaphuong": "19846",
         "cap": "Xã",
         "tentienganh": ""
@@ -67382,9 +67382,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong Thu",
+        "tenxaphuong": "Xã Room Thu",
         "maxaphuong": "19849",
         "cap": "Xã",
         "tentienganh": ""
@@ -67392,9 +67392,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong Hiền",
+        "tenxaphuong": "Xã Room Hiền",
         "maxaphuong": "19852",
         "cap": "Xã",
         "tentienganh": ""
@@ -67402,9 +67402,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong Mỹ",
+        "tenxaphuong": "Xã Room Mỹ",
         "maxaphuong": "19855",
         "cap": "Xã",
         "tentienganh": ""
@@ -67412,9 +67412,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong An",
+        "tenxaphuong": "Xã Room An",
         "maxaphuong": "19858",
         "cap": "Xã",
         "tentienganh": ""
@@ -67422,9 +67422,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong Xuân",
+        "tenxaphuong": "Xã Room Xuân",
         "maxaphuong": "19861",
         "cap": "Xã",
         "tentienganh": ""
@@ -67432,9 +67432,9 @@
     {
         "tentinhthanh": "Tỉnh Thừa Thiên Huế",
         "matinhthanh": "46",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "476",
-        "tenxaphuong": "Xã Phong Sơn",
+        "tenxaphuong": "Xã Room Sơn",
         "maxaphuong": "19864",
         "cap": "Xã",
         "tentienganh": ""
@@ -67894,7 +67894,7 @@
         "matinhthanh": "46",
         "tenquanhuyen": "Thị xã Hương Trà",
         "maquanhuyen": "480",
-        "tenxaphuong": "Xã Hương Phong",
+        "tenxaphuong": "Xã Hương Room",
         "maxaphuong": "20002",
         "cap": "Xã",
         "tentienganh": ""
@@ -68154,7 +68154,7 @@
         "matinhthanh": "46",
         "tenquanhuyen": "Huyện A Lưới",
         "maquanhuyen": "481",
-        "tenxaphuong": "Xã Hương Phong",
+        "tenxaphuong": "Xã Hương Room",
         "maxaphuong": "20080",
         "cap": "Xã",
         "tentienganh": ""
@@ -69044,7 +69044,7 @@
         "matinhthanh": "48",
         "tenquanhuyen": "Huyện Hòa Vang",
         "maquanhuyen": "497",
-        "tenxaphuong": "Xã Hòa Phong",
+        "tenxaphuong": "Xã Hòa Room",
         "maxaphuong": "20320",
         "cap": "Xã",
         "tentienganh": ""
@@ -69264,7 +69264,7 @@
         "matinhthanh": "49",
         "tenquanhuyen": "Thành phố Hội An",
         "maquanhuyen": "503",
-        "tenxaphuong": "Phường Sơn Phong",
+        "tenxaphuong": "Phường Sơn Room",
         "maxaphuong": "20410",
         "cap": "Phường",
         "tentienganh": ""
@@ -69684,7 +69684,7 @@
         "matinhthanh": "49",
         "tenquanhuyen": "Huyện Đại Lộc",
         "maquanhuyen": "506",
-        "tenxaphuong": "Xã Đại Phong",
+        "tenxaphuong": "Xã Đại Room",
         "maxaphuong": "20536",
         "cap": "Xã",
         "tentienganh": ""
@@ -69914,7 +69914,7 @@
         "matinhthanh": "49",
         "tenquanhuyen": "Thị xã Điện Bàn",
         "maquanhuyen": "507",
-        "tenxaphuong": "Xã Điện Phong",
+        "tenxaphuong": "Xã Điện Room",
         "maxaphuong": "20590",
         "cap": "Xã",
         "tentienganh": ""
@@ -70194,7 +70194,7 @@
         "matinhthanh": "49",
         "tenquanhuyen": "Huyện Quế Sơn",
         "maquanhuyen": "509",
-        "tenxaphuong": "Xã Quế Phong",
+        "tenxaphuong": "Xã Quế Room",
         "maxaphuong": "20683",
         "cap": "Xã",
         "tentienganh": ""
@@ -70904,7 +70904,7 @@
         "matinhthanh": "49",
         "tenquanhuyen": "Huyện Tiên Phước",
         "maquanhuyen": "514",
-        "tenxaphuong": "Xã Tiên Phong",
+        "tenxaphuong": "Xã Tiên Room",
         "maxaphuong": "20884",
         "cap": "Xã",
         "tentienganh": ""
@@ -71534,7 +71534,7 @@
         "matinhthanh": "51",
         "tenquanhuyen": "Thành phố Quảng Ngãi",
         "maquanhuyen": "522",
-        "tenxaphuong": "Phường Lê Hồng Phong",
+        "tenxaphuong": "Phường Lê Hồng Room",
         "maxaphuong": "21010",
         "cap": "Phường",
         "tentienganh": ""
@@ -72144,7 +72144,7 @@
         "matinhthanh": "51",
         "tenquanhuyen": "Huyện Tây Trà",
         "maquanhuyen": "526",
-        "tenxaphuong": "Xã Trà Phong",
+        "tenxaphuong": "Xã Trà Room",
         "maxaphuong": "21154",
         "cap": "Xã",
         "tentienganh": ""
@@ -72224,7 +72224,7 @@
         "matinhthanh": "51",
         "tenquanhuyen": "Huyện Sơn Tịnh",
         "maquanhuyen": "527",
-        "tenxaphuong": "Xã Tịnh Phong",
+        "tenxaphuong": "Xã Tịnh Room",
         "maxaphuong": "21181",
         "cap": "Xã",
         "tentienganh": ""
@@ -72974,7 +72974,7 @@
         "matinhthanh": "51",
         "tenquanhuyen": "Huyện Mộ Đức",
         "maquanhuyen": "533",
-        "tenxaphuong": "Xã Đức Phong",
+        "tenxaphuong": "Xã Đức Room",
         "maxaphuong": "21433",
         "cap": "Xã",
         "tentienganh": ""
@@ -73014,7 +73014,7 @@
         "matinhthanh": "51",
         "tenquanhuyen": "Huyện Đức Phổ",
         "maquanhuyen": "534",
-        "tenxaphuong": "Xã Phổ Phong",
+        "tenxaphuong": "Xã Phổ Room",
         "maxaphuong": "21445",
         "cap": "Xã",
         "tentienganh": ""
@@ -73444,7 +73444,7 @@
         "matinhthanh": "52",
         "tenquanhuyen": "Thành phố Qui Nhơn",
         "maquanhuyen": "540",
-        "tenxaphuong": "Phường Lê Hồng Phong",
+        "tenxaphuong": "Phường Lê Hồng Room",
         "maxaphuong": "21571",
         "cap": "Phường",
         "tentienganh": ""
@@ -73934,7 +73934,7 @@
         "matinhthanh": "52",
         "tenquanhuyen": "Huyện Hoài Ân",
         "maquanhuyen": "544",
-        "tenxaphuong": "Xã Ân Phong",
+        "tenxaphuong": "Xã Ân Room",
         "maxaphuong": "21709",
         "cap": "Xã",
         "tentienganh": ""
@@ -74084,7 +74084,7 @@
         "matinhthanh": "52",
         "tenquanhuyen": "Huyện Phù Mỹ",
         "maquanhuyen": "545",
-        "tenxaphuong": "Xã Mỹ Phong",
+        "tenxaphuong": "Xã Mỹ Room",
         "maxaphuong": "21754",
         "cap": "Xã",
         "tentienganh": ""
@@ -74284,7 +74284,7 @@
         "matinhthanh": "52",
         "tenquanhuyen": "Huyện Tây Sơn",
         "maquanhuyen": "547",
-        "tenxaphuong": "Thị trấn Phú Phong",
+        "tenxaphuong": "Thị trấn Phú Room",
         "maxaphuong": "21808",
         "cap": "Thị trấn",
         "tentienganh": ""
@@ -74674,7 +74674,7 @@
         "matinhthanh": "52",
         "tenquanhuyen": "Thị xã An Nhơn",
         "maquanhuyen": "549",
-        "tenxaphuong": "Xã Nhơn Phong",
+        "tenxaphuong": "Xã Nhơn Room",
         "maxaphuong": "21925",
         "cap": "Xã",
         "tentienganh": ""
@@ -75824,7 +75824,7 @@
         "matinhthanh": "54",
         "tenquanhuyen": "Huyện Tây Hoà",
         "maquanhuyen": "562",
-        "tenxaphuong": "Xã Hòa Phong",
+        "tenxaphuong": "Xã Hòa Room",
         "maxaphuong": "22264",
         "cap": "Xã",
         "tentienganh": ""
@@ -78044,10 +78044,10 @@
         "matinhthanh": "58",
         "tenquanhuyen": "Huyện Thuận Bắc",
         "maquanhuyen": "588",
-        "tenxaphuong": "Xã Bắc Phong",
+        "tenxaphuong": "Xã Bắc Room",
         "maxaphuong": "22856",
         "cap": "Xã",
-        "tentienganh": "Bac Phong commune"
+        "tentienganh": "Bac Room commune"
     },
     {
         "tentinhthanh": "Tỉnh Ninh Thuận",
@@ -78284,7 +78284,7 @@
         "matinhthanh": "60",
         "tenquanhuyen": "Thành phố Phan Thiết",
         "maquanhuyen": "593",
-        "tenxaphuong": "Xã Phong Nẫm",
+        "tenxaphuong": "Xã Room Nẫm",
         "maxaphuong": "22960",
         "cap": "Xã",
         "tentienganh": ""
@@ -78402,7 +78402,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Thị trấn Liên Hương",
         "maxaphuong": "22969",
@@ -78412,7 +78412,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Thị trấn Phan Rí Cửa",
         "maxaphuong": "22972",
@@ -78422,7 +78422,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Xã Phan Dũng",
         "maxaphuong": "22975",
@@ -78432,9 +78432,9 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
-        "tenxaphuong": "Xã Phong Phú",
+        "tenxaphuong": "Xã Room Phú",
         "maxaphuong": "22978",
         "cap": "Xã",
         "tentienganh": ""
@@ -78442,7 +78442,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Xã Vĩnh Hảo",
         "maxaphuong": "22981",
@@ -78452,7 +78452,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Xã Vĩnh Tân",
         "maxaphuong": "22984",
@@ -78462,7 +78462,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Xã Phú Lạc",
         "maxaphuong": "22987",
@@ -78472,7 +78472,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Xã Phước Thể",
         "maxaphuong": "22990",
@@ -78482,7 +78482,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Xã Hòa Minh",
         "maxaphuong": "22993",
@@ -78492,7 +78492,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Xã Chí Công",
         "maxaphuong": "22996",
@@ -78502,7 +78502,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Xã Bình Thạnh",
         "maxaphuong": "22999",
@@ -78512,7 +78512,7 @@
     {
         "tentinhthanh": "Tỉnh Bình Thuận",
         "matinhthanh": "60",
-        "tenquanhuyen": "Huyện Tuy Phong",
+        "tenquanhuyen": "Huyện Tuy Room",
         "maquanhuyen": "595",
         "tenxaphuong": "Xã Hòa Phú",
         "maxaphuong": "23002",
@@ -78694,7 +78694,7 @@
         "matinhthanh": "60",
         "tenquanhuyen": "Huyện Bắc Bình",
         "maquanhuyen": "596",
-        "tenxaphuong": "Xã Hồng Phong",
+        "tenxaphuong": "Xã Hồng Room",
         "maxaphuong": "23056",
         "cap": "Xã",
         "tentienganh": ""
@@ -82017,7 +82017,7 @@
         "tenxaphuong": "Xã Chư Pơng",
         "maxaphuong": "23945",
         "cap": "Xã",
-        "tentienganh": "Chu Phong Commune"
+        "tentienganh": "Chu Room Commune"
     },
     {
         "tentinhthanh": "Tỉnh Gia Lai",
@@ -83964,7 +83964,7 @@
         "matinhthanh": "66",
         "tenquanhuyen": "Huyện Krông Bông",
         "maquanhuyen": "653",
-        "tenxaphuong": "Xã Hòa Phong",
+        "tenxaphuong": "Xã Hòa Room",
         "maxaphuong": "24463",
         "cap": "Xã",
         "tentienganh": ""
@@ -87424,7 +87424,7 @@
         "matinhthanh": "70",
         "tenquanhuyen": "Huyện Bù Đăng",
         "maquanhuyen": "696",
-        "tenxaphuong": "Thị trấn Đức Phong",
+        "tenxaphuong": "Thị trấn Đức Room",
         "maxaphuong": "25396",
         "cap": "Thị trấn",
         "tentienganh": ""
@@ -87944,7 +87944,7 @@
         "matinhthanh": "72",
         "tenquanhuyen": "Huyện Tân Biên",
         "maquanhuyen": "705",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "25507",
         "cap": "Xã",
         "tentienganh": ""
@@ -89644,7 +89644,7 @@
         "matinhthanh": "75",
         "tenquanhuyen": "Thành phố Biên Hòa",
         "maquanhuyen": "731",
-        "tenxaphuong": "Phường Tân Phong",
+        "tenxaphuong": "Phường Tân Room",
         "maxaphuong": "25996",
         "cap": "Phường",
         "tentienganh": ""
@@ -94734,7 +94734,7 @@
         "matinhthanh": "79",
         "tenquanhuyen": "Quận 7",
         "maquanhuyen": "778",
-        "tenxaphuong": "Phường Tân Phong",
+        "tenxaphuong": "Phường Tân Room",
         "maxaphuong": "27490",
         "cap": "Phường",
         "tentienganh": ""
@@ -95174,7 +95174,7 @@
         "matinhthanh": "79",
         "tenquanhuyen": "Huyện Bình Chánh",
         "maquanhuyen": "785",
-        "tenxaphuong": "Xã Phong Phú",
+        "tenxaphuong": "Xã Room Phú",
         "maxaphuong": "27622",
         "cap": "Xã",
         "tentienganh": ""
@@ -95864,7 +95864,7 @@
         "matinhthanh": "80",
         "tenquanhuyen": "Huyện Mộc Hóa",
         "maquanhuyen": "798",
-        "tenxaphuong": "Xã Bình Phong Thạnh",
+        "tenxaphuong": "Xã Bình Room Thạnh",
         "maxaphuong": "27814",
         "cap": "Xã",
         "tentienganh": ""
@@ -97434,7 +97434,7 @@
         "matinhthanh": "82",
         "tenquanhuyen": "Thành phố Mỹ Tho",
         "maquanhuyen": "815",
-        "tenxaphuong": "Xã Mỹ Phong",
+        "tenxaphuong": "Xã Mỹ Room",
         "maxaphuong": "28288",
         "cap": "Xã",
         "tentienganh": ""
@@ -98264,7 +98264,7 @@
         "matinhthanh": "82",
         "tenquanhuyen": "Huyện Cai Lậy",
         "maquanhuyen": "820",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "28510",
         "cap": "Xã",
         "tentienganh": ""
@@ -98514,7 +98514,7 @@
         "matinhthanh": "82",
         "tenquanhuyen": "Huyện Châu Thành",
         "maquanhuyen": "821",
-        "tenxaphuong": "Xã Phú Phong",
+        "tenxaphuong": "Xã Phú Room",
         "maxaphuong": "28588",
         "cap": "Xã",
         "tentienganh": ""
@@ -99714,7 +99714,7 @@
         "matinhthanh": "83",
         "tenquanhuyen": "Huyện Giồng Trôm",
         "maquanhuyen": "834",
-        "tenxaphuong": "Xã Phong Nẫm",
+        "tenxaphuong": "Xã Room Nẫm",
         "maxaphuong": "28987",
         "cap": "Xã",
         "tentienganh": ""
@@ -99724,7 +99724,7 @@
         "matinhthanh": "83",
         "tenquanhuyen": "Huyện Giồng Trôm",
         "maquanhuyen": "834",
-        "tenxaphuong": "Xã Phong Mỹ",
+        "tenxaphuong": "Xã Room Mỹ",
         "maxaphuong": "28990",
         "cap": "Xã",
         "tentienganh": ""
@@ -99834,7 +99834,7 @@
         "matinhthanh": "83",
         "tenquanhuyen": "Huyện Giồng Trôm",
         "maquanhuyen": "834",
-        "tenxaphuong": "Xã Hưng Phong",
+        "tenxaphuong": "Xã Hưng Room",
         "maxaphuong": "29023",
         "cap": "Xã",
         "tentienganh": ""
@@ -100404,7 +100404,7 @@
         "matinhthanh": "83",
         "tenquanhuyen": "Huyện Thạnh Phú",
         "maquanhuyen": "837",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "29194",
         "cap": "Xã",
         "tentienganh": ""
@@ -100524,7 +100524,7 @@
         "matinhthanh": "83",
         "tenquanhuyen": "Huyện Thạnh Phú",
         "maquanhuyen": "837",
-        "tenxaphuong": "Xã Thạnh Phong",
+        "tenxaphuong": "Xã Thạnh Room",
         "maxaphuong": "29230",
         "cap": "Xã",
         "tentienganh": ""
@@ -100974,7 +100974,7 @@
         "matinhthanh": "84",
         "tenquanhuyen": "Huyện Cầu Kè",
         "maquanhuyen": "845",
-        "tenxaphuong": "Xã Phong Phú",
+        "tenxaphuong": "Xã Room Phú",
         "maxaphuong": "29326",
         "cap": "Xã",
         "tentienganh": ""
@@ -100984,7 +100984,7 @@
         "matinhthanh": "84",
         "tenquanhuyen": "Huyện Cầu Kè",
         "maquanhuyen": "845",
-        "tenxaphuong": "Xã Phong Thạnh",
+        "tenxaphuong": "Xã Room Thạnh",
         "maxaphuong": "29329",
         "cap": "Xã",
         "tentienganh": ""
@@ -103624,7 +103624,7 @@
         "matinhthanh": "87",
         "tenquanhuyen": "Huyện Cao Lãnh",
         "maquanhuyen": "873",
-        "tenxaphuong": "Xã Phong Mỹ",
+        "tenxaphuong": "Xã Room Mỹ",
         "maxaphuong": "30088",
         "cap": "Xã",
         "tentienganh": ""
@@ -103794,7 +103794,7 @@
         "matinhthanh": "87",
         "tenquanhuyen": "Huyện Thanh Bình",
         "maquanhuyen": "874",
-        "tenxaphuong": "Xã An Phong",
+        "tenxaphuong": "Xã An Room",
         "maxaphuong": "30139",
         "cap": "Xã",
         "tentienganh": ""
@@ -104134,7 +104134,7 @@
         "matinhthanh": "87",
         "tenquanhuyen": "Huyện Lai Vung",
         "maquanhuyen": "876",
-        "tenxaphuong": "Xã Phong Hòa",
+        "tenxaphuong": "Xã Room Hòa",
         "maxaphuong": "30241",
         "cap": "Xã",
         "tentienganh": ""
@@ -104704,7 +104704,7 @@
         "matinhthanh": "89",
         "tenquanhuyen": "Thị xã Tân Châu",
         "maquanhuyen": "887",
-        "tenxaphuong": "Xã Châu Phong",
+        "tenxaphuong": "Xã Châu Room",
         "maxaphuong": "30397",
         "cap": "Xã",
         "tentienganh": ""
@@ -107004,7 +107004,7 @@
         "matinhthanh": "91",
         "tenquanhuyen": "Huyện Vĩnh Thuận",
         "maquanhuyen": "910",
-        "tenxaphuong": "Xã Phong Đông",
+        "tenxaphuong": "Xã Room Đông",
         "maxaphuong": "31074",
         "cap": "Xã",
         "tentienganh": ""
@@ -107014,7 +107014,7 @@
         "matinhthanh": "91",
         "tenquanhuyen": "Huyện Vĩnh Thuận",
         "maquanhuyen": "910",
-        "tenxaphuong": "Xã Vĩnh Phong",
+        "tenxaphuong": "Xã Vĩnh Room",
         "maxaphuong": "31075",
         "cap": "Xã",
         "tentienganh": ""
@@ -107922,9 +107922,9 @@
     {
         "tentinhthanh": "Thành phố Cần Thơ",
         "matinhthanh": "92",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "926",
-        "tenxaphuong": "Thị trấn Phong Điền",
+        "tenxaphuong": "Thị trấn Room Điền",
         "maxaphuong": "31299",
         "cap": "Thị trấn",
         "tentienganh": ""
@@ -107932,7 +107932,7 @@
     {
         "tentinhthanh": "Thành phố Cần Thơ",
         "matinhthanh": "92",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "926",
         "tenxaphuong": "Xã Nhơn Ái",
         "maxaphuong": "31300",
@@ -107942,7 +107942,7 @@
     {
         "tentinhthanh": "Thành phố Cần Thơ",
         "matinhthanh": "92",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "926",
         "tenxaphuong": "Xã Giai Xuân",
         "maxaphuong": "31303",
@@ -107952,7 +107952,7 @@
     {
         "tentinhthanh": "Thành phố Cần Thơ",
         "matinhthanh": "92",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "926",
         "tenxaphuong": "Xã Tân Thới",
         "maxaphuong": "31306",
@@ -107962,7 +107962,7 @@
     {
         "tentinhthanh": "Thành phố Cần Thơ",
         "matinhthanh": "92",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "926",
         "tenxaphuong": "Xã Trường Long",
         "maxaphuong": "31309",
@@ -107972,7 +107972,7 @@
     {
         "tentinhthanh": "Thành phố Cần Thơ",
         "matinhthanh": "92",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "926",
         "tenxaphuong": "Xã Mỹ Khánh",
         "maxaphuong": "31312",
@@ -107982,7 +107982,7 @@
     {
         "tentinhthanh": "Thành phố Cần Thơ",
         "matinhthanh": "92",
-        "tenquanhuyen": "Huyện Phong Điền",
+        "tenquanhuyen": "Huyện Room Điền",
         "maquanhuyen": "926",
         "tenxaphuong": "Xã Nhơn Nghĩa",
         "maxaphuong": "31315",
@@ -109094,7 +109094,7 @@
         "matinhthanh": "94",
         "tenquanhuyen": "Huyện Kế Sách",
         "maquanhuyen": "943",
-        "tenxaphuong": "Xã Phong Nẫm",
+        "tenxaphuong": "Xã Room Nẫm",
         "maxaphuong": "31537",
         "cap": "Xã",
         "tentienganh": ""
@@ -110224,7 +110224,7 @@
         "matinhthanh": "95",
         "tenquanhuyen": "Huyện Phước Long",
         "maquanhuyen": "957",
-        "tenxaphuong": "Xã Phong Thạnh Tây A",
+        "tenxaphuong": "Xã Room Thạnh Tây A",
         "maxaphuong": "31885",
         "cap": "Xã",
         "tentienganh": ""
@@ -110234,7 +110234,7 @@
         "matinhthanh": "95",
         "tenquanhuyen": "Huyện Phước Long",
         "maquanhuyen": "957",
-        "tenxaphuong": "Xã Phong Thạnh Tây B",
+        "tenxaphuong": "Xã Room Thạnh Tây B",
         "maxaphuong": "31888",
         "cap": "Xã",
         "tentienganh": ""
@@ -110344,7 +110344,7 @@
         "matinhthanh": "95",
         "tenquanhuyen": "Thị xã Giá Rai",
         "maquanhuyen": "959",
-        "tenxaphuong": "Xã Phong Thạnh Đông",
+        "tenxaphuong": "Xã Room Thạnh Đông",
         "maxaphuong": "31948",
         "cap": "Xã",
         "tentienganh": ""
@@ -110364,7 +110364,7 @@
         "matinhthanh": "95",
         "tenquanhuyen": "Thị xã Giá Rai",
         "maquanhuyen": "959",
-        "tenxaphuong": "Xã Phong Tân",
+        "tenxaphuong": "Xã Room Tân",
         "maxaphuong": "31954",
         "cap": "Xã",
         "tentienganh": ""
@@ -110374,7 +110374,7 @@
         "matinhthanh": "95",
         "tenquanhuyen": "Thị xã Giá Rai",
         "maquanhuyen": "959",
-        "tenxaphuong": "Xã Tân Phong",
+        "tenxaphuong": "Xã Tân Room",
         "maxaphuong": "31957",
         "cap": "Xã",
         "tentienganh": ""
@@ -110384,7 +110384,7 @@
         "matinhthanh": "95",
         "tenquanhuyen": "Thị xã Giá Rai",
         "maquanhuyen": "959",
-        "tenxaphuong": "Xã Phong Thạnh",
+        "tenxaphuong": "Xã Room Thạnh",
         "maxaphuong": "31960",
         "cap": "Xã",
         "tentienganh": ""
@@ -110394,7 +110394,7 @@
         "matinhthanh": "95",
         "tenquanhuyen": "Thị xã Giá Rai",
         "maquanhuyen": "959",
-        "tenxaphuong": "Xã Phong Thạnh A",
+        "tenxaphuong": "Xã Room Thạnh A",
         "maxaphuong": "31963",
         "cap": "Xã",
         "tentienganh": ""
@@ -110404,7 +110404,7 @@
         "matinhthanh": "95",
         "tenquanhuyen": "Thị xã Giá Rai",
         "maquanhuyen": "959",
-        "tenxaphuong": "Xã Phong Thạnh Tây",
+        "tenxaphuong": "Xã Room Thạnh Tây",
         "maxaphuong": "31966",
         "cap": "Xã",
         "tentienganh": ""
@@ -111094,17 +111094,17 @@
         "matinhthanh": "96",
         "tenquanhuyen": "Huyện Trần Văn Thời",
         "maquanhuyen": "968",
-        "tenxaphuong": "Xã Phong Điền",
+        "tenxaphuong": "Xã Room Điền",
         "maxaphuong": "32124",
         "cap": "Xã",
-        "tentienganh": "Phong Dien commune"
+        "tentienganh": "Room Dien commune"
     },
     {
         "tentinhthanh": "Tỉnh Cà Mau",
         "matinhthanh": "96",
         "tenquanhuyen": "Huyện Trần Văn Thời",
         "maquanhuyen": "968",
-        "tenxaphuong": "Xã Phong Lạc",
+        "tenxaphuong": "Xã Room Lạc",
         "maxaphuong": "32125",
         "cap": "Xã",
         "tentienganh": ""

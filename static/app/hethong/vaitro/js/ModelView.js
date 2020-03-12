@@ -4,7 +4,7 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
-	var template = require('text!app/hethong/vaitro/tpl/model.html'),
+	var template = require('text!app/hethong/rank/tpl/model.html'),
 		schema = require('json!schema/VaiTroSchema.json');
 
 
@@ -12,7 +12,7 @@ define(function (require) {
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "vaitro",
+		collectionName: "rank",
 		tools: [
 			{
 				name: "defaultgr",

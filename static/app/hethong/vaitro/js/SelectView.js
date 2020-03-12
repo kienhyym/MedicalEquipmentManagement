@@ -4,15 +4,15 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
-	var template = require('text!app/hethong/vaitro/tpl/select.html'),
+	var template = require('text!app/hethong/rank/tpl/select.html'),
 		schema = require('json!schema/VaiTroSchema.json');
-	var CustomFilterView = require('app/base/view/CustomFilterView');
+	var CustomFilterView = require('../../department/view/node_modules/app/base/view/CustomFilterView');
 
 	return Gonrin.CollectionDialogView.extend({
 		template: template,
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
-		collectionName: "vaitro",
+		collectionName: "rank",
 		bindings: "data-bind",
 		textField: "name",
 		valueField: "id",
@@ -38,7 +38,7 @@ define(function (require) {
 		],
 		uiControl: {
 			fields: [
-				{ field: "ma", label: "Mã", width: 150 },
+				{ field: "code", label: "Mã", width: 150 },
 				{ field: "name", label: "Tên", width: 250 },
 			],
 			onRowClick: function (event) {

@@ -4,6 +4,8 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
+		//Gonrin = require('../../EthnicGroup/view/node_modules/gonrin');
+
 	var template = require('text!app/danhmuc/donvikiemdinh/tpl/select.html'),
 		schema = require('json!schema/DonViKiemDinhSchema.json');
 	var CustomFilterView = require('app/base/view/CustomFilterView');
@@ -14,7 +16,7 @@ define(function (require) {
 		urlPrefix: "/api/v1/",
 		collectionName: "donvikiemdinh",
 		bindings: "data-bind",
-		textField: "ten",
+		textField: "name",
 		valueField: "id",
 		tools: [
 			{
@@ -38,7 +40,7 @@ define(function (require) {
 		],
 		uiControl: {
 			fields: [
-				{ field: "ten", label: "Tên" }
+				{ field: "name", label: "Tên" }
 
 			],
 			onRowClick: function (event) {
@@ -52,7 +54,7 @@ define(function (require) {
 		// },
 		render: function () {
 			var self = this;
-			self.uiControl.orderBy = [{ "field": "ten", "direction": "desc" }];
+			self.uiControl.orderBy = [{ "field": "name", "direction": "desc" }];
 			var filter = new CustomFilterView({
 				el: self.$el.find("#grid_search"),
 				sessionKey: self.collectionName + "_filter"
@@ -63,7 +65,7 @@ define(function (require) {
 				var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
 				var query = {
 					"$or": [
-						{ "ten": { "$like": text } },
+						{ "name": { "$like": text } },
 					]
 				};
 
@@ -87,7 +89,7 @@ define(function (require) {
 					if (text !== null) {
 						var query = {
 							"$or": [
-								{ "ten": { "$like": text } },
+								{ "name": { "$like": text } },
 							]
 						};
 						var filters = query;

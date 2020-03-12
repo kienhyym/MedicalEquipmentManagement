@@ -50,8 +50,8 @@ Date:   Mon Aug 12 09:35:16 2019 +0700
 [32m+[m[32m#     user = db.relationship('User', viewonly=True)[m
 [32m+[m[32m#     value = db.Column(String(255))[m
  [m
- class DonVi(CommonModel):[m
-     __tablename__ = 'donvi'[m
+ class Organization(CommonModel):[m
+     __tablename__ = 'organization'[m
 [1mdiff --git a/static/app/app.js b/static/app/app.js[m
 [1mindex 578481b..7809d41 100644[m
 [1m--- a/static/app/app.js[m
@@ -401,7 +401,7 @@ Date:   Mon Aug 12 09:35:16 2019 +0700
 [32m+[m
 [32m+[m
  				{[m
-[31m-					"text": "Nội dung khám chuyên khoa phát hiện bệnh nghề nghiệp trong danh mục bệnh nghề nghiệp được bảo hiểm",[m
+[31m-					"text": "Nội dung khám chuyên department phát hiện bệnh nghề nghiệp trong danh mục bệnh nghề nghiệp được bảo hiểm",[m
 [32m+[m					[32m"text": "Khung chương trình đào tạo quan trắc môi trường lao động, bênh nghề nghiệp",[m
  					"icon": "far fa-clipboard",[m
  					"type": "view",[m
@@ -416,7 +416,7 @@ Date:   Mon Aug 12 09:35:16 2019 +0700
  				},[m
  				{[m
 [31m-					"text": "Biên bản xác nhận tiếp xúc với yếu tố có hại gây bệnh nghề nghiệp cấp tính",[m
-[32m+[m					[32m"text": "Nội dung khám chuyên khoa phát hiện bệnh nghề nghiệp trong danh mục bệnh nghề nghiệp được bảo hiểm",[m
+[32m+[m					[32m"text": "Nội dung khám chuyên department phát hiện bệnh nghề nghiệp trong danh mục bệnh nghề nghiệp được bảo hiểm",[m
  					"icon": "far fa-clipboard",[m
  					"type": "view",[m
  					// "collectionName": "baocao",[m

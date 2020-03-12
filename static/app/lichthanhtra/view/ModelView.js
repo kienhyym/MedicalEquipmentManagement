@@ -8,7 +8,7 @@ define(function (require) {
 		// schema = require('json!schema/KeHoachThanhTraSchema.json');
 		schema = require('json!schema/ThietBiDuocKiemTraSchema.json');
 
-	// var TinhThanhSelectView = require('app/DanhMuc/TinhThanh/view/SelectView');
+	// var TinhThanhSelectView = require('app/DanhMuc/Province/view/SelectView');
 	// var TemplateHelper = require('app/base/view/TemplateHelper');
 
 	return Gonrin.ModelView.extend({
@@ -45,17 +45,17 @@ define(function (require) {
 			// 	})
 			// })
 			// $.ajax({
-			// 	url: self.getApp().serviceURL + "/api/v1/thietbi",
+			// 	url: self.getApp().serviceURL + "/api/v1/medicalequipment",
 			// 	method: "GET",
 			// 	data: JSON.stringify({ "order_by": [{ "field": "tentrangthietbi", "direction": "desc" }], "page": 1, "results_per_page": 100 }),
 			// 	contentType: "application/json",
 			// 	success: function (data) {
-			// 		var chuky = 'chuky';
+			// 		var cycle = 'cycle';
 			// 		self.$el.find("#dsthietbi").empty();
 
 			// 		(data.objects).forEach(function (item, index) {
 
-			// 			self.$el.find("#dsthietbi").append("<tr><td class='p-2'>" + item.ten + "</td>" +
+			// 			self.$el.find("#dsthietbi").append("<tr><td class='p-2'>" + item.name + "</td>" +
 			// 				"<td class='p-1'><a class='btn btn-info btn-sm btn-danhsachthietbi p-1'>Danh sách thiết bị</a></td></tr>")
 
 			// 		});
@@ -73,13 +73,13 @@ define(function (require) {
 			// 				var filters = {
 			// 					filters: {
 			// 						"$and": [
-			// 							{ "thietbi_id": { "$eq": data.objects[index2].id } }
+			// 							{ "medicalequipment_id": { "$eq": data.objects[index2].id } }
 			// 						]
 			// 					},
 			// 					order_by: [{ "field": "created_at", "direction": "asc" }]
 			// 				}
 			// 				$.ajax({
-			// 					url: self.getApp().serviceURL + "/api/v1/chitietthietbi",
+			// 					url: self.getApp().serviceURL + "/api/v1/equipmentdetails",
 			// 					method: "GET",
 			// 					data: { "q": JSON.stringify(filters, { "order_by": [{ "field": "tentrangthietbi", "direction": "desc" }], "page": 1, "results_per_page": 100 }) },
 			// 					contentType: "application/json",
@@ -97,7 +97,7 @@ define(function (require) {
 			// 						})
 			// 						self.$el.find('.btn-ghiketqua').each(function (index3, item3) {
 			// 							$(item3).unbind('click').bind('click', function () {
-			// 								self.$el.find('#phieu-ngay').datetimepicker({
+			// 								self.$el.find('#phieu-date').datetimepicker({
 			// 									textFormat: 'DD-MM-YYYY',
 			// 									extraFormats: ['DDMMYYYY'],
 			// 									parseInputDate: function (val) {
@@ -107,33 +107,33 @@ define(function (require) {
 			// 										return date.unix()
 			// 									}
 			// 								});
-			// 								$('#phieu-ngay').data("gonrin").setValue(moment().unix());
+			// 								$('#phieu-date').data("gonrin").setValue(moment().unix());
 			// 								self.$el.find('#phieu-tentrangthietbi').val(data.objects[index3].model_serial_number)
-			// 								self.$el.find('#phieu-tai').val('')
-			// 								self.$el.find('#phieu-nha').val('')
-			// 								self.$el.find('#phieu-nguoisudung').val('')
-			// 								self.$el.find('#phieu-donvi').val('')
-			// 								self.$el.find('#phieu-ketquakiemtra').val('')
-			// 								self.$el.find('#phieu-huongkhacphuc').val('')
+			// 								self.$el.find('#phieu-at').val('')
+			// 								self.$el.find('#phieu-home').val('')
+			// 								self.$el.find('#phieu-user').val('')
+			// 								self.$el.find('#phieu-organization').val('')
+			// 								self.$el.find('#phieu-conclusion_of_equipment_issues').val('')
+			// 								self.$el.find('#phieu-directions_to_overcome').val('')
 			// 								self.$el.find('.dialogView3').show()
 			// 								//////////////////Lưu phiếu//////////////////
 			// 								self.$el.find('.btn-luu-luuthietbiduockiemtra').unbind('click').bind('click', function () {
 			// 									var datax = {
-			// 										chuky: chuky,
+			// 										cycle: cycle,
 			// 										tentrangthietbi: self.$el.find('#phieu-tentrangthietbi').val(),
-			// 										tai: self.$el.find('#phieu-tai').val(),
-			// 										nha: self.$el.find('#phieu-nha').val(),
-			// 										nguoisudung: self.$el.find('#phieu-nguoisudung').val(),
-			// 										donvi: self.$el.find('#phieu-donvi').val(),
-			// 										ketquakiemtra: self.$el.find('#phieu-ketquakiemtra').val(),
-			// 										huongkhacphuc: self.$el.find('#phieu-huongkhacphuc').val(),
-			// 										ngay: self.$el.find('#phieu-ngay').val(),
-			// 										chitietthietbi_id: data.objects[index3].id
+			// 										at: self.$el.find('#phieu-at').val(),
+			// 										home: self.$el.find('#phieu-home').val(),
+			// 										user: self.$el.find('#phieu-user').val(),
+			// 										organization: self.$el.find('#phieu-organization').val(),
+			// 										conclusion_of_equipment_issues: self.$el.find('#phieu-conclusion_of_equipment_issues').val(),
+			// 										directions_to_overcome: self.$el.find('#phieu-directions_to_overcome').val(),
+			// 										date: self.$el.find('#phieu-date').val(),
+			// 										equipmentdetails_id: data.objects[index3].id
 			// 									}
 
 			// 									$.ajax({
 			// 										method: "POST",
-			// 										url: self.getApp().serviceURL + "/api/v1/bienbanxacnhantinhtrangthietbi",
+			// 										url: self.getApp().serviceURL + "/api/v1/devicestatusverificationform",
 			// 										data: JSON.stringify(datax),
 			// 										headers: {
 			// 											'content-type': 'application/json'
@@ -227,50 +227,50 @@ define(function (require) {
 					var filters = {
 						filters: {
 							"$and": [
-								{ "ngayhethan": { "$gte": starttime._i / 1000 } }, { "ngayhethan": { "$lte": endtime._i / 1000 } },
+								{ "expiration_date": { "$gte": starttime._i / 1000 } }, { "expiration_date": { "$lte": endtime._i / 1000 } },
 							]
 						},
 						order_by: [{ "field": "created_at", "direction": "asc" }]
 					}
 
 					$.ajax({
-						url: self.getApp().serviceURL + "/api/v1/bangkiemdinh",
+						url: self.getApp().serviceURL + "/api/v1/certificateform",
 						method: "GET",
-						data: { "q": JSON.stringify(filters, { "order_by": [{ "field": "tenthietbi", "direction": "desc" }], "page": 1, "results_per_page": 100 }) },
+						data: { "q": JSON.stringify(filters, { "order_by": [{ "field": "name", "direction": "desc" }], "page": 1, "results_per_page": 100 }) },
 						contentType: "application/json",
 						success: function (data) {
 							var events = [];
 							for (var i = 0; i < data.objects.length; i++) {
 								var item = data.objects[i];
 								var start = "";
-								if (item.ngayhethan !== null) {
-									start = item.ngayhethan;
+								if (item.expiration_date !== null) {
+									start = item.expiration_date;
 								}
-								var event_item = { "start": start * 1000 + 100000000, "title": item.tenthietbi + '[' + [item.model_serial_number,] + ']' , "url": "#bangkiemdinh/model?id=" + item.id };
+								var event_item = { "start": start * 1000 + 100000000, "title": item.name + '[' + [item.model_serial_number,] + ']' , "url": "#certificateform/model?id=" + item.id };
 								events.push(event_item);
 
 							}
 							var filters2 = {
 								filters: {
 									"$and": [
-										{ "ngaymua": { "$gte": starttime._i / 1000 } }, { "ngaymua": { "$lte": endtime._i / 1000 } },
+										{ "time_of_purchase": { "$gte": starttime._i / 1000 } }, { "time_of_purchase": { "$lte": endtime._i / 1000 } },
 									]
 								},
 								order_by: [{ "field": "created_at", "direction": "asc" }]
 							}
 							$.ajax({
-								url: self.getApp().serviceURL + "/api/v1/chitietthietbi",
+								url: self.getApp().serviceURL + "/api/v1/equipmentdetails",
 								method: "GET",
-								data: { "q": JSON.stringify(filters2, { "order_by": [{ "field": "tenthietbi", "direction": "desc" }], "page": 1, "results_per_page": 100 }) },
+								data: { "q": JSON.stringify(filters2, { "order_by": [{ "field": "name", "direction": "desc" }], "page": 1, "results_per_page": 100 }) },
 								contentType: "application/json",
 								success: function (data2) {
 									for (var i = 0; i < data2.objects.length; i++) {
 										var item2 = data2.objects[i];
 										var start2 = "";
-										if (item2.ngaymua !== null) {
-											start2 = item2.ngaymua;
+										if (item2.time_of_purchase !== null) {
+											start2 = item2.time_of_purchase;
 										}
-										var event_item2 = { "start": start2 * 1000 + 100000000, "title": item2.tenthietbi + '[' + [item2.model_serial_number,] + ']' , "url": "#chitietthietbi/model?id=" + item2.id };
+										var event_item2 = { "start": start2 * 1000 + 100000000, "title": item2.name + '[' + [item2.model_serial_number,] + ']' , "url": "#equipmentdetails/model?id=" + item2.id };
 										events.push(event_item2);
 		
 									}		

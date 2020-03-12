@@ -19,81 +19,81 @@ define(function (require) {
 
 
 		{
-			"collectionName": "khoa",
-			"route": "khoa/collection",
-			"$ref": "app/hethong/khoa/view/CollectionView",
+			"collectionName": "department",
+			"route": "department/collection",
+			"$ref": "app/hethong/department/view/CollectionView",
 		},
 		{
-			"collectionName": "khoa",
-			"route": "khoa/model(/:id)",
-			"$ref": "app/hethong/khoa/view/ModelView",
-		},
-
-
-		{
-			"collectionName": "phong",
-			"route": "phong/collection",
-			"$ref": "app/hethong/phong/view/CollectionView",
-		},
-		{
-			"collectionName": "phong",
-			"route": "phong/model(/:id)",
-			"$ref": "app/hethong/phong/view/ModelView",
+			"collectionName": "department",
+			"route": "department/model(/:id)",
+			"$ref": "app/hethong/department/view/ModelView",
 		},
 
 
+		{
+			"collectionName": "room",
+			"route": "room/collection",
+			"$ref": "app/hethong/room/view/CollectionView",
+		},
+		{
+			"collectionName": "room",
+			"route": "room/model(/:id)",
+			"$ref": "app/hethong/room/view/ModelView",
+		},
 
 
 
+
+
 		{
-			"collectionName": "vaitro",
-			"route": "vaitro/collection",
-			"$ref": "app/hethong/vaitro/js/CollectionView",
+			"collectionName": "rank",
+			"route": "rank/collection",
+			"$ref": "app/hethong/rank/js/CollectionView",
 		},
 		{
-			"collectionName": "vaitro",
-			"route": "vaitro/model(/:id)",
-			"$ref": "app/hethong/vaitro/js/ModelView",
+			"collectionName": "rank",
+			"route": "rank/model(/:id)",
+			"$ref": "app/hethong/rank/js/ModelView",
 		},
 		{
-			"collectionName": "donvi",
-			"route": "donvi/collection",
-			"$ref": "app/danhmuc/donvi/js/CollectionView",
+			"collectionName": "organization",
+			"route": "organization/collection",
+			"$ref": "app/danhmuc/organization/js/CollectionView",
 		},
 		{
-			"collectionName": "donvi",
-			"route": "donvi/model(/:id)",
-			"$ref": "app/danhmuc/donvi/js/ModelView",
+			"collectionName": "organization",
+			"route": "organization/model(/:id)",
+			"$ref": "app/danhmuc/organization/js/ModelView",
 		},
 		{
-			"collectionName": "thietbi",
-			"route": "thietbi/collection",
-			"$ref": "app/danhmuc/thietbi/js/CollectionView",
+			"collectionName": "medicalequipment",
+			"route": "medicalequipment/collection",
+			"$ref": "app/danhmuc/medicalequipment/js/CollectionView",
 		},
 		{
-			"collectionName": "thietbi",
-			"route": "thietbi/model(/:id)",
-			"$ref": "app/danhmuc/thietbi/js/ModelView",
+			"collectionName": "medicalequipment",
+			"route": "medicalequipment/model(/:id)",
+			"$ref": "app/danhmuc/medicalequipment/js/ModelView",
 		},
 		{
-			"collectionName": "chitietthietbi",
-			"route": "chitietthietbi/collection",
-			"$ref": "app/chitietthietbi/js/CollectionView",
+			"collectionName": "equipmentdetails",
+			"route": "equipmentdetails/collection",
+			"$ref": "app/equipmentdetails/js/CollectionView",
 		},
 		{
-			"collectionName": "chitietthietbi",
-			"route": "chitietthietbi/model(/:id)",
-			"$ref": "app/chitietthietbi/js/ModelView",
+			"collectionName": "equipmentdetails",
+			"route": "equipmentdetails/model(/:id)",
+			"$ref": "app/equipmentdetails/js/ModelView",
 		},
 		{
-			"collectionName": "bangkiemtrathietbi",
-			"route": "bangkiemtrathietbi/collection",
-			"$ref": "app/chungtu/bangkiemtrathietbi/js/CollectionView",
+			"collectionName": "equipmentinspectionform",
+			"route": "equipmentinspectionform/collection",
+			"$ref": "app/chungtu/equipmentinspectionform/js/CollectionView",
 		},
 		{
-			"collectionName": "bangkiemtrathietbi",
-			"route": "bangkiemtrathietbi/model(/:id)",
-			"$ref": "app/chungtu/bangkiemtrathietbi/js/ModelView",
+			"collectionName": "equipmentinspectionform",
+			"route": "equipmentinspectionform/model(/:id)",
+			"$ref": "app/chungtu/equipmentinspectionform/js/ModelView",
 		},
 		{
 			"collectionName": "dutoansuachuanam",
@@ -107,25 +107,25 @@ define(function (require) {
 		},
 
 		{
-			"collectionName": "bienbanxacnhantinhtrangthietbi",
-			"route": "bienbanxacnhantinhtrangthietbi/collection",
-			"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/CollectionView",
+			"collectionName": "devicestatusverificationform",
+			"route": "devicestatusverificationform/collection",
+			"$ref": "app/chungtu/devicestatusverificationform/js/CollectionView",
 		},
 		{
-			"collectionName": "bienbanxacnhantinhtrangthietbi",
-			"route": "bienbanxacnhantinhtrangthietbi/model(/:id)",
-			"$ref": "app/chungtu/bienbanxacnhantinhtrangthietbi/js/ModelView",
+			"collectionName": "devicestatusverificationform",
+			"route": "devicestatusverificationform/model(/:id)",
+			"$ref": "app/chungtu/devicestatusverificationform/js/ModelView",
 		},
 
 		{
-			"collectionName": "phieuyeucausuachua",
-			"route": "phieuyeucausuachua/collection",
-			"$ref": "app/chungtu/phieuyeucausuachua/js/CollectionView",
+			"collectionName": "repairrequestform",
+			"route": "repairrequestform/collection",
+			"$ref": "app/chungtu/repairrequestform/js/CollectionView",
 		},
 		{
-			"collectionName": "phieuyeucausuachua",
-			"route": "phieuyeucausuachua/model(/:id)",
-			"$ref": "app/chungtu/phieuyeucausuachua/js/ModelView",
+			"collectionName": "repairrequestform",
+			"route": "repairrequestform/model(/:id)",
+			"$ref": "app/chungtu/repairrequestform/js/ModelView",
 		},
 
 
@@ -144,68 +144,68 @@ define(function (require) {
 
 
 		{
-			"collectionName": "hangsanxuat",
-			"route": "hangsanxuat/collection",
-			"$ref": "app/danhmuc/hangsanxuat/view/CollectionView",
+			"collectionName": "manufacturer",
+			"route": "manufacturer/collection",
+			"$ref": "app/danhmuc/manufacturer/view/CollectionView",
 		},
 		{
-			"collectionName": "hangsanxuat",
-			"route": "hangsanxuat/model(/:id)",
-			"$ref": "app/danhmuc/hangsanxuat/view/ModelView",
+			"collectionName": "manufacturer",
+			"route": "manufacturer/model(/:id)",
+			"$ref": "app/danhmuc/manufacturer/view/ModelView",
 		},
 		{
-			"collectionName": "quocgia",
-			"route": "quocgia/collection",
-			"$ref": "app/danhmuc/QuocGia/view/CollectionView",
+			"collectionName": "nation",
+			"route": "nation/collection",
+			"$ref": "app/danhmuc/Nation/view/CollectionView",
 		},
 		{
-			"collectionName": "quocgia",
-			"route": "quocgia/model(/:id)",
-			"$ref": "app/danhmuc/QuocGia/view/ModelView",
-		},
-
-		{
-			"collectionName": "tinhthanh",
-			"route": "tinhthanh/collection",
-			"$ref": "app/danhmuc/TinhThanh/view/CollectionView",
-		},
-		{
-			"collectionName": "tinhthanh",
-			"route": "tinhthanh/model(/:id)",
-			"$ref": "app/danhmuc/TinhThanh/view/ModelView",
+			"collectionName": "nation",
+			"route": "nation/model(/:id)",
+			"$ref": "app/danhmuc/Nation/view/ModelView",
 		},
 
 		{
-			"collectionName": "quanhuyen",
-			"route": "quanhuyen/collection",
-			"$ref": "app/danhmuc/QuanHuyen/view/CollectionView",
+			"collectionName": "province",
+			"route": "province/collection",
+			"$ref": "app/danhmuc/Province/view/CollectionView",
 		},
 		{
-			"collectionName": "quanhuyen",
-			"route": "quanhuyen/model(/:id)",
-			"$ref": "app/danhmuc/QuanHuyen/view/ModelView",
-		},
-
-		{
-			"collectionName": "xaphuong",
-			"route": "xaphuong/collection",
-			"$ref": "app/danhmuc/XaPhuong/view/CollectionView",
-		},
-		{
-			"collectionName": "xaphuong",
-			"route": "xaphuong/model(/:id)",
-			"$ref": "app/danhmuc/XaPhuong/view/ModelView",
+			"collectionName": "province",
+			"route": "province/model(/:id)",
+			"$ref": "app/danhmuc/Province/view/ModelView",
 		},
 
 		{
-			"collectionName": "bangkiemdinh",
-			"route": "bangkiemdinh/collection",
-			"$ref": "app/chungtu/bangkiemdinh/js/CollectionView",
+			"collectionName": "district",
+			"route": "district/collection",
+			"$ref": "app/danhmuc/District/view/CollectionView",
 		},
 		{
-			"collectionName": "bangkiemdinh",
-			"route": "bangkiemdinh/model(/:id)",
-			"$ref": "app/chungtu/bangkiemdinh/js/ModelView",
+			"collectionName": "district",
+			"route": "district/model(/:id)",
+			"$ref": "app/danhmuc/District/view/ModelView",
+		},
+
+		{
+			"collectionName": "wards",
+			"route": "wards/collection",
+			"$ref": "app/danhmuc/Wards/view/CollectionView",
+		},
+		{
+			"collectionName": "wards",
+			"route": "wards/model(/:id)",
+			"$ref": "app/danhmuc/Wards/view/ModelView",
+		},
+
+		{
+			"collectionName": "certificateform",
+			"route": "certificateform/collection",
+			"$ref": "app/chungtu/certificateform/js/CollectionView",
+		},
+		{
+			"collectionName": "certificateform",
+			"route": "certificateform/model(/:id)",
+			"$ref": "app/chungtu/certificateform/js/ModelView",
 		},
 		{
 

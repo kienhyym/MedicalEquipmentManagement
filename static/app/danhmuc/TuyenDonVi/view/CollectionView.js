@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
     var $                   = require('jquery'),
         _                   = require('underscore'),
-        Gonrin				= require('gonrin');
+        Gonrin				= require('../../EthnicGroup/view/node_modules/gonrin');
     
     var template 			= require('text!app/view/tpl/DanhMuc/TuyenDonVi/collection.html'),
     	schema 				= require('json!schema/TuyenDonViSchema.json');
@@ -17,9 +17,9 @@ define(function (require) {
 	    	     { 
 	    	    	field: "id",label:"ID",width:250,readonly: true, 
 	    	     },
-	    	     { field: "ma", label: "Mã", width:250},
-		     	 { field: "ten", label: "Tên", width:250 },
-		     	{ field: "mota", label: "Mô tả", width:250 },
+	    	     { field: "code", label: "Mã", width:250},
+		     	 { field: "name", label: "Tên", width:250 },
+		     	{ field: "describe", label: "Mô tả", width:250 },
 		     ],
 		     pagination: {
 	            	page: 1,

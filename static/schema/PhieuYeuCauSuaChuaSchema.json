@@ -25,7 +25,7 @@
         "type": "string",
         "primary": true
     },
-    "tenthietbi": {
+    "name": {
         "type": "string",
         "length": 255
     },
@@ -33,70 +33,70 @@
         "type": "string",
         "length": 255
     },
-    "ma_qltb": {
+    "management_code": {
         "type": "string",
         "length": 255
     },
-    "nguoisudung": {
+    "user": {
         "type": "string",
         "length": 255
     },
-    "donvisudung": {
+    "organization_of_use": {
         "type": "string",
         "length": 255
     },
-    "motasuco": {
+    "describe_the_problem": {
         "type": "string"
     },
-    "ngay_suco": {
+    "time_of_problem": {
         "type": "number"
     },
-    "xacnhan_nguoisudungbaosuco": {
+    "user_confirmed": {
         "type": "string",
         "length": 255
     },
-    "xacnhan_donvi": {
+    "organization_confirmed": {
         "type": "string",
         "length": 255
     },
-    "danhgiasobo": {
+    "preliminary_assessment": {
         "type": "string"
     },
-    "ngay_danhgia": {
+    "evaluation_time": {
         "type": "number"
     },
-    "xacnhan_canbosuachua": {
+    "repair_person_confirmed": {
         "type": "string",
         "length": 255
     },
-    "ykienlanhdao": {
+    "opinion_of_leader": {
         "type": "string",
         "length": 255
     },
-    "ketqua": {
+    "result": {
         "type": "string"
     },
-    "ngay_ketqua": {
+    "Time_to_return_results": {
         "type": "number"
     },
-    "xacnhan_nguoisudungnhanketqua": {
+    "User_confirms_the_result": {
         "type": "string",
         "length": 255
     },
-    "chitietthietbi_id": {
+    "equipmentdetails_id": {
         "type": "string"
     },
-    "daxem": {
+    "status": {
         "type": "string",
         "length": 5
     },
-    "trangthai": {
+    "status": {
         "type": "string",
         "length": 15
     },
-    "daduyet": {
+    "confirm": {
         "type": "string",
         "length": 10,
-        "default": "chuaduyet"
+        "default": "not_approved"
     }
 }

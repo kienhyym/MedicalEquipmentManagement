@@ -50,22 +50,22 @@
         "type": "boolean",
         "default": true
     },
-    "vaitro": {
+    "rank": {
         "type": "number"
     },
-    "khoa_id": {
+    "department_id": {
         "type": "string"
     },
-    "phong_id": {
+    "room_id": {
         "type": "string"
     },
     "roles": {
         "type": "list"
     },
-    "khoa": {
+    "department": {
         "type": "dict"
     },
-    "phong": {
+    "room": {
         "type": "dict"
     }
 }

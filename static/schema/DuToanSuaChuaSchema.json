@@ -47,7 +47,7 @@
     "thanhtien": {
         "type": "number"
     },
-    "ghichu": {
+    "note": {
         "type": "string",
         "length": 255
     },

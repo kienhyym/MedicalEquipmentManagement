@@ -81,7 +81,7 @@ body {
 
 }
 
-.chuky{
+.cycle{
   width: 100px;
   border:none;
   border-bottom:1px dotted black;
@@ -146,15 +146,15 @@ color: rgb(70, 70, 70);
 font-family: Arial, Helvetica, sans-serif;
 } */
 
-.yeucauvebaoduong div ul li{
+.maintenance_requirements div ul li{
   display: inline;
   margin: 15px;
 }
-.tinhtrangthietbikhimua div ul li{
+.device_status_when_making_a_purchase div ul li{
   display: inline;
   margin: 15px;
 }
-.tinhtrangthietbikhimua{
+.device_status_when_making_a_purchase{
   width: 40%;
   margin: 0px;
   padding: 0px;

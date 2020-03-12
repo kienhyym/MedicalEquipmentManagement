@@ -25,11 +25,11 @@
         "type": "string",
         "primary": true
     },
-    "ma": {
+    "code": {
         "type": "string",
         "length": 255
     },
-    "ten": {
+    "name": {
         "type": "string",
         "length": 255
     }

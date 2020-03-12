@@ -2,7 +2,8 @@ define(function (require) {
 	"use strict";
 	var $ = require('jquery'),
 		_ = require('underscore'),
-		Gonrin = require('gonrin');
+		//Gonrin = require('../../EthnicGroup/view/node_modules/gonrin');
+        Gonrin = require('gonrin');
 
 	var template = require('text!app/view/tpl/DanhMuc/TuyenDonVi/collection.html'),
 		schema = require('json!schema/TuyenDonViSchema.json');
@@ -12,7 +13,7 @@ define(function (require) {
 		modelSchema: schema,
 		urlPrefix: "/api/v1/",
 		collectionName: "tuyendonvi",
-		//textField: "ten",
+		//textField: "name",
 		//valueField: "id",
 		uiControl: {
 			pagination: {
@@ -25,12 +26,12 @@ define(function (require) {
 					readonly: true,
 				},
 				{
-					field: "ma",
+					field: "code",
 					label: "Mã",
 					width: "150px"
 				},
 				{
-					field: "ten",
+					field: "name",
 					label: "Tên",
 					width: "350px"
 				}

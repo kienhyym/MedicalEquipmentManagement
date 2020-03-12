@@ -6,7 +6,7 @@ define(function (require) {
 
 	var template = require('text!app/role/tpl/select.html'),
 		schema = require('json!schema/RoleSchema.json');
-	var CustomFilterView = require('app/base/view/CustomFilterView');
+	var CustomFilterView = require('../../hethong/department/view/node_modules/app/base/view/CustomFilterView');
 
 	return Gonrin.CollectionDialogView.extend({
 		template: template,
@@ -38,7 +38,7 @@ define(function (require) {
 		],
 		uiControl: {
 			fields: [
-				{ field: "ma", label: "Mã", width: 150 },
+				{ field: "code", label: "Mã", width: 150 },
 				{ field: "name", label: "Tên", width: 250 },
 			],
 			onRowClick: function (event) {

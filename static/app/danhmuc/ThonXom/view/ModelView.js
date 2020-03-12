@@ -2,11 +2,12 @@ define(function (require) {
 	"use strict";
 	var $ = require('jquery'),
 		_ = require('underscore'),
-		Gonrin = require('gonrin');
+		//Gonrin = require('../../EthnicGroup/view/node_modules/gonrin');
+        Gonrin = require('gonrin');
 
 	var template = require('text!app/view/tpl/danhmuc/ThonXom/model.html'),
 		schema = require('json!schema/ThonXomSchema.json');
-	var XaPhuongSelectView = require('app/view/danhmuc/XaPhuong/view/SelectView');
+	var XaPhuongSelectView = require('app/view/danhmuc/Wards/view/SelectView');
 
 	return Gonrin.ModelView.extend({
 		template: template,
@@ -39,11 +40,11 @@ define(function (require) {
 						label: "TRANSLATE:SAVE",
 						command: function () {
 							var self = this;
-							var ten = self.model.get("ten");
-							var xaphuong = self.model.get("xaphuong");
-							if (ten === null || ten === "") {
+							var name = self.model.get("name");
+							var wards = self.model.get("wards");
+							if (name === null || name === "") {
 								self.getApp().notify({ message: "Tên thôn xóm không được để trống!" }, { type: "danger" });
-							} else if (xaphuong === null || xaphuong === undefined) {
+							} else if (wards === null || wards === undefined) {
 								self.getApp().notify({ message: "Bạn chưa chọn tên xã phường!" }, { type: "danger" });
 							} else {
 								self.model.save(null, {
@@ -105,11 +106,11 @@ define(function (require) {
 		uiControl: {
 			fields: [
 				{
-					field: "xaphuong",
+					field: "wards",
 					uicontrol: "ref",
-					textField: "ten",
+					textField: "name",
 					foreignRemoteField: "id",
-					foreignField: "xaphuong_id",
+					foreignField: "wards_id",
 					dataSource: XaPhuongSelectView
 				},
 			]
@@ -118,11 +119,11 @@ define(function (require) {
 			var self = this;
 
 			var currentUser = self.getApp().currentUser;
-			if(!!currentUser && !!currentUser.donvi){
-				if (!!currentUser.donvi.xaphuong_id && currentUser.donvi.tuyendonvi_id === 4){
-					self.model.set("xaphuong_id",currentUser.donvi.xaphuong_id);
-					self.model.set("xaphuong",currentUser.donvi.xaphuong);
-					self.$el.find("#xaphuong").prop('disabled', true);
+			if(!!currentUser && !!currentUser.organization){
+				if (!!currentUser.organization.wards_id && currentUser.organization.tuyendonvi_id === 4){
+					self.model.set("wards_id",currentUser.organization.wards_id);
+					self.model.set("wards",currentUser.organization.wards);
+					self.$el.find("#wards").prop('disabled', true);
 				}
 			}
 

@@ -28,7 +28,7 @@
     "bangkehoachkiemtrathietbitheonam_id": {
         "type": "string"
     },
-    "thietbi_id": {
+    "medicalequipment_id": {
         "type": "string"
     },
     "tuan1": {
@@ -405,7 +405,7 @@
     "giaytodikem_id": {
         "type": "json"
     },
-    "thietbi": {
+    "medicalequipment": {
         "type": "dict"
     }
 }

@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
     var $                   = require('jquery'),
         _                   = require('underscore'),
-        Gonrin				= require('gonrin');
+        Gonrin				= require('../../EthnicGroup/view/node_modules/gonrin');
     
     var template 			= require('text!app/view/tpl/danhmuc/ThonXom/collection.html'),
     	schema 				= require('json!schema/ThonXomSchema.json');
@@ -14,7 +14,7 @@ define(function (require) {
     	urlPrefix: "/api/v1/",
 		collectionName: "thonxom",
 		bindings:"data-thonxom-bind",
-    	textField: "ten",
+    	textField: "name",
     	valueField: "id",
     	tools : [
     	    {
@@ -38,14 +38,14 @@ define(function (require) {
     	],
     	uiControl:{
     		fields: [
-    				 { field: "ma", label: "Mã"},
-    		     	 { field: "ten", label: "Tên" },
+    				 { field: "code", label: "Mã"},
+    		     	 { field: "name", label: "Tên" },
     		     	{
-    	            	 field: "xaphuong_id", 
+    	            	 field: "wards_id", 
     	            	 label: "Xã/Phường",
-    	            	 foreign: "xaphuong",
+    	            	 foreign: "wards",
     	            	 foreignValueField: "id",
-    	            	 foreignTextField: "ten",
+    	            	 foreignTextField: "name",
     	           	 },
     		    ],
     		    onRowClick: function(event){
@@ -54,10 +54,10 @@ define(function (require) {
     	},
     	render:function(){
     		var currentUser = this.getApp().currentUser;
-            if (this.getApp().data("xaphuong_id") !== null) {
-                this.uiControl.filters = { "xaphuong_id": { "$eq": this.getApp().data("xaphuong_id") } };
+            if (this.getApp().data("wards_id") !== null) {
+                this.uiControl.filters = { "wards_id": { "$eq": this.getApp().data("wards_id") } };
             }
-    		this.uiControl.orderBy = [{"field": "ten", "direction": "desc"}];
+    		this.uiControl.orderBy = [{"field": "name", "direction": "desc"}];
     		var self= this;
     		var filter = new CustomFilterView({
     			el: self.$el.find("#grid_search"),
@@ -68,10 +68,10 @@ define(function (require) {
     		if(!filter.isEmptyFilter()) {
     			var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
     			var query = { "$or": [
-					{"ten": {"$likeI": text }},
+					{"name": {"$likeI": text }},
 				]};
 				var filters = {"$and": [
-					{"xaphuong_id": {"$eq": this.getApp().data("xaphuong_id")}},
+					{"wards_id": {"$eq": this.getApp().data("wards_id")}},
 					query
 				]};
     			self.uiControl.filters = filters;
@@ -84,10 +84,10 @@ define(function (require) {
 				if ($col) {
 					if (text !== null){
 						var query = { "$or": [
-							{"ten": {"$likeI": text }},
+							{"name": {"$likeI": text }},
 						]};
 						var filters = {"$and": [
-							{"xaphuong_id": {"$eq": this.getApp().data("xaphuong_id")}},
+							{"wards_id": {"$eq": this.getApp().data("wards_id")}},
 							query
 						]};
 						$col.data('gonrin').filter(filters);

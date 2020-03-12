@@ -119,7 +119,7 @@ def register(request):
         new_user.phone_number = data["phone_number"]
         # new_user.user_image = data["user_image"]
         new_user.password = auth.encrypt_password(data["password"])
-        new_user.vaitro = data["vaitro"]
+        new_user.rank = data["rank"]
         db.session.add(new_user)
         db.session.commit()
         result = user_to_dict(new_user)
@@ -140,27 +140,27 @@ async def changepassword(request):
 @app.route('/api/v1/luucacbuoc', methods=['POST'])
 async def luucacbuoc(request):
     data = request.json
-    print("---------------------buoc kiem tra-------------------", data['buockiemtra'])
-    print("---------------------bangkiemtrathietbi_id-------------------", data['bangkiemtrathietbi_id'])
-    buoc = data['buockiemtra']
-    idbangkiemtra = data['bangkiemtrathietbi_id']
-    buockiemtra = db.session.query(BuocKiemTra).filter(and_(BuocKiemTra.bangkiemtrathietbi_id==idbangkiemtra, BuocKiemTra.buockiemtra==buoc)).first()
-    print("---------------------to_dict(buockiemtra)-------------------", to_dict(buockiemtra))
-    if buockiemtra is not None:
-        buockiemtra.ghichu = data["ghichu"]
-        buockiemtra.tinhtrang = data["tinhtrang"]
-        buockiemtra.thoigian = data["thoigian"]
-        buockiemtra.hinhanh = data["hinhanh"]
+    print("---------------------buoc kiem tra-------------------", data['step'])
+    print("---------------------equipmentinspectionform_id-------------------", data['equipmentinspectionform_id'])
+    buoc = data['step']
+    idbangkiemtra = data['equipmentinspectionform_id']
+    step = db.session.query(Step).filter(and_(Step.equipmentinspectionform_id==idbangkiemtra, Step.step==buoc)).first()
+    print("---------------------to_dict(step)-------------------", to_dict(step))
+    if step is not None:
+        step.note = data["note"]
+        step.status = data["status"]
+        step.time = data["time"]
+        step.picture = data["picture"]
         db.session.commit()
-        return json(to_dict(buockiemtra))
+        return json(to_dict(step))
     else :
-        new_buockiemtra = BuocKiemTra()
-        new_buockiemtra.ghichu = data["ghichu"]
-        new_buockiemtra.buockiemtra = data["buockiemtra"]
-        new_buockiemtra.tinhtrang = data["tinhtrang"]
-        new_buockiemtra.hinhanh = data["hinhanh"]
-        new_buockiemtra.thoigian = data["thoigian"]
-        new_buockiemtra.bangkiemtrathietbi_id = data["bangkiemtrathietbi_id"]
+        new_buockiemtra = Step()
+        new_buockiemtra.note = data["note"]
+        new_buockiemtra.step = data["step"]
+        new_buockiemtra.status = data["status"]
+        new_buockiemtra.picture = data["picture"]
+        new_buockiemtra.time = data["time"]
+        new_buockiemtra.equipmentinspectionform_id = data["equipmentinspectionform_id"]
         db.session.add(new_buockiemtra)
         db.session.commit()
         return json(to_dict(new_buockiemtra))
@@ -284,19 +284,17 @@ async def response_getmany_stt(request=None, Model=None, result=None, **kw):
 
 async def check_maphong_giongnhau(request=None, data=None, result=None, **kw):
     if data is not None:
-        if "ma" in data and data['ma'] is not None and data['ma'] != "":
-            check_existed = db.session.query(Phong).filter(Phong.ma == data['ma']).count()
+        if "code" in data and data['code'] is not None and data['code'] != "":
+            check_existed = db.session.query(Room).filter(Room.code == data['code']).count()
             if check_existed >0:
                 return json({"error_code":"PARAMS_ERROR", "error_message":"Mã danh mục đã bị trùng, vui lòng chọn mã khác"}, status=520)
 
-async def check_makhoa_giongnhau(request=None, data=None, result=None, **kw):
+async def check_madepartment_giongnhau(request=None, data=None, result=None, **kw):
     if data is not None:
-        if "ma" in data and data['ma'] is not None and data['ma'] != "":
-            check_existed = db.session.query(Khoa).filter(Khoa.ma == data['ma']).count()
+        if "code" in data and data['code'] is not None and data['code'] != "":
+            check_existed = db.session.query(Department).filter(Department.code == data['code']).count()
             if check_existed >0:
                 return json({"error_code":"PARAMS_ERROR", "error_message":"Mã danh mục đã bị trùng, vui lòng chọn mã khác"}, status=520)
-
-
 
 
 
@@ -319,111 +317,111 @@ sqlapimanager.create_api(Role, max_results_per_page=1000000,
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='role')
     
-sqlapimanager.create_api(DonVi, max_results_per_page=1000000,
+sqlapimanager.create_api(Organization, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='donvi')
+    collection_name='organization')
 
-sqlapimanager.create_api(ThietBi, max_results_per_page=1000000,
+sqlapimanager.create_api(MedicalEquipment, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='thietbi')
+    collection_name='medicalequipment')
 
-sqlapimanager.create_api(ChiTietThietBi, max_results_per_page=1000000,
+sqlapimanager.create_api(EquipmentDetails, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='chitietthietbi')
+    collection_name='equipmentdetails')
 
-sqlapimanager.create_api(PhieuYeuCauSuaChua, max_results_per_page=1000000,
+sqlapimanager.create_api(RepairRequestForm, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='phieuyeucausuachua')
+    collection_name='repairrequestform')
 
 
 
-sqlapimanager.create_api(BangKiemTraThietBi, max_results_per_page=1000000,
+sqlapimanager.create_api(EquipmentInspectionForm, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='bangkiemtrathietbi')
+    collection_name='equipmentinspectionform')
 
 
 
 
-sqlapimanager.create_api(BienBanXacNhanTinhTrangThietBi, max_results_per_page=1000000,
+sqlapimanager.create_api(DeviceStatusVerificationForm, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='bienbanxacnhantinhtrangthietbi')
+    collection_name='devicestatusverificationform')
 
 
 
-sqlapimanager.create_api(Khoa, max_results_per_page=1000000,
+sqlapimanager.create_api(Department, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[check_makhoa_giongnhau], PUT_SINGLE=[]),
+    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[check_madepartment_giongnhau], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='khoa')
+    collection_name='department')
 
-sqlapimanager.create_api(Phong, max_results_per_page=1000000,
+sqlapimanager.create_api(Room, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[check_maphong_giongnhau], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='phong')
+    collection_name='room')
 
-sqlapimanager.create_api(BangKiemDinh, max_results_per_page=1000000,
+sqlapimanager.create_api(CertificateForm , max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='bangkiemdinh')
+    collection_name='certificateform')
 
-sqlapimanager.create_api(HangSanXuat, max_results_per_page=1000000,
+sqlapimanager.create_api(Manufacturer, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='hangsanxuat')
+    collection_name='manufacturer')
 
-sqlapimanager.create_api(ThongBao, max_results_per_page=1000000,
+sqlapimanager.create_api(Notification, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='thongbao')
+    collection_name='notification')
 
-sqlapimanager.create_api(QuyTrinhKiemTra, max_results_per_page=1000000,
+sqlapimanager.create_api(EquipmentInspectionProcedures, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='quytrinhkiemtra')
+    collection_name='equipmentinspectionprocedures')
 
-sqlapimanager.create_api(BuocKiemTra, max_results_per_page=1000000,
+sqlapimanager.create_api(Step, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='buockiemtra')
+    collection_name='step')

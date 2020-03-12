@@ -25,7 +25,7 @@
         "type": "string",
         "primary": true
     },
-    "tenthietbi": {
+    "name": {
         "type": "string",
         "length": 255
     },
@@ -33,11 +33,11 @@
         "type": "string",
         "length": 255
     },
-    "ma_qltb": {
+    "management_code": {
         "type": "string",
         "length": 255
     },
-    "chitietthietbi_id": {
+    "equipmentdetails_id": {
         "type": "string",
         "length": 255
     },

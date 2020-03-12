@@ -25,32 +25,32 @@
         "type": "string",
         "primary": true
     },
-    "ngay": {
+    "date": {
         "type": "number"
     },
-    "tinhtrang": {
+    "status": {
         "type": "string",
         "length": 255
     },
-    "mota": {
+    "describe": {
         "type": "string",
         "length": 255
     },
-    "nguoikiemtra_id": {
+    "checker_id": {
         "type": "string",
         "length": 255
     },
-    "nguoikiemtra": {
+    "checker": {
         "type": "string",
         "length": 255
     },
-    "khoa_id": {
+    "department_id": {
         "type": "string"
     },
-    "phong_id": {
+    "room_id": {
         "type": "string"
     },
-    "tenthietbi": {
+    "name": {
         "type": "string",
         "length": 255
     },
@@ -58,33 +58,33 @@
         "type": "string",
         "length": 255
     },
-    "ma_qltb": {
+    "management_code": {
         "type": "string",
         "length": 255
     },
-    "daxem": {
+    "status": {
         "type": "string",
         "length": 5
     },
-    "daduyet": {
+    "confirm": {
         "type": "string",
         "length": 10,
-        "default": "chuaduyet"
+        "default": "not_approved"
     },
     "attachment": {
         "type": "string",
         "length": 255
     },
-    "chitietthietbi_id": {
+    "equipmentdetails_id": {
         "type": "string"
     },
-    "khoa": {
+    "department": {
         "type": "dict"
     },
-    "phong": {
+    "room": {
         "type": "dict"
     },
-    "buockiemtrafield": {
+    "list_of_steps": {
         "type": "list"
     }
 }
