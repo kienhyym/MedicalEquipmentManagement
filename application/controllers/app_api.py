@@ -9,8 +9,7 @@ from gatco.response import json, text, html
 from application.extensions import sqlapimanager
 from application.database import db, redisdb
 from application.models.models import *
-
-
+from datetime import datetime
 from application.server import app
 from gatco_restapi.helpers import to_dict
 from sqlalchemy.sql.expression import except_
@@ -64,3 +63,73 @@ async def get_token(request):
     else:
         return json({'error_code':"NOT_FOUND", 'error_message':u'Tài khoản ứng dụng hoặc mật khẩu không đúng, vui lòng kiểm tra lại!'}, status=520)
         
+
+
+@app.route('/api/v1/date_sort', methods=['POST'])
+async def date_sort(request):
+    data = request.json
+    equipmentinspectionform = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+    repairrequestform = db.session.query(RepairRequestForm).filter(RepairRequestForm.time_of_problem.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+    devicestatusverificationform = db.session.query(DeviceStatusVerificationForm).filter(DeviceStatusVerificationForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+    certificateform = db.session.query(CertificateForm).filter(CertificateForm.date_of_certification.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+    return json({
+        "equipmentinspectionform":[str(date_today.id) for date_today in equipmentinspectionform],
+        "repairrequestform":[str(date_today.id) for date_today in repairrequestform],
+        "devicestatusverificationform":[str(date_today.id) for date_today in devicestatusverificationform],
+        "certificateform":[str(date_today.id) for date_today in certificateform],
+        })
+        
+@app.route('/api/v1/count_of_month', methods=['POST'])
+async def count_of_month(request):
+    data = request.json
+    month = ["01","02","03","04","05","06","07","08","09","10","11","12"]
+    month_timestamp = []
+    for i in range(len(month)): 
+        if month[i] == "12":
+            month_timestamp.append({
+                "batdauthang":str(data['nam'])+"-"+month[i]+"-01T00:00:01",
+                "kethucthang":str(data['nam']+1)+"-01-01T00:00:01"
+                })
+        else:
+            month_timestamp.append({
+                "batdauthang":str(data['nam'])+"-"+month[i]+"-01T00:00:01",
+                "kethucthang":str(data['nam'])+"-"+month[i+1]+"-01T00:00:01"
+                })
+    equipmentinspectionform_count = []
+    repairrequestform_count = []
+    devicestatusverificationform_count = []
+    certificateform_count = []
+    for i in month_timestamp: 
+        batdauthang_format = datetime.strptime(i['batdauthang'], '%Y-%m-%dT%H:%M:%S')
+        kethucthang_format = datetime.strptime(i['kethucthang'], '%Y-%m-%dT%H:%M:%S')
+        equipmentinspectionform = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.date.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
+        repairrequestform = db.session.query(RepairRequestForm).filter(RepairRequestForm.time_of_problem.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
+        devicestatusverificationform = db.session.query(DeviceStatusVerificationForm).filter(DeviceStatusVerificationForm.date.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
+        certificateform = db.session.query(CertificateForm).filter(CertificateForm.date_of_certification.between(batdauthang_format.timestamp(), kethucthang_format.timestamp())).all()
+        equipmentinspectionform_count.append(len([str(sl.id) for sl in equipmentinspectionform]))
+        repairrequestform_count.append(len([str(sl.id) for sl in repairrequestform]))
+        devicestatusverificationform_count.append(len([str(sl.id) for sl in devicestatusverificationform]))
+        certificateform_count.append(len([str(sl.id) for sl in certificateform]))
+    return json(
+        {
+            "equipmentinspectionform_count":equipmentinspectionform_count,
+            "repairrequestform_count":repairrequestform_count,
+            "devicestatusverificationform_count":devicestatusverificationform_count,
+            "certificateform_count":certificateform_count,
+        })
+
+@app.route('/api/v1/list_today', methods=['POST'])
+async def list_today(request):
+    data = request.json
+    arr = []
+    if data['tableName'] == "equipmentinspectionform" :
+        list = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+    if data['tableName'] == "repairrequestform" :
+        list = db.session.query(RepairRequestForm).filter(RepairRequestForm.time_of_problem.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+    if data['tableName'] == "devicestatusverificationform" :
+        list = db.session.query(DeviceStatusVerificationForm).filter(DeviceStatusVerificationForm.date.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+    if data['tableName'] == "certificateform" :
+        list = db.session.query(CertificateForm).filter(CertificateForm.date_of_certification.between(data['thoiGianBatDau'], data['thoiGianKetThuc'])).all()
+    for _ in list :
+        arr.append(to_dict(_))
+    return json(arr)

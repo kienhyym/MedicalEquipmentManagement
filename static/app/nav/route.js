@@ -214,6 +214,27 @@ define(function (require) {
 			"$ref": "app/lichthanhtra/view/ModelView",
 
 		},
+		{
+			"collectionName": "item",
+			"route": "item/collection",
+			"$ref": "app/item/view/CollectionView",
+		},
+		{
+			"collectionName": "item",
+			"route": "item/model(/:id)",
+			"$ref": "app/item/view/ModelView",
+		},
+
+		{
+			"collectionName": "purchaseorder",
+			"route": "purchaseorder/collection",
+			"$ref": "app/purchaseorder/view/CollectionView",
+		},
+		{
+			"collectionName": "purchaseorder",
+			"route": "purchaseorder/model(/:id)",
+			"$ref": "app/purchaseorder/view/ModelView",
+		},
 
 	];
 

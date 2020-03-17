@@ -146,12 +146,11 @@ define(function (require) {
 					textField: "text",
 					valueField: "value",
 					dataSource: [
-						{ "value": "yeucaukiemtrathietbi", "text": "Đang yêu cầu kiểm tra" },
-						{ "value": "dangsuachua", "text": "Đang sửa chữa" },
+						{ "value": "dangyeucaukiemtrathietbi", "text": "Đang yêu cầu kiểm tra" },
+						{ "value": "dangyeucausuachua", "text": "Đang yêu cầu sửa chữa" },
 						{ "value": "dangchokiemduyet", "text": "Đang chờ kiểm duyệt" },
 						{ "value": "dakiemduyet", "text": "Đã kiểm duyệt" },
 						{ "value": "luukho", "text": "Lưu kho chưa vận hành" },
-
 					],
 				},
 

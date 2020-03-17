@@ -13,6 +13,7 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "devicestatusverificationform",
+        loaiDanhSachHomNay: null,
         tools: [
             {
                 name: "defaultgr",
@@ -31,6 +32,10 @@ define(function (require) {
                     },
                 ],
             }],
+        initialize: function () {
+            this.loaiDanhSachHomNay = localStorage.getItem("LoaiDanhSachHomNay");
+            localStorage.clear();
+        },
         render: function () {
             var self = this;
             self.$el.find('#ngaykiemtra').datetimepicker({
@@ -140,6 +145,9 @@ define(function (require) {
 
 
                 })
+            }
+            if (self.loaiDanhSachHomNay != null) {
+                self.appListToday();
             }
             else {
                 $.ajax({
@@ -276,13 +284,37 @@ define(function (require) {
                 },
             });
             $(self.$el.find('.grid-data tr')).each(function (index, item) {
-                $(item).find('td:first').css('height',$(item).height())
+                $(item).find('td:first').css('height', $(item).height())
 
                 console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
 
             })
         },
-
+        appListToday: function () {
+            var self = this;
+            var thoiGianBatDau = moment().format('MMMM Do YYYY') + ' 00:00:01';
+            var thoiGianKetThuc = String(moment().format('MMMM Do YYYY')) + ' 23:59:59';
+            $.ajax({
+                url: self.getApp().serviceURL + "/api/v1/list_today",
+                method: "POST",
+                data: JSON.stringify(
+                    {
+                        "thoiGianBatDau": Date.parse(thoiGianBatDau) / 1000,
+                        "thoiGianKetThuc": Date.parse(thoiGianKetThuc) / 1000,
+                        "tableName": self.loaiDanhSachHomNay
+                    }
+                ),
+                contentType: "application/json",
+                success: function (data) {
+                    var list = [];
+                    data.forEach(function (item, index) {
+                        item.stt = index + 1;
+                        list.push(item)
+                        self.render_grid(list);
+                    });
+                }
+            })
+        }
     });
 
 });

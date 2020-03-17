@@ -12,6 +12,7 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "equipmentdetails",
+        trangThaiThietBi: null,
         tools: [
             {
                 name: "defaultgr",
@@ -41,56 +42,13 @@ define(function (require) {
                 }
             },
         ],
-        // uiControl: {
-        //     fields: [
-        //         {
-        //             field: "name", label: "Tên thiết bị", width: 250, readonly: true,
-        //         },
-        //         {
-        //             field: "model_serial_number", label: "Serial", width: 150, readonly: true,
-        //         },
-        //         {
-        //             field: "nation_id",
-        //             label: "Nước sản xuất",
-        //             foreign: "nation",
-        //             foreignValueField: "id",
-        //             foreignTextField: "name",
-        //             width: 150
-        //         },
-
-        //         {
-        //             field: "time_of_purchase", label: "Năm sử dụng",
-        //             template: function (rowData) {
-        //                 if (!!rowData && rowData.time_of_purchase) {
-
-        //                     var utcTolocal = function (times, format) {
-        //                         return moment(times * 1000).local().format(format);
-        //                     }
-        //                     // return template_helper.datetimeFormat(rowData.ngaythanhtra, "DD/MM/YYYY");
-        //                     return utcTolocal(rowData.time_of_purchase, "DD/MM/YYYY");
-        //                 }
-        //                 return "";
-        //             },
-        //             width: 150
-        //         },
-        //         {
-        //             field: "supplier_id",
-        //             label: "Đơn vị",
-        //             foreign: "supplier",
-        //             foreignValueField: "id",
-        //             foreignTextField: "name",
-        //             width: 250
-        //         },
-        //     ],
-        //     onRowClick: function (event) {
-        //         if (event.rowId) {
-        //             var path = this.collectionName + '/model?id=' + event.rowId;
-        //             this.getApp().getRouter().navigate(path);
-        //         }
-        //     }
-        // },
+        initialize: function () {
+            this.trangThaiThietBi = localStorage.getItem("TrangThaiThietBi");
+            localStorage.clear();
+        },
         render: function () {
             var self = this;
+
             self.$el.find('.chungloai').hide();
             self.$el.find('.departmentphong').hide();
             self.$el.find('.status').hide();
@@ -244,62 +202,80 @@ define(function (require) {
                 },
 
             })
-
-
-
-
-            $.ajax({
-                url: self.getApp().serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
-                method: "GET",
-                data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
-                contentType: "application/json",
-                success: function (data) {
-                    var arrdata = [];
-                    data.objects.forEach(function (item, index) {
-                        item.stt = index + 1;
-                        arrdata.push(item)
-                    });
-                    self.render_grid(arrdata);
-
-                    self.$el.find('#status').on('change.gonrin', function (e) {
-                        var boloc = self.$el.find('#status').data('gonrin').getValue();
-                        var arrTinhTrang = [];
-                        var i = 1;
-
+            if (self.trangThaiThietBi != null) {
+                self.appTrangthai();
+            }
+            if(self.loaiDanhSachHomNay != null){
+                self.appListToday();
+            }
+            else {
+                $.ajax({
+                    url: self.getApp().serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
+                    method: "GET",
+                    data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
+                    contentType: "application/json",
+                    success: function (data) {
+                        var arrdata = [];
                         data.objects.forEach(function (item, index) {
-                            if (item.status == boloc) {
-                                // arrTinhTrang.push(item)
-                                item.stt = i;
-                                i++;
-                                arrTinhTrang.push(item)
-                            }
-
+                            item.stt = index + 1;
+                            arrdata.push(item)
                         });
-                        self.render_grid(arrTinhTrang);
+                        self.render_grid(arrdata);
 
-                    })
-                    self.$el.find('#department').on('change.gonrin', function (e) {
-                        var boloc = self.$el.find('#department').data('gonrin').getValue();
-                        var arrKhoa = [];
-                        var i = 1;
+                        self.$el.find('#status').on('change.gonrin', function (e) {
+                            var boloc = self.$el.find('#status').data('gonrin').getValue();
+                            var arrTinhTrang = [];
+                            var i = 1;
 
-                        data.objects.forEach(function (item, index) {
-                            if (item.department_id == boloc) {
-                                // arrKhoa.push(item)
-                                item.stt = i;
-                                i++;
-                                arrKhoa.push(item)
+                            data.objects.forEach(function (item, index) {
+                                if (item.status == boloc) {
+                                    // arrTinhTrang.push(item)
+                                    item.stt = i;
+                                    i++;
+                                    arrTinhTrang.push(item)
+                                }
 
-                            }
-                        });
-                        self.render_grid(arrKhoa);
+                            });
+                            self.render_grid(arrTinhTrang);
 
+                        })
+                        self.$el.find('#department').on('change.gonrin', function (e) {
+                            var boloc = self.$el.find('#department').data('gonrin').getValue();
+                            var arrKhoa = [];
+                            var i = 1;
+
+                            data.objects.forEach(function (item, index) {
+                                if (item.department_id == boloc) {
+                                    // arrKhoa.push(item)
+                                    item.stt = i;
+                                    i++;
+                                    arrKhoa.push(item)
+
+                                }
+                            });
+                            self.render_grid(arrKhoa);
+
+                            self.$el.find('#room').on('change.gonrin', function (e) {
+                                var boloc = self.$el.find('#room').data('gonrin').getValue();
+                                var arrPhong = [];
+                                var i = 1;
+
+                                arrKhoa.forEach(function (item, index) {
+                                    if (item.room_id == boloc) {
+                                        item.stt = i;
+                                        i++;
+                                        arrPhong.push(item)
+                                    }
+                                });
+                                self.render_grid(arrPhong);
+                            })
+                        })
                         self.$el.find('#room').on('change.gonrin', function (e) {
                             var boloc = self.$el.find('#room').data('gonrin').getValue();
                             var arrPhong = [];
                             var i = 1;
 
-                            arrKhoa.forEach(function (item, index) {
+                            data.objects.forEach(function (item, index) {
                                 if (item.room_id == boloc) {
                                     item.stt = i;
                                     i++;
@@ -308,88 +284,73 @@ define(function (require) {
                             });
                             self.render_grid(arrPhong);
                         })
-                    })
-                    self.$el.find('#room').on('change.gonrin', function (e) {
-                        var boloc = self.$el.find('#room').data('gonrin').getValue();
-                        var arrPhong = [];
-                        var i = 1;
-
-                        data.objects.forEach(function (item, index) {
-                            if (item.room_id == boloc) {
-                                item.stt = i;
-                                i++;
-                                arrPhong.push(item)
-                            }
-                        });
-                        self.render_grid(arrPhong);
-                    })
 
 
-                    self.$el.find('#chungloai').on('change.gonrin', function (e) {
-                        var boloc = self.$el.find('#chungloai').data('gonrin').getValue();
-                        var i = 1;
-                        var arrChungLoai = [];
-
-                        data.objects.forEach(function (itemcl, index) {
-                            console.log(itemcl.types_of_equipment, boloc)
-                            if (itemcl.types_of_equipment === boloc) {
-                                itemcl.stt = i;
-                                i++;
-                                arrChungLoai.push(itemcl)
-                            }
-                            self.render_grid(arrChungLoai);
-
-                            self.$el.find("#noidungtimkiem").keyup(function () {
-                                var arrTimKiem = [];
-                                var i = 1;
-
-                                arrChungLoai.forEach(function (item2, index2) {
-                                    if ((item2.name).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
-                                        item.stt = i;
-                                        i++;
-                                        arrTimKiem.push(item2)
-                                    }
-                                })
-                                self.render_grid(arrTimKiem);
-                            })
-                        });
-                    });
-                    self.$el.find("#noidungtimkiem").keyup(function () {
-                        var arrTimKiem = [];
-                        var i = 1;
-
-                        data.objects.forEach(function (item2, index2) {
-                            if ((item2.name).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
-                                item.stt = i;
-                                i++;
-                                arrTimKiem.push(item2)
-                            }
-                        })
-                        self.render_grid(arrTimKiem);
                         self.$el.find('#chungloai').on('change.gonrin', function (e) {
-                            boloc = self.$el.find('#chungloai').data('gonrin').getValue();
+                            var boloc = self.$el.find('#chungloai').data('gonrin').getValue();
                             var i = 1;
                             var arrChungLoai = [];
 
-                            arrTimKiem.forEach(function (item, index) {
-                                if (item.types_of_equipment == boloc) {
-                                    item.stt = i;
+                            data.objects.forEach(function (itemcl, index) {
+                                console.log(itemcl.types_of_equipment, boloc)
+                                if (itemcl.types_of_equipment === boloc) {
+                                    itemcl.stt = i;
                                     i++;
-                                    arrChungLoai.push(item)
+                                    arrChungLoai.push(itemcl)
                                 }
                                 self.render_grid(arrChungLoai);
+
+                                self.$el.find("#noidungtimkiem").keyup(function () {
+                                    var arrTimKiem = [];
+                                    var i = 1;
+
+                                    arrChungLoai.forEach(function (item2, index2) {
+                                        if ((item2.name).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
+                                            item.stt = i;
+                                            i++;
+                                            arrTimKiem.push(item2)
+                                        }
+                                    })
+                                    self.render_grid(arrTimKiem);
+                                })
                             });
                         });
-                    })
+                        self.$el.find("#noidungtimkiem").keyup(function () {
+                            var arrTimKiem = [];
+                            var i = 1;
+
+                            data.objects.forEach(function (item2, index2) {
+                                if ((item2.name).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
+                                    item.stt = i;
+                                    i++;
+                                    arrTimKiem.push(item2)
+                                }
+                            })
+                            self.render_grid(arrTimKiem);
+                            self.$el.find('#chungloai').on('change.gonrin', function (e) {
+                                boloc = self.$el.find('#chungloai').data('gonrin').getValue();
+                                var i = 1;
+                                var arrChungLoai = [];
+
+                                arrTimKiem.forEach(function (item, index) {
+                                    if (item.types_of_equipment == boloc) {
+                                        item.stt = i;
+                                        i++;
+                                        arrChungLoai.push(item)
+                                    }
+                                    self.render_grid(arrChungLoai);
+                                });
+                            });
+                        })
 
 
 
-                },
+                    },
 
-            })
+                })
+            }
         },
         render_grid: function (dataSource) {
-
             var self = this;
             var element = self.$el.find("#grid-data");
             element.grid({
@@ -445,56 +406,6 @@ define(function (require) {
                             return "";
                         }
                     },
-
-                    // {
-                    //     field: "status",
-                    //     label: "Trạng thái",
-                    //     width: 150, readonly: true,
-                    //     template: function (rowData) {
-                    //        
-                    //         else if (rowData.status === null) {
-                    //             return "";
-                    //         }
-
-                    //     }
-                    // },
-                    // {
-                    //     field: "types_of_equipment",
-                    //     label: "Chủng loại",
-                    //     width: 150, readonly: true,
-                    //     template: function (rowData) {
-                    //         if (rowData.types_of_equipment === "1") {
-                    //             return "Máy xét nhiệm";
-                    //         }
-                    //         else if (rowData.types_of_equipment === "2") {
-                    //             return "Máy chuẩn đoán hình ảnh";
-                    //         }
-                    //         else if (rowData.types_of_equipment === "3") {
-                    //             return "Máy thăm dò chức năng";
-                    //         }
-                    //         else if (rowData.types_of_equipment === "4") {
-                    //             return "Thiết bị hấp sấy";
-                    //         }
-                    //         else if (rowData.types_of_equipment === "5") {
-                    //             return "Thiết bị hỗ trợ sinh tồn ";
-                    //         }
-                    //         else if (rowData.types_of_equipment === "6") {
-                    //             return "Robot";
-                    //         }
-                    //         else if (rowData.types_of_equipment === "7") {
-                    //             return "Thiết bi miễn dịch";
-                    //         }
-                    //         else if (rowData.types_of_equipment === "8") {
-                    //             return "Thiết bị lọc và hỗ trợ chức năng ";
-                    //         }
-                    //         else {
-                    //             return ""
-                    //         }
-
-                    //     }
-                    // },
-
-
                 ],
                 dataSource: dataSource,
                 primaryField: "id",
@@ -512,9 +423,34 @@ define(function (require) {
             });
             $(self.$el.find('.grid-data tr')).each(function (index, item) {
                 $(item).find('td:first').css('height', $(item).height())
+                $(item).find('td:first').addClass('d-flex align-items-center justify-content-center')
+            })
+        },
+        appTrangthai: function () {
+            var self = this;
+            var filters = {
+                filters: {
+                    "$and": [
+                        { "status": { "$eq": self.trangThaiThietBi } }
+                    ]
+                },
+                order_by: [{ "field": "created_at", "direction": "desc" }]
+            }
+            $.ajax({
+                url: self.getApp().serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
+                method: "GET",
+                data: "q=" + JSON.stringify(filters),
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data)
 
-                console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
-
+                    var list = [];
+                    data.objects.forEach(function (item, index) {
+                        item.stt = index+1;
+                        list.push(item)
+                        self.render_grid(list);
+                    });
+                },
             })
         },
     });

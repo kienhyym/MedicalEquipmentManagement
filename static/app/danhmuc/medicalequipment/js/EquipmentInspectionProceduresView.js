@@ -6,7 +6,7 @@ define(function (require) {
 
         //Gonrin = require('../../EthnicGroup/view/node_modules/gonrin');
     var itemTemplate = require('text!app/danhmuc/medicalequipment/tpl/equipmentinspectionprocedures.html'),
-        itemSchema = require('json!schema/EquipmentInspectionProcedureSchema.json');
+        itemSchema = require('json!schema/EquipmentInspectionProceduresSchema.json');
 
     return Gonrin.ItemView.extend({
         bindings: "equipmentinspectionprocedures-bind",

@@ -63,8 +63,6 @@ class Organization(CommonModel):
     ceo = db.Column(db.String)
 
 
-
-
 class EthnicGroup(CommonModel):
     __tablename__ = 'ethnicgroup'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -289,3 +287,12 @@ class CertificateForm (CommonModel):
     management_code = db.Column(String(255))
     check = db.Column(String(10))
     equipmentdetails_id = db.Column(UUID(as_uuid=True), ForeignKey('equipmentdetails.id'), nullable=True)
+
+
+
+
+
+
+
+
+

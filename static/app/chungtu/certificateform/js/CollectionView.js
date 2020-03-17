@@ -12,6 +12,7 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "certificateform",
+        loaiDanhSachHomNay: null,
         tools: [
             {
                 name: "defaultgr",
@@ -30,6 +31,10 @@ define(function (require) {
                     },
                 ],
             }],
+        initialize: function () {
+            this.loaiDanhSachHomNay = localStorage.getItem("LoaiDanhSachHomNay");
+            localStorage.clear();
+        },
         render: function () {
             var self = this;
             self.$el.find('#date_of_certification').datetimepicker({
@@ -47,6 +52,8 @@ define(function (require) {
             self.locData();
             return this;
         },
+
+
         locData: function () {
             var self = this;
             var IDTB = sessionStorage.getItem('IDThietBi');
@@ -139,6 +146,9 @@ define(function (require) {
 
                 })
             }
+            if (self.loaiDanhSachHomNay != null) {
+                self.appListToday();
+            }
             else {
                 $.ajax({
                     url: self.getApp().serviceURL + "/api/v1/certificateform?results_per_page=100000&max_results_per_page=1000000",
@@ -217,73 +227,9 @@ define(function (require) {
         },
         render_grid: function (dataSource) {
             var self = this;
-            // self.$el.find('.medicalequipment').remove();
-            // self.$el.find('.xuongdong').remove();
-            // console.log(Math.ceil(dataSource.length/10))
-            // dataSource.forEach(function (item, index) {
-            //     if(index < 10){
-
-            //         self.$el.find('#grid-table').append(`<div class="medicalequipment row">
-            //         <div class="d-flex justify-content-center  align-items-center col-md-1 col-sm-1 col-2 p-0 stt">${item.stt}</div>
-            //         <div class="col-md-10 col-sm-10 col-8 p-0">
-            //             <div style="font-weight:bold">${item.name}(Serial:${item.model_serial_number})</div>
-            //             <div class="row">
-            //                 <div class = "col-md-4">Ngày cấp: ${moment(item.date_of_certification * 1000).local().format("DD/MM/YYYY")} </div>
-            //                 <div class = "col-md-4">Ngày hết hạn:${moment(item.expiration_date * 1000).local().format("DD/MM/YYYY")}</div>
-            //             </div>
-            //             <div>Trạng thái :${item.status}</div>
-            //         </div>
-            //         <div class="d-flex justify-content-center align-items-center col-md-1 col-sm-1 col-2 p-0 "><button class="btn btn-primary p-2">Chọn</button></div>
-            //         </div><hr class="xuongdong">`)
-            //     }
-
-            // })
-            // self.$el.find('.medicalequipment').each(function (indexHTML2, itemHTML2) {
-            //     $(itemHTML2).bind('click', function () {
-            //         var link = (dataSource[parseInt($(itemHTML2).find('.stt').html())-1].id)
-            //         self.getApp().getRouter().navigate("certificateform/model?id=" + link);
-
-            //     })
-            // })
-            // self.$el.find('.xxx').each(function (indexHTML, itemHTML) {
-
-            //     $(itemHTML).click(function () {
-            //         self.$el.find('.medicalequipment').remove();
-            //         self.$el.find('.xuongdong').remove();
-
-            //         dataSource.forEach(function (item, index) {
-            //             if ((indexHTML) * 10 <= index && index < (indexHTML + 1) * 10)
-            //                 self.$el.find('#grid-table').append(`<div class="medicalequipment row">
-            //             <div class="d-flex justify-content-center  align-items-center col-md-1 col-sm-1 col-2 p-0 stt">${item.stt}</div>
-            //             <div class="col-md-10 col-sm-10 col-8 p-0">
-            //                 <div style="font-weight:bold">${item.name}(Serial:${item.model_serial_number})</div>
-            //                 <div class="row">
-            //                     <div class = "col-md-4">Ngày cấp: ${moment(item.date_of_certification * 1000).local().format("DD/MM/YYYY")} </div>
-            //                     <div class = "col-md-4">Ngày hết hạn:${moment(item.expiration_date * 1000).local().format("DD/MM/YYYY")}</div>
-            //                 </div>
-            //                 <div>Trạng thái :${item.status}</div>
-            //             </div>
-            //             <div class="d-flex justify-content-center align-items-center col-md-1 col-sm-1 col-2 p-0 "><button class="btn btn-primary p-2">Chọn</button></div>
-            //             </div><hr class="xuongdong">`)
-            //         })
-
-            //         self.$el.find('.medicalequipment').each(function (indexHTML2, itemHTML2) {
-            //             $(itemHTML2).bind('click', function () {
-            //                 var link = (dataSource[parseInt($(itemHTML2).find('.stt').html())-1].id)
-            //                 self.getApp().getRouter().navigate("certificateform/model?id=" + link);
-
-            //             })
-            //         })
-            //     })
-            // })
-
-
-
-
             var element = self.$el.find("#grid-data");
 
             element.grid({
-                // showSortingIndicator: true,
                 orderByMode: "client",
                 language: {
                     no_records_found: "Chưa có dữ liệu"
@@ -338,12 +284,37 @@ define(function (require) {
                 },
             });
             $(self.$el.find('.grid-data tr')).each(function (index, item) {
-                $(item).find('td:first').css('height',$(item).height())
+                $(item).find('td:first').css('height', $(item).height())
 
                 console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
 
             })
         },
+        appListToday: function () {
+            var self = this;
+            var thoiGianBatDau = moment().format('MMMM Do YYYY') + ' 00:00:01';
+            var thoiGianKetThuc = String(moment().format('MMMM Do YYYY')) + ' 23:59:59';
+            $.ajax({
+                url: self.getApp().serviceURL + "/api/v1/list_today",
+                method: "POST",
+                data: JSON.stringify(
+                    {
+                        "thoiGianBatDau": Date.parse(thoiGianBatDau) / 1000,
+                        "thoiGianKetThuc": Date.parse(thoiGianKetThuc) / 1000,
+                        "tableName": self.loaiDanhSachHomNay
+                    }
+                ),
+                contentType: "application/json",
+                success: function (data) {
+                    var list = [];
+                    data.forEach(function (item, index) {
+                        item.stt = index + 1;
+                        list.push(item)
+                        self.render_grid(list);
+                    });
+                }
+            })
+        }
     });
 
 });

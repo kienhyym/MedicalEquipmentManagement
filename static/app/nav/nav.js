@@ -470,7 +470,46 @@ define(function (require) {
 		// 	]
 		// },
 
-
+		{
+			"text": "Vật tư y tế",
+			"icon": "fa fa-book",
+			"type": "view",
+			"collectionName": "item",
+			"route": "item/collection",
+			"$ref": "app/item/view/CollectionView",
+			"visible": function () {
+				return false
+			}
+		},
+		{
+			"type": "view",
+			"collectionName": "item",
+			"route": "item/model(/:id)",
+			"$ref": "app/item/view/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
+		{
+			"text": "Mua hàng",
+			"icon": "fa fa-book",
+			"type": "view",
+			"collectionName": "purchaseorder",
+			"route": "purchaseorder/collection",
+			// "$ref": "app/purchaseorder/view/CollectionView",
+			"visible": function () {
+				return false
+			}
+		},
+		{
+			"type": "view",
+			"collectionName": "purchaseorder",
+			"route": "purchaseorder/model(/:id)",
+			// "$ref": "app/purchaseorder/view/ModelView",
+			"visible": function () {
+				return false;
+			}
+		},
 	];
 
 });

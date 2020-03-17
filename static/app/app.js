@@ -30,8 +30,22 @@ require.config({
 		}
 	}
 });
-
-
+window.clone = function (objectData) {
+	return JSON.parse(JSON.stringify(objectData));
+}
+class Loader {
+	show() {
+		if (!$('.load-process').hasClass('active')) {
+			$('.load-process').addClass('active');
+		}
+	}
+	hide() {
+		if ($('.load-process').hasClass('active')) {
+			$('.load-process').removeClass('active');
+		}
+	}
+}
+var loader = new Loader();
 require(['jquery',
 	'gonrin',
 	'app/router',
@@ -57,8 +71,6 @@ require(['jquery',
 			initialize: function () {
 				this.getRouter().registerAppRoute();
 				this.getCurrentUser();
-
-
 			},
 			getCurrentUser: function () {
 				var self = this;
@@ -67,16 +79,18 @@ require(['jquery',
 					dataType: "json",
 					success: function (data) {
 						self.postLogin(data);
-
-
 					},
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
+						loader.hide();
+
 						self.router.navigate("login");
 					}
 				});
 			},
 			postLogin: function (data) {
 				var self = this;
+				loader.show();
+
 				self.currentUser = new Gonrin.User(data);
 				var tpl = gonrin.template(layout)({});
 				$('.content-contain').html(tpl);
@@ -93,12 +107,10 @@ require(['jquery',
 				$("#changepassword").on("click", function () {
 					self.router.navigate("changepassword");
 				});
-
+				loader.hide();
 			},
 			bind_event: function () {
 				var self = this;
-
-
 				var currentUser = self.currentUser.id;
 				$(".navbar-brand").bind('click', function () {
 					self.router.navigate("index");
@@ -113,376 +125,25 @@ require(['jquery',
 					self.router.navigate("user/model?id=" + currentUser);
 
 				});
-				$('#sca').hide()
-				$('#sca2').hide()
+				$('#list_search').hide()
+				$('#list_search_mobile').hide()
 
-				$('#search_pc').unbind('click').bind('click', function (params) {
-					$('#sca').show()
+				$('#search_keyup').unbind('click').bind('click', function (params) {
+					$('#list_search').show()
 				})
-				$('#grid_search2').unbind('click').bind('click', function (params) {
-					$('#sca2').show()
+				$('#search_keyup_mobile').unbind('click').bind('click', function (params) {
+					$('#list_search_mobile').show()
 				})
-				// var filters = {
-				// 	filters: {
-				// 		"$and": [
-				// 			{ "status": { "$eq": null } }
-				// 		]
-				// 	},
-				// 	order_by: [{ "field": "created_at", "direction": "asc" }]
-				// }
+
+				self.gridSearch();
+				self.CountTheNumberOfDevicesTested();
+				self.chartCountNumberOfMonth();
+				self.waitingForProgress();
+				self.listToday();
+
 				$('.showthongbao').hide();
 				$('.clickthongbao').unbind('click').bind('click', function () {
 					$('.showthongbao').toggle();
-				})
-				// console.log(moment(moment().unix()*1000).format("DDMMYYYY"))
-
-
-				$.ajax({
-					url: self.serviceURL + "/api/v1/equipmentinspectionform?results_per_page=100000&max_results_per_page=1000000",
-					method: "GET",
-					// data: JSON.stringify(),
-					contentType: "application/json",
-					success: function (data) {
-						var thang1 = ("01" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang2 = ("02" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang4 = ("04" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang33 = ("03" + moment(moment().unix() * 1000).format("YYYY"))
-
-						var thang5 = ("05" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang6 = ("06" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang7 = ("07" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang8 = ("08" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang9 = ("09" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang10 = ("10" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang11 = ("11" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang12 = ("12" + moment(moment().unix() * 1000).format("YYYY"))
-
-						var T1 = 0;
-						var T2 = 0;
-						var T3 = 0;
-						var T4 = 0;
-						var T5 = 0;
-						var T6 = 0;
-						var T7 = 0;
-						var T8 = 0;
-						var T9 = 0;
-						var T10 = 0;
-						var T11 = 0;
-						var T12 = 0;
-						var dataBieuDo = [];
-						data.objects.forEach(function (item, index) {
-							if (moment(item.date * 1000).format("MMYYYY") == thang1) {
-								T1++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang2) {
-								T2++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang33) {
-								T3++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang4) {
-								T4++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang5) {
-								T5++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang6) {
-								T6++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang7) {
-								T7++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang8) {
-								T8++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang9) {
-								T9++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang10) {
-								T10++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang11) {
-								T11++;
-							}
-							if (moment(item.date * 1000).format("MMYYYY") == thang12) {
-								T12++;
-							}
-						})
-
-
-						dataBieuDo.push(T1)
-						dataBieuDo.push(T2)
-						dataBieuDo.push(T3)
-						dataBieuDo.push(T4)
-						dataBieuDo.push(T5)
-						dataBieuDo.push(T6)
-						dataBieuDo.push(T7)
-						dataBieuDo.push(T8)
-						dataBieuDo.push(T9)
-						dataBieuDo.push(T10)
-						dataBieuDo.push(T11)
-						dataBieuDo.push(T12)
-
-						var ctx = document.getElementById('myChart');
-
-						var myChart = new Chart(ctx, {
-							type: 'line',
-							data: {
-								labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-								datasets: [{
-									label: 'Số lượng thiết bị được kiểm tra trong các tháng',
-									data: dataBieuDo,
-									backgroundColor: [
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-										'rgba(255, 99, 132, 0.2)',
-									],
-									borderColor: [
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-										'rgba(255, 99, 132, 1)',
-
-										// 'rgba(54, 162, 235, 1)',
-										// 'rgba(255, 206, 86, 1)',
-										// 'rgba(75, 192, 192, 1)',
-										// 'rgba(153, 102, 255, 1)',
-										// 'rgba(255, 159, 64, 1)',
-
-										// 'rgba(0 255 0)	',
-										// 'rgba(255 255 0)	',
-										// 'rgba(255 48 48)	',
-										// 'rgba(255 20 147)	',
-										// 'rgba(0 128 128)	',
-										// 'rgba(139 69 19)	',
-									],
-									borderWidth: 1
-								}]
-							},
-							options: {
-								scales: {
-									yAxes: [{
-										ticks: {
-											beginAtZero: true
-										}
-									}]
-								}
-							}
-						});
-					}
-				})
-
-				$.ajax({
-					url: self.serviceURL + "/api/v1/repairrequestform?results_per_page=100000&max_results_per_page=1000000",
-					method: "GET",
-					// data: JSON.stringify(),
-					contentType: "application/json",
-					success: function (data) {
-						var thang1 = ("01" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang2 = ("02" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang4 = ("04" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang33 = ("03" + moment(moment().unix() * 1000).format("YYYY"))
-
-						var thang5 = ("05" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang6 = ("06" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang7 = ("07" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang8 = ("08" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang9 = ("09" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang10 = ("10" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang11 = ("11" + moment(moment().unix() * 1000).format("YYYY"))
-						var thang12 = ("12" + moment(moment().unix() * 1000).format("YYYY"))
-						var T1 = 0;
-						var T2 = 0;
-						var T3 = 0;
-						var T4 = 0;
-						var T5 = 0;
-						var T6 = 0;
-						var T7 = 0;
-						var T8 = 0;
-						var T9 = 0;
-						var T10 = 0;
-						var T11 = 0;
-						var T12 = 0;
-						var dataBieuDo = [];
-						data.objects.forEach(function (item, index) {
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang1) {
-								T1++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang2) {
-								T2++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang33) {
-								T3++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang4) {
-								T4++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang5) {
-								T5++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang6) {
-								T6++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang7) {
-								T7++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang8) {
-								T8++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang9) {
-								T9++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang10) {
-								T10++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang11) {
-								T11++;
-							}
-							if (moment(item.time_of_problem * 1000).format("MMYYYY") == thang12) {
-								T12++;
-							}
-						})
-
-
-						dataBieuDo.push(T1)
-						dataBieuDo.push(T2)
-						dataBieuDo.push(T3)
-						dataBieuDo.push(T4)
-						dataBieuDo.push(T5)
-						dataBieuDo.push(T6)
-						dataBieuDo.push(T7)
-						dataBieuDo.push(T8)
-						dataBieuDo.push(T9)
-						dataBieuDo.push(T10)
-						dataBieuDo.push(T11)
-						dataBieuDo.push(T12)
-
-						console.log(dataBieuDo)
-						var ctx2 = document.getElementById('myChart2');
-						var myChart2 = new Chart(ctx2, {
-							type: 'line',
-							data: {
-								labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-								datasets: [{
-									label: 'Số lượng thiết bị sửa chữa trong các tháng',
-									data: dataBieuDo,
-									backgroundColor: [
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-									],
-									borderColor: [
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-										'rgba(0, 99, 132, 0.2)',
-
-										// 'rgba(54, 162, 235, 1)',
-										// 'rgba(255, 206, 86, 1)',
-										// 'rgba(75, 192, 192, 1)',
-										// 'rgba(153, 102, 255, 1)',
-										// 'rgba(255, 159, 64, 1)',
-
-										// 'rgba(0 255 0)	',
-										// 'rgba(255 255 0)	',
-										// 'rgba(255 48 48)	',
-										// 'rgba(255 20 147)	',
-										// 'rgba(0 128 128)	',
-										// 'rgba(139 69 19)	',
-									],
-									borderWidth: 1
-								}]
-							},
-							options: {
-								scales: {
-									yAxes: [{
-										ticks: {
-											beginAtZero: true
-										}
-									}]
-								}
-							}
-						});
-					}
-				})
-
-
-				$.ajax({
-					url: self.serviceURL + "/api/v1/equipmentinspectionform?results_per_page=100000&max_results_per_page=1000000",
-					method: "GET",
-					// data: JSON.stringify(),
-					contentType: "application/json",
-					success: function (data) {
-						var dem = 0;
-						(data.objects).forEach(function (item, index) {
-							if (moment(item.date * 1000).format("DDMMYYYY") == moment(moment().unix() * 1000).format("DDMMYYYY")) {
-								dem++;
-							}
-						})
-						$("#slkiemtratrongngay").html(dem);
-					}
-				})
-
-				$.ajax({
-					url: self.serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
-					method: "GET",
-					// data: JSON.stringify(),
-					contentType: "application/json",
-					success: function (data) {
-						var dem = 0;
-						var demsuachua = 0;
-						var demChoKiemDuyet = 0;
-
-						data.objects.forEach(function (item, index) {
-							if (item.status == "yeucaukiemtrathietbi")
-								dem++;
-							if (item.status == "dangsuachua")
-								demsuachua++;
-							if (item.status == "dangchokiemduyet")
-								demChoKiemDuyet++;
-						})
-						$("#tbcovande").html(dem);
-						$("#tbsuachua").html(demsuachua)
-						$("#tbchokiemduyet").html(demChoKiemDuyet);
-
-					}
 				})
 
 				$.ajax({
@@ -496,8 +157,6 @@ require(['jquery',
 								var ngayhomnay = moment(moment().unix() * 1000).format("DD/MM/YYYY");
 								var hethansau7ngay = moment(item.expiration_date * 1000).subtract(7, 'days').format("DD/MM/YYYY");
 								var hethansau5ngay = moment(item.expiration_date * 1000).subtract(5, 'days').format("DD/MM/YYYY");
-
-								// console.log(ngayhomnay, hethansauxngay)
 								if (ngayhomnay === hethansau7ngay || ngayhomnay === hethansau5ngay) {
 									$.ajax({
 										url: self.serviceURL + "/api/v1/notification?results_per_page=100000&max_results_per_page=1000000",
@@ -572,7 +231,6 @@ require(['jquery',
 						$('#soluong').append(tong);
 
 
-
 						data.objects.forEach(function (itemmangthongbao, indexmangthongbao) {
 							$('#bangthongbao').append('<tr class="danhsachthongbaomoi"><td>' + itemmangthongbao.notification_type + '</td><td>' + itemmangthongbao.name + '[' + itemmangthongbao.model_serial_number + ']</td></tr>')
 
@@ -612,147 +270,11 @@ require(['jquery',
 
 					}
 				});
-
-
-
-
-
-
-
-				$.ajax({
-					url: self.serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
-					method: "GET",
-					// data: "q=" + JSON.stringify(filters),
-					contentType: "application/json",
-					success: function (data) {
-
-						$('#search_pc').keyup(function () {
-							var arr = [];
-
-							data.objects.forEach(function (item, index) {
-								if ((item.name).indexOf($("#search_pc").val()) !== -1) {
-									arr.push(item)
-								}
-							});
-
-
-							$("#sca").grid({
-								showSortingIndicator: true,
-								language: {
-									no_records_found: "không tìm thấy kết quả"
-								},
-								noResultsClass: "alert alert-default no-records-found",
-								refresh: true,
-								orderByMode: "client",
-								tools: [
-								],
-								fields: [
-									{ field: "name", label: "Tên thiết bị", width: 250, height: "20px" },
-									{ field: "model_serial_number", label: "serial", width: 250, height: "20px" },
-								],
-								dataSource: arr,
-								primaryField: "id",
-								selectionMode: false,
-								pagination: {
-									page: 1,
-									pageSize: 20
-								},
-								onRowClick: function (event) {
-									if (event.rowId) {
-										self.router.navigate("equipmentdetails/model?id=" + event.rowId);
-										$('#sca').hide()
-
-									}
-								},
-							});
-							$('#tbl_sca').removeClass('table-striped')
-
-						});
-						$('#search_pc').focusout(function () {
-							setTimeout(function () {
-								$('#sca').hide()
-							}, 300);
-						})
-
-					},
-					error: function (xhr, status, error) {
-						$('#sca').hide()
-						// self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
-					},
-
-				})
-				$.ajax({
-					url: self.serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
-					method: "GET",
-					// data: "q=" + JSON.stringify(filters),
-					contentType: "application/json",
-					success: function (data) {
-
-						$('#grid_search2').keyup(function () {
-							var arr = [];
-
-							data.objects.forEach(function (item, index) {
-								if ((item.name).indexOf($("#grid_search2").val()) !== -1) {
-									arr.push(item)
-								}
-							});
-
-
-							$("#sca2").grid({
-								showSortingIndicator: true,
-								language: {
-									no_records_found: "không tìm thấy kết quả"
-								},
-								noResultsClass: "alert alert-default no-records-found",
-								refresh: true,
-								orderByMode: "client",
-								tools: [
-								],
-								fields: [
-									{ field: "name", label: "Tên thiết bị", width: 250, height: "20px" },
-									{ field: "model_serial_number", label: "serial", width: 250, height: "20px" },
-								],
-								dataSource: arr,
-								primaryField: "id",
-								selectionMode: false,
-								pagination: {
-									page: 1,
-									pageSize: 20
-								},
-								onRowClick: function (event) {
-									if (event.rowId) {
-										$('.main-sidebar').removeClass('open');
-										self.router.navigate("equipmentdetails/model?id=" + event.rowId);
-										$('#sca2').hide()
-
-									}
-								},
-							});
-							$('#tbl_sca2').removeClass('table-striped')
-
-						});
-						$('#grid_search2').focusout(function () {
-							setTimeout(function () {
-								$('#sca2').hide()
-							}, 300);
-						})
-
-					},
-					error: function (xhr, status, error) {
-						$('#sca2').hide()
-						// self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
-					},
-
-				})
-
-
-
 				$.extend($.easing, {
 					easeOutSine: function easeOutSine(x, t, b, c, d) {
 						return c * Math.sin(t / d * (Math.PI / 2)) + b;
 					}
 				});
-
 				var slideConfig = {
 					duration: 270,
 					easing: 'easeOutSine'
@@ -766,15 +288,196 @@ require(['jquery',
 				$(':not(.main-sidebar--icons-only) .dropdown').on('hide.bs.dropdown', function () {
 					$(this).find('.dropdown-menu').first().stop(true, true).slideUp(slideConfig);
 				});
-
-				/**
-				 * Sidebar toggles
-				 */
 				$('.toggle-sidebar').unbind("click").bind('click', function (e) {
 					$('.main-sidebar').toggleClass('open');
 				});
 
 
+			},
+			gridSearch: function () {
+				var self = this;
+				var arrSearch = [
+					{ "search_keyup": "search_keyup", "list_search": "list_search" },
+					{ "search_keyup": "search_keyup_mobile", "list_search": "list_search_mobile" },
+				];
+				$.ajax({
+					url: self.serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
+					method: "GET",
+					contentType: "application/json",
+					success: function (data) {
+						arrSearch.forEach(function (item, index) {
+							$('#' + item.search_keyup).keyup(function () {
+								var arr = [];
+								data.objects.forEach(function (item_data, index_data) {
+									if ((item_data.name).indexOf($('#' + item.search_keyup).val()) !== -1) {
+										arr.push(item_data)
+									}
+								});
+								$("#" + item.list_search).grid({
+									showSortingIndicator: true,
+									language: {
+										no_records_found: "không tìm thấy kết quả"
+									},
+									noResultsClass: "alert alert-default no-records-found",
+									refresh: true,
+									orderByMode: "client",
+									tools: [
+									],
+									fields: [
+										{ field: "name", label: "Tên thiết bị", width: 350, height: "20px" },
+										{ field: "model_serial_number", label: "serial", width: 250, height: "20px" },
+									],
+									dataSource: arr,
+									primaryField: "id",
+									selectionMode: false,
+									pagination: {
+										page: 1,
+										pageSize: 20
+									},
+									onRowClick: function (event) {
+										if (event.rowId) {
+											self.router.navigate("equipmentdetails/model?id=" + event.rowId);
+											$("#" + item.list_search).hide()
+
+										}
+									},
+								});
+							});
+							$('#' + item.search_keyup).focusout(function () {
+								setTimeout(function () {
+									$("#" + item.list_search).hide()
+								}, 300);
+							})
+						})
+					},
+					error: function (xhr, status, error) {
+					},
+				})
+			},
+			CountTheNumberOfDevicesTested: function () {
+				var self = this;
+				var thoiGianBatDau = moment().format('MMMM Do YYYY') + ' 00:00:01';
+				var thoiGianKetThuc = String(moment().format('MMMM Do YYYY')) + ' 23:59:59';
+				$.ajax({
+					url: self.serviceURL + "/api/v1/date_sort",
+					method: "POST",
+					data: JSON.stringify(
+						{
+							"thoiGianBatDau": Date.parse(thoiGianBatDau) / 1000,
+							"thoiGianKetThuc": Date.parse(thoiGianKetThuc) / 1000
+						}
+					),
+					contentType: "application/json",
+					success: function (data) {
+						$("#countTheNumberOfDevicesTested").html(data.equipmentinspectionform.length);
+						$("#countTheNumberOfDevicesToTest").html(data.repairrequestform.length);
+						$("#countTheNumberOfDevicesThatRequireRepair").html(data.devicestatusverificationform.length);
+						$("#countTheNumberOfVerifiedDevices").html(data.certificateform.length);
+
+					}
+				})
+			},
+			chartCountNumberOfMonth: function () {
+				var self = this;
+				$.ajax({
+					url: self.serviceURL + "/api/v1/count_of_month",
+					method: "POST",
+					data: JSON.stringify(
+						{
+							"nam": Number(moment().format('YYYY')),
+						}
+					),
+					contentType: "application/json",
+					success: function (data) {
+						var ctx = document.getElementById('myChart');
+						var myChart = new Chart(ctx, {
+							type: 'line',
+							data: {
+								labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+								datasets: [
+									{
+										label: 'Số lượng thiết bị được kiểm tra trong các tháng',
+										data: data.equipmentinspectionform_count,
+										backgroundColor: 'rgba(65, 183, 255, 1)',
+										borderColor: 'rgba(65, 183, 255, 1)',
+										borderWidth: 1,
+										fill: false
+
+									},
+									{
+										label: 'Số lượng thiết bị được yêu cầu kiểm tra',
+										data: data.devicestatusverificationform_count,
+										backgroundColor: 'rgba(255, 33, 0, 1)',
+										borderColor: 'rgba(255, 33, 0, 1)',
+										borderWidth: 1,
+										fill: false
+
+									},
+									{
+										label: 'Số lượng thiết bị yêu cầu sửa chữa',
+										data: data.repairrequestform_count,
+										backgroundColor: 'rgba(255, 144, 55, 1)',
+										borderColor: 'rgba(255, 144, 55, 1)',
+										borderWidth: 1,
+										fill: false
+
+									},
+									{
+										label: 'Số lượng thiết bị được kiểm định',
+										data: data.certificateform_count,
+										backgroundColor: 'rgba(114, 182, 17, 1)',
+										borderColor: 'rgba(114, 182, 17, 1)',
+										borderWidth: 1,
+										fill: false
+									},
+								]
+							},
+							options: {
+								responsive: true,
+								title: {
+									display: true,
+									text: 'Biểu đồ thống kê kiểm tra thiết bị hàng tháng'
+								},
+							}
+						});
+					}
+				})
+			},
+			waitingForProgress: function () {
+				var self = this;
+				var trangthai = ["dangyeucaukiemtrathietbi", "dangyeucausuachua", "dangchokiemduyet"];
+				trangthai.forEach(function (item, index) {
+					var filters = {
+						filters: {
+							"$and": [
+								{ "status": { "$eq": item } }
+							]
+						},
+						order_by: [{ "field": "created_at", "direction": "desc" }]
+					}
+
+					$.ajax({
+						url: self.serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
+						method: "GET",
+						data: "q=" + JSON.stringify(filters),
+						contentType: "application/json",
+						success: function (data) {
+							$('#' + item).text(data.objects.length)
+							$('.' + item).attr('trangthai', item)
+						},
+					})
+				})
+				$('.yeucauxuly').unbind('click').bind('click', function () {
+					localStorage.setItem('TrangThaiThietBi', $(this).attr('trangthai'))
+					self.getRouter().navigate("equipmentdetails/collection");
+				})
+			},
+			listToday: function () {
+				var self = this;
+				$('.danhsachhomnay').unbind('click').bind('click', function () {
+					localStorage.setItem('LoaiDanhSachHomNay', $(this).attr('table-name'))
+					self.getRouter().navigate($(this).attr('table-name')+"/collection");
+				})
 			},
 			get_displayName: function (data) {
 				var displayName = "";
@@ -790,8 +493,32 @@ require(['jquery',
 
 				}
 				return displayName;
-			}
+			},
 
+			saveLog: function (action, object_type, object_no, workstation_id, workstation_name, items, created_at) {
+				var self = this;
+				$.ajax({
+					type: "POST",
+					url: self.serviceURL + "/api/v1/activitylog/save",
+					data: JSON.stringify({
+						action: action,
+						actor: self.currentUser.display_name,
+						workstation_id: workstation_id,
+						workstation_name: workstation_name,
+						tenant_id: self.currentTenant,
+						user_id: self.currentUser.id,
+						items: items,
+						object_no: object_no,
+						object_type: object_type,
+						created_at: created_at
+
+					}), success: function (res) {
+						// console.log("res", res);
+					}, error: function (err) {
+						// console.log("err", err);
+					}
+				})
+			},
 		});
 		Backbone.history.start();
 
