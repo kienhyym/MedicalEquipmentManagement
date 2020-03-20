@@ -66,6 +66,9 @@
         "type": "string",
         "length": 255
     },
+    "preparationtools": {
+        "type": "list"
+    },
     "list_of_equipment_details": {
         "type": "list"
     },

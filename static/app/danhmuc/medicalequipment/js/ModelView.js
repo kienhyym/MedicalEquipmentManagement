@@ -4,9 +4,9 @@ define(function (require) {
 		_ = require('underscore'),
 		Gonrin = require('gonrin');
 
-		//Gonrin = require('../../EthnicGroup/view/node_modules/gonrin');
+	//Gonrin = require('../../EthnicGroup/view/node_modules/gonrin');
 	var template = require('text!app/danhmuc/medicalequipment/tpl/model.html'),
-	schema = require('json!schema/MedicalEquipmentSchema.json');
+		schema = require('json!schema/MedicalEquipmentSchema.json');
 	var QuyTrinhKiemTraView = require('app/danhmuc/medicalequipment/js/EquipmentInspectionProceduresView');
 
 
@@ -159,8 +159,8 @@ define(function (require) {
 		render: function () {
 			var self = this;
 			var id = this.getApp().getRouter().getParam("id");
+			self.dungCuChuanBi();
 			self.bindEventSelect();
-
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
@@ -189,12 +189,11 @@ define(function (require) {
 							sessionStorage.setItem('ChungLoai', self.model.get("types_of_equipment"));
 						})
 						var equipmentinspectionprocedures = self.model.get("List_of_equipment_inspection_procedures");
-						equipmentinspectionprocedures.sort(function(a, b){
-							if (a.step< b.step) {return -1;}
-							if (a.step > b.step) {return 1;}
+						equipmentinspectionprocedures.sort(function (a, b) {
+							if (a.step < b.step) { return -1; }
+							if (a.step > b.step) { return 1; }
 							return 0;
 						});
-						console.log(equipmentinspectionprocedures)
 						if (equipmentinspectionprocedures === null) {
 							self.model.set("List_of_equipment_inspection_procedures", []);
 						}
@@ -205,29 +204,28 @@ define(function (require) {
 						self.picture();
 						self.chieucaonoidung();
 						self.chieurongnoidung();
+						self.dungCuChuanBi();
+						self.hienThiDungCuChuanBi();
+
+
 
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");
 					},
 					complete: function () {
-
 						self.$el.find("#btn_add").unbind("click").bind("click", () => {
-							console.log('xxxx')
 							if (self.$el.find("#noidung").val() !== "") {
 								var data_default = {
 									"id": gonrin.uuid(),
 									"step": self.model.get("List_of_equipment_inspection_procedures").length + 1,
-									// "time": moment(moment().unix() * 1000).format(" HH:mm"),
 									"picture": null,
 									"content": self.$el.find('#noidung').val(),
-									// "tranghthai": null,
 								}
 								var equipmentinspectionprocedures = self.model.get("List_of_equipment_inspection_procedures");
 								if (equipmentinspectionprocedures === null) {
 									equipmentinspectionprocedures = [];
 								}
-
 								equipmentinspectionprocedures.push(data_default);
 								self.model.set("List_of_equipment_inspection_procedures", equipmentinspectionprocedures)
 								self.applyBindings("List_of_equipment_inspection_procedures");
@@ -236,13 +234,6 @@ define(function (require) {
 								self.$el.find('#equipmentinspectionprocedures div .row .stt').each(function (index, item) {
 									$(item).html('Bước ' + (index + 1))
 								})
-								// self.$el.find('.content').each(function (index, item) {
-								// 	$(item).addClass('col-md-12')
-								// })
-								// self.$el.find('.picture').each(function (index, item) {
-								// 	$(item).css("display", "none");
-								// })
-
 								$(self.$el.find('.content')[equipmentinspectionprocedures.length - 1]).addClass('col-md-12')
 								$(self.$el.find('.picture')[equipmentinspectionprocedures.length - 1]).css("display", "none");
 
@@ -265,10 +256,6 @@ define(function (require) {
 										}
 									}
 								});
-								// self.$el.find('#equipmentinspectionprocedures div .row .tg').each(function (index, item) {
-								// 	// $(item).val(moment(moment().unix() * 1000).format("DD/MM/YYYY"))
-								// })
-
 							}
 
 						});
@@ -278,9 +265,212 @@ define(function (require) {
 				self.applyBindings();
 			}
 		},
+		dungCuChuanBi: function () {
+			var self = this;
+			self.$el.find('.themDungCu').unbind('click').bind('click', function () {
+				self.$el.find('.danhSachDungCu').find('.loadLaiDanhSach').remove();
+				self.$el.find('.danhSachDungCuDaChon').find('.item_dungcudachon').remove();
+
+				self.$el.find('.timKiemDungCu').show();
+				self.$el.find('.card-body').css('opacity', '0.1');
+				$.ajax({
+					url: self.getApp().serviceURL + "/api/v1/preparationtools?results_per_page=100000&max_results_per_page=1000000",
+					method: "GET",
+					contentType: "application/json",
+					success: function (data) {
+						if (data.objects.length != 0) {
+							
+							data.objects.forEach(function (item, index) {
+								self.$el.find('.danhSachDungCu').append(`
+								<div class="col-4 col-md-2 p-1 loadLaiDanhSach" dungCu_id="${item.id}" >
+									<div class="text-center">
+										<div style="margin-left: auto; margin-right: auto; left: 0px; right: 0px;width: 90px;position: relative;">
+											<input class="checkbox_dungcu" vitri=${index} item_id="${item.id}" type="checkbox"
+												style="position: absolute; top: 0px; left: 0px;width:90px;height: 90px;opacity:0">
+											<img src="${item.picture}" alt="Trulli" style="width:90px;height: 90px;">
+											<label class="chonDungCuNay" id_show_congcu="${item.id}"
+												style="position: absolute;top:70px;right:3px;display:none"><i
+													class="fa fa-check-square-o text-success" aria-hidden="true"></i></label>
+											<label class="khongChonDungCuNay" id_hide_congcu="${item.id}"
+												style="position: absolute;top:70px;right:3px"><i class="fa fa-square-o"
+													aria-hidden="true"></i></label>
+											<label style="font-size: 10px;width:100px;">${item.name}</label>
+										</div>
+									</div>
+								</div>
+									`)
+							})
+							
+						}
+						self.$el.find('.timKiemDungCuChuanBi').keyup(function (e) {
+							self.$el.find('.loadLaiDanhSach').show();
+							var seach = $(this).val();
+							var promise = new Promise(function (resolve, reject) {
+								var arr = []
+								data.objects.forEach(function (item) {
+									var code = String(item.code);
+									var name = String(item.name);
+									if (name.indexOf(seach) == -1) {
+										if (code.indexOf(seach) == -1) {
+											arr.push(item.id)
+										}
+									}
+								})
+								resolve(arr);
+							});
+							promise.then(
+								function (arr) {
+									arr.forEach(function (item) {
+										self.$el.find('[dungCu_id=' + item + ']').hide()
+									})
+								}
+							);
+						});
+						self.hienThiDungCuChuanBiChonLai();
+
+						var mangDungCuDaChon = [];
+						if (self.model.get('preparationtools').length != 0) {
+							mangDungCuDaChon = self.model.get('preparationtools');
+						}
+						self.$el.find('.checkbox_dungcu').change(function (event) {
+							self.$el.find('.danhSachDungCuDaChon').find('.item_dungcudachon').remove();
+							if (event.target.checked) {
+								$(this).find('~.chonDungCuNay').show();
+								$(this).find('~.khongChonDungCuNay').hide();
+								mangDungCuDaChon.push(data.objects[$(this).attr('vitri')]);
+								if (mangDungCuDaChon.length != 0) {
+									mangDungCuDaChon.forEach(function (item_dungcudachon) {
+										self.$el.find('.danhSachDungCuDaChon').append(`
+										<div class="item_dungcudachon" xoa_id ="${item_dungcudachon.id}">
+											<button class="btn btn-outline-secondary p-1 m-1" style="font-size: 9px;" >${item_dungcudachon.name}
+												<i class="fa fa-times text-danger" aria-hidden="true"></i>
+											</button>
+										</div>
+										`)
+									})
+								}
+
+								self.$el.find('.item_dungcudachon').unbind('click').bind('click', function () {
+									var idDungCu = $(this).attr('xoa_id');
+									$(this).remove()
+									self.$el.find('[item_id=' + idDungCu + ']').prop("checked", false);
+									self.$el.find('[id_show_congcu=' + idDungCu + ']').hide()
+									self.$el.find('[id_hide_congcu=' + idDungCu + ']').show();
+									mangDungCuDaChon = lodash.remove(mangDungCuDaChon, function (n) {
+										return n.id == idDungCu;
+									});
+
+								})
+
+							} else {
+								$(this).find('~.chonDungCuNay').hide()
+								$(this).find('~.khongChonDungCuNay').show()
+								var idDungCu = $(this).attr('item_id');
+								mangDungCuDaChon = lodash.remove(mangDungCuDaChon, function (n) {
+									return n.id != idDungCu;
+								});
+								if (mangDungCuDaChon.length != 0) {
+									mangDungCuDaChon.forEach(function (item_dungcudachon) {
+										self.$el.find('.danhSachDungCuDaChon').append(`
+										<div class="item_dungcudachon" xoa_id ="${item_dungcudachon.id}">
+											<button class="btn btn-outline-secondary p-1 m-1" style="font-size: 9px;" >${item_dungcudachon.name}
+												<i class="fa fa-times text-danger" aria-hidden="true"></i>
+											</button>
+										</div>
+										`)
+									})
+								}
+								self.$el.find('.item_dungcudachon').unbind('click').bind('click', function () {
+									var idDungCu = $(this).attr('xoa_id');
+									$(this).remove()
+									self.$el.find('[item_id=' + idDungCu + ']').prop("checked", false);
+									self.$el.find('[id_show_congcu=' + idDungCu + ']').hide()
+									self.$el.find('[id_hide_congcu=' + idDungCu + ']').show();
+									mangDungCuDaChon = lodash.remove(mangDungCuDaChon, function (n) {
+										return n.id == idDungCu;
+									});
+
+								})
+								self.chonDungCuChuanBi(mangDungCuDaChon);
+
+
+							}
+
+						})
+						self.$el.find('.item_dungcudachon').unbind('click').bind('click', function () {
+							var idDungCu = $(this).attr('xoa_id');
+							$(this).remove()
+							self.$el.find('[id_show_congcu=' + idDungCu + ']').hide()
+							self.$el.find('[id_hide_congcu=' + idDungCu + ']').show();
+							mangDungCuDaChon = lodash.remove(mangDungCuDaChon, function (n) {
+								return n.id == idDungCu;
+							});
+						})
+
+						self.chonDungCuChuanBi(mangDungCuDaChon);
+					}
+				})
+
+
+			})
+			self.$el.find('#dongChonDungCu').unbind('click').bind('click', function () {
+				self.$el.find('.timKiemDungCu').hide();
+				self.$el.find('.card-body').css('opacity', '1');
+			})
+		},
+		chonDungCuChuanBi: function (mangDungCuDaChon) {
+			var self = this;
+			self.$el.find('#chonDanhDachNay').unbind('click').bind('click', function () {
+				self.$el.find('.dungCuChuanBi').find('.dungCu').remove();
+				self.model.set('preparationtools', mangDungCuDaChon)
+				self.$el.find('.timKiemDungCu').hide();
+				self.$el.find('.card-body').css('opacity', '1');
+				if (mangDungCuDaChon.length != 0) {
+					mangDungCuDaChon.forEach(function (item) {
+						self.$el.find('.dungCuChuanBi').append(`
+						<div class="col-md-2 text-center dungCu">
+							<img src="${item.picture}" class="text-center" style="width: 90px; height: 90px;margin-left: auto; margin-right: auto;" >
+							<label class=" w-100" style="font-size: 10px;">${item.name}</label>
+						</div>
+					`)
+					})
+				}
+
+			})
+		},
+		hienThiDungCuChuanBi: function () {
+			var self = this;
+			if (self.model.get('preparationtools').length != 0) {
+				self.model.get('preparationtools').forEach(function (item) {
+					self.$el.find('.dungCuChuanBi').append(`
+					<div class="col-md-2 text-center dungCu">
+						<img src="${item.picture}" class="text-center" style="width: 90px; height: 90px;margin-left: auto; margin-right: auto;" >
+						<label class=" w-100" style="font-size: 10px;">${item.name}</label>
+					</div>
+				`)
+				})
+
+			}
+		},
+		hienThiDungCuChuanBiChonLai: function () {
+			var self = this;
+			if (self.model.get('preparationtools').length != 0) {
+				self.model.get('preparationtools').forEach(function (item) {
+					self.$el.find('[item_id=' + item.id + ']').prop("checked", true);
+					self.$el.find('[id_show_congcu=' + item.id + ']').show()
+					self.$el.find('[id_hide_congcu=' + item.id + ']').hide();
+					self.$el.find('.danhSachDungCuDaChon').append(`
+						<div class="item_dungcudachon" xoa_id ="${item.id}">
+							<button class="btn btn-outline-secondary p-1 m-1" style="font-size: 9px;" >${item.name}
+								<i class="fa fa-times text-danger" aria-hidden="true"></i>
+							</button>
+						</div>
+						`)
+				})
+			}
+		},
+
 		registerEvent: function (data) {
-			
-			
 			const self = this;
 			var QuyTrinhKiemTraItem = new QuyTrinhKiemTraView();
 			if (!!data) {
@@ -290,7 +480,7 @@ define(function (require) {
 			self.$el.find("#equipmentinspectionprocedures").append(QuyTrinhKiemTraItem.$el);
 			QuyTrinhKiemTraItem.on("change", function (event) {
 				var equipmentinspectionprocedures = self.model.get("List_of_equipment_inspection_procedures");
-				
+
 				if (equipmentinspectionprocedures === null) {
 					equipmentinspectionprocedures = [];
 					equipmentinspectionprocedures.push(event.data)
@@ -319,7 +509,7 @@ define(function (require) {
 				QuyTrinhKiemTraItem.remove();
 				self.model.save(null, {
 					success: function (model, respose, options) {
-						
+
 						self.getApp().notify("Xóa thông tin thành công");
 					},
 					error: function (xhr, status, error) {
@@ -356,7 +546,7 @@ define(function (require) {
 		chieurongnoidung: function () {
 			var self = this;
 			self.$el.find(".hinhanhthietbi").each(function (index, item) {
-				console.log($(item).attr("src"))
+				// console.log($(item).attr("src"))
 				// if ($(item).attr("src") !== "") {
 
 				// 	self.$el.find(".content").each(function (index, item) {
@@ -374,7 +564,6 @@ define(function (require) {
 		},
 		picture: function () {
 			var self = this;
-			console.log()
 			var filters = {
 				filters: {
 					"$and": [
@@ -404,12 +593,6 @@ define(function (require) {
 				}
 			})
 		},
-		// renderUpload() {
-		// 	var self = this;
-		// 	self.$el.find(".linkDownload").attr("href", self.model.get("attachment"));
-		// 	self.$el.find(".linkDownload").show();
-		// 	self.$el.find("#img").show();
-		// },
 		bindEventSelect: function () {
 			var self = this;
 
@@ -439,18 +622,13 @@ define(function (require) {
 							self.model.set(data_attr, data_file.link);
 							var linkhinhanh = data_file.link;
 							self.$el.find('#hinhanhnho').attr("src", data_file.link)
-
-							// console.log('data_file.link',data_file.link)
-
 							self.$el.find("#btn_add").unbind("click").bind("click", () => {
 								if (self.$el.find("#noidung").val() !== "") {
 									var data_default = {
 										"id": gonrin.uuid(),
 										"step": self.model.get("List_of_equipment_inspection_procedures").length + 1,
-										// "time": moment(moment().unix() * 1000).format(" HH:mm"),
 										"picture": linkhinhanh,
 										"content": self.$el.find('#noidung').val(),
-										// "tranghthai": null,
 									}
 
 									var equipmentinspectionprocedures = self.model.get("List_of_equipment_inspection_procedures");
@@ -520,7 +698,7 @@ define(function (require) {
 
 
 								}
-								else{
+								else {
 									self.getApp().notify({ message: "Bạn đã chưa nhập nội dung cho bước này" }, { type: "danger", delay: 1000 });
 								}
 							});

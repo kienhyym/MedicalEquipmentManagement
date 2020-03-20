@@ -49,8 +49,7 @@ define(function (require) {
 			},
 			"entries": [
 				{
-					"text": "Nhân viên",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Nhân viên</label>",
 					"type": "view",
 					"collectionName": "user",
 					"route": "user/collection",
@@ -61,19 +60,7 @@ define(function (require) {
 					}
 				},
 				{
-
-					"type": "view",
-					"collectionName": "user",
-					"route": "user/model",
-					"$ref": "app/hethong/user/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-
-				{
-					"text": "Department",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Khoa</label>",
 					"type": "view",
 					"collectionName": "department",
 					"route": "department/collection",
@@ -84,19 +71,7 @@ define(function (require) {
 					}
 				},
 				{
-
-					"type": "view",
-					"collectionName": "department",
-					"route": "department/model",
-					"$ref": "app/hethong/department/view/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-
-				{
-					"text": "Phòng",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Phòng</label>",
 					"type": "view",
 					"collectionName": "room",
 					"route": "room/collection",
@@ -106,40 +81,15 @@ define(function (require) {
 
 					}
 				},
-				{
-
-					"type": "view",
-					"collectionName": "room",
-					"route": "room/model",
-					"$ref": "app/hethong/room/view/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-
 				// {
 				// 	"text": "Vai trò",
-				// 	"icon": "fa fa-home",
 				// 	"type": "view",
 				// 	"collectionName": "rank",
 				// 	"route": "rank/collection",
 				// 	"$ref": "app/rank/js/CollectionView",
 				// 	"visible": function () {
 				// 		return true
-
 				// 	}
-				// },
-				// {
-				// 	"text": "Vai trò",
-				// 	"icon": "fa fa-home",
-				// 	"type": "view",
-				// 	"collectionName": "rank",
-				// 	"route": "rank/model(/:id)",
-				// 	"$ref": "app/rank/js/ModelView",
-				// 	"visible": function () {
-				// 		return false;
-				// 	}
-				// },
 			]
 		},
 
@@ -158,18 +108,9 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "nation",
 					"route": "nation/collection",
-					"$ref": "app/danhmuc/Nation/view/CollectionView",
 					"visible": function(){
 						return true ;
 					}
-				},
-				{
-					"type": "view",
-					"icon": "far fa-clipboard",
-					"collectionName": "nation",
-					"route": "nation/model(/:id)",
-					"$ref": "app/danhmuc/Nation/view/ModelView",
-					"visible": false
 				},
 				{
 					"text": "Hãng sản xuất",
@@ -177,18 +118,9 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "manufacturer",
 					"route": "manufacturer/collection",
-					"$ref": "app/danhmuc/manufacturer/view/CollectionView",
 					"visible": function(){
 						return true ;
 					}
-				},
-				{
-					"type": "view",
-					"icon": "far fa-clipboard",
-					"collectionName": "manufacturer",
-					"route": "manufacturer/model(/:id)",
-					"$ref": "app/danhmuc/manufacturer/view/ModelView",
-					"visible": false
 				},
 				{
 					"text": "Nhà cung cấp thiết bị",
@@ -196,43 +128,29 @@ define(function (require) {
 					"type": "view",
 					"collectionName": "organization",
 					"route": "organization/collection",
-					"$ref": "app/danhmuc/organization/js/CollectionView",
 					"visible": function () {
 						return true
 
 					}
 				},
-				{
-					"text": "Đơn vị",
-					"icon": "fa fa-home",
-					"type": "view",
-					"collectionName": "organization",
-					"route": "organization/model(/:id)",
-					"$ref": "app/danhmuc/organization/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-
 				{
 					"text": " Danh sách thiết bị",
 					"icon": "fa fa-angle-double-right",
 					"type": "view",
 					"collectionName": "medicalequipment",
 					"route": "medicalequipment/collection",
-					"$ref": "app/danhmuc/medicalequipment/js/CollectionView",
 					"visible": function () {
 						return true
-
 					}
 				},
 				{
+					"text": "Danh sách dụng cụ",
+					"icon": "fa fa-angle-double-right",
 					"type": "view",
-					"collectionName": "medicalequipment",
-					"route": "medicalequipment/model(/:id)",
-					"$ref": "app/danhmuc/medicalequipment/js/ModelView",
+					"collectionName": "preparationtools",
+					"route": "preparationtools/collection",
 					"visible": function () {
-						return false;
+						return true
 					}
 				},
 
@@ -476,18 +394,8 @@ define(function (require) {
 			"type": "view",
 			"collectionName": "item",
 			"route": "item/collection",
-			"$ref": "app/item/view/CollectionView",
 			"visible": function () {
 				return false
-			}
-		},
-		{
-			"type": "view",
-			"collectionName": "item",
-			"route": "item/model(/:id)",
-			"$ref": "app/item/view/ModelView",
-			"visible": function () {
-				return false;
 			}
 		},
 		{
@@ -496,18 +404,28 @@ define(function (require) {
 			"type": "view",
 			"collectionName": "purchaseorder",
 			"route": "purchaseorder/collection",
-			// "$ref": "app/purchaseorder/view/CollectionView",
 			"visible": function () {
 				return false
 			}
 		},
 		{
+			"text": "Khách hàng",
+			"icon": "fa fa-book",
 			"type": "view",
-			"collectionName": "purchaseorder",
-			"route": "purchaseorder/model(/:id)",
-			// "$ref": "app/purchaseorder/view/ModelView",
+			"collectionName": "contact",
+			"route": "contact/collection",
 			"visible": function () {
-				return false;
+				return false
+			}
+		},
+		{
+			"text": "Nhập hàng",
+			"icon": "fa fa-book",
+			"type": "view",
+			"collectionName": "goodsreciept",
+			"route": "goodsreciept/collection",
+			"visible": function () {
+				return false
 			}
 		},
 	];

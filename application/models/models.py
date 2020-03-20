@@ -13,6 +13,14 @@ roles_users = db.Table('roles_users',
     db.Column('user_id', UUID(as_uuid=True), db.ForeignKey('user.id', ondelete='cascade'), primary_key=True),
     db.Column('role_id', UUID(as_uuid=True), db.ForeignKey('role.id', onupdate='cascade'), primary_key=True))
 
+class Permission(CommonModel):
+    __tablename__ = 'permission'
+    id = db.Column(UUID(as_uuid=True), primary_key=True)
+    role_id = db.Column(UUID(as_uuid=True), ForeignKey('role.id'), nullable=False)
+    subject = db.Column(String,index=True)
+    permission = db.Column(String)
+    value = db.Column(Boolean, default=False)
+    __table_args__ = (UniqueConstraint('role_id', 'subject', 'permission', name='uq_permission_role_subject_permission'),)
 
 class Role(CommonModel):
     __tablename__ = 'role'
@@ -61,8 +69,6 @@ class Organization(CommonModel):
     wards_id = db.Column(UUID(as_uuid=True), ForeignKey('wards.id'))
     wards = relationship('Wards', viewonly=True)
     ceo = db.Column(db.String)
-
-
 class EthnicGroup(CommonModel):
     __tablename__ = 'ethnicgroup'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -99,6 +105,9 @@ class Wards(CommonModel):
     district_id = db.Column(UUID(as_uuid=True), nullable=True)
     district = db.Column(JSONB)
 
+medicalequipment_preparationtools = db.Table('medicalequipment_preparationtools',
+    db.Column('medicalequipment_id', UUID(as_uuid=True), db.ForeignKey('medicalequipment.id', ondelete='cascade'), primary_key=True),
+    db.Column('preparationtools_id', UUID(as_uuid=True), db.ForeignKey('preparationtools.id', onupdate='cascade'), primary_key=True))
 
     
 class MedicalEquipment(CommonModel):
@@ -114,8 +123,18 @@ class MedicalEquipment(CommonModel):
     classification_table = db.Column(String(255))
     public_classification = db.Column(String(255))
     types_of_equipment = db.Column(String(255))
+    preparationtools = db.relationship('PreparationTools', secondary=medicalequipment_preparationtools, cascade="save-update")
     list_of_equipment_details = db.relationship('EquipmentDetails', cascade="all, delete-orphan")
     List_of_equipment_inspection_procedures = db.relationship('EquipmentInspectionProcedures', cascade="all, delete-orphan")
+
+class PreparationTools(CommonModel):
+    __tablename__ = 'preparationtools'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    name = db.Column(String(255))
+    code = db.Column(String(255))
+    picture = db.Column(String(255))
+    function_preparationtools = db.Column(String())
+
 
 class EquipmentDetails(CommonModel):
     __tablename__ = 'equipmentdetails'

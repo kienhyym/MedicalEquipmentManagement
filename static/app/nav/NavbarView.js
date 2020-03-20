@@ -26,7 +26,7 @@ define(function (require) {
 		},
 		requireRole: function (role) {
 			var user = gonrinApp().currentUser;
-			console.log("user.role====", user.role);
+			// console.log("user.role====", user.role);
 			if (!!user && user.role === role) {
 				return true;
 			}
@@ -57,19 +57,19 @@ define(function (require) {
 					var entry_viewData = _.result(entry, 'viewData');
 					var _html = '';
 					if (entry_type === "category" && entry_text !== undefined) {
-						_html = _html + '<a  class="nav-link" href=" javascript:void(0);">';
+						_html = _html + '<a  class="nav-link pl-2" href=" javascript:void(0);">';
 						if (entry_icon) {
 							_html = _html + '<i class="' + entry_icon + '" aria-hidden="true"></i>';
 						}
 						_html = _html + '<span >' + entry_text + '</span>';
 						_html = _html + '<span class="pull-right-container">' +
-							'<i class="fa fa-angle-left pull-right"></i>' +
+							'<i class="fa fa-angle-down pull-right"></i>' +
 							'</span>';
 						_html = _html + '</a>';
 					}
 
 					if (entry_type === "view" && entry_text !== undefined) {
-						_html = _html + '<a class="nav-link" href="javascript:;">';
+						_html = _html + '<a class="nav-link pl-2" href="javascript:;">';
 						if (entry_icon) {
 							_html = _html + '<i class="' + entry_icon + '"></i>'; //change icon
 						}

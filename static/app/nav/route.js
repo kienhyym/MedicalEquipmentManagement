@@ -75,6 +75,18 @@ define(function (require) {
 			"route": "medicalequipment/model(/:id)",
 			"$ref": "app/danhmuc/medicalequipment/js/ModelView",
 		},
+
+		{
+			"collectionName": "preparationtools",
+			"route": "preparationtools/collection",
+			"$ref": "app/danhmuc/preparationtools/view/CollectionView",
+		},
+		{
+			"collectionName": "preparationtools",
+			"route": "preparationtools/model(/:id)",
+			"$ref": "app/danhmuc/preparationtools/view/ModelView",
+		},
+
 		{
 			"collectionName": "equipmentdetails",
 			"route": "equipmentdetails/collection",
@@ -234,6 +246,29 @@ define(function (require) {
 			"collectionName": "purchaseorder",
 			"route": "purchaseorder/model(/:id)",
 			"$ref": "app/purchaseorder/view/ModelView",
+		},
+
+
+		{
+			"collectionName": "contact",
+			"route": "contact/collection",
+			"$ref": "app/contact/view/CollectionView",
+		},
+		{
+			"collectionName": "contact",
+			"route": "contact/model(/:id)",
+			"$ref": "app/contact/view/ModelView",
+		},
+
+		{
+			"collectionName": "goodsreciept",
+			"route": "goodsreciept/collection",
+			"$ref": "app/goods-reciept/view/CollectionView",
+		},
+		{
+			"collectionName": "goodsreciept",
+			"route": "goodsreciept/model(/:id)",
+			"$ref": "app/goods-reciept/view/ModelView",
 		},
 
 	];
