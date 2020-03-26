@@ -98,12 +98,14 @@ define(function (require) {
                     }
                 })
             })
+            
             var xhr = $.ajax({
                 url: self.getApp().serviceURL + "/api/v1/get_data_medical",
                 method: "POST",
                 data: JSON.stringify({ "text": self.$el.find(".name-search").val() }),
                 contentType: "application/json",
                 success: function (data) {
+                    self.$el.find(".wait_get_data").hide();
                     self.render_grid(data);
                 }
             })
@@ -111,12 +113,15 @@ define(function (require) {
 
             self.$el.find(".name-search").keyup(function (e) {
                 xhr.abort()
+                self.$el.find(".wait_get_data").show();
+
                 xhr = $.ajax({
                     url: self.getApp().serviceURL + "/api/v1/get_data_medical",
                     method: "POST",
                     data: JSON.stringify({ "text": $(this).val() }),
                     contentType: "application/json",
                     success: function (data) {
+                        self.$el.find(".wait_get_data").hide();
                         self.render_grid(data);
                     }
                 })
