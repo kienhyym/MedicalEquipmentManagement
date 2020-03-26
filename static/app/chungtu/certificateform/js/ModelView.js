@@ -159,17 +159,11 @@ define(function (require) {
 
 		render: function () {
 			var self = this;
-
-
-
 			self.model.set("equipmentdetails_id", sessionStorage.getItem('IDThietBi'))
 			self.model.set("name", sessionStorage.getItem('TenThietBi'))
 			self.model.set("model_serial_number", sessionStorage.getItem('SerialThietBi'))
 			self.model.set("management_code", sessionStorage.getItem('MaQLTBThietBi'))
 			sessionStorage.clear();
-			// self.$el.find(".linkDownload").hide();
-			// self.$el.find("#img").hide();
-			// self.$el.find("#title").hide();
 			self.bindEventSelect();
 			var id = this.getApp().getRouter().getParam("id");
 			if (id) {
@@ -217,13 +211,9 @@ define(function (require) {
 				http.onreadystatechange = function () {
 					if (http.status === 200) {
 						if (http.readyState === 4) {
-							console.log('console.log(fd)',fd)
 							var data_file = JSON.parse(http.responseText), link, p, t;
 							self.getApp().notify("Tải file thành công");
 							self.model.set(data_attr, data_file.link.slice(16));
-							console.log('link', data_file.link.slice(16))
-							console.log('link', data_file.link)
-
 							self.$el.find("#title").show();
 							self.$el.find("#img").show();
 							self.$el.find("#img").attr("src", "." + data_file.link)

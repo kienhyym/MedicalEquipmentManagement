@@ -46,9 +46,16 @@ define(function (require) {
 						command: function () {
 							var self = this;
 
+							if (self.model.get("department_id") == null) {
+								self.getApp().notify({ message: "Bạn chưa cập nhật vị trí khoa của thiết bị " }, { type: "danger", delay: 1000 });
+								return false;
+							}
+							if (self.model.get("room_id") == null) {
+								self.getApp().notify({ message: "Bạn chưa cập nhật vị trí phòng của thiết bị " }, { type: "danger", delay: 1000 });
+								return false;
+							}
 							if (self.model.get("status") == null) {
 								self.getApp().notify({ message: "Bạn chưa cập nhật trạng thái thiết bị" }, { type: "danger", delay: 1000 });
-
 								return false;
 							}
 							else {

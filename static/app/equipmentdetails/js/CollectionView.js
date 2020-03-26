@@ -205,7 +205,7 @@ define(function (require) {
             if (self.trangThaiThietBi != null) {
                 self.appTrangthai();
             }
-            if(self.loaiDanhSachHomNay != null){
+            else if (self.loaiDanhSachHomNay != null){
                 self.appListToday();
             }
             else {
@@ -229,7 +229,6 @@ define(function (require) {
 
                             data.objects.forEach(function (item, index) {
                                 if (item.status == boloc) {
-                                    // arrTinhTrang.push(item)
                                     item.stt = i;
                                     i++;
                                     arrTinhTrang.push(item)
@@ -246,7 +245,6 @@ define(function (require) {
 
                             data.objects.forEach(function (item, index) {
                                 if (item.department_id == boloc) {
-                                    // arrKhoa.push(item)
                                     item.stt = i;
                                     i++;
                                     arrKhoa.push(item)

@@ -185,6 +185,12 @@ font-family: Arial, Helvetica, sans-serif;
 	border-radius: 50%;
 }
 
+
+@media (max-width: 768px) {
+  #myChart {
+    width: 400;
+  }
+
 .nav-item i.fa {
 	font-size:1.25rem;
 }

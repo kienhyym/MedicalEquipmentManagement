@@ -402,7 +402,6 @@ require(['jquery',
 										borderColor: 'rgba(65, 183, 255, 1)',
 										borderWidth: 1,
 										fill: false
-
 									},
 									{
 										label: 'Số lượng thiết bị được yêu cầu kiểm tra',
@@ -438,14 +437,26 @@ require(['jquery',
 									display: true,
 									text: 'Biểu đồ thống kê kiểm tra thiết bị hàng tháng'
 								},
+								legend: {
+									fullWidth: 'true',
+									labels: {
+										padding: 20,
+									},
+									align:"start"
+								}
 							}
 						});
 					}
 				})
+
+				var kichthuocmanhinh = $(window).width();
+				if(kichthuocmanhinh < 768){
+					$('#myChart').attr('height','400')
+				}
 			},
 			waitingForProgress: function () {
 				var self = this;
-				var trangthai = ["dangyeucaukiemtrathietbi", "dangyeucausuachua", "dangchokiemduyet"];
+				var trangthai = ["dangyeucaukiemtrathietbi", "dangyeucausuachua", "dangchokiemdinh"];
 				trangthai.forEach(function (item, index) {
 					var filters = {
 						filters: {
@@ -476,7 +487,7 @@ require(['jquery',
 				var self = this;
 				$('.danhsachhomnay').unbind('click').bind('click', function () {
 					localStorage.setItem('LoaiDanhSachHomNay', $(this).attr('table-name'))
-					self.getRouter().navigate($(this).attr('table-name')+"/collection");
+					self.getRouter().navigate($(this).attr('table-name') + "/collection");
 				})
 			},
 			get_displayName: function (data) {
