@@ -24,7 +24,7 @@ from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
 from application.extensions import auth, jwt
 import ujson
-import pandas
+# import pandas
 # from excel2json import convert_from_file
 
 
