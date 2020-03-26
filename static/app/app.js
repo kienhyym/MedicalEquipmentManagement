@@ -370,8 +370,8 @@ require(['jquery',
 					contentType: "application/json",
 					success: function (data) {
 						$("#countTheNumberOfDevicesTested").html(data.equipmentinspectionform.length);
-						$("#countTheNumberOfDevicesToTest").html(data.repairrequestform.length);
-						$("#countTheNumberOfDevicesThatRequireRepair").html(data.devicestatusverificationform.length);
+						$("#countTheNumberOfDevicesToTest").html(data.devicestatusverificationform.length);
+						$("#countTheNumberOfDevicesThatRequireRepair").html(data.repairrequestform.length);
 						$("#countTheNumberOfVerifiedDevices").html(data.certificateform.length);
 
 					}

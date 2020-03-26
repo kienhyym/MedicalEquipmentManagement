@@ -27,17 +27,7 @@ define(function (require) {
                 }
             ],
 
-            fields: [{
-                field: "",
-                label: "",
-                template: function (rowObj) {
-                    if (rowObj.image) {
-                        return `<div class="py-1" style=""width: 110px;height: 50px"><img class="w-100" src="${rowObj.image}"></div>`;
-                    } else {
-                        return `<div class="w-100" style="width: 90px;height: 50px"></div>`;
-                    }
-                }
-            },
+            fields: [
             {
                 field: "item_no",
                 label: "Mã",

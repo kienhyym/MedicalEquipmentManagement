@@ -206,6 +206,7 @@ define(function (require) {
                 self.appTrangthai();
             }
             else if (self.loaiDanhSachHomNay != null){
+                console.log('asdd',self.loaiDanhSachHomNay)
                 self.appListToday();
             }
             else {
@@ -290,7 +291,6 @@ define(function (require) {
                             var arrChungLoai = [];
 
                             data.objects.forEach(function (itemcl, index) {
-                                console.log(itemcl.types_of_equipment, boloc)
                                 if (itemcl.types_of_equipment === boloc) {
                                     itemcl.stt = i;
                                     i++;

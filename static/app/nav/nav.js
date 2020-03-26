@@ -304,7 +304,7 @@ define(function (require) {
 			"collectionName": "item",
 			"route": "item/collection",
 			"visible": function () {
-				return false
+				return true
 			}
 		},
 		{
@@ -314,7 +314,7 @@ define(function (require) {
 			"collectionName": "purchaseorder",
 			"route": "purchaseorder/collection",
 			"visible": function () {
-				return false
+				return true
 			}
 		},
 		{
@@ -324,7 +324,7 @@ define(function (require) {
 			"collectionName": "contact",
 			"route": "contact/collection",
 			"visible": function () {
-				return false
+				return true
 			}
 		},
 		{
@@ -334,7 +334,7 @@ define(function (require) {
 			"collectionName": "goodsreciept",
 			"route": "goodsreciept/collection",
 			"visible": function () {
-				return false
+				return true
 			}
 		},
 	];

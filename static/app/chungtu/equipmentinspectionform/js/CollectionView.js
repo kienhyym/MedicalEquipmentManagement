@@ -2,7 +2,6 @@ define(function (require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
-        // Gonrin = require('../../certificateform/js/node_modules/gonrin');
 		Gonrin = require('gonrin');
 
     var template = require('text!app/chungtu/equipmentinspectionform/tpl/collection.html'),
@@ -289,8 +288,7 @@ define(function (require) {
 
             $(self.$el.find('.grid-data tr')).each(function (index, item) {
                 $(item).find('td:first').css('height',$(item).height())
-
-                console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
+                $(item).find('td:first').addClass('d-flex align-items-center justify-content-center')
 
             })
         },
