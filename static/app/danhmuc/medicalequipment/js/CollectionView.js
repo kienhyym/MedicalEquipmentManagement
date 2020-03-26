@@ -2,76 +2,128 @@ define(function (require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
-        //Gonrin = require('../../EthnicGroup/view/node_modules/gonrin');
         Gonrin = require('gonrin');
 
     var template = require('text!app/danhmuc/medicalequipment/tpl/collection.html'),
         schema = require('json!schema/MedicalEquipmentSchema.json');
+
+    var CustomFilterView = require('app/base/view/CustomFilterView');
 
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "medicalequipment",
-        uiControl: {
-            fields: [
-                {
-                    field: "stt",
-                    label: "STT",
-                    width: "30px",
-                },
-                {
-                    field: "name", label: "Tên", width: 350, readonly: true,
-                },
-                {
-                    field: "types_of_equipment", label: "Chủng loại", width: 250, readonly: true,
-                },
-                {
-                    field: "status", label: "Tình trạng", width: 150, readonly: true,
-                },
+        tools: [
+            {
+                name: "defaultgr",
+                type: "group",
+                groupClass: "toolbar-group",
+                buttons: [
+                    {
+                        name: "back",
+                        type: "button",
+                        buttonClass: "btn-default btn-sm btn-secondary",
+                        label: "TRANSLATE:Quay lại",
+                        command: function () {
+                            var self = this;
+                            Backbone.history.history.back();
+                        }
+                    },
+                    {
+                        name: "CREATE",
+                        type: "button",
+                        buttonClass: "btn-success btn-sm",
+                        label: "TRANSLATE:Tạo mới",
+                        command: function () {
+                            var self = this;
+                            self.getApp().getRouter().navigate(self.collectionName + "/model");
+                        }
+                    },
+                    {
+                        name: "import",
+                        type: "button",
+                        buttonClass: "btn-info btn-sm imp",
+                        label: "TRANSLATE:Import",
+                        command: function () {
+                            var self = this;
 
-            ],
-            onRowClick: function (event) {
-                if (event.rowId) {
-                    var path = this.collectionName + '/model?id=' + event.rowId;
-                    this.getApp().getRouter().navigate(path);
-                }
-            }
-            // , rowClass: function (data) {
 
-            //     if (data.status === "Đang lưu hành") {
-            //         return "Green";
-            //     }
-            //     // if (data.name === "XYZ") {
-            //     //     return "Blue";
-            //     // }
-            // },
-        },
+                        }
+                    },
+                ],
+            }],
+        // uiControl: {
+        //     orderBy:
+        //         [
+        //             {
+        //                 field: "name",
+        //                 direction: "asc"
+        //             },
+        //             {
+        //                 field: "created_at",
+        //                 direction: "desc"
+        //             }
+        //         ],
+        //     fields: [
+
+        //         {
+        //             field: "stt",
+        //             label: "STT",
+        //             width: "30px",
+
+        //         },
+        //         {
+        //             field: "name", label: "Mã thương hiệu",
+        //         }
+        //     ],
+        //     onRowClick: function (event) {
+        //         if (event.rowId) {
+        //             var path = this.collectionName + '/model?id=' + event.rowId;
+        //             this.getApp().getRouter().navigate(path);
+        //         }
+
+        //     }
+        // },
         render: function () {
-
-            this.applyBindings();
-            this.locData();
-
-            return this;
-        },
-        locData: function () {
             var self = this;
-            $.ajax({
-                url: self.getApp().serviceURL + "/api/v1/medicalequipment?results_per_page=100000&max_results_per_page=1000000",
-                method: "GET",
-                data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
+            this.applyBindings();
+            self.$el.find("#chonfile").bind('click', function () {
+                $.ajax({
+                    url: self.getApp().serviceURL + "/api/v1/read_file_json",
+                    method: "POST",
+                    data: JSON.stringify({ "ok": "ok" }),
+                    contentType: "application/json",
+                    success: function (data) {
+                    }
+                })
+            })
+            var xhr = $.ajax({
+                url: self.getApp().serviceURL + "/api/v1/get_data_medical",
+                method: "POST",
+                data: JSON.stringify({ "text": self.$el.find(".name-search").val() }),
                 contentType: "application/json",
                 success: function (data) {
-                    var arr = [];
-                    data.objects.forEach(function (item, index) {
-                        item.stt = index + 1;
-                        arr.push(item)
-                    })
-                    console.log(arr)
-                    self.render_grid(arr);
+                    self.render_grid(data);
                 }
             })
+
+
+            self.$el.find(".name-search").keyup(function (e) {
+                xhr.abort()
+                xhr = $.ajax({
+                    url: self.getApp().serviceURL + "/api/v1/get_data_medical",
+                    method: "POST",
+                    data: JSON.stringify({ "text": $(this).val() }),
+                    contentType: "application/json",
+                    success: function (data) {
+                        self.render_grid(data);
+                    }
+                })
+            })
+            return this;
         },
+
         render_grid: function (dataSource) {
             var self = this;
             var element = self.$el.find("#grid-data");
@@ -103,74 +155,53 @@ define(function (require) {
                                     return moment(times * 1000).local().format(format);
                                 }
                                 var chungloai = "";
-                                if (rowData.types_of_equipment === "1") {
-                                    chungloai = "Máy xét nhiệm";
+                                if (rowData.classify === "A") {
+                                    chungloai = "TTBYT Loại A";
                                 }
-                                else if (rowData.types_of_equipment === "2") {
-                                    chungloai =  "Máy chuẩn đoán hình ảnh";
+                                else if (rowData.classify === "B") {
+                                    chungloai = "TTBYT Loại B";
                                 }
-                                else if (rowData.types_of_equipment === "3") {
-                                    chungloai =  "Máy thăm dò chức năng";
+                                else if (rowData.classify === "C") {
+                                    chungloai = "TTBYT Loại C";
                                 }
-                                else if (rowData.types_of_equipment === "4") {
-                                    chungloai =  "Thiết bị hấp sấy";
+                                else if (rowData.classify === "D") {
+                                    chungloai = "TTBYT Loại D";
                                 }
-                                else if (rowData.types_of_equipment === "5") {
-                                    chungloai =  "Thiết bị hỗ trợ sinh tồn ";
-                                }
-                                else if (rowData.types_of_equipment === "6") {
-                                    chungloai =  "Robot";
-                                }
-                                else if (rowData.types_of_equipment === "7") {
-                                    chungloai =  "Thiết bi miễn dịch";
-                                }
-                                else if (rowData.types_of_equipment === "8") {
-                                    chungloai =  "Thiết bị lọc và hỗ trợ chức năng ";
-                                }
-                            
-                            return `    <div style="position: relative;">
-                                                <div>${rowData.name}</div>
-                                                <div>Chủng loại: ${chungloai}</div>
 
+                                return `    <div style="position: relative;">
+                                                <div>${rowData.name}</div>
+                                                <div style="font-size:12px">Mức độ rủi ro
+                                                được phân loại: ${chungloai}</div>
+                                                <div style="font-size:12px">Tình trạng	: ${rowData.status}</div>
                                                 <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
                                             </div>
                                             `;
-                        }
+                            }
                             return "";
-                    }
+                        }
                     },
-                    // {
-                    //     field: "types_of_equipment", label: "Chủng loại", width: 250, readonly: true,
-                    //     template: function (rowData) {
-                    //        
-                    //     }
-                    // },
-                    // {
-                    //     field: "status", label: "Tình trạng", width: 150, readonly: true,
-                    // },
                 ],
                 dataSource: dataSource,
                 primaryField: "id",
                 refresh: true,
                 selectionMode: false,
                 pagination: {
-                page: 1,
-                pageSize: 15
-            },
-                events: {
-                "rowclick": function (e) {
-                    self.getApp().getRouter().navigate("medicalequipment/model?id=" + e.rowId);
+                    page: 1,
+                    pageSize: 15
                 },
-            },
-                
+                events: {
+                    "rowclick": function (e) {
+                        self.getApp().getRouter().navigate("medicalequipment/model?id=" + e.rowId);
+                    },
+                },
+
             });
-    $(self.$el.find('.grid-data tr')).each(function (index, item) {
-        $(item).find('td:first').css('height', $(item).height())
+            $(self.$el.find('.grid-data tr')).each(function (index, item) {
+                $(item).find('td:first').css('height', $(item).height())
+                $(item).find('td:first').addClass('d-flex align-items-center justify-content-center')
 
-        console.log($(item).find('td:first').addClass('d-flex align-items-center justify-content-center'))
-
-    })
-},
+            })
+        },
 
     });
 

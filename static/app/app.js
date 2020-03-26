@@ -407,8 +407,8 @@ require(['jquery',
 									{
 										label: 'Số lượng thiết bị được yêu cầu kiểm tra',
 										data: data.devicestatusverificationform_count,
-										backgroundColor: 'rgba(255, 33, 0, 1)',
-										borderColor: 'rgba(255, 33, 0, 1)',
+										backgroundColor: 'rgba(255, 144, 55, 1)',
+										borderColor: 'rgba(255, 144, 55, 1)',
 										borderWidth: 1,
 										fill: false
 
@@ -416,8 +416,8 @@ require(['jquery',
 									{
 										label: 'Số lượng thiết bị yêu cầu sửa chữa',
 										data: data.repairrequestform_count,
-										backgroundColor: 'rgba(255, 144, 55, 1)',
-										borderColor: 'rgba(255, 144, 55, 1)',
+										backgroundColor: 'rgba(255, 33, 0, 1)',
+										borderColor: 'rgba(255, 33, 0, 1)',
 										borderWidth: 1,
 										fill: false
 

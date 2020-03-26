@@ -202,6 +202,7 @@ define(function (require) {
 
 				var data_attr = $(this).attr("data-attr");
 				fd.append('file', this.files[0]);
+				
 				http.open('POST', '/api/v1/upload/file');
 
 				http.upload.addEventListener('progress', function (evt) {
@@ -216,6 +217,7 @@ define(function (require) {
 				http.onreadystatechange = function () {
 					if (http.status === 200) {
 						if (http.readyState === 4) {
+							console.log('console.log(fd)',fd)
 							var data_file = JSON.parse(http.responseText), link, p, t;
 							self.getApp().notify("Tải file thành công");
 							self.model.set(data_attr, data_file.link.slice(16));

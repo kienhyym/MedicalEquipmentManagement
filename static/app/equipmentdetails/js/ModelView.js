@@ -109,20 +109,6 @@ define(function (require) {
 							});
 						}
 					},
-					// {
-					// 	name: "taophieu",
-					// 	type: "button",
-					// 	buttonClass: "btn-info btn-sm",
-					// 	label: "TRANSLATE:Tạo Phiếu",
-					// 	command: function () {
-					// 		var self = this;
-					// 		location.href = self.getApp().serviceURL + "/?#equipmentinspectionform/model";
-					// 		sessionStorage.setItem('TenThietBi', self.model.get("name"));
-					// 		sessionStorage.setItem('IDThietBi', self.model.get("id"));
-					// 		sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
-					// 		sessionStorage.setItem('MaQLTBThietBi', self.model.get("management_code"));
-					// 	}
-					// },
 				],
 			}],
 		uiControl: {

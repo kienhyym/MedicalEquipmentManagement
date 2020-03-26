@@ -103,8 +103,16 @@ define(function (require) {
 			},
 			"entries": [
 				{
-					"text": "Nơi sản xuất",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Trang thiết bị</label>",
+					"type": "view",
+					"collectionName": "medicalequipment",
+					"route": "medicalequipment/collection",
+					"visible": function () {
+						return true
+					}
+				},
+				{
+					"text": "<label class='m-0 ml-4'>Nơi sản xuất</label>",
 					"type": "view",
 					"collectionName": "nation",
 					"route": "nation/collection",
@@ -113,8 +121,7 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "Hãng sản xuất",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Hãng sản xuất</label>",
 					"type": "view",
 					"collectionName": "manufacturer",
 					"route": "manufacturer/collection",
@@ -123,8 +130,7 @@ define(function (require) {
 					}
 				},
 				{
-					"text": "Nhà cung cấp thiết bị",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Nhà cung cấp thiết bị</label>",
 					"type": "view",
 					"collectionName": "organization",
 					"route": "organization/collection",
@@ -134,18 +140,7 @@ define(function (require) {
 					}
 				},
 				{
-					"text": " Danh sách thiết bị",
-					"icon": "fa fa-angle-double-right",
-					"type": "view",
-					"collectionName": "medicalequipment",
-					"route": "medicalequipment/collection",
-					"visible": function () {
-						return true
-					}
-				},
-				{
-					"text": "Danh sách dụng cụ",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Dụng cụ bảo dưỡng</label>",
 					"type": "view",
 					"collectionName": "preparationtools",
 					"route": "preparationtools/collection",
@@ -156,32 +151,7 @@ define(function (require) {
 
 			]
 		},
-
-
-
-		
-
-		// {
-		// 	"text": "Kế hoạch kiểm tra năm",
-		// 	"icon": "fa fa-home",
-		// 	"type": "view",
-		// 	"collectionName": "bangkehoachkiemtrathietbitheonam",
-		// 	"route": "bangkehoachkiemtrathietbitheonam/collection",
-		// 	"$ref": "app/bangkehoachkiemtrathietbitheonam/js/CollectionView",
-		// 	"visible": function () {
-		// 		return true
-
-		// 	}
-		// },
-		// {
-		// 	"type": "view",
-		// 	"collectionName": "bangkehoachkiemtrathietbitheonam",
-		// 	"route": "bangkehoachkiemtrathietbitheonam/model(/:id)",
-		// 	"$ref": "app/bangkehoachkiemtrathietbitheonam/js/ModelView",
-		// 	"visible": function () {
-		// 		return false;
-		// 	}
-		// },
+	
 		{
 			"text": "Báo cáo thống kê",
 			"icon": "fa fa-file-text-o",
@@ -190,8 +160,7 @@ define(function (require) {
 				
 				
 				{
-					"text": "Kiểm tra thiết bị",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Kiểm tra thiết bị</label>",
 					"type": "view",
 					"collectionName": "equipmentinspectionform",
 					"route": "equipmentinspectionform/collection",
@@ -202,17 +171,7 @@ define(function (require) {
 					}
 				},
 				{
-					"type": "view",
-					"collectionName": "equipmentinspectionform",
-					"route": "equipmentinspectionform/model(/:id)",
-					"$ref": "app/chungtu/equipmentinspectionform/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-				{
-					"text": "Yêu cầu sửa chữa",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Yêu cầu sửa chữa</label>",
 					"type": "view",
 					"collectionName": "repairrequestform",
 					"route": "repairrequestform/collection",
@@ -223,17 +182,7 @@ define(function (require) {
 					}
 				},
 				{
-					"type": "view",
-					"collectionName": "repairrequestform",
-					"route": "repairrequestform/model(/:id)",
-					"$ref": "app/chungtu/repairrequestform/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-				{
-					"text": "Biên bản kiểm tra",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Biên bản kiểm tra</label>",
 					"type": "view",
 					"collectionName": "devicestatusverificationform",
 					"route": "devicestatusverificationform/collection",
@@ -244,17 +193,7 @@ define(function (require) {
 					}
 				},
 				{
-					"type": "view",
-					"collectionName": "devicestatusverificationform",
-					"route": "devicestatusverificationform/model(/:id)",
-					"$ref": "app/chungtu/devicestatusverificationform/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-				{
-					"text": "Lịch sử kiểm định",
-					"icon": "fa fa-angle-double-right",
+					"text": "<label class='m-0 ml-4'>Phiếu kiểm định</label>",
 					"type": "view",
 					"collectionName": "certificateform",
 					"route": "certificateform/collection",
@@ -263,36 +202,6 @@ define(function (require) {
 						return true
 					}
 				},
-				{
-					"type": "view",
-					"collectionName": "certificateform",
-					"route": "certificateform/model(/:id)",
-					"$ref": "app/chungtu/certificateform/js/ModelView",
-					"visible": function () {
-						return false;
-					}
-				},
-				// {
-				// 	"text": "Dự toán sửa chữa",
-				// 	"icon": "fa fa-home",
-				// 	"type": "view",
-				// 	"collectionName": "dutoansuachuanam",
-				// 	"route": "dutoansuachuanam/collection",
-				// 	"$ref": "app/chungtu/dutoansuachuanam/js/CollectionView",
-				// 	"visible": function () {
-				// 		return true
-
-				// 	}
-				// },
-				// {
-				// 	"type": "view",
-				// 	"collectionName": "dutoansuachuanam",
-				// 	"route": "dutoansuachuanam/model(/:id)",
-				// 	"$ref": "app/chungtu/dutoansuachuanam/js/ModelView",
-				// 	"visible": function () {
-				// 		return false;
-				// 	}
-				// },
 			]
 		},
 

@@ -381,11 +381,11 @@ define(function (require) {
                                     return moment(times * 1000).local().format(format);
                                 }
                                 var status = '';
-                                if (rowData.status === "yeucaukiemtrathietbi") {
+                                if (rowData.status === "dangyeucaukiemtrathietbi") {
                                     status = "Đang yêu cầu kiểm tra";
                                 }
-                                else if (rowData.status === "dangsuachua") {
-                                    status = "Đang sửa chữa";
+                                else if (rowData.status === "dangyeucausuachua") {
+                                    status = "Đang yêu cầu sửa chữa";
                                 }
                                 else if (rowData.status === "dangchokiemduyet") {
                                     status = "Đang chờ kiểm duyệt";

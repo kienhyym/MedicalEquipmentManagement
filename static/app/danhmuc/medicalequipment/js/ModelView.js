@@ -165,6 +165,7 @@ define(function (require) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
+						console.log(self.model)
 						var danhsachsanpham = self.model.get('list_of_equipment_details');
 						danhsachsanpham.sort(function (a, b) {
 							var thoigiantaoA = a.created_at

@@ -123,7 +123,7 @@ define(function (require) {
 				}
 				$a.unbind("click").bind("click", function (e) {
 					$(".nav-wrapper").children("a").removeClass("active");
-					$(this).addClass("active");
+					// $(this).addClass("active");
 					var hasOpen = $(this).parents('li').hasClass('menu-open');
 					if (!hasOpen) {
 						$(this).parents('li').addClass('menu-open');
@@ -142,7 +142,7 @@ define(function (require) {
 				$a.unbind("click").bind("click", function (e) {
 					e.preventDefault();
 					$("#menu-first").children("li").children("a").removeClass("active");
-					$(this).addClass('active');
+					// $(this).addClass('active');
 					$('.main-sidebar').toggleClass('open');
 					self.getApp().getRouter().navigate(entry.route);
 				});

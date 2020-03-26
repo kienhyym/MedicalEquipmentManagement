@@ -57,7 +57,7 @@ async def upload_file(request):
     fsroot = app.config['FS_ROOT']
     if request.method == 'POST':
         file = request.files.get('file', None)
-        print('------file-------------------------------------',file)
+        print('------file-------------------------------------',request.files)
 
         image = request.files.get('image')
 
@@ -66,8 +66,8 @@ async def upload_file(request):
             file_name = os.path.splitext(file.name)[0]
             # print("-----------------Hello World------------------------",file_name)
             extname = os.path.splitext(file.name)[1]
-#             newfilename = file_name + "-" + rand + extname
-            newfilename = file_name + extname 
+            newfilename = file_name + "-" + rand + extname
+            # newfilename = file_name + extname 
             new_filename = newfilename.replace(" ", "_")
             async with aiofiles.open(fsroot + new_filename, 'wb+') as f:
                 await f.write(file.body)

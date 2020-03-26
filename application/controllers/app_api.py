@@ -4,6 +4,10 @@ import uuid
 import base64, re
 import binascii
 import aiohttp
+import os, sys
+import aiofiles
+import base64
+import json as load_json
 import copy
 from gatco.response import json, text, html
 from application.extensions import sqlapimanager
@@ -20,7 +24,8 @@ from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
 from application.extensions import auth, jwt
 import ujson
-
+import pandas
+# from excel2json import convert_from_file
 
 
 def check_token_app(token):
@@ -133,3 +138,87 @@ async def list_today(request):
     for _ in list :
         arr.append(to_dict(_))
     return json(arr)
+
+
+@app.route('/api/v1/link_file_upload', methods=['POST'])
+async def link_file_upload(request):
+    url = app.config['FILE_SERVICE_URL']
+    fsroot = app.config['FS_ROOT']
+    if request.method == 'POST':
+        file = request.files.get('file', None)
+        if file :
+            rand = ''.join(random.choice(string.digits) for _ in range(15))
+            file_name = os.path.splitext(file.name)[0]
+            extname = os.path.splitext(file.name)[1]
+            newfilename = file_name + extname 
+            new_filename = newfilename.replace(" ", "_")
+            async with aiofiles.open(fsroot + new_filename, 'wb+') as f:
+                await f.write(file.body)
+            df = pandas.read_excel("static/uploads/"+new_filename)
+            count = df.ID.count()
+            i = 0
+            arr = []
+            while i < count:
+                obj = {}
+                obj['ID'] = df.ID[i]
+                obj['name'] = df.name[i]
+                obj['age'] = df.age[i]
+                arr.append(obj)
+                i += 1
+            return json({'data':"success"})
+    
+    return json({
+        "error_code": "Upload Error",
+        "error_message": "Could not upload file to store"
+    }, status=520)
+
+
+@app.route('/api/v1/read_file_json',methods=['POST'])
+async def read_file_json(request):
+    # with open('static/data_thietbiyte.json') as f:
+    #     data = load_json.load(f)
+
+    with open('static/data_thietbiyte.json') as myfile:
+        data = myfile.read()
+        obj = load_json.loads(data)
+        for _ in obj:
+            medicalEquipment_new = MedicalEquipment()
+            medicalEquipment_new.name = _['name']
+            medicalEquipment_new.classify = _['type'][11]
+            medicalEquipment_new.implementing_organization_classification = _['organization_action']
+            medicalEquipment_new.circulation_number = _['code_document_public']
+            medicalEquipment_new.organization_requesting_classification = _['organization_require']
+            medicalEquipment_new.status = _['status']
+            db.session.add(medicalEquipment_new)
+            db.session.commit()
+
+    return json({
+        "error_code": "Upload success",
+    })
+
+@app.route('/api/v1/get_data_medical',methods=['POST'])
+async def get_data_medical(request):
+    req = request.json
+    if req  != None and req != "":
+        find_text = req['text']
+        search = "%{}%".format(find_text)
+        list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
+        if len(list) == 0 :
+            find_text = req['text']
+            tex = find_text.capitalize()
+            search = "%{}%".format(tex)
+            list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
+        arr = []
+        for i in range(len(list)):
+            obj = to_dict(list[i])
+            obj['stt'] = i+1
+            arr.append(obj)
+        return json(arr)
+    else :
+        list = db.session.query(MedicalEquipment).all()
+        arr = []
+        for i in range(len(list)):
+            obj = to_dict(list[i])
+            obj['stt'] = i+1
+            arr.append(obj)
+        return json(arr)
