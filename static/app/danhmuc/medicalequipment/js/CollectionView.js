@@ -40,17 +40,17 @@ define(function (require) {
                             self.getApp().getRouter().navigate(self.collectionName + "/model");
                         }
                     },
-                    {
-                        name: "import",
-                        type: "button",
-                        buttonClass: "btn-info btn-sm imp",
-                        label: "TRANSLATE:Import",
-                        command: function () {
-                            var self = this;
+                    // {
+                    //     name: "import",
+                    //     type: "button",
+                    //     buttonClass: "btn-info btn-sm imp",
+                    //     label: "TRANSLATE:Import",
+                    //     command: function () {
+                    //         var self = this;
 
 
-                        }
-                    },
+                    //     }
+                    // },
                 ],
             }],
         // uiControl: {
