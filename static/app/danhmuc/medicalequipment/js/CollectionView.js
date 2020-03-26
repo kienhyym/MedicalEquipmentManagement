@@ -114,7 +114,6 @@ define(function (require) {
             self.$el.find(".name-search").keyup(function (e) {
                 xhr.abort()
                 self.$el.find(".wait_get_data").show();
-
                 xhr = $.ajax({
                     url: self.getApp().serviceURL + "/api/v1/get_data_medical",
                     method: "POST",
@@ -146,7 +145,7 @@ define(function (require) {
                         template: function (rowData) {
                             if (!!rowData) {
                                 return `
-                                            <div>${rowData.stt}</div>
+                                            <div class='text-center pt-3'>${rowData.stt}</div>
                                         `;
                             }
                             return "";
@@ -172,7 +171,6 @@ define(function (require) {
                                 else if (rowData.classify === "D") {
                                     chungloai = "TTBYT Loại D";
                                 }
-
                                 return `    <div style="position: relative;">
                                                 <div>${rowData.name}</div>
                                                 <div style="font-size:12px">Mức độ rủi ro
@@ -201,11 +199,6 @@ define(function (require) {
                 },
 
             });
-            $(self.$el.find('.grid-data tr')).each(function (index, item) {
-                $(item).find('td:first').css('height', $(item).height())
-                $(item).find('td:first').addClass('d-flex align-items-center justify-content-center')
-
-            })
         },
 
     });

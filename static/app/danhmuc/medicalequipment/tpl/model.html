@@ -127,7 +127,8 @@
 							<div class="dungCuChuanBi row">
 								<div class="col-md-2">
 									<div class="themDungCu text-center "
-										style="border: 1px dashed black;width: 90px; height: 90px;line-height: 90px;margin-left: auto; margin-right: auto;">+
+										style="border: 1px dashed black;width: 90px; height: 90px;line-height: 90px;margin-left: auto; margin-right: auto;">
+										+
 										Chọn
 									</div>
 									<label class="text-center" style="opacity: 0;">&nbsp;</label>
@@ -143,16 +144,9 @@
 							<div class="input-group-append">
 								<button style="position: relative;" class="btn btn-outline-secondary" type="button"><i
 										class="fa fa-camera" aria-hidden="true"></i>
-									<div class="row" style="position: absolute;top: 0px;left: 0px;width: 100%;">
-										<div class="form-group col">
-											<div id="upload-picture">
-												<div class="custom-file">
-													<input type="file" class="custom-file-input upload_files "
-														id="upload_files" lang="vi">
-													<!-- <label class="custom-file-label"></label> -->
-												</div>
-											</div>
-										</div>
+									<div style="position: absolute;top: 0px;left: 0px;width: 100%;">
+											<input type="file" class="w-100 pt-3 upload_files " id="upload_files"
+												lang="vi" style="opacity: 0;">
 									</div>
 									<div class="row"
 										style="position: absolute;top: 2px;left: -18px;width:30px; height: 30px; ">
@@ -166,12 +160,15 @@
 						</div>
 					</div>
 				</div>
+
+
 				<div class="timKiemDungCu bg-white border border-dark rounded"
 					style="position: absolute;top:300px;z-index: 1;display: none;margin-left: auto;margin-right: auto;left: 0;right: 0;width: 90%;">
 					<div class="input-group bg-light">
 						<label class="col-md-2 col-11 m-2 p-0">Danh sách dụng cụ</label>
-						<input type="text" class="border-0 col-md-9 col-11 bg-light timKiemDungCuChuanBi" placeholder="Tìm kiếm ..."
-							aria-label="Tìm kiếm dụng cụ ..." style="outline: none;font-size: 12px">
+						<input type="text" class="border-0 col-md-9 col-11 bg-light timKiemDungCuChuanBi"
+							placeholder="Tìm kiếm ..." aria-label="Tìm kiếm dụng cụ ..."
+							style="outline: none;font-size: 12px">
 						<label style="font-size: 20px;position: absolute;top: 2px;right: 27px;z-index: 2;"
 							id="dongChonDungCu">&times;</label>
 					</div>
