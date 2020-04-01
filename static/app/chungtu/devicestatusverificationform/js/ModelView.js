@@ -39,7 +39,6 @@ define(function (require) {
 						label: "TRANSLATE:Lưu",
 						command: function () {
 							var self = this;
-							console.log(self.model)
 							self.model.save(null, {
 								success: function (model, respose, options) {
 

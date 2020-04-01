@@ -271,6 +271,16 @@ define(function (require) {
 			"$ref": "app/goods-reciept/view/ModelView",
 		},
 
+		{
+			"collectionName": "warehouse",
+			"route": "warehouse/collection",
+			"$ref": "app/warehouse/view/CollectionView",
+		},
+		{
+			"collectionName": "warehouse",
+			"route": "warehouse/model(/:id)",
+			"$ref": "app/warehouse/view/ModelView",
+		},
 	];
 
 });

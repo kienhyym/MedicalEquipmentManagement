@@ -145,9 +145,7 @@ async def get_all_warehouse_by_tenant(request):
                 for w in warehouse:
                     list_ware = to_dict(w)
                     result.append(list_ware)
-
             return json(result)
-
         else:
             list_warehouse = []
             response = requests.get("https://upstart.vn/accounts/api/v1/tenant/user_permission", params={"user_id": uid["id"], "tenant_id": data["tenant_id"]})

@@ -35,11 +35,6 @@ define(function (require) {
         refresh: true,
         uiControl: {
             fields: [
-                // {
-                // 	field: "order_datetime",
-                // 	uiControl: "datetimepicker",
-                // 	textFormat: "DD-MM/YYYY"
-                // },
                 {
                     field: "contact",
                     uicontrol: "ref",
@@ -176,7 +171,7 @@ define(function (require) {
                         self.getApp().saveLog("create", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
                     }
                     self.getApp().saveLog("update", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                    self.model.sync(method, self.model, {
+                    self.model.save({
                         success: function (model, respose, options) {
                             if ($("body").hasClass("sidebar-icon-only")) {
                                 $("#btn-menu").trigger("click");
@@ -309,7 +304,6 @@ define(function (require) {
             if (self.getApp().platforms == "ANDROID" || self.getApp().platforms == "IOS") {
                 self.$el.find("#print").remove();
             }
-
             self.changeDetails = [];
             var id = this.getApp().getRouter().getParam("id");
             if (id) {
@@ -546,7 +540,6 @@ define(function (require) {
             var self = this;
             self.$el.find("#print").on("click", function () {
                 var viewData = JSON.stringify(self.model.toJSON());
-
                 // window.open('https://upstart.vn/inventory/#print-goodsreciept?viewdata=' + viewData);
                 self.getApp().getRouter().navigate("print-goodsreciept?viewdata=" + viewData);
 

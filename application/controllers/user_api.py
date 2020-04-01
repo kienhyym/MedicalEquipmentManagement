@@ -40,6 +40,14 @@ async def get_current_user(request):
     print("===============", currentUser)
     if currentUser is not None:
         user_info = to_dict(currentUser)
+        user_info['tenants'] = [
+            {"id":"tenants123",
+            "image_url":"static/images/default-dist.jpeg"
+        }
+        ],
+        user_info["current_tenant_id"]= "1234-23456",
+        user_info["display_name"]= "Kien"
+
         return json(user_info)
     else:
         error_msg = "Tài khoản không tồn tại"

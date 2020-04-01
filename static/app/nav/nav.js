@@ -337,6 +337,16 @@ define(function (require) {
 				return true
 			}
 		},
+		{
+			"text": "Kho",
+			"icon": "fa fa-book",
+			"type": "view",
+			"collectionName": "warehouse",
+			"route": "warehouse/collection",
+			"visible": function () {
+				return true
+			}
+		},
 	];
 
 });
