@@ -10,6 +10,8 @@ import uuid
 from application.models.warehouse import Warehouse
 from application.models.currency import Currency
 from application.models.contact import Contact
+from application.models.organization import *
+
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import *
 from sqlalchemy import *

@@ -25,49 +25,146 @@
         "type": "string",
         "primary": true
     },
-    "name": {
+    "organization_exid": {
+        "type": "string",
+        "length": 100
+    },
+    "organization_no": {
+        "type": "string",
+        "length": 100
+    },
+    "organization_name": {
         "type": "string",
         "length": 255
+    },
+    "organization_type": {
+        "type": "string",
+        "length": 200
+    },
+    "tenant_id": {
+        "type": "string"
+    },
+    "parentid": {
+        "type": "string"
+    },
+    "industry": {
+        "type": "string",
+        "length": 200
+    },
+    "annualrevenue": {
+        "type": "number"
+    },
+    "rating": {
+        "type": "string",
+        "length": 200
+    },
+    "ownership": {
+        "type": "string",
+        "length": 50
+    },
+    "notify_owner": {
+        "type": "string",
+        "length": 3
+    },
+    "siccode": {
+        "type": "string",
+        "length": 50
+    },
+    "ticketsymbol": {
+        "type": "string",
+        "length": 30
+    },
+    "phone": {
+        "type": "string",
+        "length": 30
+    },
+    "phone_other": {
+        "type": "string",
+        "length": 30
     },
     "email": {
         "type": "string",
-        "length": 255
+        "length": 100
     },
-    "Website": {
+    "email_other": {
         "type": "string",
-        "length": 255
+        "length": 100
     },
-    "Fax": {
+    "website": {
         "type": "string",
-        "length": 255
+        "length": 100
     },
-    "phone_number": {
+    "fax": {
         "type": "string",
-        "length": 63
+        "length": 50
+    },
+    "emailoptout": {
+        "type": "string",
+        "length": 3
+    },
+    "isconvertedfromlead": {
+        "type": "string",
+        "length": 3
+    },
+    "tags": {
+        "type": "string",
+        "length": 1
     },
     "address": {
+        "type": "string"
+    },
+    "bill_address_city": {
         "type": "string",
-        "length": 255
+        "length": 30
     },
-    "province_id": {
-        "type": "string"
+    "bill_address_code": {
+        "type": "string",
+        "length": 30
     },
-    "district_id": {
-        "type": "string"
+    "bill_address_country": {
+        "type": "string",
+        "length": 30
     },
-    "wards_id": {
-        "type": "string"
+    "bill_address_state": {
+        "type": "string",
+        "length": 30
     },
-    "ceo": {
-        "type": "string"
+    "bill_address_street": {
+        "type": "string",
+        "length": 250
     },
-    "province": {
-        "type": "dict"
+    "bill_address_pobox": {
+        "type": "string",
+        "length": 30
     },
-    "district": {
-        "type": "dict"
+    "ship_address_city": {
+        "type": "string",
+        "length": 30
     },
-    "wards": {
-        "type": "dict"
+    "ship_address_code": {
+        "type": "string",
+        "length": 30
+    },
+    "ship_address_country": {
+        "type": "string",
+        "length": 30
+    },
+    "ship_address_state": {
+        "type": "string",
+        "length": 30
+    },
+    "ship_address_street": {
+        "type": "string",
+        "length": 250
+    },
+    "ship_address_pobox": {
+        "type": "string",
+        "length": 30
+    },
+    "custom_fields": {
+        "type": "json"
+    },
+    "employees": {
+        "type": "list"
     }
 }

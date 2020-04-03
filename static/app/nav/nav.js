@@ -347,6 +347,26 @@ define(function (require) {
 				return true
 			}
 		},
+		{
+			"text": "Tiền tệ",
+			"icon": "fa fa-book",
+			"type": "view",
+			"collectionName": "currency",
+			"route": "currency/collection",
+			"visible": function () {
+				return true
+			}
+		},
+		{
+			"text": "Doanh nghiệp",
+			"icon": "fa fa-book",
+			"type": "view",
+			"collectionName": "organization",
+			"route": "organization/collection",
+			"visible": function () {
+				return true
+			}
+		},
 	];
 
 });

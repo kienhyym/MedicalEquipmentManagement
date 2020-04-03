@@ -45,7 +45,7 @@ async def get_current_user(request):
             "image_url":"static/images/default-dist.jpeg"
         }
         ],
-        user_info["current_tenant_id"]= "1234-23456",
+        user_info["current_tenant_id"]= "tenants123",
         user_info["display_name"]= "Kien"
 
         return json(user_info)
@@ -325,13 +325,13 @@ sqlapimanager.create_api(Role, max_results_per_page=1000000,
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='role')
     
-sqlapimanager.create_api(Organization, max_results_per_page=1000000,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='organization')
+# sqlapimanager.create_api(Organization, max_results_per_page=1000000,
+#     methods=['GET', 'POST', 'DELETE', 'PUT'],
+#     url_prefix='/api/v1',
+#     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
+#     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
+#     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+#     collection_name='organization')
 
 sqlapimanager.create_api(MedicalEquipment, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],

@@ -131,45 +131,17 @@ async def get_all_warehouse_by_tenant(request):
     })
 
 
-@app.route('/api/v1/warehouse/get', methods=["POST"])
+@app.route('/api/v1/get_all_warehouse_by_tenant', methods=["POST"])
 async def get_all_warehouse_by_tenant(request):
-    uid = await current_user(request)
     data = request.json
-    # tenant_id = data.get('tenant_id', None)
-    if 'role_info' in data and data['role_info'] is not None:
-        if data['role_info'] == "admin":
-            warehouse = db.session.query(Warehouse).filter(and_(Warehouse.tenant_id==data.get("tenant_id", None), \
-                Warehouse.deleted==False)).all()
-            result = []
-            if warehouse is not None:
-                for w in warehouse:
-                    list_ware = to_dict(w)
-                    result.append(list_ware)
-            return json(result)
-        else:
-            list_warehouse = []
-            response = requests.get("https://upstart.vn/accounts/api/v1/tenant/user_permission", params={"user_id": uid["id"], "tenant_id": data["tenant_id"]})
-            if response.status_code == STATUS_CODE['OK']:
-                r = response.json()
-                for _ in r['warehouses']:
-                    print("________", _['role'])
-                    if _['role'] == "manager":
-                        list_warehouse.append(_['warehouse_id'])
-                        print("manager", _)
-                    if _['role'] == "employee":
-                        list_warehouse.append(_['warehouse_id'])
-                        print("employee", _)
-
-            warehouse = db.session.query(Warehouse).filter(and_(Warehouse.tenant_id==data.get("tenant_id", None), \
-                Warehouse.deleted==False, \
-                    Warehouse.id.in_(list_warehouse))).all()
-            result = []
-            if warehouse is not None:
-                for w in warehouse:
-                    list_ware = to_dict(w)
-                    result.append(list_ware)
-
-            return json(result)
+    tenant_id = data['tenant_id']
+    warehouse = db.session.query(Warehouse).filter(Warehouse.tenant_id==tenant_id).all()
+    result = []
+    if warehouse is not None:
+        for w in warehouse:
+            list_ware = to_dict(w)
+            result.append(list_ware)
+    return json(result)
 
 @app.route('/api/v1/warehouse/get-full', methods=["GET"])
 async def get_all_warehouse(request):

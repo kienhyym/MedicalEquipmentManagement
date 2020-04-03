@@ -18,6 +18,7 @@ import uuid
 def default_uuid():
     return str(uuid.uuid4())
 
+
 class Currency(CommonModel):
     __tablename__ = 'currency'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)

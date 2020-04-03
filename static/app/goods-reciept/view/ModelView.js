@@ -154,28 +154,29 @@ define(function (require) {
                 label: "Lưu",
                 command: function () {
                     var self = this;
-                    var id = self.getApp().getRouter().getParam("id");
-                    if (!self.validate()) {
-                        return;
-                    }
-                    var method = "update";
-                    if (!id) {
-                        var method = "create";
-                        var created_by_name = self.getApp().currentUser.fullname ? self.getApp().currentUser.fullname : self.getApp().currentUser.email;
-                        self.model.set("created_by_name", created_by_name);
-                        self.model.set("created_at", Helpers.utcToUtcTimestamp());
-                        var makeNo = Helpers.makeNoGoods(10, "PN0").toUpperCase();
-                        self.model.set("goodsreciept_no", makeNo);
-                        self.model.set("tenant_id", self.getApp().currentTenant);
-                        // saveLog(action, actor, object_type, object_no, workstation_id, workstation_name, items)
-                        self.getApp().saveLog("create", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                    }
-                    self.getApp().saveLog("update", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+                    console.log('xxx')
+                    // var id = self.getApp().getRouter().getParam("id");
+                    // if (!self.validate()) {
+                    //     return;
+                    // }
+                    // var method = "update";
+                    // if (!id) {
+                    //     var method = "create";
+                    //     var created_by_name = self.getApp().currentUser.fullname ? self.getApp().currentUser.fullname : self.getApp().currentUser.email;
+                    //     self.model.set("created_by_name", created_by_name);
+                    //     self.model.set("created_at", Helpers.utcToUtcTimestamp());
+                    //     var makeNo = Helpers.makeNoGoods(10, "PN0").toUpperCase();
+                    //     self.model.set("goodsreciept_no", makeNo);
+                    //     self.model.set("tenant_id", self.getApp().currentTenant);
+                    //     // saveLog(action, actor, object_type, object_no, workstation_id, workstation_name, items)
+                    //     self.getApp().saveLog("create", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+                    // }
+                    // self.getApp().saveLog("update", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
                     self.model.save({
                         success: function (model, respose, options) {
-                            if ($("body").hasClass("sidebar-icon-only")) {
-                                $("#btn-menu").trigger("click");
-                            }
+                            // if ($("body").hasClass("sidebar-icon-only")) {
+                            //     $("#btn-menu").trigger("click");
+                            // }
                             toastr.info('Lưu thông tin thành công');
                             self.getApp().getRouter().navigate(self.collectionName + "/collection");
 
@@ -397,7 +398,6 @@ define(function (require) {
             var totalItem = 0;
 
             if (details && Array.isArray(details)) {
-                // console.log(details.length  + 1);
                 totalItem += details.length;
                 details.forEach((item, index) => {
                     quantity += item.quantity;
@@ -409,9 +409,7 @@ define(function (require) {
             self.$el.find("#total_quantity").val(quantity);
             self.$el.find("#total_item").val(totalItem);
             self.model.set("net_amount", netAmount);
-
             self.caculateTaxPercent();
-
         },
 
         caculateTaxAmount: function () {
@@ -438,12 +436,12 @@ define(function (require) {
         loadCombox: function () {
             loader.show();
             var self = this;
+            var tenantID = self.getApp().currentTenant[0]
             $.ajax({
                 type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/warehouse/get",
+                url: self.getApp().serviceURL + "/api/v1/get_all_warehouse_by_tenant",
                 data: JSON.stringify({
-                    tenant_id: self.getApp().currentTenant,
-                    role_info: self.getApp().roleInfo
+                    tenant_id: tenantID,
                 }),
                 success: function (res) {
                     loader.hide();
@@ -460,9 +458,9 @@ define(function (require) {
 
             $.ajax({
                 type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/currency/get",
+                url: self.getApp().serviceURL + "/api/v1/get_all_curency",
                 data: JSON.stringify({
-                    tenant_id: self.getApp().currentTenant
+                    "tenant_id": tenantID
                 }),
                 success: function (res) {
                     loader.hide();
@@ -479,9 +477,9 @@ define(function (require) {
 
             $.ajax({
                 type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/organization/get",
+                url: self.getApp().serviceURL + "/api/v1/get_all_organization",
                 data: JSON.stringify({
-                    tenant_id: self.getApp().currentTenant
+                    tenant_id: tenantID
                 }),
                 success: function (res) {
                     loader.hide();
@@ -492,21 +490,41 @@ define(function (require) {
                             dataSource: res,
                             value: self.model.get("organization_id")
                         });
+                        self.$el.find("#organization").on('change.gonrin', function(e){
+                            self.$el.find(".nguoiDaiDien").html(`
+                                <label>Đại diện</label>
+                                <input type="text" class="form-control " id="contact">
+                            `)
+                            var organization_id = $(this).data('gonrin').getValue();
+                            $.ajax({
+                                type: "POST",
+                                url: self.getApp().serviceURL + "/api/v1/get_all_organizationstaff",
+                                data: JSON.stringify(organization_id),
+                                success: function (res) {
+                                    loader.hide();
+                                    if (res) {
+                                        self.$el.find("#contact").combobox({
+                                            textField: "name",
+                                            valueField: "id",
+                                            dataSource: res,
+                                            // value: self.model.get("contact_id")
+                                        });
+                                    }
+                                }
+                            })
+                        });
                     }
                 }
             })
-
             $.ajax({
                 type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/contact/get",
-                data: JSON.stringify({
-                    tenant_id: self.getApp().currentTenant
-                }),
+                url: self.getApp().serviceURL + "/api/v1/get_all_organizationstaff",
+                data: JSON.stringify(self.model.get("organization_id")),
                 success: function (res) {
                     loader.hide();
                     if (res) {
                         self.$el.find("#contact").combobox({
-                            textField: "contact_name",
+                            textField: "name",
                             valueField: "id",
                             dataSource: res,
                             value: self.model.get("contact_id")
@@ -514,6 +532,8 @@ define(function (require) {
                     }
                 }
             })
+
+            
 
             self.$el.find("#contact").on("change.gonrin", function (event) {
                 self.model.set("contact_id", self.$el.find("#contact").data("gonrin").getValue());

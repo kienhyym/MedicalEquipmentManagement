@@ -281,6 +281,28 @@ define(function (require) {
 			"route": "warehouse/model(/:id)",
 			"$ref": "app/warehouse/view/ModelView",
 		},
+
+		{
+			"collectionName": "currency",
+			"route": "currency/collection",
+			"$ref": "app/currency/view/CollectionView",
+		},
+		{
+			"collectionName": "currency",
+			"route": "currency/model(/:id)",
+			"$ref": "app/currency/view/ModelView",
+		},
+
+		{
+			"collectionName": "organization",
+			"route": "organization/collection",
+			"$ref": "app/organization/view/CollectionView",
+		},
+		{
+			"collectionName": "organization",
+			"route": "organization/model(/:id)",
+			"$ref": "app/organization/view/ModelView",
+		},
 	];
 
 });

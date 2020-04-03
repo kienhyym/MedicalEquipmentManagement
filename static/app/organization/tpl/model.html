@@ -51,7 +51,7 @@
 		<div class="col-lg-4 col-md-4 col-sm-6 col-12 float-left" style="margin-bottom: 5px">
 			<label>Số nhân viên</label>
 			<div>
-				<input class="form-control" type="text" data-bind="value:employees" />
+				<input class="form-control" type="text"/>
 			</div>
 		</div>
 	</div>
@@ -137,15 +137,26 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="col-md-12 text-left">
+		<label>Danh sách nhân viên</label>
+		</div>
+		<div class="col-md-12">
+			<table  class="table border table-bordered">
+				<tr>
+					<td style="width: 10%;" class="p-2">STT</td>
+					<td style="width: 10%;"class="p-2">Tên nhân viên</td>
+					<td style="width: 40%;" class="p-2">Vai trò</td>
+					<td style="width: 10%;" class="p-2">Xóa</td>
 
-			<!-- <div class="col-lg-4 col-md-4 col-4 float-right" style="padding: 0px; margin-bottom: 10px;">
-				<div class="col-md-12" style="padding: 0px">
-					<div>Quốc gia</div>
-					<div>
-						<input class="form-control" data-bind="value:ship_address_country"></input>
-					</div>
-				</div>
-			</div> -->
+				</tr>
+				<tbody id="nhanvien"></tbody>
+				<tr>
+					<td colspan="4" class="p-0"><button id="themnhanvien" class="btn btn-light btn-sm w-100 btn-them p-2">+ Thêm nhân viên</button></td>
+				</tr>
+			</table>
+				
+				
 		</div>
 	</div>
 </div>

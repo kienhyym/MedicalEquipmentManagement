@@ -90,7 +90,7 @@ require(['jquery',
 			postLogin: function (data) {
 				var self = this;
 				loader.show();
-
+				self.currentTenant = data.current_tenant_id;
 				self.currentUser = new Gonrin.User(data);
 				var tpl = gonrin.template(layout)({});
 				$('.content-contain').html(tpl);
