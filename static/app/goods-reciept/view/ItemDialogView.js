@@ -38,7 +38,7 @@ define(function (require) {
                 method: "POST",
                 url: self.getApp().serviceURL + "/api/v1/item/get",
                 data: {
-                    tenant_id: self.getApp().currentTenant
+                    tenant_id: self.getApp().currentTenant[0]
                 }
             }).then(response => {
                 if (response.data) {

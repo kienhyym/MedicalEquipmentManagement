@@ -30,8 +30,8 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "goodsreciept",
-        changeDetails: [],
-
+        // changeDetails: [],
+        selectItemList: [],
         refresh: true,
         uiControl: {
             fields: [
@@ -154,7 +154,6 @@ define(function (require) {
                 label: "Lưu",
                 command: function () {
                     var self = this;
-                    console.log('xxx')
                     // var id = self.getApp().getRouter().getParam("id");
                     // if (!self.validate()) {
                     //     return;
@@ -283,10 +282,8 @@ define(function (require) {
                         // size: "large"
                     });
                     paymentView.on("close", function (e) {
-                        // console.log(e);
                         self.model.set("payment_status", "paid");
                         self.model.set("payment_no", e.payment_no);
-                        // console.log(e.payment_no);
                         self.getApp().saveLog("paid", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
                         self.$el.find(".save").trigger("click");
                     });
@@ -299,13 +296,14 @@ define(function (require) {
 
         render: function () {
             var self = this;
+            localStorage.removeItem("listItem");
             if (!$("body").hasClass("sidebar-icon-only")) {
                 $("#btn-menu").trigger("click");
             }
             if (self.getApp().platforms == "ANDROID" || self.getApp().platforms == "IOS") {
                 self.$el.find("#print").remove();
             }
-            self.changeDetails = [];
+            // self.changeDetails = [];
             var id = this.getApp().getRouter().getParam("id");
             if (id) {
                 this.model.set('id', id);
@@ -328,12 +326,11 @@ define(function (require) {
         registerEvent: function () {
             var self = this;
 
-            self.changeDetails = self.model.get("details");
+            // self.changeDetails = self.model.get("details");
             self.loadCombox();
             self.toggleEvent();
-            self.showListItem();
-            self.bindPaymentStatus();
-            self.printScreen();
+            self.ShowListItem();
+            // self.printScreen();
 
             if (self.model.get("payment_status") == "confirm" || self.model.get("payment_status") == "done") {
                 self.$el.find(".save").addClass("hide");
@@ -351,7 +348,6 @@ define(function (require) {
                 toastr.success("Copied success");
             });
 
-            // console.log(self.model.toJSON())
             self.calculateItemAmounts();
             self.model.on("change:details", function () {
                 self.calculateItemAmounts();
@@ -490,7 +486,7 @@ define(function (require) {
                             dataSource: res,
                             value: self.model.get("organization_id")
                         });
-                        self.$el.find("#organization").on('change.gonrin', function(e){
+                        self.$el.find("#organization").on('change.gonrin', function (e) {
                             self.$el.find(".nguoiDaiDien").html(`
                                 <label>Đại diện</label>
                                 <input type="text" class="form-control " id="contact">
@@ -507,11 +503,14 @@ define(function (require) {
                                             textField: "name",
                                             valueField: "id",
                                             dataSource: res,
-                                            // value: self.model.get("contact_id")
                                         });
                                     }
                                 }
                             })
+                            self.$el.find("#contact").on("change.gonrin", function (event) {
+                                self.model.set("contact_id", self.$el.find("#contact").data("gonrin").getValue());
+                                self.model.set("contact_name", self.$el.find("#contact").data("gonrin").getText());
+                            });
                         });
                     }
                 }
@@ -532,13 +531,6 @@ define(function (require) {
                     }
                 }
             })
-
-            
-
-            self.$el.find("#contact").on("change.gonrin", function (event) {
-                self.model.set("contact_id", self.$el.find("#contact").data("gonrin").getValue());
-                self.model.set("contact_name", self.$el.find("#contact").data("gonrin").getText());
-            });
 
             self.$el.find("#organization").on("change.gonrin", function (event) {
                 self.model.set("organization_id", self.$el.find("#organization").data("gonrin").getValue());
@@ -575,82 +567,264 @@ define(function (require) {
             return true;
         },
 
-        showListItem: function () {
+
+        // ############################CHỨC NĂNG CHỌN ITEM ##########################################################
+        ShowListItem: function () {
             var self = this;
-
-            self.$el.find("#show-list-item").unbind("click").bind("click", function () {
-                var details = clone(self.model.get('details'));
-                var detailNos = [];
-                details.forEach(item => {
-                    detailNos.push(item.item_no);
-                });
-
-                var itemDialogView = new ItemDialogView({
-                    viewData: {
-                        detailNos: detailNos,
-                        warehouseID: self.model.get("warehouse_id")
-                    }
-                });
-                itemDialogView.dialog({
-                    size: "large"
-                });
-                itemDialogView.on("close", function (event) {
-                    var availableItems = self.model.get('details');
-                    var selectedItems = event && Array.isArray(event) ? event : [];
-                    var data = availableItems.concat(selectedItems);
-                    self.renderModelItem(data);
-                    self.model.set('details', data);
-                    // self.changeDetails = clone(data);
+            self.$el.find('#show-list-item').unbind('click').bind('click', function () {
+                self.pagination(null);
+                self.inputSearch();
+                self.$el.find('.chose-item').show()
+                self.$el.find('.btn-quaylai').unbind('click').bind('click', function () {
+                    self.$el.find('.chose-item').hide()
                 })
-            });
-        },
+            })
 
-        renderModelItem: function (details) {
+
+
+        },
+        htmlShowItem: function (page_number, text) {
             var self = this;
-            // console.log(self.changeDetails);
-            var bodyItemEL = $("#body-items");
-            bodyItemEL.empty();
-
-            details.forEach(item => {
-                var itemView = new ItemView();
-                itemView.model.set(clone(item));
-                itemView.render();
-                bodyItemEL.append(itemView.el);
-
-                itemView.on("onRemove", function (event) {
-                    var onRemove = clone(self.model.get("details"));
-                    onRemove.forEach((item, idx) => {
-                        if (item.item_no == event.item_no) {
-                            onRemove.splice(idx, 1);
-                        }
-                    });
-                    self.model.set("details", onRemove);
-                });
-
-                itemView.model.on("change", function (event) {
-                    if (item.item_no === event.attributes.item_no) {
-                        itemView.model.set(event.attributes);
+            $.ajax({
+                url: self.getApp().serviceURL + "/api/v1/get_data_medicalequipment",
+                method: "POST",
+                data: JSON.stringify({ "page_number": page_number, "text": text }),
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.length != 0) {
+                        data.forEach(function (item, index) {
+                            self.$el.find('.trang-thiet-bi-y-te').append(`
+                            <div class="col-4 col-md-2 p-1 item-show" item-id="${item.id}" >
+                                <div class="text-center">
+                                    <div title="${item.name}" style="margin-left: auto; margin-right: auto; left: 0px; right: 0px;width: 90px;height:170px;position: relative;">
+                                        <input class="item-checkbox" item-id="${item.id}" type="checkbox" style="position: absolute; top: 0px; left: 0px;width:90px;height: 90px;opacity:0">
+                                        <img src="static/img/user.png" style="width:90px;height: 90px;">
+                                        <label class="item-chose" style="position: absolute;top:70px;right:3px;display:none"><i class="fa fa-check-square-o text-success" aria-hidden="true"></i></label>
+                                        <label class="item-not-chose"  style="position: absolute;top:70px;right:3px"><i class="fa fa-square-o" aria-hidden="true"></i></label>
+                                        <label class="item-name" purchase-cost=${item.purchase_cost}  style="font-size: 10px;width:100%;overflow: hidden;text-overflow: ellipsis;line-height: 20px;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;">${item.name}</label>
+                                        </div>
+                                </div>
+                            </div>
+                            `).fadeIn()
+                        })
+                        self.choseItem();
+                        self.showSelectedItem()
                     }
-                    var isExist = false;
-
-                    // console.log(event)
-                    self.changeDetails.forEach((param, idx) => {
-                        if (param.item_no == event.attributes.item_no) {
-                            // self.changeDetails.splice(idx, 1);
-                            isExist = true;
-                        }
-                    });
-                    if (!isExist) {
-                        self.changeDetails.push(event.attributes);
-                    }
-
-                    console.log(self.changeDetails);
-
-                    self.model.set('details', self.changeDetails);
-                    self.calculateItemAmounts();
-                });
-            });
+                }
+            })
         },
+        inputSearch: function () {
+            var self = this;
+            self.$el.find("#input-search").keyup(function (e) {
+                // xhr.abort()
+                var text = $(this).val();
+                self.pagination(text);
+            })
+
+        },
+        choseItem: function () {
+            var self = this;
+            var selectItemList = self.selectItemList;
+            self.$el.find('.item-checkbox').change(function (event) {
+                var checkBox = $(this);
+                var itemID = checkBox.attr('item-id');
+                var itemName = checkBox.siblings('.item-name').text()
+                var itemPurchaseCost = checkBox.siblings('.item-name').attr('purchase-cost')
+
+                if (event.target.checked) {
+                    selectItemList.push({ "item_id": itemID, "item_name": itemName, "purchase_cost": itemPurchaseCost })
+                    checkBox.siblings('.item-chose').show();
+                    checkBox.siblings('.item-not-chose').hide();
+                    localStorage.setItem("listItem", JSON.stringify(selectItemList))
+                }
+                else {
+                    checkBox.siblings('.item-chose').hide();
+                    checkBox.siblings('.item-not-chose').show();
+                    selectItemList.forEach(function (item, index) {
+                        if (item.item_id === itemID) {
+                            selectItemList.splice(index, 1);
+                        }
+                    })
+                    localStorage.setItem("listItem", JSON.stringify(selectItemList))
+                }
+                self.showSelectedItem()
+
+            })
+        },
+        showSelectedItem: function () {
+            var self = this;
+            var listSelectedItems = JSON.parse(localStorage.getItem("listItem"))
+            if (listSelectedItems != undefined && listSelectedItems != null) {
+                listSelectedItems.forEach(function (item, index) {
+                    var itemCheckBox = self.$el.find('.item-checkbox[item-id = ' + item.item_id + ']')
+                    if (itemCheckBox.attr('item-id') == item.item_id) {
+                        itemCheckBox.prop("checked", true);
+                        itemCheckBox.siblings('.item-chose').show();
+                        itemCheckBox.siblings('.item-not-chose').hide();
+                    }
+                })
+                self.$el.find('.btn-hoantat').unbind('click').bind('click', function () {
+                    self.$el.find('.chose-item').hide()
+                    self.$el.find('.body-item').remove()
+                    self.htmlShowSelectedItem(listSelectedItems);
+                })
+            }
+        },
+        htmlShowSelectedItem: function (listSelectedItems) {
+            var self = this;
+            if (listSelectedItems) {
+                listSelectedItems.forEach(function (item, index) {
+                    self.$el.find('#body-items').append(`
+                    <tr class="body-item">
+                    <td id="item_name">
+                    ${item.item_name}
+                    </td>
+                    <td style="text-align: left;">
+                        <input type="text" class="form-control" value="${item.purchase_cost}" />
+                    </td>
+                    <td><input type="text" class="form-control" data-bind="value:quantity" /></td>
+                    <td style="width: 160px"><input type="text" class="form-control" data-bind="value:net_amount" readonly /></td>
+                    <td style="width: 50px; line-height: 34px; margin-top: 20px" >
+                        <div id="itemRemove">
+                            <i class="fa fa-trash" style="font-size: 17px"></i>
+                        </div>
+                    </td>
+                    </tr>
+                `)
+                })
+
+            }
+
+        },
+        pagination: function (text) {
+            var self = this;
+            $.ajax({
+                type: "POST",
+                url: self.getApp().serviceURL + '/api/v1/length_data',
+                data: JSON.stringify(12),
+                success: function (response) {
+                    var lengthAllData = Math.ceil(response);
+                    self.$el.find('.page-max').find('a').text(lengthAllData);
+                    self.$el.find('.page-max,.page-3dot-max,.page-3dot-min,.page-min').hide()
+                    if (lengthAllData > 4) {
+                        self.$el.find('.page-3dot-max').show()
+                    }
+                    if (lengthAllData >= 6) {
+                        self.$el.find('.page-max').show()
+                    }
+                    self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
+                    self.htmlShowItem(0, text)
+                    var page = self.$el.find('.page-number')
+
+
+
+                    page.unbind('click').bind('click', function () {
+                        self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
+                        self.$el.find('.page-number').removeClass('active')
+                        $(this).addClass('active')
+                        var pageCurrent = Number($(this).find('a').text());
+                        var pageFirst = Number($(page[1]).find('a').text());
+                        var pageEnd = Number($(page[4]).find('a').text());
+
+                        if (pageCurrent - pageFirst == 3) {
+                            if (pageCurrent < lengthAllData) {
+                                self.$el.find('.page-number').removeClass('active')
+                                $(page[3]).addClass('active')
+                                $(page[1]).find('a').html(pageCurrent - 2)
+                                $(page[2]).find('a').html(pageCurrent - 1)
+                                $(page[3]).find('a').html(pageCurrent)
+                                $(page[4]).find('a').html(pageCurrent + 1)
+                                pageFirst = Number($(page[1]).find('a').text());
+                                pageEnd = Number($(page[4]).find('a').text());
+                            }
+                            if (pageCurrent == lengthAllData || lengthAllData - pageCurrent == 1) {
+                                self.$el.find('.page-3dot-max').hide()
+                            }
+                        }
+                        if (pageEnd - pageCurrent == 3) {
+                            if (pageCurrent == 1) {
+                                self.$el.find('.page-number').removeClass('active')
+                                $(page[1]).addClass('active')
+                                $(page[1]).find('a').html(pageCurrent)
+                                $(page[2]).find('a').html(pageCurrent + 1)
+                                $(page[3]).find('a').html(pageCurrent + 2)
+                                $(page[4]).find('a').html(pageCurrent + 3)
+                                pageFirst = Number($(page[1]).find('a').text());
+                                pageEnd = Number($(page[4]).find('a').text());
+
+                            }
+                            if (pageCurrent > 1) {
+                                self.$el.find('.page-number').removeClass('active')
+                                $(page[2]).addClass('active')
+                                $(page[1]).find('a').html(pageCurrent - 1)
+                                $(page[2]).find('a').html(pageCurrent)
+                                $(page[3]).find('a').html(pageCurrent + 1)
+                                $(page[4]).find('a').html(pageCurrent + 2)
+                                pageFirst = Number($(page[1]).find('a').text());
+                                pageEnd = Number($(page[4]).find('a').text());
+                            }
+                            if (pageCurrent <= 2) {
+                                self.$el.find('.page-3dot-min').hide()
+                            }
+
+                        }
+                        if (lengthAllData - pageEnd >= 1) {
+                            self.$el.find('.page-3dot-max').show()
+                        }
+                        if (lengthAllData - pageEnd < 2) {
+                            self.$el.find('.page-3dot-max').hide()
+                        }
+                        else {
+                            self.$el.find('.page-3dot-max').show()
+                        }
+                        if (lengthAllData - pageEnd < 1) {
+                            self.$el.find('.page-max').hide()
+                        }
+                        else {
+                            self.$el.find('.page-max').show()
+                        }
+                        if (pageFirst > 1) {
+                            self.$el.find('.page-3dot-min').show()
+                        }
+                        if (pageFirst > 2) {
+                            self.$el.find('.page-min').show()
+                        }
+                        else {
+                            self.$el.find('.page-min').hide()
+                        }
+                        self.htmlShowItem(pageCurrent - 1, text);
+
+                    })
+                    self.$el.find('.page-min').unbind('click').bind('click', function () {
+                        self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
+                        self.$el.find('.page-number').removeClass('active')
+                        $(page[1]).addClass('active')
+                        $(page[1]).find('a').html(1)
+                        $(page[2]).find('a').html(2)
+                        $(page[3]).find('a').html(3)
+                        $(page[4]).find('a').html(4)
+                        self.$el.find('.page-min,.page-3dot-min').hide()
+                        self.$el.find('.page-max,.page-3dot-max').show()
+                        self.htmlShowItem(0, text);
+                    })
+                    self.$el.find('.page-max').unbind('click').bind('click', function () {
+                        self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
+                        self.$el.find('.page-number').removeClass('active')
+                        $(page[4]).addClass('active')
+                        $(page[1]).find('a').html(lengthAllData - 3)
+                        $(page[2]).find('a').html(lengthAllData - 2)
+                        $(page[3]).find('a').html(lengthAllData - 1)
+                        $(page[4]).find('a').html(lengthAllData)
+                        self.$el.find('.page-min,.page-3dot-min').show()
+                        self.$el.find('.page-max,.page-3dot-max').hide()
+                        self.htmlShowItem(lengthAllData - 1, text);
+                    })
+                }
+            });
+
+        },
+        // ############################ HẾT CHỨC NĂNG CHỌN ITEM ##########################################################
+
 
         bindPaymentStatus: function () {
             var self = this;

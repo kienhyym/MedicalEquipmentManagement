@@ -69,7 +69,7 @@ define(function (require) {
 				method: "POST",
 				url: self.getApp().serviceURL + url,
 				data: {
-					tenant_id: self.getApp().currentTenant
+					tenant_id: self.getApp().currentTenant[0]
 				}
 			}).then(response => {
 				// console.log(response.data);

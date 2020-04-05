@@ -13,6 +13,9 @@ def init_controllers(app):
     import application.controllers.warehouse
     import application.controllers.notify_inventory
     import application.controllers.currency
+    import application.controllers.consumablesupplies
+    import application.controllers.goodsreciept
+
 
 
     @app.route('/')

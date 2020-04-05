@@ -36,31 +36,9 @@ from sqlalchemy import or_, and_, desc
 # from application.components.activitylog.model import ActivityLog
 from application.controllers.helper import current_user
 
-@app.route("/api/v1/category/get")
-async def get_category(request):
-    # uid = await current_user(request)
-    tenant_id = await get_tennat_id(request)
-    category = db.session.query(ItemCategory).filter(ItemCategory.tenant_id==tenant_id).all()
-    if category is not None:
-        result = []
-        for _ in category:
-            list_ = to_dict(_)
-            result.append(list_)
-
-        return json(result)
 
 
-@app.route("/api/v1/item/get", methods=["POST"])
-async def get_all_item(request):
-    data = request.json
-    tenant_id = data.get("tenant_id", None)
-    item = db.session.query(Item).filter(and_(Item.tenant_id==tenant_id), Item.deleted==False).all()
-    result = []
-    if item is not None:
-        for _ in item:
-            items = to_dict(_)
-            result.append(items)
-    return json(result)
+
 
 
 @app.route("/api/v1/item/sync/account", methods=["OPTIONS", "POST"])
@@ -106,6 +84,7 @@ async def sync_item(request):
                     "ok": True,
                     "message": "CREATE " + data["object"].upper() + " SUCCESS"
                 })
+
 @app.route("/api/v1/activitylog/save", methods=["POST"])
 def save_log(request):
     data = request.json
@@ -141,40 +120,7 @@ def save_log(request):
     })
 
 
-sqlapimanager.create_api(ItemCategory, max_results_per_page=1000000,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='itemcategory')
 
-
-sqlapimanager.create_api(PriceList, max_results_per_page=1000000,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='pricelist')
-
-
-# sqlapimanager.create_api(Currency, max_results_per_page=1000000,
-#     methods=['GET', 'POST', 'DELETE', 'PUT'],
-#     url_prefix='/api/v1',
-#     # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-#     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-#     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-#     collection_name='currency')
-
-
-sqlapimanager.create_api(Item, max_results_per_page=1000000,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='item')
 
 sqlapimanager.create_api(Unit, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
@@ -183,8 +129,6 @@ sqlapimanager.create_api(Unit, max_results_per_page=1000000,
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='unit')
-
-
 
 sqlapimanager.create_api(PurchaseOrder, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
@@ -203,21 +147,6 @@ sqlapimanager.create_api(PurchaseOrderDetails, max_results_per_page=1000000,
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='purchaseorderdetails')
 
-sqlapimanager.create_api(GoodsReciept, max_results_per_page=1000000,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='goodsreciept')
-
-sqlapimanager.create_api(GoodsRecieptDetails, max_results_per_page=1000000,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='goodsrecieptdetails')
 
 sqlapimanager.create_api(Contact, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],

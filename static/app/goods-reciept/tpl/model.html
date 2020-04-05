@@ -1,9 +1,44 @@
-<div class="card" block-bind="content">
+
+<div class="card" block-bind="content" style="position: relative;">
+    <div class="card m-3 chose-item" style="position: fixed;z-index: 1;display: none">
+        <div class="card-body">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="d-flex justify-content-between">
+                    <label class="m-0">Danh sách trang thiết bị</label>
+                    <div class="row">
+                        <button class="btn btn-secondary p-1 btn-quaylai">Quay lại</button>
+                        <button class="btn btn-success p-1 btn-hoantat">Hoàn tất</button>
+                    </div>
+                </div>
+                <div>
+                    <input type="text" class="col-lg-12 col-md-12 col-sm-12 col-12 form-control m-2" id="input-search" placeholder="nhập tên thiết bị để tìm kiếm ..">
+                </div>
+    
+                <div class="trang-thiet-bi-y-te row" >
+                </div>
+                <div class="row text-right d-flex justify-content-end">
+                    <ul class="pagination">
+                        <li class="page-item page-number page-min"><a class="page-link" style="cursor: pointer">1</a></li>
+                        <li class="page-item page-3dot-min"><a class="page-link" style="cursor: pointer">...</a></li>
+    
+                        <li class="page-item page-number active"><a class="page-link" style="cursor: pointer">1</a></li>
+                        <li class="page-item page-number"><a class="page-link" style="cursor: pointer">2</a></li>
+                        <li class="page-item page-number"><a class="page-link" style="cursor: pointer">3</a></li>
+                        <li class="page-item page-number"><a class="page-link" style="cursor: pointer">4</a></li>
+    
+                        <li class="page-item page-3dot-max"><a class="page-link" style="cursor: pointer">...</a></li>
+                        <li class="page-item page-number page-max"><a class="page-link" style="cursor: pointer">0</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="toolbar" block-bind="toolbar" style="margin: 15px" style="position: relative">
         <button class="btn btn-sm btn-primary" id="print" style="position: absolute; right: 10px"><i
                 class="icon-download"></i></button>
     </div>
-    <div class="row" style="margin-top: 7px">
+
+    <div class="row body-view" style="margin-top: 7px">
         <div class="col-md-8 col-lg-8 col-sm-6 col-12">
             <div class="card">
                 <div class="card-body">
@@ -57,7 +92,8 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 nguoiDaiDien">
                             <label>Đại diện</label>
-                            <input type="text" class="form-control" placeholder="Chọn công ty để chọn người đại diện" id="contact">
+                            <input type="text" class="form-control" placeholder="Chọn công ty để chọn người đại diện"
+                                id="contact">
                         </div>
                     </div>
                 </div>
@@ -103,12 +139,12 @@
                 <table class="table table-responsive" style="height: 500px; overflow: auto; width: 100%;">
                     <thead>
                         <tr>
-                            <td style="min-width: 250px;" id="show-list-item"><i class="icon-search"
-                                    style="font-size: 15px; color: #666"></i>Hàng hóa</td>
-                            <td style="min-width: 150px">Loại</td>
-                            <td style="min-width: 150px">Giá mua</td>
-                            <td style="min-width: 120px">SL</td>
-                            <td style="min-width: 150px; text-align: right;">Thành tiền</td>
+                            <td style="min-width: 350px;" id="show-list-item"><i class="fa fa-search"
+                                    style="font-size: 17px; color: #666"></i>&nbsp;Hàng hóa</td>
+                            <!-- <td style="min-width: 150px">Loại</td> -->
+                            <td style="min-width: 150px;text-align: center;">Giá mua</td>
+                            <td style="min-width: 120px;text-align: center;">Số lượng</td>
+                            <td style="min-width: 150px; text-align: center;">Thành tiền</td>
                         </tr>
                     </thead>
                     <tbody id="body-items" data-bind="list:details"></tbody>

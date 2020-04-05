@@ -16,7 +16,6 @@ define(function (require) {
 		render: function () {
 			this.applyBindings();
 			this.locData();
-
 			return this;
 		},
 		locData: function () {

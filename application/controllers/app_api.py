@@ -222,3 +222,4 @@ async def get_data_medical(request):
             obj['stt'] = i+1
             arr.append(obj)
         return json(arr)
+
