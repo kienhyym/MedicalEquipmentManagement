@@ -32,6 +32,7 @@ define(function (require) {
         collectionName: "goodsreciept",
         // changeDetails: [],
         selectItemList: [],
+        listItemRemove: [],
         refresh: true,
         uiControl: {
             fields: [
@@ -129,169 +130,201 @@ define(function (require) {
                 },
             ]
         },
-
-        tools: [{
-            name: "defaultgr",
-            type: "group",
-            groupClass: "toolbar-group",
-            buttons: [{
-                name: "back",
-                type: "button",
-                buttonClass: "btn btn-secondary btn-sm",
-                label: "Quay lại",
-                command: function () {
-                    var self = this;
-                    if ($("body").hasClass("sidebar-icon-only")) {
-                        $("#btn-menu").trigger("click");
-                    }
-                    Backbone.history.history.back();
-                }
-            },
+        tools: [
             {
-                name: "save",
-                type: "button",
-                buttonClass: "btn-primary btn btn-sm save",
-                label: "Lưu",
-                command: function () {
-                    var self = this;
-                    // var id = self.getApp().getRouter().getParam("id");
-                    // if (!self.validate()) {
-                    //     return;
-                    // }
-                    // var method = "update";
-                    // if (!id) {
-                    //     var method = "create";
-                    //     var created_by_name = self.getApp().currentUser.fullname ? self.getApp().currentUser.fullname : self.getApp().currentUser.email;
-                    //     self.model.set("created_by_name", created_by_name);
-                    //     self.model.set("created_at", Helpers.utcToUtcTimestamp());
-                    //     var makeNo = Helpers.makeNoGoods(10, "PN0").toUpperCase();
-                    //     self.model.set("goodsreciept_no", makeNo);
-                    //     self.model.set("tenant_id", self.getApp().currentTenant);
-                    //     // saveLog(action, actor, object_type, object_no, workstation_id, workstation_name, items)
-                    //     self.getApp().saveLog("create", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                    // }
-                    // self.getApp().saveLog("update", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                    self.model.save({
-                        success: function (model, respose, options) {
-                            // if ($("body").hasClass("sidebar-icon-only")) {
-                            //     $("#btn-menu").trigger("click");
-                            // }
-                            toastr.info('Lưu thông tin thành công');
-                            self.getApp().getRouter().navigate(self.collectionName + "/collection");
-
-                        },
-                        error: function (model, xhr, options) {
-                            toastr.error('Đã có lỗi xảy ra');
-
+                name: "defaultgr",
+                type: "group",
+                groupClass: "toolbar-group",
+                buttons: [
+                    {
+                        name: "back",
+                        type: "button",
+                        buttonClass: "btn-default btn-sm btn-secondary",
+                        label: "TRANSLATE:Quay lại",
+                        command: function () {
+                            var self = this;
+                            Backbone.history.history.back();
                         }
-                    });
-                }
-            },
-            {
-                name: "delete",
-                type: "button",
-                buttonClass: "btn btn-danger btn-sm btn-delete hide",
-                label: "Xóa",
-                visible: function () {
-                    return this.getApp().getRouter().getParam("id") !== null;
-                },
-                command: function () {
-                    var self = this;
-                    $.jAlert({
-                        'title': 'Bạn có chắc muốn xóa?',
-                        'content': '<button class="btn btn-sm btn-danger" id="yes">Có!</button><button class="btn btn-sm btn-light" id="no">Không</button>',
-                        'theme': 'red',
-                        'onOpen': function ($el) {
+                    },
+                    {
+                        name: "save",
+                        type: "button",
+                        buttonClass: "btn-success btn-sm",
+                        label: "TRANSLATE:Lưu",
+                        command: function () {
+                            var self = this;
 
-                            $el.find("#yes").on("click", function () {
-                                self.model.set("deleted", true);
-                                self.getApp().saveLog("delete", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                                self.model.save(null, {
-                                    success: function (model, respose, options) {
-                                        $el.closeAlert();
-                                        if ($("body").hasClass("sidebar-icon-only")) {
-                                            $("#btn-menu").trigger("click");
+                            self.model.save(null, {
+                                success: function (model, respose, options) {
+                                    self.createItem(respose.id);
+                                    self.updateItem();
+                                    self.deleteItem();
+                                    self.getApp().notify("Lưu thông tin thành công");
+                                    self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                                },
+                                error: function (xhr, status, error) {
+                                    try {
+                                        if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+                                            self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+                                            self.getApp().getRouter().navigate("login");
+                                        } else {
+                                            self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
                                         }
-                                        toastr.error('Xóa dữ liệu thành công');
-                                        self.getApp().getRouter().navigate(self.collectionName + "/collection");
-
-                                    },
-                                    error: function (model, xhr, options) {
-                                        toastr.error('Lưu thông tin không thành công!');
-
                                     }
-                                });
+                                    catch (err) {
+                                        self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+                                    }
+                                }
                             });
-                            $el.find("#no").on("click", function () {
-                                $el.closeAlert();
-                            })
-                        }
-                    });
-                }
-            },
 
-            {
-                name: "confirm",
-                type: "button",
-                buttonClass: "btn btn-warning btn-sm btn-confirm hide",
-                label: "Duyệt yêu cầu",
-                visible: function () {
-                    return this.getApp().getRouter().getParam("id") !== null;
-                },
-                command: function () {
-                    loader.show();
-                    var self = this;
-                    var warehouseID = self.model.get("warehouse_id");
-                    var items = self.model.get("details");
-                    $.ajax({
-                        method: "POST",
-                        url: self.getApp().serviceURL + "/api/v1/warehouse/add-item",
-                        data: JSON.stringify({
-                            warehouse_id: warehouseID,
-                            items: items,
-                            user_id: self.getApp().currentUser.id
-                        }),
-                        success: function (response) {
-                            if (response) {
-                                self.model.set("payment_status", "confirm");
-                                self.getApp().saveLog("confirm", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                                self.$el.find(".save").trigger("click");
-                            }
-                            loader.hide();
-                        },
-                        error: function () {
-                            loader.hide();
-                        }
-                    })
-                }
-            },
-            {
-                name: "bill",
-                type: "button",
-                buttonClass: "btn-primary btn btn-sm btn-paid hide",
-                label: "Thanh toán",
-                visible: function () {
-                    return this.getApp().getRouter().getParam("id") !== null;
-                },
-                command: function () {
-                    var self = this;
-                    var paymentView = new PaymentView({
-                        "viewData": self.model.toJSON()
-                    });
-                    paymentView.dialog({
-                        // size: "large"
-                    });
-                    paymentView.on("close", function (e) {
-                        self.model.set("payment_status", "paid");
-                        self.model.set("payment_no", e.payment_no);
-                        self.getApp().saveLog("paid", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                        self.$el.find(".save").trigger("click");
-                    });
 
-                }
-            },
-            ],
-        }],
+                        }
+                    },
+                ],
+            }],
+        // tools: [{
+        //     name: "defaultgr",
+        //     type: "group",
+        //     groupClass: "toolbar-group",
+        //     buttons: [{
+        //         name: "back",
+        //         type: "button",
+        //         buttonClass: "btn btn-secondary btn-sm",
+        //         label: "Quay lại",
+        //         command: function () {
+        //             var self = this;
+        //             if ($("body").hasClass("sidebar-icon-only")) {
+        //                 $("#btn-menu").trigger("click");
+        //             }
+        //             Backbone.history.history.back();
+        //         }
+        //     },
+        //     {
+        //         name: "save",
+        //         type: "button",
+        //         buttonClass: "btn-primary btn btn-sm",
+        //         label: "Lưu",
+        //         command: function () {
+        //             var self = this;
+
+        //             self.model.save({
+        //                 success: function (model, respose, options) {
+        //                     console.log(respose.id)
+        //                     self.createItem(respose.id);
+        //                     toastr.info('Lưu thông tin thành công');
+        //                     self.getApp().getRouter().navigate(self.collectionName + "/collection");
+        //                 },
+        //                 error: function (model, xhr, options) {
+        //                     toastr.error('Đã có lỗi xảy ra');
+
+        //                 }
+        //             });
+        //         }
+        //     },
+        //     {
+        //         name: "delete",
+        //         type: "button",
+        //         buttonClass: "btn btn-danger btn-sm btn-delete hide",
+        //         label: "Xóa",
+        //         visible: function () {
+        //             return this.getApp().getRouter().getParam("id") !== null;
+        //         },
+        //         command: function () {
+        //             var self = this;
+        //             // $.jAlert({
+        //             //     'title': 'Bạn có chắc muốn xóa?',
+        //             //     'content': '<button class="btn btn-sm btn-danger" id="yes">Có!</button><button class="btn btn-sm btn-light" id="no">Không</button>',
+        //             //     'theme': 'red',
+        //             //     'onOpen': function ($el) {
+        //             //         $el.find("#yes").on("click", function () {
+        //             //             self.model.set("deleted", true);
+        //             //             self.getApp().saveLog("delete", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+        //             //             self.model.save(null, {
+        //             //                 success: function (model, respose, options) {
+        //             //                     $el.closeAlert();
+        //             //                     if ($("body").hasClass("sidebar-icon-only")) {
+        //             //                         $("#btn-menu").trigger("click");
+        //             //                     }
+        //             //                     toastr.error('Xóa dữ liệu thành công');
+        //             //                     self.getApp().getRouter().navigate(self.collectionName + "/collection");
+
+        //             //                 },
+        //             //                 error: function (model, xhr, options) {
+        //             //                     toastr.error('Lưu thông tin không thành công!');
+
+        //             //                 }
+        //             //             });
+        //             //         });
+        //             //         $el.find("#no").on("click", function () {
+        //             //             $el.closeAlert();
+        //             //         })
+        //             //     }
+        //             // });
+        //         }
+        //     },
+
+        //     {
+        //         name: "confirm",
+        //         type: "button",
+        //         buttonClass: "btn btn-warning btn-sm btn-confirm hide",
+        //         label: "Duyệt yêu cầu",
+        //         visible: function () {
+        //             return this.getApp().getRouter().getParam("id") !== null;
+        //         },
+        //         command: function () {
+        //             loader.show();
+        //             var self = this;
+        //             var warehouseID = self.model.get("warehouse_id");
+        //             var items = self.model.get("details");
+        //             $.ajax({
+        //                 method: "POST",
+        //                 url: self.getApp().serviceURL + "/api/v1/warehouse/add-item",
+        //                 data: JSON.stringify({
+        //                     warehouse_id: warehouseID,
+        //                     items: items,
+        //                     user_id: self.getApp().currentUser.id
+        //                 }),
+        //                 success: function (response) {
+        //                     if (response) {
+        //                         self.model.set("payment_status", "confirm");
+        //                         self.getApp().saveLog("confirm", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+        //                         // self.$el.find(".save").trigger("click");
+        //                     }
+        //                     loader.hide();
+        //                 },
+        //                 error: function () {
+        //                     loader.hide();
+        //                 }
+        //             })
+        //         }
+        //     },
+        //     {
+        //         name: "bill",
+        //         type: "button",
+        //         buttonClass: "btn-primary btn btn-sm btn-paid hide",
+        //         label: "Thanh toán",
+        //         visible: function () {
+        //             return this.getApp().getRouter().getParam("id") !== null;
+        //         },
+        //         command: function () {
+        //             var self = this;
+        //             var paymentView = new PaymentView({
+        //                 "viewData": self.model.toJSON()
+        //             });
+        //             paymentView.dialog({
+        //                 // size: "large"
+        //             });
+        //             paymentView.on("close", function (e) {
+        //                 self.model.set("payment_status", "paid");
+        //                 self.model.set("payment_no", e.payment_no);
+        //                 self.getApp().saveLog("paid", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+        //                 // self.$el.find(".save").trigger("click");
+        //             });
+
+        //         }
+        //     },
+        //     ],
+        // }],
 
 
         render: function () {
@@ -311,6 +344,8 @@ define(function (require) {
                     success: function (data) {
                         self.applyBindings();
                         self.registerEvent();
+                        self.showSavedItem();
+                        self.listItemsOldRemove();
                     },
                     error: function () {
                         toastr.error('Lỗi hệ thống, vui lòng thử lại sau');
@@ -328,7 +363,7 @@ define(function (require) {
 
             // self.changeDetails = self.model.get("details");
             self.loadCombox();
-            self.toggleEvent();
+            // self.toggleEvent();
             self.ShowListItem();
             // self.printScreen();
 
@@ -569,6 +604,100 @@ define(function (require) {
 
 
         // ############################CHỨC NĂNG CHỌN ITEM ##########################################################
+
+
+        createItem: function (goodreciept_id) {
+            var self = this;
+            var arr = [];
+            self.$el.find('.body-item-new').each(function (index, item) {
+                var obj = {};
+                obj.item_id = $(item).attr('item-id')
+                obj.item_name = $(item).find('#item_name').attr('item-name')
+                obj.purchase_cost = Number($(item).find('td .purchase-cost').val())
+                obj.quantity = Number($(item).find('td .quantity').val())
+                obj.net_amount = Number($(item).find('td .net-amount').val())
+                arr.push(obj)
+            })
+            $.ajax({
+                type: "POST",
+                url: self.getApp().serviceURL + "/api/v1/create_goods_reciept_details_item",
+                data: JSON.stringify({ "goodreciept_id": goodreciept_id, "data": arr }),
+                success: function (res) {
+                    console.log(res)
+                }
+            })
+        },
+        updateItem: function () {
+            var self = this;
+            var arr = [];
+            self.$el.find('.body-item-old').each(function (index, item) {
+                var obj = {};
+                obj.item_id = $(item).attr('item-id')
+                obj.purchase_cost = Number($(item).find('td .purchase-cost').val())
+                obj.quantity = Number($(item).find('td .quantity').val())
+                obj.net_amount = Number($(item).find('td .net-amount').val())
+                arr.push(obj)
+            })
+            $.ajax({
+                type: "POST",
+                url: self.getApp().serviceURL + "/api/v1/update_goods_reciept_details_item",
+                data: JSON.stringify(arr),
+                success: function (res) {
+                    console.log(res)
+                }
+            })
+        },
+        listItemsOldRemove: function () {
+            var self = this;
+            self.$el.find('.body-item-old .itemRemove').unbind('click').bind('click', function () {
+                self.$el.find('.body-item-old[item-id="' + $(this).attr('item-id-xoa') + '"]').remove();
+                self.listItemRemove.push($(this).attr('item-id-xoa'))
+            })
+        },
+        deleteItem: function () {
+            var self = this;
+            var arrayItemRemove = self.listItemRemove.length;
+            if (arrayItemRemove > 0) {
+                $.ajax({
+                    type: "POST",
+                    url: self.getApp().serviceURL + "/api/v1/delete_goods_reciept_details_item",
+                    data: JSON.stringify(self.listItemRemove),
+                    success: function (response) {
+                        self.listItemRemove.splice(0, arrayItemRemove);
+                        console.log(response)
+                    }
+                });
+            }
+        },
+
+        showSavedItem: function () {
+            var self = this;
+            var savedItem = self.model.get('details')
+            if (savedItem) {
+                savedItem.forEach(function (item, index) {
+                    self.$el.find('#body-items').append(`
+                    <tr class="body-item-old" item-id="${item.id}" >
+                    <td id="item_name" item-name="${item.item_name}">
+                    ${item.item_name}
+                    </td>
+                    <td style="text-align: left;">
+                        <input type="text" class="form-control purchase-cost"  value="${item.purchase_cost}" />
+                    </td>
+                    <td><input type="text" class="form-control quantity" value="${item.quantity}"/></td>
+                    <td style="width: 160px"><input type="text" class="form-control net-amount" value="${item.net_amount}"  readonly /></td>
+                    <td style="width: 50px; line-height: 34px; margin-top: 20px" >
+                        <div class="itemRemove" item-id-xoa="${item.id}">
+                            <i class="fa fa-trash" style="font-size: 17px"></i>
+                        </div>
+                    </td>
+                    </tr>
+                `)
+                })
+                self.taxExcluded();
+
+            }
+        },
+
         ShowListItem: function () {
             var self = this;
             self.$el.find('#show-list-item').unbind('click').bind('click', function () {
@@ -579,14 +708,11 @@ define(function (require) {
                     self.$el.find('.chose-item').hide()
                 })
             })
-
-
-
         },
         htmlShowItem: function (page_number, text) {
             var self = this;
             $.ajax({
-                url: self.getApp().serviceURL + "/api/v1/get_data_medicalequipment",
+                url: self.getApp().serviceURL + "/api/v1/get_data_item",
                 method: "POST",
                 data: JSON.stringify({ "page_number": page_number, "text": text }),
                 contentType: "application/json",
@@ -596,12 +722,12 @@ define(function (require) {
                             self.$el.find('.trang-thiet-bi-y-te').append(`
                             <div class="col-4 col-md-2 p-1 item-show" item-id="${item.id}" >
                                 <div class="text-center">
-                                    <div title="${item.name}" style="margin-left: auto; margin-right: auto; left: 0px; right: 0px;width: 90px;height:170px;position: relative;">
+                                    <div title="${item.item_name}" style="margin-left: auto; margin-right: auto; left: 0px; right: 0px;width: 90px;height:170px;position: relative;">
                                         <input class="item-checkbox" item-id="${item.id}" type="checkbox" style="position: absolute; top: 0px; left: 0px;width:90px;height: 90px;opacity:0">
                                         <img src="static/img/user.png" style="width:90px;height: 90px;">
                                         <label class="item-chose" style="position: absolute;top:70px;right:3px;display:none"><i class="fa fa-check-square-o text-success" aria-hidden="true"></i></label>
                                         <label class="item-not-chose"  style="position: absolute;top:70px;right:3px"><i class="fa fa-square-o" aria-hidden="true"></i></label>
-                                        <label class="item-name" purchase-cost=${item.purchase_cost}  style="font-size: 10px;width:100%;overflow: hidden;text-overflow: ellipsis;line-height: 20px;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;">${item.name}</label>
+                                        <label class="item-name" purchase-cost=${item.purchase_cost}  style="font-size: 10px;width:100%;overflow: hidden;text-overflow: ellipsis;line-height: 20px;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;">${item.item_name}</label>
                                         </div>
                                 </div>
                             </div>
@@ -665,36 +791,72 @@ define(function (require) {
                 })
                 self.$el.find('.btn-hoantat').unbind('click').bind('click', function () {
                     self.$el.find('.chose-item').hide()
-                    self.$el.find('.body-item').remove()
+                    self.$el.find('.body-item-new').remove()
                     self.htmlShowSelectedItem(listSelectedItems);
+
                 })
             }
+        },
+        taxExcluded: function () {
+            var self = this;
+            var bodyItemNew = self.$el.find('.body-item-new')
+            var bodyItemOld = self.$el.find('.body-item-old')
+            var bodyItem = [bodyItemNew, bodyItemOld]
+            bodyItem.forEach(function (itemBody, indexBody) {
+                if (itemBody.length > 0) {
+                    itemBody.each(function (index, item) {
+                        $(item).find('.quantity').change(function () {
+                            if ($(item).find('.purchase-cost').val() != null && $(item).find('.purchase-cost').val() != '') {
+                                var purchaseCost = $(item).find('.purchase-cost').val();
+                                var quantity = $(item).find('.quantity').val();
+                                $(item).find('.net-amount').val(purchaseCost * quantity);
+                            }
+                        })
+                        $(item).find('.purchase-cost').change(function () {
+                            if ($(item).find('.quantity').val() != null && $(item).find('.quantity').val() != '') {
+                                var purchaseCost = $(item).find('.purchase-cost').val();
+                                var quantity = $(item).find('.quantity').val();
+                                $(item).find('.net-amount').val(purchaseCost * quantity);
+                            }
+                        })
+                    })
+                }
+            })
         },
         htmlShowSelectedItem: function (listSelectedItems) {
             var self = this;
             if (listSelectedItems) {
                 listSelectedItems.forEach(function (item, index) {
                     self.$el.find('#body-items').append(`
-                    <tr class="body-item">
-                    <td id="item_name">
+                    <tr class="body-item-new" item-id="${item.item_id}" >
+                    <td id="item_name" item-name="${item.item_name}">
                     ${item.item_name}
                     </td>
                     <td style="text-align: left;">
-                        <input type="text" class="form-control" value="${item.purchase_cost}" />
+                        <input type="number" class="form-control purchase-cost"  value="${item.purchase_cost}" />
                     </td>
-                    <td><input type="text" class="form-control" data-bind="value:quantity" /></td>
-                    <td style="width: 160px"><input type="text" class="form-control" data-bind="value:net_amount" readonly /></td>
+                    <td><input type="number" class="form-control quantity" /></td>
+                    <td style="width: 160px"><input type="number" class="form-control net-amount"  readonly /></td>
                     <td style="width: 50px; line-height: 34px; margin-top: 20px" >
-                        <div id="itemRemove">
+                        <div class="itemRemove" ind = "${index}">
                             <i class="fa fa-trash" style="font-size: 17px"></i>
                         </div>
                     </td>
                     </tr>
                 `)
                 })
-
+                self.listItemsNewRemove(listSelectedItems);
+                self.taxExcluded();
             }
-
+        },
+        listItemsNewRemove: function (listSelectedItems) {
+            var self = this;
+            self.$el.find('.body-item-new .itemRemove').unbind('click').bind('click', function () {
+                $(self.$el.find('.body-item-new')[$(this).attr('ind')]).remove();
+                listSelectedItems.splice($(this).attr('ind'),1);
+                localStorage.setItem('listItem',JSON.stringify(listSelectedItems))
+                self.taxExcluded();
+            })
         },
         pagination: function (text) {
             var self = this;

@@ -20,18 +20,55 @@ from application.common.helper import pre_post_set_user_tenant_id, pre_get_many_
 
 
 
+@app.route("/api/v1/create_goods_reciept_details_item", methods=["POST"])
+def create_goods_reciept_details_item(request):
+    data = request.json
+    if data is not None:
+        data_goodsRecieptDetails = data['data']
+        for _ in data_goodsRecieptDetails:
+            goodsRecieptDetails = GoodsRecieptDetails()
+            goodsRecieptDetails.goodsreciept_id = data['goodreciept_id']
+            goodsRecieptDetails.item_id = _['item_id']
+            goodsRecieptDetails.item_name = _['item_name']
+            goodsRecieptDetails.quantity = _['quantity']
+            goodsRecieptDetails.purchase_cost = _['purchase_cost']
+            goodsRecieptDetails.net_amount = _['net_amount']
+            db.session.add(goodsRecieptDetails)
+            db.session.commit()
+    return json({"message": "Create Success"})
+
+@app.route('/api/v1/update_goods_reciept_details_item', methods=["POST"])
+async def update_goods_reciept_details_item(request):
+    data_goodsRecieptDetails = request.json
+    for _ in data_goodsRecieptDetails:
+        goodsRecieptDetails = db.session.query(GoodsRecieptDetails).filter(GoodsRecieptDetails.id == _['item_id']).first()
+        goodsRecieptDetails.quantity = _['quantity']
+        goodsRecieptDetails.purchase_cost = _['purchase_cost']
+        goodsRecieptDetails.net_amount = _['net_amount']
+        db.session.commit()
+    return json({"message": "Update Success"})
+
+@app.route('/api/v1/delete_goods_reciept_details_item', methods=["POST"])
+async def delete_goods_reciept_details_item(request):
+    list_id = request.json
+    for _ in list_id:
+        goodsRecieptDetails = db.session.query(GoodsRecieptDetails).filter(GoodsRecieptDetails.id == _).first()
+        db.session.delete(goodsRecieptDetails)
+        db.session.commit()
+    return json({"message": "Delete Success"})
 
 
 @app.route("/api/v1/length_data", methods=["POST"])
 def length_data(request):
     data = request.json
     if data is not None:
-        length = db.session.query(MedicalEquipment).count()
+        length = db.session.query(Item).count()
         return json(length/12)
 
 
-@app.route('/api/v1/get_data_medicalequipment',methods=['POST'])
-async def get_data_medicalequipment(request):
+
+@app.route('/api/v1/get_data_item',methods=['POST'])
+async def get_data_item(request):
     req = request.json
     pageNumber =req['page_number']
     if req['text'] is not None:
@@ -39,7 +76,7 @@ async def get_data_medicalequipment(request):
         search = "%{}%".format(keySearch)
         tex_capitalize = keySearch.capitalize()
         search_capitalize = "%{}%".format(tex_capitalize)
-        list = db.session.query(MedicalEquipment).filter(or_(MedicalEquipment.name.like(search),MedicalEquipment.name.like(search_capitalize))).offset(12*pageNumber).limit(12)
+        list = db.session.query(Item).filter(or_(Item.item_name.like(search),Item.item_name.like(search_capitalize))).offset(12*pageNumber).limit(12)
         arr = []
         for i in list:
             obj = to_dict(i)
@@ -47,25 +84,11 @@ async def get_data_medicalequipment(request):
         return json(arr)
     else:
         result = []
-        details = db.session.query(MedicalEquipment).offset(12*pageNumber).limit(12)
+        details = db.session.query(Item).offset(12*pageNumber).limit(12)
         for d in details:
             list_d = to_dict(d)
             result.append(list_d)
         return json(result)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @app.route("/api/v1/goods-reciept-by-goodsreciept-id", methods=["POST"])
