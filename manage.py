@@ -20,7 +20,7 @@ from application import run_app
 from application.database import db
 from application.extensions import auth
 import os
-from application.models.models import *
+from application.models import *
 from application.controllers.helper import generator_salt
 # Instance
 manager = Manager()
