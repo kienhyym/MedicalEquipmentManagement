@@ -119,7 +119,11 @@ define(function (require) {
                     this.getApp().getRouter().navigate(path);
                 }
 
-            }
+            },
+            pagination: {
+                page: 1,
+                pageSize: 100
+            },
         },
         render: function () {
             var self = this;
