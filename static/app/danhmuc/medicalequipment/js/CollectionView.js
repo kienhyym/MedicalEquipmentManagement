@@ -9,6 +9,7 @@ define(function (require) {
 
     var CustomFilterView = require('app/base/view/CustomFilterView');
 
+
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
@@ -53,41 +54,76 @@ define(function (require) {
                     // },
                 ],
             }],
-        // uiControl: {
-        //     orderBy:
-        //         [
-        //             {
-        //                 field: "name",
-        //                 direction: "asc"
-        //             },
-        //             {
-        //                 field: "created_at",
-        //                 direction: "desc"
-        //             }
-        //         ],
-        //     fields: [
+        uiControl: {
+            orderBy:
+                [
+                    {
+                        field: "name",
+                        direction: "asc"
+                    },
+                    {
+                        field: "created_at",
+                        direction: "desc"
+                    }
+                ],
+            fields: [
+                {
+                    field: "stt",
+                    label: "STT",
+                    width: "30px",
+                    template: function (rowData) {
+                        if (!!rowData) {
+                            return `
+                                        <div class='text-center pt-3'>${rowData.stt}</div>
+                                    `;
+                        }
+                        return "";
+                    }
+                },
+                {
+                    field: "name", label: "Phiếu",
+                    template: function (rowData) {
+                        if (!!rowData) {
+                            var utcTolocal = function (times, format) {
+                                return moment(times * 1000).local().format(format);
+                            }
+                            var chungloai = "";
+                            if (rowData.classify === "A") {
+                                chungloai = "TTBYT Loại A";
+                            }
+                            else if (rowData.classify === "B") {
+                                chungloai = "TTBYT Loại B";
+                            }
+                            else if (rowData.classify === "C") {
+                                chungloai = "TTBYT Loại C";
+                            }
+                            else if (rowData.classify === "D") {
+                                chungloai = "TTBYT Loại D";
+                            }
+                            return `    <div style="position: relative;">
+                                            <div>${rowData.name}</div>
+                                            <div style="font-size:12px">Mức độ rủi ro
+                                            được phân loại: ${chungloai}</div>
+                                            <div style="font-size:12px">Tình trạng	: ${rowData.status}</div>
+                                            <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
+                                        </div>
+                                        `;
+                        }
+                        return "";
+                    }
+                }
+            ],
+            onRowClick: function (event) {
+                if (event.rowId) {
+                    var path = this.collectionName + '/model?id=' + event.rowId;
+                    this.getApp().getRouter().navigate(path);
+                }
 
-        //         {
-        //             field: "stt",
-        //             label: "STT",
-        //             width: "30px",
-
-        //         },
-        //         {
-        //             field: "name", label: "Mã thương hiệu",
-        //         }
-        //     ],
-        //     onRowClick: function (event) {
-        //         if (event.rowId) {
-        //             var path = this.collectionName + '/model?id=' + event.rowId;
-        //             this.getApp().getRouter().navigate(path);
-        //         }
-
-        //     }
-        // },
+            }
+        },
         render: function () {
             var self = this;
-            this.applyBindings();
+            // this.uiControl.orderBy = [{"field": "ma", "direction": "asc"}];
             self.$el.find("#chonfile").bind('click', function () {
                 $.ajax({
                     url: self.getApp().serviceURL + "/api/v1/read_file_json",
@@ -97,109 +133,139 @@ define(function (require) {
                     success: function (data) {
                     }
                 })
-            })
+            });
+
+            var filter = new CustomFilterView({
+    			el: self.$el.find(".name-search"),
+    			sessionKey: this.collectionName+"_filter"
+    		});
+    		filter.render();
+    		
+    		if(!filter.isEmptyFilter()) {
+    			var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
+    			var filters = {"name": {"$likeI": text }};
+    			self.uiControl.filters = filters;
+    		}
+    		self.applyBindings();
+    		
+    		filter.on('filterChanged', function(evt) {
+    			var $col = self.getCollectionElement();
+    			var text = !!evt.data.text ? evt.data.text.trim() : "";
+				if ($col) {
+					if (text !== null){
+						var filters = {"name": {"$likeI": text }};
+						$col.data('gonrin').filter(filters);
+					} else {
+						self.uiControl.filters = null;
+					}
+				}
+				self.applyBindings();
+    		});
+    		
+
+
             
-            var xhr = $.ajax({
-                url: self.getApp().serviceURL + "/api/v1/get_data_medical",
-                method: "POST",
-                data: JSON.stringify({ "text": self.$el.find(".name-search").val() }),
-                contentType: "application/json",
-                success: function (data) {
-                    self.$el.find(".wait_get_data").hide();
-                    self.render_grid(data);
-                }
-            })
+            // var xhr = $.ajax({
+            //     url: self.getApp().serviceURL + "/api/v1/get_data_medical",
+            //     method: "POST",
+            //     data: JSON.stringify({ "text": self.$el.find(".name-search").val() }),
+            //     contentType: "application/json",
+            //     success: function (data) {
+            //         self.$el.find(".wait_get_data").hide();
+            //         self.render_grid(data);
+            //     }
+            // })
 
 
-            self.$el.find(".name-search").keyup(function (e) {
-                xhr.abort()
-                self.$el.find(".wait_get_data").show();
-                xhr = $.ajax({
-                    url: self.getApp().serviceURL + "/api/v1/get_data_medical",
-                    method: "POST",
-                    data: JSON.stringify({ "text": $(this).val() }),
-                    contentType: "application/json",
-                    success: function (data) {
-                        self.$el.find(".wait_get_data").hide();
-                        self.render_grid(data);
-                    }
-                })
-            })
+            // self.$el.find(".name-search").keyup(function (e) {
+            //     xhr.abort()
+            //     self.$el.find(".wait_get_data").show();
+            //     xhr = $.ajax({
+            //         url: self.getApp().serviceURL + "/api/v1/get_data_medical",
+            //         method: "POST",
+            //         data: JSON.stringify({ "text": $(this).val() }),
+            //         contentType: "application/json",
+            //         success: function (data) {
+            //             self.$el.find(".wait_get_data").hide();
+            //             self.render_grid(data);
+            //         }
+            //     })
+            // })
             return this;
         },
 
-        render_grid: function (dataSource) {
-            var self = this;
-            var element = self.$el.find("#grid-data");
-            element.grid({
-                // showSortingIndicator: true,
-                orderByMode: "client",
-                language: {
-                    no_records_found: "Chưa có dữ liệu"
-                },
-                noResultsClass: "alert alert-default no-records-found",
-                fields: [
-                    {
-                        label: "STT",
-                        width: "30px",
-                        template: function (rowData) {
-                            if (!!rowData) {
-                                return `
-                                            <div class='text-center pt-3'>${rowData.stt}</div>
-                                        `;
-                            }
-                            return "";
-                        }
-                    },
-                    {
-                        label: "Phiếu",
-                        template: function (rowData) {
-                            if (!!rowData) {
-                                var utcTolocal = function (times, format) {
-                                    return moment(times * 1000).local().format(format);
-                                }
-                                var chungloai = "";
-                                if (rowData.classify === "A") {
-                                    chungloai = "TTBYT Loại A";
-                                }
-                                else if (rowData.classify === "B") {
-                                    chungloai = "TTBYT Loại B";
-                                }
-                                else if (rowData.classify === "C") {
-                                    chungloai = "TTBYT Loại C";
-                                }
-                                else if (rowData.classify === "D") {
-                                    chungloai = "TTBYT Loại D";
-                                }
-                                return `    <div style="position: relative;">
-                                                <div>${rowData.name}</div>
-                                                <div style="font-size:12px">Mức độ rủi ro
-                                                được phân loại: ${chungloai}</div>
-                                                <div style="font-size:12px">Tình trạng	: ${rowData.status}</div>
-                                                <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
-                                            </div>
-                                            `;
-                            }
-                            return "";
-                        }
-                    },
-                ],
-                dataSource: dataSource,
-                primaryField: "id",
-                refresh: true,
-                selectionMode: false,
-                pagination: {
-                    page: 1,
-                    pageSize: 15
-                },
-                events: {
-                    "rowclick": function (e) {
-                        self.getApp().getRouter().navigate("medicalequipment/model?id=" + e.rowId);
-                    },
-                },
+        // render_grid: function (dataSource) {
+        //     var self = this;
+        //     var element = self.$el.find("#grid-data");
+        //     element.grid({
+        //         // showSortingIndicator: true,
+        //         orderByMode: "client",
+        //         language: {
+        //             no_records_found: "Chưa có dữ liệu"
+        //         },
+        //         noResultsClass: "alert alert-default no-records-found",
+        //         fields: [
+        //             {
+        //                 label: "STT",
+        //                 width: "30px",
+        //                 template: function (rowData) {
+        //                     if (!!rowData) {
+        //                         return `
+        //                                     <div class='text-center pt-3'>${rowData.stt}</div>
+        //                                 `;
+        //                     }
+        //                     return "";
+        //                 }
+        //             },
+        //             {
+        //                 label: "Phiếu",
+        //                 template: function (rowData) {
+        //                     if (!!rowData) {
+        //                         var utcTolocal = function (times, format) {
+        //                             return moment(times * 1000).local().format(format);
+        //                         }
+        //                         var chungloai = "";
+        //                         if (rowData.classify === "A") {
+        //                             chungloai = "TTBYT Loại A";
+        //                         }
+        //                         else if (rowData.classify === "B") {
+        //                             chungloai = "TTBYT Loại B";
+        //                         }
+        //                         else if (rowData.classify === "C") {
+        //                             chungloai = "TTBYT Loại C";
+        //                         }
+        //                         else if (rowData.classify === "D") {
+        //                             chungloai = "TTBYT Loại D";
+        //                         }
+        //                         return `    <div style="position: relative;">
+        //                                         <div>${rowData.name}</div>
+        //                                         <div style="font-size:12px">Mức độ rủi ro
+        //                                         được phân loại: ${chungloai}</div>
+        //                                         <div style="font-size:12px">Tình trạng	: ${rowData.status}</div>
+        //                                         <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
+        //                                     </div>
+        //                                     `;
+        //                     }
+        //                     return "";
+        //                 }
+        //             },
+        //         ],
+        //         dataSource: dataSource,
+        //         primaryField: "id",
+        //         refresh: true,
+        //         selectionMode: false,
+        //         pagination: {
+        //             page: 1,
+        //             pageSize: 15
+        //         },
+        //         events: {
+        //             "rowclick": function (e) {
+        //                 self.getApp().getRouter().navigate("medicalequipment/model?id=" + e.rowId);
+        //             },
+        //         },
 
-            });
-        },
+        //     });
+        // },
 
     });
 

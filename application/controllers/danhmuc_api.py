@@ -34,22 +34,7 @@ async def prepost_put_danhmuc(request=None, data=None, Model=None, **kw):
             del data[obj]['stt']
 
 
-async def postprocess_add_stt(request=None, Model=None, result=None, **kw):
-    if result is not None and "objects" in result:
-        objects = to_dict(result["objects"])
-        datas = []
-        i =1
-        page = request.args.get("page",None)
-        results_per_page = request.args.get("results_per_page",None)
-        if page is not None and results_per_page is not None and int(page) != 1:
-            i = i + int(results_per_page)*int(page)
-        for obj in objects:
-            if obj is not None:
-                obj_tmp = to_dict(obj)
-                obj_tmp["stt"] = i
-                i = i +1
-                datas.append(obj_tmp)
-        result = datas
+
      
 sqlapimanager.create_api(Nation, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],

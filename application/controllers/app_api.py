@@ -196,30 +196,37 @@ async def read_file_json(request):
         "error_code": "Upload success",
     })
 
-@app.route('/api/v1/get_data_medical',methods=['POST'])
-async def get_data_medical(request):
-    req = request.json
-    if req  != None and req != "":
-        find_text = req['text']
-        search = "%{}%".format(find_text)
-        list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
-        if len(list) == 0 :
-            find_text = req['text']
-            tex = find_text.capitalize()
-            search = "%{}%".format(tex)
-            list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
-        arr = []
-        for i in range(len(list)):
-            obj = to_dict(list[i])
-            obj['stt'] = i+1
-            arr.append(obj)
-        return json(arr)
-    else :
-        list = db.session.query(MedicalEquipment).all()
-        arr = []
-        for i in range(len(list)):
-            obj = to_dict(list[i])
-            obj['stt'] = i+1
-            arr.append(obj)
-        return json(arr)
+sqlapimanager.create_api(MedicalEquipment, max_results_per_page=1000000,
+    methods=['GET', 'POST', 'DELETE', 'PUT'],
+    url_prefix='/api/v1',
+    preprocess=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func], POST=[auth_func, prepost_put_stt], PUT_SINGLE=[auth_func, prepost_put_stt]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[postprocess_add_stt]),
+    collection_name='medicalequipment')
+
+# @app.route('/api/v1/get_data_medical',methods=['POST'])
+# async def get_data_medical(request):
+#     req = request.json
+#     if req  != None and req != "":
+#         find_text = req['text']
+#         search = "%{}%".format(find_text)
+#         list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
+#         if len(list) == 0 :
+#             find_text = req['text']
+#             tex = find_text.capitalize()
+#             search = "%{}%".format(tex)
+#             list = db.session.query(MedicalEquipment).filter(MedicalEquipment.name.like(search)).all()
+#         arr = []
+#         for i in range(len(list)):
+#             obj = to_dict(list[i])
+#             obj['stt'] = i+1
+#             arr.append(obj)
+#         return json(arr)
+#     else :
+#         list = db.session.query(MedicalEquipment).all()
+#         arr = []
+#         for i in range(len(list)):
+#             obj = to_dict(list[i])
+#             obj['stt'] = i+1
+#             arr.append(obj)
+#         return json(arr)
 

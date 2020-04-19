@@ -153,3 +153,29 @@ async def verify_facebook_token(access_token=None, facebook_id=None):
                     if resp['id'] == facebook_id:
                         return True
     return False
+
+
+async def postprocess_add_stt(request=None, Model=None, result=None, **kw):
+    if result is not None and "objects" in result:
+        objects = to_dict(result["objects"])
+        datas = []
+        i =1
+        page = request.args.get("page",None)
+        results_per_page = request.args.get("results_per_page",None)
+        if page is not None and results_per_page is not None and int(page) != 1:
+            i = i + int(results_per_page)*int(page)
+        for obj in objects:
+            if obj is not None:
+                obj_tmp = to_dict(obj)
+                obj_tmp["stt"] = i
+                i = i +1
+                datas.append(obj_tmp)
+        result = datas
+
+async def prepost_put_stt(request=None, data=None, Model=None, **kw):
+    if "stt" in data:
+        del data['stt']
+    objects_danhmuc = [ 'medicalequipment']
+    for obj in objects_danhmuc:
+        if obj in data and "stt" in data[obj]:
+            del data[obj]['stt']
