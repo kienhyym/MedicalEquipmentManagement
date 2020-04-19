@@ -140,7 +140,7 @@ define(function (require) {
             });
 
             var filter = new CustomFilterView({
-    			el: self.$el.find(".name-search"),
+    			el: self.$el.find("#grid_search"),
     			sessionKey: this.collectionName+"_filter"
     		});
     		filter.render();
