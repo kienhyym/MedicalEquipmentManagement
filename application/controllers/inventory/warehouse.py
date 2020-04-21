@@ -19,29 +19,71 @@ from application.models.inventory.goodsreciept import GoodsReciept, GoodsReciept
 from application.models.inventory.purchaseorder import *
 
 @app.route("/api/v1/get_item_in_warehouse", methods=["POST"])
-def get_item_in_warehouse(request):
+async def get_item_in_warehouse(request):
     data = request.json
+    dataitemBalances = db.session.query(ItemBalances.item_id,ItemBalances.item_name,ItemBalances.purchase_cost, func.sum(ItemBalances.quantity)).group_by(ItemBalances.item_id,ItemBalances.item_name,ItemBalances.purchase_cost).filter(and_(ItemBalances.warehouse_id ==data['id'], ItemBalances.tenant_id==data['tenant'])).all()
     dataGoodsRecieptDetails = db.session.query(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost, func.sum(GoodsRecieptDetails.quantity)).group_by(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost).filter(and_(GoodsRecieptDetails.warehouse_id ==data['id'], GoodsRecieptDetails.tenant_id==data['tenant'],GoodsRecieptDetails.payment_status=='paid')).all()
     dataPurchaseOrderDetails = db.session.query(PurchaseOrderDetails.item_id,PurchaseOrderDetails.item_name,PurchaseOrderDetails.purchase_cost, func.sum(PurchaseOrderDetails.quantity)).group_by(PurchaseOrderDetails.item_id,PurchaseOrderDetails.item_name,PurchaseOrderDetails.purchase_cost).filter(and_(PurchaseOrderDetails.warehouse_id ==data['id'], PurchaseOrderDetails.tenant_id==data['tenant'],PurchaseOrderDetails.payment_status=='paid')).all()
     dataMoveWareHouseFrom = db.session.query(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.purchase_cost,  func.sum(MoveWarehouseDetails.quantity_delivery),MoveWarehouseDetails.item_name).group_by(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.item_name,MoveWarehouseDetails.purchase_cost).filter(and_(MoveWarehouseDetails.warehouse_from_id ==data['id'], MoveWarehouseDetails.tenant_id==data['tenant'])).all()
     dataMoveWareHouseTo = db.session.query(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.purchase_cost,  func.sum(MoveWarehouseDetails.quantity_delivery),MoveWarehouseDetails.item_name).group_by(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.item_name,MoveWarehouseDetails.purchase_cost).filter(and_(MoveWarehouseDetails.warehouse_to_id ==data['id'], MoveWarehouseDetails.tenant_id==data['tenant'])).all()
-    lenDataMoveWareHouseTo = len(dataMoveWareHouseTo)
     arr = []
-    if(len(dataGoodsRecieptDetails) != 0):
-        ax = []
-        for wh in dataGoodsRecieptDetails:
-            dem = 0
+    if(len(dataitemBalances) != 0):
+        for ib in dataitemBalances:
             obj= {}
-            obj['item_id'] = wh[0]
-            obj['item_name'] = wh[1]
-            obj['purchase_cost'] = wh[2]
-            obj['quantity'] = wh[3]
-            if(len(dataMoveWareHouseFrom) != 0):
-                for mwhf in dataMoveWareHouseFrom:
-                    if wh[0] == mwhf[0] and wh[2] == mwhf[1]:
-                        obj['quantity'] = wh[3] - mwhf[2]
-            arr.append(obj)
-    if(lenDataMoveWareHouseTo != 0):
+            obj['item_id'] = ib[0]
+            obj['item_name'] = ib[1]
+            obj['purchase_cost'] = ib[2]
+            obj['quantity'] = ib[3]
+        arr.append(obj)
+    if(len(dataGoodsRecieptDetails) != 0):
+        for grd in dataGoodsRecieptDetails:
+            dem = 0
+            for a in arr:
+                if grd[0] == a['item_id'] and grd[2] == a['purchase_cost']:
+                    a['quantity'] = a['quantity'] + grd[3]
+                else:
+                    dem = dem + 1
+            if dem == len(arr): 
+                obj= {}
+                obj['item_id'] = grd[0]
+                obj['item_name'] = grd[1]
+                obj['purchase_cost'] = grd[2]
+                obj['quantity'] = grd[3]
+                arr.append(obj)
+    if(len(dataPurchaseOrderDetails) != 0):
+        for pod in dataPurchaseOrderDetails:
+            dem = 0
+            for a in arr:
+                if pod[0] == a['item_id'] and pod[2] == a['purchase_cost']:
+                    a['quantity'] = a['quantity'] - pod[3]
+                else:
+                    dem = dem + 1
+            if dem == len(arr): 
+                obj= {}
+                obj['item_id'] = pod[0]
+                obj['item_name'] = pod[1]
+                obj['purchase_cost'] = pod[2]
+                obj['quantity'] = 0-pod[3]
+                arr.append(obj)
+
+    if(len(dataMoveWareHouseFrom) != 0):
+        for mwhf in dataMoveWareHouseFrom:
+            dem = 0
+            for a in arr:
+                if mwhf[0] == a['item_id'] and mwhf[1] == a['purchase_cost']:
+                    a['quantity'] = a['quantity'] - mwhf[2]
+                else:
+                    dem = dem + 1
+            if dem == len(arr): 
+                obj= {}
+                obj['item_id'] = mwhf[0]
+                obj['item_name'] = mwhf[3]
+                obj['purchase_cost'] = mwhf[1]
+                obj['quantity'] = 0-mwhf[2]
+                arr.append(obj)
+
+
+    if(len(dataMoveWareHouseTo) != 0):
         for mwht in dataMoveWareHouseTo:
             dem = 0
             for a in arr:
@@ -49,16 +91,7 @@ def get_item_in_warehouse(request):
                     a['quantity'] = a['quantity'] + mwht[2]
                 else:
                     dem = dem + 1
-            if dem == len(arr):
-                obj= {}
-                obj['item_id'] = mwht[0]
-                obj['item_name'] = mwht[3]
-                obj['purchase_cost'] = mwht[1]
-                obj['quantity'] = mwht[2]
-                arr.append(obj)
-    else:
-        if(lenDataMoveWareHouseTo != 0):
-            for mwht in dataMoveWareHouseTo:
+            if dem == len(arr): 
                 obj= {}
                 obj['item_id'] = mwht[0]
                 obj['item_name'] = mwht[3]
@@ -66,17 +99,52 @@ def get_item_in_warehouse(request):
                 obj['quantity'] = mwht[2]
                 arr.append(obj)
 
-
-    for x in arr:
-        for dpod in dataPurchaseOrderDetails:
-            if x['item_id'] == dpod[0] and x['purchase_cost'] == dpod[2]:
-                x['quantity'] = x['quantity']- dpod[3]
     return json(arr)   
 
 
 
 
+@app.route("/api/v1/create_init_warehouse", methods=["POST"])
+def create_init_warehouse(request):
+    data = request.json
+    if data is not None:
+        data_itemBalances = data['data']
+        for _ in data_itemBalances:
+            itemBalances = ItemBalances()
+            itemBalances.item_id = _['item_id']
+            itemBalances.item_name = _['item_name']
+            itemBalances.quantity = _['quantity']
+            itemBalances.purchase_cost = _['purchase_cost']
+            itemBalances.net_amount = _['net_amount']
+            itemBalances.tenant_id = _['tenant_id']
+            itemBalances.warehouse_id = _['warehouse_id']
+            db.session.add(itemBalances)
+            db.session.commit()
+    return json({"message": "Create Success"})
 
+
+@app.route('/api/v1/update_init_warehouse', methods=["POST"])
+async def update_init_warehouse(request):
+    data_itemBalances = request.json
+    for _ in data_itemBalances:
+        itemBalances = db.session.query(ItemBalances).filter(ItemBalances.id == _['item_id']).first()
+        itemBalances.quantity = _['quantity']
+        itemBalances.purchase_cost = _['purchase_cost']
+        itemBalances.net_amount = _['net_amount']
+        itemBalances.tenant_id = _['tenant_id']
+        db.session.commit()
+    return json({"message": "Update Success"})
+
+
+
+@app.route('/api/v1/delete_init_warehouse', methods=["POST"])
+async def delete_init_warehouse(request):
+    list_id = request.json
+    for _ in list_id:
+        itemBalances = db.session.query(ItemBalances).filter(ItemBalances.id == _).first()
+        db.session.delete(itemBalances)
+        db.session.commit()
+    return json({"message": "Delete Success"})
 
 
 

@@ -110,10 +110,16 @@
     "status": {
         "type": "string"
     },
+    "medicalequipment_id": {
+        "type": "string"
+    },
     "categories": {
         "type": "list"
     },
     "unit": {
+        "type": "dict"
+    },
+    "medicalequipment": {
         "type": "dict"
     }
 }

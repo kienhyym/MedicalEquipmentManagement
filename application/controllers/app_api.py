@@ -182,16 +182,16 @@ async def read_file_json(request):
         data = myfile.read()
         obj = load_json.loads(data)
         for _ in obj:
-            medicalEquipment_new = MedicalEquipment()
-            medicalEquipment_new.name = _['name']
-            medicalEquipment_new.classify = _['type'][11]
-            medicalEquipment_new.implementing_organization_classification = _['organization_action']
-            medicalEquipment_new.circulation_number = _['code_document_public']
-            medicalEquipment_new.organization_requesting_classification = _['organization_require']
-            medicalEquipment_new.status = _['status']
-            db.session.add(medicalEquipment_new)
-            db.session.commit()
-
+            if len(_['type']) >= 11:
+                medicalEquipment_new = MedicalEquipment()
+                medicalEquipment_new.name = _['name']
+                medicalEquipment_new.classify = _['type'][11]
+                medicalEquipment_new.implementing_organization_classification = _['organization_action']
+                medicalEquipment_new.circulation_number = _['code_document_public']
+                medicalEquipment_new.organization_requesting_classification = _['organization_require']
+                medicalEquipment_new.status = _['status']
+                db.session.add(medicalEquipment_new)
+                db.session.commit()
     return json({
         "error_code": "Upload success",
     })

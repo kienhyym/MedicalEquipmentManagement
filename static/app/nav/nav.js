@@ -316,7 +316,7 @@ define(function(require) {
                     }
                 },
                 {
-                    "text": "<label class='m-0 ml-4'>Mua hàng</label>",
+                    "text": "<label class='m-0 ml-4'>Bán hàng</label>",
                     "type": "view",
                     "collectionName": "purchaseorder",
                     "route": "purchaseorder/collection",

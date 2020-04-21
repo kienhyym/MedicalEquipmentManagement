@@ -6,6 +6,8 @@ from application.database import db
 from sqlalchemy.dialects.postgresql import UUID, JSON, JSONB
 from application.database.model import CommonModel
 from application.models.inventory.unit import Unit
+from application.models.models import MedicalEquipment
+
 from application.models.inventory.warehouse import Warehouse
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import *
@@ -106,3 +108,5 @@ class Item (CommonModel):
     position = db.Column(db.Integer(), nullable=True)
     extension_data = db.Column(JSONB(), nullable=True)
     status = db.Column(db.String)
+    medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'))
+    medicalequipment = relationship('MedicalEquipment', viewonly=True)

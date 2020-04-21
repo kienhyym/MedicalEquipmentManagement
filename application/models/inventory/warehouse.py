@@ -50,6 +50,7 @@ class Warehouse(CommonModel):
 
     details = db.relationship("ItemBalances", order_by="ItemBalances.created_at", cascade="all, delete-orphan")
     custom_fields = db.Column(JSONB(), nullable=True)
+    status_init = db.Column(String(40))
 
 class ItemBalances(CommonModel):
     __tablename__ = 'item_balances'
@@ -57,17 +58,19 @@ class ItemBalances(CommonModel):
 
     warehouse_id = db.Column(UUID(as_uuid=True), ForeignKey('warehouse.id'), nullable=True)
     item_exid = db.Column(db.String, nullable=True)
-
+    item_id = db.Column(String(150))
     item_name = db.Column(String(150))
     item_no = db.Column(String(40))
     item_image = db.Column(db.String(), default="static/images/default-dist.jpeg", nullable=True)
     item_type = db.Column(db.String(), default="is_material")
+    tenant_id = db.Column(db.String)
 
     unit_id = db.Column(UUID(as_uuid=True))
     unit_code = db.Column(db.String)
 
     purchase_cost = db.Column(DECIMAL(27,8), default=0)  #purchase price
     list_price = db.Column(DECIMAL(27,8), default=0)  #selling price
+    net_amount = db.Column(DECIMAL(27,8), default=0)  #thanh tien truoc khi tru discount
 
     lot_number = db.Column(db.DECIMAL)
     quantity = db.Column(DECIMAL(25,3), default=1)

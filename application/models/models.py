@@ -86,24 +86,24 @@ class Province(CommonModel):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     code = db.Column(String(255),unique=True, index=True)
     name = db.Column(String(255))
-    nation_id = db.Column(UUID(as_uuid=True), nullable=True)
-    nation = db.Column(JSONB)
+    nation_id = db.Column(UUID(as_uuid=True), ForeignKey('nation.id'))
+    nation = relationship('Nation', viewonly=True)
 
 class District(CommonModel):
     __tablename__ = 'district'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     code = db.Column(String(255),unique=True, index=True)
     name = db.Column(String(255))
-    province_id = db.Column(UUID(as_uuid=True), nullable=True)
-    province = db.Column(JSONB)
+    province_id = db.Column(UUID(as_uuid=True), ForeignKey('province.id'))
+    province = relationship('Province', viewonly=True)
     
 class Wards(CommonModel):
     __tablename__ = 'wards'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     code = db.Column(String(255),unique=True, index=True)
     name = db.Column(String(255))
-    district_id = db.Column(UUID(as_uuid=True), nullable=True)
-    district = db.Column(JSONB)
+    district_id = db.Column(UUID(as_uuid=True), ForeignKey('district.id'))
+    district = relationship('District', viewonly=True)
 
 medicalequipment_preparationtools = db.Table('medicalequipment_preparationtools',
     db.Column('medicalequipment_id', UUID(as_uuid=True), db.ForeignKey('medicalequipment.id', ondelete='cascade'), primary_key=True),
@@ -113,7 +113,7 @@ medicalequipment_preparationtools = db.Table('medicalequipment_preparationtools'
 class MedicalEquipment(CommonModel):
     __tablename__ = 'medicalequipment'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    name = db.Column(String(255))
+    name = db.Column(String())
     classify = db.Column(String(255))
     implementing_organization_classification = db.Column(String(255))
     circulation_number = db.Column(String(255))

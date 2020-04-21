@@ -31,6 +31,10 @@
     "item_exid": {
         "type": "string"
     },
+    "item_id": {
+        "type": "string",
+        "length": 150
+    },
     "item_name": {
         "type": "string",
         "length": 150
@@ -47,6 +51,9 @@
         "type": "string",
         "default": "is_material"
     },
+    "tenant_id": {
+        "type": "string"
+    },
     "unit_id": {
         "type": "string"
     },
@@ -58,6 +65,10 @@
         "default": 0
     },
     "list_price": {
+        "type": "number",
+        "default": 0
+    },
+    "net_amount": {
         "type": "number",
         "default": 0
     },

@@ -1,4 +1,4 @@
-define(function (require) {
+define(function(require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
@@ -16,8 +16,7 @@ define(function (require) {
         urlPrefix: "/api/v1/",
         collectionName: "item",
         uiControl: {
-            orderBy: [
-                {
+            orderBy: [{
                     field: "item_name",
                     direction: "asc"
                 },
@@ -27,66 +26,65 @@ define(function (require) {
                 }
             ],
 
-            fields: [
-            {
-                field: "item_no",
-                label: "Mã",
-                width: "150px"
-            },
-            {
-                field: "",
-                label: "Loại hàng hóa",
-                template: function (rowObj) {
-                    if (rowObj.item_type) {
-                        if (rowObj.item_type == "material") {
-                            return `<div style="min-width: 100px">Nguyên liệu</div>`;
-                        } else if (rowObj.item_type == "raw_material") {
-                            return `<div style="min-width: 100px">Nguyên liệu thô</div>`;
-                        } else if (rowObj.item_type == "package") {
-                            return `<div style="min-width: 100px">Combo</div>`;
-                        } else if (rowObj.item_type == "service") {
-                            return `<div style="min-width: 100px">Dịch vụ</div>`;
-                        } else if (rowObj.item_type == "product") {
-                            return `<div style="min-width: 100px">Là sản phẩm</div>`;
+            fields: [{
+                    field: "item_no",
+                    label: "Mã",
+                    width: "150px"
+                },
+                {
+                    field: "",
+                    label: "Loại sản phẩm",
+                    template: function(rowObj) {
+                        if (rowObj.item_type) {
+                            if (rowObj.item_type == "material") {
+                                return `<div style="min-width: 100px">Nguyên liệu</div>`;
+                            } else if (rowObj.item_type == "raw_material") {
+                                return `<div style="min-width: 100px">Nguyên liệu thô</div>`;
+                            } else if (rowObj.item_type == "package") {
+                                return `<div style="min-width: 100px">Combo</div>`;
+                            } else if (rowObj.item_type == "service") {
+                                return `<div style="min-width: 100px">Dịch vụ</div>`;
+                            } else if (rowObj.item_type == "product") {
+                                return `<div style="min-width: 100px">Là sản phẩm</div>`;
+                            } else {
+                                return `<div style="min-width: 100px"></div>`;
+                            }
                         } else {
                             return `<div style="min-width: 100px"></div>`;
                         }
-                    } else {
-                        return `<div style="min-width: 100px"></div>`;
+                    }
+                },
+                {
+                    field: "item_name",
+                    label: "Tên sản phẩm",
+                    template: function(rowObject) {
+                        return `<div style="min-width: 140px;">${rowObject.item_name}</div>`;
+                    }
+                },
+                {
+                    field: "purchase_cost",
+                    label: "Giá mua",
+                    template: function(rowObject) {
+                        console.log("TemplateHelper", TemplateHelper.CurrencyFormat)
+                        return `<div style="min-width: 140px;">${TemplateHelper.currencyFormat(rowObject.purchase_cost)}</div>`;
+                    }
+                },
+                {
+                    field: "list_price",
+                    label: "Giá bán",
+                    template: function(rowObject) {
+                        return `<div style="min-width: 140px;">${TemplateHelper.currencyFormat(rowObject.list_price)}</div>`;
+                    }
+                },
+                {
+                    field: "deleted",
+                    label: " ",
+                    template: function(rowObj) {
+                        return TemplateHelper.statusRender(!rowObj.deleted);
                     }
                 }
-            },
-            {
-                field: "item_name",
-                label: "Tên hàng hóa",
-                template: function (rowObject) {
-                    return `<div style="min-width: 140px;">${rowObject.item_name}</div>`;
-                }
-            },
-            {
-                field: "purchase_cost",
-                label: "Giá mua",
-                template: function (rowObject) {
-                    console.log("TemplateHelper",TemplateHelper.CurrencyFormat)
-                    return `<div style="min-width: 140px;">${TemplateHelper.currencyFormat(rowObject.purchase_cost)}</div>`;
-                }
-            },
-            {
-                field: "list_price",
-                label: "Giá bán",
-                template: function (rowObject) {
-                    return `<div style="min-width: 140px;">${TemplateHelper.currencyFormat(rowObject.list_price)}</div>`;
-                }
-            },
-            {
-                field: "deleted",
-                label: " ",
-                template: function (rowObj) {
-                    return TemplateHelper.statusRender(!rowObj.deleted);
-                }
-            }
             ],
-            onRowClick: function (event) {
+            onRowClick: function(event) {
                 if (event.rowId) {
                     var path = this.collectionName + '/model?id=' + event.rowId;
                     this.getApp().getRouter().navigate(path);
@@ -94,26 +92,23 @@ define(function (require) {
             },
 
         },
-        tools: [
-			{
-				name: "defaultgr",
-				type: "group",
-				groupClass: "toolbar-group",
-				buttons: [
-					{
-						name: "create",
-						type: "button",
-						buttonClass: "btn btn-primary font-weight-bold",
-						label: "+ Mặt hàng",
-						command: function () {
-							var self = this;
-							this.getApp().getRouter().navigate("#item/model");
-						}
-					},
-				]
-			}],
+        tools: [{
+            name: "defaultgr",
+            type: "group",
+            groupClass: "toolbar-group",
+            buttons: [{
+                name: "create",
+                type: "button",
+                buttonClass: "btn btn-primary font-weight-bold",
+                label: "+ Mặt hàng",
+                command: function() {
+                    var self = this;
+                    this.getApp().getRouter().navigate("#item/model");
+                }
+            }, ]
+        }],
 
-        render: function () {
+        render: function() {
             var self = this;
 
             self.registerEvent();
@@ -140,7 +135,7 @@ define(function (require) {
             }
             self.applyBindings();
 
-            filter.on('filterChanged', function (evt) {
+            filter.on('filterChanged', function(evt) {
                 var $col = self.getCollectionElement();
                 var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
                 var textUpper = !!filter.model.get("text") ? filter.model.get("text").trim().toUpperCase() : "";
@@ -183,7 +178,7 @@ define(function (require) {
             return this;
         },
 
-        getTotalItem: function () {
+        getTotalItem: function() {
             var self = this;
 
             self.$el.find("#total-item").combobox({
@@ -197,7 +192,7 @@ define(function (require) {
                 value: false
             });
 
-            self.$el.find("#total-item").on("change.gonrin", function (event) {
+            self.$el.find("#total-item").on("change.gonrin", function(event) {
                 var text = event.target.value;
                 var $col = self.getCollectionElement();
                 if (text != "all") {
@@ -229,7 +224,7 @@ define(function (require) {
             });
         },
 
-        registerEvent: function () {
+        registerEvent: function() {
             var self = this;
             var currentURL = window.location.href;
             if (self.getApp().isMobile == "ANDROID") {

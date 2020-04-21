@@ -100,6 +100,10 @@
     "custom_fields": {
         "type": "json"
     },
+    "status_init": {
+        "type": "string",
+        "length": 40
+    },
     "organization": {
         "type": "dict"
     },
