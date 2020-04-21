@@ -1,4 +1,4 @@
-define(function (require) {
+define(function(require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
@@ -13,12 +13,12 @@ define(function (require) {
     var Helpers = require("app/base/view/Helper");
 
     var currencyFormat = {
-        symbol: "VNĐ",		// default currency symbol is '$'
-        format: "%v %s",	// controls output: %s = symbol, %v = value (can be object, see docs)
-        decimal: ",",		// decimal point separator
-        thousand: ".",		// thousands separator
-        precision: 0,		// decimal places
-        grouping: 3		// digit grouping (not implemented yet)
+        symbol: "VNĐ", // default currency symbol is '$'
+        format: "%v %s", // controls output: %s = symbol, %v = value (can be object, see docs)
+        decimal: ",", // decimal point separator
+        thousand: ".", // thousands separator
+        precision: 0, // decimal places
+        grouping: 3 // digit grouping (not implemented yet)
     };
 
 
@@ -43,111 +43,107 @@ define(function (require) {
                     field: "details",
                     uicontrol: false,
                     itemView: ItemView,
-                    tools: [
-                        {
-                            name: "create",
-                            type: "button",
-                            buttonClass: "btn btn-outline-secondary btn-fw btn-sm",
-                            label: "<i class='fa fa-plus'></i>",
-                            command: "create"
-                        },
-                    ],
+                    tools: [{
+                        name: "create",
+                        type: "button",
+                        buttonClass: "btn btn-outline-secondary btn-fw btn-sm",
+                        label: "<i class='fa fa-plus'></i>",
+                        command: "create"
+                    }, ],
                     toolEl: "#add-item"
                 },
             ]
         },
 
-        tools: [
-            {
-                name: "defaultgr",
-                type: "group",
-                groupClass: "toolbar-group",
-                buttons: [
-                    {
-                        name: "back",
-                        type: "button",
-                        buttonClass: "btn btn-secondary btn-sm back",
-                        label: "TRANSLATE:BACK",
-                        command: function () {
-                            var self = this;
-                            Backbone.history.history.back();
+        tools: [{
+            name: "defaultgr",
+            type: "group",
+            groupClass: "toolbar-group",
+            buttons: [{
+                    name: "back",
+                    type: "button",
+                    buttonClass: "btn btn-secondary btn-sm back",
+                    label: "TRANSLATE:BACK",
+                    command: function() {
+                        var self = this;
+                        Backbone.history.history.back();
+                    }
+                },
+                {
+                    name: "save",
+                    type: "button",
+                    buttonClass: "btn btn-primary font-weight-bold save",
+                    label: "TRANSLATE:SAVE",
+                    command: function() {
+                        var self = this;
+                        var id = self.getApp().getRouter().getParam("id");
+                        // if (!self.validate()) {
+                        //     return;
+                        // }
+                        var method = "update";
+                        if (!id) {
+                            var method = "create";
+                            self.model.set("created_at", Helpers.utcToUtcTimestamp());
+                            var makeNo = Helpers.makeNoGoods(6, "CK0").toUpperCase();
+                            self.model.set("movewarehouse_no", makeNo);
                         }
-                    },
-                    {
-                        name: "save",
-                        type: "button",
-                        buttonClass: "btn btn-primary font-weight-bold save",
-                        label: "TRANSLATE:SAVE",
-                        command: function () {
-                            var self = this;
-                            var id = self.getApp().getRouter().getParam("id");
-                            // if (!self.validate()) {
-                            //     return;
-                            // }
-                            var method = "update";
-                            if (!id) {
-                                var method = "create";
-                                self.model.set("created_at", Helpers.utcToUtcTimestamp());
-                                var makeNo = Helpers.makeNoGoods(6, "CK0").toUpperCase();
-                                self.model.set("movewarehouse_no", makeNo);
+                        self.model.sync(method, self.model, {
+                            success: function(model, respose, options) {
+                                console.log(model)
+                                self.createItem(model.id);
+                                self.updateItem();
+                                self.deleteItem();
+                                toastr.info("Lưu thông tin thành công");
+                                self.getApp().getRouter().navigate(self.collectionName + "/collection");
+
+                            },
+                            error: function(model, xhr, options) {
+                                // console.log(model)
+                                toastr.error("Lưu không thành công")
+
                             }
-                            self.model.sync(method, self.model, {
-                                success: function (model, respose, options) {
-                                    console.log(model)
-                                    self.createItem(model.id);
-                                    self.updateItem();
-                                    self.deleteItem();
-                                    toastr.info("Lưu thông tin thành công");
-                                    self.getApp().getRouter().navigate(self.collectionName + "/collection");
-
-                                },
-                                error: function (model, xhr, options) {
-                                    // console.log(model)
-                                    toastr.error("Lưu không thành công")
-
-                                }
-                            });
-                        }
+                        });
+                    }
+                },
+                {
+                    name: "delete",
+                    type: "button",
+                    buttonClass: "btn-danger btn btn-sm",
+                    label: "TRANSLATE:DELETE",
+                    visible: function() {
+                        return this.getApp().getRouter().getParam("id") !== null;
                     },
-                    {
-                        name: "delete",
-                        type: "button",
-                        buttonClass: "btn-danger btn btn-sm",
-                        label: "TRANSLATE:DELETE",
-                        visible: function () {
-                            return this.getApp().getRouter().getParam("id") !== null;
-                        },
-                        command: function () {
-                            var self = this;
-                            self.model.destroy({
-                                success: function (model, response) {
-                                    toastr.info('Xoá dữ liệu thành công');
-                                    self.getApp().getRouter().navigate(self.collectionName + "/collection");
-                                },
-                                error: function (model, xhr, options) {
-                                    toastr.error('Xoá dữ liệu không thành công!');
+                    command: function() {
+                        var self = this;
+                        self.model.destroy({
+                            success: function(model, response) {
+                                toastr.info('Xoá dữ liệu thành công');
+                                self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                            },
+                            error: function(model, xhr, options) {
+                                toastr.error('Xoá dữ liệu không thành công!');
 
-                                }
-                            });
-                        }
-                    },
-                ],
-            }],
+                            }
+                        });
+                    }
+                },
+            ],
+        }],
 
-        render: function () {
+        render: function() {
             var self = this;
             localStorage.removeItem("listItem");
             var id = this.getApp().getRouter().getParam("id");
             if (id) {
                 this.model.set('id', id);
                 this.model.fetch({
-                    success: function (data) {
+                    success: function(data) {
                         self.applyBindings();
                         self.regsiterEvent();
                         self.showSavedItem();
                         self.listItemsOldRemove();
                     },
-                    error: function () {
+                    error: function() {
                         toastr.error("Lỗi hệ thống, vui lòng thử lại sau.");
                     },
                 });
@@ -158,7 +154,7 @@ define(function (require) {
 
         },
 
-        regsiterEvent: function () {
+        regsiterEvent: function() {
             var self = this;
             self.loadCombox();
             self.ShowListItem();
@@ -167,8 +163,7 @@ define(function (require) {
             var id = self.getApp().getRouter().getParam("id");
             if (id) {
                 self.$el.find("#movewarehouse_no").text(self.model.get("movewarehouse_no"));
-            } else {
-            }
+            } else {}
             if (self.model.get("goodsreciept_from_id") != null) {
                 self.$el.find("#add-item").removeClass("hide");
             }
@@ -188,13 +183,13 @@ define(function (require) {
                 self.$el.find("#delivery").addClass("hide");
             }
 
-            self.$el.find("#confirm").unbind("click").bind("click", function () {
+            self.$el.find("#confirm").unbind("click").bind("click", function() {
                 self.model.set("received_date", Helpers.utcToUtcTimestamp());
                 self.model.set("status", "finish");
                 self.$el.find(".save").trigger("click");
             });
 
-            self.$el.find("#delivery").unbind("click").bind("click", function () {
+            self.$el.find("#delivery").unbind("click").bind("click", function() {
                 console.log(self.model.toJSON());
                 if (!self.validate()) {
                     return;
@@ -206,14 +201,14 @@ define(function (require) {
             });
         },
 
-        loadCombox: function () {
+        loadCombox: function() {
             loader.show();
             var self = this;
             $.ajax({
                 type: "POST",
                 url: self.getApp().serviceURL + "/api/v1/get_all_warehouse_tennat_id",
                 data: JSON.stringify(self.getApp().currentTenant[0]),
-                success: function (res) {
+                success: function(res) {
                     loader.hide();
                     if (res) {
                         self.$el.find("#warehouse_from").combobox({
@@ -229,7 +224,7 @@ define(function (require) {
                 type: "POST",
                 url: self.getApp().serviceURL + "/api/v1/get_all_warehouse_tennat_id",
                 data: JSON.stringify(self.getApp().currentTenant[0]),
-                success: function (res) {
+                success: function(res) {
                     loader.hide();
                     if (res) {
                         self.$el.find("#warehouse_to").combobox({
@@ -241,18 +236,18 @@ define(function (require) {
                     }
                 }
             })
-            self.$el.find("#warehouse_from").on("change.gonrin", function (event) {
+            self.$el.find("#warehouse_from").on("change.gonrin", function(event) {
                 self.model.set("warehouse_from_id", self.$el.find("#warehouse_from").data("gonrin").getValue());
                 self.model.set("warehouse_from_name", self.$el.find("#warehouse_from").data("gonrin").getText());
 
             });
-            self.$el.find("#warehouse_to").on("change.gonrin", function (event) {
+            self.$el.find("#warehouse_to").on("change.gonrin", function(event) {
                 self.model.set("warehouse_to_id", self.$el.find("#warehouse_to").data("gonrin").getValue());
                 self.model.set("warehouse_to_name", self.$el.find("#warehouse_to").data("gonrin").getText());
             });
         },
 
-        validate: function () {
+        validate: function() {
             var self = this;
             if (!self.model.get("goodsreciept_to")) {
                 toastr.warning("Vui lòng chọn kho!");
@@ -269,10 +264,10 @@ define(function (require) {
         // ############################CHỨC NĂNG CHỌN ITEM ##########################################################
 
 
-        createItem: function (movewarehouse_id) {
+        createItem: function(movewarehouse_id) {
             var self = this;
             var arr = [];
-            self.$el.find('.body-item-new').each(function (index, item) {
+            self.$el.find('.body-item-new').each(function(index, item) {
                 var obj = {};
                 obj.item_id = String($(item).attr('item-id'))
                 obj.item_id_origin = String($(item).attr('item-id-origin'))
@@ -290,15 +285,15 @@ define(function (require) {
                 type: "POST",
                 url: self.getApp().serviceURL + "/api/v1/create_moveware_house_details_item",
                 data: JSON.stringify({ "movewarehouse_id": movewarehouse_id, "data": arr }),
-                success: function (res) {
+                success: function(res) {
                     console.log(res)
                 }
             })
         },
-        updateItem: function () {
+        updateItem: function() {
             var self = this;
             var arr = [];
-            self.$el.find('.body-item-old').each(function (index, item) {
+            self.$el.find('.body-item-old').each(function(index, item) {
                 var obj = {};
                 obj.item_id = $(item).attr('item-id')
                 obj.quantity_delivery = Number($(item).find('td .quantity-delivery').val())
@@ -310,19 +305,19 @@ define(function (require) {
                 type: "POST",
                 url: self.getApp().serviceURL + "/api/v1/update_moveware_house_details_item",
                 data: JSON.stringify(arr),
-                success: function (res) {
+                success: function(res) {
                     console.log(res)
                 }
             })
         },
-        listItemsOldRemove: function () {
+        listItemsOldRemove: function() {
             var self = this;
-            self.$el.find('.body-item-old .itemRemove').unbind('click').bind('click', function () {
+            self.$el.find('.body-item-old .itemRemove').unbind('click').bind('click', function() {
                 self.$el.find('.body-item-old[item-id="' + $(this).attr('item-id-xoa') + '"]').remove();
                 self.listItemRemove.push($(this).attr('item-id-xoa'))
             })
         },
-        deleteItem: function () {
+        deleteItem: function() {
             var self = this;
             var arrayItemRemove = self.listItemRemove.length;
             if (arrayItemRemove > 0) {
@@ -330,7 +325,7 @@ define(function (require) {
                     type: "POST",
                     url: self.getApp().serviceURL + "/api/v1/delete_moveware_house_details_item",
                     data: JSON.stringify(self.listItemRemove),
-                    success: function (response) {
+                    success: function(response) {
                         self.listItemRemove.splice(0, arrayItemRemove);
                         console.log(response)
                     }
@@ -338,11 +333,11 @@ define(function (require) {
             }
         },
 
-        showSavedItem: function () {
+        showSavedItem: function() {
             var self = this;
             var savedItem = self.model.get('details')
             if (savedItem) {
-                savedItem.forEach(function (item, index) {
+                savedItem.forEach(function(item, index) {
                     self.$el.find('#body-items').append(`
                     <tr class="body-item-old" item-id="${item.id}" item-id-origin="${item.item_id_origin}" >
                     <td id="item_name" item-name="${item.item_name}">
@@ -364,18 +359,18 @@ define(function (require) {
 
             }
         },
-        ShowListItem: function () {
+        ShowListItem: function() {
             var self = this;
-            self.$el.find('#show-list-item').unbind('click').bind('click', function () {
+            self.$el.find('#show-list-item').unbind('click').bind('click', function() {
                 self.pagination(null);
                 self.inputSearch();
                 self.$el.find('.chose-item').show()
-                self.$el.find('.btn-quaylai').unbind('click').bind('click', function () {
+                self.$el.find('.btn-quaylai').unbind('click').bind('click', function() {
                     self.$el.find('.chose-item').hide()
                 })
             })
         },
-        htmlShowItem: function (page_number, text) {
+        htmlShowItem: function(page_number, text) {
             var self = this;
             $.ajax({
                 url: self.getApp().serviceURL + "/api/v1/get_all_item_warehouse_tennat_id",
@@ -386,9 +381,9 @@ define(function (require) {
                     "tenant": self.getApp().currentTenant[0]
                 }),
                 contentType: "application/json",
-                success: function (data) {
+                success: function(data) {
                     if (data.length != 0) {
-                        data.forEach(function (item, index) {
+                        data.forEach(function(item, index) {
                             console.log(item)
                             self.$el.find('.trang-thiet-bi-y-te').append(`
                             <div class="col-4 col-md-2 p-1 item-show" item-id="${item.id}" >
@@ -396,8 +391,8 @@ define(function (require) {
                                     <div title="${item.item_name}" style="margin-left: auto; margin-right: auto; left: 0px; right: 0px;width: 90px;height:170px;position: relative;">
                                         <input class="item-checkbox" item-id="${item.id}" type="checkbox" style="position: absolute; top: 0px; left: 0px;width:90px;height: 90px;opacity:0">
                                         <img src="static/img/user.png" style="width:90px;height: 90px;">
-                                        <label class="item-chose" style="position: absolute;top:70px;right:3px;display:none"><i class="far fa-check-square text-success" aria-hidden="true"></i></label>
-                                        <label class="item-not-chose"  style="position: absolute;top:70px;right:3px"><i class="far fa-square" aria-hidden="true"></i></label>
+                                        <label class="item-chose" style="position: absolute;top:70px;right:3px;display:none"><i class="fa fa-check-square-o text-success" aria-hidden="true"></i></label>
+                                        <label class="item-not-chose"  style="position: absolute;top:70px;right:3px"><i class="fa fa-square-o" aria-hidden="true"></i></label>
                                         <label class="item-name" purchase-cost=${item.purchase_cost} quantity=${item.quantity} item-id-origin="${item.item_id}"  style="font-size: 10px;width:100%;overflow: hidden;text-overflow: ellipsis;line-height: 20px;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;">${item.item_name}</label>
                                         </div>
                                 </div>
@@ -410,19 +405,19 @@ define(function (require) {
                 }
             })
         },
-        inputSearch: function () {
+        inputSearch: function() {
             var self = this;
-            self.$el.find("#input-search").keyup(function (e) {
+            self.$el.find("#input-search").keyup(function(e) {
                 // xhr.abort()
                 var text = $(this).val();
                 self.pagination(text);
             })
 
         },
-        choseItem: function () {
+        choseItem: function() {
             var self = this;
             var selectItemList = self.selectItemList;
-            self.$el.find('.item-checkbox').change(function (event) {
+            self.$el.find('.item-checkbox').change(function(event) {
                 var checkBox = $(this);
                 var itemID = checkBox.attr('item-id');
                 var itemName = checkBox.siblings('.item-name').text()
@@ -434,11 +429,10 @@ define(function (require) {
                     checkBox.siblings('.item-chose').show();
                     checkBox.siblings('.item-not-chose').hide();
                     localStorage.setItem("listItem", JSON.stringify(selectItemList))
-                }
-                else {
+                } else {
                     checkBox.siblings('.item-chose').hide();
                     checkBox.siblings('.item-not-chose').show();
-                    selectItemList.forEach(function (item, index) {
+                    selectItemList.forEach(function(item, index) {
                         if (item.item_id === itemID) {
                             selectItemList.splice(index, 1);
                         }
@@ -448,18 +442,18 @@ define(function (require) {
                 self.showSelectedItem()
             })
         },
-        showSelectedItem: function () {
+        showSelectedItem: function() {
             var self = this;
             var listSelectedItems = JSON.parse(localStorage.getItem("listItem"))
             var savedItemSelected = self.model.get('details')
-            savedItemSelected.forEach(function (item, idnex) {
+            savedItemSelected.forEach(function(item, idnex) {
                 if (listSelectedItems == null) {
                     listSelectedItems = []
                 }
                 listSelectedItems.push({ "item_id": item.item_id, "item_name": item.item_name, "purchase_cost": item.purchase_cost, "quantity": item.quantity, "item_id_origin": item.item_id_origin })
             })
             if (listSelectedItems != undefined && listSelectedItems != null) {
-                listSelectedItems.forEach(function (item, index) {
+                listSelectedItems.forEach(function(item, index) {
                     var itemCheckBox = self.$el.find('.item-checkbox[item-id = ' + item.item_id + ']')
                     if (itemCheckBox.attr('item-id') == item.item_id) {
                         itemCheckBox.prop("checked", true);
@@ -467,11 +461,11 @@ define(function (require) {
                         itemCheckBox.siblings('.item-not-chose').hide();
                     }
                 })
-                self.$el.find('.btn-hoantat').unbind('click').bind('click', function () {
+                self.$el.find('.btn-hoantat').unbind('click').bind('click', function() {
                     self.$el.find('.chose-item').hide()
                     self.$el.find('.body-item-new').remove()
-                    listSelectedItems.forEach(function (item, index) {
-                        savedItemSelected.forEach(function (item2, index2) {
+                    listSelectedItems.forEach(function(item, index) {
+                        savedItemSelected.forEach(function(item2, index2) {
                             if (item.item_id == item2.item_id) {
                                 listSelectedItems.splice(index, 1);
                             }
@@ -481,10 +475,10 @@ define(function (require) {
                 })
             }
         },
-        htmlShowSelectedItem: function (listSelectedItems) {
+        htmlShowSelectedItem: function(listSelectedItems) {
             var self = this;
             if (listSelectedItems) {
-                listSelectedItems.forEach(function (item, index) {
+                listSelectedItems.forEach(function(item, index) {
                     self.$el.find('#body-items').append(`
                     <tr class="body-item-new" item-id="${item.item_id}" item-id-origin="${item.item_id_origin}">
                     <td id="item_name" item-name="${item.item_name}">
@@ -506,21 +500,21 @@ define(function (require) {
                 self.listItemsNewRemove(listSelectedItems);
             }
         },
-        listItemsNewRemove: function (listSelectedItems) {
+        listItemsNewRemove: function(listSelectedItems) {
             var self = this;
-            self.$el.find('.body-item-new .itemRemove').unbind('click').bind('click', function () {
+            self.$el.find('.body-item-new .itemRemove').unbind('click').bind('click', function() {
                 $(self.$el.find('.body-item-new')[$(this).attr('ind')]).remove();
                 listSelectedItems.splice($(this).attr('ind'), 1);
                 localStorage.setItem('listItem', JSON.stringify(listSelectedItems))
             })
         },
-        pagination: function (text) {
+        pagination: function(text) {
             var self = this;
             $.ajax({
                 type: "POST",
                 url: self.getApp().serviceURL + '/api/v1/length_data',
                 data: JSON.stringify(12),
-                success: function (response) {
+                success: function(response) {
                     var lengthAllData = Math.ceil(response);
                     self.$el.find('.page-max').find('a').text(lengthAllData);
                     self.$el.find('.page-max,.page-3dot-max,.page-3dot-min,.page-min').hide()
@@ -548,7 +542,7 @@ define(function (require) {
 
 
 
-                    page.unbind('click').bind('click', function () {
+                    page.unbind('click').bind('click', function() {
                         self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
                         self.$el.find('.page-number').removeClass('active')
                         $(this).addClass('active')
@@ -603,14 +597,12 @@ define(function (require) {
                         }
                         if (lengthAllData - pageEnd < 2) {
                             self.$el.find('.page-3dot-max').hide()
-                        }
-                        else {
+                        } else {
                             self.$el.find('.page-3dot-max').show()
                         }
                         if (lengthAllData - pageEnd < 1) {
                             self.$el.find('.page-max').hide()
-                        }
-                        else {
+                        } else {
                             self.$el.find('.page-max').show()
                         }
                         if (pageFirst > 1) {
@@ -618,14 +610,13 @@ define(function (require) {
                         }
                         if (pageFirst > 2) {
                             self.$el.find('.page-min').show()
-                        }
-                        else {
+                        } else {
                             self.$el.find('.page-min').hide()
                         }
                         self.htmlShowItem(pageCurrent - 1, text);
 
                     })
-                    self.$el.find('.page-min').unbind('click').bind('click', function () {
+                    self.$el.find('.page-min').unbind('click').bind('click', function() {
                         self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
                         self.$el.find('.page-number').removeClass('active')
                         $(page[1]).addClass('active')
@@ -637,7 +628,7 @@ define(function (require) {
                         self.$el.find('.page-max,.page-3dot-max').show()
                         self.htmlShowItem(0, text);
                     })
-                    self.$el.find('.page-max').unbind('click').bind('click', function () {
+                    self.$el.find('.page-max').unbind('click').bind('click', function() {
                         self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
                         self.$el.find('.page-number').removeClass('active')
                         $(page[4]).addClass('active')
