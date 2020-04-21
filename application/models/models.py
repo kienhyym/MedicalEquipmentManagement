@@ -1,7 +1,5 @@
 from application.database import db,redisdb
 from application.database.model import CommonModel
-from application.models.organization import *
-
 from sqlalchemy import (and_, or_, String,SmallInteger, Integer, BigInteger, Boolean, DECIMAL, Float, Text, ForeignKey, UniqueConstraint, Index, DateTime)
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 
@@ -55,22 +53,22 @@ class User(CommonModel):
             return role in self.roles
 
 
-# class Organization(CommonModel):
-#     __tablename__ = 'organization'
-#     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-#     name = db.Column(db.String(255))
-#     email = db.Column(db.String(255))
-#     Website = db.Column(db.String(255))
-#     Fax = db.Column(db.String(255))
-#     phone_number = db.Column(db.String(63))
-#     address = db.Column(db.String(255))
-#     province_id = db.Column(UUID(as_uuid=True), ForeignKey('province.id'))
-#     province = relationship('Province', viewonly=True)
-#     district_id = db.Column(UUID(as_uuid=True), ForeignKey('district.id'))
-#     district = relationship('District', viewonly=True)
-#     wards_id = db.Column(UUID(as_uuid=True), ForeignKey('wards.id'))
-#     wards = relationship('Wards', viewonly=True)
-#     ceo = db.Column(db.String)
+class OrganizationUser(CommonModel):
+    __tablename__ = 'organizationuser'
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
+    name = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    Website = db.Column(db.String(255))
+    Fax = db.Column(db.String(255))
+    phone_number = db.Column(db.String(63))
+    address = db.Column(db.String(255))
+    province_id = db.Column(UUID(as_uuid=True), ForeignKey('province.id'))
+    province = relationship('Province', viewonly=True)
+    district_id = db.Column(UUID(as_uuid=True), ForeignKey('district.id'))
+    district = relationship('District', viewonly=True)
+    wards_id = db.Column(UUID(as_uuid=True), ForeignKey('wards.id'))
+    wards = relationship('Wards', viewonly=True)
+    ceo = db.Column(db.String)
 class EthnicGroup(CommonModel):
     __tablename__ = 'ethnicgroup'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -147,8 +145,8 @@ class EquipmentDetails(CommonModel):
     made_in = db.Column(String(255))
     restricted_list = db.Column(String(255),default='no')
     time_of_purchase = db.Column(BigInteger())
-    supplier_id = db.Column(UUID(as_uuid=True),db.ForeignKey('organization.id'), nullable=True)
-    supplier = db.relationship('Organization', viewonly=True)
+    supplier_id = db.Column(UUID(as_uuid=True),db.ForeignKey('organizationuser.id'), nullable=True)
+    supplier = db.relationship('OrganizationUser', viewonly=True)
     nation_id = db.Column(UUID(as_uuid=True),db.ForeignKey('nation.id'), nullable=True)
     nation = db.relationship('Nation', viewonly=True)
     manufacturer_id = db.Column(UUID(as_uuid=True),db.ForeignKey('manufacturer.id'), nullable=True)

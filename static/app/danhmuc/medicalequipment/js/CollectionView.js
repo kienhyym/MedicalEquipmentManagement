@@ -1,4 +1,4 @@
-define(function (require) {
+define(function(require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
@@ -15,63 +15,58 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "medicalequipment",
-        tools: [
-            {
-                name: "defaultgr",
-                type: "group",
-                groupClass: "toolbar-group",
-                buttons: [
-                    {
-                        name: "back",
-                        type: "button",
-                        buttonClass: "btn-default btn-sm btn-secondary",
-                        label: "TRANSLATE:Quay lại",
-                        command: function () {
-                            var self = this;
-                            Backbone.history.history.back();
-                        }
-                    },
-                    {
-                        name: "CREATE",
-                        type: "button",
-                        buttonClass: "btn-success btn-sm",
-                        label: "TRANSLATE:Tạo mới",
-                        command: function () {
-                            var self = this;
-                            self.getApp().getRouter().navigate(self.collectionName + "/model");
-                        }
-                    },
-                    // {
-                    //     name: "import",
-                    //     type: "button",
-                    //     buttonClass: "btn-info btn-sm imp",
-                    //     label: "TRANSLATE:Import",
-                    //     command: function () {
-                    //         var self = this;
-
-
-                    //     }
-                    // },
-                ],
-            }],
-        uiControl: {
-            orderBy:
-                [
-                    {
-                        field: "name",
-                        direction: "asc"
-                    },
-                    {
-                        field: "created_at",
-                        direction: "desc"
+        tools: [{
+            name: "defaultgr",
+            type: "group",
+            groupClass: "toolbar-group",
+            buttons: [{
+                    name: "back",
+                    type: "button",
+                    buttonClass: "btn-default btn-sm btn-secondary",
+                    label: "TRANSLATE:Quay lại",
+                    command: function() {
+                        var self = this;
+                        Backbone.history.history.back();
                     }
-                ],
-            fields: [
+                },
                 {
+                    name: "CREATE",
+                    type: "button",
+                    buttonClass: "btn-success btn-sm",
+                    label: "TRANSLATE:Tạo mới",
+                    command: function() {
+                        var self = this;
+                        self.getApp().getRouter().navigate(self.collectionName + "/model");
+                    }
+                },
+                // {
+                //     name: "import",
+                //     type: "button",
+                //     buttonClass: "btn-info btn-sm imp",
+                //     label: "TRANSLATE:Import",
+                //     command: function () {
+                //         var self = this;
+
+
+                //     }
+                // },
+            ],
+        }],
+        uiControl: {
+            orderBy: [{
+                    field: "name",
+                    direction: "asc"
+                },
+                {
+                    field: "created_at",
+                    direction: "desc"
+                }
+            ],
+            fields: [{
                     field: "stt",
                     label: "STT",
                     width: "30px",
-                    template: function (rowData) {
+                    template: function(rowData) {
                         if (!!rowData) {
                             return `
                                         <div class='text-center pt-3'>${rowData.stt}</div>
@@ -81,23 +76,21 @@ define(function (require) {
                     }
                 },
                 {
-                    field: "name", label: "Phiếu",
-                    template: function (rowData) {
+                    field: "name",
+                    label: "Phiếu",
+                    template: function(rowData) {
                         if (!!rowData) {
-                            var utcTolocal = function (times, format) {
+                            var utcTolocal = function(times, format) {
                                 return moment(times * 1000).local().format(format);
                             }
                             var chungloai = "";
                             if (rowData.classify === "A") {
                                 chungloai = "TTBYT Loại A";
-                            }
-                            else if (rowData.classify === "B") {
+                            } else if (rowData.classify === "B") {
                                 chungloai = "TTBYT Loại B";
-                            }
-                            else if (rowData.classify === "C") {
+                            } else if (rowData.classify === "C") {
                                 chungloai = "TTBYT Loại C";
-                            }
-                            else if (rowData.classify === "D") {
+                            } else if (rowData.classify === "D") {
                                 chungloai = "TTBYT Loại D";
                             }
                             return `    <div style="position: relative;">
@@ -113,7 +106,7 @@ define(function (require) {
                     }
                 }
             ],
-            onRowClick: function (event) {
+            onRowClick: function(event) {
                 if (event.rowId) {
                     var path = this.collectionName + '/model?id=' + event.rowId;
                     this.getApp().getRouter().navigate(path);
@@ -125,50 +118,49 @@ define(function (require) {
                 pageSize: 100
             },
         },
-        render: function () {
+        render: function() {
             var self = this;
             // this.uiControl.orderBy = [{"field": "ma", "direction": "asc"}];
-            self.$el.find("#chonfile").bind('click', function () {
+            self.$el.find("#chonfile").bind('click', function() {
                 $.ajax({
                     url: self.getApp().serviceURL + "/api/v1/read_file_json",
                     method: "POST",
                     data: JSON.stringify({ "ok": "ok" }),
                     contentType: "application/json",
-                    success: function (data) {
-                    }
+                    success: function(data) {}
                 })
             });
 
             var filter = new CustomFilterView({
-    			el: self.$el.find("#grid_search"),
-    			sessionKey: this.collectionName+"_filter"
-    		});
-    		filter.render();
-    		
-    		if(!filter.isEmptyFilter()) {
-    			var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
-    			var filters = {"name": {"$likeI": text }};
-    			self.uiControl.filters = filters;
-    		}
-    		self.applyBindings();
-    		
-    		filter.on('filterChanged', function(evt) {
-    			var $col = self.getCollectionElement();
-    			var text = !!evt.data.text ? evt.data.text.trim() : "";
-				if ($col) {
-					if (text !== null){
-						var filters = {"name": {"$likeI": text }};
-						$col.data('gonrin').filter(filters);
-					} else {
-						self.uiControl.filters = null;
-					}
-				}
-				self.applyBindings();
-    		});
-    		
+                el: self.$el.find("#grid_search"),
+                sessionKey: this.collectionName + "_filter"
+            });
+            filter.render();
+
+            if (!filter.isEmptyFilter()) {
+                var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
+                var filters = { "name": { "$likeI": text } };
+                self.uiControl.filters = filters;
+            }
+            self.applyBindings();
+
+            filter.on('filterChanged', function(evt) {
+                var $col = self.getCollectionElement();
+                var text = !!evt.data.text ? evt.data.text.trim() : "";
+                if ($col) {
+                    if (text !== null) {
+                        var filters = { "name": { "$likeI": text } };
+                        $col.data('gonrin').filter(filters);
+                    } else {
+                        self.uiControl.filters = null;
+                    }
+                }
+                self.applyBindings();
+            });
 
 
-            
+
+
             // var xhr = $.ajax({
             //     url: self.getApp().serviceURL + "/api/v1/get_data_medical",
             //     method: "POST",
