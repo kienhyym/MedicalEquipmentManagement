@@ -26,34 +26,35 @@ define(function(require) {
                 }
             ],
 
-            fields: [{
-                    field: "item_no",
-                    label: "Mã",
-                    width: "150px"
-                },
-                {
-                    field: "",
-                    label: "Loại sản phẩm",
-                    template: function(rowObj) {
-                        if (rowObj.item_type) {
-                            if (rowObj.item_type == "material") {
-                                return `<div style="min-width: 100px">Nguyên liệu</div>`;
-                            } else if (rowObj.item_type == "raw_material") {
-                                return `<div style="min-width: 100px">Nguyên liệu thô</div>`;
-                            } else if (rowObj.item_type == "package") {
-                                return `<div style="min-width: 100px">Combo</div>`;
-                            } else if (rowObj.item_type == "service") {
-                                return `<div style="min-width: 100px">Dịch vụ</div>`;
-                            } else if (rowObj.item_type == "product") {
-                                return `<div style="min-width: 100px">Là sản phẩm</div>`;
-                            } else {
-                                return `<div style="min-width: 100px"></div>`;
-                            }
-                        } else {
-                            return `<div style="min-width: 100px"></div>`;
-                        }
-                    }
-                },
+            fields: [
+                // {
+                //     field: "item_no",
+                //     label: "Mã",
+                //     width: "150px"
+                // },
+                // {
+                //     field: "",
+                //     label: "Loại sản phẩm",
+                //     template: function(rowObj) {
+                //         if (rowObj.item_type) {
+                //             if (rowObj.item_type == "material") {
+                //                 return `<div style="min-width: 100px">Nguyên liệu</div>`;
+                //             } else if (rowObj.item_type == "raw_material") {
+                //                 return `<div style="min-width: 100px">Nguyên liệu thô</div>`;
+                //             } else if (rowObj.item_type == "package") {
+                //                 return `<div style="min-width: 100px">Combo</div>`;
+                //             } else if (rowObj.item_type == "service") {
+                //                 return `<div style="min-width: 100px">Dịch vụ</div>`;
+                //             } else if (rowObj.item_type == "product") {
+                //                 return `<div style="min-width: 100px">Là sản phẩm</div>`;
+                //             } else {
+                //                 return `<div style="min-width: 100px"></div>`;
+                //             }
+                //         } else {
+                //             return `<div style="min-width: 100px"></div>`;
+                //         }
+                //     }
+                // },
                 {
                     field: "item_name",
                     label: "Tên sản phẩm",
