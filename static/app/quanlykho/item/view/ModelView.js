@@ -146,9 +146,9 @@ define(function(require) {
             var id = this.getApp().getRouter().getParam("id");
             self.dungCuChuanBi();
             self.bindEventSelect();
-            self.$el.find('.thongtinthem').unbind('click').bind('click', function(param) {
-                self.$el.find('.onoff').toggle()
-            })
+            // self.$el.find('.thongtinthem').unbind('click').bind('click', function(param) {
+            //     self.$el.find('.onoff').toggle()
+            // })
             if (id) {
                 this.model.set('id', id);
                 this.model.fetch({
