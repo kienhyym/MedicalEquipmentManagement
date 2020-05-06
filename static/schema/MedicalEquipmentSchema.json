@@ -65,13 +65,8 @@
         "type": "string",
         "length": 255
     },
-    "preparationtools": {
-        "type": "list"
-    },
-    "list_of_equipment_details": {
-        "type": "list"
-    },
-    "List_of_equipment_inspection_procedures": {
-        "type": "list"
+    "type": {
+        "type": "string",
+        "length": 255
     }
 }

@@ -6,9 +6,10 @@ from application.database import db
 from sqlalchemy.dialects.postgresql import UUID, JSON, JSONB
 from application.database.model import CommonModel
 from application.models.inventory.unit import Unit
-from application.models.models import MedicalEquipment
 
-from application.models.inventory.warehouse import Warehouse
+from application.models.inventory.warehouse import *
+from application.models.models import *
+
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import *
 from sqlalchemy import *
@@ -23,7 +24,9 @@ items_categories = db.Table('items_categories',
     db.Column('item_id', UUID(as_uuid=True), db.ForeignKey('item.id',onupdate='cascade'), primary_key=True),
     db.Column('category_id', UUID(as_uuid=True), db.ForeignKey('itemcategory.id',onupdate='cascade'), primary_key=True))
 
-
+item_preparationtools = db.Table('item_preparationtools',
+    db.Column('item_id', UUID(as_uuid=True), db.ForeignKey('item.id', ondelete='cascade'), primary_key=True),
+    db.Column('preparationtools_id', UUID(as_uuid=True), db.ForeignKey('preparationtools.id', onupdate='cascade'), primary_key=True))
 class ItemCategory (CommonModel):
     __tablename__ = 'itemcategory'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -110,3 +113,7 @@ class Item (CommonModel):
     status = db.Column(db.String)
     medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'))
     medicalequipment = relationship('MedicalEquipment', viewonly=True)
+
+    preparationtools = db.relationship('PreparationTools', secondary=item_preparationtools, cascade="save-update")
+    list_of_equipment_details = db.relationship('EquipmentDetails', cascade="all, delete-orphan")
+    List_of_equipment_inspection_procedures = db.relationship('EquipmentInspectionProcedures', cascade="all, delete-orphan")

@@ -10,7 +10,6 @@ from gatco_restapi.helpers import to_dict
 
 from application.models.inventory.purchaseorder import *
 from application.models.inventory.consumablesupplies import Item
-from application.models.models import User
 from application.models.inventory.workstation import *
 from application.models.inventory.goodsreciept import *
 from application.models.inventory.movewarehouse import *
@@ -69,65 +68,65 @@ from application.common.helper import pre_post_set_user_tenant_id, pre_get_many_
 #     return json({})
 
 # ??????????????????????????????????????????????????????????????????????????????????????????????????????????
-@app.route('/api/v1/list_item_in_warehouse',methods=['POST'])
-async def list_item_in_warehouse(request):
-    data = request.json
-    dataPurchaseOrderDetails = db.session.query(PurchaseOrderDetails.item_id,PurchaseOrderDetails.item_name,PurchaseOrderDetails.purchase_cost, func.sum(PurchaseOrderDetails.quantity)).group_by(PurchaseOrderDetails.item_id,PurchaseOrderDetails.item_name,PurchaseOrderDetails.purchase_cost).filter(and_(PurchaseOrderDetails.warehouse_id ==data['id'], PurchaseOrderDetails.tenant_id==data['tenant'],PurchaseOrderDetails.payment_status=='paid')).all()
-    dataWarehouse = db.session.query(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost, func.sum(GoodsRecieptDetails.quantity)).group_by(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost).filter(and_(GoodsRecieptDetails.warehouse_id ==data['id'], GoodsRecieptDetails.tenant_id==data['tenant'],GoodsRecieptDetails.payment_status=='paid')).all()
-    dataMoveWareHouseFrom = db.session.query(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.purchase_cost,  func.sum(MoveWarehouseDetails.quantity_delivery),MoveWarehouseDetails.item_name).group_by(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.item_name,MoveWarehouseDetails.purchase_cost).filter(and_(MoveWarehouseDetails.warehouse_from_id ==data['id'], MoveWarehouseDetails.tenant_id==data['tenant'])).all()
-    dataMoveWareHouseTo = db.session.query(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.purchase_cost,  func.sum(MoveWarehouseDetails.quantity_delivery),MoveWarehouseDetails.item_name).group_by(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.item_name,MoveWarehouseDetails.purchase_cost).filter(and_(MoveWarehouseDetails.warehouse_to_id ==data['id'], MoveWarehouseDetails.tenant_id==data['tenant'])).all()
-    lenDataMoveWareHouseTo = len(dataMoveWareHouseTo)
-    arr = []
-    if(len(dataWarehouse) != 0):
-        ax = []
-        for wh in dataWarehouse:
-            dem = 0
-            obj= {}
-            obj['item_id'] = wh[0]
-            obj['item_name'] = wh[1]
-            obj['purchase_cost'] = wh[2]
-            obj['quantity'] = wh[3]
-            if(len(dataMoveWareHouseFrom) != 0):
-                for mwhf in dataMoveWareHouseFrom:
-                    if wh[0] == mwhf[0] and wh[2] == mwhf[1]:
-                        obj['quantity'] = wh[3] - mwhf[2]
-            arr.append(obj)
-    if(lenDataMoveWareHouseTo != 0):
-        for mwht in dataMoveWareHouseTo:
-            dem = 0
-            for a in arr:
-                if mwht[0] == a['item_id'] and mwht[1] == a['purchase_cost']:
-                    a['quantity'] = a['quantity'] + mwht[2]
-                else:
-                    dem = dem + 1
-            if dem == len(arr):
-                obj= {}
-                obj['item_id'] = mwht[0]
-                obj['item_name'] = mwht[3]
-                obj['purchase_cost'] = mwht[1]
-                obj['quantity'] = mwht[2]
-                arr.append(obj)
-    else:
-        if(lenDataMoveWareHouseTo != 0):
-            for mwht in dataMoveWareHouseTo:
-                obj= {}
-                obj['item_id'] = mwht[0]
-                obj['item_name'] = mwht[3]
-                obj['purchase_cost'] = mwht[1]
-                obj['quantity'] = mwht[2]
-                arr.append(obj)
-    for x in arr:
-        for dpod in dataPurchaseOrderDetails:
-            if x['item_id'] == dpod[0] and x['purchase_cost'] == dpod[2]:
-                x['quantity'] = x['quantity']- dpod[3]      
+# @app.route('/api/v1/list_item_in_warehouse',methods=['POST'])
+# async def list_item_in_warehouse(request):
+#     data = request.json
+#     dataPurchaseOrderDetails = db.session.query(PurchaseOrderDetails.item_id,PurchaseOrderDetails.item_name,PurchaseOrderDetails.purchase_cost, func.sum(PurchaseOrderDetails.quantity)).group_by(PurchaseOrderDetails.item_id,PurchaseOrderDetails.item_name,PurchaseOrderDetails.purchase_cost).filter(and_(PurchaseOrderDetails.warehouse_id ==data['id'], PurchaseOrderDetails.tenant_id==data['tenant'],PurchaseOrderDetails.payment_status=='paid')).all()
+#     dataWarehouse = db.session.query(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost, func.sum(GoodsRecieptDetails.quantity)).group_by(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost).filter(and_(GoodsRecieptDetails.warehouse_id ==data['id'], GoodsRecieptDetails.tenant_id==data['tenant'],GoodsRecieptDetails.payment_status=='paid')).all()
+#     dataMoveWareHouseFrom = db.session.query(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.purchase_cost,  func.sum(MoveWarehouseDetails.quantity_delivery),MoveWarehouseDetails.item_name).group_by(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.item_name,MoveWarehouseDetails.purchase_cost).filter(and_(MoveWarehouseDetails.warehouse_from_id ==data['id'], MoveWarehouseDetails.tenant_id==data['tenant'])).all()
+#     dataMoveWareHouseTo = db.session.query(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.purchase_cost,  func.sum(MoveWarehouseDetails.quantity_delivery),MoveWarehouseDetails.item_name).group_by(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.item_name,MoveWarehouseDetails.purchase_cost).filter(and_(MoveWarehouseDetails.warehouse_to_id ==data['id'], MoveWarehouseDetails.tenant_id==data['tenant'])).all()
+#     lenDataMoveWareHouseTo = len(dataMoveWareHouseTo)
+#     arr = []
+#     if(len(dataWarehouse) != 0):
+#         ax = []
+#         for wh in dataWarehouse:
+#             dem = 0
+#             obj= {}
+#             obj['item_id'] = wh[0]
+#             obj['item_name'] = wh[1]
+#             obj['purchase_cost'] = wh[2]
+#             obj['quantity'] = wh[3]
+#             if(len(dataMoveWareHouseFrom) != 0):
+#                 for mwhf in dataMoveWareHouseFrom:
+#                     if wh[0] == mwhf[0] and wh[2] == mwhf[1]:
+#                         obj['quantity'] = wh[3] - mwhf[2]
+#             arr.append(obj)
+#     if(lenDataMoveWareHouseTo != 0):
+#         for mwht in dataMoveWareHouseTo:
+#             dem = 0
+#             for a in arr:
+#                 if mwht[0] == a['item_id'] and mwht[1] == a['purchase_cost']:
+#                     a['quantity'] = a['quantity'] + mwht[2]
+#                 else:
+#                     dem = dem + 1
+#             if dem == len(arr):
+#                 obj= {}
+#                 obj['item_id'] = mwht[0]
+#                 obj['item_name'] = mwht[3]
+#                 obj['purchase_cost'] = mwht[1]
+#                 obj['quantity'] = mwht[2]
+#                 arr.append(obj)
+#     else:
+#         if(lenDataMoveWareHouseTo != 0):
+#             for mwht in dataMoveWareHouseTo:
+#                 obj= {}
+#                 obj['item_id'] = mwht[0]
+#                 obj['item_name'] = mwht[3]
+#                 obj['purchase_cost'] = mwht[1]
+#                 obj['quantity'] = mwht[2]
+#                 arr.append(obj)
+#     for x in arr:
+#         for dpod in dataPurchaseOrderDetails:
+#             if x['item_id'] == dpod[0] and x['purchase_cost'] == dpod[2]:
+#                 x['quantity'] = x['quantity']- dpod[3]      
 
-    arrAfterSearch = []            
-    if data['text'] is not None:
-        for search in arr:
-            if search['item_name'].find(data['text']) != -1:
-                arrAfterSearch.append(search)
-        return json(arrAfterSearch)      
-    return json(arr)   
+#     arrAfterSearch = []            
+#     if data['text'] is not None:
+#         for search in arr:
+#             if search['item_name'].find(data['text']) != -1:
+#                 arrAfterSearch.append(search)
+#         return json(arrAfterSearch)      
+#     return json(arr)   
 
 
 
@@ -148,61 +147,59 @@ def list_warehouse(request):
     return json(arr)
 
 
-@app.route("/api/v1/save_purchaseorderdetails", methods=["POST"])
-def save_purchaseorderdetails(request):
-    data = request.json
-    if data is not None:
-        data_purchaseorderdetails = data['data']
-        for _ in data_purchaseorderdetails:
-            print('_____________',_['purchase_cost'])
-            purchaseOrderDetails = PurchaseOrderDetails()
-            purchaseOrderDetails.purchaseorder_id = _['purchaseorder_id']
-            purchaseOrderDetails.item_id = _['item_id']
-            purchaseOrderDetails.item_name = _['item_name']
-            purchaseOrderDetails.quantity = _['quantity']
-            purchaseOrderDetails.purchase_cost = _['purchase_cost']
-            purchaseOrderDetails.tenant_id = data['tenant']
-            purchaseOrderDetails.warehouse_id = _['warehouse_id']
-            purchaseOrderDetails.warehouse_name = _['warehouse_name']
-            db.session.add(purchaseOrderDetails)
-            db.session.commit()
-    return json({"message": "Create Success"})
+# @app.route("/api/v1/save_purchaseorderdetails", methods=["POST"])
+# def save_purchaseorderdetails(request):
+#     data = request.json
+#     if data is not None:
+#         data_purchaseorderdetails = data['data']
+#         for _ in data_purchaseorderdetails:
+#             print('_____________',_['purchase_cost'])
+#             purchaseOrderDetails = PurchaseOrderDetails()
+#             purchaseOrderDetails.purchaseorder_id = _['purchaseorder_id']
+#             purchaseOrderDetails.item_id = _['item_id']
+#             purchaseOrderDetails.item_name = _['item_name']
+#             purchaseOrderDetails.quantity = _['quantity']
+#             purchaseOrderDetails.purchase_cost = _['purchase_cost']
+#             purchaseOrderDetails.tenant_id = data['tenant']
+#             purchaseOrderDetails.warehouse_id = _['warehouse_id']
+#             purchaseOrderDetails.warehouse_name = _['warehouse_name']
+#             db.session.add(purchaseOrderDetails)
+#             db.session.commit()
+#     return json({"message": "Create Success"})
 
-@app.route('/api/v1/update_purchaseorderdetails', methods=["POST"])
-async def update_purchaseorderdetails(request):
-    data_purchaseOrderDetails = request.json
-    for _ in data_purchaseOrderDetails:
-        purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _['purchaseorder_id']).first()
-        purchaseOrderDetails.item_name = _['item_name']
-        purchaseOrderDetails.item_id = _['item_id']
-        purchaseOrderDetails.warehouse_id = _['warehouse_id']
-        purchaseOrderDetails.warehouse_name = _['warehouse_name']
-        purchaseOrderDetails.purchase_cost = _['purchase_cost']
-        purchaseOrderDetails.quantity = _['quantity']
-        db.session.commit()
-    return json({"message": "Update Success"})
+# @app.route('/api/v1/update_purchaseorderdetails', methods=["POST"])
+# async def update_purchaseorderdetails(request):
+#     data_purchaseOrderDetails = request.json
+#     for _ in data_purchaseOrderDetails:
+#         purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _['purchaseorder_id']).first()
+#         purchaseOrderDetails.item_name = _['item_name']
+#         purchaseOrderDetails.item_id = _['item_id']
+#         purchaseOrderDetails.warehouse_id = _['warehouse_id']
+#         purchaseOrderDetails.warehouse_name = _['warehouse_name']
+#         purchaseOrderDetails.purchase_cost = _['purchase_cost']
+#         purchaseOrderDetails.quantity = _['quantity']
+#         db.session.commit()
+#     return json({"message": "Update Success"})
 
-@app.route('/api/v1/delete_purchaseorderdetails', methods=["POST"])
-async def delete_purchaseorderdetails(request):
-    list_id = request.json
-    for _ in list_id:
-        purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _).first()
-        db.session.delete(purchaseOrderDetails)
-        db.session.commit()
-    return json({"message": "Delete Success"})
-
-
-
-@app.route('/api/v1/update_purchaseorderdetails_item_bill', methods=["POST"])
-async def update_purchaseorderdetails_item_bill(request):
-    data_purchaseorderdetails = request.json
-    for _ in data_purchaseorderdetails:
-        purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _['id']).first()
-        purchaseOrderDetails.payment_status = 'paid'
-        db.session.commit()
-    return json({"message": "Update Success"})
+# @app.route('/api/v1/delete_purchaseorderdetails', methods=["POST"])
+# async def delete_purchaseorderdetails(request):
+#     list_id = request.json
+#     for _ in list_id:
+#         purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _).first()
+#         db.session.delete(purchaseOrderDetails)
+#         db.session.commit()
+#     return json({"message": "Delete Success"})
 
 
+
+# @app.route('/api/v1/update_purchaseorderdetails_item_bill', methods=["POST"])
+# async def update_purchaseorderdetails_item_bill(request):
+#     data_purchaseorderdetails = request.json
+#     for _ in data_purchaseorderdetails:
+#         purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _['id']).first()
+#         purchaseOrderDetails.payment_status = 'paid'
+#         db.session.commit()
+#     return json({"message": "Update Success"})
 
 
 
@@ -221,42 +218,44 @@ async def update_purchaseorderdetails_item_bill(request):
 
 
 
-@app.route("/api/v1/create_purchase_order_details_item", methods=["POST"])
-def create_purchase_order_details_item(request):
-    data = request.json
-    if data is not None:
-        data_purchaseOrderDetails = data['data']
-        for _ in data_purchaseOrderDetails:
-            purchaseOrderDetails = PurchaseOrderDetails()
-            purchaseOrderDetails.purchaseorder_id = data['purchaseorder_id']
-            purchaseOrderDetails.item_id = _['item_id']
-            purchaseOrderDetails.item_name = _['item_name']
-            purchaseOrderDetails.quantity = _['quantity']
-            purchaseOrderDetails.list_price = _['list_price']
-            purchaseOrderDetails.net_amount = _['net_amount']
-            db.session.add(purchaseOrderDetails)
-            db.session.commit()
-    return json({"message": "Create Success"})
 
-@app.route('/api/v1/update_purchase_order_details_item', methods=["POST"])
-async def update_purchase_order_details_item(request):
-    data_purchaseOrderDetails = request.json
-    for _ in data_purchaseOrderDetails:
-        purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _['item_id']).first()
-        purchaseOrderDetails.quantity = _['quantity']
-        purchaseOrderDetails.list_price = _['list_price']
-        purchaseOrderDetails.net_amount = _['net_amount']
-        db.session.commit()
-    return json({"message": "Update Success"})
 
-@app.route('/api/v1/delete_purchase_order_details_item', methods=["POST"])
-async def delete_purchase_order_details_item(request):
-    list_id = request.json
-    for _ in list_id:
-        purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _).first()
-        db.session.delete(purchaseOrderDetails)
-        db.session.commit()
-    return json({"message": "Delete Success"})
+# @app.route("/api/v1/create_purchase_order_details_item", methods=["POST"])
+# def create_purchase_order_details_item(request):
+#     data = request.json
+#     if data is not None:
+#         data_purchaseOrderDetails = data['data']
+#         for _ in data_purchaseOrderDetails:
+#             purchaseOrderDetails = PurchaseOrderDetails()
+#             purchaseOrderDetails.purchaseorder_id = data['purchaseorder_id']
+#             purchaseOrderDetails.item_id = _['item_id']
+#             purchaseOrderDetails.item_name = _['item_name']
+#             purchaseOrderDetails.quantity = _['quantity']
+#             purchaseOrderDetails.list_price = _['list_price']
+#             purchaseOrderDetails.net_amount = _['net_amount']
+#             db.session.add(purchaseOrderDetails)
+#             db.session.commit()
+#     return json({"message": "Create Success"})
+
+# @app.route('/api/v1/update_purchase_order_details_item', methods=["POST"])
+# async def update_purchase_order_details_item(request):
+#     data_purchaseOrderDetails = request.json
+#     for _ in data_purchaseOrderDetails:
+#         purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _['item_id']).first()
+#         purchaseOrderDetails.quantity = _['quantity']
+#         purchaseOrderDetails.list_price = _['list_price']
+#         purchaseOrderDetails.net_amount = _['net_amount']
+#         db.session.commit()
+#     return json({"message": "Update Success"})
+
+# @app.route('/api/v1/delete_purchase_order_details_item', methods=["POST"])
+# async def delete_purchase_order_details_item(request):
+#     list_id = request.json
+#     for _ in list_id:
+#         purchaseOrderDetails = db.session.query(PurchaseOrderDetails).filter(PurchaseOrderDetails.id == _).first()
+#         db.session.delete(purchaseOrderDetails)
+#         db.session.commit()
+#     return json({"message": "Delete Success"})
 
 
 
@@ -449,16 +448,6 @@ async def get_all_purchase_order(request):
         return json(result)
 
 
-@app.route("/api/v1/get_workstation_by_tenant", methods=["POST"])
-async def get_workstation_by_tenant(request):
-    tenant_id = request.json
-    workstation = db.session.query(Workstation).filter(Workstation.tenant_id==tenant_id).all()
-    if workstation is not None:
-        result = []
-        for _ in workstation:
-            list_workstation = to_dict(_)
-            result.append(list_workstation)
-        return json(result)
 
 sqlapimanager.create_api(PurchaseOrder,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
@@ -473,11 +462,11 @@ sqlapimanager.create_api(PurchaseOrder,
         DELETE_SINGLE=[]),
     collection_name='purchaseorder')
 
-sqlapimanager.create_api(PurchaseOrderDetails,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[],
-                    GET_MANY=[],
-                    POST=[auth_func],
-                    PUT_SINGLE=[auth_func]),
-    collection_name='purchaseorderdetails')
+# sqlapimanager.create_api(PurchaseOrderDetails,
+#     methods=['GET', 'POST', 'DELETE', 'PUT'],
+#     url_prefix='/api/v1',
+#     preprocess=dict(GET_SINGLE=[],
+#                     GET_MANY=[],
+#                     POST=[auth_func],
+#                     PUT_SINGLE=[auth_func]),
+#     collection_name='purchaseorderdetails')

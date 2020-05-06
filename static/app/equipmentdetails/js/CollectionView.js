@@ -1,4 +1,4 @@
-define(function (require) {
+define(function(require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
@@ -13,40 +13,37 @@ define(function (require) {
         urlPrefix: "/api/v1/",
         collectionName: "equipmentdetails",
         trangThaiThietBi: null,
-        tools: [
-            {
+        tools: [{
                 name: "defaultgr",
                 type: "group",
                 groupClass: "toolbar-group",
-                buttons: [
-                    {
-                        name: "back",
-                        type: "button",
-                        buttonClass: "btn-default btn-sm btn-secondary",
-                        label: "TRANSLATE:Quay lại",
-                        command: function () {
-                            var self = this;
-                            Backbone.history.history.back();
-                        }
-                    },
-                ],
+                buttons: [{
+                    name: "back",
+                    type: "button",
+                    buttonClass: "btn-default btn-sm btn-secondary",
+                    label: "TRANSLATE:Quay lại",
+                    command: function() {
+                        var self = this;
+                        Backbone.history.history.back();
+                    }
+                }, ],
             },
             {
                 name: "save",
                 type: "button",
                 buttonClass: "btn-success btn-sm",
                 label: "TRANSLATE:CREATE",
-                command: function () {
+                command: function() {
                     var self = this;
                     self.getApp().getRouter().navigate("equipmentdetails/model");
                 }
             },
         ],
-        initialize: function () {
+        initialize: function() {
             this.trangThaiThietBi = localStorage.getItem("TrangThaiThietBi");
             localStorage.clear();
         },
-        render: function () {
+        render: function() {
             var self = this;
 
             self.$el.find('.chungloai').hide();
@@ -67,7 +64,7 @@ define(function (require) {
                 ],
 
             })
-            self.$el.find('#boloc').on('change.gonrin', function (e) {
+            self.$el.find('#boloc').on('change.gonrin', function(e) {
                 var boloc = self.$el.find('#boloc').data('gonrin').getValue();
 
                 if (boloc == "1") {
@@ -115,7 +112,7 @@ define(function (require) {
                 dataSource: [
                     { "value": "yeucaukiemtrathietbi", "text": "Đang yêu cầu kiểm tra" },
                     { "value": "dangsuachua", "text": "Đang sửa chữa" },
-                    { "value": "dangchokiemduyet", "text": "Đang chờ kiểm duyệt" },
+                    { "value": "dangchokiemdinh", "text": "Đang chờ kiểm định" },
                     { "value": "dakiemduyet", "text": "Đã kiểm duyệt" },
                 ],
 
@@ -128,21 +125,21 @@ define(function (require) {
 
             return this;
         },
-        locData: function () {
+        locData: function() {
             var self = this;
             $.ajax({
                 url: self.getApp().serviceURL + "/api/v1/department?results_per_page=100000&max_results_per_page=1000000",
                 method: "GET",
                 // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                 contentType: "application/json",
-                success: function (data) {
+                success: function(data) {
 
                     $.ajax({
                         url: self.getApp().serviceURL + "/api/v1/room?results_per_page=100000&max_results_per_page=1000000",
                         method: "GET",
                         // data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                         contentType: "application/json",
-                        success: function (data2) {
+                        success: function(data2) {
 
 
                             $('#department').combobox({
@@ -152,11 +149,11 @@ define(function (require) {
                                 enableSearch: true,
                                 dataSource: data.objects
                             })
-                            self.$el.find('#department').on('change.gonrin', function (e) {
+                            self.$el.find('#department').on('change.gonrin', function(e) {
                                 var boloc = self.$el.find('#department').data('gonrin').getValue();
                                 var arrKhoa = [];
 
-                                data2.objects.forEach(function (item, index) {
+                                data2.objects.forEach(function(item, index) {
 
                                     if (item.department_id == boloc) {
                                         console.log(item.department_id, boloc)
@@ -190,7 +187,7 @@ define(function (require) {
                 method: "GET",
                 data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                 contentType: "application/json",
-                success: function (data) {
+                success: function(data) {
 
                     $('#room').combobox({
                         textField: "name",
@@ -204,31 +201,29 @@ define(function (require) {
             })
             if (self.trangThaiThietBi != null) {
                 self.appTrangthai();
-            }
-            else if (self.loaiDanhSachHomNay != null){
-                console.log('asdd',self.loaiDanhSachHomNay)
+            } else if (self.loaiDanhSachHomNay != null) {
+                console.log('asdd', self.loaiDanhSachHomNay)
                 self.appListToday();
-            }
-            else {
+            } else {
                 $.ajax({
                     url: self.getApp().serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
                     method: "GET",
                     data: { "q": JSON.stringify({ "order_by": [{ "field": "updated_at", "direction": "desc" }] }) },
                     contentType: "application/json",
-                    success: function (data) {
+                    success: function(data) {
                         var arrdata = [];
-                        data.objects.forEach(function (item, index) {
+                        data.objects.forEach(function(item, index) {
                             item.stt = index + 1;
                             arrdata.push(item)
                         });
                         self.render_grid(arrdata);
 
-                        self.$el.find('#status').on('change.gonrin', function (e) {
+                        self.$el.find('#status').on('change.gonrin', function(e) {
                             var boloc = self.$el.find('#status').data('gonrin').getValue();
                             var arrTinhTrang = [];
                             var i = 1;
 
-                            data.objects.forEach(function (item, index) {
+                            data.objects.forEach(function(item, index) {
                                 if (item.status == boloc) {
                                     item.stt = i;
                                     i++;
@@ -239,12 +234,12 @@ define(function (require) {
                             self.render_grid(arrTinhTrang);
 
                         })
-                        self.$el.find('#department').on('change.gonrin', function (e) {
+                        self.$el.find('#department').on('change.gonrin', function(e) {
                             var boloc = self.$el.find('#department').data('gonrin').getValue();
                             var arrKhoa = [];
                             var i = 1;
 
-                            data.objects.forEach(function (item, index) {
+                            data.objects.forEach(function(item, index) {
                                 if (item.department_id == boloc) {
                                     item.stt = i;
                                     i++;
@@ -254,12 +249,12 @@ define(function (require) {
                             });
                             self.render_grid(arrKhoa);
 
-                            self.$el.find('#room').on('change.gonrin', function (e) {
+                            self.$el.find('#room').on('change.gonrin', function(e) {
                                 var boloc = self.$el.find('#room').data('gonrin').getValue();
                                 var arrPhong = [];
                                 var i = 1;
 
-                                arrKhoa.forEach(function (item, index) {
+                                arrKhoa.forEach(function(item, index) {
                                     if (item.room_id == boloc) {
                                         item.stt = i;
                                         i++;
@@ -269,12 +264,12 @@ define(function (require) {
                                 self.render_grid(arrPhong);
                             })
                         })
-                        self.$el.find('#room').on('change.gonrin', function (e) {
+                        self.$el.find('#room').on('change.gonrin', function(e) {
                             var boloc = self.$el.find('#room').data('gonrin').getValue();
                             var arrPhong = [];
                             var i = 1;
 
-                            data.objects.forEach(function (item, index) {
+                            data.objects.forEach(function(item, index) {
                                 if (item.room_id == boloc) {
                                     item.stt = i;
                                     i++;
@@ -285,12 +280,12 @@ define(function (require) {
                         })
 
 
-                        self.$el.find('#chungloai').on('change.gonrin', function (e) {
+                        self.$el.find('#chungloai').on('change.gonrin', function(e) {
                             var boloc = self.$el.find('#chungloai').data('gonrin').getValue();
                             var i = 1;
                             var arrChungLoai = [];
 
-                            data.objects.forEach(function (itemcl, index) {
+                            data.objects.forEach(function(itemcl, index) {
                                 if (itemcl.types_of_equipment === boloc) {
                                     itemcl.stt = i;
                                     i++;
@@ -298,11 +293,11 @@ define(function (require) {
                                 }
                                 self.render_grid(arrChungLoai);
 
-                                self.$el.find("#noidungtimkiem").keyup(function () {
+                                self.$el.find("#noidungtimkiem").keyup(function() {
                                     var arrTimKiem = [];
                                     var i = 1;
 
-                                    arrChungLoai.forEach(function (item2, index2) {
+                                    arrChungLoai.forEach(function(item2, index2) {
                                         if ((item2.name).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
                                             item.stt = i;
                                             i++;
@@ -313,11 +308,11 @@ define(function (require) {
                                 })
                             });
                         });
-                        self.$el.find("#noidungtimkiem").keyup(function () {
+                        self.$el.find("#noidungtimkiem").keyup(function() {
                             var arrTimKiem = [];
                             var i = 1;
 
-                            data.objects.forEach(function (item2, index2) {
+                            data.objects.forEach(function(item2, index2) {
                                 if ((item2.name).indexOf(self.$el.find("#noidungtimkiem").val()) !== -1) {
                                     item.stt = i;
                                     i++;
@@ -325,12 +320,12 @@ define(function (require) {
                                 }
                             })
                             self.render_grid(arrTimKiem);
-                            self.$el.find('#chungloai').on('change.gonrin', function (e) {
+                            self.$el.find('#chungloai').on('change.gonrin', function(e) {
                                 boloc = self.$el.find('#chungloai').data('gonrin').getValue();
                                 var i = 1;
                                 var arrChungLoai = [];
 
-                                arrTimKiem.forEach(function (item, index) {
+                                arrTimKiem.forEach(function(item, index) {
                                     if (item.types_of_equipment == boloc) {
                                         item.stt = i;
                                         i++;
@@ -348,7 +343,7 @@ define(function (require) {
                 })
             }
         },
-        render_grid: function (dataSource) {
+        render_grid: function(dataSource) {
             var self = this;
             var element = self.$el.find("#grid-data");
             element.grid({
@@ -358,11 +353,10 @@ define(function (require) {
                     no_records_found: "Chưa có dữ liệu"
                 },
                 noResultsClass: "alert alert-default no-records-found",
-                fields: [
-                    {
+                fields: [{
                         label: "STT",
                         width: "30px",
-                        template: function (rowData) {
+                        template: function(rowData) {
                             if (!!rowData) {
                                 return `
                                             <div>${rowData.stt}</div>
@@ -373,25 +367,21 @@ define(function (require) {
                     },
                     {
                         label: "Thiết bị",
-                        template: function (rowData) {
+                        template: function(rowData) {
                             if (!!rowData) {
-                                var utcTolocal = function (times, format) {
+                                var utcTolocal = function(times, format) {
                                     return moment(times * 1000).local().format(format);
                                 }
                                 var status = '';
                                 if (rowData.status === "dangyeucaukiemtrathietbi") {
                                     status = "Đang yêu cầu kiểm tra";
-                                }
-                                else if (rowData.status === "dangyeucausuachua") {
+                                } else if (rowData.status === "dangyeucausuachua") {
                                     status = "Đang yêu cầu sửa chữa";
-                                }
-                                else if (rowData.status === "dangchokiemduyet") {
+                                } else if (rowData.status === "dangchokiemduyet") {
                                     status = "Đang chờ kiểm duyệt";
-                                }
-                                else if (rowData.status === "dakiemduyet") {
+                                } else if (rowData.status === "dakiemduyet") {
                                     status = "Đã kiểm duyệt";
-                                }
-                                else if (rowData.status === "luukho") {
+                                } else if (rowData.status === "luukho") {
                                     status = "Lưu kho chưa vận hành ";
                                 }
                                 return `    <div style="position: relative;">
@@ -414,17 +404,17 @@ define(function (require) {
                     pageSize: 100
                 },
                 events: {
-                    "rowclick": function (e) {
+                    "rowclick": function(e) {
                         self.getApp().getRouter().navigate("equipmentdetails/model?id=" + e.rowId);
                     },
                 },
             });
-            $(self.$el.find('.grid-data tr')).each(function (index, item) {
+            $(self.$el.find('.grid-data tr')).each(function(index, item) {
                 $(item).find('td:first').css('height', $(item).height())
                 $(item).find('td:first').addClass('d-flex align-items-center justify-content-center')
             })
         },
-        appTrangthai: function () {
+        appTrangthai: function() {
             var self = this;
             var filters = {
                 filters: {
@@ -439,12 +429,12 @@ define(function (require) {
                 method: "GET",
                 data: "q=" + JSON.stringify(filters),
                 contentType: "application/json",
-                success: function (data) {
+                success: function(data) {
                     console.log(data)
 
                     var list = [];
-                    data.objects.forEach(function (item, index) {
-                        item.stt = index+1;
+                    data.objects.forEach(function(item, index) {
+                        item.stt = index + 1;
                         list.push(item)
                         self.render_grid(list);
                     });

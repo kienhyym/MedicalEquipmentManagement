@@ -15,7 +15,6 @@ from application.common.helper import pre_post_set_user_tenant_id, pre_get_many_
 @app.route("/api/v1/get_workstation_tenant", methods=["POST"])
 def get_workstation_tenant(request):
     data = request.json
-    print ('ssssssssssssssssssss',data)
     if data is not None:
         workstation = db.session.query(Workstation).filter(Workstation.tenant_id == data).all()
         if workstation is not None:

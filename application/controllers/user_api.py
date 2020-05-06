@@ -325,13 +325,6 @@ sqlapimanager.create_api(Role, max_results_per_page=1000000,
     postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
     collection_name='role')
     
-sqlapimanager.create_api(OrganizationUser, max_results_per_page=1000000,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    # preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
-    collection_name='organizationuser')
 
 
 sqlapimanager.create_api(EquipmentDetails, max_results_per_page=1000000,

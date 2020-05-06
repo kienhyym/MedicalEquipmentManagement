@@ -1,5 +1,8 @@
 from application.database import db,redisdb
 from application.database.model import CommonModel
+from application.models.inventory.organization import Organization
+from application.models.inventory.consumablesupplies import *
+
 from sqlalchemy import (and_, or_, String,SmallInteger, Integer, BigInteger, Boolean, DECIMAL, Float, Text, ForeignKey, UniqueConstraint, Index, DateTime)
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 
@@ -53,22 +56,6 @@ class User(CommonModel):
             return role in self.roles
 
 
-class OrganizationUser(CommonModel):
-    __tablename__ = 'organizationuser'
-    id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
-    name = db.Column(db.String(255))
-    email = db.Column(db.String(255))
-    Website = db.Column(db.String(255))
-    Fax = db.Column(db.String(255))
-    phone_number = db.Column(db.String(63))
-    address = db.Column(db.String(255))
-    province_id = db.Column(UUID(as_uuid=True), ForeignKey('province.id'))
-    province = relationship('Province', viewonly=True)
-    district_id = db.Column(UUID(as_uuid=True), ForeignKey('district.id'))
-    district = relationship('District', viewonly=True)
-    wards_id = db.Column(UUID(as_uuid=True), ForeignKey('wards.id'))
-    wards = relationship('Wards', viewonly=True)
-    ceo = db.Column(db.String)
 class EthnicGroup(CommonModel):
     __tablename__ = 'ethnicgroup'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -105,11 +92,11 @@ class Wards(CommonModel):
     district_id = db.Column(UUID(as_uuid=True), ForeignKey('district.id'))
     district = relationship('District', viewonly=True)
 
-medicalequipment_preparationtools = db.Table('medicalequipment_preparationtools',
-    db.Column('medicalequipment_id', UUID(as_uuid=True), db.ForeignKey('medicalequipment.id', ondelete='cascade'), primary_key=True),
-    db.Column('preparationtools_id', UUID(as_uuid=True), db.ForeignKey('preparationtools.id', onupdate='cascade'), primary_key=True))
+# medicalequipment_preparationtools = db.Table('medicalequipment_preparationtools',
+#     db.Column('medicalequipment_id', UUID(as_uuid=True), db.ForeignKey('medicalequipment.id', ondelete='cascade'), primary_key=True),
+#     db.Column('preparationtools_id', UUID(as_uuid=True), db.ForeignKey('preparationtools.id', onupdate='cascade'), primary_key=True))
 
-    
+
 class MedicalEquipment(CommonModel):
     __tablename__ = 'medicalequipment'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -123,9 +110,11 @@ class MedicalEquipment(CommonModel):
     classification_table = db.Column(String(255))
     public_classification = db.Column(String(255))
     types_of_equipment = db.Column(String(255))
-    preparationtools = db.relationship('PreparationTools', secondary=medicalequipment_preparationtools, cascade="save-update")
-    list_of_equipment_details = db.relationship('EquipmentDetails', cascade="all, delete-orphan")
-    List_of_equipment_inspection_procedures = db.relationship('EquipmentInspectionProcedures', cascade="all, delete-orphan")
+    type = db.Column(String(255))
+    # preparationtools = db.relationship('PreparationTools', secondary=medicalequipment_preparationtools, cascade="save-update")
+    # list_of_equipment_details = db.relationship('EquipmentDetails', cascade="all, delete-orphan")
+    # List_of_equipment_inspection_procedures = db.relationship('EquipmentInspectionProcedures', cascade="all, delete-orphan")
+
 
 class PreparationTools(CommonModel):
     __tablename__ = 'preparationtools'
@@ -145,8 +134,8 @@ class EquipmentDetails(CommonModel):
     made_in = db.Column(String(255))
     restricted_list = db.Column(String(255),default='no')
     time_of_purchase = db.Column(BigInteger())
-    supplier_id = db.Column(UUID(as_uuid=True),db.ForeignKey('organizationuser.id'), nullable=True)
-    supplier = db.relationship('OrganizationUser', viewonly=True)
+    supplier_id = db.Column(UUID(as_uuid=True),db.ForeignKey('organization.id'), nullable=True)
+    supplier = db.relationship('Organization', viewonly=True)
     nation_id = db.Column(UUID(as_uuid=True),db.ForeignKey('nation.id'), nullable=True)
     nation = db.relationship('Nation', viewonly=True)
     manufacturer_id = db.Column(UUID(as_uuid=True),db.ForeignKey('manufacturer.id'), nullable=True)
@@ -168,6 +157,8 @@ class EquipmentDetails(CommonModel):
     status = db.Column(String(255))
     types_of_equipment = db.Column(String(255))
     medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'), nullable=True)
+    item_id = db.Column(UUID(as_uuid=True), ForeignKey('item.id'), nullable=True)
+    item = db.relationship('Item', viewonly=True)
     List_of_requests_for_repair = db.relationship('RepairRequestForm', cascade="all, delete-orphan")
     list_of_checklists_for_equipment = db.relationship('EquipmentInspectionForm', cascade="all, delete-orphan")
     List_of_device_status_verification_sheets = db.relationship('DeviceStatusVerificationForm', cascade="all, delete-orphan")
@@ -179,7 +170,7 @@ class EquipmentInspectionProcedures(CommonModel):
     step = db.Column(Integer()) 
     content = db.Column(String())
     picture = db.Column(String(255)) 
-    medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'), nullable=True)
+    item_id = db.Column(UUID(as_uuid=True), ForeignKey('item.id'), nullable=True)
     
 class Manufacturer(CommonModel):
     __tablename__ = 'manufacturer'

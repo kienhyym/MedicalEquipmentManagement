@@ -4,16 +4,15 @@ define(function(require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
-    var template = require('text!app/quanlykho/currency/tpl/collection.html'),
-        schema = require('json!schema/CurrencySchema.json');
+    var template = require('text!app/quanlykho/unit/tpl/collection.html'),
+        schema = require('json!schema/UnitSchema.json');
 
     var CustomFilterView = require('app/base/view/CustomFilterView');
-
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
-        collectionName: "currency",
+        collectionName: "unit",
 
         tools: [{
             name: "defaultgr",
@@ -23,19 +22,21 @@ define(function(require) {
                 name: "create",
                 type: "button",
                 buttonClass: "btn btn-primary font-weight-bold btn-sm",
-                label: "+ Tiền Tệ",
+                label: "+ Đơn Vị Tính",
                 command: function() {
                     var self = this;
-                    this.getApp().getRouter().navigate("#currency/model");
+                    this.getApp().getRouter().navigate("#unit/model");
                 }
             }, ]
         }],
 
         uiControl: {
             fields: [
-                { field: "currency_name", label: "Tên" },
-                { field: "currency_code", label: "Code" },
-                { field: "currency_symbol", label: "Symbol" },
+
+                { field: "name", label: "Tên đơn vị" },
+                { field: "code", label: "Loại đơn vị" },
+                { field: "description", label: "Miêu tả ghi chú" },
+
             ],
             onRowClick: function(event) {
                 if (event.rowId) {
@@ -48,11 +49,15 @@ define(function(require) {
 
         render: function() {
             var self = this;
+
             self.registerEvent();
 
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
             var filter = new CustomFilterView({
                 el: $("#filter"),
-                sessionKey: "deliverynote_filter"
+                sessionKey: "unit_filter"
             });
             filter.render();
 
@@ -60,7 +65,7 @@ define(function(require) {
                 var filters = {
                     "$and": [
                         { "tenant_id": { "$eq": self.getApp().currentTenant } },
-                        { "deleted": { "$eq": false } }
+                        { "deleted": { "$eq": false } },
                     ]
                 };
                 self.uiControl.filters = filters;
@@ -69,19 +74,22 @@ define(function(require) {
 
             filter.on('filterChanged', function(evt) {
                 var $col = self.getCollectionElement();
-                var text = !!evt.data.text ? evt.data.text.trim() : "";
+                var text = !!filter.model.get("text") ? filter.model.get("text").trim() : "";
+                var textUpper = !!filter.model.get("text") ? filter.model.get("text").trim().toUpperCase() : "";
+                var textLower = !!filter.model.get("text") ? filter.model.get("text").trim().toLowerCase() : "";
+                var textFirst = !!filter.model.get("text") ? capitalizeFirstLetter(filter.model.get("text").trim()) : "";
                 if ($col) {
                     if (text) {
                         var filters = {
                             "$and": [
                                 { "tenant_id": { "$eq": self.getApp().currentTenant } },
                                 { "deleted": { "$eq": false } },
-                                { "currency_code": { "$eq": text } }
+                                { "code": { "$eq": text } }
                             ]
                         };
                         $col.data('gonrin').filter(filters);
                     } else {
-                        var filters = {
+                        filters = {
                             "$and": [
                                 { "tenant_id": { "$eq": self.getApp().currentTenant } },
                                 { "deleted": { "$eq": false } }
@@ -92,7 +100,7 @@ define(function(require) {
                 }
                 self.applyBindings();
             });
-            return;
+            return this;
         },
 
         registerEvent: function() {
@@ -103,7 +111,7 @@ define(function(require) {
 
                 // $("#project-btn").html(`<button type="button" class="btn btn-primary font-weight-bold create-new">+ Xuất hàng</button>`)
                 // $(".create-new").on("click", function () {
-                // 	self.getApp().getRouter().navigate("#currency/model");
+                // 	self.getApp().getRouter().navigate("#unit/model");
                 // });
                 $("#project-search-mobile").html(`
 					<li class="nav-item nav-search d-lg-block">

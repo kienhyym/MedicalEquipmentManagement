@@ -9,6 +9,14 @@ from sqlalchemy.dialects.postgresql import JSONB
 from application.database.model import CommonModel
 import uuid
 from application.models.inventory.organization import Organization
+from application.models.inventory.movewarehouse import *
+from application.models.inventory.goodsreciept import *
+from application.models.inventory.purchaseorder import *
+from application.models.inventory.consumablesupplies import *
+from application.models.inventory.unit import *
+
+
+
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import *
 from sqlalchemy import *
@@ -36,7 +44,7 @@ class Warehouse(CommonModel):
     address_state = db.Column(String(30), nullable=True)
     address_street = db.Column(String(255), nullable=True)
     address_street2 = db.Column(String(255), nullable=True)
-
+    address = db.Column(String, nullable=True)
     zip_code = db.Column(String(20), nullable=True)
 
     email = db.Column(String(100), nullable=True)
@@ -56,25 +64,32 @@ class ItemBalances(CommonModel):
     __tablename__ = 'item_balances'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
 
+    item_balances_type = db.Column(String(40))
     warehouse_id = db.Column(UUID(as_uuid=True), ForeignKey('warehouse.id'), nullable=True)
-    item_exid = db.Column(db.String, nullable=True)
-    item_id = db.Column(String(150))
-    item_name = db.Column(String(150))
+    warehouse_name = db.Column(String(100))
+    goodsreciept_id = db.Column(UUID(as_uuid=True), ForeignKey('goodsreciept.id'), nullable=True)
+    purchaseorder_id = db.Column(UUID(as_uuid=True), ForeignKey('purchaseorder.id'), nullable=True)
+    item_id = db.Column(UUID(as_uuid=True), ForeignKey('item.id'), nullable=True)
+    unit_id = db.Column(UUID(as_uuid=True), ForeignKey('unit.id'), nullable=True)
+
     item_no = db.Column(String(40))
-    item_image = db.Column(db.String(), default="static/images/default-dist.jpeg", nullable=True)
-    item_type = db.Column(db.String(), default="is_material")
+    item_name = db.Column(String(150))
     tenant_id = db.Column(db.String)
-
-    unit_id = db.Column(UUID(as_uuid=True))
-    unit_code = db.Column(db.String)
-
     purchase_cost = db.Column(DECIMAL(27,8), default=0)  #purchase price
     list_price = db.Column(DECIMAL(27,8), default=0)  #selling price
-    net_amount = db.Column(DECIMAL(27,8), default=0)  #thanh tien truoc khi tru discount
-
-    lot_number = db.Column(db.DECIMAL)
     quantity = db.Column(DECIMAL(25,3), default=1)
+    net_amount = db.Column(DECIMAL(27,8), default=0)  #thanh tien truoc khi tru discount
+    payment_status = db.Column(String(20), default="created")
 
-    # list_price = db.Column(DECIMAL(27,8), default=0)
+    warehouse_from_id = db.Column(String(150))
+    warehouse_to_id = db.Column(String(150))
+    move_warehouse_id = db.Column(UUID(as_uuid=True), ForeignKey('movewarehouse.id'), nullable=True)
+
+    item_image = db.Column(db.String(), default="static/images/default-dist.jpeg", nullable=True)
+    unit_code = db.Column(db.String)
+    lot_number = db.Column(db.DECIMAL)
     amount = db.Column(DECIMAL(27,8), default=0)
     description = db.Column(db.String)
+    item_exid = db.Column(db.String, nullable=True)
+    item_type = db.Column(db.String(), default="is_material")
+

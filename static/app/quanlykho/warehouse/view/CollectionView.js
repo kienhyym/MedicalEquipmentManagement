@@ -332,7 +332,7 @@
 
 
 
-define(function (require) {
+define(function(require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
@@ -346,40 +346,39 @@ define(function (require) {
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "warehouse",
-        tools: [
-            {
-                name: "defaultgr",
-                type: "group",
-                groupClass: "toolbar-group",
-                buttons: [
-                    {
-                        name: "create",
-                        type: "button",
-                        buttonClass: "btn btn-primary font-weight-bold",
-                        label: "+ Kho",
-                        command: function () {
-                            var self = this;
-                            this.getApp().getRouter().navigate("#warehouse/model");
-                        }
-                    },
-                ]
-            }],
+        tools: [{
+            name: "defaultgr",
+            type: "group",
+            groupClass: "toolbar-group",
+            buttons: [{
+                name: "create",
+                type: "button",
+                buttonClass: "btn btn-primary font-weight-bold btn-sm",
+                label: "+ Kho",
+                command: function() {
+                    var self = this;
+                    this.getApp().getRouter().navigate("#warehouse/model");
+                }
+            }, ]
+        }],
         uiControl: {
-            fields: [
-                {
-                    field: "warehouse_name", label: "Tên kho", width: 250, readonly: true,
+            fields: [{
+                    field: "warehouse_name",
+                    label: "Tên kho",
+                    width: 250,
+                    readonly: true,
                 },
 
 
             ],
-            onRowClick: function (event) {
+            onRowClick: function(event) {
                 if (event.rowId) {
                     var path = this.collectionName + '/model?id=' + event.rowId;
                     this.getApp().getRouter().navigate(path);
                 }
             }
         },
-        render: function () {
+        render: function() {
             this.applyBindings();
             return this;
         },

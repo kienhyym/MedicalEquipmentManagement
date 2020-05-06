@@ -4,69 +4,70 @@ define(function(require) {
         _ = require('underscore'),
         Gonrin = require('gonrin');
 
-    var template = require('text!app/quanlykho/workstation/tpl/collection.html'),
-        schema = require('json!schema/WorkstationSchema.json');
+    var template = require('text!app/quanlykho/unit/tpl/select.html'),
+        schema = require('json!schema/UnitSchema.json');
 
     var CustomFilterView = require('app/base/view/CustomFilterView');
 
-    return Gonrin.CollectionView.extend({
+    return Gonrin.CollectionDialogView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
-        collectionName: "workstation",
+        collectionName: "unit",
 
+        textField: "code",
         tools: [{
-            name: "defaultgr",
-            type: "group",
-            groupClass: "toolbar-group",
-            buttons: [{
-                name: "create",
-                type: "button",
-                buttonClass: "btn btn-primary font-weight-bold btn-sm",
-                label: "+ Điểm bán",
-                command: function() {
-                    var self = this;
-                    this.getApp().getRouter().navigate("#workstation/model");
-                }
-            }, ]
+            name: "select",
+            type: "button",
+            buttonClass: "btn btn-info btn-sm font-weight-bold margin-left-5",
+            label: "TRANSLATE:SELECT",
+            command: function() {
+                this.trigger("onSelected");
+                this.close();
+            }
         }],
 
         uiControl: {
             fields: [
-
-                { field: "workstation_name", label: "Tên điểm bán" },
-                { field: "workstation_no", label: "Mã sản phẩm" },
-                { field: "address", label: "Địa chỉ" },
-
-
+                { field: "name", label: "Tên" },
+                { field: "code", label: "Ký hiệu" }
             ],
             onRowClick: function(event) {
-                if (event.rowId) {
-                    var path = this.collectionName + '/model?id=' + event.rowId;
-                    this.getApp().getRouter().navigate(path);
+                var select = [];
+                for (var i = 0; i < event.selectedItems.length; i++) {
+                    console.log(event.selectedItems[i]);
+                    var o = {
+                        id: event.selectedItems[i].id,
+                        name: event.selectedItems[i].name,
+                        code: event.selectedItems[i].code
+                    }
+                    select.push(o);
                 }
+                this.uiControl.selectedItems = select;
+                this.trigger("onSelected");
+                this.close();
 
+            },
+            onRendered: function(e) {
+                this.trigger("onRendered");
             }
         },
-
         render: function() {
             var self = this;
-
-            self.registerEvent();
 
             function capitalizeFirstLetter(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
             }
             var filter = new CustomFilterView({
-                el: $("#filter"),
-                sessionKey: "workstation_filter"
+                el: self.$el.find("#filter"),
+                sessionKey: "unit_filter"
             });
             filter.render();
 
             if (!filter.isEmptyFilter()) {
                 var filters = {
                     "$and": [
-                        { "tenant_id": { "$eq": self.getApp().currentTenant[0] } },
+                        { "tenant_id": { "$eq": self.getApp().currentTenant } },
                         { "deleted": { "$eq": false } },
                     ]
                 };
@@ -86,7 +87,7 @@ define(function(require) {
                             "$and": [
                                 { "tenant_id": { "$eq": self.getApp().currentTenant } },
                                 { "deleted": { "$eq": false } },
-                                { "workstation_name": { "$eq": text } }
+                                { "code": { "$like": text } }
                             ]
                         };
                         $col.data('gonrin').filter(filters);
@@ -104,31 +105,5 @@ define(function(require) {
             });
             return this;
         },
-
-        registerEvent: function() {
-            var self = this;
-            var currentURL = window.location.href;
-            if (self.getApp().isMobile == "ANDROID") {
-                $("#project-search-windows").html(``);
-
-                // $("#project-btn").html(`<button type="button" class="btn btn-primary font-weight-bold create-new">+ Xuất hàng</button>`)
-                // $(".create-new").on("click", function () {
-                // 	self.getApp().getRouter().navigate("#unit/model");
-                // });
-                $("#project-search-mobile").html(`
-					<li class="nav-item nav-search d-lg-block">
-					<div class="col-md-12 col-sm-12 col-xs-12 col-12" id="filter"></div>
-				</li>`);
-
-            } else if (self.getApp().isMobile == "WINDOWS") {
-                $("#project-search-mobile").html(``);
-
-                $("#project-search-windows").html(`
-					<li class="nav-item nav-search d-lg-block">
-					<div class="col-md-12 col-sm-12 col-xs-12 col-12" id="filter"></div>
-				</li>`);
-            }
-        },
     });
-
 });

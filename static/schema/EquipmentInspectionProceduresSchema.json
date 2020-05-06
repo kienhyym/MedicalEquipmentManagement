@@ -35,7 +35,7 @@
         "type": "string",
         "length": 255
     },
-    "medicalequipment_id": {
+    "item_id": {
         "type": "string"
     }
 }

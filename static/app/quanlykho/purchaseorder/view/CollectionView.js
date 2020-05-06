@@ -25,7 +25,7 @@ define(function(require) {
                 buttons: [{
                     name: "create",
                     type: "button",
-                    buttonClass: "btn btn-primary font-weight-bold",
+                    buttonClass: "btn btn-primary font-weight-bold btn-sm",
                     label: "+ Tạo Phiếu",
                     command: function() {
                         var self = this;
@@ -91,7 +91,7 @@ define(function(require) {
                 },
                 {
                     field: "workstation_name",
-                    label: "Điểm bán",
+                    label: "Bên mua hàng",
                     template: function(rowObject) {
                         if (rowObject.workstation_name) {
                             return `<div style="min-width: 150px; class="ellipsis-150">${rowObject.workstation_name}</div>`;
@@ -111,17 +111,17 @@ define(function(require) {
                         }
                     }
                 },
-                {
-                    field: "organization_name",
-                    label: "Thương hiệu",
-                    template: function(rowObject) {
-                        if (rowObject.organization_name) {
-                            return `<div style="min-width: 150px; class="ellipsis-150">${rowObject.organization_name}</div>`;
-                        } else {
-                            return `<div style="min-width: 150px; class="ellipsis-150"></div>`;
-                        }
-                    }
-                },
+                // {
+                //     field: "organization_name",
+                //     label: "Thương hiệu",
+                //     template: function(rowObject) {
+                //         if (rowObject.organization_name) {
+                //             return `<div style="min-width: 150px; class="ellipsis-150">${rowObject.organization_name}</div>`;
+                //         } else {
+                //             return `<div style="min-width: 150px; class="ellipsis-150"></div>`;
+                //         }
+                //     }
+                // },
                 {
                     field: "proponent",
                     label: "Người đề nghị",

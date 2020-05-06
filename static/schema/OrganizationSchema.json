@@ -110,54 +110,23 @@
         "type": "string",
         "length": 1
     },
+    "director": {
+        "type": "string",
+        "length": 100
+    },
     "address": {
         "type": "string"
     },
-    "bill_address_city": {
-        "type": "string",
-        "length": 30
+    "wards_id": {
+        "type": "string"
     },
-    "bill_address_code": {
-        "type": "string",
-        "length": 30
+    "district_id": {
+        "type": "string"
     },
-    "bill_address_country": {
-        "type": "string",
-        "length": 30
+    "province_id": {
+        "type": "string"
     },
-    "bill_address_state": {
-        "type": "string",
-        "length": 30
-    },
-    "bill_address_street": {
-        "type": "string",
-        "length": 250
-    },
-    "bill_address_pobox": {
-        "type": "string",
-        "length": 30
-    },
-    "ship_address_city": {
-        "type": "string",
-        "length": 30
-    },
-    "ship_address_code": {
-        "type": "string",
-        "length": 30
-    },
-    "ship_address_country": {
-        "type": "string",
-        "length": 30
-    },
-    "ship_address_state": {
-        "type": "string",
-        "length": 30
-    },
-    "ship_address_street": {
-        "type": "string",
-        "length": 250
-    },
-    "ship_address_pobox": {
+    "hierarchy": {
         "type": "string",
         "length": 30
     },
@@ -166,5 +135,14 @@
     },
     "employees": {
         "type": "list"
+    },
+    "wards": {
+        "type": "dict"
+    },
+    "district": {
+        "type": "dict"
+    },
+    "province": {
+        "type": "dict"
     }
 }

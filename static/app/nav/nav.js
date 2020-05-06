@@ -129,8 +129,8 @@ define(function(require) {
                 {
                     "text": "<label class='m-0 ml-4'>Nhà cung cấp thiết bị</label>",
                     "type": "view",
-                    "collectionName": "organizationuser",
-                    "route": "organizationuser/collection",
+                    "collectionName": "organization",
+                    "route": "organization/collection",
                     "visible": function() {
                         return true
 
@@ -298,7 +298,7 @@ define(function(require) {
             "icon": "fa fa-file-text-o",
             "type": "category",
             "entries": [{
-                    "text": "<label class='m-0 ml-4'>Vật tư y tế</label>",
+                    "text": "<label class='m-0 ml-4'>Thiết bị và vật tư y tế</label>",
                     "type": "view",
                     "collectionName": "item",
                     "route": "item/collection",
@@ -324,7 +324,6 @@ define(function(require) {
                         return true
                     }
                 },
-
                 {
                     "text": "<label class='m-0 ml-4'>Chuyển kho</label>",
                     "type": "view",
@@ -334,17 +333,6 @@ define(function(require) {
                         return true
                     }
                 },
-
-                // {
-                //     "text": "Khách hàng",
-                //     "type": "view",
-                //     "collectionName": "contact",
-                //     "route": "contact/collection",
-                //     "visible": function() {
-                //         return true
-                //     }
-                // },
-
                 {
                     "text": "<label class='m-0 ml-4'>Kho</label>",
                     "type": "view",
@@ -364,7 +352,16 @@ define(function(require) {
                     }
                 },
                 {
-                    "text": "<label class='m-0 ml-4'>Doanh nghiệp</label>",
+                    "text": "<label class='m-0 ml-4'>Đơn vị tính</label>",
+                    "type": "view",
+                    "collectionName": "unit",
+                    "route": "unit/collection",
+                    "visible": function() {
+                        return true
+                    }
+                },
+                {
+                    "text": "<label class='m-0 ml-4'>Danh sách đơn vị</label>",
                     "type": "view",
                     "collectionName": "organization",
                     "route": "organization/collection",
@@ -372,15 +369,15 @@ define(function(require) {
                         return true
                     }
                 },
-                {
-                    "text": "<label class='m-0 ml-4'>Điểm bán</label>",
-                    "type": "view",
-                    "collectionName": "workstation",
-                    "route": "workstation/collection",
-                    "visible": function() {
-                        return true
-                    }
-                },
+                // {
+                //     "text": "<label class='m-0 ml-4'>Đơn vị mua hàng</label>",
+                //     "type": "view",
+                //     "collectionName": "workstation",
+                //     "route": "workstation/collection",
+                //     "visible": function() {
+                //         return true
+                //     }
+                // },
             ]
         },
     ];

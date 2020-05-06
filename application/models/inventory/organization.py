@@ -15,7 +15,6 @@ from sqlalchemy import *
 def default_uuid():
     return str(uuid.uuid4())
 
-
 class Organization(CommonModel):
     __tablename__ = 'organization'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
@@ -45,22 +44,15 @@ class Organization(CommonModel):
     emailoptout = db.Column(String(3), nullable=True)
     isconvertedfromlead = db.Column(String(3), nullable=True)
     tags = db.Column(String(1), nullable=True)
-
+    director = db.Column(String(100), nullable=True)
     address = db.Column(Text(), nullable=True)
-    bill_address_city = db.Column(String(30), nullable=True)
-    bill_address_code = db.Column(String(30), nullable=True)
-    bill_address_country = db.Column(String(30), nullable=True)
-    bill_address_state = db.Column(String(30), nullable=True)
-    bill_address_street = db.Column(String(250), nullable=True)
-    bill_address_pobox = db.Column(String(30), nullable=True)
-
-    ship_address_city = db.Column(String(30), nullable=True)
-    ship_address_code = db.Column(String(30), nullable=True)
-    ship_address_country = db.Column(String(30), nullable=True)
-    ship_address_state = db.Column(String(30), nullable=True)
-    ship_address_street = db.Column(String(250), nullable=True)
-    ship_address_pobox = db.Column(String(30), nullable=True)
-
+    wards_id = db.Column(UUID(as_uuid=True), ForeignKey('wards.id'))
+    wards = relationship('Wards', viewonly=True)
+    district_id = db.Column(UUID(as_uuid=True), ForeignKey('district.id'))
+    district = relationship('District', viewonly=True)
+    province_id = db.Column(UUID(as_uuid=True), ForeignKey('province.id'))
+    province = relationship('Province', viewonly=True)
+    hierarchy = db.Column(String(30), nullable=True)
     custom_fields = db.Column(JSONB(), nullable=True)
 
 

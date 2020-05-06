@@ -96,11 +96,11 @@ define(function(require) {
         tools: [{
             name: "defaultgr",
             type: "group",
-            groupClass: "toolbar-group",
+            groupClass: "toolbar-group ",
             buttons: [{
                 name: "create",
                 type: "button",
-                buttonClass: "btn btn-primary font-weight-bold",
+                buttonClass: "btn btn-primary font-weight-bold btn-sm",
                 label: "+ Mặt hàng",
                 command: function() {
                     var self = this;

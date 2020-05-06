@@ -56,16 +56,6 @@ define(function(require) {
             "$ref": "app/hethong/rank/js/ModelView",
         },
         {
-            "collectionName": "organizationuser",
-            "route": "organizationuser/collection",
-            "$ref": "app/danhmuc/organization/js/CollectionView",
-        },
-        {
-            "collectionName": "organizationuser",
-            "route": "organizationuser/model(/:id)",
-            "$ref": "app/danhmuc/organization/js/ModelView",
-        },
-        {
             "collectionName": "medicalequipment",
             "route": "medicalequipment/collection",
             "$ref": "app/danhmuc/medicalequipment/js/CollectionView",
@@ -276,6 +266,17 @@ define(function(require) {
         },
 
         {
+            "collectionName": "unit",
+            "route": "unit/collection",
+            "$ref": "app/quanlykho/unit/view/CollectionView",
+        },
+        {
+            "collectionName": "unit",
+            "route": "unit/model(/:id)",
+            "$ref": "app/quanlykho/unit/view/ModelView",
+        },
+
+        {
             "collectionName": "organization",
             "route": "organization/collection",
             "$ref": "app/quanlykho/organization/view/CollectionView",
@@ -286,16 +287,16 @@ define(function(require) {
             "$ref": "app/quanlykho/organization/view/ModelView",
         },
 
-        {
-            "collectionName": "workstation",
-            "route": "workstation/collection",
-            "$ref": "app/quanlykho/workstation/view/CollectionView",
-        },
-        {
-            "collectionName": "workstation",
-            "route": "workstation/model(/:id)",
-            "$ref": "app/quanlykho/workstation/view/ModelView",
-        },
+        // {
+        //     "collectionName": "workstation",
+        //     "route": "workstation/collection",
+        //     "$ref": "app/quanlykho/workstation/view/CollectionView",
+        // },
+        // {
+        //     "collectionName": "workstation",
+        //     "route": "workstation/model(/:id)",
+        //     "$ref": "app/quanlykho/workstation/view/ModelView",
+        // },
 
     ];
 

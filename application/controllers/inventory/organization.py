@@ -10,10 +10,10 @@ from application.models.inventory.organization import *
 from gatco_restapi.helpers import to_dict
 from application.common.helper import pre_post_set_user_tenant_id, pre_get_many_user_tenant_id, get_tennat_id, current_user, auth_func
 
-@app.route('/api/v1/get_all_organization', methods=["POST"])
-async def get_all_organization(request):
+@app.route('/api/v1/get_all_organization_reseller', methods=["POST"])
+async def get_all_organization_reseller(request):
     data = request.json
-    organization = db.session.query(Organization).filter(Organization.tenant_id == data["tenant_id"]).all()
+    organization = db.session.query(Organization).filter(and_(Organization.organization_type =="reseller", Organization.tenant_id==data['tenant_id'])).all()
     result = []
     if organization is not None:
         for o in organization:
@@ -21,16 +21,27 @@ async def get_all_organization(request):
             result.append(list_o)
     return json(result)
 
-@app.route('/api/v1/get_all_organizationstaff', methods=["POST"])
-async def get_all_organization(request):
-    organization_id = request.json
-    organizationStaff = db.session.query(OrganizationStaff).filter(OrganizationStaff.organization_id == organization_id).all()
+@app.route('/api/v1/get_all_organization_customer', methods=["POST"])
+async def get_all_organization_customer(request):
+    data = request.json
+    organization = db.session.query(Organization).filter(and_(Organization.organization_type =="customer", Organization.tenant_id==data['tenant_id'])).all()
     result = []
-    if organizationStaff is not None:
-        for o in organizationStaff:
+    if organization is not None:
+        for o in organization:
             list_o = to_dict(o)
             result.append(list_o)
     return json(result)
+
+# @app.route('/api/v1/get_all_organizationstaff', methods=["POST"])
+# async def get_all_organization(request):
+#     organization_id = request.json
+#     organizationStaff = db.session.query(OrganizationStaff).filter(OrganizationStaff.organization_id == organization_id).all()
+#     result = []
+#     if organizationStaff is not None:
+#         for o in organizationStaff:
+#             list_o = to_dict(o)
+#             result.append(list_o)
+#     return json(result)
 
 
 @app.route('/api/v1/create_organizationstaff', methods=["POST"])

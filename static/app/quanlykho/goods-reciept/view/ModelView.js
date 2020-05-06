@@ -29,7 +29,7 @@ define(function(require) {
         urlPrefix: "/api/v1/",
         collectionName: "goodsreciept",
         // changeDetails: [],
-        selectItemList: [],
+        // selectItemList: [],
         listItemRemove: [],
         refresh: true,
         uiControl: {
@@ -168,7 +168,7 @@ define(function(require) {
                         }
                         self.model.save(null, {
                             success: function(model, respose, options) {
-                                self.createItem(respose.id);
+                                self.createItem(respose.id, self.getApp().currentTenant[0]);
                                 self.updateItem();
                                 self.deleteItem();
                                 self.getApp().notify("Lưu thông tin thành công");
@@ -271,6 +271,9 @@ define(function(require) {
                                         success: function(model, respose, options) {
                                             self.getApp().notify("Lưu thông tin thành công");
                                             self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                                            // self.createItem(respose.id);
+                                            // self.updateItem();
+                                            // self.deleteItem();
                                         },
                                         error: function(xhr, status, error) {
                                             try {
@@ -343,7 +346,6 @@ define(function(require) {
 
         render: function() {
             var self = this;
-            localStorage.removeItem("listItem");
             if (!$("body").hasClass("sidebar-icon-only")) {
                 $("#btn-menu").trigger("click");
             }
@@ -358,7 +360,7 @@ define(function(require) {
                     success: function(data) {
                         self.applyBindings();
                         self.registerEvent();
-                        self.showSavedItem();
+                        self.showDetail();
                         self.listItemsOldRemove();
                     },
                     error: function() {
@@ -371,13 +373,272 @@ define(function(require) {
             }
 
         },
+        // CHỨC NĂNG CHỌN ITEM.
+        chooseItemInListDropdownItem: function() {
+            var self = this;
+            self.$el.find('.dropdown-item').unbind('click').bind('click', function() {
+                var stt = self.$el.find('[col-type="STT"]').length + 1;
+                var dropdownItemClick = $(this);
+                var itemID = dropdownItemClick.attr('item-id') + '-' + dropdownItemClick.attr('purchase-cost')
+                var purchaseCostFormat = new Number(dropdownItemClick.attr('purchase-cost')).toLocaleString("en-AU");
+                self.$el.find('#list-item').before(`
+                <div style="width: 955px;height: 50px;" selected-item-id = "${itemID}" class = "selected-item-new" 
+                item-id = "${dropdownItemClick.attr('item-id')}"
+                item-no = "${dropdownItemClick.attr('item-no')}"
+                unit-id = "${dropdownItemClick.attr('unit-id')}"
+                list-price = "${dropdownItemClick.attr('list-price')}"
+                >
+                    <div style="width: 45px; display: inline-block;text-align: center;padding: 5px;">
+                        <input selected-item-id = "${itemID}" col-type="STT" class="form-control text-center p-1" value="${stt}" style="font-size:14px">
+                    </div>
+                    <div style="width: 290px;display: inline-block;padding: 5px;">
+                        <input selected-item-id = "${itemID}" col-type="NAME" class="form-control p-1" value="${dropdownItemClick.attr('title')}" readonly style="font-size:14px">
+                    </div>
+                    <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
+                        <input selected-item-id = "${itemID}" col-type="PURCHASE_COST" class="form-control text-center p-1" purchase-cost = "${dropdownItemClick.attr('purchase-cost')}" value="${purchaseCostFormat} VNĐ" style="font-size:14px">
+                    </div>
+                    <div style="width: 190px; display: inline-block; text-align:center;padding: 5px;">
+                        <input selected-item-id = "${itemID}" col-type="QUANTITY" type="number" class="form-control text-center p-1" value = "0" style="font-size:14px">
+                    </div>
+                    <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
+                        <input selected-item-id = "${itemID}" col-type="NET_AMOUNT" class="form-control text-center p-1" readonly style="font-size:14px">
+                    </div>
+                    <div style="width: 30px;display: inline-block;text-align: center;padding: 5px;">
+                            <i selected-item-id = "${itemID}" class="fa fa-trash" style="font-size: 17px"></i>
+                        </div>
+                </div>
+                `)
+                self.$el.find('.dropdown-menu-item').hide()
+                self.$el.find('.search-item').val('')
+                self.clickPurchaseCost();
+                self.$el.find('.selected-item-new div .fa-trash').unbind('click').bind('click', function() {
+                    self.$el.find('.selected-item-new[selected-item-id="' + $(this).attr('selected-item-id') + '"]').remove();
+                })
+            })
 
+        },
+        clickPurchaseCost: function() {
+            var self = this;
+            self.$el.find('selected-item')
+                //Click PURCHASE_COST
+            self.$el.find('[col-type="PURCHASE_COST"]').unbind('click').bind('click', function() {
+                var pointer = $(this);
+                pointer.val(pointer.attr('purchase-cost'));
+            });
+            //Out Click PURCHASE_COST
+            self.$el.find('[col-type="PURCHASE_COST"]').focusout(function() {
+                var pointerOutPurchaseCost = $(this);
+                const promise = new Promise((resolve, reject) => {
+                    var purchaseCostValueChange = pointerOutPurchaseCost.val();
+                    //net-amount
+                    if (purchaseCostValueChange == null || purchaseCostValueChange == '') {
+                        purchaseCostValueChange = 0;
+                    }
+                    var selectedItemId = pointerOutPurchaseCost.attr('selected-item-id');
+                    var pointerOutValueQuantity = self.$el.find('[col-type="QUANTITY"][selected-item-id = ' + selectedItemId + ']').val();
+                    var netAmount = pointerOutValueQuantity * purchaseCostValueChange;
+                    self.$el.find('[col-type="NET_AMOUNT"][selected-item-id = ' + selectedItemId + ']').attr('net-amount', netAmount);
+
+                    var netAmountValueChange = new Number(netAmount).toLocaleString("en-AU");
+                    self.$el.find('[col-type="NET_AMOUNT"][selected-item-id = ' + selectedItemId + ']').val(netAmountValueChange + " VNĐ");
+                    //purchase-cost
+                    pointerOutPurchaseCost.attr('purchase-cost', purchaseCostValueChange);
+                    return resolve(pointerOutPurchaseCost.attr('purchase-cost', purchaseCostValueChange));
+                })
+                promise.then(function(number) {
+                    var purchaseCostFormat = new Number(number.attr('purchase-cost')).toLocaleString("en-AU");
+                    var purchaseCostFormatString = String(purchaseCostFormat) + ' VNĐ';
+                    pointerOutPurchaseCost.val(purchaseCostFormatString);
+                });
+            });
+            //Out Click NET_AMOUNT
+            self.$el.find('[col-type="QUANTITY"]').focusout(function() {
+                var pointerOutQuantity = $(this);
+                var pointerOutQuantityValue = pointerOutQuantity.val();
+                if (pointerOutQuantityValue == null || pointerOutQuantityValue == '') {
+                    pointerOutQuantity.val(0)
+                }
+                var selectedItemId = pointerOutQuantity.attr('selected-item-id');
+                var pointerOutValuePurchaseCost = self.$el.find('[col-type="PURCHASE_COST"][selected-item-id = ' + selectedItemId + ']').attr('purchase-cost');
+                var resultNetAmount = pointerOutValuePurchaseCost * pointerOutQuantity.val();
+                self.$el.find('[col-type="NET_AMOUNT"][selected-item-id = ' + selectedItemId + ']').attr('net-amount', resultNetAmount);
+                var resultNetAmountChange = new Number(resultNetAmount).toLocaleString("en-AU");
+                self.$el.find('[col-type="NET_AMOUNT"][selected-item-id = ' + selectedItemId + ']').val(resultNetAmountChange + " VNĐ");
+            });
+        },
+        loadItemDropdown: function() { // Đổ danh sách Item vào ô tìm kiếm
+            var self = this;
+            self.$el.find('.search-item').keyup(function name() {
+                self.$el.find('.dropdown-item').remove();
+                var text = $(this).val()
+                $.ajax({
+                    type: "POST",
+                    url: self.getApp().serviceURL + "/api/v1/load_item_dropdown",
+                    data: JSON.stringify({ "text": text, "tenant_id": self.getApp().currentTenant[0] }),
+                    success: function(response) {
+                        var count = response.length
+                        response.forEach(function(item, index) {
+                            self.$el.find('.dropdown-menu-item').append(`
+                            <button
+                            item-id = "${item.id}" 
+                            item-no = "${item.item_no}" 
+                            unit-id = "${item.unit_id}" 
+                            title="${item.item_name}"
+                            purchase-cost = "${item.purchase_cost}"
+                            list-price = "${item.list_price}"
+                            class="dropdown-item" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">${item.item_name}</button>
+                            `)
+                        })
+                        if (count == 0) {
+                            self.$el.find('.dropdown-menu-item').hide()
+                        }
+                        if (count == 1) {
+                            self.$el.find('.dropdown-menu-item').css("height", "45px")
+                            self.$el.find('.dropdown-menu-item').show()
+                        }
+                        if (count == 2) {
+                            self.$el.find('.dropdown-menu-item').css("height", "80px")
+                            self.$el.find('.dropdown-menu-item').show()
+                        }
+                        if (count > 2) {
+                            self.$el.find('.dropdown-menu-item').css("height", "110px")
+                            self.$el.find('.dropdown-menu-item').show()
+                        }
+                        self.chooseItemInListDropdownItem();
+
+                    }
+                });
+            })
+            self.$el.find('.out-click').bind('click', function() {
+                self.$el.find('.dropdown-menu-item').hide()
+            })
+
+        },
+        showDetail: function() {
+            var self = this;
+            if (self.model.get('details').length > 0) {
+                self.model.get('details').forEach(function(item, index) {
+                    var resultPurchaseCost = new Number(item.purchase_cost).toLocaleString("en-AU");
+                    var resultNetAmount = new Number(item.net_amount).toLocaleString("en-AU");
+                    self.$el.find('#list-item').before(`
+                    <div style="width: 955px;height: 50px;" selected-item-id = "${item.id}" class = "selected-item-old" >
+                        <div style="width: 45px; display: inline-block;text-align: center;padding: 5px;">
+                            <input selected-item-id = "${item.id}" col-type="STT" class="form-control text-center p-1" value="${index + 1}" style="font-size:14px">
+                        </div>
+                        <div style="width: 290px;display: inline-block;padding: 5px;">
+                            <input selected-item-id = "${item.id}" col-type="NAME" class="form-control p-1" value="${item.item_name}" readonly style="font-size:14px">
+                        </div>
+                        <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
+                            <input selected-item-id = "${item.id}" col-type="PURCHASE_COST" class="form-control text-center p-1" purchase-cost = "${item.purchase_cost}" value="${resultPurchaseCost} VNĐ" style="font-size:14px">
+                        </div>
+                        <div style="width: 190px; display: inline-block; text-align:center;padding: 5px;">
+                            <input selected-item-id = "${item.id}" col-type="QUANTITY" type="number" class="form-control text-center p-1" value = "${item.quantity}" style="font-size:14px">
+                        </div>
+                        <div style="width: 190px;display: inline-block;text-align: center;padding: 5px;">
+                            <input selected-item-id = "${item.id}" col-type="NET_AMOUNT" class="form-control text-center p-1" net-amount="${item.net_amount}" value="${resultNetAmount} VNĐ" readonly style="font-size:14px">
+                        </div>
+                        <div style="width: 30px;display: inline-block;text-align: center;padding: 5px;">
+                            <i selected-item-id = "${item.id}" class="fa fa-trash" style="font-size: 17px"></i>
+                        </div>
+                    </div>
+                    `)
+                })
+                self.clickPurchaseCost();
+
+            }
+
+
+        },
+        createItem: function(goodsreciept_id, tenant_id) {
+            var self = this;
+            var arr = [];
+            self.$el.find('.selected-item-new').each(function(index, item) {
+                var obj = {
+                    "goodsreciept_id": goodsreciept_id,
+                    "item_id": $(item).attr('item-id'),
+                    "item_no": $(item).attr('item-no'),
+                    "unit_id": $(item).attr('unit-id'),
+                    "list_price": $(item).attr('list-price'),
+                    "item_name": $(item).find('[col-type="NAME"]').val(),
+                    "tenant_id": tenant_id,
+                    "warehouse_id": self.model.get('warehouse_id'),
+                    "warehouse_from_id": null,
+                    "warehouse_to_id": null,
+                    "quantity": $(item).find('[col-type="QUANTITY"]').val(),
+                    "purchase_cost": $(item).find('[col-type="PURCHASE_COST"]').attr('purchase-cost'),
+                    "net_amount": $(item).find('[col-type="NET_AMOUNT"]').attr('net-amount'),
+                    "warehouse_name": null,
+                }
+                arr.push(obj)
+            })
+            if (arr.length > 0) {
+                $.ajax({
+                    type: "POST",
+                    url: self.getApp().serviceURL + "/api/v1/create_itembalances",
+                    data: JSON.stringify({ "data": arr, "item_balances_type": 'goodsreciept' }),
+                    success: function(response) {
+                        console.log(response)
+                    }
+                });
+            }
+
+        },
+        updateItem: function() {
+            var self = this;
+            var arr = [];
+            self.$el.find('.selected-item-old').each(function(index, item) {
+                var obj = {
+                    "id": $(item).attr('selected-item-id'),
+                    "warehouse_id": self.model.get('warehouse_id'),
+                    "quantity": $(item).find('[col-type="QUANTITY"]').val(),
+                    "purchase_cost": $(item).find('[col-type="PURCHASE_COST"]').attr('purchase-cost'),
+                    "net_amount": $(item).find('[col-type="NET_AMOUNT"]').attr('net-amount'),
+                }
+                arr.push(obj)
+            })
+            if (arr.length > 0) {
+                $.ajax({
+                    type: "POST",
+                    url: self.getApp().serviceURL + "/api/v1/update_itembalances",
+                    data: JSON.stringify({ "arr": arr, "item_balances_type": "goodsreciept" }),
+                    success: function(response) {
+                        console.log(response)
+                    }
+                });
+            }
+        },
+        listItemsOldRemove: function() {
+            var self = this;
+            self.$el.find('.selected-item-old div .fa-trash').unbind('click').bind('click', function() {
+                self.$el.find('.selected-item-old[selected-item-id="' + $(this).attr('selected-item-id') + '"]').remove();
+                self.listItemRemove.push($(this).attr('selected-item-id'))
+            })
+        },
+        deleteItem: function() {
+            var self = this;
+            var arrayItemRemove = self.listItemRemove.length;
+            if (arrayItemRemove > 0) {
+                $.ajax({
+                    type: "POST",
+                    url: self.getApp().serviceURL + "/api/v1/delete_itembalances",
+                    data: JSON.stringify(self.listItemRemove),
+                    success: function(response) {
+                        self.listItemRemove.splice(0, arrayItemRemove);
+                        console.log(response)
+                    }
+                });
+            }
+        },
+
+
+        // HẾT CHỨC NĂNG CHỌN ITEM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         registerEvent: function() {
             var self = this;
+            self.loadItemDropdown();
             // self.changeDetails = self.model.get("details");
             self.loadCombox();
             // self.toggleEvent();
-            self.ShowListItem();
             // self.printScreen();
 
             if (self.model.get("payment_status") == "confirm" || self.model.get("payment_status") == "done") {
@@ -521,7 +782,7 @@ define(function(require) {
 
             $.ajax({
                 type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/get_all_organization",
+                url: self.getApp().serviceURL + "/api/v1/get_all_organization_reseller",
                 data: JSON.stringify({
                     tenant_id: tenantID
                 }),
@@ -533,48 +794,6 @@ define(function(require) {
                             valueField: "id",
                             dataSource: res,
                             value: self.model.get("organization_id")
-                        });
-                        self.$el.find("#organization").on('change.gonrin', function(e) {
-                            self.$el.find(".nguoiDaiDien").html(`
-                                <label>Đại diện</label>
-                                <input type="text" class="form-control " id="contact">
-                            `)
-                            var organization_id = $(this).data('gonrin').getValue();
-                            $.ajax({
-                                type: "POST",
-                                url: self.getApp().serviceURL + "/api/v1/get_all_organizationstaff",
-                                data: JSON.stringify(organization_id),
-                                success: function(res) {
-                                    loader.hide();
-                                    if (res) {
-                                        self.$el.find("#contact").combobox({
-                                            textField: "name",
-                                            valueField: "id",
-                                            dataSource: res,
-                                        });
-                                    }
-                                }
-                            })
-                            self.$el.find("#contact").on("change.gonrin", function(event) {
-                                self.model.set("contact_id", self.$el.find("#contact").data("gonrin").getValue());
-                                self.model.set("contact_name", self.$el.find("#contact").data("gonrin").getText());
-                            });
-                        });
-                    }
-                }
-            })
-            $.ajax({
-                type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/get_all_organizationstaff",
-                data: JSON.stringify(self.model.get("organization_id")),
-                success: function(res) {
-                    loader.hide();
-                    if (res) {
-                        self.$el.find("#contact").combobox({
-                            textField: "name",
-                            valueField: "id",
-                            dataSource: res,
-                            value: self.model.get("contact_id")
                         });
                     }
                 }
@@ -614,428 +833,6 @@ define(function(require) {
             }
             return true;
         },
-
-
-        // ############################CHỨC NĂNG CHỌN ITEM ##########################################################
-
-
-        createItem: function(goodreciept_id) {
-            var self = this;
-            var arr = [];
-            self.$el.find('.body-item-new').each(function(index, item) {
-                var obj = {};
-                obj.item_id = $(item).attr('item-id')
-                obj.item_name = $(item).find('#item_name').attr('item-name')
-                obj.purchase_cost = Number($(item).find('td .purchase-cost').val())
-                obj.quantity = Number($(item).find('td .quantity').val())
-                obj.net_amount = Number($(item).find('td .net-amount').val())
-                obj.warehouse_id = self.model.get('warehouse_id')
-                obj.tenant_id = self.getApp().currentTenant[0]
-
-                arr.push(obj)
-            })
-            $.ajax({
-                type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/create_goods_reciept_details_item",
-                data: JSON.stringify({ "goodreciept_id": goodreciept_id, "data": arr }),
-                success: function(res) {
-                    console.log(res)
-                }
-            })
-        },
-        updateItem: function() {
-            var self = this;
-            var arr = [];
-            self.$el.find('.body-item-old').each(function(index, item) {
-                var obj = {};
-                obj.item_id = $(item).attr('item-id')
-                obj.purchase_cost = Number($(item).find('td .purchase-cost').val())
-                obj.quantity = Number($(item).find('td .quantity').val())
-                obj.net_amount = Number($(item).find('td .net-amount').val())
-                obj.warehouse_id = self.model.get('warehouse_id')
-                obj.tenant_id = self.getApp().currentTenant[0]
-                arr.push(obj)
-            })
-            $.ajax({
-                type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/update_goods_reciept_details_item",
-                data: JSON.stringify(arr),
-                success: function(res) {
-                    console.log(res)
-                }
-            })
-        },
-        updateItemBill: function() {
-            var self = this;
-            console.log(self.model.get('details'))
-            $.ajax({
-                type: "POST",
-                url: self.getApp().serviceURL + "/api/v1/update_goods_reciept_details_item_bill",
-                data: JSON.stringify(self.model.get('details')),
-                success: function(res) {
-                    console.log(res)
-                }
-            })
-        },
-        listItemsOldRemove: function() {
-            var self = this;
-            self.$el.find('.body-item-old .itemRemove').unbind('click').bind('click', function() {
-                self.$el.find('.body-item-old[item-id="' + $(this).attr('item-id-xoa') + '"]').remove();
-                self.listItemRemove.push($(this).attr('item-id-xoa'))
-            })
-        },
-        deleteItem: function() {
-            var self = this;
-            var arrayItemRemove = self.listItemRemove.length;
-            if (arrayItemRemove > 0) {
-                $.ajax({
-                    type: "POST",
-                    url: self.getApp().serviceURL + "/api/v1/delete_goods_reciept_details_item",
-                    data: JSON.stringify(self.listItemRemove),
-                    success: function(response) {
-                        self.listItemRemove.splice(0, arrayItemRemove);
-                        console.log(response)
-                    }
-                });
-            }
-        },
-
-        showSavedItem: function() {
-            var self = this;
-            var savedItem = self.model.get('details')
-            if (savedItem) {
-                savedItem.forEach(function(item, index) {
-                    self.$el.find('#body-items').append(`
-                    <tr class="body-item-old" item-id="${item.id}" >
-                    <td id="item_name" item-name="${item.item_name}">
-                    ${item.item_name}
-                    </td>
-                    <td style="text-align: left;">
-                        <input type="text" class="form-control purchase-cost"  value="${item.purchase_cost}" />
-                    </td>
-                    <td><input type="text" class="form-control quantity" value="${item.quantity}"/></td>
-                    <td style="width: 160px"><input type="text" class="form-control net-amount" value="${item.net_amount}"  readonly /></td>
-                    <td style="width: 50px; line-height: 34px; margin-top: 20px" >
-                        <div class="itemRemove" item-id-xoa="${item.id}">
-                            <i class="fa fa-trash" style="font-size: 17px"></i>
-                        </div>
-                    </td>
-                    </tr>
-                `)
-                })
-                self.taxExcluded();
-
-            }
-        },
-        ShowListItem: function() {
-            var self = this;
-            self.$el.find('#show-list-item').unbind('click').bind('click', function() {
-                self.pagination(null);
-                self.inputSearch();
-                self.$el.find('.chose-item').show()
-                self.$el.find('.btn-quaylai').unbind('click').bind('click', function() {
-                    self.$el.find('.chose-item').hide()
-                })
-            })
-        },
-        htmlShowItem: function(page_number, text) {
-            var self = this;
-            $.ajax({
-                url: self.getApp().serviceURL + "/api/v1/get_data_item",
-                method: "POST",
-                data: JSON.stringify({ "page_number": page_number, "text": text }),
-                contentType: "application/json",
-                success: function(data) {
-                    if (data.length != 0) {
-                        data.forEach(function(item, index) {
-                            self.$el.find('.trang-thiet-bi-y-te').append(`
-                            <div class="col-4 col-md-2 p-1 item-show" item-id="${item.id}" >
-                                <div class="text-center">
-                                    <div title="${item.item_name}" style="margin-left: auto; margin-right: auto; left: 0px; right: 0px;width: 90px;height:170px;position: relative;">
-                                        <input class="item-checkbox" item-id="${item.id}" type="checkbox" style="position: absolute; top: 0px; left: 0px;width:90px;height: 90px;opacity:0">
-                                        <img src="static/img/user.png" style="width:90px;height: 90px;">
-                                        <label class="item-chose" style="position: absolute;top:70px;right:3px;display:none"><i class="fa fa-check-square-o text-success" aria-hidden="true"></i></label>
-                                        <label class="item-not-chose"  style="position: absolute;top:70px;right:3px"><i class="fa fa-square-o" aria-hidden="true"></i></label>
-                                        <label class="item-name" purchase-cost=${item.purchase_cost}  style="font-size: 10px;width:100%;overflow: hidden;text-overflow: ellipsis;line-height: 20px;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;">${item.item_name}</label>
-                                        </div>
-                                </div>
-                            </div>
-                            `).fadeIn()
-                        })
-                        self.choseItem();
-                        self.showSelectedItem()
-                    }
-                }
-            })
-        },
-        inputSearch: function() {
-            var self = this;
-            self.$el.find("#input-search").keyup(function(e) {
-                // xhr.abort()
-                var text = $(this).val();
-                self.pagination(text);
-            })
-
-        },
-        choseItem: function() {
-            var self = this;
-            var selectItemList = self.selectItemList;
-            self.$el.find('.item-checkbox').change(function(event) {
-                var checkBox = $(this);
-                var itemID = checkBox.attr('item-id');
-                var itemName = checkBox.siblings('.item-name').text()
-                var itemPurchaseCost = checkBox.siblings('.item-name').attr('purchase-cost')
-
-                if (event.target.checked) {
-                    selectItemList.push({ "item_id": itemID, "item_name": itemName, "purchase_cost": itemPurchaseCost })
-                    checkBox.siblings('.item-chose').show();
-                    checkBox.siblings('.item-not-chose').hide();
-                    localStorage.setItem("listItem", JSON.stringify(selectItemList))
-                } else {
-                    checkBox.siblings('.item-chose').hide();
-                    checkBox.siblings('.item-not-chose').show();
-                    selectItemList.forEach(function(item, index) {
-                        if (item.item_id === itemID) {
-                            selectItemList.splice(index, 1);
-                        }
-                    })
-                    localStorage.setItem("listItem", JSON.stringify(selectItemList))
-                }
-                self.showSelectedItem()
-            })
-        },
-        showSelectedItem: function() {
-            var self = this;
-            var listSelectedItems = JSON.parse(localStorage.getItem("listItem"))
-            var savedItemSelected = self.model.get('details')
-            savedItemSelected.forEach(function(item, idnex) {
-                if (listSelectedItems == null) {
-                    listSelectedItems = []
-                }
-                listSelectedItems.push({ "item_id": item.item_id, "item_name": item.item_name, "purchase_cost": item.purchase_cost })
-            })
-            if (listSelectedItems != undefined && listSelectedItems != null) {
-                listSelectedItems.forEach(function(item, index) {
-                    var itemCheckBox = self.$el.find('.item-checkbox[item-id = ' + item.item_id + ']')
-                    if (itemCheckBox.attr('item-id') == item.item_id) {
-                        itemCheckBox.prop("checked", true);
-                        itemCheckBox.siblings('.item-chose').show();
-                        itemCheckBox.siblings('.item-not-chose').hide();
-                    }
-                })
-                self.$el.find('.btn-hoantat').unbind('click').bind('click', function() {
-                    self.$el.find('.chose-item').hide()
-                    self.$el.find('.body-item-new').remove()
-                    listSelectedItems.forEach(function(item, index) {
-                        savedItemSelected.forEach(function(item2, index2) {
-                            if (item.item_id == item2.item_id) {
-                                listSelectedItems.splice(index, 1);
-                            }
-                        })
-                    })
-                    self.htmlShowSelectedItem(listSelectedItems);
-                })
-            }
-        },
-        taxExcluded: function() {
-            var self = this;
-            var bodyItemNew = self.$el.find('.body-item-new')
-            var bodyItemOld = self.$el.find('.body-item-old')
-            var bodyItem = [bodyItemNew, bodyItemOld]
-            bodyItem.forEach(function(itemBody, indexBody) {
-                if (itemBody.length > 0) {
-                    itemBody.each(function(index, item) {
-                        $(item).find('.quantity').change(function() {
-                            if ($(item).find('.purchase-cost').val() != null && $(item).find('.purchase-cost').val() != '') {
-                                var purchaseCost = $(item).find('.purchase-cost').val();
-                                var quantity = $(item).find('.quantity').val();
-                                $(item).find('.net-amount').val(purchaseCost * quantity);
-                            }
-                        })
-                        $(item).find('.purchase-cost').change(function() {
-                            if ($(item).find('.quantity').val() != null && $(item).find('.quantity').val() != '') {
-                                var purchaseCost = $(item).find('.purchase-cost').val();
-                                var quantity = $(item).find('.quantity').val();
-                                $(item).find('.net-amount').val(purchaseCost * quantity);
-                            }
-                        })
-                    })
-                }
-            })
-        },
-        htmlShowSelectedItem: function(listSelectedItems) {
-            var self = this;
-            if (listSelectedItems) {
-                listSelectedItems.forEach(function(item, index) {
-                    self.$el.find('#body-items').append(`
-                    <tr class="body-item-new" item-id="${item.item_id}" >
-                    <td id="item_name" item-name="${item.item_name}">
-                    ${item.item_name}
-                    </td>
-                    <td style="text-align: left;">
-                        <input type="number" class="form-control purchase-cost"  value="${item.purchase_cost}" />
-                    </td>
-                    <td><input type="number" class="form-control quantity" /></td>
-                    <td style="width: 160px"><input type="number" class="form-control net-amount"  readonly /></td>
-                    <td style="width: 50px; line-height: 34px; margin-top: 20px" >
-                        <div class="itemRemove" ind = "${index}">
-                            <i class="fa fa-trash" style="font-size: 17px"></i>
-                        </div>
-                    </td>
-                    </tr>
-                `)
-                })
-                self.listItemsNewRemove(listSelectedItems);
-                self.taxExcluded();
-            }
-        },
-        listItemsNewRemove: function(listSelectedItems) {
-            var self = this;
-            self.$el.find('.body-item-new .itemRemove').unbind('click').bind('click', function() {
-                $(self.$el.find('.body-item-new')[$(this).attr('ind')]).remove();
-                listSelectedItems.splice($(this).attr('ind'), 1);
-                localStorage.setItem('listItem', JSON.stringify(listSelectedItems))
-                self.taxExcluded();
-            })
-        },
-        pagination: function(text) {
-            var self = this;
-            $.ajax({
-                type: "POST",
-                url: self.getApp().serviceURL + '/api/v1/length_data',
-                data: JSON.stringify(12),
-                success: function(response) {
-                    var lengthAllData = Math.ceil(response);
-                    self.$el.find('.page-max').find('a').text(lengthAllData);
-                    self.$el.find('.page-max,.page-3dot-max,.page-3dot-min,.page-min').hide()
-                    if (lengthAllData > 4) {
-                        self.$el.find('.page-3dot-max').show()
-                    }
-                    if (lengthAllData >= 6) {
-                        self.$el.find('.page-max').show()
-                    }
-                    if (lengthAllData == 1) {
-                        $(self.$el.find('.page-number')[2]).hide()
-                        $(self.$el.find('.page-number')[3]).hide()
-                        $(self.$el.find('.page-number')[4]).hide()
-                    }
-                    if (lengthAllData == 2) {
-                        $(self.$el.find('.page-number')[3]).hide()
-                        $(self.$el.find('.page-number')[4]).hide()
-                    }
-                    if (lengthAllData == 3) {
-                        $(self.$el.find('.page-number')[4]).hide()
-                    }
-                    self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
-                    self.htmlShowItem(0, text)
-                    var page = self.$el.find('.page-number')
-
-
-
-                    page.unbind('click').bind('click', function() {
-                        self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
-                        self.$el.find('.page-number').removeClass('active')
-                        $(this).addClass('active')
-                        var pageCurrent = Number($(this).find('a').text());
-                        var pageFirst = Number($(page[1]).find('a').text());
-                        var pageEnd = Number($(page[4]).find('a').text());
-
-                        if (pageCurrent - pageFirst == 3) {
-                            if (pageCurrent < lengthAllData) {
-                                self.$el.find('.page-number').removeClass('active')
-                                $(page[3]).addClass('active')
-                                $(page[1]).find('a').html(pageCurrent - 2)
-                                $(page[2]).find('a').html(pageCurrent - 1)
-                                $(page[3]).find('a').html(pageCurrent)
-                                $(page[4]).find('a').html(pageCurrent + 1)
-                                pageFirst = Number($(page[1]).find('a').text());
-                                pageEnd = Number($(page[4]).find('a').text());
-                            }
-                            if (pageCurrent == lengthAllData || lengthAllData - pageCurrent == 1) {
-                                self.$el.find('.page-3dot-max').hide()
-                            }
-                        }
-                        if (pageEnd - pageCurrent == 3) {
-                            if (pageCurrent == 1) {
-                                self.$el.find('.page-number').removeClass('active')
-                                $(page[1]).addClass('active')
-                                $(page[1]).find('a').html(pageCurrent)
-                                $(page[2]).find('a').html(pageCurrent + 1)
-                                $(page[3]).find('a').html(pageCurrent + 2)
-                                $(page[4]).find('a').html(pageCurrent + 3)
-                                pageFirst = Number($(page[1]).find('a').text());
-                                pageEnd = Number($(page[4]).find('a').text());
-
-                            }
-                            if (pageCurrent > 1) {
-                                self.$el.find('.page-number').removeClass('active')
-                                $(page[2]).addClass('active')
-                                $(page[1]).find('a').html(pageCurrent - 1)
-                                $(page[2]).find('a').html(pageCurrent)
-                                $(page[3]).find('a').html(pageCurrent + 1)
-                                $(page[4]).find('a').html(pageCurrent + 2)
-                                pageFirst = Number($(page[1]).find('a').text());
-                                pageEnd = Number($(page[4]).find('a').text());
-                            }
-                            if (pageCurrent <= 2) {
-                                self.$el.find('.page-3dot-min').hide()
-                            }
-
-                        }
-                        if (lengthAllData - pageEnd >= 1) {
-                            self.$el.find('.page-3dot-max').show()
-                        }
-                        if (lengthAllData - pageEnd < 2) {
-                            self.$el.find('.page-3dot-max').hide()
-                        } else {
-                            self.$el.find('.page-3dot-max').show()
-                        }
-                        if (lengthAllData - pageEnd < 1) {
-                            self.$el.find('.page-max').hide()
-                        } else {
-                            self.$el.find('.page-max').show()
-                        }
-                        if (pageFirst > 1) {
-                            self.$el.find('.page-3dot-min').show()
-                        }
-                        if (pageFirst > 2) {
-                            self.$el.find('.page-min').show()
-                        } else {
-                            self.$el.find('.page-min').hide()
-                        }
-                        self.htmlShowItem(pageCurrent - 1, text);
-
-                    })
-                    self.$el.find('.page-min').unbind('click').bind('click', function() {
-                        self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
-                        self.$el.find('.page-number').removeClass('active')
-                        $(page[1]).addClass('active')
-                        $(page[1]).find('a').html(1)
-                        $(page[2]).find('a').html(2)
-                        $(page[3]).find('a').html(3)
-                        $(page[4]).find('a').html(4)
-                        self.$el.find('.page-min,.page-3dot-min').hide()
-                        self.$el.find('.page-max,.page-3dot-max').show()
-                        self.htmlShowItem(0, text);
-                    })
-                    self.$el.find('.page-max').unbind('click').bind('click', function() {
-                        self.$el.find('.trang-thiet-bi-y-te').find('.item-show').remove();
-                        self.$el.find('.page-number').removeClass('active')
-                        $(page[4]).addClass('active')
-                        $(page[1]).find('a').html(lengthAllData - 3)
-                        $(page[2]).find('a').html(lengthAllData - 2)
-                        $(page[3]).find('a').html(lengthAllData - 1)
-                        $(page[4]).find('a').html(lengthAllData)
-                        self.$el.find('.page-min,.page-3dot-min').show()
-                        self.$el.find('.page-max,.page-3dot-max').hide()
-                        self.htmlShowItem(lengthAllData - 1, text);
-                    })
-                }
-            });
-
-        },
-        // ############################ HẾT CHỨC NĂNG CHỌN ITEM ##########################################################
-
 
         bindPaymentStatus: function() {
             var self = this;

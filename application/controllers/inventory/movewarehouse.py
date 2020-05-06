@@ -24,48 +24,125 @@ def get_all_item_in_warehouse(request):
     dataWarehouse = db.session.query(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost, func.sum(GoodsRecieptDetails.quantity)).group_by(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost).filter(and_(GoodsRecieptDetails.tenant_id==data['tenant'],GoodsRecieptDetails.payment_status=='paid')).all()
     return json(dataWarehouse)
 
-@app.route("/api/v1/get_all_warehouse_tennat_id", methods=["POST"])
-def get_all_warehouse_tennat_id(request):
-    data = request.json
-    if data is not None:
-        warehouse = db.session.query(Warehouse).filter(Warehouse.tenant_id == data).all()
-        result = []
-        if warehouse is not None:
-            for g in warehouse:
-                list_g = to_dict(g)
-                result.append(list_g)
-            return json(result)
-
 
 @app.route('/api/v1/get_all_item_warehouse_tennat_id',methods=['POST'])
 async def get_all_item_warehouse_tennat_id(request):
     req = request.json
     pageNumber = req['page_number']
     tenant = req['tenant']
-    if req['text'] is not None:
-        keySearch = req['text']
-        search = "%{}%".format(keySearch)
-        tex_capitalize = keySearch.capitalize()
-        search_capitalize = "%{}%".format(tex_capitalize)
-        list = db.session.query(Warehouse).filter(Warehouse.tenant_id == tenant).filter(or_(Item.item_name.like(search),Item.item_name.like(search_capitalize))).offset(12*pageNumber).limit(12)
-        arr = []
-        for i in list:
-            obj = to_dict(i)
-            arr.append(obj)
-        return json(arr)
-    else:
-        # details =  db.session.query(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost, func.sum(GoodsRecieptDetails.quantity)).group_by(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost).filter(and_(GoodsRecieptDetails.tenant_id==tenant,GoodsRecieptDetails.payment_status=='paid')).offset(12*pageNumber).limit(12)
-        dataWarehouse = db.session.query(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost, func.sum(GoodsRecieptDetails.quantity)).group_by(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost).filter(and_(GoodsRecieptDetails.tenant_id==tenant,GoodsRecieptDetails.payment_status=='paid')).offset(12*pageNumber).limit(12)
-        arr = []
-        for i in dataWarehouse:
-            obj = {}
-            obj['id'] = str(i[0])+'-'+str(int(i[2]))
-            obj['item_id'] = i[0]
-            obj['item_name'] = i[1]
-            obj['purchase_cost'] = i[2]
-            obj['quantity'] = i[3]
-            arr.append(obj)
-        return json(arr)
+    data = request.json
+    
+    dataitemBalances = db.session.query(ItemBalances.item_id,ItemBalances.item_name,ItemBalances.purchase_cost, func.sum(ItemBalances.quantity)).group_by(ItemBalances.item_id,ItemBalances.item_name,ItemBalances.purchase_cost).filter(and_(ItemBalances.warehouse_id ==data['id'], ItemBalances.tenant_id==data['tenant'])).all()
+    dataGoodsRecieptDetails = db.session.query(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost, func.sum(GoodsRecieptDetails.quantity)).group_by(GoodsRecieptDetails.item_id,GoodsRecieptDetails.item_name,GoodsRecieptDetails.purchase_cost).filter(and_(GoodsRecieptDetails.warehouse_id ==data['id'], GoodsRecieptDetails.tenant_id==data['tenant'],GoodsRecieptDetails.payment_status=='paid')).all()
+    dataPurchaseOrderDetails = db.session.query(PurchaseOrderDetails.item_id,PurchaseOrderDetails.item_name,PurchaseOrderDetails.purchase_cost, func.sum(PurchaseOrderDetails.quantity)).group_by(PurchaseOrderDetails.item_id,PurchaseOrderDetails.item_name,PurchaseOrderDetails.purchase_cost).filter(and_(PurchaseOrderDetails.warehouse_id ==data['id'], PurchaseOrderDetails.tenant_id==data['tenant'],PurchaseOrderDetails.payment_status=='paid')).all()
+    dataMoveWareHouseFrom = db.session.query(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.purchase_cost,  func.sum(MoveWarehouseDetails.quantity_delivery),MoveWarehouseDetails.item_name).group_by(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.item_name,MoveWarehouseDetails.purchase_cost).filter(and_(MoveWarehouseDetails.warehouse_from_id ==data['id'], MoveWarehouseDetails.tenant_id==data['tenant'])).all()
+    dataMoveWareHouseTo = db.session.query(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.purchase_cost,  func.sum(MoveWarehouseDetails.quantity_delivery),MoveWarehouseDetails.item_name).group_by(MoveWarehouseDetails.item_id_origin,MoveWarehouseDetails.item_name,MoveWarehouseDetails.purchase_cost).filter(and_(MoveWarehouseDetails.warehouse_to_id ==data['id'], MoveWarehouseDetails.tenant_id==data['tenant'])).all()
+    arr = []
+    if(len(dataitemBalances) != 0):
+        for ib in dataitemBalances:
+            obj= {}
+            obj['item_id'] = ib[0]
+            obj['item_name'] = ib[1]
+            obj['purchase_cost'] = ib[2]
+            obj['quantity'] = ib[3]
+        arr.append(obj)
+    if(len(dataGoodsRecieptDetails) != 0):
+        for grd in dataGoodsRecieptDetails:
+            dem = 0
+            for a in arr:
+                if grd[0] == a['item_id'] and grd[2] == a['purchase_cost']:
+                    a['quantity'] = a['quantity'] + grd[3]
+                else:
+                    dem = dem + 1
+            if dem == len(arr): 
+                obj= {}
+                obj['item_id'] = grd[0]
+                obj['item_name'] = grd[1]
+                obj['purchase_cost'] = grd[2]
+                obj['quantity'] = grd[3]
+                arr.append(obj)
+    if(len(dataPurchaseOrderDetails) != 0):
+        for pod in dataPurchaseOrderDetails:
+            dem = 0
+            for a in arr:
+                if pod[0] == a['item_id'] and pod[2] == a['purchase_cost']:
+                    a['quantity'] = a['quantity'] - pod[3]
+                else:
+                    dem = dem + 1
+            if dem == len(arr): 
+                obj= {}
+                obj['item_id'] = pod[0]
+                obj['item_name'] = pod[1]
+                obj['purchase_cost'] = pod[2]
+                obj['quantity'] = 0-pod[3]
+                arr.append(obj)
+
+    if(len(dataMoveWareHouseFrom) != 0):
+        for mwhf in dataMoveWareHouseFrom:
+            dem = 0
+            for a in arr:
+                if mwhf[0] == a['item_id'] and mwhf[1] == a['purchase_cost']:
+                    a['quantity'] = a['quantity'] - mwhf[2]
+                else:
+                    dem = dem + 1
+            if dem == len(arr): 
+                obj= {}
+                obj['item_id'] = mwhf[0]
+                obj['item_name'] = mwhf[3]
+                obj['purchase_cost'] = mwhf[1]
+                obj['quantity'] = 0-mwhf[2]
+                arr.append(obj)
+
+
+    if(len(dataMoveWareHouseTo) != 0):
+        for mwht in dataMoveWareHouseTo:
+            dem = 0
+            for a in arr:
+                if mwht[0] == a['item_id'] and mwht[1] == a['purchase_cost']:
+                    a['quantity'] = a['quantity'] + mwht[2]
+                else:
+                    dem = dem + 1
+            if dem == len(arr): 
+                obj= {}
+                obj['item_id'] = mwht[0]
+                obj['item_name'] = mwht[3]
+                obj['purchase_cost'] = mwht[1]
+                obj['quantity'] = mwht[2]
+                arr.append(obj)
+
+    return json(arr)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -232,11 +309,11 @@ sqlapimanager.create_api(MoveWarehouse,
                     PUT_SINGLE=[]),
     collection_name='movewarehouse')
 
-sqlapimanager.create_api(MoveWarehouseDetails,
-    methods=['GET', 'POST', 'DELETE', 'PUT'],
-    url_prefix='/api/v1',
-    preprocess=dict(GET_SINGLE=[],
-                    GET_MANY=[],
-                    POST=[],
-                    PUT_SINGLE=[]),
-    collection_name='movewarehousedetails')
+# sqlapimanager.create_api(MoveWarehouseDetails,
+#     methods=['GET', 'POST', 'DELETE', 'PUT'],
+#     url_prefix='/api/v1',
+#     preprocess=dict(GET_SINGLE=[],
+#                     GET_MANY=[],
+#                     POST=[],
+#                     PUT_SINGLE=[]),
+#     collection_name='movewarehousedetails')

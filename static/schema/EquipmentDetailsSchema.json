@@ -107,6 +107,9 @@
     "medicalequipment_id": {
         "type": "string"
     },
+    "item_id": {
+        "type": "string"
+    },
     "supplier": {
         "type": "dict"
     },
@@ -120,6 +123,9 @@
         "type": "dict"
     },
     "room": {
+        "type": "dict"
+    },
+    "item": {
         "type": "dict"
     },
     "List_of_requests_for_repair": {
