@@ -179,18 +179,37 @@ define(function (require) {
 				self.$el.find(".btn-success").unbind("click").bind("click", function () {
 					if (self.model.get('name') == null || self.model.get('name') == '') {
 						self.getApp().notify({ message: "Chưa nhập tên " }, { type: "danger", delay: 1000 });
+						return false
 					}
 					if (self.model.get('email') == null || self.model.get('email') == '') {
 						self.getApp().notify({ message: "Chưa nhập email " }, { type: "danger", delay: 1000 });
+						return false
 					}
 					if (self.model.get('phone_number') == null || self.model.get('phone_number') == '') {
 						self.getApp().notify({ message: "Chưa nhập số điện thoại" }, { type: "danger", delay: 1000 });
+						return false
 					}
 					if (self.model.get('rank') == null || self.model.get('rank') == '') {
-						self.getApp().notify({ message: "Chưa chọn rank " }, { type: "danger", delay: 1000 });
+						self.getApp().notify({ message: "Chưa chọn vai trò " }, { type: "danger", delay: 1000 });
+						return false
+					}
+					if (self.model.get('hierarchy') == null || self.model.get('hierarchy') == '') {
+						self.getApp().notify({ message: "Chưa chọn tuyến đơn vị" }, { type: "danger", delay: 1000 });
+						return false
+					}
+					if (self.model.get('hierarchy') == null || self.model.get('hierarchy') == '') {
+						self.getApp().notify({ message: "Chưa chọn tuyến đơn vị" }, { type: "danger", delay: 1000 });
+						return false
+					}
+					if (self.model.get('hierarchy') == "TRAM") {
+						if (self.model.get('area') == null || self.model.get('area') == '') {
+							self.getApp().notify({ message: "Chưa chọn khu vực" }, { type: "danger", delay: 1000 });
+							return false
+						}
 					}
 					if (self.model.get('password') == null || self.model.get('password') == '') {
 						self.getApp().notify({ message: "Chưa nhập mật khẩu " }, { type: "danger", delay: 1000 });
+						return false
 					}
 					else {
 						var data = {
