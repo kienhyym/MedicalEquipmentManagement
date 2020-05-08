@@ -333,7 +333,6 @@ define(function (require) {
             console.log(hierarchy,area)
             // Import data excel
             self.$el.find("#chonfile").on("change", function () {
-                console.log('xxx')
                 if (hierarchy == null){
                     self.getApp().notify({ message: "Chưa chọn tuyến đơn vị" }, { type: "danger", delay: 1000 });
                     return false
@@ -363,12 +362,9 @@ define(function (require) {
                             var data_file = JSON.parse(http.responseText), link, p, t;
                             self.getApp().notify("Tải lên thành công");
                             self.getApp().getRouter().refresh();
-
-
-
                         }
                     } else {
-                        self.getApp().notify("Không thể tải tệp tin lên máy chủ");
+                        self.getApp().notify({ message: "Không thể tải tệp tin lên máy chủ, Có thể nội dung file sai" }, { type: "danger", delay: 1000 });
                         self.getApp().getRouter().refresh();
                     }
                 };
