@@ -32,11 +32,9 @@ define(function(require) {
 
         uiControl: {
             fields: [
-
-                { field: "name", label: "Tên đơn vị" },
-                { field: "code", label: "Loại đơn vị" },
-                { field: "description", label: "Miêu tả ghi chú" },
-
+                { field: "code", label: "mã đơn vị tính" },
+                { field: "name", label: "Tên đơn vị tính" },
+                { field: "description", label: "Miêu tả đơn vị tính" },
             ],
             onRowClick: function(event) {
                 if (event.rowId) {
