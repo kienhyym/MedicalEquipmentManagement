@@ -110,6 +110,14 @@
     "status": {
         "type": "string"
     },
+    "hierarchy": {
+        "type": "string",
+        "length": 50
+    },
+    "area": {
+        "type": "string",
+        "length": 50
+    },
     "medicalequipment_id": {
         "type": "string"
     },

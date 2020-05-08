@@ -52,16 +52,12 @@ define(function(require) {
                     textField: "text",
                     valueField: "value",
                     dataSource: [{
-                            text: "Vật tư tiêu hao",
-                            value: "service"
+                            text: "Vật tư y tế",
+                            value: "VTYT"
                         },
                         {
-                            text: "Thuốc",
-                            value: "medicine"
-                        },
-                        {
-                            text: "Thiết bị y tế",
-                            value: "product"
+                            text: "Trang thiết bị y tế",
+                            value: "TTBYT"
                         },
                     ]
                 },
@@ -97,8 +93,17 @@ define(function(require) {
                     label: "TRANSLATE:SAVE",
                     command: function() {
                         var self = this;
-                        delete self.model.get('medicalequipment').stt
-                        self.model.set('item_name', self.model.get('medicalequipment').name)
+                        if (self.model.get('medicalequipment')){
+                            delete self.model.get('medicalequipment').stt
+                            if (self.model.get('medicalequipment') != null ){
+                                sself.model.set('item_name', self.model.get('medicalequipment').name);
+                            }
+                            else{
+                                self.model.set('item_name', self.model.get('item_name'));
+                            }
+                        }
+                        
+                        
                         var id = this.getApp().getRouter().getParam("id");
                         var method = "update";
                         if (!id) {
@@ -176,7 +181,12 @@ define(function(require) {
                         })
                         self.$el.find(".btn-them").unbind("click").bind("click", function() {
                             location.href = self.getApp().serviceURL + "/?#equipmentdetails/model";
-                            sessionStorage.setItem('TenSanPham', self.model.get('medicalequipment').name);
+                            if (self.model.get('medicalequipment') != null ){
+                                sessionStorage.setItem('TenSanPham', self.model.get('medicalequipment').name);
+                            }
+                            else{
+                                sessionStorage.setItem('TenSanPham',self.model.get('item_name'));
+                            }
                             sessionStorage.setItem('IDSanPham', self.model.get("id"));
                             sessionStorage.setItem('ChungLoai', self.model.get("types_of_equipment"));
                             sessionStorage.setItem('IDThietBiNay', self.model.get("medicalequipment_id"));

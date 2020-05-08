@@ -29,8 +29,7 @@
         "type": "string"
     },
     "code": {
-        "type": "string",
-        "required": true
+        "type": "string"
     },
     "description": {
         "type": "string"
@@ -40,5 +39,13 @@
     },
     "tenant_id": {
         "type": "string"
+    },
+    "hierarchy": {
+        "type": "string",
+        "length": 50
+    },
+    "area": {
+        "type": "string",
+        "length": 50
     }
 }

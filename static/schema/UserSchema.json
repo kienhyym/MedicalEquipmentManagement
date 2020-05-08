@@ -59,6 +59,14 @@
     "room_id": {
         "type": "string"
     },
+    "hierarchy": {
+        "type": "string",
+        "length": 50
+    },
+    "area": {
+        "type": "string",
+        "length": 50
+    },
     "roles": {
         "type": "list"
     },

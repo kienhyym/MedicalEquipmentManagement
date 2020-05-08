@@ -111,6 +111,10 @@ class Item (CommonModel):
     position = db.Column(db.Integer(), nullable=True)
     extension_data = db.Column(JSONB(), nullable=True)
     status = db.Column(db.String)
+
+    hierarchy = db.Column(String(50), nullable=True)
+    area = db.Column(String(50), nullable=True)
+    
     medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'))
     medicalequipment = relationship('MedicalEquipment', viewonly=True)
 

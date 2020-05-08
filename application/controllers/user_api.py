@@ -128,6 +128,9 @@ def register(request):
         # new_user.user_image = data["user_image"]
         new_user.password = auth.encrypt_password(data["password"])
         new_user.rank = data["rank"]
+        new_user.department_id = data["department_id"]
+        new_user.room_id = data["room_id"]
+        new_user.hierarchy = data["hierarchy"]
         db.session.add(new_user)
         db.session.commit()
         result = user_to_dict(new_user)

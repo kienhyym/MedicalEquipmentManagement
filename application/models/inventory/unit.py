@@ -18,7 +18,9 @@ class Unit (CommonModel):
     __tablename__ = 'unit'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     name = db.Column(db.String, nullable=True)
-    code = db.Column(db.String, nullable=False)
+    code = db.Column(db.String, nullable=True)
     description = db.Column(db.String)
     user_id = db.Column(db.String)
     tenant_id = db.Column(db.String)
+    hierarchy = db.Column(String(50), nullable=True)
+    area = db.Column(String(50), nullable=True)

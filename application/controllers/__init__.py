@@ -11,7 +11,7 @@ def init_controllers(app):
 
     # import application.controllers.inventory.administrativeunits
     import application.controllers.inventory.organization
-    import application.controllers.inventory.inventory
+    import application.controllers.inventory.unit
     import application.controllers.inventory.warehouse
     import application.controllers.inventory.currency
     import application.controllers.inventory.consumablesupplies

@@ -131,6 +131,30 @@ define(function (require) {
 					],
 				},
 				{
+					field: "hierarchy",
+					uicontrol: "combobox",
+					textField: "text",
+					valueField: "value",
+					dataSource: [
+						{ "value": "VU", "text": "Vụ" },
+						{ "value": "SO", "text": "Sở" },
+						{ "value": "TTYT", "text": "Trung tâm y tế" },
+						{ "value": "BV", "text": "Bệnh viện" },
+						{ "value": "TRAM", "text": "Trạm y tế" },
+					],
+				},
+				{
+					field: "area",
+					uicontrol: "combobox",
+					textField: "text",
+					valueField: "value",
+					dataSource: [
+						{ "value": "1", "text": "Khu vực 1" },
+						{ "value": "2", "text": "Khu vực 2" },
+						{ "value": "3", "text": "Khu vực 3" },
+					],
+				},
+				{
 					field: "room",
 					uicontrol: "ref",
 					textField: "name",
@@ -151,69 +175,64 @@ define(function (require) {
 
 		render: function () {
 			var self = this;
-				if(location.hash.length < 20){
-					
-						self.$el.find(".btn-success").unbind("click").bind("click", function () {
-							
-							if(self.model.get('name') == null || self.model.get('name') == ''){
-								self.getApp().notify({ message: "Chưa nhập tên "}, { type: "danger", delay: 1000 });
-							}
-							if(self.model.get('email') == null || self.model.get('email') == ''){
-								self.getApp().notify({ message: "Chưa nhập email "}, { type: "danger", delay: 1000 });
-							}
-							if(self.model.get('phone_number') == null || self.model.get('phone_number') == ''){
-								self.getApp().notify({ message: "Chưa nhập số điện thoại"}, { type: "danger", delay: 1000 });
-							}
-							if(self.model.get('rank') == null || self.model.get('rank') == ''){
-								self.getApp().notify({ message: "Chưa chọn rank "}, { type: "danger", delay: 1000 });
-							}
-							if(self.model.get('password') == null || self.model.get('password') == ''){
-								self.getApp().notify({ message: "Chưa nhập mật khẩu "}, { type: "danger", delay: 1000 });
-							}
-							else {
-							var data = {
-								name: self.model.get('name'),
-								email: self.model.get('email'),
-								phone_number: self.model.get('phone_number'),
-								rank: self.model.get('rank'),
-								password: self.model.get('password'),
-							}
-								$.ajax({
-									method: "POST",
-									url: self.getApp().serviceURL + "/api/v1/register",
-									data: JSON.stringify(data),
-									headers: {
-										'content-type': 'application/json'
-									},
-									dataType: 'json',
-									success: function (response) {
-										if (response) {
-											console.log(response)
-											self.getApp().notify("Đăng ký thành công");
-											self.getApp().getRouter().navigate(self.collectionName + "/collection");
-										}
-									}, error: function (xhr, ere) {
-										self.getApp().notify({ message: "Thông tin tài khoản đã có trong hệ thống" }, { type: "danger", delay: 1000 });
-	
-									}
-								})
-							}
+			if (location.hash.length < 20) {
+				self.$el.find(".btn-success").unbind("click").bind("click", function () {
+					if (self.model.get('name') == null || self.model.get('name') == '') {
+						self.getApp().notify({ message: "Chưa nhập tên " }, { type: "danger", delay: 1000 });
+					}
+					if (self.model.get('email') == null || self.model.get('email') == '') {
+						self.getApp().notify({ message: "Chưa nhập email " }, { type: "danger", delay: 1000 });
+					}
+					if (self.model.get('phone_number') == null || self.model.get('phone_number') == '') {
+						self.getApp().notify({ message: "Chưa nhập số điện thoại" }, { type: "danger", delay: 1000 });
+					}
+					if (self.model.get('rank') == null || self.model.get('rank') == '') {
+						self.getApp().notify({ message: "Chưa chọn rank " }, { type: "danger", delay: 1000 });
+					}
+					if (self.model.get('password') == null || self.model.get('password') == '') {
+						self.getApp().notify({ message: "Chưa nhập mật khẩu " }, { type: "danger", delay: 1000 });
+					}
+					else {
+						var data = {
+							name: self.model.get('name'),
+							email: self.model.get('email'),
+							phone_number: self.model.get('phone_number'),
+							rank: self.model.get('rank'),
+							department_id: self.model.get('department_id'),
+							room_id: self.model.get('room_id'),
+							hierarchy: self.model.get('hierarchy'),
+							password: self.model.get('password'),
+						}
+						$.ajax({
+							method: "POST",
+							url: self.getApp().serviceURL + "/api/v1/register",
+							data: JSON.stringify(data),
+							headers: {
+								'content-type': 'application/json'
+							},
+							dataType: 'json',
+							success: function (response) {
+								if (response) {
+									self.getApp().notify("Đăng ký thành công");
+									self.getApp().getRouter().navigate(self.collectionName + "/collection");
+								}
+							}, error: function (xhr, ere) {
+								self.getApp().notify({ message: "Thông tin tài khoản đã có trong hệ thống" }, { type: "danger", delay: 1000 });
 
-							});
-					
-				}
-				
-			
+							}
+						})
+					}
 
+				});
+			}
 			var id = this.getApp().getRouter().getParam("id");
-
 			if (id) {
 				this.model.set('id', id);
 				this.model.fetch({
 					success: function (data) {
 						self.applyBindings();
-						self.$el.find('.password').hide();
-						
+						self.$el.find('.password').remove();
+
 					},
 					error: function () {
 						self.getApp().notify("Get data Eror");

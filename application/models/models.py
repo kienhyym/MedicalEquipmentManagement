@@ -48,7 +48,8 @@ class User(CommonModel):
     department = db.relationship('Department', viewonly=True)
     room_id = db.Column(UUID(as_uuid=True),db.ForeignKey('room.id'), nullable=True)
     room = db.relationship('Room', viewonly=True)
-    
+    hierarchy = db.Column(String(50), nullable=True)
+    area = db.Column(String(50), nullable=True)
     def has_role(self, role):
         if isinstance(role, str):
             return role in (role.code for role in self.roles)

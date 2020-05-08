@@ -16,10 +16,25 @@
                     </div>
                 </div>
                 <div class="card-body row">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                    <!-- <div class="col-md-6 col-lg-6 col-sm-8 col-12">
                         <div class="form-group">
                             <label for="">Chọn sản phẩm</label>
                             <input id="district" type="text" data-bind="dict:medicalequipment" />
+                        </div>
+                    </div> -->
+                    <div class="col-md-6 col-lg-6 col-sm-8 col-12">
+                        <div class="form-group">
+                            <label for="">Loại sản phẩm</label>
+                            <input type="text" class="form-control" data-bind="value:item_type">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-8 col-12">
+                        <div class="form-group">
+                            <label for="">Đơn vị tính</label>
+                            <div class="unit">
+                                <select class="selectpicker border rounded " data-live-search="true" data-width="100%">
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-8 col-12">
@@ -30,16 +45,12 @@
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-8 col-12">
                         <div class="form-group">
-                            <label for="">Loại sản phẩm</label>
-                            <input type="text" class="form-control" data-bind="value:item_type">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-sm-8 col-12">
-                        <div class="form-group">
                             <label for="">Tên sản phẩm</label>
                             <input type="text" class="form-control" data-bind="value:item_name">
                         </div>
                     </div>
+                    
+                    
 
                     <div class="col-md-6 col-lg-6 col-sm-8 col-12">
                         <div class="form-group">
@@ -54,15 +65,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-6 col-sm-8 col-12">
-                        <div class="form-group">
-                            <label for="">Đơn vị tính</label>
-                            <div class="unit">
-                                <select class="selectpicker border rounded " data-live-search="true" data-width="100%">
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="col-md-6 col-lg-6 col-sm-8 col-12">
                         <div class="form-group">
                             <label for="">Hình ảnh</label>

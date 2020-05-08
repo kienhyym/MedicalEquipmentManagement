@@ -19,12 +19,14 @@ from gatco_restapi.helpers import to_dict
 from sqlalchemy.sql.expression import except_
 import time
 from math import floor
+import math
+
 from application.client import HTTPClient
 from application.controllers.helper import *
 from sqlalchemy import or_, and_, desc
 from application.extensions import auth, jwt
 import ujson
-# import pandas
+import pandas
 # from excel2json import convert_from_file
 
 
@@ -140,10 +142,11 @@ async def list_today(request):
     return json(arr)
 
 
-@app.route('/api/v1/link_file_upload', methods=['POST'])
-async def link_file_upload(request):
+@app.route('/api/v1/link_file_upload/<tenant_id>/<hierarchy>/<area>', methods=['POST'])
+async def link_file_upload(request,tenant_id,hierarchy,area):
     url = app.config['FILE_SERVICE_URL']
     fsroot = app.config['FS_ROOT']
+    print ('_____________________________',tenant_id,hierarchy,area)
     if request.method == 'POST':
         file = request.files.get('file', None)
         if file :
@@ -155,16 +158,95 @@ async def link_file_upload(request):
             async with aiofiles.open(fsroot + new_filename, 'wb+') as f:
                 await f.write(file.body)
             df = pandas.read_excel("static/uploads/"+new_filename)
-            count = df.ID.count()
+            count = df.TT.count()
             i = 0
             arr = []
             while i < count:
                 obj = {}
-                obj['ID'] = df.ID[i]
-                obj['name'] = df.name[i]
-                obj['age'] = df.age[i]
+                obj['tt'] = df.TT[i]
+                obj['name'] = df.TEN[i]
+                obj['unit_name'] = df.DONVI[i]
+                try:
+                    float(df.MADONVI[i])
+                    if str(float(df.MADONVI[i])) == 'nan':
+                        obj['unit_code'] = None
+                except ValueError:
+                    obj['unit_code'] = df.MADONVI[i]
+
+                try:
+                    float(df.MIEUTADONVI[i])
+                    if str(float(df.MIEUTADONVI[i])) == 'nan':
+                        obj['unit_description'] = None
+                except ValueError:
+                    obj['unit_description'] = df.MIEUTADONVI[i]
+
+                try:
+                    float(df.TYPE[i])
+                    if str(float(df.TYPE[i])) == 'nan':
+                        obj['item_type'] = None
+                except ValueError:
+                    obj['item_type'] = df.TYPE[i]
+
                 arr.append(obj)
                 i += 1
+            
+
+            for _ in arr:
+                print ('________arr______',_)
+                item = db.session.query(Item).filter(and_(Item.item_no == str(_['tt']),Item.hierarchy == hierarchy,Item.area == area)).first()
+                if item is None:
+                    unit = db.session.query(Unit).filter(Unit.code == _['unit_code']).first()
+                    if unit is None:
+                        # s = _['unit']
+                        # s = re.sub(r'[àáạảãâầấậẩẫăằắặẳẵ]', 'a', s)
+                        # s = re.sub(r'[ÀÁẠẢÃĂẰẮẶẲẴÂẦẤẬẨẪ]', 'A', s)
+                        # s = re.sub(r'[èéẹẻẽêềếệểễ]', 'e', s)
+                        # s = re.sub(r'[ÈÉẸẺẼÊỀẾỆỂỄ]', 'E', s)
+                        # s = re.sub(r'[òóọỏõôồốộổỗơờớợởỡ]', 'o', s)
+                        # s = re.sub(r'[ÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠ]', 'O', s)
+                        # s = re.sub(r'[ìíịỉĩ]', 'i', s)
+                        # s = re.sub(r'[ÌÍỊỈĨ]', 'I', s)
+                        # s = re.sub(r'[ùúụủũưừứựửữ]', 'u', s)
+                        # s = re.sub(r'[ƯỪỨỰỬỮÙÚỤỦŨ]', 'U', s)
+                        # s = re.sub(r'[ỳýỵỷỹ]', 'y', s)
+                        # s = re.sub(r'[ỲÝỴỶỸ]', 'Y', s)
+                        # s = re.sub(r'[Đ]', 'D', s)
+                        # s = re.sub(r'[đ]', 'd', s)
+                        unitNew = Unit()
+                        if _['unit_code'] is not None:
+                            unitNew.code = _['unit_code']
+                        unitNew.name = _['unit_name']
+                        if _['unit_description'] is not None:
+                            unitNew.description = _['unit_description']
+                        unitNew.tenant_id = tenant_id
+                        unitNew.hierarchy = hierarchy
+                        unitNew.area = area
+                        db.session.add(unitNew)
+                        db.session.commit()
+
+                        itemNew = Item()
+                        itemNew.item_name = _['name']
+                        itemNew.item_no = str(_['tt'])
+                        if _['item_type'] is not None:
+                            itemNew.item_type = str(_['item_type'])
+                        itemNew.tenant_id = tenant_id
+                        itemNew.hierarchy = hierarchy
+                        itemNew.area = area
+                        itemNew.unit_id = str(to_dict(unitNew)['id'])
+                        db.session.add(itemNew)
+                        db.session.commit()
+                    else:
+                        itemNew = Item()
+                        itemNew.item_name = _['name']
+                        itemNew.item_no = str(_['tt'])
+                        if _['item_type'] is not None:
+                            itemNew.item_type = str(_['item_type'])
+                        itemNew.tenant_id = tenant_id
+                        itemNew.hierarchy = hierarchy
+                        itemNew.area = area
+                        itemNew.unit_id = str(to_dict(unit)['id'])
+                        db.session.add(itemNew)
+                        db.session.commit()
             return json({'data':"success"})
     
     return json({
