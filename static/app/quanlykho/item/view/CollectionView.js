@@ -369,6 +369,7 @@ define(function (require) {
                         }
                     } else {
                         self.getApp().notify("Không thể tải tệp tin lên máy chủ");
+                        self.getApp().getRouter().refresh();
                     }
                 };
                 http.send(fd,"{'a':'a'}");
