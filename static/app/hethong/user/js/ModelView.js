@@ -197,10 +197,6 @@ define(function (require) {
 						self.getApp().notify({ message: "Chưa chọn tuyến đơn vị" }, { type: "danger", delay: 1000 });
 						return false
 					}
-					if (self.model.get('hierarchy') == null || self.model.get('hierarchy') == '') {
-						self.getApp().notify({ message: "Chưa chọn tuyến đơn vị" }, { type: "danger", delay: 1000 });
-						return false
-					}
 					if (self.model.get('hierarchy') == "TRAM") {
 						if (self.model.get('area') == null || self.model.get('area') == '') {
 							self.getApp().notify({ message: "Chưa chọn khu vực" }, { type: "danger", delay: 1000 });
@@ -220,6 +216,7 @@ define(function (require) {
 							department_id: self.model.get('department_id'),
 							room_id: self.model.get('room_id'),
 							hierarchy: self.model.get('hierarchy'),
+							area: self.model.get('area'),
 							password: self.model.get('password'),
 						}
 						$.ajax({

@@ -131,6 +131,7 @@ def register(request):
         new_user.department_id = data["department_id"]
         new_user.room_id = data["room_id"]
         new_user.hierarchy = data["hierarchy"]
+        new_user.area = data["area"]
         db.session.add(new_user)
         db.session.commit()
         result = user_to_dict(new_user)

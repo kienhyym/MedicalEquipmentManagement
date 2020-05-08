@@ -41,7 +41,6 @@ define(function(require) {
                     var path = this.collectionName + '/model?id=' + event.rowId;
                     this.getApp().getRouter().navigate(path);
                 }
-
             }
         },
 
