@@ -325,6 +325,15 @@ define(function(require) {
                     }
                 },
                 {
+                    "text": "<label class='m-0 ml-4'>Thanh toán</label>",
+                    "type": "view",
+                    "collectionName": "payment",
+                    "route": "payment/collection",
+                    "visible": function() {
+                        return true
+                    }
+                },
+                {
                     "text": "<label class='m-0 ml-4'>Chuyển kho</label>",
                     "type": "view",
                     "collectionName": "movewarehouse",

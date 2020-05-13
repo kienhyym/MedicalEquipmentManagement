@@ -297,49 +297,49 @@ define(function(require) {
                         })
                     }
                 },
-                {
-                    name: "bill",
-                    type: "button",
-                    buttonClass: "btn-primary btn btn-sm btn-paid hide",
-                    label: "Thanh toán",
-                    visible: function() {
-                        return this.getApp().getRouter().getParam("id") !== null;
-                    },
-                    command: function() {
-                        var self = this;
-                        var paymentView = new PaymentView({
-                            "viewData": self.model.toJSON()
-                        });
-                        paymentView.dialog({
-                            // size: "large"
-                        });
-                        paymentView.on("close", function(e) {
-                            self.model.set("payment_status", "paid");
-                            self.model.set("payment_no", e.payment_no);
-                            self.getApp().saveLog("paid", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                            self.model.save(null, {
-                                success: function(model, respose, options) {
-                                    self.updateItemBill()
-                                    self.getApp().notify("Lưu thông tin thành công");
-                                    self.getApp().getRouter().navigate(self.collectionName + "/collection");
-                                },
-                                error: function(xhr, status, error) {
-                                    try {
-                                        if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
-                                            self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
-                                            self.getApp().getRouter().navigate("login");
-                                        } else {
-                                            self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
-                                        }
-                                    } catch (err) {
-                                        self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
-                                    }
-                                }
-                            });
-                        });
+                // {
+                //     name: "bill",
+                //     type: "button",
+                //     buttonClass: "btn-primary btn btn-sm btn-paid hide",
+                //     label: "Thanh toán",
+                //     visible: function() {
+                //         return this.getApp().getRouter().getParam("id") !== null;
+                //     },
+                //     command: function() {
+                //         var self = this;
+                //         var paymentView = new PaymentView({
+                //             "viewData": self.model.toJSON()
+                //         });
+                //         paymentView.dialog({
+                //             // size: "large"
+                //         });
+                //         paymentView.on("close", function(e) {
+                //             self.model.set("payment_status", "paid");
+                //             self.model.set("payment_no", e.payment_no);
+                //             self.getApp().saveLog("paid", "goodsreciept", self.model.get("goodsreciept_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+                //             self.model.save(null, {
+                //                 success: function(model, respose, options) {
+                //                     self.updateItemBill()
+                //                     self.getApp().notify("Lưu thông tin thành công");
+                //                     self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                //                 },
+                //                 error: function(xhr, status, error) {
+                //                     try {
+                //                         if (($.parseJSON(error.xhr.responseText).error_code) === "SESSION_EXPIRED") {
+                //                             self.getApp().notify("Hết phiên làm việc, vui lòng đăng nhập lại!");
+                //                             self.getApp().getRouter().navigate("login");
+                //                         } else {
+                //                             self.getApp().notify({ message: $.parseJSON(error.xhr.responseText).error_message }, { type: "danger", delay: 1000 });
+                //                         }
+                //                     } catch (err) {
+                //                         self.getApp().notify({ message: "Lưu thông tin không thành công" }, { type: "danger", delay: 1000 });
+                //                     }
+                //                 }
+                //             });
+                //         });
 
-                    }
-                },
+                //     }
+                // },
             ],
         }],
 
@@ -362,6 +362,8 @@ define(function(require) {
                         self.registerEvent();
                         self.showDetail();
                         self.listItemsOldRemove();
+                        self.paymentStatus();
+                        self.historyPay();
                     },
                     error: function() {
                         toastr.error('Lỗi hệ thống, vui lòng thử lại sau');
@@ -864,6 +866,69 @@ define(function(require) {
                 self.$el.find(".save").hide();
                 self.$el.find(".btn-paid").hide();
                 self.$el.find(".btn-delete").hide();
+            }
+        },
+        paymentStatus : function(){
+            var self = this;
+            
+            if (self.model.get('payment_status')  == "done") {
+                self.$el.find('#payment_status').html(`<label style="width: 70px" class="badge badge-dark">Đã về kho</label>`)
+            } else if (self.model.get('payment_status')  == "created") {
+                self.$el.find('#payment_status').html(`<label style="width: 70px" class="badge badge-primary">Tạo yêu cầu</label>`)
+            } else if (self.model.get('payment_status')  == "pending") {
+                self.$el.find('#payment_status').html(`<label style="width: 70px class="badge badge-danger">Chờ xử lý</label>`)
+            } else if (self.model.get('payment_status')  == "confirm") {
+                self.$el.find('#payment_status').html( `<label style="width: 90px" class="badge badge-warning">Đã duyệt yêu cầu</label>`)
+            }
+            else if (self.model.get('payment_status')  == "debt") {
+                self.$el.find('#payment_status').html( `<label style="width: 70px" class="badge badge-info">Còn nợ</label>`)
+            }
+            else if (self.model.get('payment_status')  == "paid") {
+                self.$el.find('#payment_status').html(`<label style="width: 90px" class="badge badge-success">Đã thanh toán</label>`)
+            } else {
+                return ``;
+            }
+        },
+        historyPay : function(){
+            var self = this;
+            if (self.model.get('paymentdetails').length >0){
+                self.$el.find('.lich-su-thanh-toan').append(`
+                    <div class="row m-2">
+                    <div class="col-1 text-center">
+                    <label for="">STT</label>
+                    </div>
+                    <div class="col-4 text-center">
+                    <label>Ngày thanh toán</label>
+                    </div>
+                    <div class="col-4 text-center">
+                    <label for="">Số tiền</label>
+                    </div>
+                    <div class="col-3 text-center">
+                    <label>xem chi tiết</label>
+                    </div>
+                </div>
+                    `)
+                self.model.get('paymentdetails').forEach(function(item,index){
+                    var amount = new Number(item.amount).toLocaleString("en-AU");
+					var itemCreatedAtFormat = Helpers.utcToLocal(item.goodsreciept_create_at * 1000, "DD/MM/YYYY HH:mm");
+                    self.$el.find('.lich-su-thanh-toan').append(`
+                    <div class="row m-2">
+                        <div class="col-1 text-center">
+                            <input type="text" class="form-control text-center"  disabled value="${index+1}">
+                        </div>
+                        <div class="col-4 text-center">
+                            <input type="text" class="form-control text-center"  disabled value="${itemCreatedAtFormat}">
+                        </div>
+                        <div class="col-4 text-center">
+                        <input type="text" class="form-control text-center"  disabled value="${amount} VNĐ">
+                        </div>
+                       
+                        <div class="col-3 text-center">
+                            <a href="#payment/model?id=${item.payment_id}" class="btn btn-secondary w-100" >Xem phiếu thanh toán</a>
+                        </div>
+                    </div>
+                    `)
+                })
             }
         }
     });

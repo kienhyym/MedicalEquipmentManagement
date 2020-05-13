@@ -98,6 +98,7 @@ define(function(require) {
                     label: "TRANSLATE:SAVE",
                     command: function() {
                         var self = this;
+                        self.amountListItem();
                         var id = self.getApp().getRouter().getParam("id");
                         var method = "update";
                         if (!id) {
@@ -188,133 +189,133 @@ define(function(require) {
                         });
                     }
                 },
-                {
-                    name: "paid",
-                    type: "button",
-                    buttonClass: "btn-primary btn btn-sm btn-paid hide",
-                    label: "Tạo phiếu xuất",
-                    command: function() {
-                        var self = this;
-                        var details = self.model.get("details");
-                        // var arr = {
-                        //     details: details,
-                        //     created_at: Helpers.utcToUtcTimestamp(),
-                        //     deliverynote_no: Helpers.makeNoGoods(10, "PX0").toUpperCase(),
-                        //     purchaseorder_id: self.model.get("id"),
-                        //     purchaseorder_no: self.model.get("purchaseorder_no"),
-                        //     tenant_id: self.getApp().currentTenant[0],
-                        //     workstation_name: self.model.get("workstation_name"),
-                        //     workstation_id: self.model.get("workstation_id"),
-                        //     address: self.model.get("address"),
-                        //     proponent: self.model.get("proponent"),
-                        //     phone: self.model.get("phone")
-                        // }
-                        // $.ajax({
-                        //     method: "POST",
-                        //     url: self.getApp().serviceURL + "/api/v1/purchaseorder-add-to-deliverynote",
-                        //     data: JSON.stringify(arr),
-                        //     success: function (data) {
-                        //         // console.log(data);
-                        //         if (data) {
-                        self.model.set("payment_status", "paid");
-                        self.getApp().saveLog("paid", "purchaseorder", self.model.get("purchaseorder_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                        self.model.save(null, {
-                            success: function(model, respose, options) {
-                                self.updateItemBill()
-                                if ($("body").hasClass("sidebar-icon-only")) {
-                                    $("#btn-menu").trigger("click");
-                                }
-                                toastr.success('Duyệt thông tin thành công');
-                                self.getApp().getRouter().navigate(self.collectionName + "/collection");
-                            },
-                        });
-                        //         }
-                        //     },
-                        //     error: function () {
-                        //         toastr.error("Tạo không thành công");
-                        //     }
-                        // })
-                    }
-                },
+                // {
+                //     name: "paid",
+                //     type: "button",
+                //     buttonClass: "btn-primary btn btn-sm btn-paid hide",
+                //     label: "Tạo phiếu xuất",
+                //     command: function() {
+                //         var self = this;
+                //         var details = self.model.get("details");
+                //         // var arr = {
+                //         //     details: details,
+                //         //     created_at: Helpers.utcToUtcTimestamp(),
+                //         //     deliverynote_no: Helpers.makeNoGoods(10, "PX0").toUpperCase(),
+                //         //     purchaseorder_id: self.model.get("id"),
+                //         //     purchaseorder_no: self.model.get("purchaseorder_no"),
+                //         //     tenant_id: self.getApp().currentTenant[0],
+                //         //     workstation_name: self.model.get("workstation_name"),
+                //         //     workstation_id: self.model.get("workstation_id"),
+                //         //     address: self.model.get("address"),
+                //         //     proponent: self.model.get("proponent"),
+                //         //     phone: self.model.get("phone")
+                //         // }
+                //         // $.ajax({
+                //         //     method: "POST",
+                //         //     url: self.getApp().serviceURL + "/api/v1/purchaseorder-add-to-deliverynote",
+                //         //     data: JSON.stringify(arr),
+                //         //     success: function (data) {
+                //         //         // console.log(data);
+                //         //         if (data) {
+                //         self.model.set("payment_status", "paid");
+                //         self.getApp().saveLog("paid", "purchaseorder", self.model.get("purchaseorder_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+                //         self.model.save(null, {
+                //             success: function(model, respose, options) {
+                //                 self.updateItemBill()
+                //                 if ($("body").hasClass("sidebar-icon-only")) {
+                //                     $("#btn-menu").trigger("click");
+                //                 }
+                //                 toastr.success('Duyệt thông tin thành công');
+                //                 self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                //             },
+                //         });
+                //         //         }
+                //         //     },
+                //         //     error: function () {
+                //         //         toastr.error("Tạo không thành công");
+                //         //     }
+                //         // })
+                //     }
+                // },
 
-                {
-                    name: "user-cancel",
-                    type: "button",
-                    buttonClass: "btn-danger btn btn-sm btn-user-cancel hide",
-                    label: "Hủy đơn hàng",
-                    command: function() {
-                        var self = this;
-                        $.jAlert({
-                            'title': 'Bạn có chắc muốn hủy?',
-                            'content': '<button class="btn btn-sm btn-danger" id="yes">Có!</button><button class="btn btn-sm btn-light" id="no">Không</button>',
-                            'theme': 'red',
-                            'onOpen': function($el) {
+                // {
+                //     name: "user-cancel",
+                //     type: "button",
+                //     buttonClass: "btn-danger btn btn-sm btn-user-cancel hide",
+                //     label: "Hủy đơn hàng",
+                //     command: function() {
+                //         var self = this;
+                //         $.jAlert({
+                //             'title': 'Bạn có chắc muốn hủy?',
+                //             'content': '<button class="btn btn-sm btn-danger" id="yes">Có!</button><button class="btn btn-sm btn-light" id="no">Không</button>',
+                //             'theme': 'red',
+                //             'onOpen': function($el) {
 
-                                $el.find("#yes").on("click", function() {
-                                    self.model.set("payment_status", "user-cancel");
-                                    self.getApp().saveLog("cancel", "purchaseorder", self.model.get("purchaseorder_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                                    self.model.save(null, {
-                                        success: function(model, respose, options) {
-                                            $el.closeAlert();
-                                            if ($("body").hasClass("sidebar-icon-only")) {
-                                                $("#btn-menu").trigger("click");
-                                            }
-                                            toastr.info("Lưu thông tin thành công");
-                                            self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                //                 $el.find("#yes").on("click", function() {
+                //                     self.model.set("payment_status", "user-cancel");
+                //                     self.getApp().saveLog("cancel", "purchaseorder", self.model.get("purchaseorder_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+                //                     self.model.save(null, {
+                //                         success: function(model, respose, options) {
+                //                             $el.closeAlert();
+                //                             if ($("body").hasClass("sidebar-icon-only")) {
+                //                                 $("#btn-menu").trigger("click");
+                //                             }
+                //                             toastr.info("Lưu thông tin thành công");
+                //                             self.getApp().getRouter().navigate(self.collectionName + "/collection");
 
-                                        },
-                                        error: function(model, xhr, options) {
-                                            toastr.error('Lưu thông tin không thành công!');
+                //                         },
+                //                         error: function(model, xhr, options) {
+                //                             toastr.error('Lưu thông tin không thành công!');
 
-                                        }
-                                    });
-                                });
-                                $el.find("#no").on("click", function() {
-                                    $el.closeAlert();
-                                })
-                            }
-                        });
-                    }
-                },
+                //                         }
+                //                     });
+                //                 });
+                //                 $el.find("#no").on("click", function() {
+                //                     $el.closeAlert();
+                //                 })
+                //             }
+                //         });
+                //     }
+                // },
 
-                {
-                    name: "admin-cancel",
-                    type: "button",
-                    buttonClass: "btn-danger btn btn-sm btn-admin-cancel hide",
-                    label: "Hủy đơn hàng",
-                    command: function() {
-                        var self = this;
-                        $.jAlert({
-                            'title': 'Bạn có chắc muốn hủy?',
-                            'content': '<button class="btn btn-sm btn-danger" id="yes">Có!</button><button class="btn btn-sm btn-light" id="no">Không</button>',
-                            'theme': 'red',
-                            'onOpen': function($el) {
-                                $el.find("#yes").on("click", function() {
-                                    self.model.set("payment_status", "admin-cancel");
-                                    self.getApp().saveLog("cancel", "purchaseorder", self.model.get("purchaseorder_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
-                                    self.model.save(null, {
-                                        success: function(model, respose, options) {
-                                            $el.closeAlert();
-                                            if ($("body").hasClass("sidebar-icon-only")) {
-                                                $("#btn-menu").trigger("click");
-                                            }
-                                            toastr.info("Lưu thông tin thành công");
-                                            self.getApp().getRouter().navigate(self.collectionName + "/collection");
+                // {
+                //     name: "admin-cancel",
+                //     type: "button",
+                //     buttonClass: "btn-danger btn btn-sm btn-admin-cancel hide",
+                //     label: "Hủy đơn hàng",
+                //     command: function() {
+                //         var self = this;
+                //         $.jAlert({
+                //             'title': 'Bạn có chắc muốn hủy?',
+                //             'content': '<button class="btn btn-sm btn-danger" id="yes">Có!</button><button class="btn btn-sm btn-light" id="no">Không</button>',
+                //             'theme': 'red',
+                //             'onOpen': function($el) {
+                //                 $el.find("#yes").on("click", function() {
+                //                     self.model.set("payment_status", "admin-cancel");
+                //                     self.getApp().saveLog("cancel", "purchaseorder", self.model.get("purchaseorder_no"), null, null, self.model.get("details"), Helpers.utcToUtcTimestamp());
+                //                     self.model.save(null, {
+                //                         success: function(model, respose, options) {
+                //                             $el.closeAlert();
+                //                             if ($("body").hasClass("sidebar-icon-only")) {
+                //                                 $("#btn-menu").trigger("click");
+                //                             }
+                //                             toastr.info("Lưu thông tin thành công");
+                //                             self.getApp().getRouter().navigate(self.collectionName + "/collection");
 
-                                        },
-                                        error: function(model, xhr, options) {
-                                            toastr.error('Lưu thông tin không thành công!');
+                //                         },
+                //                         error: function(model, xhr, options) {
+                //                             toastr.error('Lưu thông tin không thành công!');
 
-                                        }
-                                    });
-                                });
-                                $el.find("#no").on("click", function() {
-                                    $el.closeAlert();
-                                })
-                            }
-                        });
-                    }
-                },
+                //                         }
+                //                     });
+                //                 });
+                //                 $el.find("#no").on("click", function() {
+                //                     $el.closeAlert();
+                //                 })
+                //             }
+                //         });
+                //     }
+                // },
             ],
         }],
 
@@ -421,27 +422,27 @@ define(function(require) {
             // self.caculateTaxPercent();
         },
 
-        caculateTaxAmount: function() {
-            const self = this;
-            var netAmount = parseFloat(self.model.get("net_amount"));
-            var saleorderDiscount = parseFloat(self.model.get("tax_amount"));
-            var taxAmount = saleorderDiscount / netAmount * 100;
-            self.model.set("tax_percent", Math.round(taxAmount * 100) / 100);
-            var amount = parseFloat(netAmount + saleorderDiscount);
-            self.model.set("amount", amount);
-        },
+        // caculateTaxAmount: function() {
+        //     const self = this;
+        //     var netAmount = parseFloat(self.model.get("net_amount"));
+        //     var saleorderDiscount = parseFloat(self.model.get("tax_amount"));
+        //     var taxAmount = saleorderDiscount / netAmount * 100;
+        //     self.model.set("tax_percent", Math.round(taxAmount * 100) / 100);
+        //     var amount = parseFloat(netAmount + saleorderDiscount);
+        //     self.model.set("amount", amount);
+        // },
 
-        caculateTaxPercent: function() {
-            const self = this;
-            var netAmount = parseFloat(self.model.get("net_amount"));
+        // caculateTaxPercent: function() {
+        //     const self = this;
+        //     var netAmount = parseFloat(self.model.get("net_amount"));
 
-            if (netAmount > 0) {
-                var saleorderDiscount = netAmount / 100 * parseFloat(self.model.get("tax_percent"));
-                self.model.set("tax_amount", saleorderDiscount);
-                var amount = netAmount + saleorderDiscount;
-                self.model.set("amount", amount);
-            }
-        },
+        //     if (netAmount > 0) {
+        //         var saleorderDiscount = netAmount / 100 * parseFloat(self.model.get("tax_percent"));
+        //         self.model.set("tax_amount", saleorderDiscount);
+        //         var amount = netAmount + saleorderDiscount;
+        //         self.model.set("amount", amount);
+        //     }
+        // },
 
         checkRole: function() {
             var self = this;
@@ -863,6 +864,22 @@ define(function(require) {
                 })
                 self.clickPurchaseCost();
             }
+        },
+        amountListItem: function() {
+            var self = this;
+            var arr = [];
+            self.$el.find('.selected-item-new,.selected-item-old').each(function(index, item) {
+                var obj = {
+                    "quantity": $(item).find('[col-type="QUANTITY"]').val(),
+                    "list_price": $(item).find('[col-type="LIST_PRICE"]').attr('list-price'),
+                }
+                arr.push(obj)
+            })
+            var amount = 0;
+            arr.forEach(function(item,index){
+                amount = amount + (item.quantity * item.list_price)
+            })
+            self.model.set('amount',amount)
         },
 
         // HẾT CHỨC NĂNG CHỌN ITEM XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

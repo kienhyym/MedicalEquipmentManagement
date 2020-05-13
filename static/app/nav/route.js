@@ -210,6 +210,19 @@ define(function(require) {
         },
 
         {
+            "collectionName": "payment",
+            "route": "payment/collection",
+            "$ref": "app/quanlykho/payment/view/CollectionView",
+        },
+        {
+            "collectionName": "payment",
+            "route": "payment/model(/:id)",
+            "$ref": "app/quanlykho/payment/view/ModelView",
+        },
+
+
+
+        {
             "collectionName": "movewarehouse",
             "route": "movewarehouse/collection",
             "$ref": "app/quanlykho/move-warehouse/view/CollectionView",

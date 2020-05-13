@@ -10,6 +10,7 @@ import uuid
 from application.models.inventory.warehouse import *
 from application.models.inventory.currency import Currency
 from application.models.inventory.contact import Contact
+from application.models.inventory.payment import *
 
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import *
@@ -25,6 +26,8 @@ class PurchaseOrder(CommonModel):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=default_uuid)
     tenant_id = db.Column(db.String)
     purchaseorder_no = db.Column(db.String)
+    purchaseorder_no_book = db.Column(db.String)
+
     department = db.Column(db.String, nullable=True)
 
     organization_name = db.Column(db.String, nullable=True)
@@ -53,9 +56,11 @@ class PurchaseOrder(CommonModel):
     discount_amount = db.Column(DECIMAL(25,8), default=0) # tiền giảm theo chương trình KM
     item_discount = db.Column(DECIMAL(25,8), default=0)
     warehouse_id = db.Column(db.String)
-
+    # payment = db.relationship("Payment", order_by="Payment.created_at", cascade="all, delete-orphan")
     details = db.relationship("ItemBalances", order_by="ItemBalances.created_at", cascade="all, delete-orphan")
     custom_fields = db.Column(JSONB(), nullable=True)
+    # payment = db.relationship('PaymentDetails', secondary="paymentdetails_purchaseorder", cascade="save-update")
+    paymentdetails = relationship('PaymentDetails')
 
 # class PurchaseOrderDetails(CommonModel):
 #     __tablename__ = 'purchaseorderdetails'

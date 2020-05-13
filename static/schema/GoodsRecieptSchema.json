@@ -28,6 +28,9 @@
     "goodsreciept_no": {
         "type": "string"
     },
+    "goodsreciept_no_book": {
+        "type": "string"
+    },
     "payment_no": {
         "type": "string"
     },
@@ -109,6 +112,9 @@
         "type": "json"
     },
     "details": {
+        "type": "list"
+    },
+    "paymentdetails": {
         "type": "list"
     }
 }

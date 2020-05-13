@@ -31,6 +31,9 @@
     "purchaseorder_no": {
         "type": "string"
     },
+    "purchaseorder_no_book": {
+        "type": "string"
+    },
     "department": {
         "type": "string"
     },
@@ -97,6 +100,9 @@
         "type": "json"
     },
     "details": {
+        "type": "list"
+    },
+    "paymentdetails": {
         "type": "list"
     }
 }
