@@ -16,18 +16,26 @@
                 <label>THÔNG TIN PHIẾU</label>
             </div> -->
             <div class="col-md-12 pt-1 pb-1 row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <span>Mã Phiếu:</span>
                </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <span id="payment_no"></span>
                </div>
+               <div class="col-md-3 text-right pt-2">
+                <span>Mã Phiếu:</span>
+           </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" data-bind="value:payment_no_book" placeholder="..." required="" />
+
+           </div>
             </div>
+
             <div class="col-md-12 pt-1 pb-1 border-bottom row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <span>Thời gian tạo:</span>
                </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <span id="created_at"></span>
                </div>
             </div>
