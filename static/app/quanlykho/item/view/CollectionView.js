@@ -62,6 +62,21 @@ define(function (require) {
                         return `<div style="min-width: 140px;">${rowObject.item_name}</div>`;
                     }
                 },
+                {
+                    field: "item_name",
+                    label: "dơn vị tính",
+                    template: function (rowObject) {
+                        return `<div style="min-width: 140px;">${rowObject.unit.name}</div>`;
+                    }
+                },
+                {
+                    field: "item_name",
+                    label: "Thong tin",
+                    template: function (rowObject) {
+                        console.log(rowObject.unit)
+                        return `<div style="min-width: 140px;">${rowObject.unit.description}</div>`;
+                    }
+                },
                 // {
                 //     field: "purchase_cost",
                 //     label: "Giá mua",
