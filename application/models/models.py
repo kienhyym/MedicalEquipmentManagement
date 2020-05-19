@@ -157,7 +157,7 @@ class EquipmentDetails(CommonModel):
     date_of_entering_device = db.Column(BigInteger())
     status = db.Column(String(255))
     types_of_equipment = db.Column(String(255))
-    medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'), nullable=True)
+    medicalequipment_id = db.Column(String(255))
     item_id = db.Column(UUID(as_uuid=True), ForeignKey('item.id'), nullable=True)
     item = db.relationship('Item', viewonly=True)
     List_of_requests_for_repair = db.relationship('RepairRequestForm', cascade="all, delete-orphan")
