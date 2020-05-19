@@ -13,32 +13,32 @@ define(function(require) {
         urlPrefix: "/api/v1/",
         collectionName: "equipmentdetails",
         trangThaiThietBi: null,
-        tools: [{
-                name: "defaultgr",
-                type: "group",
-                groupClass: "toolbar-group",
-                buttons: [{
-                    name: "back",
-                    type: "button",
-                    buttonClass: "btn-default btn-sm btn-secondary",
-                    label: "TRANSLATE:Quay lại",
-                    command: function() {
-                        var self = this;
-                        Backbone.history.history.back();
-                    }
-                }, ],
-            },
-            {
-                name: "save",
-                type: "button",
-                buttonClass: "btn-success btn-sm",
-                label: "TRANSLATE:CREATE",
-                command: function() {
-                    var self = this;
-                    self.getApp().getRouter().navigate("equipmentdetails/model");
-                }
-            },
-        ],
+        // tools: [{
+        //         name: "defaultgr",
+        //         type: "group",
+        //         groupClass: "toolbar-group",
+        //         buttons: [{
+        //             name: "back",
+        //             type: "button",
+        //             buttonClass: "btn-default btn-sm btn-secondary",
+        //             label: "TRANSLATE:Quay lại",
+        //             command: function() {
+        //                 var self = this;
+        //                 Backbone.history.history.back();
+        //             }
+        //         }, ],
+        //     },
+        //     {
+        //         name: "save",
+        //         type: "button",
+        //         buttonClass: "btn-success btn-sm",
+        //         label: "TRANSLATE:CREATE",
+        //         command: function() {
+        //             var self = this;
+        //             self.getApp().getRouter().navigate("equipmentdetails/model");
+        //         }
+        //     },
+        // ],
         initialize: function() {
             this.trangThaiThietBi = localStorage.getItem("TrangThaiThietBi");
             localStorage.clear();
