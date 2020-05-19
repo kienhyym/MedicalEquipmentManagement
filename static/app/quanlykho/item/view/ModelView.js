@@ -93,17 +93,18 @@ define(function(require) {
                     label: "TRANSLATE:SAVE",
                     command: function() {
                         var self = this;
-                        if (self.model.get('medicalequipment')){
+                        if (self.model.get('medicalequipment')) {
                             delete self.model.get('medicalequipment').stt
-                            if (self.model.get('medicalequipment') != null ){
+                            if (self.model.get('medicalequipment') != null) {
                                 sself.model.set('item_name', self.model.get('medicalequipment').name);
-                            }
-                            else{
+                            } else {
                                 self.model.set('item_name', self.model.get('item_name'));
                             }
                         }
-                        
-                        
+
+                        self.model.set('hierarchy', self.getApp().currentUser.hierarchy);
+                        self.model.set('area', self.getApp().currentUser.area);
+
                         var id = this.getApp().getRouter().getParam("id");
                         var method = "update";
                         if (!id) {
@@ -181,11 +182,10 @@ define(function(require) {
                         })
                         self.$el.find(".btn-them").unbind("click").bind("click", function() {
                             location.href = self.getApp().serviceURL + "/?#equipmentdetails/model";
-                            if (self.model.get('medicalequipment') != null ){
+                            if (self.model.get('medicalequipment') != null) {
                                 sessionStorage.setItem('TenSanPham', self.model.get('medicalequipment').name);
-                            }
-                            else{
-                                sessionStorage.setItem('TenSanPham',self.model.get('item_name'));
+                            } else {
+                                sessionStorage.setItem('TenSanPham', self.model.get('item_name'));
                             }
                             sessionStorage.setItem('IDSanPham', self.model.get("id"));
                             sessionStorage.setItem('ChungLoai', self.model.get("types_of_equipment"));

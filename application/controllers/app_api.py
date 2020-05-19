@@ -190,6 +190,7 @@ async def link_file_upload(request,tenant_id,hierarchy,area):
 
                 arr.append(obj)
                 i += 1
+            ping_local()
             
 
             for _ in arr:
@@ -249,12 +250,14 @@ async def link_file_upload(request,tenant_id,hierarchy,area):
                         db.session.add(itemNew)
                         db.session.commit()
             return json({'data':"success"})
-    
+  
     return json({
         "error_code": "Upload Error",
         "error_message": "Could not upload file to store"
     }, status=520)
-
+async def ping_local():
+    print ('________XXXXXXXXXXXXXXXXXXX______')
+    return await 5
 
 @app.route('/api/v1/read_file_json',methods=['POST'])
 async def read_file_json(request):
