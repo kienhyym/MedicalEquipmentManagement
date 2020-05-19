@@ -277,7 +277,7 @@ define(function(require) {
 
             self.$el.find(".tensp").html("Thiết bị: " + sessionStorage.getItem('TenSanPham'))
             self.model.set("item_id", sessionStorage.getItem('IDSanPham'))
-            self.model.set("medicalequipment_id", sessionStorage.getItem('IDThietBiNay'))
+                // self.model.set("medicalequipment_id", sessionStorage.getItem('IDThietBiNay'))
             self.model.set("name", sessionStorage.getItem('TenSanPham'))
                 // self.model.set("types_of_equipment", sessionStorage.getItem('ChungLoai'))
 
