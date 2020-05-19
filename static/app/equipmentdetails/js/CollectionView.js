@@ -345,6 +345,8 @@ define(function(require) {
         },
         render_grid: function(dataSource) {
             var self = this;
+            console.log(dataSource)
+
             var element = self.$el.find("#grid-data");
             element.grid({
                 // showSortingIndicator: true,
@@ -430,7 +432,6 @@ define(function(require) {
                 data: "q=" + JSON.stringify(filters),
                 contentType: "application/json",
                 success: function(data) {
-                    console.log(data)
 
                     var list = [];
                     data.objects.forEach(function(item, index) {
