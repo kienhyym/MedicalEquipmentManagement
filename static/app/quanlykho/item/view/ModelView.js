@@ -188,7 +188,7 @@ define(function(require) {
                                 sessionStorage.setItem('TenSanPham', self.model.get('item_name'));
                             }
                             sessionStorage.setItem('IDSanPham', self.model.get("id"));
-                            sessionStorage.setItem('ChungLoai', self.model.get("types_of_equipment"));
+                            // sessionStorage.setItem('ChungLoai', self.model.get("types_of_equipment"));
                             sessionStorage.setItem('IDThietBiNay', self.model.get("medicalequipment_id"));
                         })
 
