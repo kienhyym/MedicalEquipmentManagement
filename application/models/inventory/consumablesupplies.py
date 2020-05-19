@@ -117,6 +117,7 @@ class Item (CommonModel):
     
     medicalequipment_id = db.Column(UUID(as_uuid=True), ForeignKey('medicalequipment.id'))
     medicalequipment = relationship('MedicalEquipment', viewonly=True)
+    types_of_equipment = db.Column(String(255))
 
     preparationtools = db.relationship('PreparationTools', secondary=item_preparationtools, cascade="save-update")
     list_of_equipment_details = db.relationship('EquipmentDetails', cascade="all, delete-orphan")
