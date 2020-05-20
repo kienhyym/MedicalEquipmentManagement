@@ -365,6 +365,8 @@ define(function(require) {
                         self.$el.find(".btn-dskiemtrahangngay").unbind("click").bind("click", function() {
                             location.href = self.getApp().serviceURL + "/?#equipmentinspectionform/collection";
                             sessionStorage.setItem('IDThietBi', self.model.get("id"));
+                            sessionStorage.setItem('type', "getbyID");
+
                         })
                         self.$el.find(".btn-dskiemdinh").unbind("click").bind("click", function() {
                             location.href = self.getApp().serviceURL + "/?#certificateform/collection";

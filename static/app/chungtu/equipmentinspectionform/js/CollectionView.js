@@ -57,7 +57,20 @@ define(function (require) {
         locData: function () {
             var self = this;
             var IDTB = sessionStorage.getItem('IDThietBi');
+            var type = sessionStorage.getItem('type');
+
             console.log(IDTB)
+
+            $.ajax({
+                url: self.getApp().serviceURL + "/api/v1/get_equipmentinspectionform",
+                method: "POST",
+                data: JSON.stringify({"type":type,"id":IDTB}),
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data)
+                }
+            })
+
             sessionStorage.clear();
             if (IDTB !== null) {
                 var filters = {

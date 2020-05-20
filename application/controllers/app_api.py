@@ -316,3 +316,12 @@ sqlapimanager.create_api(MedicalEquipment, max_results_per_page=1000000,
 #             arr.append(obj)
 #         return json(arr)
 
+
+
+
+
+@app.route('/api/v1/get_equipmentinspectionform', methods=['POST'])
+async def get_equipmentinspectionform(request):
+    data = request.json
+    print("---------------------buoc kiem tra-------------------", data)
+    return json([])
