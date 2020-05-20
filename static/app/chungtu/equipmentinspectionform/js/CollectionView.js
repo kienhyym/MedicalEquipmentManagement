@@ -58,8 +58,7 @@ define(function (require) {
             var self = this;
             var IDTB = sessionStorage.getItem('IDThietBi');
             var type = sessionStorage.getItem('type');
-
-            console.log(IDTB)
+            console.log(type)
 
             $.ajax({
                 url: self.getApp().serviceURL + "/api/v1/get_equipmentinspectionform",
