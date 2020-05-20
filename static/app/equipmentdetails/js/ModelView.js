@@ -55,6 +55,10 @@ define(function(require) {
                         if (self.model.get("status") == null) {
                             self.getApp().notify({ message: "Bạn chưa cập nhật trạng thái thiết bị" }, { type: "danger", delay: 1000 });
                             return false;
+                        }
+                        if (self.model.get("model_serial_number") == null) {
+                            self.getApp().notify({ message: "Bạn chưa cập nhật số serial cho thiết bị" }, { type: "danger", delay: 1000 });
+                            return false;
                         } else {
                             self.model.save(null, {
                                 success: function(model, respose, options) {
