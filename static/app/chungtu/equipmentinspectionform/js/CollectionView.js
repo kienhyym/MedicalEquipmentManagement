@@ -38,6 +38,9 @@ define(function (require) {
             },
         render: function () {
             var self = this;
+            var type = sessionStorage.getItem('type');
+            console.log(type)
+
             self.$el.find('#ngaykiemtra').datetimepicker({
                 textFormat: 'DD-MM-YYYY',
                 extraFormats: ['DDMMYYYY'],
@@ -56,10 +59,10 @@ define(function (require) {
         },
         locData: function () {
             var self = this;
-            var IDTB = sessionStorage.getItem('IDThietBi');
             var type = sessionStorage.getItem('type');
             console.log(type)
 
+            var IDTB = sessionStorage.getItem('IDThietBi');
             $.ajax({
                 url: self.getApp().serviceURL + "/api/v1/get_equipmentinspectionform",
                 method: "POST",
