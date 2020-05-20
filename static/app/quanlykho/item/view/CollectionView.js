@@ -73,8 +73,12 @@ define(function (require) {
                     field: "item_name",
                     label: "Thong tin",
                     template: function (rowObject) {
-                        console.log(rowObject.unit)
-                        return `<div style="min-width: 140px;">${rowObject.unit.description}</div>`;
+                        if(rowObject.unit.description){
+                            return `<div style="min-width: 140px;">${rowObject.unit.description}</div>`;
+                        }
+                        else{
+                            return '';
+                        }
                     }
                 },
                 // {

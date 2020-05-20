@@ -121,6 +121,10 @@
     "medicalequipment_id": {
         "type": "string"
     },
+    "types_of_equipment": {
+        "type": "string",
+        "length": 255
+    },
     "categories": {
         "type": "list"
     },
