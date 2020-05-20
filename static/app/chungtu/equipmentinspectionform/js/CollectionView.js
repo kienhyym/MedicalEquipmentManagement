@@ -56,7 +56,7 @@ define(function (require) {
         },
         locData: function () {
             var self = this;
-            var type = sessionStorage.getItem('type');
+            var type = window.location.search;
             console.log(type)
 
             var IDTB = sessionStorage.getItem('IDThietBi');
