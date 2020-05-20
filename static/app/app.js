@@ -486,9 +486,9 @@ require(['jquery',
 			listToday: function () {
 				var self = this;
 				$('.danhsachhomnay').unbind('click').bind('click', function () {
-					console.log($(this).attr('table-name'))
-					localStorage.setItem('LoaiDanhSachHomNay', $(this).attr('table-name'))
-					localStorage.setItem('type', $(this).attr('table-name'))
+					categoryToday = $(this).attr('table-name')
+					localStorage.setItem('LoaiDanhSachHomNay', categoryToday)
+					localStorage.setItem('type', categoryToday)
 					localStorage.setItem('IDThietBi', null)
 					self.getRouter().navigate($(this).attr('table-name') + "/collection");
 				})
