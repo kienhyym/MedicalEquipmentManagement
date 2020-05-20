@@ -324,6 +324,7 @@ sqlapimanager.create_api(MedicalEquipment, max_results_per_page=1000000,
 async def get_equipmentinspectionform(request):
     data = request.json
     arr = []
+    print ('_______________________',data)
     if data['type'] == "getbyID":
         list = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.equipmentdetails_id == data['id']).all()
         for i in range(len(list)):
