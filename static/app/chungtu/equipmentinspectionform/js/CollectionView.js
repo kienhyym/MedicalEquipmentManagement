@@ -57,6 +57,7 @@ define(function (require) {
         locData: function () {
             var self = this;
             var IDTB = sessionStorage.getItem('IDThietBi');
+            console.log(IDTB)
             sessionStorage.clear();
             if (IDTB !== null) {
                 var filters = {
