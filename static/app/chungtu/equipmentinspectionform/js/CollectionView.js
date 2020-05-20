@@ -56,8 +56,8 @@ define(function (require) {
         },
         locData: function () {
             var self = this;
-            var pType = self.getApp().getRouter().getParam("type");
-            console.log("pType", pType);
+            var type = self.getApp().getRouter().getParam("type");
+            console.log("pType", type);
             
             var IDTB = sessionStorage.getItem('IDThietBi');
             $.ajax({
