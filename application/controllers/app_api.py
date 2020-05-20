@@ -330,4 +330,10 @@ async def get_equipmentinspectionform(request):
             obj = to_dict(list[i])
             obj['stt'] = i+1
             arr.append(obj)
-    return json([])
+    else:
+        list = db.session.query(EquipmentInspectionForm).all()
+        for i in range(len(list)):
+                obj = to_dict(list[i])
+                obj['stt'] = i+1
+                arr.append(obj)
+    return json(arr)
