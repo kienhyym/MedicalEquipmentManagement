@@ -71,7 +71,7 @@ define(function (require) {
                 }
             })
 
-            sessionStorage.clear();
+            // sessionStorage.clear();
             if (IDTB !== null) {
                 var filters = {
                     filters: {
