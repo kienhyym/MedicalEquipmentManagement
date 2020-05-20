@@ -490,7 +490,7 @@ require(['jquery',
 					localStorage.setItem('LoaiDanhSachHomNay', categoryToday)
 					localStorage.setItem('type', categoryToday)
 					localStorage.setItem('IDThietBi', null)
-					self.getRouter().navigate($(this).attr('table-name') + "/collection");
+					self.getRouter().navigate($(this).attr('table-name') + "/collection?type=categoryToday");
 				})
 			},
 			get_displayName: function (data) {

@@ -38,9 +38,6 @@ define(function (require) {
             },
         render: function () {
             var self = this;
-            var type = sessionStorage.getItem('type');
-            console.log(type)
-
             self.$el.find('#ngaykiemtra').datetimepicker({
                 textFormat: 'DD-MM-YYYY',
                 extraFormats: ['DDMMYYYY'],
