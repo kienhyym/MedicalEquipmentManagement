@@ -34,7 +34,7 @@ define(function (require) {
             }],
             initialize: function () {
                 this.loaiDanhSachHomNay = localStorage.getItem("LoaiDanhSachHomNay");
-                localStorage.clear();
+                // localStorage.clear();
             },
         render: function () {
             var self = this;
@@ -240,7 +240,7 @@ define(function (require) {
             }
         },
         render_grid: function (dataSource) {
-            sessionStorage.clear();
+            // sessionStorage.clear();
 
             var self = this;
             var element = self.$el.find("#grid-data");
