@@ -379,13 +379,14 @@ define(function(require) {
                                     status = "Đang yêu cầu kiểm tra";
                                 } else if (rowData.status === "dangyeucausuachua") {
                                     status = "Đang yêu cầu sửa chữa";
-                                } else if (rowData.status === "dangchokiemduyet") {
-                                    status = "Đang chờ kiểm duyệt";
+                                } else if (rowData.status === "dangchokiemdinh") {
+                                    status = "Đang chờ kiểm định";
                                 } else if (rowData.status === "dakiemduyet") {
                                     status = "Đã kiểm duyệt";
                                 } else if (rowData.status === "luukho") {
                                     status = "Lưu kho chưa vận hành ";
                                 }
+
                                 return `    <div style="position: relative;">
                                                 <div>${rowData.name} (Serial:${rowData.model_serial_number})</div>
                                                 <div>Trạng thái:${status}</div>
