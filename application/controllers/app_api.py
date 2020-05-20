@@ -323,5 +323,11 @@ sqlapimanager.create_api(MedicalEquipment, max_results_per_page=1000000,
 @app.route('/api/v1/get_equipmentinspectionform', methods=['POST'])
 async def get_equipmentinspectionform(request):
     data = request.json
-    print("---------------------buoc kiem tra-------------------", data)
+    arr = []
+    if data['type'] == "getbyID":
+        list = db.session.query(EquipmentInspectionForm).filter(EquipmentInspectionForm.equipmentdetails_id == data['id']).all()
+        for i in range(len(list)):
+            obj = to_dict(list[i])
+            obj['stt'] = i+1
+            arr.append(obj)
     return json([])
