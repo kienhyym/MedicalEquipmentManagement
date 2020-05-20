@@ -487,6 +487,8 @@ require(['jquery',
 				var self = this;
 				$('.danhsachhomnay').unbind('click').bind('click', function () {
 					localStorage.setItem('LoaiDanhSachHomNay', $(this).attr('table-name'))
+					localStorage.setItem('type', $(this).attr('table-name'))
+					localStorage.setItem('IDThietBi', null)
 					self.getRouter().navigate($(this).attr('table-name') + "/collection");
 				})
 			},
