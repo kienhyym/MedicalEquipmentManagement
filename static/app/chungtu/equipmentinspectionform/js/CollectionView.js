@@ -56,10 +56,8 @@ define(function (require) {
         },
         locData: function () {
             var self = this;
-            var type = self.getApp().getRouter().getParam("type");
-            console.log("pType", type);
-            
             var IDTB = sessionStorage.getItem('IDThietBi');
+            var type = self.getApp().getRouter().getParam("type");
             $.ajax({
                 url: self.getApp().serviceURL + "/api/v1/get_equipmentinspectionform",
                 method: "POST",
