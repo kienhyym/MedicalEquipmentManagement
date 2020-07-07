@@ -46,7 +46,17 @@ define(function(require) {
                 return this.checkVaitro([1, 2]);
 
             },
-            "entries": [{
+            "entries": [
+                {
+                    "text": "<label class='m-0 ml-4'>Thiết bị và vật tư y tế</label>",
+                    "type": "view",
+                    "collectionName": "item",
+                    "route": "item/collection",
+                    "visible": function() {
+                        return true
+                    }
+                },
+                {
                     "text": "<label class='m-0 ml-4'>Nhân viên</label>",
                     "type": "view",
                     "collectionName": "user",
@@ -150,7 +160,7 @@ define(function(require) {
         },
 
         {
-            "text": "Báo cáo thống kê",
+            "text": "Lịch sử",
             "icon": "fa fa-file-text-o",
             "type": "category",
             "entries": [
@@ -297,15 +307,16 @@ define(function(require) {
             "text": "Quản lý kho",
             "icon": "fa fa-file-text-o",
             "type": "category",
-            "entries": [{
-                    "text": "<label class='m-0 ml-4'>Thiết bị và vật tư y tế</label>",
-                    "type": "view",
-                    "collectionName": "item",
-                    "route": "item/collection",
-                    "visible": function() {
-                        return true
-                    }
-                },
+            "entries": [
+                // {
+                //     "text": "<label class='m-0 ml-4'>Thiết bị và vật tư y tế</label>",
+                //     "type": "view",
+                //     "collectionName": "item",
+                //     "route": "item/collection",
+                //     "visible": function() {
+                //         return true
+                //     }
+                // },
                 {
                     "text": "<label class='m-0 ml-4'>Nhập hàng</label>",
                     "type": "view",
