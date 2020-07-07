@@ -215,18 +215,22 @@ define(function(require) {
 
         render: function() {
             var self = this;
-
-            var id = this.getApp().getRouter().getParam("id");
-            if (id == null) {
-                self.hienThiTaoMoi();
+            var id;
+            var viewdata = self.viewData;
+            if (viewdata != undefined) {
+                id = null
+            } else {
+                id = this.getApp().getRouter().getParam("id");
             }
+            // if (id == null) {
+            //     self.hienThiTaoMoi();
+            // }
 
             if (id) {
                 this.model.set('id', id);
                 this.model.fetch({
                     success: function(data) {
                         self.hienThiThongTinThietBi();
-
                         self.$el.find("#img").attr("src", "." + self.model.get('attachment'))
                         self.applyBindings();
                         var filters = {
@@ -249,7 +253,6 @@ define(function(require) {
                             error: function(xhr, status, error) {
                                 self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
                             },
-
                         })
                     },
                     error: function() {
@@ -257,14 +260,47 @@ define(function(require) {
                     },
                 });
             } else {
+                console.log('_______________________', viewdata)
+                self.model.set("name", viewdata.name)
+                self.model.set("date", moment().unix())
+                self.model.set("model_serial_number", viewdata.model_serial_number)
+                self.model.set("department_id", viewdata.department_id)
+                self.model.set("room_id", viewdata.room_id)
+                self.model.set("management_code", viewdata.management_code)
+                self.model.set("checker", self.getApp().currentUser.name)
+                self.model.set("checker_id", self.getApp().currentUser.id)
+                self.model.set("equipmentdetails_id", viewdata.id)
                 self.applyBindings();
+                // self.hienThiThongTinThietBi();
+
+                var filters = {
+                    filters: {
+                        "$and": [
+                            { "id": { "$eq": viewdata.id } }
+                        ]
+                    },
+                    order_by: [{ "field": "created_at", "direction": "asc" }]
+                }
+                $.ajax({
+                    type: "GET",
+                    url: self.getApp().serviceURL + "/api/v1/equipmentdetails?results_per_page=100000&max_results_per_page=1000000",
+                    data: "q=" + JSON.stringify(filters),
+                    contentType: "application/json",
+                    success: function(response) {
+                        console.log(response.objects[0].item_id)
+                        self.cacBuocKiemTra(response.objects[0].item_id)
+                    },
+                    error: function(xhr, status, error) {
+                        self.getApp().notify({ message: "Lỗi không lấy được dữ liệu" }, { type: "danger", delay: 1000 });
+                    },
+                })
             }
         },
         hienThiThongTinThietBi() {
             var self = this;
             self.$el.find('.name').html("&nbsp;&nbsp;&nbsp;&nbsp;" + self.model.get('name') + " (Serial-number: " + self.model.get('model_serial_number') + ")")
-            self.$el.find('.department').html("&nbsp;&nbsp;&nbsp;&nbsp;Department: " + self.model.get('room').name)
-            self.$el.find('.room').html("&nbsp;&nbsp;&nbsp;&nbsp;Department: " + self.model.get('department').name)
+            self.$el.find('.department').html("&nbsp;&nbsp;&nbsp;&nbsp;Khoa: " + self.model.get('department').name)
+            self.$el.find('.room').html("&nbsp;&nbsp;&nbsp;&nbsp;Phòng: " + self.model.get('room').name)
             self.$el.find('.checker').html(self.model.get('checker'))
             self.$el.find('.ngaykiemtra').html(moment(self.model.get('date') * 1000).format("DD/MM/YYYY"))
         },
@@ -281,16 +317,8 @@ define(function(require) {
             var CTTB_ID = sessionStorage.getItem('IDThietBi')
             var IDTB = sessionStorage.getItem('ThietBiID');
             //Lưu dữ liệu
-            self.model.set("name", TTB)
-            self.model.set("date", DATE)
-            self.model.set("model_serial_number", SERI)
-            self.model.set("department_id", IDKHOA)
-            self.model.set("room_id", IDPHONG)
-            self.model.set("management_code", MAQLTB)
-            self.model.set("checker", NGUOIKT)
-            self.model.set("checker_id", IDNGUOIKT)
-            self.model.set("equipmentdetails_id", CTTB_ID)
-                // HIỂN THỊ QUY TRÌNH KIỂM TRA
+
+            // HIỂN THỊ QUY TRÌNH KIỂM TRA
             if (IDTB !== null) {
                 self.cacBuocKiemTra(IDTB);
             }
@@ -379,6 +407,7 @@ define(function(require) {
                                         $(self.$el.find('.hinh')[index]).hide();
                                         $(item).hide()
                                         $(self.$el.find('.btn_luu')[index]).unbind('click').bind('click', function() {
+
                                             $(self.$el.find('.hinah')[index]).hide();
                                             $(self.$el.find('.hinh')[index]).hide();
                                             $(self.$el.find('.btn-edit')[index]).show();
@@ -926,6 +955,10 @@ define(function(require) {
                             $(self.$el.find('.btn-edit')[index]).unbind("click").bind('click', function() {
                                 $(self.$el.find('.ghichuthemnay')[index]).toggle()
                                 $(self.$el.find('.ghichuthem')[index]).html(item.note)
+
+
+
+
                                 $(self.$el.find('.noidungghichu')[index]).hide();
                                 $(self.$el.find('.btn-edit')[index]).toggle()
                                 $(self.$el.find('.btn-back')[index]).toggle()
@@ -1023,6 +1056,10 @@ define(function(require) {
                         $(self.$el.find('.btn-edit')[item.step - 1]).unbind("click").bind('click', function() {
                             $(self.$el.find('.ghichuthemnay')[item.step - 1]).toggle()
                             $(self.$el.find('.ghichuthem')[item.step - 1]).html(item.note)
+
+
+
+
                             $(self.$el.find('.noidungghichu')[item.step - 1]).hide();
                             $(self.$el.find('.btn-edit')[item.step - 1]).hide()
                             $(self.$el.find('.btn-back')[item.step - 1]).show()
@@ -1037,6 +1074,8 @@ define(function(require) {
                             $(self.$el.find('.radioKoTot')[item.step - 1]).show();
                             $(self.$el.find('.radioTot')[item.step - 1]).show();
 
+                            var chieucao = self.$el.find('.ghichuthem')[item.step - 1].scrollHeight;
+                            self.$el.find('.ghichuthem')[item.step - 1].style.height = chieucao + 'px';
 
                         })
                         $(self.$el.find('.btn-back')[item.step - 1]).unbind("click").bind('click', function() {
@@ -1062,6 +1101,9 @@ define(function(require) {
                         if (item.status == "khongondinh") {
                             $(self.$el.find('.radioTot')[item.step - 1]).hide();
                         }
+
+
+
                     })
                 },
                 error: function(xhr, status, error) {
@@ -1131,6 +1173,9 @@ define(function(require) {
                         $(self.$el.find('.btn-edit')[index]).unbind("click").bind('click', function() {
                             $(self.$el.find('.ghichuthemnay')[index]).toggle()
                             $(self.$el.find('.ghichuthem')[index]).html(item.note)
+
+
+
                             $(self.$el.find('.noidungghichu')[index]).hide();
                             $(self.$el.find('.btn-edit')[index]).toggle()
                             $(self.$el.find('.btn-back')[index]).toggle()
@@ -1150,6 +1195,8 @@ define(function(require) {
                             $(self.$el.find('.noidungghichu')[index]).show();
                             if ($(self.$el.find('.noidungghichu')[index]).text() == '' || $(self.$el.find('.noidungghichu')[index]).text() == null) {
                                 $(self.$el.find('.noidungghichu')[index]).hide();
+
+
 
                             }
                             $(self.$el.find('.noidungghichu')[index]).html(item.note)

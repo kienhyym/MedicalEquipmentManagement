@@ -348,12 +348,19 @@ sqlapimanager.create_api(RepairRequestForm, max_results_per_page=1000000,
     collection_name='repairrequestform')
 
 
+async def add_stt(request=None, data=None, result=None, **kw):
+    data = []
+    for i in range(len(result['objects'])):
+        obj_tmp = to_dict(result['objects'][i])
+        obj_tmp["stt"] = i+1
+        data.append(obj_tmp)
+    result = data
 
 sqlapimanager.create_api(EquipmentInspectionForm, max_results_per_page=1000000,
     methods=['GET', 'POST', 'DELETE', 'PUT'],
     url_prefix='/api/v1',
     preprocess=dict(GET_SINGLE=[], GET_MANY=[], POST=[], PUT_SINGLE=[]),
-    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[]),
+    postprocess=dict(POST=[], PUT_SINGLE=[], DELETE_SINGLE=[], GET_MANY =[add_stt]),
     collection_name='equipmentinspectionform')
 
 

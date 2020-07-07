@@ -488,9 +488,7 @@ require(['jquery',
 				$('.danhsachhomnay').unbind('click').bind('click', function () {
 					categoryToday = $(this).attr('table-name')
 					localStorage.setItem('LoaiDanhSachHomNay', categoryToday)
-					localStorage.setItem('type', categoryToday)
-					localStorage.setItem('IDThietBi', null)
-					self.getRouter().navigate($(this).attr('table-name') + "/collection?type=categoryToday");
+					self.getRouter().navigate($(this).attr('table-name') + "/collection?type=getbyToday&value="+Date.parse(moment().format('MMMM Do YYYY') + ' 00:00:00') / 1000);
 				})
 			},
 			get_displayName: function (data) {

@@ -2,332 +2,173 @@ define(function (require) {
     "use strict";
     var $ = require('jquery'),
         _ = require('underscore'),
-		Gonrin = require('gonrin');
+        Gonrin = require('gonrin');
 
     var template = require('text!app/chungtu/equipmentinspectionform/tpl/collection.html'),
         schema = require('json!schema/EquipmentInspectionFormSchema.json');
+
+    var CustomFilterView = require('app/base/view/CustomFilterView');
+
 
     return Gonrin.CollectionView.extend({
         template: template,
         modelSchema: schema,
         urlPrefix: "/api/v1/",
         collectionName: "equipmentinspectionform",
-        loaiDanhSachHomNay: null,
-
-        tools: [
-            {
-                name: "defaultgr",
-                type: "group",
-                groupClass: "toolbar-group",
-                buttons: [
-                    {
-                        name: "back",
-                        type: "button",
-                        buttonClass: "btn-default btn-sm btn-secondary",
-                        label: "TRANSLATE:Quay lại",
-                        command: function () {
-                            var self = this;
-                            Backbone.history.history.back();
-                        }
-                    },
-                ],
-            }],
-            initialize: function () {
-                this.loaiDanhSachHomNay = localStorage.getItem("LoaiDanhSachHomNay");
-                // localStorage.clear();
+        tools: [{
+            name: "defaultgr",
+            type: "group",
+            groupClass: "toolbar-group",
+            buttons: [{
+                name: "back",
+                type: "button",
+                buttonClass: "btn-default btn-sm btn-secondary",
+                label: "TRANSLATE:Quay lại",
+                command: function () {
+                    var self = this;
+                    Backbone.history.history.back();
+                }
             },
-        render: function () {
-            var self = this;
-            self.$el.find('#ngaykiemtra').datetimepicker({
-                textFormat: 'DD-MM-YYYY',
-                extraFormats: ['DDMMYYYY'],
-                parseInputDate: function (val) {
-                    return moment.unix(val)
-                },
-                parseOutputDate: function (date) {
-                    return date.unix()
+            {
+                name: "CREATE",
+                type: "button",
+                buttonClass: "btn-success btn-sm",
+                label: "TRANSLATE:Tạo mới",
+                command: function () {
+                    var self = this;
+                    self.getApp().getRouter().navigate(self.collectionName + "/model");
                 }
-            });
-
-            this.applyBindings();
-            self.locData();
-
-            return this;
-        },
-        locData: function () {
-            var self = this;
-            var IDTB = sessionStorage.getItem('IDThietBi');
-            var type = self.getApp().getRouter().getParam("type");
-            $.ajax({
-                url: self.getApp().serviceURL + "/api/v1/get_equipmentinspectionform",
-                method: "POST",
-                data: JSON.stringify({"type":type,"id":IDTB}),
-                contentType: "application/json",
-                success: function (data) {
-                    console.log(data)
-                }
-            })
-
-            // sessionStorage.clear();
-            if (IDTB !== null) {
-                var filters = {
-                    filters: {
-                        "$and": [
-                            { "equipmentdetails_id": { "$eq": IDTB } }
-                        ]
-                    },
-                    order_by: [{ "field": "created_at", "direction": "desc" }]
-                }
-                $.ajax({
-                    url: self.getApp().serviceURL + "/api/v1/equipmentinspectionform?results_per_page=100000&max_results_per_page=1000000",
-                    method: "GET",
-                    data: "q=" + JSON.stringify(filters),
-                    contentType: "application/json",
-                    success: function (data) {
-                        var i = 1;
-                        var arr = [];
-                        data.objects.forEach(function (item, index) {
-                            item.stt = i;
-                            i++;
-                            arr.push(item)
-                        })
-                        self.render_grid(arr);
-
-
-                        self.$el.find("#name").keyup(function () {
-                            arr = [];
-                            var i = 1;
-                            data.objects.forEach(function (item, index) {
-                                if ((item.name).indexOf(self.$el.find("#name").val()) !== -1) {
-                                    item.stt = i;
-                                    i++;
-                                    arr.push(item)
-
-                                }
-                            });
-                            self.render_grid(arr);
-
-                        });
-                        self.$el.find('#ngaykiemtra').blur(function () {
-                            var x = self.$el.find('#ngaykiemtra').data("gonrin").getValue();
-
-                            if (arr.length != 0) {
-                                var arr2 = [];
-                                var i = 1;
-                                arr.forEach(function (item, index) {
-                                    if (moment(item.date * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
-                                        item.stt = i;
-                                        i++;
-                                        arr2.push(item)
-                                    }
-                                });
-                                self.render_grid(arr2);
-
-                            }
-                            else {
-                                arr2 = []
-                                var i = 1;
-                                data.objects.forEach(function (item, index) {
-                                    if (moment(item.date * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
-                                        item.stt = i;
-                                        i++;
-                                        arr2.push(item)
-                                    }
-                                });
-                                self.render_grid(arr2);
-                                self.$el.find("#name").keyup(function () {
-                                    var arr3 = [];
-                                    var i = 1;
-                                    arr2.forEach(function (item, index) {
-                                        if ((item.name).indexOf(self.$el.find("#name").val()) !== -1) {
-                                            item.stt = i;
-                                            i++;
-                                            arr3.push(item)
-                                        }
-                                    });
-                                    self.render_grid(arr3);
-
-                                });
-                            }
-
-                        })
-
-                    },
-
-
-                })
+            },
+            ],
+        }],
+        uiControl: {
+            orderBy: [{
+                field: "name",
+                direction: "asc"
+            },
+            {
+                field: "created_at",
+                direction: "desc"
             }
-            if (self.loaiDanhSachHomNay != null) {
-                self.appListToday();
-            }
-            else {
-                $.ajax({
-                    url: self.getApp().serviceURL + "/api/v1/equipmentinspectionform?results_per_page=100000&max_results_per_page=1000000",
-                    method: "GET",
-                    data: { "q": JSON.stringify({ "order_by": [{ "field": "created_at", "direction": "desc" }] }) },
-                    contentType: "application/json",
-                    success: function (data) {
-                        var i = 1;
-                        var arr = [];
-                        data.objects.forEach(function (item, index) {
-                            item.stt = i;
-                            i++;
-                            arr.push(item)
-                        })
-                        self.render_grid(arr);
-                        self.$el.find("#name").keyup(function () {
-                            arr = [];
-                            var i = 1;
-                            data.objects.forEach(function (item, index) {
-                                if ((item.name).indexOf(self.$el.find("#name").val()) !== -1) {
-                                    item.stt = i;
-                                    i++;
-                                    arr.push(item)
-
-                                }
-                            });
-                            self.render_grid(arr);
-
-                        });
-                        self.$el.find('#ngaykiemtra').blur(function () {
-                            var x = self.$el.find('#ngaykiemtra').data("gonrin").getValue();
-
-                            if (arr.length != 0) {
-                                var arr2 = [];
-                                var i = 1;
-                                arr.forEach(function (item, index) {
-                                    if (moment(item.date * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
-                                        item.stt = i;
-                                        i++;
-                                        arr2.push(item)
-                                    }
-                                });
-                                self.render_grid(arr2);
-
-                            }
-                            else {
-                                arr2 = []
-                                var i = 1;
-                                data.objects.forEach(function (item, index) {
-                                    if (moment(item.date * 1000).format("DDMMYYYY") == moment(x * 1000).format("DDMMYYYY")) {
-                                        item.stt = i;
-                                        i++;
-                                        arr2.push(item)
-                                    }
-                                });
-                                self.render_grid(arr2);
-                                self.$el.find("#name").keyup(function () {
-                                    var arr3 = [];
-                                    var i = 1;
-                                    arr2.forEach(function (item, index) {
-                                        if ((item.name).indexOf(self.$el.find("#name").val()) !== -1) {
-                                            item.stt = i;
-                                            i++;
-                                            arr3.push(item)
-                                        }
-                                    });
-                                    self.render_grid(arr3);
-
-                                });
-                            }
-
-                        })
+            ],
+            fields: [
+                {
+                    field: "stt",
+                    label: "STT",
+                    width: "30px",
+                    template: function (rowData) {
+                        if (!!rowData) {
+                            return `
+                                        <div>${rowData.stt}</div>
+                                    `;
+                        }
+                        return "";
                     }
-                })
-            }
-        },
-        render_grid: function (dataSource) {
-            // sessionStorage.clear();
-
-            var self = this;
-            var element = self.$el.find("#grid-data");
-            element.grid({
-                // showSortingIndicator: true,
-                orderByMode: "client",
-                language: {
-                    no_records_found: "Chưa có dữ liệu"
                 },
-                noResultsClass: "alert alert-default no-records-found",
-                fields: [
-
-                    {
-                        label: "STT",
-                        width: "30px",
-                        template: function (rowData) {
-                            if (!!rowData) {
-                                return `
-                                            <div>${rowData.stt}</div>
+                {
+                    field: "name",
+                    label: "Phiếu",
+                    template: function (rowData) {
+                        if (!!rowData) {
+                            var utcTolocal = function (times, format) {
+                                return moment(times * 1000).local().format(format);
+                            }
+                            if (rowData.status == "success"){
+                                return `<div style="position: relative;">
+                                            <div>${rowData.name} (Serial:${rowData.model_serial_number})</div>
+                                            <div>Ngày kiểm tra:${utcTolocal(rowData.date, "DD/MM/YYYY")}</div>
+                                            <div>Trạng thái:<label class="badge badge-success pt-0 pb-0">Tốt</label></div>
+                                            <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
+                                        </div>
                                         `;
                             }
-                            return "";
-                        }
-                    },
-                    {
-                        label: "Phiếu",
-                        template: function (rowData) {
-                            if (!!rowData && rowData.date) {
-                                var utcTolocal = function (times, format) {
-                                    return moment(times * 1000).local().format(format);
-                                }
+                            else{
                                 return `    <div style="position: relative;">
-                                                <div>${rowData.name} (Serial:${rowData.model_serial_number})</div>
-                                                <div>Ngày kiểm tra:${utcTolocal(rowData.date, "DD/MM/YYYY")}</div>
-                                                <div>Trạng thái:${rowData.status}</div>
-                                                <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
-                                            </div>
-                                            `;
+                                            <div>${rowData.name} (Serial:${rowData.model_serial_number})</div>
+                                            <div>Ngày kiểm tra:${utcTolocal(rowData.date, "DD/MM/YYYY")}</div>
+                                            <div>Trạng thái:<label class="badge badge-danger pt-0 pb-0">không tốt</label></div>
+                                            <i style="position: absolute;bottom:0;right:0" class='fa fa-angle-double-right'></i>
+                                        </div>
+                                    `;
                             }
-                            return "";
+                            
                         }
-                    },
-                ],
-                dataSource: dataSource,
-                primaryField: "id",
-                refresh: true,
-                selectionMode: false,
-                pagination: {
-                    page: 1,
-                    pageSize: 15
-                },
-
-                events: {
-                    "rowclick": function (e) {
-                        self.getApp().getRouter().navigate("equipmentinspectionform/model?id=" + e.rowId);
-                    },
-                },
-            });
-
-            $(self.$el.find('.grid-data tr')).each(function (index, item) {
-                $(item).find('td:first').css('height',$(item).height())
-                $(item).find('td:first').addClass('d-flex align-items-center justify-content-center')
-
-            })
-        },
-        appListToday: function () {
-            var self = this;
-            var thoiGianBatDau = moment().format('MMMM Do YYYY') + ' 00:00:01';
-            var thoiGianKetThuc = String(moment().format('MMMM Do YYYY')) + ' 23:59:59';
-            $.ajax({
-                url: self.getApp().serviceURL + "/api/v1/list_today",
-                method: "POST",
-                data: JSON.stringify(
-                    {
-                        "thoiGianBatDau": Date.parse(thoiGianBatDau) / 1000,
-                        "thoiGianKetThuc": Date.parse(thoiGianKetThuc) / 1000,
-                        "tableName": self.loaiDanhSachHomNay
+                        return "";
                     }
-                ),
-                contentType: "application/json",
-                success: function (data) {
-                    var list = [];
-                    data.forEach(function (item, index) {
-                        item.stt = index + 1;
-                        list.push(item)
-                        self.render_grid(list);
-                    });
+                },
+            ],
+            onRowClick: function (event) {
+                if (event.rowId) {
+                    var path = this.collectionName + '/model?id=' + event.rowId;
+                    this.getApp().getRouter().navigate(path);
                 }
-            })
-        }
+
+            },
+            pagination: {
+                page: 1,
+                pageSize: 100
+            },
+        },
+        render: function () {
+            var self = this;
+            var filter = new CustomFilterView({
+                el: self.$el.find("#grid_search"),
+                sessionKey: this.collectionName + "_filter"
+            });
+            filter.render();
+            
+            var type = self.getApp().getRouter().getParam("type");
+            var value = self.getApp().getRouter().getParam("value");
+            console.log(value)
+            if (type == "getbyID"){
+                self.uiControl.filters = {"equipmentdetails_id":{"$eq":value}};
+            }
+            if(type == "getbyToday"){
+                self.uiControl.filters ={
+                    $and:[
+                        {"date":{"$gt":Number(value)}},
+                        {"date":{"$lt":Number(value)+86400}},
+                    ]
+                } ;
+            }
+            if(type == null){
+                self.uiControl.filters =null
+            }
+            self.applyBindings();
+            filter.on('filterChanged', function (evt) {
+                var $col = self.getCollectionElement();
+                var text = !!evt.data.text ? evt.data.text.trim() : "";
+                if ($col) {
+                    if (text !== null) {
+                        if (type == "getbyID"){
+                            var filters = {
+                                $and:[
+                                    {"equipmentdetails_id":{"$eq":value}},
+                                    {"name": { "$likeI": text }},
+                                ]
+                            }
+                        }
+                        if(type == "getbyToday"){
+                            var filters = {
+                                $and:[
+                                    {"date":{"$gt":Number(value)}},
+                                    {"date":{"$lt":Number(value)+86400}},
+                                    {"name": { "$likeI": text }},
+                                ]
+                            }
+                        }
+                        if(type == null){
+                            var filters = { "name": { "$likeI": text } };
+                        }
+                        $col.data('gonrin').filter(filters);
+                    } else {
+                        self.uiControl.filters = null;
+                    }
+                }
+                self.applyBindings();
+            });
+            return this;
+        },
     });
 
 });

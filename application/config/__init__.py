@@ -41,6 +41,4 @@ class Config(object):
 
 
     FS_ROOT= "static/uploads/"
-
-    # FILE_SERVICE_URL = 'http://103.74.120.65:9081/static/uploads'
     FILE_SERVICE_URL = '/static/uploads'

@@ -12,6 +12,8 @@ define(function(require) {
     var PhongSelectView = require('app/hethong/room/view/SelectView');
     var HangSanXuatSelectView = require('app/danhmuc/manufacturer/view/SelectView');
 
+    var EquipmentInspectionFormView = require('app/chungtu/equipmentinspectionform/js/ModelView');
+
 
 
 
@@ -291,9 +293,11 @@ define(function(require) {
                 self.$el.find('.have-id').show();
                 this.model.set('id', id);
                 this.model.fetch({
-
+                    
                     // http://0.0.0.0:20808/#equipmentdetails/model?id=26204cbe-8744-4eec-b912-6a4f452c37ce
                     success: function(data) {
+                        var id = self.model.get("id")
+
                         var qrcode = new QRCode("id_qrcodeMini", {
                             text: self.model.get("id"),
                             width: 40,
@@ -334,23 +338,29 @@ define(function(require) {
                             sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
                             sessionStorage.setItem('MaQLTBThietBi', self.model.get("management_code"));
                         })
+                        window.history.pushState( {} , 'bar', '/' );
+                        console.log(self.getApp().getRouter().getParam("id"))
                         self.$el.find(".btn-taokiemtrahangngay").unbind("click").bind("click", function() {
-                            location.href = self.getApp().serviceURL + "/?#equipmentinspectionform/model";
-                            sessionStorage.setItem('TenThietBi', self.model.get("name"));
-                            sessionStorage.setItem('IDThietBi', self.model.get("id"));
-                            sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
-                            sessionStorage.setItem('MaQLTBThietBi', self.model.get("management_code"));
-                            sessionStorage.setItem('Department', self.model.get("department_id"));
-                            sessionStorage.setItem('Khoa2', self.model.get("department"));
-                            sessionStorage.setItem('Room', self.model.get("room_id"));
-                            sessionStorage.setItem('ThietBiID', self.model.get("item_id"));
+                            // // location.href = self.getApp().serviceURL + "/?#equipmentinspectionform/model";
+                            // sessionStorage.setItem('TenThietBi', self.model.get("name"));
+                            // sessionStorage.setItem('IDThietBi', self.model.get("id"));
+                            // sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
+                            // sessionStorage.setItem('MaQLTBThietBi', self.model.get("management_code"));
+                            // sessionStorage.setItem('Department', self.model.get("department_id"));
+                            // sessionStorage.setItem('Khoa2', self.model.get("department"));
+                            // sessionStorage.setItem('Room', self.model.get("room_id"));
+                            // sessionStorage.setItem('ThietBiID', self.model.get("item_id"));
+
+                            var newview = new EquipmentInspectionFormView({"el":self.getApp().$content,"viewData":self.model.toJSON()});
+                            newview.render();
                         })
+
                         self.$el.find(".btn-taokiemdinh").unbind("click").bind("click", function() {
-                            location.href = self.getApp().serviceURL + "/?#certificateform/model";
-                            sessionStorage.setItem('TenThietBi', self.model.get("name"));
-                            sessionStorage.setItem('IDThietBi', self.model.get("id"));
-                            sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
-                            sessionStorage.setItem('MaQLTBThietBi', self.model.get("management_code"));
+                            // location.href = self.getApp().serviceURL + "/?#certificateform/model";
+                            // sessionStorage.setItem('TenThietBi', self.model.get("name"));
+                            // sessionStorage.setItem('IDThietBi', self.model.get("id"));
+                            // sessionStorage.setItem('SerialThietBi', self.model.get("model_serial_number"));
+                            // sessionStorage.setItem('MaQLTBThietBi', self.model.get("management_code"));
                         })
 
 
@@ -362,12 +372,11 @@ define(function(require) {
                             location.href = self.getApp().serviceURL + "/?#devicestatusverificationform/collection";
                             sessionStorage.setItem('IDThietBi', self.model.get("id"));
                         })
+                        
                         self.$el.find(".btn-dskiemtrahangngay").unbind("click").bind("click", function() {
-                            location.href = self.getApp().serviceURL + "/?#equipmentinspectionform/collection";
-                            sessionStorage.setItem('IDThietBi', self.model.get("id"));
-                            sessionStorage.setItem('type', "getbyID");
-
+                            self.getApp().getRouter().navigate("equipmentinspectionform/collection?type=getbyID&value="+ id);
                         })
+
                         self.$el.find(".btn-dskiemdinh").unbind("click").bind("click", function() {
                             location.href = self.getApp().serviceURL + "/?#certificateform/collection";
                             sessionStorage.setItem('IDThietBi', self.model.get("id"));
