@@ -119,8 +119,8 @@ define(function (require) {
             buttons: [{
                 name: "create",
                 type: "button",
-                buttonClass: "btn btn-primary font-weight-bold btn-sm",
-                label: "+ Mặt hàng",
+                buttonClass: "btn btn-success font-weight-bold btn-sm",
+                label: "Tạo mới",
                 command: function () {
                     var self = this;
                     this.getApp().getRouter().navigate("#item/model");
