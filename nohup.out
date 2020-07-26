@@ -1,0 +1,2 @@
+  File "manage.py", line 108
+SyntaxError: Non-ASCII character '\xe1' in file manage.py on line 108, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details
