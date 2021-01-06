@@ -163,7 +163,7 @@ class EquipmentDetails(CommonModel):
     List_of_requests_for_repair = db.relationship('RepairRequestForm', cascade="all, delete-orphan")
     list_of_checklists_for_equipment = db.relationship('EquipmentInspectionForm', cascade="all, delete-orphan")
     List_of_device_status_verification_sheets = db.relationship('DeviceStatusVerificationForm', cascade="all, delete-orphan")
-    list_of_certificates = db.relationship('CertificateForm ', cascade="all, delete-orphan")
+    list_of_certificates = db.Column(JSONB())
 
 class EquipmentInspectionProcedures(CommonModel):
     __tablename__ = 'equipmentinspectionprocedures'

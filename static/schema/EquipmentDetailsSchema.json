@@ -111,6 +111,9 @@
     "item_id": {
         "type": "string"
     },
+    "list_of_certificates": {
+        "type": "json"
+    },
     "supplier": {
         "type": "dict"
     },
@@ -136,9 +139,6 @@
         "type": "list"
     },
     "List_of_device_status_verification_sheets": {
-        "type": "list"
-    },
-    "list_of_certificates": {
         "type": "list"
     }
 }

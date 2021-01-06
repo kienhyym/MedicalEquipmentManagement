@@ -13,7 +13,6 @@ six
 SQLAlchemy
 ujson
 uvloop
-websockets==5.0
 jinja2
 requests
 aiohttp
@@ -26,6 +25,7 @@ bcrypt
 Pillow
 aiosmtplib
 apscheduler
+pandas
 git+https://github.com/gonrin/gatco.git
 git+https://github.com/gonrin/gatco_auth.git
 git+https://github.com/gonrin/gatco_sqlalchemy.git
